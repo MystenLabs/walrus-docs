@@ -1,9 +1,10 @@
 # Editors/OS
 **/.history/
-**/.vscode/
+**/.vscode/**
 **/.idea/
 .nvimrc
 .DS_Store
+!.vscode/extensions.json
 
 # Custom pre-commit configuration
 .custom-pre-commit-config.yaml

@@ -1,0 +1,59 @@
+name: Lint
+
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    name: Check PR title format
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v5.5.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  editorconfig:
+    runs-on: ubuntu-latest
+    name: Check editorconfig
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install editorconfig-checker=="2.7.3"
+      - run: ec
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    name: Lint all markdown files
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16.0.0
+
+  typos:
+    runs-on: ubuntu-latest
+    name: Check spelling
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crate-ci/typos@v1.21.0
+
+  check-all:
+    name: Check if all lint jobs succeeded
+    if: always()
+    needs:
+      - pr-title
+      - editorconfig
+      - typos
+      - markdownlint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Decide whether all needed jobs succeeded
+      uses: re-actors/alls-green@v1.2.2
+      with:
+        jobs: ${{ toJSON(needs) }}

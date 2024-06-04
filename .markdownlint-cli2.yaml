@@ -1,0 +1,17 @@
+globs:
+  - "**/*.md"
+gitignore: true
+config:
+  default: true
+  line-length:
+    line_length: 100
+    heading_line_length: 80
+    code_block_line_length: 150
+    tables: false
+    stern: true
+  heading-style:
+    style: atx
+  ul-style:
+    style: dash
+  ol-prefix:
+    style: one

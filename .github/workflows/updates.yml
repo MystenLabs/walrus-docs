@@ -1,0 +1,46 @@
+name: Updates
+
+on:
+  # every month
+  schedule:
+    - cron: '14 3 1 * *'
+  # on demand
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    name: "Update pre-commit hooks and run them on all files"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pre-commit
+      - run: pre-commit autoupdate
+      - run: pre-commit run --all-files
+
+      - uses: peter-evans/create-pull-request@v6.0.5
+        if: ${{ success() }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/update-pre-commit-hooks
+          title: "chore: update pre-commit hooks"
+          commit-message: "chore: update pre-commit hooks"
+          body: Update pre-commit hooks to latest version.
+      - uses: peter-evans/create-pull-request@v6.0.5
+        if: ${{ failure() }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/update-pre-commit-hooks
+          title: "chore: update pre-commit hooks"
+          commit-message: "chore: update pre-commit hooks"
+          body: |
+            Update pre-commit hooks to latest version.
+
+            **Warning**: Some checks did not succeed. Please check the [action output][run] before merging this PR.
+
+            [run]: https://github.com/MystenLabs/walrus/actions/runs/${{ github.run_id }}
