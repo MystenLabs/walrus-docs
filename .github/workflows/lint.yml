@@ -41,7 +41,7 @@ jobs:
     name: Check spelling
     steps:
       - uses: actions/checkout@v4
-      - uses: crate-ci/typos@v1.21.0
+      - uses: crate-ci/typos@v1.22.0
 
   check-all:
     name: Check if all lint jobs succeeded
