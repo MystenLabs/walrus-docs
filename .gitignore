@@ -1,0 +1,16 @@
+# Editors/OS
+**/.history/
+**/.vscode/
+**/.idea/
+.nvimrc
+.DS_Store
+
+# Custom pre-commit configuration
+.custom-pre-commit-config.yaml
+
+# Misc
+*.key
+.env
+config.yml
+working_dir
+*.log
