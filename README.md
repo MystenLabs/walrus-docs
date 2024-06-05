@@ -1,7 +1,21 @@
-# Documentation and examples for the Walrus decentralized storage
+# The Walrus decentralized blob storage system
 
-Walrus is a decentralized blob store using [Sui](https://github.com/MystenLabs/sui) for coordination
-and governance.
+Welcome to the GitHub repository for Walrus, a decentralized storage and availability protocol
+designed specifically for large binary files, or "blobs". Walrus focuses on providing a robust
+solution for storing unstructured content on decentralized storage nodes while ensuring high
+availability and reliability even in the presence of Byzantine faults.
+
+## Documentation
+
+Our documentation is available at **TBD**; it is generated using
+[mdBook](https://rust-lang.github.io/mdBook/) from source files in the [`docs/`](./docs/) directory.
+
+You can also build and access the documentation locally (assuming you have Rust installed):
+
+```sh
+cargo install mdbook
+mdbook serve
+```
 
 ## Get help and report issues
 
