@@ -9,6 +9,9 @@
 # Custom pre-commit configuration
 .custom-pre-commit-config.yaml
 
+# mdBook
+build/
+
 # Misc
 *.key
 .env
