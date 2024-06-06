@@ -4,7 +4,7 @@ wallet_config: null
 
 # Default values for the client are commented out.
 #
-# There is no risk in playing aroud with these values.
+# There is no risk in playing around with these values.
 # Worst case, you may not be able to store/read from Walrus.
 
 # communication_config:
