@@ -57,7 +57,7 @@ request = {
         "MoveModule": {
         "package": walrus_type,
         "module": "blob"
-      }
+        }
     },
     None,
     # Query the latest 100 events
