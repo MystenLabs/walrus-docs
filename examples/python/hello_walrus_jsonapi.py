@@ -24,7 +24,7 @@ import requests
 from utils import num_to_blob_id
 
 PATH_TO_WALRUS = "../CONFIG/bin/walrus"
-PATH_TO_WALRUS_CONFIG = "../CONFIG/working_dir/client_config.yaml"
+PATH_TO_WALRUS_CONFIG = "../CONFIG/config_dir/client_config.yaml"
 
 try:
 

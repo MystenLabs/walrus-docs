@@ -12,6 +12,10 @@
 # mdBook
 build/
 
+# Python
+__pycache__/
+*.pyc
+
 # Misc
 *.key
 .env

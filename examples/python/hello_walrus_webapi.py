@@ -10,7 +10,7 @@
 #   see: TODO
 #
 # - Run the Walrus client in daemon mode:
-#   $ walrus --config working_dir/client_config.yaml daemon -b 127.0.0.1:8899
+#   $ walrus --config config_dir/client_config.yaml daemon -b 127.0.0.1:8899
 #
 
 # Std lib imports
