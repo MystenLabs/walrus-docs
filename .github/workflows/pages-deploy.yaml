@@ -23,6 +23,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
-          folder: build
+          folder: build/html
           clean-exclude: pr-preview/
           force: false
