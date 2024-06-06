@@ -16,7 +16,8 @@ PATH_TO_WALRUS_CONFIG = "../CONFIG/config_dir/client_config.yaml"
 
 system_object_id = re.findall(r"system_object:[ ]*(.*)", open(PATH_TO_WALRUS_CONFIG).read())[0]
 print(f'System object ID: {system_object_id}')
- # Part 3. Check the availability of the blob
+
+# Query the Walrus system object on Sui
 request = {
 "jsonrpc": "2.0",
 "id": 1,
@@ -35,6 +36,8 @@ request = {
 ]
 }
 response = requests.post("https://fullnode.testnet.sui.io:443", json=request)
+assert response.status_code == 200
+
 system_object_content = response.json()["result"]["data"]["content"]["fields"]
 committee = system_object_content["current_committee"]["fields"]["bls_committee"]["fields"]
 
