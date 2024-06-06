@@ -1,4 +1,5 @@
 # Example of uploading and downloading a file to / from the Walrus service
+# Using the walrus client web API facilities.
 #
 # Prerequisites:
 #
@@ -27,7 +28,7 @@ def upload_blob(ADDRESS, EPOCHS, data):
 
     # Upload the data to the Walrus service  using a PUT request
     store_url = f"http://{ADDRESS}/v1/store?epochs={EPOCHS}"
-    response = requests.put(store_url, data=random_data)
+    response = requests.put(store_url, data=data)
 
     # Assert the response status code
     assert response.status_code == 200
