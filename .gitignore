@@ -20,4 +20,4 @@ working_dir
 *.log
 
 # Walrus binary
-./examples/CONFIG/bin/walrus
+examples/CONFIG/bin/walrus
