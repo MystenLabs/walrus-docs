@@ -7,3 +7,13 @@ title = "Walrus"
 
 [build]
 build-dir = "build"
+
+[output.html]
+
+[output.linkcheck]
+optional = true
+follow-web-links = true
+warning-policy = "error"
+exclude = [
+  'github\.com/MystenLabs/walrus-docs/', # Currently still private
+]

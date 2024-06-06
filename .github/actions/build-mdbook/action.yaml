@@ -1,0 +1,28 @@
+name: Build the mdBook
+description: Generate static site from markdown files through mdBook
+
+runs:
+  using: "composite"
+  steps:
+    - name: Create bin directory and add to $PATH
+      run: |
+        mkdir bin
+        echo "$(pwd)/bin" >> ${GITHUB_PATH}
+      shell: bash
+    - name: Install mdbook
+      run: |
+        url="https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz"
+        curl -sSL "$url" | tar -xz --directory=bin
+      shell: bash
+    - name: Install mdbook-linkcheck
+      run: |
+        url="https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/latest/download/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip"
+        curl -sSL "$url" -o mdbook-linkcheck.zip
+        unzip "$_" -d bin
+        chmod +x bin/mdbook-linkcheck
+      shell: bash
+    - name: Build the book and check for broken links
+      run: mdbook build
+      env:
+        RUST_LOG: INFO
+      shell: bash
