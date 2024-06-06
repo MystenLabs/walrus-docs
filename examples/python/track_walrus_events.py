@@ -48,13 +48,13 @@ print(f'Walrus type: {walrus_type}')
 
 # Query events for the appropriate Walrus type
 request = {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "suix_queryEvents",
-  "params": [
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "suix_queryEvents",
+    "params": [
     # Query by module type
     {
-      "MoveModule": {
+        "MoveModule": {
         "package": walrus_type,
         "module": "blob"
       }
@@ -63,7 +63,7 @@ request = {
     # Query the latest 100 events
     100,
     True
-  ]
+    ]
 }
 response = requests.post("https://fullnode.testnet.sui.io:443", json=request)
 assert response.status_code == 200
