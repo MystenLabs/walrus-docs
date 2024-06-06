@@ -1,0 +1,28 @@
+name: Build and deploy GitHub Pages
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "book.toml"
+      - "docs/**"
+      - ".github/actions/build-mdbook/action.yaml"
+      - ".github/workflows/pages-deploy.yaml"
+
+concurrency: ci-${{ github.ref }}
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/build-mdbook
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
+        with:
+          folder: build
+          clean-exclude: pr-preview/
+          force: false

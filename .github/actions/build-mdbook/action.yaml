@@ -1,0 +1,17 @@
+name: Build the mdBook
+description: Generate static site from markdown files through mdBook
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install mdbook
+      run: cargo install mdbook --version 0.4.40
+      shell: bash
+    - name: Install mdbook-linkcheck
+      run: cargo install mdbook-linkcheck --version 0.7.7
+      shell: bash
+    - name: Build the book and check for broken links
+      run: mdbook build
+      env:
+        RUST_LOG: INFO
+      shell: bash
