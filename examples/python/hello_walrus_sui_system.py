@@ -3,7 +3,7 @@
 # Prerequisites:
 #
 # - Configure Walrus
-#   see: TODO
+#   see: TODO(#12)
 #
 # - Update the paths PATH_TO_WALRUS_CONFIG below
 #

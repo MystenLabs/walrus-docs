@@ -7,7 +7,7 @@
 #   see: https://docs.sui.io/guides/developer/getting-started/connect
 #
 # - Configure Walrus
-#   see: TODO
+#   see: TODO(#12)
 #
 # - Update the paths PATH_TO_WALRUS and PATH_TO_WALRUS_CONFIG below
 #

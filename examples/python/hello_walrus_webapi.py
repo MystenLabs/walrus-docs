@@ -7,7 +7,7 @@
 #   see: https://docs.sui.io/guides/developer/getting-started/connect
 #
 # - Configure Walrus
-#   see: TODO
+#   see: TODO(#12)
 #
 # - Run the Walrus client in daemon mode:
 #   $ walrus --config config_dir/client_config.yaml daemon -b 127.0.0.1:8899
