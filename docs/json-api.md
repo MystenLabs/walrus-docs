@@ -7,7 +7,7 @@ The JSON mode therefore simplifies programmatic access to the CLI.
 For example, to store a blob, run:
 
 ```sh
-cargo run --bin walrus -- json \
+walrus json \
     '{
         "config": "working_dir/client_config.yaml",
         "command": {
@@ -21,7 +21,7 @@ cargo run --bin walrus -- json \
 or, to read a blob knowing the blob ID:
 
 ```sh
-cargo run --bin walrus -- json \
+walrus json \
     '{
         "config": "working_dir/client_config.yaml",
         "command": {

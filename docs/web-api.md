@@ -10,9 +10,9 @@ different sets of API endpoints through one of the following commands:
 
 ```sh
 ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415
-cargo run --bin walrus -- -c $CONFIG aggregator -b $ADDRESS # run an aggregator to read blobs
-cargo run --bin walrus -- -c $CONFIG publisher -b $ADDRESS # run a publisher to store blobs
-cargo run --bin walrus -- -c $CONFIG daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
+walrus -c $CONFIG aggregator -b $ADDRESS # run an aggregator to read blobs
+walrus -c $CONFIG publisher -b $ADDRESS # run a publisher to store blobs
+walrus -c $CONFIG daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
 ```
 
 The aggregator provides all read APIs, the publisher all the store APIs, and daemon provides both.
