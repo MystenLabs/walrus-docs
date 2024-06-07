@@ -23,10 +23,10 @@
   - [Prerequisites]()
   - [Installation]()
   - [Configuration]()
-- [Interacting with Walrus]()
-  - [Using the client CLI]()
-  - [Using the client JSON API]()
-  - [Using the client daemon]()
+- [Interacting with Walrus](interacting.md)
+  - [Using the client CLI](client-cli.md)
+  - [Using the client JSON API](json-api.md)
+  - [Using the client HTTP API](web-api.md)
 - [Examples]()
 
 # Walrus sites
