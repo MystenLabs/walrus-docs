@@ -177,12 +177,12 @@
 <p>The <code>walrus</code> binary can be used to interact with Walrus as a client. To use it, you need a Walrus
 configuration and a Sui wallet.
 Detailed usage information is available through</p>
-<pre><code class="language-sh">cargo run --bin walrus -- --help
+<pre><code class="language-sh">walrus --help
 </code></pre>
 <p>Storing and reading blobs from Walrus can be achieved through the following commands:</p>
 <pre><code class="language-sh">CONFIG=working_dir/client_config.yaml # adjust for your configuration file
-cargo run --bin walrus -- -c $CONFIG store &lt;some file&gt; # store a file
-cargo run --bin walrus -- -c $CONFIG read &lt;some blob ID&gt; # read a blob
+walrus -c $CONFIG store &lt;some file&gt; # store a file
+walrus -c $CONFIG read &lt;some blob ID&gt; # read a blob
 </code></pre>
 
                     </main>

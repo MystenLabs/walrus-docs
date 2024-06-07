@@ -573,19 +573,19 @@ store. On-chain bounties may be used to retrieve these slivers for missing blobs
 <p>The <code>walrus</code> binary can be used to interact with Walrus as a client. To use it, you need a Walrus
 configuration and a Sui wallet.
 Detailed usage information is available through</p>
-<pre><code class="language-sh">cargo run --bin walrus -- --help
+<pre><code class="language-sh">walrus --help
 </code></pre>
 <p>Storing and reading blobs from Walrus can be achieved through the following commands:</p>
 <pre><code class="language-sh">CONFIG=working_dir/client_config.yaml # adjust for your configuration file
-cargo run --bin walrus -- -c $CONFIG store &lt;some file&gt; # store a file
-cargo run --bin walrus -- -c $CONFIG read &lt;some blob ID&gt; # read a blob
+walrus -c $CONFIG store &lt;some file&gt; # store a file
+walrus -c $CONFIG read &lt;some blob ID&gt; # read a blob
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
 <p>All Walrus client commands (except, currently, the <code>info</code> command) are available in JSON mode.
-In this mode, all the command line flags of the original CLI command can be specified in JSON format.
-The JSON mode therefore simplifies programmatic access to the CLI.</p>
+In this mode, all the command line flags of the original CLI command can be specified in JSON
+format. The JSON mode therefore simplifies programmatic access to the CLI.</p>
 <p>For example, to store a blob, run:</p>
-<pre><code class="language-sh">cargo run --bin walrus -- json \
+<pre><code class="language-sh">walrus json \
     '{
         "config": "working_dir/client_config.yaml",
         "command": {
@@ -596,7 +596,7 @@ The JSON mode therefore simplifies programmatic access to the CLI.</p>
     }'
 </code></pre>
 <p>or, to read a blob knowing the blob ID:</p>
-<pre><code class="language-sh">cargo run --bin walrus -- json \
+<pre><code class="language-sh">walrus json \
     '{
         "config": "working_dir/client_config.yaml",
         "command": {
@@ -617,9 +617,9 @@ simple web server offering HTTP interfaces to store and read blobs.</p>
 <p>You can run the daemon with
 different sets of API endpoints through one of the following commands:</p>
 <pre><code class="language-sh">ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415
-cargo run --bin walrus -- -c $CONFIG aggregator -b $ADDRESS # run an aggregator to read blobs
-cargo run --bin walrus -- -c $CONFIG publisher -b $ADDRESS # run a publisher to store blobs
-cargo run --bin walrus -- -c $CONFIG daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
+walrus -c $CONFIG aggregator -b $ADDRESS # run an aggregator to read blobs
+walrus -c $CONFIG publisher -b $ADDRESS # run a publisher to store blobs
+walrus -c $CONFIG daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
 </code></pre>
 <p>The aggregator provides all read APIs, the publisher all the store APIs, and daemon provides both.
 Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
