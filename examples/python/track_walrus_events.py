@@ -37,8 +37,8 @@ response = requests.post("https://fullnode.testnet.sui.io:443", json=request)
 assert response.status_code == 200
 
 system_object_content = response.json()["result"]["data"]
-walrus_type = re.findall("(0x[0-9a-f]+)::system", system_object_content["type"])[0]
-print(f"Walrus type: {walrus_type}")
+walrus_package = re.findall("(0x[0-9a-f]+)::system", system_object_content["type"])[0]
+print(f"Walrus type: {walrus_package}")
 
 # Query events for the appropriate Walrus type
 request = {
@@ -47,11 +47,11 @@ request = {
     "method": "suix_queryEvents",
     "params": [
         # Query by module type
-        {"MoveModule": {"package": walrus_type, "module": "blob"}},
+        {"MoveModule": {"package": walrus_package, "module": "blob"}},
         None,
         # Query the latest 100 events
         100,
-        True,
+        True, # Indicates descending order
     ],
 }
 response = requests.post("https://fullnode.testnet.sui.io:443", json=request)
@@ -61,7 +61,7 @@ events = response.json()["result"]["data"]
 for event in events:
     # Parse the Walrus event
     tx_digest = event["id"]["txDigest"]
-    event_type = event["type"][68 + 13 :]
+    event_type = event["type"][68 + 13 :] # Skip the package & module prefix
     parsed_event = event["parsedJson"]
     blob_id = num_to_blob_id(int(parsed_event["blob_id"]))
     timestamp_ms = int(event["timestampMs"])
@@ -69,7 +69,7 @@ for event in events:
 
     # For registered blobs get their size in bytes
     if event_type == "BlobRegistered":
-        size = f"{parsed_event['size']}b"
+        size = f"{parsed_event['size']}B"
     else:
         size = ""
 
