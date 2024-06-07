@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Sui operations - Walrus</title>
+        <title>Using the client JSON API - Walrus</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="objectives_use_cases.html"><strong aria-hidden="true">1.</strong> Objectives and use-cases</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="properties.html"><strong aria-hidden="true">2.1.</strong> Properties</a></li><li class="chapter-item expanded "><a href="architecture.html"><strong aria-hidden="true">2.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="encoding.html"><strong aria-hidden="true">2.3.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="operations.html"><strong aria-hidden="true">3.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="operations-sui.html" class="active"><strong aria-hidden="true">3.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="operations-off-chain.html"><strong aria-hidden="true">3.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="future.html"><strong aria-hidden="true">4.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Setup</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">5.1.</strong> Prerequisites</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.2.</strong> Installation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Configuration</div></li></ol></li><li class="chapter-item expanded "><a href="interacting.html"><strong aria-hidden="true">6.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="client-cli.html"><strong aria-hidden="true">6.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="json-api.html"><strong aria-hidden="true">6.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="web-api.html"><strong aria-hidden="true">6.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Examples</div></li><li class="chapter-item expanded affix "><li class="part-title">Walrus sites</li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="glossary.html">Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="objectives_use_cases.html"><strong aria-hidden="true">1.</strong> Objectives and use-cases</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="properties.html"><strong aria-hidden="true">2.1.</strong> Properties</a></li><li class="chapter-item expanded "><a href="architecture.html"><strong aria-hidden="true">2.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="encoding.html"><strong aria-hidden="true">2.3.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="operations.html"><strong aria-hidden="true">3.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="operations-sui.html"><strong aria-hidden="true">3.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="operations-off-chain.html"><strong aria-hidden="true">3.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="future.html"><strong aria-hidden="true">4.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Setup</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">5.1.</strong> Prerequisites</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.2.</strong> Installation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Configuration</div></li></ol></li><li class="chapter-item expanded "><a href="interacting.html"><strong aria-hidden="true">6.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="client-cli.html"><strong aria-hidden="true">6.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="json-api.html" class="active"><strong aria-hidden="true">6.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="web-api.html"><strong aria-hidden="true">6.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Examples</div></li><li class="chapter-item expanded affix "><li class="part-title">Walrus sites</li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="glossary.html">Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -173,65 +173,46 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="operations-on-sui"><a class="header" href="#operations-on-sui">Operations on Sui</a></h1>
-<p>Walrus uses Sui smart contracts to coordinate storage operations as resources that have a lifetime,
-and payments. As well as to facilitate governance to determine the storage nodes holding each
-storage shard. We outline here these operations and refer to them below as part of the read / write
-paths. As a reminder, only blob metadata is ever exposed to Sui or its validators, and the content
-of blobs is always stored off-chain on Walrus storage nodes and caches. The storage nodes or caches
-do not have to overlap with any Sui infra (validators etc), and the storage epochs may be of
-different lengths and not have the same start / end times as Sui epochs.</p>
-<h2 id="storage-resource-life-cycle-on-sui"><a class="header" href="#storage-resource-life-cycle-on-sui">Storage resource life cycle on Sui</a></h2>
-<p>A number of Sui smart contracts hold the metadata of the Walrus system and all its entities.</p>
-<ul>
-<li>A <strong>Walrus system object</strong> holds the committee of storage nodes for the current storage epoch. The
-system object also holds the total available space on Walrus and the price per unit of storage (1
-KiB). These values are determined by 2/3 agreement between the storage nodes for the storage
-epoch. Users can pay to purchase storage space for some time duration. These space resources may
-be split, merged and transferred. Later they can be used to place a blob ID into Walrus.</li>
-<li>The <strong>storage fund</strong> holds funds for storing blobs over one, multiple storage epochs or
-perpetually. When purchasing storage space from the system object users pay into the storage fund
-separated over multiple storage epochs, and payments are made each epoch to storage nodes
-according to performance (see below).</li>
-<li>A user acquires some storage through the contracts or transfer, and can assign to it a blob ID,
-signifying they wish to store this blob ID into it. This emits a Move <strong>resource event</strong> that
-both caches and storage nodes listen to to expect and authorize off-chain storage operations.</li>
-<li>Eventually a user holds an off-chain <strong>availability certificate</strong> from storage nodes for a blob
-ID. The user <strong>uploads the certificate on chain</strong> to signal that the blob ID is available for an
-availability period. The certificate is checked against the latest Walrus committee,
-and an <strong>availability event</strong> is emitted for the blob ID if correct. This is the PoA for the
-blob.</li>
-<li>In case a blob ID is not correctly encoded a <strong>inconsistency proof certificate</strong> may be uploaded
-on chain at a later time, and an <strong>inconsistent blob event</strong> is emitted signaling to all that the
-blob ID read results will always return None. This indicates that its slivers may be deleted by
-storage nodes, except for an indicator to return None.</li>
-</ul>
-<p>Users writing to Walrus, need to perform Sui transactions to acquire storage and certify blobs.
-Users creating or consuming proofs for attestations of blob availability read the chain
-only to prove or verify emission of events. A node that reads Walrus resources only needs to read
-the blockchain to get committee metadata once per epoch, and then they request slivers directly
-from storage nodes by blob ID to perform reads.</p>
-<h2 id="governance-operations-on-sui"><a class="header" href="#governance-operations-on-sui">Governance operations on Sui</a></h2>
-<p>Each Walrus storage epoch is represented by the Walrus system object that contains a storage
-committee and various metadata or storage nodes like the mapping between shards and storage nodes,
-available space and current costs. User may go to the system object for the period and <strong>buy some
-storage</strong> amount for one or more storage epochs. At each storage epoch there is a price for storage,
-and the payment provided becomes part of a <strong>storage fund</strong> for all the storage epochs that span
-the storage bought. There is a maximum number of storage epochs in the future for which storage can
-be bought (~2 years). Storage is a resource that can be split and merged, and transferred.</p>
-<p>At the end of the storage epoch part of the funds in the <strong>storage fund need to be allocated to
-storage nodes</strong>. The idea here is for storage nodes to perform light audits of each others,
-and suggest which nodes are to be paid based on the performance of these audits.</p>
+                        <h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
+<p>All Walrus client commands (except, currently, the <code>info</code> command) are available in JSON mode.
+In this mode, all the command line flags of the original CLI command can be specified in JSON
+format. The JSON mode therefore simplifies programmatic access to the CLI.</p>
+<p>For example, to store a blob, run:</p>
+<pre><code class="language-sh">walrus json \
+    '{
+        "config": "working_dir/client_config.yaml",
+        "command": {
+            "store": {
+                "file": "README.md"
+            }
+        }
+    }'
+</code></pre>
+<p>or, to read a blob knowing the blob ID:</p>
+<pre><code class="language-sh">walrus json \
+    '{
+        "config": "working_dir/client_config.yaml",
+        "command": {
+            "read": {
+                "blob_id": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
+            }
+        }
+    }'
+</code></pre>
+<p>The <code>json</code> command also accepts input from <code>stdin</code>.</p>
+<p>The output of a <code>json</code> command will itself be JSON-formatted, again to simplify parsing the results
+in a programmatic way. For example, the JSON output can be piped to the <code>jq</code> command for parsing and
+manually extracting relevant fields.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="operations.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="client-cli.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="operations-off-chain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="web-api.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -241,11 +222,11 @@ and suggest which nodes are to be paid based on the performance of these audits.
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="operations.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="client-cli.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="operations-off-chain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="web-api.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
