@@ -12,9 +12,17 @@
 # mdBook
 build/
 
+# Python
+__pycache__/
+.venv/
+*.pyc
+
 # Misc
 *.key
 .env
 config.yml
 working_dir
 *.log
+
+# Walrus binary
+examples/CONFIG/bin/walrus
