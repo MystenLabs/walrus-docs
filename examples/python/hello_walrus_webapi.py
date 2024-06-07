@@ -3,14 +3,8 @@
 #
 # Prerequisites:
 #
-# - Configure Sui Client to connect to testnet, and some testnet Sui tokens
-#   see: https://docs.sui.io/guides/developer/getting-started/connect
-#
-# - Configure Walrus
-#   see: TODO(#12)
-#
 # - Run the Walrus client in daemon mode:
-#   $ walrus --config config_dir/client_config.yaml daemon -b 127.0.0.1:8899
+#   $ ../CONFIG/bin/walrus --config ../CONFIG/config_dir/client_config.yaml daemon -b 127.0.0.1:8899
 #
 
 # Std lib imports
@@ -23,9 +17,9 @@ import requests
 ADDRESS = "127.0.0.1:8899"
 EPOCHS = "5"
 
+
 # Helper functions to upload a blob
 def upload_blob(ADDRESS, EPOCHS, data):
-
     # Upload the data to the Walrus service  using a PUT request
     store_url = f"http://{ADDRESS}/v1/store?epochs={EPOCHS}"
     response = requests.put(store_url, data=data)
@@ -35,9 +29,9 @@ def upload_blob(ADDRESS, EPOCHS, data):
     blob_id = response.text
     return blob_id
 
+
 # Helper functions to download a blob
 def download_blob(ADDRESS, blob_id):
-
     # Now read the same resource using the blob-id
     read_url = f"http://{ADDRESS}/v1/{blob_id}"
     response = requests.get(read_url)
@@ -46,9 +40,9 @@ def download_blob(ADDRESS, blob_id):
     assert response.status_code == 200
     return response.content
 
+
 # Upload a random 1MB string then download it, and check it matches
 if __name__ == "__main__":
-
     # Generate a 1MB blob of random data
     random_data = os.urandom(1024 * 1024)
 
@@ -63,6 +57,7 @@ if __name__ == "__main__":
     download_time = time.time()
 
     # Print some information about the blob
-    print(f"Blob ID: {blob_id} Size {len(random_data)} bytes")
+    print(f"Blob ID: {blob_id}")
+    print(f"Size {len(random_data)} bytes")
     print(f"Upload time: {upload_time - start_time:.2f}s")
     print(f"Download time: {download_time - upload_time:.2f}s")
