@@ -7,7 +7,7 @@ availability and reliability even in the presence of Byzantine faults.
 
 ## Documentation
 
-Our documentation is available on [github pages](https://mystenlabs.github.io/walrus-docs); it is
+Our documentation is available on [GitHub Pages](https://mystenlabs.github.io/walrus-docs); it is
 generated using [mdBook](https://rust-lang.github.io/mdBook/) from source files in the
 [`docs/`](./docs/) directory.
 
