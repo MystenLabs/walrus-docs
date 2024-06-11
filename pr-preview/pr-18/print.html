@@ -612,7 +612,7 @@ storage infrastructure of Walrus.</li>
 of services using Walrus interact with the store via custom services, aggregators or publishers that
 expose HTTP APIs to avoid the need to run locally a binary client.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="operations-1"><a class="header" href="#operations-1">Operations</a></h1>
-<h3 id="store"><a class="header" href="#store">Store</a></h3>
+<h2 id="store"><a class="header" href="#store">Store</a></h2>
 <p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher. Under the hood a
 number of operations happen both on Sui as well as on storage nodes:</p>
 <ul>
@@ -630,7 +630,7 @@ certified in the final step. The steps involved in a store can be executed by th
 or a publisher that accepts and publishes blobs via HTTP.</p>
 <p>Walrus currently allows the storage of up to XXXX bytes using the client, and YYY bytes using the
 aggregator. You may store larger blobs by splitting them into smaller chunks. TODO sizes.</p>
-<h3 id="read"><a class="header" href="#read">Read</a></h3>
+<h2 id="read"><a class="header" href="#read">Read</a></h2>
 <p>Walrus can then be used to <strong>read a blob</strong> by providing its blob ID. A read is executed by
 performing the following steps:</p>
 <ul>
@@ -642,7 +642,7 @@ performing the following steps:</p>
 service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
 succeed in recovering the blob stored even if up to one-third of storage nodes are
 unavailable.</p>
-<h3 id="certify-availability"><a class="header" href="#certify-availability">Certify Availability</a></h3>
+<h2 id="certify-availability"><a class="header" href="#certify-availability">Certify Availability</a></h2>
 <p>Walrus can be used to <strong>certify the availability of a blob</strong> using Sui. This may be done in 3
 different ways:</p>
 <ul>
