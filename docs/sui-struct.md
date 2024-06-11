@@ -1,26 +1,29 @@
 
-# Walrus Sui Reference
+# Sui Structures
 
 This section is optional and enables advanced use cases.
 
 You can interact with Walrus purely
-through the client CLI, and JSON or HTTP APIs provided, without reading or writing to the Sui chain
-directly. However, Sui is used to manage the metadata of Walrus and developers can use information
-about the Walrus system, as well as stored blobs using Sui smart contracts.
+through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
+on Sui directly. However, Walrus uses Sui to manage its meta-data and smart contract developers can
+read information about the Walrus system, as well as stored blobs, on Sui.
 
 This section provides and overview of how you may use Walrus objects in your Sui smart contracts.
 
 ## Blob and Storage Objects
 
-Walrus blobs are represented as Sui `Blob` types. A blob may be registered, indicating that the
-storage nodes should expect slivers from a Blob ID to be stored. Then a blob can be certified
+Walrus blobs are represented as Sui objects of type `Blob`. A blob is first registered, indicating
+that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
-availability. When a blob is certified its `certified` filed contains the epoch in which it was
+availability. When a blob is certified its `certified` field contains the epoch in which it was
 certified.
 
-A `Storage` object is always associated with a Blob, reserving enough space for
-a long enough period for its storage. A certified blob is available for the period the
+A `Storage` object is always associated with a `Blob` object, reserving enough space for
+a long enough period for the blob's storage. A certified blob is available for the period the
 underlying storage resource guarantees storage.
+
+Concretely, `Blob` and `Storage` objects have the following fields, that can be read through the
+Sui SDKs:
 
 ```move
 /// The blob structure represents a blob that has been registered to with some
@@ -89,7 +92,13 @@ public struct BlobCertified has copy, drop {
     blob_id: u256,
     end_epoch: u64,
 }
+```
 
+The `InvalidBlobID` event is emitted when storage nodes detect and incorrectly encoded blob.
+Such a blob is guaranteed to be also detected as invalid when a read is attempted.
+
+
+```move
 /// Signals that a BlobID is invalid.
 public struct InvalidBlobID has copy, drop {
     epoch: u64, // The epoch in which the blob ID is first registered as invalid
@@ -97,10 +106,7 @@ public struct InvalidBlobID has copy, drop {
 }
 ```
 
-The `InvalidBlobID` event is emitted when storage nodes detect and incorrectly encoded blob.
-Such a blob is guaranteed to be also detected as invalid when a read is attempted.
-
-## Walrus System information
+## System information
 
 The Walrus system object contains meta-data about the available and used storage, as well as the
 price of storage per 100 Kib of storage in MIST. The committee
@@ -138,7 +144,7 @@ public struct Committee has store {
 }
 ```
 
-A few public functions of the committee allow contracts to read metadata:
+A few public functions of the committee allow contracts to read Walrus meta-data:
 
 ```move
 /// Get epoch. Uses the committee to get the epoch.

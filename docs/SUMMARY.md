@@ -23,6 +23,7 @@
   - [Components](components.md)
   - [Operations](dev-operations.md)
   - [Sui structures](sui-struct.md)
+
 - [Setup](./usage/setup.md)
   - [Prerequisites](./usage/prerequisites.md)
   - [Installation](./usage/installation.md)
@@ -31,7 +32,8 @@
   - [Using the client CLI](./usage/client-cli.md)
   - [Using the client JSON API](./usage/json-api.md)
   - [Using the client HTTP API](./usage/web-api.md)
-- [Examples]()
+- [Examples](examples.md)
+  - [Python](python.md)
 
 # Walrus sites
 
