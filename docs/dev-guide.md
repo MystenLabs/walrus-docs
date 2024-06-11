@@ -1,7 +1,7 @@
 # Developer Guide
 
 This guide introduces all the concepts needed to build applications that use Walrus as a storage
-or availability layer. The [overview](./overview..md) provides more background and explains in
+or availability layer. The [overview](./overview.md) provides more background and explains in
 more detail how Walrus operates internally.
 
 **Disclaimer about the Walrus developer preview: This release of Walrus \& Walrus Sites is a
@@ -92,6 +92,111 @@ for the blob ID for a certain number of epochs.
 
 Once a blob is certified, the Walrus store will ensure that sufficient slivers will always be
 available on storage nodes to be able to recover it within the specified epochs.
+
+## Sui Structures Reference
+
+Walrus blobs are represented as Sui `Blob` types. A blob may be registered, indicating that the
+storage nodes should expect slivers from a Blob ID to be stored. Then a blob can be certified
+indicating that a sufficient number of slivers have been stored to guarantee the blob's
+availability. When a blob is certified its `certified` filed contains the epoch in which it was
+certified.
+
+A `Storage` object is always associated with a Blob, reserving enough space for
+a long enough period for its storage. A certified blob is available for the period the
+underlying storage resource guarantees storage.
+
+```move
+    /// The blob structure represents a blob that has been registered to with some
+    /// storage, and then may eventually be certified as being available in the
+    /// system.
+    public struct Blob has key, store {
+        id: UID,
+        stored_epoch: u64,
+        blob_id: u256,
+        size: u64,
+        erasure_code_type: u8,
+        certified: option::Option<u64>, // The epoch first certified,
+                                        // or None if not certified.
+        storage: Storage,
+    }
+
+    /// Reservation for storage for a given period, which is inclusive start,
+    /// exclusive end.
+    public struct Storage has key, store {
+        id: UID,
+        start_epoch: u64,
+        end_epoch: u64,
+        storage_size: u64,
+    }
+```
+
+When a blob is first registered a `BlobRegistered` event is emitted that informs storage nodes
+that they should expect slivers associated with its Blob ID. Eventually when the blob is
+certified a `BlobCertified` is emitted containing information about the blob ID and the epoch
+after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.
+
+
+```move
+    /// Signals a blob with meta-data is registered.
+    public struct BlobRegistered has copy, drop {
+        epoch: u64,
+        blob_id: u256,
+        size: u64,
+        erasure_code_type: u8,
+        end_epoch: u64,
+    }
+
+    /// Signals a blob is certified.
+    public struct BlobCertified has copy, drop {
+        epoch: u64,
+        blob_id: u256,
+        end_epoch: u64,
+    }
+
+    /// Signals that a BlobID is invalid.
+    public struct InvalidBlobID has copy, drop {
+        epoch: u64, // The epoch in which the blob ID is first registered as invalid
+        blob_id: u256,
+    }
+```
+
+The Walrus system object contains meta-data about the available and used storage, as well as the
+price of storage per 100 Kib of storage in MIST. The committee
+structure within the system object can be used to read the current epoch number, as well as
+information about the committee.
+
+```move
+    public struct System<phantom WAL> has key, store {
+
+        id: UID,
+
+        /// The current committee, with the current epoch.
+        /// The option is always Some, but need it for swap.
+        current_committee: Option<Committee>,
+
+        /// When we first enter the current epoch we SYNC,
+        /// and then we are DONE after a cert from a quorum.
+        epoch_status: u8,
+
+        // Some accounting
+        total_capacity_size : u64,
+        used_capacity_size : u64,
+
+        /// The price per unit size of storage.
+        price_per_unit_size: u64,
+
+        /// Tables about the future and the past.
+        past_committees: Table<u64, Committee>,
+        future_accounting: FutureAccountingRingBuffer<WAL>,
+    }
+
+    public struct Committee has store {
+        epoch: u64,
+        bls_committee : BlsCommittee,
+    }
+
+
+```
 
 ## Walrus Sites
 
