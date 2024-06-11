@@ -195,6 +195,7 @@ the <code>./examples/snake</code> site is simple:</p>
 </code></pre>
 </li>
 </ul>
+<p>The output should look like the following:</p>
 <pre><code class="language-txt">Operations performed:
 - created resource /Oi-Regular.ttf with blob ID 2YLU3Usb-WoJAgoNSZUNAFnmyo8cfV8hJYt2YdHL2Hs
 - created resource /file.png with blob ID R584P82qm4Dn8LoQMlzkGZS9IAkU0lNZTVlruOsUyOs
@@ -206,10 +207,10 @@ New site object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d55666
 
 Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
 </code></pre>
-<p>And tells you that, for each file in the folder, a new Walrus blob was created, and the respective
-blob ID.  Further it prints the object ID of the Walrus Site object on Sui (so you can have a look
-in the explorer, and use it to set the SuiNS name), and, finally, the URL at which you can browse
-the site.</p>
+<p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
+respective blob ID.  Further it prints the object ID of the Walrus Site object on Sui (so you can
+have a look in the explorer, and use it to set the SuiNS name), and, finally, the URL at which you
+can browse the site.</p>
 <p>Note here that we are passing the example config <code>assets/builder-example.yaml</code> as the config for the
 site builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the
 correct Sui package for the Walrus Sites logic.</p>
