@@ -51,6 +51,7 @@ public struct Storage has key, store {
 ```
 
 All fields of `Blob` and `Storage` objects can be read using the expected functions:
+
 ```move
 // Blob functions
 public fun stored_epoch(b: &Blob) : u64;
@@ -64,7 +65,6 @@ public fun storage(b: &Blob) : &Storage;
 public fun start_epoch(self: &Storage) : u64;
 public fun end_epoch(self: &Storage) : u64;
 public fun storage_size(self: &Storage) : u64;
-
 ```
 
 ## Events
@@ -73,7 +73,6 @@ When a blob is first registered a `BlobRegistered` event is emitted that informs
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified a `BlobCertified` is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.
-
 
 ```move
 /// Signals a blob with meta-data is registered.
@@ -95,7 +94,6 @@ public struct BlobCertified has copy, drop {
 
 The `InvalidBlobID` event is emitted when storage nodes detect and incorrectly encoded blob.
 Such a blob is guaranteed to be also detected as invalid when a read is attempted.
-
 
 ```move
 /// Signals that a BlobID is invalid.
