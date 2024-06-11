@@ -47,7 +47,8 @@ different ways:
 - A Sui smart contract can read the blob object on Sui (or a reference to it) to check
   is is certified.
 
-The underlying protocol of the [Sui light client](https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client)
+The underlying protocol of the
+[Sui light client](https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client)
 client returns digitally signed evidence for emitted events
 or objects, and can be used by off-line or non-interactive applications as a proof of availability
 for the blob ID for a certain number of epochs.
