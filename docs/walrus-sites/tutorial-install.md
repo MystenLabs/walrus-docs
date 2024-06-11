@@ -14,13 +14,18 @@ Then, follow these additional setup steps.
 
 ## Get the `walrus` binary and install it
 
-Download the [latest `walrus` binary](TODO: link) for your architecture, and add it to your
-`$PATH`. For example, on MacOS you can copy it to `/Users/myusername/.local/bin/` (check what
-directories are in your `$PATH` by running `echo $PATH`).
+Download the latest `walrus` binary for your architecture from
+`https://storage.googleapis.com/mysten-walrus-binaries/walrus-v0.1.0-a0fb8c9-<arch>`, where `<arch>`
+is your architecture.  If you are on a Macbook with M* chip, substitute `macos-arm64`. Other
+possible values are `macos-x86_64` or `ubuntu-x86_64`.
+
+Then, add it to your `$PATH`. For example, on MacOS you can copy it to
+`/Users/myusername/.local/bin/` (check what directories are in your `$PATH` by running `echo
+$PATH`).
 
 Once this is done, you should be able to type `walrus` in your terminal and see:
 
-```
+``` txt
 Walrus client
 
 Usage: walrus [OPTIONS] <COMMAND>
@@ -62,7 +67,7 @@ this later).
 Walrus is currently deployed on Sui Testnet. Therefore, you have to ensure that your Sui CLI is
 configured accordingly:
 
-```
+``` bash
 sui client envs
 ╭──────────┬──────────────────────────────────────┬────────╮
 │ alias    │ url                                  │ active │
@@ -77,7 +82,7 @@ sui client envs
 Further, make sure you have at least 2 separate gas coins, with at least 1 SUI each, by running `sui
 client gas`.  If you don't have enough SUI, you can hit the testnet faucet by running.
 
-```
+``` sh
 sui client faucet --url https://faucet.testnet.sui.io/v1/gas
 ```
 
@@ -86,11 +91,10 @@ wallet.
 
 ## Clone the Walrus Sites repo, and build the `site-builder` tool
 
-TODO: do we want to provide the binary for the site builder too?
+First clone and enter the Walrus Sites repo from
+`https://github.com/MystenLabs/blocksite-poc`). (TODO: change link to public repo when available).
 
-First clone and enter the [Walrus Sites repo](https://github.com/MystenLabs/blocksite-poc). (TODO: change link to public repo when available).
-
-``` bash
+``` sh
 git clone git@github.com:MystenLabs/blocksite-poc.git
 cd blocksite-poc
 cd site-builder
@@ -98,19 +102,19 @@ cd site-builder
 
 Build the release version of the site builder.
 
-``` bash
+``` sh
 cargo build --release
 ```
 
 After the build process completes, it should be possible to run:
 
-```
+``` sh
 ./target/release/site-builder
 ```
 
 And output should look like the following:
 
-```
+``` txt
 Usage: site-builder [OPTIONS] <COMMAND>
 
 Commands:
@@ -143,4 +147,7 @@ Options:
 
 ## Get the latest `walrus` client configuration
 
-TODO: get it from the gcp bucket and copy it to the site builder directory
+First,
+[download](https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml)
+the `walrus` client config.  Then, copy it to `~/.walrus/config.yaml`. This ensures that the
+`walrus` binary can connect to the correct Walrus object on Sui.
