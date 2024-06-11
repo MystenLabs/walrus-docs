@@ -31,6 +31,17 @@
 
 # Walrus sites
 
+- [Introduction to Walrus Sites](./walrus-sites/intro.md)
+- [Your first Walrus Site](./walrus-sites/tutorial.md)
+  - [Installing the site builder](./walrus-sites/tutorial-install.md)
+  - [Using the site builder](./walrus-sites/tutorial-use.md)
+  - [Configuring the site builder](./walrus-sites/tutorial-config.md)
+  - [Bonus: Set a SuiNS name](./walrus-sites/tutorial-suins.md)
+- [Technical overview](./walrus-sites/overview.md)
+  - [The site builder]()
+  - [The Walrus Sites Portal]()
+  - [Known restrictions](./walrus-sites/restrictions.md)
+
 ---
 
 [Glossary](./glossary.md)
