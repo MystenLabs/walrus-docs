@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css" />
+    <title>Upload Blobs</title>
+
+    <style>
+        article { display: flex; flex-flow: row nowrap; gap: 10px; font-size: smaller; }
+        .blob-info { min-width: 0; white-space: nowrap; overflow: hidden; display: flex; flex-flow: column; justify-content: space-between; }
+        .blob-info small { font-weight: bold; }
+        object { width: 200px; height: 200px; min-width: 200px; object-fit: cover; }
+    </style>
+</head>
+
+<body>
+    <script>
+        /**
+         * The address of the Walrus daemon running on local host.
+         *
+         * Change to the address of your own daemon or the publicly available address.
+         */
+        const ADDRESS = "127.0.0.1:8899";
+
+        /**
+         * Handler for submit events from the HTML form.
+         *
+         * Stores the blob provided in the form, and disable the default HTML form submission.
+         */
+        function onSubmit(event) {
+            // Ensure that the event does not propagate, so that the browser does not
+            // perform a POST with the file.
+            event.preventDefault();
+
+            // Disable the form while uploading.
+            enableForm(false);
+
+            // Store and display the blob, then re-enable the form.
+            storeBlob().then((storageInfo) => {
+                displayUpload(storageInfo.info, storageInfo.media_type);
+                enableForm(true);
+            }).catch((error) => {
+                console.error(error);
+                enableForm(true);
+            });
+
+            // Return false to cancel form submission.
+            return false;
+        }
+
+        /**
+         * Stores the file from the HTML form on Walrus.
+         */
+        function storeBlob() {
+            const inputFile = document.getElementById("file-input").files[0];
+            const numEpochs = document.getElementById("epochs-input").value;
+
+            // Submit a PUT request with the file's content as the body to the /v1/store endpoint.
+            return fetch(`http://${ADDRESS}/v1/store?epochs=${numEpochs}`, {
+                method: "PUT",
+                body: inputFile,
+            }).then((response) => {
+                if (response.status === 200) {
+                    // Parse successful responses as JSON, and return it along with the
+                    // mime type from the the file input element.
+                    return response.json().then((info) => {
+                        console.log(info);
+                        return { info: info, media_type: inputFile.type };
+                    });
+                } else {
+                    throw new Error("Something went wrong when storing the blob!");
+                }
+            })
+        }
+
+        /**
+         * Display the result of uploading the file to Walrus.
+         */
+        function displayUpload(info, media_type) {
+            // Extract the displayed fields from either of the two successful responses:
+            // - newlyCreated for blobs that have been uploaded for the first time,
+            //   or whose duration has been extended.
+            // - alreadyCertified for blobs that have already been uploaded and certified.
+            const displayedInfo = {};
+            if ("alreadyCertified" in info) {
+                displayedInfo.status = "Already certified";
+                displayedInfo.blobId = info.alreadyCertified.blobId;
+                displayedInfo.endEpoch = info.alreadyCertified.endEpoch;
+                displayedInfo.suiRefType = "Previous Sui Certified Event";
+                displayedInfo.suiRef = info.alreadyCertified.event.txDigest;
+            } else if ("newlyCreated" in info) {
+                displayedInfo.status = "Newly created";
+                displayedInfo.blobId = info.newlyCreated.blobId;
+                displayedInfo.endEpoch = info.newlyCreated.storage.endEpoch;
+                displayedInfo.suiRefType = "Associated Sui Object";
+                displayedInfo.suiRef = info.newlyCreated.id;
+            } else {
+                throw Error("Unhandled successful response!");
+            }
+
+            // Clone the the template HTML element used to display the info about the blob.
+            const template = document.getElementById("blob-entry-template");
+            const blobEntry = template.content.cloneNode(true);
+
+            // The URL used to download and view the blob.
+            const blobUrl = `http://${ADDRESS}/v1/${displayedInfo.blobId}`;
+
+            // For uploaded images we can display it by explicitly setting the media type.
+            if (media_type.startsWith("image")) {
+                const icon = blobEntry.querySelector("object");
+                icon.type = media_type;
+                icon.data = blobUrl;
+            }
+
+            // Get the rows of the template.
+            const infoRows = blobEntry.querySelector(".blob-info").children;
+
+            // Set the status resulting from the upload.
+            infoRows[0].querySelector("span").textContent = displayedInfo.status;
+
+            // Add a link to download the blob.
+            const blobIdLink = infoRows[1].querySelector("a");
+            blobIdLink.setAttribute("href", blobUrl);
+            blobIdLink.textContent = displayedInfo.blobId;
+
+            // List the associated Walrus object on Sui or the certification event.
+            infoRows[2].querySelector("small").textContent = displayedInfo.suiRefType;
+            infoRows[2].querySelector("span").textContent = displayedInfo.suiRef;
+
+            // List the end epoch.
+            infoRows[3].querySelector("span").textContent = displayedInfo.endEpoch;
+
+            // Add the newly created component as the first child in the list.
+            document.getElementById("uploaded-blobs").prepend(blobEntry);
+        }
+
+        /**
+         * Helper function to disable the form while uploading.
+         */
+        function enableForm(isEnabled) {
+            if (isEnabled) {
+                document.getElementById("upload-form").reset()
+                document.querySelector("#upload-form fieldset").removeAttribute("disabled");
+            } else {
+                document.querySelector("#upload-form fieldset").setAttribute("disabled", "");
+            }
+
+            const button = document.getElementById("submit");
+            button.setAttribute("aria-busy", isEnabled ? "false" : "true");
+            button.innerHTML = isEnabled ? "Upload" : "Uploading ...";
+        }
+    </script>
+
+    <main class="container">
+        <hgroup>
+            <h1>Walrus Blob Upload</h1>
+            <p>An example uploading and displaying files with Walrus.</p>
+        </hgroup>
+
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h4>Blob Upload</h4>
+                    <p>Upload blobs to Walrus, and display them on this page.</p>
+                </hgroup>
+                <form id="upload-form" onsubmit="return onSubmit(event)">
+                    <fieldset>
+                        <input id="file-input" type="file" required />
+                        <label for="epochs-input"> Number of Walrus epochs for which to store the image.</label>
+                        <input id="epochs-input" type="number" value="1" min="1" placeholder="Epochs" required />
+                        <button id="submit">Upload</button>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section>
+                <h4>Uploaded Blobs</h4>
+                <div id="uploaded-blobs">
+                    <template id="blob-entry-template">
+                        <article>
+                            <object type="" data=""></object>
+                            <div class="blob-info">
+                                <div><small>Status</small><br /><span></span></div>
+                                <div><small>Blob ID</small><br /><a href="" type=""></a></div>
+                                <div><small>Sui object</small><br /><span></span></div>
+                                <div><small>Stored until epoch</small><br /><span></span></div>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
