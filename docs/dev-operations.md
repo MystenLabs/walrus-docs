@@ -1,6 +1,6 @@
 # Operations
 
-### Store
+## Store
 
 Walrus may be used to **store a blob**, via the native client APIs or a publisher. Under the hood a
 number of operations happen both on Sui as well as on storage nodes:
@@ -21,7 +21,7 @@ or a publisher that accepts and publishes blobs via HTTP.
 Walrus currently allows the storage of up to XXXX bytes using the client, and YYY bytes using the
 aggregator. You may store larger blobs by splitting them into smaller chunks. TODO sizes.
 
-### Read
+## Read
 
 Walrus can then be used to **read a blob** by providing its blob ID. A read is executed by
 performing the following steps:
@@ -35,7 +35,7 @@ service that exposes an HTTP interface to read blobs. Reads are extremely resili
 succeed in recovering the blob stored even if up to one-third of storage nodes are
 unavailable.
 
-### Certify Availability
+## Certify Availability
 
 Walrus can be used to **certify the availability of a blob** using Sui. This may be done in 3
 different ways:

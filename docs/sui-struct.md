@@ -67,7 +67,6 @@ public fun storage_size(self: &Storage) : u64;
 
 ```
 
-
 ## Events
 
 When a blob is first registered a `BlobRegistered` event is emitted that informs storage nodes
