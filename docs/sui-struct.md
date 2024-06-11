@@ -1,6 +1,15 @@
 
 # Walrus Sui Reference
 
+This section is optional and enables advanced use cases.
+
+You can interact with Walrus purely
+through the client CLI, and JSON or HTTP APIs provided, without reading or writing to the Sui chain
+directly. However, Sui is used to manage the metadata of Walrus and developers can use information
+about the Walrus system, as well as stored blobs using Sui smart contracts.
+
+This section provides and overview of how you may use Walrus objects in your Sui smart contracts.
+
 ## Blob and Storage Objects
 
 Walrus blobs are represented as Sui `Blob` types. A blob may be registered, indicating that the
