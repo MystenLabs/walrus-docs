@@ -713,7 +713,6 @@ public fun storage(b: &amp;Blob) : &amp;Storage;
 public fun start_epoch(self: &amp;Storage) : u64;
 public fun end_epoch(self: &amp;Storage) : u64;
 public fun storage_size(self: &amp;Storage) : u64;
-
 </code></pre>
 <h2 id="events"><a class="header" href="#events">Events</a></h2>
 <p>When a blob is first registered a <code>BlobRegistered</code> event is emitted that informs storage nodes
@@ -872,6 +871,7 @@ sniffing from inferring dangerous executable types such as javascript or style s
 <div style="break-before: page; page-break-before: always;"></div><h1 id="python"><a class="header" href="#python">Python</a></h1>
 <p>The <a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples/python">python examples</a> folder
 contains a number of examples:</p>
+<!-- markdownlint-disable -->
 <ul>
 <li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/hello_walrus_webapi.py">use the HTTP API</a>
 to store and read a blob.</li>
@@ -882,6 +882,7 @@ illustrates reading the Blob Sui object that certifies
 <li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/hello_walrus_sui_system.py">read information from the Walrus system object</a>.</li>
 <li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/track_walrus_events.py">track Walrus related Events</a>.</li>
 </ul>
+<!-- markdownlint-enable -->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>
 <p>To make communication as clear and efficient as possible, we make sure to use a single term for
 every Walrus entity/concept and <em>do not</em> use any synonyms. The following table lists various
