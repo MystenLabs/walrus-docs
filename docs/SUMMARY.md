@@ -19,6 +19,10 @@
 
 # Usage
 
+- [Developer Guide](./dev-guide/dev-guide.md)
+  - [Components](./dev-guide/components.md)
+  - [Operations](./dev-guide/dev-operations.md)
+  - [Sui structures](./dev-guide/sui-struct.md)
 - [Setup](./usage/setup.md)
   - [Prerequisites](./usage/prerequisites.md)
   - [Installation](./usage/installation.md)
@@ -27,7 +31,8 @@
   - [Using the client CLI](./usage/client-cli.md)
   - [Using the client JSON API](./usage/json-api.md)
   - [Using the client HTTP API](./usage/web-api.md)
-- [Examples]()
+- [Examples](./examples/examples.md)
+  - [Python](./examples/python.md)
 
 # Walrus sites
 
