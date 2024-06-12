@@ -13,7 +13,7 @@ Walrus defines a number of objects and smart contracts on Sui:
 - Changes to these objects emit *Walrus-related events*.
 
 The Walrus system object ID can be found in the Walrus `client_config.yaml` file
-(see [Configuration](configuration.md)). You may use
+(see [Configuration](../usage/configuration.md)). You may use
 any Sui explorer to look at its content, as well as explore the content of blob objects.
 There is more information about these in the
 [quick reference to the Walrus Sui structures](sui-struct.md).
@@ -21,8 +21,8 @@ There is more information about these in the
 Walrus is also composed of a number of Walrus-specific services and binaries:
 
 - A client (binary) can be executed locally and provides a
-  [Command Line Interface (CLI)](client-cli.html), a [JSON API](json-api.md)
-  and an [HTTP API](web-api.md) to perform Walrus operations.
+  [Command Line Interface (CLI)](../usage/client-cli.md), a [JSON API](../usage/json-api.md)
+  and an [HTTP API](../usage/web-api.md) to perform Walrus operations.
 - Aggregators services allow reading blobs via HTTP requests.
 - Publishers services are used store blobs to Walrus.
 - A set of storage nodes store encoded stored blobs. These nodes form the decentralized
