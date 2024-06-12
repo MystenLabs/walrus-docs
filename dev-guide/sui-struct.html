@@ -250,7 +250,7 @@ public struct BlobCertified has copy, drop {
 }
 </code></pre>
 <p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect an incorrectly encoded blob.
-Such a blob is guaranteed to be also detected as invalid when a read is attempted.</p>
+Anyone attempting a read on such a blob is guaranteed to also detect it as invalid.</p>
 <pre><code class="language-move">/// Signals that a BlobID is invalid.
 public struct InvalidBlobID has copy, drop {
     epoch: u64, // The epoch in which the blob ID is first registered as invalid
