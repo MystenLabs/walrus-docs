@@ -1,0 +1,12 @@
+# Walrus HTML + Javascript Examples
+
+## Prerequisites
+
+- Set up Sui and Walrus as described in the
+  [documentation](https://mystenlabs.github.io/walrus-docs/usage/setup.html).
+- Run the client in [daemon mode](https://mystenlabs.github.io/walrus-docs/usage/web-api.html).
+
+## Index of examples
+
+- `blob_upload_download_webapi.html` shows how to store a blob using javascript and to embed the
+   blob accessible from a Walrus aggregator in an HTML document.
