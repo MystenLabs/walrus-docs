@@ -186,8 +186,13 @@ your environment for development.</p>
 <h2 id="get-the-walrus-binary-and-install-it"><a class="header" href="#get-the-walrus-binary-and-install-it">Get the <code>walrus</code> binary and install it</a></h2>
 <p>Download the latest <code>walrus</code> binary for your architecture from
 <code>https://storage.googleapis.com/mysten-walrus-binaries/walrus-v0.1.0-a0fb8c9-&lt;arch&gt;</code>, where <code>&lt;arch&gt;</code>
-is your architecture.  If you are on a Macbook with M* chip, substitute <code>macos-arm64</code>. Other
-possible values are <code>macos-x86_64</code> or <code>ubuntu-x86_64</code>.</p>
+is your architecture. The available options are listed in this table:</p>
+<div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><code>macos-arm64</code></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><code>macos-x86_64</code></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><code>ubuntu-x86_64</code></td></tr>
+</tbody></table>
+</div>
 <p>Then, add it to your <code>$PATH</code>. For example, on MacOS you can copy it to
 <code>/Users/myusername/.local/bin/</code> (check what directories are in your <code>$PATH</code> by running <code>echo $PATH</code>).</p>
 <p>Once this is done, you should be able to type <code>walrus</code> in your terminal and see:</p>
@@ -195,40 +200,15 @@ possible values are <code>macos-x86_64</code> or <code>ubuntu-x86_64</code>.</p>
 
 Usage: walrus [OPTIONS] &lt;COMMAND&gt;
 
-Commands:
-  store       Store a new blob into Walrus
-  read        Read a blob from Walrus, given the blob ID
-  publisher   Run a publisher service at the provided network address
-  aggregator  Run an aggregator service at the provided network address
-  daemon      Run a client daemon at the provided network address, combining
-                  the functionality of an aggregator and a publisher
-  info        Print information about the Walrus storage system this client
-                  is connected to
-  json        Run the client by specifying the arguments in a JSON string;
-                  CLI options are ignored
-  blob-id     Encode the specified file to obtain its blob ID
-  help        Print this message or the help of the given subcommand(s)
-
-Options:
-  -c, --config &lt;CONFIG&gt;
-          The path to the wallet configuration file.
-  -w, --wallet &lt;WALLET&gt;
-          The path to the Sui wallet configuration file.
-  -g, --gas-budget &lt;GAS_BUDGET&gt;
-          The gas budget for transactions [default: 500000000]
-  -h, --help
-          Print help (see more with '--help')
-  -V, --version
-          Print version
-
+⋮
 </code></pre>
 <p>If, for any reason, you don't want to add <code>walrus</code> to <code>$PATH</code>, place the binary in your preferred
 directory, and remember to configure a pointer to the binary in the <code>site-builder</code> config (more on
-this later).</p>
+this <a href="./tutorial-config.html">later</a>).</p>
 <h2 id="point-your-sui-cli-to-testnet-and-get-some-sui"><a class="header" href="#point-your-sui-cli-to-testnet-and-get-some-sui">Point your Sui CLI to testnet, and get some SUI</a></h2>
 <p>Walrus is currently deployed on Sui Testnet. Therefore, you have to ensure that your Sui CLI is
 configured accordingly:</p>
-<pre><code class="language-bash">sui client envs
+<pre><code class="language-txt">sui client envs
 ╭──────────┬──────────────────────────────────────┬────────╮
 │ alias    │ url                                  │ active │
 ├──────────┼──────────────────────────────────────┼────────┤
@@ -237,6 +217,9 @@ configured accordingly:</p>
 │ testnet  │ https://fullnode.testnet.sui.io:443/ │ *      │
 │ mainnet  │ https://fullnode.mainnet.sui.io:443  │        │
 ╰──────────┴──────────────────────────────────────┴────────╯
+</code></pre>
+<p>If the <code>active</code> network is not <code>testnet</code>, switch to <code>testnet</code> by running:</p>
+<pre><code class="language-sh">sui client switch --envs testnet
 </code></pre>
 <p>Further, make sure you have at least 2 separate gas coins, with at least 1 SUI each, by running <code>sui client gas</code>.  If you don't have enough SUI, you can hit the testnet faucet by running.</p>
 <pre><code class="language-sh">sui client faucet --url https://faucet.testnet.sui.io/v1/gas
