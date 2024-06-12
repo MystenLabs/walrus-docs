@@ -29,6 +29,9 @@ A number of Sui smart contracts hold the metadata of the Walrus system and all i
   availability period. The certificate is checked against the latest Walrus committee,
   and an **availability event** is emitted for the blob ID if correct. This is the PoA for the
   blob.
+- At a later time a certified blob's storage may be **extended** by adding a storage object to it
+  with a longer expiry period. This facility may be used by smart contracts to extend the
+  availability of blobs stored in perpetuity as long as funds exist to continue providing storage.
 - In case a blob ID is not correctly encoded a **inconsistency proof certificate** may be uploaded
   on chain at a later time, and an **inconsistent blob event** is emitted signaling to all that the
   blob ID read results will always return None. This indicates that its slivers may be deleted by
