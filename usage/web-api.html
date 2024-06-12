@@ -174,32 +174,39 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="client-daemon-mode--http-api"><a class="header" href="#client-daemon-mode--http-api">Client Daemon mode &amp; HTTP API</a></h1>
-<p>In addition to the CLI mode, the Walrus client offers a <em>daemon mode</em>. In this mode, it runs a
-simple web server offering HTTP interfaces to store and read blobs.</p>
+<p>In addition to the CLI and JSON modes, the Walrus client offers a <em>daemon mode</em>. In this mode, it
+runs a simple web server offering HTTP interfaces to store and read blobs.</p>
 <h2 id="starting-the-daemon"><a class="header" href="#starting-the-daemon">Starting the daemon</a></h2>
 <p>You can run the daemon with
 different sets of API endpoints through one of the following commands:</p>
 <pre><code class="language-sh">ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415
-walrus -c $CONFIG aggregator -b $ADDRESS # run an aggregator to read blobs
-walrus -c $CONFIG publisher -b $ADDRESS # run a publisher to store blobs
-walrus -c $CONFIG daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
+walrus aggregator -b $ADDRESS # run an aggregator to read blobs
+walrus publisher -b $ADDRESS # run a publisher to store blobs
+walrus daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
 </code></pre>
-<p>The aggregator provides all read APIs, the publisher all the store APIs, and daemon provides both.
-Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
+<p>The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
+both. Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
 However, the publisher does perform actions on-chain and will consume gas. It is therefore important
 to ensure only authorized parties may access it, or other measures to manage gas costs.</p>
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
-<p>You can then interact with the daemon through simple HTTP requests. For example, with
-<a href="https://curl.se">cURL</a>, you can store blobs as follows:</p>
+<p>You can interact with the daemon through simple HTTP requests. For example, with
+<a href="https://curl.se">cURL</a>, you can store blobs using a publisher or daemon as follows:</p>
 <pre><code class="language-sh">curl -X PUT "http://$ADDRESS/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
 curl -X PUT "http://$ADDRESS/v1/store?epochs=5" -d @"some/file" # store file `some/file` for 5 storage epochs
 </code></pre>
-<p>Blobs may be read using the following cURL command:</p>
-<pre><code class="language-sh">curl "http://$ADDRESS/v1/&lt;some blob ID&gt;" # read a blob from Walrus (with aggregator or daemon)
+<p>Blobs may be read from an aggregator or daemon using the following cURL command:</p>
+<pre><code class="language-sh">curl "http://$ADDRESS/v1/&lt;some blob ID&gt;"
 </code></pre>
 <p>Modern browsers will attempt to sniff the content type for such resources, and will generally do a
 good job of inferring content types for media. However, the aggregator on purpose prevents such
 sniffing from inferring dangerous executable types such as javascript or style sheet types.</p>
+<h2 id="using-a-public-aggregator-or-publisher"><a class="header" href="#using-a-public-aggregator-or-publisher">Using a public aggregator or publisher</a></h2>
+<p>For many use cases (e.g., a public website) a publicly accessible aggregator and/or publisher is
+required. For your convenience, we provide these at the following hosts:</p>
+<ul>
+<li>Aggregator: <code>http://sea-dnt-sto-00.devnet.sui.io:9000</code></li>
+<li>Publisher: <code>http://ord-dnt-sto-00.devnet.sui.io:9000</code></li>
+</ul>
 
                     </main>
 

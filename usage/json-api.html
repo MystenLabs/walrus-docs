@@ -174,13 +174,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
-<p>All Walrus client commands (except, currently, the <code>info</code> command) are available in JSON mode.
+<p>All Walrus client commands (except, currently, the <code>info</code> command) are also available in JSON mode.
 In this mode, all the command line flags of the original CLI command can be specified in JSON
 format. The JSON mode therefore simplifies programmatic access to the CLI.</p>
 <p>For example, to store a blob, run:</p>
 <pre><code class="language-sh">walrus json \
     '{
-        "config": "working_dir/client_config.yaml",
+        "config": "path/to/client_config.yaml",
         "command": {
             "store": {
                 "file": "README.md"
@@ -188,17 +188,19 @@ format. The JSON mode therefore simplifies programmatic access to the CLI.</p>
         }
     }'
 </code></pre>
-<p>or, to read a blob knowing the blob ID:</p>
+<p>Or, to read a blob knowing the blob ID:</p>
 <pre><code class="language-sh">walrus json \
     '{
-        "config": "working_dir/client_config.yaml",
+        "config": "path/to/client_config.yaml",
         "command": {
             "read": {
-                "blob_id": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
+                "blobId": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
             }
         }
     }'
 </code></pre>
+<p>All options, default values, and commands are equal to those of the "standard" CLI mode, except that
+they are written in "camelCase" instead of "kebab-case".</p>
 <p>The <code>json</code> command also accepts input from <code>stdin</code>.</p>
 <p>The output of a <code>json</code> command will itself be JSON-formatted, again to simplify parsing the results
 in a programmatic way. For example, the JSON output can be piped to the <code>jq</code> command for parsing and

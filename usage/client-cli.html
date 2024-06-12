@@ -174,16 +174,17 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="using-the-walrus-client"><a class="header" href="#using-the-walrus-client">Using the Walrus client</a></h1>
-<p>The <code>walrus</code> binary can be used to interact with Walrus as a client. To use it, you need a Walrus
-configuration and a Sui wallet.
-Detailed usage information is available through</p>
+<p>The <code>walrus</code> binary can be used to interact with Walrus as a client. See the <a href="./setup.html">setup
+chapter</a> for prerequisites, installation, and configuration.</p>
+<p>Detailed usage information is available through</p>
 <pre><code class="language-sh">walrus --help
 </code></pre>
 <p>Storing and reading blobs from Walrus can be achieved through the following commands:</p>
-<pre><code class="language-sh">CONFIG=working_dir/client_config.yaml # adjust for your configuration file
-walrus -c $CONFIG store &lt;some file&gt; # store a file
-walrus -c $CONFIG read &lt;some blob ID&gt; # read a blob
+<pre><code class="language-sh">walrus store &lt;some file&gt;
+walrus read &lt;some blob ID&gt;
 </code></pre>
+<p>Information about the Walrus system is available through through the <code>walrus info</code> command.</p>
+<p>Use the <code>--config</code> option to specify a custom path to the configuration location.</p>
 
                     </main>
 
