@@ -34,7 +34,7 @@ performing the following steps:
 The steps involved in the read operation are performed by the binary client, or the aggregator
 service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
 succeed in recovering the blob stored even if up to one-third of storage nodes are
-unavailable in all cases. Eventually, after synchronization is complete, event if two-thirds
+unavailable in all cases. Eventually, after synchronization is complete, even if two-thirds
 of storage nodes are down reads will succeed.
 
 ## Certify Availability
