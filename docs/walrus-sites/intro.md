@@ -18,7 +18,7 @@ At a high level, the most exciting features include:
 - Thanks to Walrus' decentralization and extremely high data availability, there is no risk of
   having your site wiped for no reason.
 - Since they live on Walrus, these sites cannot have a backend in the traditional sense, and can be
-  therefore considered "static" sites. However, the developer can harness the Sui's programmability
+  therefore considered "static" sites. However, the developer can harness Sui's programmability
   to add backend functionality to Walrus Sites!
 
 ## Show me
@@ -51,12 +51,12 @@ which is
 In summary:
 
 - Walrus Sites are served through a portal; in this case, `https://walrus.site`. There can be many
-  portal, and anyone can host one.
+  portals, and anyone can host one.
 - The subdomain on the URL points to a specific object on Sui, that allows the browser to fetch and
   render the site resources. This pointer can be:
   - A SuiNS name, such as `flatland` in `https://flatland.walrus.site`; or
   - the Base36 encoding of a the Sui object ID, such as `0xb09b312b...` in the example above.
 
 Curious to know how this magic is possible? Read the [technical
-overview](./overview.md)! If you just want to get started try Walrus Sites out, check the
+overview](./overview.md)! If you just want to get started trying Walrus Sites out, check the
 [tutorial](./tutorial.md).

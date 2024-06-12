@@ -14,7 +14,7 @@ the wallet you use in the Sui CLI. Unfortunately the SuiNS interface on Testnet 
 setting the resolution through the UI.
 
 - Navigate to [https://testnet.suins.io/](https://testnet.suins.io/), and buy a domain name with
-  your testnet wallet. For example, `walursgame` (NOTE: this is already taken, choose another you
+  your testnet wallet. For example, `walrusgame` (NOTE: this is already taken, choose another you
   like!). NOTE: At the moment, you can only select names that are composed of letters `a-z` and
   numbers `0-9`, but no special characters (e.g., `-`).
 - In the [page](https://testnet.suins.io/account/my-names) listing the domains you own, you should

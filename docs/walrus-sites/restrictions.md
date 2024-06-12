@@ -15,7 +15,7 @@ etc.) are achievable by leveraging the integration with Sui blockchain and the S
 ## There is a maximum redirect depth
 
 The number of consecutive redirects a Walrus Site can perform is capped by the
-Portal (see [Portal configuration](./portal.md)).  This measure ensure that loading a Walrus Site
+Portal (see [Portal configuration](./portal.md)).  This measure ensures that loading a Walrus Site
 does not result in an infinite loading loop.
 
 Different Portals can set this limit as they desire. The limit for the Portal hosted at
@@ -34,7 +34,7 @@ operations:
 1. serving the content to the browser.
 
 Therefore, a site deployed on Walrus Sites cannot use service workers. Installing a service worker
-from within a Walrus Site will result is a dysfunctional site and a poor experience for the user.
+from within a Walrus Site will result in a dysfunctional site and a poor experience for the user.
 
 ## The iOS Sui Wallet Mobile does not work with Walrus Sites
 
@@ -44,7 +44,7 @@ have this limitation.
 Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
 WebKit engine. As a consequence, Walrus Sites cannot be used within the [Sui Wallet
 Mobile](https://apps.apple.com/us/app/sui-wallet-mobile/id6476572140) app on iOS, and therefore
-using the Sui wallet on a Walrus Site is currently impossible. Note, however, that _browsing_ a
+the Sui wallet can currently not be used on a Walrus Site on iOS. Note, however, that _browsing_ a
 Walrus Site is still possible on iOS through any browser. Only the connection to the wallet is
 impacted.
 
