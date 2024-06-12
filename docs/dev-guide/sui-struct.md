@@ -1,4 +1,3 @@
-
 # Sui Structures
 
 This section is optional and enables advanced use cases.
@@ -93,7 +92,7 @@ public struct BlobCertified has copy, drop {
 ```
 
 The `InvalidBlobID` event is emitted when storage nodes detect an incorrectly encoded blob.
-Such a blob is guaranteed to be also detected as invalid when a read is attempted.
+Anyone attempting a read on such a blob is guaranteed to also detect it as invalid.
 
 ```move
 /// Signals that a BlobID is invalid.
