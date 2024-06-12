@@ -33,6 +33,7 @@
   - [Using the client HTTP API](./usage/web-api.md)
 - [Examples](./examples/examples.md)
   - [Python](./examples/python.md)
+  - [Javascript](./examples/javascript.md)
 
 # Walrus sites
 
