@@ -5,7 +5,7 @@ cycle.
 
 ## Write paths
 
-![Write paths of Walrus](assets/WriteFlow.png)
+![Write paths of Walrus](../assets/WriteFlow.png)
 
 Systems overview of writes, illustrated above:
 

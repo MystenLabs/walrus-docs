@@ -13,7 +13,7 @@ import requests
 from utils import num_to_blob_id, PATH_TO_WALRUS, PATH_TO_WALRUS_CONFIG, FULL_NODE_URL
 
 try:
-    # Create a 1MB file of random data
+    # Create a 1MiB file of random data
     random_data = os.urandom(1024 * 1024)
     tmp = tempfile.NamedTemporaryFile(delete=False)
     tmp.write(random_data)
