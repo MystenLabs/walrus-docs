@@ -79,62 +79,51 @@
         /**
          * Display the result of uploading the file to Walrus.
          */
-        function displayUpload(info, media_type) {
+        function displayUpload(storage_info, media_type) {
             // Extract the displayed fields from either of the two successful responses:
             // - newlyCreated for blobs that have been uploaded for the first time,
             //   or whose duration has been extended.
             // - alreadyCertified for blobs that have already been uploaded and certified.
-            const displayedInfo = {};
-            if ("alreadyCertified" in info) {
-                displayedInfo.status = "Already certified";
-                displayedInfo.blobId = info.alreadyCertified.blobId;
-                displayedInfo.endEpoch = info.alreadyCertified.endEpoch;
-                displayedInfo.suiRefType = "Previous Sui Certified Event";
-                displayedInfo.suiRef = info.alreadyCertified.event.txDigest;
-            } else if ("newlyCreated" in info) {
-                displayedInfo.status = "Newly created";
-                displayedInfo.blobId = info.newlyCreated.blobId;
-                displayedInfo.endEpoch = info.newlyCreated.storage.endEpoch;
-                displayedInfo.suiRefType = "Associated Sui Object";
-                displayedInfo.suiRef = info.newlyCreated.id;
+            if ("alreadyCertified" in storage_info) {
+                info = {
+                    status: "Already certified",
+                    blobId: storage_info.alreadyCertified.blobId,
+                    endEpoch: storage_info.alreadyCertified.endEpoch,
+                    suiRefType: "Previous Sui Certified Event",
+                    suiRef: storage_info.alreadyCertified.event.txDigest,
+                };
+            } else if ("newlyCreated" in storage_info) {
+                info = {
+                    status: "Newly created",
+                    blobId: storage_info.newlyCreated.blobId,
+                    endEpoch: storage_info.newlyCreated.storage.endEpoch,
+                    suiRefType: "Associated Sui Object",
+                    suiRef: storage_info.newlyCreated.id,
+                };
             } else {
                 throw Error("Unhandled successful response!");
             }
 
-            // Clone the the template HTML element used to display the info about the blob.
-            const template = document.getElementById("blob-entry-template");
-            const blobEntry = template.content.cloneNode(true);
-
             // The URL used to download and view the blob.
-            const blobUrl = `http://${ADDRESS}/v1/${displayedInfo.blobId}`;
+            const blobUrl = `http://${ADDRESS}/v1/${info.blobId}`;
 
-            // For uploaded images we can display it by explicitly setting the media type.
-            if (media_type.startsWith("image")) {
-                const icon = blobEntry.querySelector("object");
-                icon.type = media_type;
-                icon.data = blobUrl;
-            }
-
-            // Get the rows of the template.
-            const infoRows = blobEntry.querySelector(".blob-info").children;
-
-            // Set the status resulting from the upload.
-            infoRows[0].querySelector("span").textContent = displayedInfo.status;
-
-            // Add a link to download the blob.
-            const blobIdLink = infoRows[1].querySelector("a");
-            blobIdLink.setAttribute("href", blobUrl);
-            blobIdLink.textContent = displayedInfo.blobId;
-
-            // List the associated Walrus object on Sui or the certification event.
-            infoRows[2].querySelector("small").textContent = displayedInfo.suiRefType;
-            infoRows[2].querySelector("span").textContent = displayedInfo.suiRef;
-
-            // List the end epoch.
-            infoRows[3].querySelector("span").textContent = displayedInfo.endEpoch;
-
-            // Add the newly created component as the first child in the list.
-            document.getElementById("uploaded-blobs").prepend(blobEntry);
+            const isImage = media_type.startsWith("image");
+            // Create the HTML entry in the page for the uploaded blob.
+            //
+            // For the associated icon, we use the `<object/>` HTML element, as it allows specifying the media type.
+            // Walrus by itself returns blobs with 'Content-Type: application/octect-stream' and so it is necessary
+            // to specify the content type to the browser in the `object` element.
+            document.getElementById("uploaded-blobs").insertAdjacentHTML(
+                "afterBegin",
+                `<article>
+                    <object type="${isImage ? media_type : ''}" data="${isImage ? blobUrl : ''}"></object>
+                    <div class="blob-info">
+                        <div><small>Status</small><br /> <span>${info.status}</span></div>
+                        <div><small>Blob ID</small><br /> <a href="${blobUrl}">${info.blobId}</a></div>
+                        <div><small>${info.suiRefType}</small><br /><span>${info.suiRef}</span></div>
+                        <div><small>Stored until epoch</small><br /><span>${info.endEpoch}</span></div>
+                    </div>
+                </article >`);
         }
 
         /**
@@ -179,17 +168,7 @@
             <section>
                 <h4>Uploaded Blobs</h4>
                 <div id="uploaded-blobs">
-                    <template id="blob-entry-template">
-                        <article>
-                            <object type="" data=""></object>
-                            <div class="blob-info">
-                                <div><small>Status</small><br /><span></span></div>
-                                <div><small>Blob ID</small><br /><a href="" type=""></a></div>
-                                <div><small>Sui object</small><br /><span></span></div>
-                                <div><small>Stored until epoch</small><br /><span></span></div>
-                            </div>
-                        </article>
-                    </template>
+                    <!-- Container for info about uploaded blobs -->
                 </div>
             </section>
         </div>
