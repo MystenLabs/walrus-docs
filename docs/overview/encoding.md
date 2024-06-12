@@ -35,5 +35,5 @@ Each blob is also associated with some metadata including a blob ID to allow ver
   (this can only happen if the user that encoded the blob was malicious and encoded it incorrectly).
   We can extract one symbol per sliver to form an inconsistency proof.
   Storage nodes may delete slivers belonging to inconsistently encoded blobs,
-  and upon request return either the inconsistency proof or an incosistency certificate posted
+  and upon request return either the inconsistency proof or an inconsistency certificate posted
   on-chain.
