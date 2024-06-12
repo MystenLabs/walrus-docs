@@ -111,24 +111,7 @@ Commands:
   sitemap  Show the pages composing the Walrus site at the given object ID
   help     Print this message or the help of the given subcommand(s)
 
-Options:
-  -c, --config <CONFIG>
-          The path to the configuration file for the site builder [default:
-          config.yaml]
-      --rpc-url <RPC_URL>
-          The URL or the RPC endpoint to connect the client to
-      --wallet <WALLET>
-          The path to the Sui Wallet config
-      --walrus-binary <WALRUS_BINARY>
-          The path or name of the walrus binary
-      --walrus-config <WALRUS_CONFIG>
-          The path to the configuration for the Walrus client
-  -g, --gas-budget <GAS_BUDGET>
-          The gas budget for the operations on Sui
-      --gas-coin <GAS_COIN>
-          The gas coin to be used
-  -h, --help
-          Print help (see more with '--help')
+⋮
 ```
 
 ## Get the latest `walrus` client configuration
