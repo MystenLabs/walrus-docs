@@ -192,10 +192,11 @@ following variables in the config file:</p>
 config, and is already appropriately configured in <code>assets/example-config.yaml</code>.</li>
 <li><code>module</code>: the name of the module in the Walrus Sites package.</li>
 <li><code>portal</code>: the name of the portal through which the site will be viewed; this only affects the
-output of the CLI, and nothing else (default: <code>walrus.site</code>).</li>
+output of the CLI, and nothing else (default: <code>walrus.site</code>).
+All Walrus Sites are accessible through any portal independent of this setting.</li>
 <li><code>general</code>: these are general options, that can be configured both through the CLI and the config:
 <ul>
-<li><code>rpc_url</code>: The URL of the RPC to use. If not set, the <code>site-builder</code> will infer it from the
+<li><code>rpc_url</code>: The URL of the Sui RPC node to use. If not set, the <code>site-builder</code> will infer it from the
 wallet.</li>
 <li><code>wallet</code>: Pointer to the Sui wallet to be used. By default, it uses the system-wide wallet (the
 one from <code>sui client addresses</code>).</li>
