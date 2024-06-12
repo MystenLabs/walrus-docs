@@ -7,10 +7,10 @@ read blob contents, which can be very large.
 
 Walrus defines a number of objects and smart contracts on Sui:
 
-- A shared *system object*, records and manages the current committee of storage nodes.
-- *Storage resources*, represent empty storage space that may be used to store blobs.
-- *Blob resources*, represent blobs being registered and certified as stored.
-- Changes to these objects emit *Walrus-related events*.
+- A shared _system object_, records and manages the current committee of storage nodes.
+- _Storage resources_, represent empty storage space that may be used to store blobs.
+- _Blob resources_, represent blobs being registered and certified as stored.
+- Changes to these objects emit _Walrus-related events_.
 
 The Walrus system object ID can be found in the Walrus `client_config.yaml` file
 (see [Configuration](../usage/configuration.md)). You may use
@@ -25,7 +25,7 @@ Walrus is also composed of a number of Walrus-specific services and binaries:
   and an [HTTP API](../usage/web-api.md) to perform Walrus operations.
 - Aggregators services allow reading blobs via HTTP requests.
 - Publishers services are used store blobs to Walrus.
-- A set of storage nodes store encoded stored blobs. These nodes form the decentralized
+- A set of storage nodes store encoded blobs. These nodes form the decentralized
   storage infrastructure of Walrus.
 
 Aggregators, publishers and other services use the client APIs to interact with Walrus. End-users

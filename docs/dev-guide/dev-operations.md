@@ -5,31 +5,31 @@
 Walrus may be used to **store a blob**, via the native client APIs or a publisher. Under the hood a
 number of operations happen both on Sui as well as on storage nodes:
 
-- The client or publisher encodes the blob and derives a *blob ID* that identifies the blob. This
+- The client or publisher encodes the blob and derives a _blob ID_ that identifies the blob. This
   is a `u256` often encoded as a URL safe base64 string.
 - A transaction is executed on Sui to purchase some storage from the system object, and then to
-  *register the blob ID* with this storage. Client APIs return the *Sui blob object ID*. The
+  _register the blob ID_ occupying this storage. Client APIs return the _Sui blob object ID_. The
   transactions use SUI to purchase storage and pay for gas.
 - Encoded slivers of the blob are distributed to all storage nodes. They each sign a receipt.
-- Signed receipts are aggregated and submitted to the Sui blob object to *certify the blob*.
+- Signed receipts are aggregated and submitted to the Sui blob object to _certify the blob_.
   Certifying a blob emits a Sui event with the blob ID and the period of availability.
 
 A blob is considered available on Walrus once the corresponding Sui blob object has been
-certified in the final step. The steps involved in a store can be executed by the binary client,
-or a publisher that accepts and publishes blobs via HTTP.
+certified in the final step. The steps involved in a store operation can be executed by the binary
+client, or a publisher that accepts and publishes blobs via HTTP.
 
-Walrus currently allows the storage of blob up to a maximum size that may be determined
+Walrus currently allows the storage of blobs up to a maximum size that may be determined
 through the `walrus info` command. You may store larger blobs by splitting them into smaller
 chunks.
 
 ## Read
 
-Walrus can then be used to **read a blob** by providing its blob ID. A read is executed by
-performing the following steps:
+Walrus can also be used to **read a blob** after it is stored by providing its blob ID.
+A read is executed by performing the following steps:
 
 - The system object on Sui is read to determine the Walrus storage node committee.
 - A number of storage nodes are queried for blob metadata and the slivers they store.
-- The blob is reconstructed and checked against the blob ID from the recovered slivers.
+- The blob is reconstructed from the recovered slivers and checked against the blob ID.
 
 The steps involved in the read operation are performed by the binary client, or the aggregator
 service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
@@ -39,8 +39,8 @@ of storage nodes are down reads will succeed.
 
 ## Certify Availability
 
-Walrus can be used to **certify the availability of a blob** using Sui. This may be done in 3
-different ways:
+Walrus can be used to **certify the availability of a blob** using Sui. Checking that this happened
+may currently be done in 3 different ways:
 
 - A Sui SDK read can be
   used to authenticate the certified blob event emitted when the blob ID was certified on Sui. The
