@@ -2,7 +2,7 @@
 
 From a developer perspective, some Walrus components are objects and smart contracts on
 Sui, and some components are Walrus-specific binaries and services. As a rule Sui is used to
-manage blob and storage node meta-data, while Walrus-specific services are used to store and
+manage blob and storage node metadata, while Walrus-specific services are used to store and
 read blob contents, which can be very large.
 
 Walrus defines a number of objects and smart contracts on Sui:

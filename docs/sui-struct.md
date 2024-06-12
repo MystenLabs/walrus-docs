@@ -5,10 +5,10 @@ This section is optional and enables advanced use cases.
 
 You can interact with Walrus purely
 through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
-on Sui directly. However, Walrus uses Sui to manage its meta-data and smart contract developers can
+on Sui directly. However, Walrus uses Sui to manage its metadata and smart contract developers can
 read information about the Walrus system, as well as stored blobs, on Sui.
 
-This section provides and overview of how you may use Walrus objects in your Sui smart contracts.
+This section provides an overview of how you may use Walrus objects in your Sui smart contracts.
 
 ## Blob and Storage Objects
 
@@ -75,7 +75,7 @@ certified a `BlobCertified` is emitted containing information about the blob ID 
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.
 
 ```move
-/// Signals a blob with meta-data is registered.
+/// Signals a blob with metadata is registered.
 public struct BlobRegistered has copy, drop {
     epoch: u64,
     blob_id: u256,
@@ -92,7 +92,7 @@ public struct BlobCertified has copy, drop {
 }
 ```
 
-The `InvalidBlobID` event is emitted when storage nodes detect and incorrectly encoded blob.
+The `InvalidBlobID` event is emitted when storage nodes detect an incorrectly encoded blob.
 Such a blob is guaranteed to be also detected as invalid when a read is attempted.
 
 ```move
@@ -105,12 +105,14 @@ public struct InvalidBlobID has copy, drop {
 
 ## System information
 
-The Walrus system object contains meta-data about the available and used storage, as well as the
-price of storage per 100 Kib of storage in MIST. The committee
+The Walrus system object contains metadata about the available and used storage, as well as the
+price of storage per Kib of storage in MIST. The committee
 structure within the system object can be used to read the current epoch number, as well as
 information about the committee.
 
 ```move
+const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+
 public struct System<phantom WAL> has key, store {
 
     id: UID,
@@ -141,7 +143,7 @@ public struct Committee has store {
 }
 ```
 
-A few public functions of the committee allow contracts to read Walrus meta-data:
+A few public functions of the committee allow contracts to read Walrus metadata:
 
 ```move
 /// Get epoch. Uses the committee to get the epoch.
@@ -155,5 +157,4 @@ public fun used_capacity_size<WAL>(self: &System<WAL>) : u64;
 
 // The number of shards
 public fun n_shards<WAL>(self: &System<WAL>) : u16;
-
 ```

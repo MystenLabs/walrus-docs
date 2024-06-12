@@ -23,7 +23,6 @@
   - [Components](components.md)
   - [Operations](dev-operations.md)
   - [Sui structures](sui-struct.md)
-
 - [Setup](./usage/setup.md)
   - [Prerequisites](./usage/prerequisites.md)
   - [Installation](./usage/installation.md)

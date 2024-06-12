@@ -16,7 +16,7 @@ This developer guide describes:
 
 **This release of Walrus \& Walrus Sites is a
 developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
-and aggregators are operated by MystenLabs, all transactions are executed on the Sui testnet,
+and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
 and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
-point and possibly with no warning. Do not rely on this the developer preview for any production
+point and possibly with no warning. Do not rely on this developer preview for any production
 purposes, it comes with no availability or persistence guarantees.**
