@@ -38,16 +38,17 @@ be mediated by a publisher, that receives a blob and drives the process to compl
 
 ## Refresh availability
 
-Since no content data is required to refresh the period of storage, refresh is conducted fully on
-chain within the protocol. To request an extension to the availability period of a blob, a user
+Since no content data is required to refresh the duration of storage, refresh is conducted fully on
+chain within the protocol. To request an extension to the availability of a blob, a user
 provides an appropriate storage resource. Upon success this emits an event that storage nodes
-receive to extend the period for which each sliver is stored.
+receive to extend the time for which each sliver is stored.
 
 ## Inconsistent resource flow
 
 When a correct storage node tries to reconstruct a shard it may fail if the encoding of a blob ID
-past PoA was incorrect, but will instead extract an inconsistency proof for the blob ID. It wil then
-use the proof to create a inconsistency certificate and upload it on chain. The flow is as follows:
+past PoA was incorrect, but will instead extract an inconsistency proof for the blob ID. It will
+then use the proof to create a inconsistency certificate and upload it on chain.
+The flow is as follows:
 
 - A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.
 - The storage node sends the blob ID and inconsistency proof to all storage nodes of the Walrus
@@ -89,8 +90,8 @@ storage nodes.
 
 During an epoch a correct storage node challenges all shards to provide blob slivers past PoA:
 
-- The list of available blobs for the period is determined by the sequence of Sui events up
-  to the past period. Inconsistent blobs are not challenged, and a record proving this status
+- The list of available blobs for the epoch is determined by the sequence of Sui events up
+  to the past epoch. Inconsistent blobs are not challenged, and a record proving this status
   can be returned instead.
 - A challenge sequence is determined by providing a seed to the challenged shard. The sequence is
   then computed based both on the seed AND the content of each challenged blob ID. This creates a

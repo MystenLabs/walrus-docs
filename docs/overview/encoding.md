@@ -33,5 +33,7 @@ Each blob is also associated with some metadata including a blob ID to allow ver
 - A set of slivers equal to the reconstruction threshold belonging to a blob ID that are either
   inconsistent or lead to the reconstruction of a different ID represent an incorrect encoding
   (this can only happen if the user that encoded the blob was malicious and encoded it incorrectly).
-  We call this set of slivers and inconsistency proof. Storage nodes may delete slivers belonging to
-  inconsistently encoded blobs, and upon request return the inconsistency proof.
+  We can extract one symbol per sliver to form an inconsistency proof.
+  Storage nodes may delete slivers belonging to inconsistently encoded blobs,
+  and upon request return either the inconsistency proof or an incosistency certificate posted
+  on-chain.

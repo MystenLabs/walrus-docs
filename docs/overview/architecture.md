@@ -37,10 +37,10 @@ permissionless way:
   behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
   collecting storage-node signatures and aggregating them into a certificate, as well as all
   other on-chain actions. They are optional in that a user may directly interact with Sui and
-  the storage nodes to store blobs directly. An end user can always verify that a publisher
-  performed their duties correctly by either checking that a certificate (PoA) exists on-chain and
-  either performing a read to see if Walrus returns the blob or encoding the blob and comparing the
-  result to the blob ID.
+  the storage nodes to store blobs. An end user can always verify that a publisher
+  performed their duties correctly by checking that a certificate (PoA) exists on-chain
+  and then either performing a read to see if Walrus returns the blob or by encoding the blob
+  and comparing the result to the blob ID in the certificate.
 
 Caches, publishers, and end-users are not considered trusted components of the system, and they may
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
