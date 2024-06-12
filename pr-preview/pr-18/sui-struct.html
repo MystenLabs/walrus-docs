@@ -177,9 +177,9 @@
 <p>This section is optional and enables advanced use cases.</p>
 <p>You can interact with Walrus purely
 through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
-on Sui directly. However, Walrus uses Sui to manage its meta-data and smart contract developers can
+on Sui directly. However, Walrus uses Sui to manage its metadata and smart contract developers can
 read information about the Walrus system, as well as stored blobs, on Sui.</p>
-<p>This section provides and overview of how you may use Walrus objects in your Sui smart contracts.</p>
+<p>This section provides an overview of how you may use Walrus objects in your Sui smart contracts.</p>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
@@ -233,7 +233,7 @@ public fun storage_size(self: &amp;Storage) : u64;
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
-<pre><code class="language-move">/// Signals a blob with meta-data is registered.
+<pre><code class="language-move">/// Signals a blob with metadata is registered.
 public struct BlobRegistered has copy, drop {
     epoch: u64,
     blob_id: u256,
@@ -249,7 +249,7 @@ public struct BlobCertified has copy, drop {
     end_epoch: u64,
 }
 </code></pre>
-<p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect and incorrectly encoded blob.
+<p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect an incorrectly encoded blob.
 Such a blob is guaranteed to be also detected as invalid when a read is attempted.</p>
 <pre><code class="language-move">/// Signals that a BlobID is invalid.
 public struct InvalidBlobID has copy, drop {
@@ -258,11 +258,13 @@ public struct InvalidBlobID has copy, drop {
 }
 </code></pre>
 <h2 id="system-information"><a class="header" href="#system-information">System information</a></h2>
-<p>The Walrus system object contains meta-data about the available and used storage, as well as the
-price of storage per 100 Kib of storage in MIST. The committee
+<p>The Walrus system object contains metadata about the available and used storage, as well as the
+price of storage per Kib of storage in MIST. The committee
 structure within the system object can be used to read the current epoch number, as well as
 information about the committee.</p>
-<pre><code class="language-move">public struct System&lt;phantom WAL&gt; has key, store {
+<pre><code class="language-move">const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+
+public struct System&lt;phantom WAL&gt; has key, store {
 
     id: UID,
 
@@ -291,7 +293,7 @@ public struct Committee has store {
     bls_committee : BlsCommittee,
 }
 </code></pre>
-<p>A few public functions of the committee allow contracts to read Walrus meta-data:</p>
+<p>A few public functions of the committee allow contracts to read Walrus metadata:</p>
 <pre><code class="language-move">/// Get epoch. Uses the committee to get the epoch.
 public fun epoch&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
 
@@ -303,7 +305,6 @@ public fun used_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
 
 // The number of shards
 public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u16;
-
 </code></pre>
 
                     </main>

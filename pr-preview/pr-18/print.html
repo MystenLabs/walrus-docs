@@ -577,14 +577,14 @@ from Sui smart contracts, or through the Sui SDK.</li>
 <h2 id="disclaimer-about-the-walrus-developer-preview"><a class="header" href="#disclaimer-about-the-walrus-developer-preview">Disclaimer about the Walrus developer preview</a></h2>
 <p><strong>This release of Walrus &amp; Walrus Sites is a
 developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
-and aggregators are operated by MystenLabs, all transactions are executed on the Sui testnet,
+and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
 and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
-point and possibly with no warning. Do not rely on this the developer preview for any production
+point and possibly with no warning. Do not rely on this developer preview for any production
 purposes, it comes with no availability or persistence guarantees.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="components"><a class="header" href="#components">Components</a></h1>
 <p>From a developer perspective, some Walrus components are objects and smart contracts on
 Sui, and some components are Walrus-specific binaries and services. As a rule Sui is used to
-manage blob and storage node meta-data, while Walrus-specific services are used to store and
+manage blob and storage node metadata, while Walrus-specific services are used to store and
 read blob contents, which can be very large.</p>
 <p>Walrus defines a number of objects and smart contracts on Sui:</p>
 <ul>
@@ -628,26 +628,28 @@ Certifying a blob emits a Sui event with the blob ID and the period of availabil
 <p>A blob is considered available on Walrus once the corresponding Sui blob object has been
 certified in the final step. The steps involved in a store can be executed by the binary client,
 or a publisher that accepts and publishes blobs via HTTP.</p>
-<p>Walrus currently allows the storage of up to XXXX bytes using the client, and YYY bytes using the
-aggregator. You may store larger blobs by splitting them into smaller chunks. TODO sizes.</p>
+<p>Walrus currently allows the storage of blob up to a maximum size that may be determined
+through the <code>walrus info</code> command. You may store larger blobs by splitting them into smaller
+chunks.</p>
 <h2 id="read"><a class="header" href="#read">Read</a></h2>
 <p>Walrus can then be used to <strong>read a blob</strong> by providing its blob ID. A read is executed by
 performing the following steps:</p>
 <ul>
 <li>The system object on Sui is read to determine the Walrus storage node committee.</li>
-<li>A number of storage nodes are queried for the slivers they store.</li>
+<li>A number of storage nodes are queried for blob metadata and the slivers they store.</li>
 <li>The blob is reconstructed and checked against the blob ID from the recovered slivers.</li>
 </ul>
 <p>The steps involved in the read operation are performed by the binary client, or the aggregator
 service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
-succeed in recovering the blob stored even if up to one-third of storage nodes are
+succeed in recovering the blob stored even if up to two-thirds of storage nodes are
 unavailable.</p>
 <h2 id="certify-availability"><a class="header" href="#certify-availability">Certify Availability</a></h2>
 <p>Walrus can be used to <strong>certify the availability of a blob</strong> using Sui. This may be done in 3
 different ways:</p>
 <ul>
 <li>A Sui SDK read can be
-used to authenticate the certified blob event emitted when the blob ID was certified on Sui.</li>
+used to authenticate the certified blob event emitted when the blob ID was certified on Sui. The
+client <code>walrus blob-status</code> command may be used to identify the event ID that needs to be checked.</li>
 <li>A Sui SDK read may be
 used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified.</li>
 <li>A Sui smart contract can read the blob object on Sui (or a reference to it) to check
@@ -655,7 +657,7 @@ is is certified.</li>
 </ul>
 <p>The underlying protocol of the
 <a href="https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client">Sui light client</a>
-client returns digitally signed evidence for emitted events
+returns digitally signed evidence for emitted events
 or objects, and can be used by off-line or non-interactive applications as a proof of availability
 for the blob ID for a certain number of epochs.</p>
 <p>Once a blob is certified, Walrus will ensure that sufficient slivers will always be
@@ -664,9 +666,9 @@ available on storage nodes to recover it within the specified epochs.</p>
 <p>This section is optional and enables advanced use cases.</p>
 <p>You can interact with Walrus purely
 through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
-on Sui directly. However, Walrus uses Sui to manage its meta-data and smart contract developers can
+on Sui directly. However, Walrus uses Sui to manage its metadata and smart contract developers can
 read information about the Walrus system, as well as stored blobs, on Sui.</p>
-<p>This section provides and overview of how you may use Walrus objects in your Sui smart contracts.</p>
+<p>This section provides an overview of how you may use Walrus objects in your Sui smart contracts.</p>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
@@ -720,7 +722,7 @@ public fun storage_size(self: &amp;Storage) : u64;
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
-<pre><code class="language-move">/// Signals a blob with meta-data is registered.
+<pre><code class="language-move">/// Signals a blob with metadata is registered.
 public struct BlobRegistered has copy, drop {
     epoch: u64,
     blob_id: u256,
@@ -736,7 +738,7 @@ public struct BlobCertified has copy, drop {
     end_epoch: u64,
 }
 </code></pre>
-<p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect and incorrectly encoded blob.
+<p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect an incorrectly encoded blob.
 Such a blob is guaranteed to be also detected as invalid when a read is attempted.</p>
 <pre><code class="language-move">/// Signals that a BlobID is invalid.
 public struct InvalidBlobID has copy, drop {
@@ -745,11 +747,13 @@ public struct InvalidBlobID has copy, drop {
 }
 </code></pre>
 <h2 id="system-information"><a class="header" href="#system-information">System information</a></h2>
-<p>The Walrus system object contains meta-data about the available and used storage, as well as the
-price of storage per 100 Kib of storage in MIST. The committee
+<p>The Walrus system object contains metadata about the available and used storage, as well as the
+price of storage per Kib of storage in MIST. The committee
 structure within the system object can be used to read the current epoch number, as well as
 information about the committee.</p>
-<pre><code class="language-move">public struct System&lt;phantom WAL&gt; has key, store {
+<pre><code class="language-move">const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+
+public struct System&lt;phantom WAL&gt; has key, store {
 
     id: UID,
 
@@ -778,7 +782,7 @@ public struct Committee has store {
     bls_committee : BlsCommittee,
 }
 </code></pre>
-<p>A few public functions of the committee allow contracts to read Walrus meta-data:</p>
+<p>A few public functions of the committee allow contracts to read Walrus metadata:</p>
 <pre><code class="language-move">/// Get epoch. Uses the committee to get the epoch.
 public fun epoch&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
 
@@ -790,7 +794,6 @@ public fun used_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
 
 // The number of shards
 public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u16;
-
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
@@ -869,6 +872,10 @@ curl -X PUT "http://$ADDRESS/v1/store?epochs=5" -d @"some/file" # store file `so
 good job of inferring content types for media. However, the aggregator on purpose prevents such
 sniffing from inferring dangerous executable types such as javascript or style sheet types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
+<p>As inspiration, we provide several simple examples in different programming languages to interact
+with Walrus through the various interfaces. They are located at
+<a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples">https://github.com/MystenLabs/walrus-docs/tree/main/examples</a>.</p>
+<p>See the sub-chapters for further details.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="python"><a class="header" href="#python">Python</a></h1>
 <p>The <a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples/python">python examples</a> folder
 contains a number of examples:</p>
