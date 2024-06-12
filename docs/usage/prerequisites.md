@@ -10,10 +10,10 @@ prompts you to set up a new configuration. You can use the full node at
 `https://fullnode.testnet.sui.io:443`. See
 [here](https://docs.sui.io/guides/developer/getting-started/connect) for further details.
 
-Finally, you need to get testnet SUI tokens from the faucet:
+Finally, you need to get at least two SUI testnet coins from the faucet:
 
 ```sh
-sui client faucet
+sui client faucet && sui client faucet
 ```
 
 The system-wide wallet will be used by Walrus if no other path is specified. If you want to use a

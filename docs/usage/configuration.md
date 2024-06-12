@@ -10,8 +10,10 @@ The configuration file currently supports the following parameters:
 
 ```yaml
 # This is the only mandatory field. The system object is specific for a particular Walrus
-# deployment. This is an example value; you can get the object ID for the current devnet deployment
-# as described below.
+# deployment.
+#
+# NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
+# You can get the object ID for the current devnet deployment as described below.
 system_object: 0x3243f6a8885a308d313198a2e03707344a4093822299f31d0082efa98ec4e6c8
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
