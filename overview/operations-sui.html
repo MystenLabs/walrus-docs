@@ -201,6 +201,9 @@ ID. The user <strong>uploads the certificate on chain</strong> to signal that th
 availability period. The certificate is checked against the latest Walrus committee,
 and an <strong>availability event</strong> is emitted for the blob ID if correct. This is the PoA for the
 blob.</li>
+<li>At a later time a certified blob's storage may be <strong>extended</strong> by adding a storage object to it
+with a longer expiry period. This facility may be used by smart contracts to extend the
+availability of blobs stored in perpetuity as long as funds exist to continue providing storage.</li>
 <li>In case a blob ID is not correctly encoded a <strong>inconsistency proof certificate</strong> may be uploaded
 on chain at a later time, and an <strong>inconsistent blob event</strong> is emitted signaling to all that the
 blob ID read results will always return None. This indicates that its slivers may be deleted by
