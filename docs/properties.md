@@ -8,7 +8,7 @@ derived. For a given blob ID there is a **point of availability** (PoA) and an *
 period**, observable through an event on the Sui chain. The following properties relate to the PoA:
 
 - After the PoA, for a blob ID, any correct user that performs a read within the availability
-  period will eventually terminate and get a value V which is either blob contents F or None.
+  period will eventually terminate and get a value V which is either the blob contents F or None.
 - After PoA if two correct users perform a read and get V and V’ then V = V’.
 - A correct user with an appropriate storage resource can always perform store for a blob F with a
   blob ID and advance the protocol until the PoA.
@@ -30,6 +30,6 @@ availability period.
 
 As a rule of thumb: before PoA it is the responsibility of a client to ensure the availability of
 a blob and its upload to Walrus. After PoA it is the responsibility of Walrus as a system to
-maintain the availability of the blob ID as part of its operation for the full availability period
+maintain the availability of the blob as part of its operation for the full availability period
 remaining. Emission of the event corresponding to the PoA for a blob ID attests its
 availability.
