@@ -17,7 +17,6 @@
 
 <body>
     <script>
-        // TODO(jsmith): Change to testnet
         const SUI_NETWORK = "testnet";
         const SUI_VIEW_TX_URL = `https://suiscan.xyz/${SUI_NETWORK}/tx`;
         const SUI_VIEW_OBJECT_URL = `https://suiscan.xyz/${SUI_NETWORK}/object`;
@@ -44,7 +43,7 @@
                 console.error(error);
                 alert(
                     "An error occurred while uploading. Check the browser console and ensure that \
-                    the cache and publisher URLs are correct."
+                    the aggregator and publisher URLs are correct."
                 );
                 enableForm(true);
             });
@@ -110,8 +109,8 @@
             }
 
             // The URL used to download and view the blob.
-            const baseCacheUrl = document.getElementById("cache-url-input").value;
-            const blobUrl = `${baseCacheUrl}/v1/${info.blobId}`;
+            const baseAggregatorUrl = document.getElementById("aggregator-url-input").value;
+            const blobUrl = `${baseAggregatorUrl}/v1/${info.blobId}`;
 
             // The URL for viewing the event or object on chain
             const suiUrl = `${info.suiBaseUrl}/${info.suiRef}`
@@ -120,8 +119,8 @@
             // Create the HTML entry in the page for the uploaded blob.
             //
             // For the associated icon, we use the `<object/>` HTML element, as it allows specifying
-            // the media type. The walrus cache returns blobs as `application/octect-stream`, so it
-            // is necessary to specify the content type to the browser in the `object` element.
+            // the media type. The walrus aggregator returns blobs as `application/octect-stream`,
+            // so it's necessary to specify the content type to the browser in the `object` element.
             document.getElementById("uploaded-blobs").insertAdjacentHTML(
                 "afterBegin",
                 `<article class="row border rounded-2 shadow-sm mb-3">
@@ -148,10 +147,19 @@
          */
         function enableForm(isEnabled) {
             if (isEnabled) {
+                // Copy the urls, so that they are not reset.
+                const publisherUrl = document.getElementById("publisher-url-input").value;
+                const aggregatorUrl = document.getElementById("aggregator-url-input").value;
+                // Reset the form
                 document.getElementById("upload-form").reset()
-                document.querySelector("#upload-form fieldset").removeAttribute("disabled");
+                // Revert the URLs to their previous values
+                document.getElementById("publisher-url-input").value = publisherUrl;
+                document.getElementById("aggregator-url-input").value = aggregatorUrl;
+                // Disable the progress indication
                 document.getElementById("submit-spinner").style.visibility = "collapse";
                 document.getElementById("submit-text").textContent = "Upload";
+                // Re-enable the form
+                document.querySelector("#upload-form fieldset").removeAttribute("disabled");
             } else {
                 document.querySelector("#upload-form fieldset").setAttribute("disabled", "");
                 document.getElementById("submit-spinner").style.visibility = "visible";
@@ -200,10 +208,10 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <label for="cache-url-input" class="form-label" >
-                                Walrus cache URL
+                            <label for="aggregator-url-input" class="form-label" >
+                                Walrus aggregator URL
                             </label>
-                            <input id="cache-url-input" type="url" class="form-control"
+                            <input id="aggregator-url-input" type="url" class="form-control"
                                 placeholder="http://127.0.0.1:31415" value="http://127.0.0.1:31415"
                                 required />
                         </div>
