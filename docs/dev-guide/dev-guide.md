@@ -1,8 +1,8 @@
 # Developer Guide
 
 This guide introduces all the concepts needed to build applications that use Walrus as a storage
-or availability layer. The [overview](../overview/overview.md) provides more background and explains in
-more detail how Walrus operates internally.
+or availability layer. The [overview](../overview/overview.md) provides more background and explains
+in more detail how Walrus operates internally.
 
 This developer guide describes:
 
