@@ -9,10 +9,6 @@ Let's do this step by step.
 
 ## Get a SuiNS name
 
-IMPORTANT: for this to work, the wallet with which you purchase the SuiNS name should be the same as
-the wallet you use in the Sui CLI. Unfortunately the SuiNS interface on Testnet does not allow
-setting the resolution through the UI.
-
 - Navigate to [https://testnet.suins.io/](https://testnet.suins.io/), and buy a domain name with
   your testnet wallet. For example, `walrusgame` (NOTE: this is already taken, choose another you
   like!). NOTE: At the moment, you can only select names that are composed of letters `a-z` and
@@ -22,6 +18,26 @@ setting the resolution through the UI.
 - Click the three-dots menu on the top-right corner of the name you want to assign. Choose "View all
   info", and copy the `ObjectID`. In our case, this is
   `0x6412c4cfbe50e219c2d4d30108d7321d064e15bf64e752307100bff5eb91da38`.
+
+## Send the SuiNS registration object to the address you use with the Sui CLI
+
+The steps that follow require that the SuiNS registration object is owned by the address you are
+using on the Sui CLI. Therefore, we need to send this registration object from the address you use
+in your browser wallet, to the address of your Sui CLI.
+
+To find the Sui CLI address, execute:
+
+``` sh
+sui client active-address
+```
+
+Then, from your browser wallet, select the "Assets" tab, and look for the NFT of the SuiNS
+registration, which should look as follows:
+
+![the SuiNS registration inside the wallet](../assets/suins-asset.png)
+
+Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
+above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.
 
 ## Map the SuiNS name to the Walrus Site
 
