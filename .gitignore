@@ -24,5 +24,8 @@ config.yml
 working_dir
 *.log
 
-# Walrus binary
+# Walrus binary and configuration
+walrus
 examples/CONFIG/bin/walrus
+client_config.yaml
+examples/CONFIG/config_dir/client_config.yaml

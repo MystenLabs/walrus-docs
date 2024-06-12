@@ -6,9 +6,7 @@ import datetime
 import requests
 import re
 
-from utils import num_to_blob_id
-
-PATH_TO_WALRUS_CONFIG = "../CONFIG/config_dir/client_config.yaml"
+from utils import num_to_blob_id, PATH_TO_WALRUS_CONFIG
 
 system_object_id = re.findall(
     r"system_object:[ ]*(.*)", open(PATH_TO_WALRUS_CONFIG).read()
