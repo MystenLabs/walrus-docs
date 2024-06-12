@@ -11,10 +11,10 @@ We summarize here the basic encoding and cryptographic techniques used in Walrus
 - We select $p<1/3$ so that a third of symbols and also slivers may be used to reconstruct the blob
   by the **decode algorithm**. The matrix used to produce the erasure code is fixed and the same
   for all blobs by the Walrus system, and encoders have no discretion about it.
-- Storage nodes manage one or more shards, and corresponding sliver of each blob are distributed
+- Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
   to all the storage shards. As a result, the overhead of the distributed store is ~5x that of
   the blob itself, no matter how many shards we have. The encoding is systematic meaning that some
-  storage nodes hold part of the plain blob, allowing for fast random access reads.
+  storage nodes hold part of the original blob, allowing for fast random access reads.
 
 Each blob is also associated with some metadata including a blob ID to allow verification:
 
@@ -25,13 +25,15 @@ Each blob is also associated with some metadata including a blob ID to allow ver
 - Each storage node may use the blob ID to check if some shard data belongs to a blob using the
   authenticated structure corresponding to the blob hash (Merkle tree). A successful check means
   that the data is indeed as intended by the writer of the blob (who, remember, may be corrupt).
-- When any party reconstructs a blob ID from shards data and slivers, or accepts any blob purporting
+- When any party reconstructs a blob ID from shard slivers, or accepts any blob claiming
   to be a specific blob ID, it must check that it encodes to the correct blob ID. This process
   involves re-coding the blob using the erasure correction code, and re-deriving the blob ID to
-  check the blob indeed matches it. This prevents a malformed blob (i.e., incorrectly erasure coded)
-  from ever being read with a blob ID at any correct recipient.
-- A set of slivers above the reconstruction threshold belonging to a blob ID that are either
+  check the blob indeed matches. This prevents a malformed blob (i.e., incorrectly erasure coded)
+  from ever being read as a valid blob at any correct recipient.
+- A set of slivers equal to the reconstruction threshold belonging to a blob ID that are either
   inconsistent or lead to the reconstruction of a different ID represent an incorrect encoding
-  (this may happen if the user that encoded the blob was malicious and encoded it incorrectly).
-  Storage nodes may delete slivers belonging to inconsistently encoded blobs, and upon request
-  return an inconsistency proof.
+  (this can only happen if the user that encoded the blob was malicious and encoded it incorrectly).
+  We can extract one symbol per sliver to form an inconsistency proof.
+  Storage nodes may delete slivers belonging to inconsistently encoded blobs,
+  and upon request return either the inconsistency proof or an inconsistency certificate posted
+  on-chain.

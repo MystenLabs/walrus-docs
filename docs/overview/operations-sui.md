@@ -48,7 +48,7 @@ available space and current costs. User may go to the system object for the peri
 storage** amount for one or more storage epochs. At each storage epoch there is a price for storage,
 and the payment provided becomes part of a **storage fund** for all the storage epochs that span
 the storage bought. There is a maximum number of storage epochs in the future for which storage can
-be bought (~2 years). Storage is a resource that can be split and merged, and transferred.
+be bought (~2 years). Storage is a resource that can be split, merged, and transferred.
 
 At the end of the storage epoch part of the funds in the **storage fund need to be allocated to
 storage nodes**. The idea here is for storage nodes to perform light audits of each others,
