@@ -50,8 +50,8 @@ which is
 
 In summary:
 
-- Walrus Sites are served through a portal; in this case, `https://walrus.site`. There can be many
-  portals, and anyone can host one.
+- Walrus Sites are served through a Portal; in this case, `https://walrus.site`. There can be many
+  Portals, and anyone can host one.
 - The subdomain on the URL points to a specific object on Sui, that allows the browser to fetch and
   render the site resources. This pointer can be:
   - A SuiNS name, such as `flatland` in `https://flatland.walrus.site`; or

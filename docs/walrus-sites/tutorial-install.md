@@ -16,8 +16,13 @@ Then, follow these additional setup steps.
 
 Download the latest `walrus` binary for your architecture from
 `https://storage.googleapis.com/mysten-walrus-binaries/walrus-v0.1.0-a0fb8c9-<arch>`, where `<arch>`
-is your architecture.  If you are on a Macbook with M* chip, substitute `macos-arm64`. Other
-possible values are `macos-x86_64` or `ubuntu-x86_64`.
+is your architecture. The available options are listed in this table:
+
+| OS     | CPU           | Architecture    |
+|--------|---------------|-----------------|
+| MacOS  | Apple Silicon | `macos-arm64`   |
+| MacOS  | Intel 64bit   | `macos-x86_64`  |
+| Ubuntu | Intel 64bit   | `ubuntu-x86_64` |
 
 Then, add it to your `$PATH`. For example, on MacOS you can copy it to
 `/Users/myusername/.local/bin/` (check what directories are in your `$PATH` by running `echo
@@ -30,44 +35,19 @@ Walrus client
 
 Usage: walrus [OPTIONS] <COMMAND>
 
-Commands:
-  store       Store a new blob into Walrus
-  read        Read a blob from Walrus, given the blob ID
-  publisher   Run a publisher service at the provided network address
-  aggregator  Run an aggregator service at the provided network address
-  daemon      Run a client daemon at the provided network address, combining
-                  the functionality of an aggregator and a publisher
-  info        Print information about the Walrus storage system this client
-                  is connected to
-  json        Run the client by specifying the arguments in a JSON string;
-                  CLI options are ignored
-  blob-id     Encode the specified file to obtain its blob ID
-  help        Print this message or the help of the given subcommand(s)
-
-Options:
-  -c, --config <CONFIG>
-          The path to the wallet configuration file.
-  -w, --wallet <WALLET>
-          The path to the Sui wallet configuration file.
-  -g, --gas-budget <GAS_BUDGET>
-          The gas budget for transactions [default: 500000000]
-  -h, --help
-          Print help (see more with '--help')
-  -V, --version
-          Print version
-
+⋮
 ```
 
 If, for any reason, you don't want to add `walrus` to `$PATH`, place the binary in your preferred
 directory, and remember to configure a pointer to the binary in the `site-builder` config (more on
-this later).
+this [later](./tutorial-config.md)).
 
 ## Point your Sui CLI to testnet, and get some SUI
 
 Walrus is currently deployed on Sui Testnet. Therefore, you have to ensure that your Sui CLI is
 configured accordingly:
 
-``` bash
+``` txt
 sui client envs
 ╭──────────┬──────────────────────────────────────┬────────╮
 │ alias    │ url                                  │ active │
@@ -77,6 +57,12 @@ sui client envs
 │ testnet  │ https://fullnode.testnet.sui.io:443/ │ *      │
 │ mainnet  │ https://fullnode.mainnet.sui.io:443  │        │
 ╰──────────┴──────────────────────────────────────┴────────╯
+```
+
+If the `active` network is not `testnet`, switch to `testnet` by running:
+
+``` sh
+sui client switch --envs testnet
 ```
 
 Further, make sure you have at least 2 separate gas coins, with at least 1 SUI each, by running `sui
