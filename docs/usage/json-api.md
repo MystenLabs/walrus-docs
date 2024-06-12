@@ -1,6 +1,6 @@
 # JSON mode
 
-All Walrus client commands (except, currently, the `info` command) are available in JSON mode.
+All Walrus client commands (except, currently, the `info` command) are also available in JSON mode.
 In this mode, all the command line flags of the original CLI command can be specified in JSON
 format. The JSON mode therefore simplifies programmatic access to the CLI.
 
@@ -9,7 +9,7 @@ For example, to store a blob, run:
 ```sh
 walrus json \
     '{
-        "config": "working_dir/client_config.yaml",
+        "config": "path/to/client_config.yaml",
         "command": {
             "store": {
                 "file": "README.md"
@@ -18,19 +18,22 @@ walrus json \
     }'
 ```
 
-or, to read a blob knowing the blob ID:
+Or, to read a blob knowing the blob ID:
 
 ```sh
 walrus json \
     '{
-        "config": "working_dir/client_config.yaml",
+        "config": "path/to/client_config.yaml",
         "command": {
             "read": {
-                "blob_id": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
+                "blobId": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
             }
         }
     }'
 ```
+
+All options, default values, and commands are equal to those of the "standard" CLI mode, except that
+they are written in "camelCase" instead of "kebab-case".
 
 The `json` command also accepts input from `stdin`.
 
