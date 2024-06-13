@@ -6,9 +6,9 @@ We summarize here the basic encoding and cryptographic techniques used in Walrus
   and each shard contains one blob **sliver** for each blob past PoA. Each shard is assigned to a
   storage node in a storage epoch.
 - An [erasure code](https://en.wikipedia.org/wiki/Online_codes) **encode algorithm** takes a blob,
-  and encodes it as $K$ symbols, such that any fraction $p$ of symbols can be used to reconstruct
+  and encodes it as K symbols, such that any fraction p of symbols can be used to reconstruct
   the blob. Each blob sliver contains a fixed number of such symbols.
-- We select $p<1/3$ so that a third of symbols and also slivers may be used to reconstruct the blob
+- We select p < 1/3 so that a third of symbols and also slivers may be used to reconstruct the blob
   by the **decode algorithm**. The matrix used to produce the erasure code is fixed and the same
   for all blobs by the Walrus system, and encoders have no discretion about it.
 - Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
