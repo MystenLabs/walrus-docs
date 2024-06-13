@@ -238,8 +238,8 @@ new blob:</p>
 }
 </code></pre>
 <p>The information returned is the content of the <a href="../dev-guide/sui-struct.html">Sui blob object</a>.</p>
-<p>When the aggregator finds a blob with the same blob ID it returns a <code>alreadyCertified</code> JSON
-structure:</p>
+<p>When the aggregator finds a certified blob with the same blob ID and a sufficient validity period,
+it returns a <code>alreadyCertified</code> JSON structure:</p>
 <pre><code class="language-sh">$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
 {
   "alreadyCertified":{
@@ -256,7 +256,7 @@ structure:</p>
 find the transaction that created the Sui Blob object on the Sui explorer or using a Sui SDK.</p>
 <h3 id="read"><a class="header" href="#read">Read</a></h3>
 <p>Blobs may be read from an aggregator or daemon using HTTP GET. For example the following cURL
-command, reads a blob and writes it to an output file:</p>
+command reads a blob and writes it to an output file:</p>
 <pre><code class="language-sh">ADDRESS="127.0.0.1:31415"
 curl "http://$ADDRESS/v1/&lt;some blob ID&gt; -o &lt;some file name&gt;"
 </code></pre>
