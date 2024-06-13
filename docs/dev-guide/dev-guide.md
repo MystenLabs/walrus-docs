@@ -22,3 +22,6 @@ and aggregators are operated by Mysten Labs, all transactions are executed on th
 and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
 point and possibly with no warning. Do not rely on this developer preview for any production
 purposes, it comes with no availability or persistence guarantees.**
+
+Also see the [Devnet terms of service](../tos.md) under which this developer preview is made
+available.
