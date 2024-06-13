@@ -1,9 +1,23 @@
 # Operations
 
+## Blob encoding and blob ID
+
+Walrus stores blobs across storage nodes in an [encoded form](../overview/encoding.md), and refers
+to blobs by their _blob ID_. The blob ID is deterministically derived from the content of a blob
+and the Walrus configuration. The blob ID of two files with the same content will be the same.
+
+You can derive the blob ID of a file locally using the command: `walrus blob-id <file path>`
+
 ## Store
 
-Walrus may be used to **store a blob**, via the native client APIs or a publisher. Under the hood a
-number of operations happen both on Sui as well as on storage nodes:
+Walrus may be used to **store a blob**, via the native client APIs or a publisher.
+
+> **All blobs
+> stored in Walrus are public and discoverable by all**. Therefore you must not use Walrus to store
+> anything that contains secrets or private data without additional measures to protect
+> confidentiality.
+
+Under the hood a number of operations happen both on Sui as well as on storage nodes:
 
 - The client or publisher encodes the blob and derives a _blob ID_ that identifies the blob. This
   is a `u256` often encoded as a URL safe base64 string.
@@ -21,6 +35,11 @@ client, or a publisher that accepts and publishes blobs via HTTP.
 Walrus currently allows the storage of blobs up to a maximum size that may be determined
 through the `walrus info` command. You may store larger blobs by splitting them into smaller
 chunks.
+
+Blobs are stored for a certain number of _epochs_, as specified at the time they were stored. Walrus
+storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
+epoch today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
+Future devnets may span across multiple epochs.
 
 ## Read
 

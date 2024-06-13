@@ -9,12 +9,12 @@
 
 - [Objectives and use-cases](./overview/objectives_use_cases.md)
 - [Overview](./overview/overview.md)
-  - [Properties](./overview/properties.md)
   - [Architecture](./overview/architecture.md)
   - [Encoding](./overview/encoding.md)
 - [Operations](./overview/operations.md)
   - [Sui operations](./overview/operations-sui.md)
   - [Off-chain operations](./overview/operations-off-chain.md)
+- [Properties](./overview/properties.md)
 - [Future discussion](./overview/future.md)
 
 # Usage

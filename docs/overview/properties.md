@@ -5,7 +5,9 @@ are operated by storage nodes that faithfully and correctly follow the Walrus pr
 
 Each blob is encoded using error correction into slivers and a **blob ID** is cryptographically
 derived. For a given blob ID there is a **point of availability** (PoA) and an **availability
-period**, observable through an event on the Sui chain. The following properties relate to the PoA:
+period**, observable through an event on the Sui chain.
+
+The following properties relate to the PoA:
 
 - After the PoA, for a blob ID, any correct user that performs a read within the availability
   period will eventually terminate and get a value V which is either the blob contents F or None.
@@ -16,7 +18,7 @@ period**, observable through an event on the Sui chain. The following properties
 
 Some assurance properties ensure the correct internal processes of Walrus storage nodes.
 For the purposes of defining these, an **inconsistency proof** proves that a blob ID was
-stored by an incorrect user (and was incorrectly encoded).
+stored by a user that incorrectly encoded a blob.
 
 - After PoA and for a blob ID stored by a correct user, a storage node is always able to recover
   the correct sliver for its shards for this blob ID.

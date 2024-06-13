@@ -3,7 +3,7 @@
 Walrus supports operations to store and retrieve blobs, and to prove and verify their availability.
 It ensures content survives storage nodes suffering Byzantine faults and remains available and
 retrievable. It provides APIs to access the stored content over a CLI, SDKs and over web2 HTTP
-technologies, and supports contend delivery infrastructures like caches and content distribution
+technologies, and supports content delivery infrastructures like caches and content distribution
 networks (CDNs).
 
 Under the hood, storage cost is a small fixed multiple of the size of blobs (around 5x) thanks to

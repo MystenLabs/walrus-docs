@@ -6,9 +6,9 @@ We summarize here the basic encoding and cryptographic techniques used in Walrus
   and each shard contains one blob **sliver** for each blob past PoA. Each shard is assigned to a
   storage node in a storage epoch.
 - An [erasure code](https://en.wikipedia.org/wiki/Online_codes) **encode algorithm** takes a blob,
-  and encodes it as $K$ symbols, such that any fraction $p$ of symbols can be used to reconstruct
+  and encodes it as K symbols, such that any fraction p of symbols can be used to reconstruct
   the blob. Each blob sliver contains a fixed number of such symbols.
-- We select $p<1/3$ so that a third of symbols and also slivers may be used to reconstruct the blob
+- We select p < 1/3 so that a third of symbols and also slivers may be used to reconstruct the blob
   by the **decode algorithm**. The matrix used to produce the erasure code is fixed and the same
   for all blobs by the Walrus system, and encoders have no discretion about it.
 - Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
@@ -18,7 +18,8 @@ We summarize here the basic encoding and cryptographic techniques used in Walrus
 
 Each blob is also associated with some metadata including a blob ID to allow verification:
 
-- A blob ID is computed as an authenticator of the set of all shard data and metadata (byte size,
+- A **blob ID** is computed as an authenticator of the set of all shard data and metadata (byte
+  size,
   encoding, blob hash). We hash a sliver representation in each of the shards and add the resulting
   hashes into a Merkle tree. Then the root of the Merkle tree is the blob hash used to derive the
   blob ID that identifies the blob in the system.

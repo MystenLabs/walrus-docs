@@ -12,6 +12,8 @@ This developer guide describes:
 - [The Sui structures](sui-struct.md) Walrus uses to store metadata, and how they can be read
   from Sui smart contracts, or through the Sui SDK.
 
+A [glossary](../glossary.md) of terms used is also available for reference.
+
 ## Disclaimer about the Walrus developer preview
 
 **This release of Walrus \& Walrus Sites is a

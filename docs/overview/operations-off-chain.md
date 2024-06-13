@@ -27,7 +27,8 @@ Systems overview of writes, illustrated above:
 - The user puts together the signatures returned from storage nodes into an availability certificate
   and sends it on chain. When the certificate is verified on-chain an availability event for the
   blob ID is emitted, and all other storage nodes seek to download any missing shards for the blob
-  ID. This event emitted by Sui is the Point of Availability (PoA) for the blob ID.
+  ID. This event emitted by Sui is the [Point of Availability (PoA)](./properties.md) for the blob
+  ID.
 - After the PoA, and without user involvement, storage nodes sync and recover any missing slivers.
 
 The user waits for 2/3 of shard signatures to return in order to create the certificate of
@@ -46,8 +47,8 @@ receive to extend the time for which each sliver is stored.
 ## Inconsistent resource flow
 
 When a correct storage node tries to reconstruct a shard it may fail if the encoding of a blob ID
-past PoA was incorrect, but will instead extract an inconsistency proof for the blob ID. It will
-then use the proof to create a inconsistency certificate and upload it on chain.
+past [PoA](./properties.md) was incorrect, but will instead extract an inconsistency proof for the
+blob ID. It will then use the proof to create a inconsistency certificate and upload it on chain.
 The flow is as follows:
 
 - A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.
@@ -56,8 +57,9 @@ The flow is as follows:
 - The storage node aggregate the signatures into an inconsistency certificate and sends it to the
   Walrus smart contract, that verifies it and emits a inconsistent resource event.
 - Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
-  blob ID and record in the metadata to return None for the blob ID for the availability period.
-  No storage attestation challenges are issued for this blob ID.
+  blob ID and record in the metadata to return None for the blob ID for the
+  [availability period](./properties.md). No storage attestation challenges are issued for this
+  blob ID.
 
 Note that a blob ID that is inconsistent will always resolve to None upon reading: this is because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
