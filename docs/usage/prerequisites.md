@@ -1,6 +1,6 @@
 # Prerequisites
 
-Interacting with Walrus requires a valid Sui testnet wallet with some amount of SUI tokens. The
+Interacting with Walrus requires a valid Sui **testnet** wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the [installation
 instructions](https://docs.sui.io/guides/developer/getting-started/sui-install) in the Sui
 documentation.
