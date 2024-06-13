@@ -65,7 +65,7 @@ The store HTTP API end points return information about the blob stored in JSON f
 is stored for the first time, a `newlyCreated` field contains information about the
 new blob:
 
-```
+```sh
 $ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
 {
   "newlyCreated":{
@@ -88,7 +88,8 @@ The information returned is the content of the [Sui blob object](../dev-guide/su
 
 When the aggregator finds a blob with the same blob ID it returns a `alreadyCertified` JSON
 structure:
-```
+
+```sh
 $ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
 {
   "alreadyCertified":{
