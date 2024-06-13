@@ -38,7 +38,7 @@ chunks.
 
 Blobs are stored for a certain number of _epochs_, as specified at the time they were stored. Walrus
 storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
-epochs today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
+epoch today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
 Future devnets may span across multiple epochs.
 
 ## Read

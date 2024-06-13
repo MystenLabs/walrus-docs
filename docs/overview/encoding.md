@@ -18,7 +18,8 @@ We summarize here the basic encoding and cryptographic techniques used in Walrus
 
 Each blob is also associated with some metadata including a blob ID to allow verification:
 
-- A blob ID is computed as an authenticator of the set of all shard data and metadata (byte size,
+- A **blob ID** is computed as an authenticator of the set of all shard data and metadata (byte
+  size,
   encoding, blob hash). We hash a sliver representation in each of the shards and add the resulting
   hashes into a Merkle tree. Then the root of the Merkle tree is the blob hash used to derive the
   blob ID that identifies the blob in the system.
