@@ -51,7 +51,7 @@ walrus read <some blob ID>
 ## Changing the default configuration
 
 Use the `--config` option to specify a custom path to the
-[configuration location](../usage/configuration.html#configuration-file).
+[configuration location](../usage/setup.md#configuration).
 
 ## Troubleshooting
 
