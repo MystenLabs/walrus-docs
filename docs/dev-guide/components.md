@@ -12,11 +12,10 @@ Walrus defines a number of objects and smart contracts on Sui:
 - _Blob resources_, represent blobs being registered and certified as stored.
 - Changes to these objects emit _Walrus-related events_.
 
-The Walrus system object ID can be found in the Walrus `client_config.yaml` file
-(see [Configuration](../usage/configuration.md)). You may use
-any Sui explorer to look at its content, as well as explore the content of blob objects.
-There is more information about these in the
-[quick reference to the Walrus Sui structures](sui-struct.md).
+The Walrus system object ID can be found in the Walrus `client_config.yaml` file (see
+[Configuration](../usage/setup.md#configuration)). You may use any Sui explorer to look at its
+content, as well as explore the content of blob objects. There is more information about these in
+the [quick reference to the Walrus Sui structures](sui-struct.md).
 
 Walrus is also composed of a number of Walrus-specific services and binaries:
 

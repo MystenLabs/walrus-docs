@@ -2,8 +2,7 @@
 
 ## Prerequisites
 
-- Set up Sui and Walrus as described
-  [here](https://mystenlabs.github.io/walrus-docs/usage/setup.html).
+- Set up Sui and Walrus as described [here](https://mystenlabs.github.io/walrus-docs/usage/setup).
 - Optional: Set up a Python virtual environment:
 
   ```sh

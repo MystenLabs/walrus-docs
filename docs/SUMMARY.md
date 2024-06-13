@@ -24,16 +24,11 @@
   - [Operations](./dev-guide/dev-operations.md)
   - [Sui structures](./dev-guide/sui-struct.md)
 - [Setup](./usage/setup.md)
-  - [Prerequisites](./usage/prerequisites.md)
-  - [Installation](./usage/installation.md)
-  - [Configuration](./usage/configuration.md)
 - [Interacting with Walrus](./usage/interacting.md)
   - [Using the client CLI](./usage/client-cli.md)
   - [Using the client JSON API](./usage/json-api.md)
   - [Using the client HTTP API](./usage/web-api.md)
-- [Examples](./examples/examples.md)
-  - [Python](./examples/python.md)
-  - [Javascript](./examples/javascript.md)
+- [Examples](./usage/examples.md)
 
 # Walrus sites
 
