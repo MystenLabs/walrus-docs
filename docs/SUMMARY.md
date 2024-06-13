@@ -51,3 +51,4 @@
 ---
 
 [Glossary](./glossary.md)
+[Devnet terms of service](./tos.md)
