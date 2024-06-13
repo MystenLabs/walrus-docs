@@ -219,7 +219,7 @@ curl -X PUT "http://$ADDRESS/v1/store?epochs=5" --upload-file "some/file" # stor
 <p>The store HTTP API end points return information about the blob stored in JSON format. When a blob
 is stored for the first time, a <code>newlyCreated</code> field contains information about the
 new blob:</p>
-<pre><code>$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+<pre><code class="language-sh">$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
 {
   "newlyCreated":{
     "id":"0xa74d376bb6923c4b8d73825fce3b798524e2bda34d02dae64ab5865556c54000",
@@ -240,7 +240,7 @@ new blob:</p>
 <p>The information returned is the content of the <a href="../dev-guide/sui-struct.html">Sui blob object</a>.</p>
 <p>When the aggregator finds a blob with the same blob ID it returns a <code>alreadyCertified</code> JSON
 structure:</p>
-<pre><code>$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+<pre><code class="language-sh">$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
 {
   "alreadyCertified":{
     "blobId":"gsYzDXsK326Wihzt3X5evZCPFgaNZrb84zCjodLJaVs",
