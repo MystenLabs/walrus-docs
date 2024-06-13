@@ -84,10 +84,11 @@ $ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other
   }
 }
 ```
+
 The information returned is the content of the [Sui blob object](../dev-guide/sui-struct.md).
 
-When the aggregator finds a blob with the same blob ID it returns a `alreadyCertified` JSON
-structure:
+When the aggregator finds a certified blob with the same blob ID and a sufficient validity period,
+it returns a `alreadyCertified` JSON structure:
 
 ```sh
 $ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
@@ -102,13 +103,14 @@ $ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other
   }
 }
 ```
+
 The field `event` returns the [Sui event ID](../dev-guide/sui-struct.md) that can be used to
 find the transaction that created the Sui Blob object on the Sui explorer or using a Sui SDK.
 
 ### Read
 
 Blobs may be read from an aggregator or daemon using HTTP GET. For example the following cURL
-command, reads a blob and writes it to an output file:
+command reads a blob and writes it to an output file:
 
 ```sh
 ADDRESS="127.0.0.1:31415"
