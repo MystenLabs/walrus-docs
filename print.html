@@ -811,8 +811,9 @@ public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u16;
 patterns (see <a href="usage/./interacting.html">the next chapter</a>). This chapter describes the
 <a href="usage/./prerequisites.html">prerequisites</a>, <a href="usage/./installation.html">installation</a>, and
 <a href="usage/./configuration.html">configuration</a> of the Walrus client.</p>
+<p>Note that our Walrus devnet uses Sui <strong>testnet</strong> for coordination.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
-<p>Interacting with Walrus requires a valid Sui testnet wallet with some amount of SUI tokens. The
+<p>Interacting with Walrus requires a valid Sui <strong>testnet</strong> wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
 instructions</a> in the Sui
 documentation.</p>
@@ -850,7 +851,7 @@ the <code>--client</code> option.</p>
 # deployment.
 #
 # NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
-# You can get the object ID for the current devnet deployment as described below.
+# You can get the object ID for the current Walrus devnet deployment as described below.
 system_object: 0x3243f6a8885a308d313198a2e03707344a4093822299f31d0082efa98ec4e6c8
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
@@ -895,6 +896,7 @@ communication_config:
 <p>If you want, you can directly store this as a configuration file:</p>
 <pre><code class="language-sh">curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o client_config.yaml
 </code></pre>
+<p><strong>Important</strong>: Make sure your wallet is set up for Sui <strong>testnet</strong>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
 <p>We provide 3 ways to interact directly with the Walrus storage system:</p>
 <ul>
@@ -914,6 +916,8 @@ walrus read &lt;some blob ID&gt;
 </code></pre>
 <p>Information about the Walrus system is available through through the <code>walrus info</code> command.</p>
 <p>Use the <code>--config</code> option to specify a custom path to the configuration location.</p>
+<p>If you get an error like "the specified Walrus system object does not exist", make sure your wallet
+is set up for Sui <strong>testnet</strong> and you use the latest <a href="usage/./configuration.html">configuration</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
 <p>All Walrus client commands (except, currently, the <code>info</code> command) are also available in JSON mode.
 In this mode, all the command line flags of the original CLI command can be specified in JSON
