@@ -44,6 +44,19 @@ Walrus is architected to provide a reliable and cost-effective solution for larg
 storage, making it an ideal choice for applications requiring decentralized, affordable, durable,
 and accessible data storage.
 
+## Organization
+
+This documentation is split into three parts:
+
+1. _About Walrus_ describes the design and architecture of Walrus.
+1. _Usage_ provides concrete information for developers. If you want to get started quickly, you can
+   jump directly to the [setup chapter](./usage/setup.md).
+1. _Walrus sites_ describes how you can use Walrus and Sui together to build truly decentralized
+   websites.
+
+Finally, we provide a [glossary](./glossary.md) that explains the terminology used throughout the
+documentation.
+
 ## Sources
 
 This documentation is built using [mdBook](https://rust-lang.github.io/mdBook/) from source files in

@@ -5,7 +5,7 @@
 
 ---
 
-# Overview
+# About Walrus
 
 - [Objectives and use-cases](./overview/objectives_use_cases.md)
 - [Overview](./overview/overview.md)
