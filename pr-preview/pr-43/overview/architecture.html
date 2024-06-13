@@ -176,7 +176,8 @@
                         <h1 id="basic-architecture-and-security-assumptions"><a class="header" href="#basic-architecture-and-security-assumptions">Basic architecture and security assumptions</a></h1>
 <p>The key actors in the Walrus architecture are the following:</p>
 <ul>
-<li><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong>. They are ready to pay for service
+<li><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.
+They are ready to pay for service
 when it comes to writes, and when it comes to non-best-effort reads. Users also want to prove
 the <strong>availability</strong> of a blob to third parties without the cost of sending or receiving the full
 blob. Users may be malicious in various ways: they may wish to not pay for services, prove the
@@ -212,7 +213,8 @@ behalf. This includes encoding the blob into slivers, distributing the slivers t
 collecting storage-node signatures and aggregating them into a certificate, as well as all
 other on-chain actions. They are optional in that a user may directly interact with Sui and
 the storage nodes to store blobs. An end user can always verify that a publisher
-performed their duties correctly by checking that a certificate (PoA) exists on-chain
+performed their duties correctly by checking that an event associated with the
+<a href="./properties.html">Point of Availability</a> for the blob exists on-chain
 and then either performing a read to see if Walrus returns the blob or by encoding the blob
 and comparing the result to the blob ID in the certificate.</li>
 </ul>

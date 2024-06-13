@@ -198,7 +198,8 @@ a blob. If correct, then the storage node signs a statement that it holds the sl
 <li>The user puts together the signatures returned from storage nodes into an availability certificate
 and sends it on chain. When the certificate is verified on-chain an availability event for the
 blob ID is emitted, and all other storage nodes seek to download any missing shards for the blob
-ID. This event emitted by Sui is the Point of Availability (PoA) for the blob ID.</li>
+ID. This event emitted by Sui is the <a href="./properties.html">Point of Availability (PoA)</a> for the blob
+ID.</li>
 <li>After the PoA, and without user involvement, storage nodes sync and recover any missing slivers.</li>
 </ul>
 <p>The user waits for 2/3 of shard signatures to return in order to create the certificate of
@@ -213,8 +214,8 @@ provides an appropriate storage resource. Upon success this emits an event that 
 receive to extend the time for which each sliver is stored.</p>
 <h2 id="inconsistent-resource-flow"><a class="header" href="#inconsistent-resource-flow">Inconsistent resource flow</a></h2>
 <p>When a correct storage node tries to reconstruct a shard it may fail if the encoding of a blob ID
-past PoA was incorrect, but will instead extract an inconsistency proof for the blob ID. It will
-then use the proof to create a inconsistency certificate and upload it on chain.
+past <a href="./properties.html">PoA</a> was incorrect, but will instead extract an inconsistency proof for the
+blob ID. It will then use the proof to create a inconsistency certificate and upload it on chain.
 The flow is as follows:</p>
 <ul>
 <li>A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.</li>
@@ -223,8 +224,9 @@ epoch. The storage node verify the proof and sign it.</li>
 <li>The storage node aggregate the signatures into an inconsistency certificate and sends it to the
 Walrus smart contract, that verifies it and emits a inconsistent resource event.</li>
 <li>Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
-blob ID and record in the metadata to return None for the blob ID for the availability period.
-No storage attestation challenges are issued for this blob ID.</li>
+blob ID and record in the metadata to return None for the blob ID for the
+<a href="./properties.html">availability period</a>. No storage attestation challenges are issued for this
+blob ID.</li>
 </ul>
 <p>Note that a blob ID that is inconsistent will always resolve to None upon reading: this is because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a

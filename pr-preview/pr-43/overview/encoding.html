@@ -192,7 +192,8 @@ storage nodes hold part of the original blob, allowing for fast random access re
 </ul>
 <p>Each blob is also associated with some metadata including a blob ID to allow verification:</p>
 <ul>
-<li>A blob ID is computed as an authenticator of the set of all shard data and metadata (byte size,
+<li>A <strong>blob ID</strong> is computed as an authenticator of the set of all shard data and metadata (byte
+size,
 encoding, blob hash). We hash a sliver representation in each of the shards and add the resulting
 hashes into a Merkle tree. Then the root of the Merkle tree is the blob hash used to derive the
 blob ID that identifies the blob in the system.</li>
