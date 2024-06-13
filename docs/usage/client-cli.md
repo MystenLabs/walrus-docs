@@ -19,3 +19,6 @@ walrus read <some blob ID>
 Information about the Walrus system is available through through the `walrus info` command.
 
 Use the `--config` option to specify a custom path to the configuration location.
+
+If you get an error like "the specified Walrus system object does not exist", make sure your wallet
+is set up for Sui **testnet** and you use the latest [configuration](./configuration.md).
