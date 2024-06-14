@@ -2,12 +2,12 @@
 
 Walrus uses Sui smart contracts to coordinate storage operations as resources that have a lifetime,
 and payments. Smart contracts also facilitate governance to determine the storage nodes holding each
-storage shard. The following content outlines these operations and refers to them as part of the 
-read/write paths. 
+storage shard. The following content outlines these operations and refers to them as part of the
+read/write paths.
 
 Metadata is the only blob element ever exposed to Sui or its validators, as the content
 of blobs is always stored off chain on Walrus storage nodes and caches. The storage nodes or caches
-do not have to overlap with any Sui infrastructure components (such as validators), and the storage 
+do not have to overlap with any Sui infrastructure components (such as validators), and the storage
 epochs can be of different lengths and not have the same start/end times as Sui epochs.
 
 ## Storage resource life cycle on Sui
@@ -16,7 +16,7 @@ A number of Sui smart contracts hold the metadata of the Walrus system and all i
 
 - A **Walrus system object** holds the committee of storage nodes for the current storage epoch. The
   system object also holds the total available space on Walrus and the price per unit of storage (1
-  KiB). 
+  KiB).
   
   These values are determined by 2/3 agreement between the storage nodes for the storage
   epoch. Users can pay to purchase storage space for some time duration. These space resources can
@@ -34,7 +34,7 @@ A number of Sui smart contracts hold the metadata of the Walrus system and all i
 - Eventually a user holds an off-chain **availability certificate** from storage nodes for a blob
   ID. The user **uploads the certificate on chain** to signal that the blob ID is available for an
   availability period. The certificate is checked against the latest Walrus committee,
-  and an **availability event** is emitted for the blob ID if correct. This is the proof of 
+  and an **availability event** is emitted for the blob ID if correct. This is the proof of
   authority for the blob.
 
 - At a later time, a certified blob's storage can be **extended** by adding a storage object to it
@@ -56,7 +56,7 @@ from storage nodes by blob ID to perform reads on Walrus resources.
 
 Each Walrus storage epoch is represented by the Walrus system object that contains a storage
 committee and various metadata or storage nodes, like the mapping between shards and storage nodes,
-available space and current costs. 
+available space and current costs.
 
 Users can go to the system object for the period and **buy some
 storage** amount for one or more storage epochs. At each storage epoch there is a price for storage,

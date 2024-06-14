@@ -81,7 +81,7 @@ dApps should do full reads rather than partial reads.
 
 ## Read paths
 
-A user can read stored blobs either directly or through a cache. The direct user journey is discussed 
+A user can read stored blobs either directly or through a cache. The direct user journey is discussed
 here because this is also how the cache operates in case of a cache miss. Assume that most
 reads happen through caches for blobs that are hot, and do not result in requests to
 storage nodes.
