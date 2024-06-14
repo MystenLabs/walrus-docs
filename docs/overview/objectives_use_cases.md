@@ -11,7 +11,7 @@ Advanced error correction coding keeps the cost low, in contrast to the full rep
 traditional to blockchains, such as the >100x multiple for data stored in Sui objects. As a result,
 storage of much bigger resources (up to several GiB) is possible on Walrus at substantially lower
 cost compared to Sui or other blockchains. Because encoded blobs are stored on all storage nodes,
-Walrus also provides superior robustness compared to designs with a small amount of replicas 
+Walrus also provides superior robustness compared to designs with a small amount of replicas
 storing the full blob.
 
 Walrus uses the Sui chain for coordination and payments. Available storage is represented as Sui
