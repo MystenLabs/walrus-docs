@@ -340,28 +340,35 @@ their operations.</p>
 <p>Walrus supports any additional number of optional infrastructure actors that can operate in a
 permissionless way:</p>
 <ul>
-<li><strong>Caches</strong> are clients that store one or more full blobs and make them available to users
-over traditional web2 technologies (such as HTTP). They are optional in that end users can also
+<li>
+<p><strong>Caches</strong> are clients that store one or more full blobs and make them available to users
+over traditional web2 technologies (such as HTTP).</p>
+<p>They are optional in that end users can also
 operate a local cache, and perform Walrus reads over web2 technologies locally. However, cache
 infrastructures can also act as CDNs, split the cost of blob reconstruction over many requests,
 be better connected, and so on. A client can always verify that reads from such infrastructures
-are correct.</li>
-<li><strong>Publishers</strong> are clients that help end users store a blob using web2 technologies,
-using less bandwidth and custom logic. In effect, they receive the blob to be published over
+are correct.</p>
+</li>
+<li>
+<p><strong>Publishers</strong> are clients that help end users store a blob using web2 technologies,
+using less bandwidth and custom logic.</p>
+<p>In effect, they receive the blob to be published over
 traditional web2 protocols (like HTTP) and run the Walrus store protocol on the end user's
 behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
 collecting storage-node signatures and aggregating them into a certificate, as well as all
-other on-chain actions. They are optional in that a user can directly interact with Sui and
+other on-chain actions.</p>
+<p>They are optional in that a user can directly interact with Sui and
 the storage nodes to store blobs. An end user can always verify that a publisher
 performed their duties correctly by checking that an event associated with the
 <a href="overview/./properties.html">Point of Availability</a> for the blob exists on chain
 and then either performing a read to see if Walrus returns the blob or encoding the blob
-and comparing the result to the blob ID in the certificate.</li>
+and comparing the result to the blob ID in the certificate.</p>
+</li>
 </ul>
 <p>Caches, publishers and end users are not considered trusted components of the system, and they might
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
-for honest end users that use honest intermediaries (caches and publishers). Walrus provides a means for
-end users to audit the correct operation of both caches and publishers.</p>
+for honest end users that use honest intermediaries (caches and publishers). Walrus provides a
+means for end users to audit the correct operation of both caches and publishers.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-overheads-and-verification"><a class="header" href="#encoding-overheads-and-verification">Encoding, overheads, and verification</a></h1>
 <p>We summarize here the basic encoding and cryptographic techniques used in Walrus.</p>
 <ul>
