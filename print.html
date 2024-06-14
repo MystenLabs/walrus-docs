@@ -995,6 +995,8 @@ chapter</a> for prerequisites, installation, and configuration.</p>
 <p>Detailed usage information is available through</p>
 <pre><code class="language-sh">walrus --help
 </code></pre>
+<p>Each sub-command of <code>walrus</code> can also be called with <code>--help</code> to print its specific
+arguments and their meaning.</p>
 <h2 id="walrus-system-information"><a class="header" href="#walrus-system-information">Walrus system information</a></h2>
 <p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,</p>
 <pre><code class="language-console">$ walrus info
@@ -1019,14 +1021,40 @@ and the current cost in (testnet) Sui for storing blobs.</p>
 <p>Additional information such as encoding parameters and sizes, BFT system information, and
 information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
 argument: <code>walrus info --dev</code>.</p>
-<h2 id="storing-and-reading-blobs"><a class="header" href="#storing-and-reading-blobs">Storing and reading blobs</a></h2>
-<p>Storing and reading blobs from Walrus can be achieved through the following commands:</p>
+<h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status and reading blobs</a></h2>
+<p>Storing blobs on Walrus can be achieved through the following commands:</p>
 <pre><code class="language-sh">walrus store &lt;some file&gt;
-walrus read &lt;some blob ID&gt;
 </code></pre>
+<p>The store command takes a CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicating the number of
+epochs the blob should be stored for. This defaults to 1 epoch, namely the current one. If the blob
+is already stored on Walrus for a sufficient number of epochs the command does not store it again.</p>
+<p>However, this behavior can be overwritten with the <code>--force</code> (or <code>-f</code>) CLI option, which stores
+the blob again and creates a fresh blob object on Sui belonging to the wallet address.</p>
+<p>The status of a blob by blob ID can be queried using the command:</p>
+<pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
+</code></pre>
+<p>This returns whether the blob is stored and its availability period. You can also query the
+status of a blob by using a file that stores it, as:</p>
+<pre><code class="language-sh">walrus blob-status --file &lt;FILE&gt;
+</code></pre>
+<p>This command re-encodes the content of the file, derives the blob ID and returns whether it
+is stored on Walrus and its availability period.</p>
+<p>When the blob is available the <code>blob-status</code> command also returns the <code>BlobCertified</code> Sui event ID,
+which consists of a transaction ID and a sequence number in the events emitted by the transaction.
+The existence of this event certifies the availability of the blob.</p>
+<p>Reading blobs from Walrus can be achieved through the following command:</p>
+<pre><code class="language-sh">walrus read &lt;some blob ID&gt;
+</code></pre>
+<p>By default the blob data is written to the standard output. The <code>--out &lt;OUT&gt;</code> CLI option (or <code>-o</code>)
+can be used to specify and output file name. The <code>--rpc-url &lt;URL&gt;</code> (or <code>-r</code>) may be used to specify
+a Sui RPC node to use instead of the one set in the wallet configuration or the default one.</p>
 <h2 id="changing-the-default-configuration"><a class="header" href="#changing-the-default-configuration">Changing the default configuration</a></h2>
 <p>Use the <code>--config</code> option to specify a custom path to the
 <a href="usage/../usage/setup.html#configuration">configuration location</a>.</p>
+<p>The
+<code>--wallet &lt;WALLET&gt;</code> argument may be used to specify a non standard Sui wallet configuration file.
+And a <code>--gas-budget &lt;GAS_BUDGET&gt;</code> argument may be used to change the maximum amount of Sui (in MIST)
+that the command is allowed to use.</p>
 <h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
 <p>If you get an error like "the specified Walrus system object does not exist", make sure your wallet
 is set up for Sui <strong>testnet</strong> and you use the latest <a href="usage/./setup.html#configuration">configuration</a>.</p>
