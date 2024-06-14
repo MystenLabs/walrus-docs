@@ -6,7 +6,7 @@ runs:
   steps:
     - name: Create bin directory and add to $PATH
       run: |
-        mkdir bin
+        mkdir -p bin
         echo "$(pwd)/bin" >> ${GITHUB_PATH}
       shell: bash
     - name: Install mdbook
