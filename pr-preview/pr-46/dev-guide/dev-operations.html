@@ -202,8 +202,9 @@ Certifying a blob emits a Sui event with the blob ID and the period of availabil
 certified in the final step. The steps involved in a store operation can be executed by the binary
 client, or a publisher that accepts and publishes blobs via HTTP.</p>
 <p>Walrus currently allows the storage of blobs up to a maximum size that may be determined
-through the <code>walrus info</code> command. You may store larger blobs by splitting them into smaller
-chunks.</p>
+through the <a href="../usage/client-cli.html#walrus-system-information"><code>walrus info</code></a> CLI command. The
+maximum blob size is currently 957 MiB. You may store larger blobs by splitting them into
+smaller chunks.</p>
 <p>Blobs are stored for a certain number of <em>epochs</em>, as specified at the time they were stored. Walrus
 storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
 epoch today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
