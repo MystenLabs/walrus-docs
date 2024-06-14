@@ -34,8 +34,8 @@ A number of Sui smart contracts hold the metadata of the Walrus system and all i
 - Eventually a user holds an off-chain **availability certificate** from storage nodes for a blob
   ID. The user **uploads the certificate on chain** to signal that the blob ID is available for an
   availability period. The certificate is checked against the latest Walrus committee,
-  and an **availability event** is emitted for the blob ID if correct. This is the proof of
-  authority for the blob.
+  and an **availability event** is emitted for the blob ID if correct. This is the point of
+  availability for the blob.
 
 - At a later time, a certified blob's storage can be **extended** by adding a storage object to it
   with a longer expiry period. This facility can be used by smart contracts to extend the
