@@ -2,16 +2,16 @@
 
 _Walrus Sites_ are "web"-sites that use Sui and Walrus as their underlying technology. They are a
 prime example of how Walrus can be used to build new and exciting decentralized applications. Anyone
-can build and deploy a Walrus Site, and make it accessible to the World!
+can build and deploy a Walrus Site and make it accessible to the World!
 
 At a high level, the most exciting features include:
 
 - Publishing a site does not require managing servers or complex configurations; just provide the
   source files (produced by your favorite web framework), publish them to Walrus Sites using the
   [site builder tool](./site-builder.md), and you are done!
-- Sites can be linked to from ordinary Sui objects. This feature enables, for example, creating a
+- Sites can be linked to from ordinary Sui objects. This feature enables, for example, creating an
   NFT collection in which _every single NFT_ has a _personalized website dedicated to it_.
-- Walrus Sites are owned by addresses on Sui, and can be exchanged, shared, and updated thanks to
+- Walrus Sites are owned by addresses on Sui and can be exchanged, shared, and updated thanks to
   Sui's flexible programming model. This means, among other things, that Walrus Sites can leverage
   the [SuiNS](https://suins.io/) naming system to have human readable names. No more messing around
   with DNS!
@@ -24,16 +24,15 @@ At a high level, the most exciting features include:
 ## Show me
 
 To give you a very high level intuition of how Walrus Sites work, let's look at an example: A simple
-NFT collection on Sui, that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
+NFT collection on Sui that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
 which _each NFT_ has a _specific, personalized Walrus Site_.
 
-You can check out the mint page at
-[https://flatland.walrus.site/](https://flatland.walrus.site/). This site is serve to your browser
-through the Walrus Site _Portal_ [https://walrus.site](https://walrus.site). While the Portal's
-operation is explained in a [later section](./portal.md), consider for now that there
-can be many Portals (hosted by whomever wants to have their own, and even on `localhost`). Further,
-the only function of the Portal is to provide the browser with some code (specifically, a service
-worker) that allows it to fetch the Walrus Site from Sui and Walrus.
+You can check out the mint page at <https://flatland.walrus.site/>. This site is serve to your
+browser through the Walrus Site _Portal_ <https://walrus.site>. While the Portal's operation is
+explained in a [later section](./portal.md), consider for now that there can be many Portals (hosted
+by whoever wants to have their own, and even on `localhost`). Further, the only function of the
+Portal is to provide the browser with some code (specifically, a service worker) that allows it to
+fetch the Walrus Site from Sui and Walrus.
 
 If you have a Sui wallet with some Testnet SUI, you can try and "mint a new Flatlander" from the
 site. This creates an NFT from the collection, and shows you two links, one to the explorer, and one
