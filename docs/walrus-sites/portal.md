@@ -17,8 +17,8 @@ You can run a service worker Portal locally:
 - To browse Walrus Sites without accessing external Portals; or
 - for development purposes.
 
-This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, clone the repo and
-enter the `portal` directory. Here, run:
+This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, clone the
+`walrus-sites` repo and enter the `portal` directory. Here, run:
 
 ``` sh
 pnpm install

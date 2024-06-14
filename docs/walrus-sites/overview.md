@@ -73,19 +73,19 @@ approaches are possible:
 
 All of these approaches are viable (the first has been used for similar applications in IPFS
 gateways, for example), and have trade offs. As an initial step, we have chosen to use the
-service-worker based approach, as it is novel, light weight, and ensures that the Portal does not
-have to process all the traffic from clients. In the following, therefore, we present the details of
-this Portal-based approach.
+service-worker based approach, as it is light weight and ensures that the Portal does not have to
+process all the traffic from clients. In the following, therefore, we present the details of this
+Portal-based approach.
 
 ### Browsing and domain isolation
 
 We must ensure that, when browsing multiple sites through a Portal, for example the one hosted at
-[https://walrus.site](https://walrus.site), these sites are isolated. Isolation is necessary for
-security, and to ensure that the wallet connection in the browser works as expected.
+<https://walrus.site>, these sites are isolated. Isolation is necessary for security, and to ensure
+that the wallet connection in the browser works as expected.
 
 To do so, we give each Walrus Site a specific _subdomain_ of the Portal's domain. For example, the
-Flatland mint dApp is hosted at [https://flatland.walrus.site](https://flatland.walrus.site), where
-the subdomain `flatland` is uniquely associated to the object ID of the Walrus Site through SuiNS.
+Flatland mint dApp is hosted at <https://flatland.walrus.site>, where the subdomain `flatland` is
+uniquely associated to the object ID of the Walrus Site through SuiNS.
 
 Walrus Sites also work without SuiNS: a site can _always_ be browsed by using as subdomain the
 Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
