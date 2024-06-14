@@ -11,8 +11,11 @@ here the details for all the configuration options.
 ## Minimal configuration
 
 The config file is expected to be in `./builder.yaml`, and it is possible to point elsewhere with
-the `--config` flag.  For your first run, it should be sufficient to call the `site-builder` with
+the `--config` flag. For your first run, it should be sufficient to call the `site-builder` with
 `--config assets/builder-example.yaml`, which is already configured appropriately.
+
+If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
+binary, see below.
 
 ## Advanced configuration
 
@@ -31,6 +34,6 @@ following variables in the config file:
     one from `sui client addresses`).
   - `walrus_binary`: Pointer to the `walrus` binary. By default, this is expected to be run from
     `$PATH`.
-  - `walrus_config`: The configuration for the `walrus` client binary. See the relative
-    documentation (TODO: link).
+  - `walrus_config`: The configuration for the `walrus` client binary, see the [relevant
+    chapter](../usage/setup.md).
   - `gas_budget`: The maximum amount of gas to be spent for transactions (default: 500M MIST).

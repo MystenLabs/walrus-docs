@@ -7,100 +7,32 @@ your environment for development.
 
 Before you start, make sure you:
 
-- Have a recent version of [Rust](https://www.rust-lang.org/tools/install) installed; and
-- have the [Sui CLI](https://docs.sui.io/guides/developer/getting-started/sui-install) installed.
+- have a recent version of [Rust](https://www.rust-lang.org/tools/install) installed;
+- have `git` installed; and
+- followed all [Walrus setup instructions](../usage/setup.md).
 
 Then, follow these additional setup steps.
 
-## Get the `walrus` binary and install it
+## Clone the repository and build the `site-builder` tool {install-site-builder}
 
-Download the latest `walrus` binary for your architecture from
-`https://storage.googleapis.com/mysten-walrus-binaries/walrus-v0.1.0-a0fb8c9-<arch>`, where `<arch>`
-is your architecture. The available options are listed in this table:
-
-| OS     | CPU           | Architecture    |
-|--------|---------------|-----------------|
-| MacOS  | Apple Silicon | `macos-arm64`   |
-| MacOS  | Intel 64bit   | `macos-x86_64`  |
-| Ubuntu | Intel 64bit   | `ubuntu-x86_64` |
-
-Then, add it to your `$PATH`. For example, on MacOS you can copy it to
-`/Users/myusername/.local/bin/` (check what directories are in your `$PATH` by running `echo
-$PATH`).
-
-Once this is done, you should be able to type `walrus` in your terminal and see:
-
-``` txt
-Walrus client
-
-Usage: walrus [OPTIONS] <COMMAND>
-
-⋮
-```
-
-If, for any reason, you don't want to add `walrus` to `$PATH`, place the binary in your preferred
-directory, and remember to configure a pointer to the binary in the `site-builder` config (more on
-this [later](./tutorial-config.md)).
-
-## Point your Sui CLI to testnet, and get some SUI
-
-Walrus is currently deployed on Sui Testnet. Therefore, you have to ensure that your Sui CLI is
-configured accordingly:
-
-``` txt
-sui client envs
-╭──────────┬──────────────────────────────────────┬────────╮
-│ alias    │ url                                  │ active │
-├──────────┼──────────────────────────────────────┼────────┤
-│ devnet   │ https://fullnode.devnet.sui.io:443   │        │
-│ local    │ http://127.0.0.1:9000                │        │
-│ testnet  │ https://fullnode.testnet.sui.io:443/ │ *      │
-│ mainnet  │ https://fullnode.mainnet.sui.io:443  │        │
-╰──────────┴──────────────────────────────────────┴────────╯
-```
-
-If the `active` network is not `testnet`, switch to `testnet` by running:
+First clone and enter the Walrus Sites repo from <https://github.com/MystenLabs/walrus-sites>.
 
 ``` sh
-sui client switch --envs testnet
-```
-
-Further, make sure you have at least 2 separate gas coins, with at least 1 SUI each, by running `sui
-client gas`.  If you don't have enough SUI, you can hit the testnet faucet by running.
-
-``` sh
-sui client faucet --url https://faucet.testnet.sui.io/v1/gas
-```
-
-After some seconds, running again `sui client gas` should show the newly-minted coins in your
-wallet.
-
-## Clone the Walrus Sites repo, and build the `site-builder` tool
-
-First clone and enter the Walrus Sites repo from
-`https://github.com/MystenLabs/blocksite-poc`). (TODO: change link to public repo when available).
-
-``` sh
-git clone git@github.com:MystenLabs/blocksite-poc.git
-cd blocksite-poc
+git clone git@github.com:MystenLabs/walrus-sites.git
+cd walrus-sites
 cd site-builder
 ```
 
-Build the release version of the site builder.
+Then, build the release version of the site builder:
 
 ``` sh
 cargo build --release
 ```
 
-After the build process completes, it should be possible to run:
+After the build process completes, you are ready to run the site builder:
 
-``` sh
-./target/release/site-builder
-```
-
-And output should look like the following:
-
-``` txt
+```terminal
+$ ./target/release/site-builder
 Usage: site-builder [OPTIONS] <COMMAND>
 
 Commands:
@@ -113,10 +45,3 @@ Commands:
 
 ⋮
 ```
-
-## Get the latest `walrus` client configuration
-
-First,
-[download](https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml)
-the `walrus` client config.  Then, copy it to `~/.walrus/config.yaml`. This ensures that the
-`walrus` binary can connect to the correct Walrus object on Sui.
