@@ -1211,15 +1211,15 @@ provided showing how to upload and download a blob through a web form using the 
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-to-walrus-sites"><a class="header" href="#introduction-to-walrus-sites">Introduction to Walrus Sites</a></h1>
 <p><em>Walrus Sites</em> are "web"-sites that use Sui and Walrus as their underlying technology. They are a
 prime example of how Walrus can be used to build new and exciting decentralized applications. Anyone
-can build and deploy a Walrus Site, and make it accessible to the World!</p>
+can build and deploy a Walrus Site and make it accessible to the World!</p>
 <p>At a high level, the most exciting features include:</p>
 <ul>
 <li>Publishing a site does not require managing servers or complex configurations; just provide the
 source files (produced by your favorite web framework), publish them to Walrus Sites using the
 <a href="walrus-sites/./site-builder.html">site builder tool</a>, and you are done!</li>
-<li>Sites can be linked to from ordinary Sui objects. This feature enables, for example, creating a
+<li>Sites can be linked to from ordinary Sui objects. This feature enables, for example, creating an
 NFT collection in which <em>every single NFT</em> has a <em>personalized website dedicated to it</em>.</li>
-<li>Walrus Sites are owned by addresses on Sui, and can be exchanged, shared, and updated thanks to
+<li>Walrus Sites are owned by addresses on Sui and can be exchanged, shared, and updated thanks to
 Sui's flexible programming model. This means, among other things, that Walrus Sites can leverage
 the <a href="https://suins.io/">SuiNS</a> naming system to have human readable names. No more messing around
 with DNS!</li>
@@ -1231,15 +1231,14 @@ to add backend functionality to Walrus Sites!</li>
 </ul>
 <h2 id="show-me"><a class="header" href="#show-me">Show me</a></h2>
 <p>To give you a very high level intuition of how Walrus Sites work, let's look at an example: A simple
-NFT collection on Sui, that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
+NFT collection on Sui that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
 which <em>each NFT</em> has a <em>specific, personalized Walrus Site</em>.</p>
-<p>You can check out the mint page at
-<a href="https://flatland.walrus.site/">https://flatland.walrus.site/</a>. This site is serve to your browser
-through the Walrus Site <em>Portal</em> <a href="https://walrus.site">https://walrus.site</a>. While the Portal's
-operation is explained in a <a href="walrus-sites/./portal.html">later section</a>, consider for now that there
-can be many Portals (hosted by whomever wants to have their own, and even on <code>localhost</code>). Further,
-the only function of the Portal is to provide the browser with some code (specifically, a service
-worker) that allows it to fetch the Walrus Site from Sui and Walrus.</p>
+<p>You can check out the mint page at <a href="https://flatland.walrus.site/">https://flatland.walrus.site/</a>. This site is served to your
+browser through the Walrus Site <em>Portal</em> <a href="https://walrus.site">https://walrus.site</a>. While the Portal's operation is
+explained in a <a href="walrus-sites/./portal.html">later section</a>, consider for now that there can be many Portals (hosted
+by whoever wants to have their own, and even on <code>localhost</code>). Further, the only function of the
+Portal is to provide the browser with some code (specifically, a service worker) that allows it to
+fetch the Walrus Site from Sui and Walrus.</p>
 <p>If you have a Sui wallet with some Testnet SUI, you can try and "mint a new Flatlander" from the
 site. This creates an NFT from the collection, and shows you two links, one to the explorer, and one
 to the "Flatlander site". This latter site is a special Walrus Site that exists only for that NFT,
@@ -1410,17 +1409,23 @@ above. Now, your Sui CLI address owns the registration NFT, and you can proceed 
 <h2 id="map-the-suins-name-to-the-walrus-site"><a class="header" href="#map-the-suins-name-to-the-walrus-site">Map the SuiNS name to the Walrus Site</a></h2>
 <p>This step associates the name <code>walrusgame</code> to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.</p>
-<p>Here, we issue an transaction using the Sui CLI that creates this mapping.</p>
-<pre><code class="language-sh"> sui client call \
-    --package 0x22fa05f21b1ad71442491220bb9338f7b7095fe35000ef88d5400d28523bdd93 \
+<p>Here, we issue a transaction using the Sui CLI that creates this mapping:</p>
+<pre><code class="language-sh">SUINS_CORE_PACKAGE=0x22fa05f21b1ad71442491220bb9338f7b7095fe35000ef88d5400d28523bdd93
+SUINS_CORE_OBJECT=0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3
+MY_SUINS_REGISTRATION_OBJECT=0x6412... # adjust this to your own SuiNS object
+MY_WALRUS_SITE_OBJECT=0x5ac9... # adjust this to your Walrus Site object
+sui client call \
+    --package $SUINS_CORE_PACKAGE \
     --module controller \
     --function set_target_address \
     --gas-budget 500000000 \
-    --args 0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3 \
-    --args 0x6412c4cfbe50e219c2d4d30108d7321d064e15bf64e752307100bff5eb91da38 \
-    --args "[0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e]" \
+    --args $SUINS_CORE_OBJECT \
+    --args $MY_SUINS_REGISTRATION_OBJECT \
+    --args "[$MY_WALRUS_SITE_OBJECT]" \
     --args 0x6
 </code></pre>
+<p>Note that the SuiNS package and object on testnet may change, you can find the latest ones in the
+<a href="https://docs.suins.io/#active-constants">SuiNS documentation</a> (make sure you select <em>Testnet</em>).</p>
 <p>If all succeeds, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuring-the-site-builder"><a class="header" href="#configuring-the-site-builder">Configuring the site builder</a></h1>
 <p>Configuring the <code>site-builder</code> tool is straightforward, but care is required to ensure that
