@@ -5,7 +5,7 @@
 
 ---
 
-# About Walrus
+# Design
 
 - [Objectives and use-cases](./overview/objectives_use_cases.md)
 - [Overview](./overview/overview.md)

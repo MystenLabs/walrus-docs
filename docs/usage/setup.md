@@ -74,11 +74,11 @@ when [running the CLI](./interacting.md).
 
 We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs) and Ubuntu:
 
-| OS     | CPU           | Architecture    |
-| ------ | ------------- | --------------- |
-| MacOS  | Apple Silicon | `macos-arm64`   |
-| MacOS  | Intel 64bit   | `macos-x86_64`  |
-| Ubuntu | Intel 64bit   | `ubuntu-x86_64` |
+| OS     | CPU           | Architecture                                                                                                |
+| ------ | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-arm64)     |
+| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-x86_64)   |
+| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64) |
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 `$SYSTEM` variable) and move it to a directory included in your `$PATH`:
