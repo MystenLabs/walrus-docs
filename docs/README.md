@@ -21,7 +21,7 @@ details on how this works.
   traditional full replication methods and much more robust against failures compared to
   protocols that only store each blob on a subset of storage nodes.
 
-- **Integration with Sui blockchain**: Walrus leverages the [Sui](https://github.com/MystenLabs/sui)
+- **Integration with Sui blockchain**: Walrus leverages [Sui](https://github.com/MystenLabs/sui)
   for coordination, attesting availability and payments. Storage space can be owned as a resource on
   Sui, split, merged, and transferred. Blob storage is represented using storage objects on Sui, and
   smart contracts can check whether a blob is available and for how long.
