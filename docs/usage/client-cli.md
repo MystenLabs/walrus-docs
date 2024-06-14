@@ -9,7 +9,7 @@ Detailed usage information is available through
 walrus --help
 ```
 
-Each sub-command of `walrus` can also be called with `--help` (or `-h`) to print its specific
+Each sub-command of `walrus` can also be called with `--help` to print its specific
 arguments and their meaning.
 
 ## Walrus system information
@@ -50,14 +50,12 @@ Storing blobs on Walrus can be achieved through the following commands:
 walrus store <some file>
 ```
 
-The store command takes an CLI argument `--epochs <EPOCHS>` (or `-e`) indicating the number of
+The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) indicating the number of
 epochs the blob should be stored for. This defaults to 1 epoch, namely the current one. If the blob
 is already stored on Walrus for a sufficient number of epochs the command does not store it again.
 
 However, this behavior can be overwritten with the `--force` (or `-f`) CLI option, which stores
-the blob again and creates a fresh blob object on Sui belonging to the wallet address. Note that
-when a blob already exists and is re-uploaded there is hardly any networking cost, since slivers
-on storage nodes are re-used.
+the blob again and creates a fresh blob object on Sui belonging to the wallet address.
 
 The status of a blob by blob ID can be queried using the command:
 
@@ -85,9 +83,9 @@ Reading blobs from Walrus can be achieved through the following command:
 walrus read <some blob ID>
 ```
 
-By default the content of the file are sent to standard out. The `--out <OUT>` CLI option (or `-o`)
+By default the blob data is written to the standard output. The `--out <OUT>` CLI option (or `-o`)
 can be used to specify and output file name. The `--rpc-url <URL>` (or `-r`) may be used to specify
-an aggregator address to use instead of the standard one.
+a Sui RPC node to use instead of the one set in the wallet configuration or the default one.
 
 ## Changing the default configuration
 
