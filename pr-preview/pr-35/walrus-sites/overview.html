@@ -230,16 +230,16 @@ resolution is installed in the browser from a Portal.</li>
 </ul>
 <p>All of these approaches are viable (the first has been used for similar applications in IPFS
 gateways, for example), and have trade offs. As an initial step, we have chosen to use the
-service-worker based approach, as it is novel, light weight, and ensures that the Portal does not
-have to process all the traffic from clients. In the following, therefore, we present the details of
-this Portal-based approach.</p>
+service-worker based approach, as it is light weight and ensures that the Portal does not have to
+process all the traffic from clients. In the following, therefore, we present the details of this
+Portal-based approach.</p>
 <h3 id="browsing-and-domain-isolation"><a class="header" href="#browsing-and-domain-isolation">Browsing and domain isolation</a></h3>
 <p>We must ensure that, when browsing multiple sites through a Portal, for example the one hosted at
-<a href="https://walrus.site">https://walrus.site</a>, these sites are isolated. Isolation is necessary for
-security, and to ensure that the wallet connection in the browser works as expected.</p>
+<a href="https://walrus.site">https://walrus.site</a>, these sites are isolated. Isolation is necessary for security, and to ensure
+that the wallet connection in the browser works as expected.</p>
 <p>To do so, we give each Walrus Site a specific <em>subdomain</em> of the Portal's domain. For example, the
-Flatland mint dApp is hosted at <a href="https://flatland.walrus.site">https://flatland.walrus.site</a>, where
-the subdomain <code>flatland</code> is uniquely associated to the object ID of the Walrus Site through SuiNS.</p>
+Flatland mint dApp is hosted at <a href="https://flatland.walrus.site">https://flatland.walrus.site</a>, where the subdomain <code>flatland</code> is
+uniquely associated to the object ID of the Walrus Site through SuiNS.</p>
 <p>Walrus Sites also work without SuiNS: a site can <em>always</em> be browsed by using as subdomain the
 Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
 <a href="https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.blocksite.net">https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.blocksite.net</a> .</p>
