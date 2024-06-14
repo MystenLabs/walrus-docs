@@ -39,6 +39,8 @@
   - [Bonus: Set a SuiNS name](./walrus-sites/tutorial-suins.md)
   - [Advanced configuration](./walrus-sites/tutorial-config.md)
 - [Technical overview](./walrus-sites/overview.md)
+  - [Linking from and to Walrus Sites](./walrus-sites/linking.md)
+  - [Redirecting objects to Walrus Sites](./walrus-sites/redirects.md)
   - [The site builder](./walrus-sites/site-builder.md)
   - [The Walrus Sites Portal](./walrus-sites/portal.md)
   - [Known restrictions](./walrus-sites/restrictions.md)
