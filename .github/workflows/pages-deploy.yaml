@@ -1,4 +1,4 @@
-name: Build and deploy GitHub Pages
+name: Build docs and publish to GitHub Pages and Walrus
 on:
   push:
     branches:
@@ -8,21 +8,108 @@ on:
       - "docs/**"
       - ".github/actions/build-mdbook/action.yaml"
       - ".github/workflows/pages-deploy.yaml"
+  workflow_dispatch:
+    inputs:
+      publish-pages:
+        description: "Publish to GitHub Pages"
+        type: boolean
+        required: true
+        default: false
+      update-walrus-site:
+        description: "Update the Walrus Site"
+        type: boolean
+        required: true
+        default: false
 
 concurrency: ci-${{ github.ref }}
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-and-deploy:
+  publish-github-pages:
+    name: Publish to GitHub Pages
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || inputs.publish-pages == true }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
-      - name: Deploy
+      - name: Update GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           folder: build/html
           clean-exclude: pr-preview/
           force: false
+
+  # We store the data for the Sui wallet and the site object in GitHub variables
+  # (https://github.com/MystenLabs/walrus-docs/settings/variables/actions) and secrets
+  # (https://github.com/MystenLabs/walrus-docs/settings/secrets/actions).
+  publish-walrus:
+    name: Update Walrus Site
+    runs-on: ubuntu-ghcloud
+    if: ${{ github.event_name == 'push' || inputs.update-walrus-site == true }}
+    env:
+      SUI_ADDRESS: ${{ vars.SUI_ADDRESS }}
+      SUI_CONFIG_DIR: /home/runner/.sui/sui_config
+      SUI_KEYSTORE_FILE: /home/runner/.sui/sui_config/sui.keystore
+      SUI_CONFIG_FILE: /home/runner/.sui/sui_config/client.yaml
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/build-mdbook
+      - name: Clean docs
+        run: rm build/**/.nojekyll
+
+      - name: Set up Sui wallet
+        run: |
+          mkdir -p $SUI_CONFIG_DIR
+          CLIENT_CONF="---
+          keystore:
+            File: $SUI_KEYSTORE_FILE
+          envs:
+            - alias: testnet
+              rpc: \"https://fullnode.testnet.sui.io:443\"
+          active_env: testnet
+          active_address: \"$SUI_ADDRESS\""
+          echo "$CLIENT_CONF" > $SUI_CONFIG_FILE
+          cat $SUI_CONFIG_FILE
+          echo '${{ secrets.SUI_KEYSTORE }}' > $SUI_KEYSTORE_FILE
+      - name: Get SUI from faucet
+        run: >
+          curl --location --request POST 'https://faucet.devnet.sui.io/gas'
+          --header 'Content-Type: application/json'
+          --data-raw "{
+              \"FixedAmountRequest\": {
+                  \"recipient\": \"$SUI_ADDRESS\"
+              }
+          }"
+
+      - name: Install and configure Walrus
+        run: |
+          # The bin directory was already created and added to $PATH in the build-mdbook action
+          curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64 -o bin/walrus
+          chmod +x bin/walrus
+          mkdir -p ~/.walrus
+          curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o ~/.walrus/client_config.yaml
+          walrus -h # Ensure the walrus binary works
+
+      # TODO: Use HTTPS instead of SSH and remove SSH secrets as soon as walrus-sites is public. (#32)
+      - name: Clone walrus-sites
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
+          git clone git@github.com:MystenLabs/walrus-sites
+      - name: Build site-builder
+        run: |
+          cd walrus-sites/site-builder
+          cargo build --release
+          cp target/release/site-builder ../../bin
+          cd -
+
+      - name: Update Walrus Site
+        run: >
+          RUST_LOG=debug
+          site-builder
+          --config walrus-sites/site-builder/assets/builder-example.yaml
+          update build/html ${{ vars.WALRUS_SITE_OBJECT }}
