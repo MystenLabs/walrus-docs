@@ -179,6 +179,9 @@
 designed specifically for large binary files, or "blobs". Walrus focuses on providing a robust
 solution for storing unstructured content on decentralized storage nodes while ensuring high
 availability and reliability even in the presence of Byzantine faults.</p>
+<p>Fun fact: If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
+Walrus behind the scenes. See the <a href="./walrus-sites/intro.html">Walrus Sites chapter</a> for further
+details on how this works.</p>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
 <ul>
 <li>
@@ -1187,7 +1190,14 @@ sniffing from inferring dangerous executable types such as javascript or style s
 <div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <p>As inspiration, we provide several simple examples in different programming languages to interact
 with Walrus through the various interfaces. They are located at
-<a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples">https://github.com/MystenLabs/walrus-docs/tree/main/examples</a>.</p>
+<a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples">https://github.com/MystenLabs/walrus-docs/tree/main/examples</a> and described below.</p>
+<p>In addition, we have built actual applications on top of Walrus. The prime example is <a href="usage/../walrus-sites/intro.html">Walrus
+Sites</a>, with code available in the
+<a href="https://github.com/MystenLabs/walrus-sites">github.com/MystenLabs/walrus-sites</a> repository.</p>
+<p>And for an example of how to build a static website and store it as a Walrus Site with GitHub
+actions, just look at the <a href="https://github.com/MystenLabs/walrus-docs/blob/main/.github/workflows/publish.yaml">CI
+workflow</a> we use
+to publish this very site.</p>
 <h2 id="python"><a class="header" href="#python">Python</a></h2>
 <p>The <a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples/python">Python examples</a> folder
 contains a number of examples:</p>
@@ -1211,7 +1221,9 @@ provided showing how to upload and download a blob through a web form using the 
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-to-walrus-sites"><a class="header" href="#introduction-to-walrus-sites">Introduction to Walrus Sites</a></h1>
 <p><em>Walrus Sites</em> are "web"-sites that use Sui and Walrus as their underlying technology. They are a
 prime example of how Walrus can be used to build new and exciting decentralized applications. Anyone
-can build and deploy a Walrus Site and make it accessible to the World!</p>
+can build and deploy a Walrus Site and make it accessible to the World! Funnily, this documentation
+is itself available as a Walrus site at <a href="https://docs.walrus.site/walrus-sites/intro.html">https://docs.walrus.site/walrus-sites/intro.html</a> (if you
+aren't there already).</p>
 <p>At a high level, the most exciting features include:</p>
 <ul>
 <li>Publishing a site does not require managing servers or complex configurations; just provide the
