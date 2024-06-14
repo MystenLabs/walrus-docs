@@ -7,7 +7,7 @@ on:
       - "book.toml"
       - "docs/**"
       - ".github/actions/build-mdbook/action.yaml"
-      - ".github/workflows/pages-deploy.yaml"
+      - ".github/workflows/publish.yaml"
   workflow_dispatch:
     inputs:
       publish-pages:
