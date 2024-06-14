@@ -5,6 +5,10 @@ designed specifically for large binary files, or "blobs". Walrus focuses on prov
 solution for storing unstructured content on decentralized storage nodes while ensuring high
 availability and reliability even in the presence of Byzantine faults.
 
+Fun fact: If you are viewing this site at <https://docs.walrus.site>, you are fetching this from
+Walrus behind the scenes. See the [Walrus Sites chapter](./walrus-sites/intro.md) for further
+details on how this works.
+
 ## Features
 
 - **Storage and retrieval**: Walrus supports storage operations to write and read blobs. It also
