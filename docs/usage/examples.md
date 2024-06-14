@@ -2,7 +2,16 @@
 
 As inspiration, we provide several simple examples in different programming languages to interact
 with Walrus through the various interfaces. They are located at
-<https://github.com/MystenLabs/walrus-docs/tree/main/examples>.
+<https://github.com/MystenLabs/walrus-docs/tree/main/examples> and described below.
+
+In addition, we have built actual applications on top of Walrus. The prime example is [Walrus
+Sites](../walrus-sites/intro.md), with code available in the
+[github.com/MystenLabs/walrus-sites](https://github.com/MystenLabs/walrus-sites) repository.
+
+And for an example of how to build a static website and store it as a Walrus Site with GitHub
+actions, just look at the [CI
+workflow](https://github.com/MystenLabs/walrus-docs/blob/main/.github/workflows/publish.yaml) we use
+to publish this very site.
 
 ## Python
 

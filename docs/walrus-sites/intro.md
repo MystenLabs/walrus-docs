@@ -2,7 +2,9 @@
 
 _Walrus Sites_ are "web"-sites that use Sui and Walrus as their underlying technology. They are a
 prime example of how Walrus can be used to build new and exciting decentralized applications. Anyone
-can build and deploy a Walrus Site and make it accessible to the World!
+can build and deploy a Walrus Site and make it accessible to the World! Funnily, this documentation
+is itself available as a Walrus site at <https://docs.walrus.site/walrus-sites/intro.html> (if you
+aren't there already).
 
 At a high level, the most exciting features include:
 

@@ -7,9 +7,10 @@ availability and reliability even in the presence of Byzantine faults.
 
 ## Documentation
 
-Our documentation is available on [GitHub Pages](https://mystenlabs.github.io/walrus-docs); it is
-generated using [mdBook](https://rust-lang.github.io/mdBook/) from source files in the
-[`docs/`](./docs/) directory.
+Our documentation is available [as a Walrus Site](https://docs.walrus.site) (see [the
+documentation](https://docs.walrus.site/walrus-sites/intro.html) for further information on what
+this means) and on [GitHub Pages](https://mystenlabs.github.io/walrus-docs); it is generated using
+[mdBook](https://rust-lang.github.io/mdBook/) from source files in the [`docs/`](./docs/) directory.
 
 You can also build and access the documentation locally (assuming you have Rust installed):
 
