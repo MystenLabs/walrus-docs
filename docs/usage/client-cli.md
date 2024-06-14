@@ -11,8 +11,7 @@ walrus --help
 
 ## Walrus system information
 
-Information about the Walrus system is available through through the `walrus info` command. For
-example,
+Information about the Walrus system is available through the `walrus info` command. For example,
 
 ```console
 $ walrus info
@@ -49,7 +48,12 @@ walrus store <some file>
 walrus read <some blob ID>
 ```
 
-Use the `--config` option to specify a custom path to the configuration location.
+## Changing the default configuration
+
+Use the `--config` option to specify a custom path to the
+[configuration location](../usage/configuration.html#configuration-file).
+
+## Troubleshooting
 
 If you get an error like "the specified Walrus system object does not exist", make sure your wallet
 is set up for Sui **testnet** and you use the latest [configuration](./configuration.md).
