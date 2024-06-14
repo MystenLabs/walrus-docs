@@ -33,8 +33,9 @@ certified in the final step. The steps involved in a store operation can be exec
 client, or a publisher that accepts and publishes blobs via HTTP.
 
 Walrus currently allows the storage of blobs up to a maximum size that may be determined
-through the `walrus info` command. You may store larger blobs by splitting them into smaller
-chunks.
+through the [`walrus info`](../usage/client-cli.md#walrus-system-information) CLI command. The
+maximum blob size is currently 957&nbsp;MiB. You may store larger blobs by splitting them into
+smaller chunks.
 
 Blobs are stored for a certain number of _epochs_, as specified at the time they were stored. Walrus
 storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
