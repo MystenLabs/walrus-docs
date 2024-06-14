@@ -27,7 +27,7 @@ To give you a very high level intuition of how Walrus Sites work, let's look at 
 NFT collection on Sui that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
 which _each NFT_ has a _specific, personalized Walrus Site_.
 
-You can check out the mint page at <https://flatland.walrus.site/>. This site is serve to your
+You can check out the mint page at <https://flatland.walrus.site/>. This site is served to your
 browser through the Walrus Site _Portal_ <https://walrus.site>. While the Portal's operation is
 explained in a [later section](./portal.md), consider for now that there can be many Portals (hosted
 by whoever wants to have their own, and even on `localhost`). Further, the only function of the

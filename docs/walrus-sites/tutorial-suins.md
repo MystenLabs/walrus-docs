@@ -44,7 +44,7 @@ above. Now, your Sui CLI address owns the registration NFT, and you can proceed 
 This step associates the name `walrusgame` to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.
 
-Here, we issue an transaction using the Sui CLI that creates this mapping:
+Here, we issue a transaction using the Sui CLI that creates this mapping:
 
 ```sh
 SUINS_CORE_PACKAGE=0x22fa05f21b1ad71442491220bb9338f7b7095fe35000ef88d5400d28523bdd93
@@ -62,7 +62,7 @@ sui client call \
     --args 0x6
 ```
 
-Note that SuiNS package and object on testnet may change, you can find the latest ones in the [SuiNS
-documentation](https://docs.suins.io/#active-constants) (make sure you select _Testnet_).
+Note that the SuiNS package and object on testnet may change, you can find the latest ones in the
+[SuiNS documentation](https://docs.suins.io/#active-constants) (make sure you select _Testnet_).
 
 If all succeeds, we can now browse [https://walrusgame.walrus.site](https://walrusgame.walrus.site)!
