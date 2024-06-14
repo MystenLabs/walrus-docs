@@ -30,4 +30,4 @@ Italicized terms in the description indicate other specific Walrus terms contain
 | member                            | an *SN* that is part of a *committee* at some *epoch*                                                                                                                                       |
 | storage epoch                     | the epoch for Walrus as distinct to the epoch for Sui                                                                                                                                       |
 | availability period               | the period specified in *storage epochs* for which a *blob* is certified to be available on Walrus                                                                                          |
-| expiry                            | the end epoch, at which a blob is no longer available, and may be deleted. |
+| expiry                            | the end epoch, at which a blob is no longer available and can be deleted |
