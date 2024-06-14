@@ -7,18 +7,18 @@ The key actors in the Walrus architecture are the following:
   These actors are ready to pay for service
   when it comes to writes and non-best-effort reads. Users also want to prove
   the **availability** of a blob to third parties without the cost of sending or receiving the full
-  blob. 
+  blob.
   
   Users might be malicious in various ways: they might not want to pay for services, prove the
   availability of unavailable blobs, modify/delete blobs without authorization, try to
   exhaust resources of storage nodes, and so on.
 
-- **Storage nodes** hold one or many **shards** within a **storage epoch**. 
+- **Storage nodes** hold one or many **shards** within a **storage epoch**.
 
   Each blob is erasure
   encoded in many **slivers**. Slivers from each stored blob become part of all shards. A shard
   at any storage epoch is associated with a storage node that actually stores all slivers of
-  the shard and is ready to serve them. 
+  the shard and is ready to serve them.
   
   A Sui smart contract controls the assignment of storage nodes to shards within
   **storage epochs** and Walrus assumes that more than 2/3 of the
@@ -36,17 +36,24 @@ Walrus supports any additional number of optional infrastructure actors that can
 permissionless way:
 
 - **Caches** are clients that store one or more full blobs and make them available to users
-  over traditional web2 technologies (such as HTTP). They are optional in that end users can also
+  over traditional web2 technologies (such as HTTP). 
+  
+  They are optional in that end users can also
   operate a local cache, and perform Walrus reads over web2 technologies locally. However, cache
   infrastructures can also act as CDNs, split the cost of blob reconstruction over many requests,
   be better connected, and so on. A client can always verify that reads from such infrastructures
   are correct.
+
 - **Publishers** are clients that help end users store a blob using web2 technologies,
-  using less bandwidth and custom logic. In effect, they receive the blob to be published over
+  using less bandwidth and custom logic. 
+  
+  In effect, they receive the blob to be published over
   traditional web2 protocols (like HTTP) and run the Walrus store protocol on the end user's
   behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
   collecting storage-node signatures and aggregating them into a certificate, as well as all
-  other on-chain actions. They are optional in that a user can directly interact with Sui and
+  other on-chain actions. 
+  
+  They are optional in that a user can directly interact with Sui and
   the storage nodes to store blobs. An end user can always verify that a publisher
   performed their duties correctly by checking that an event associated with the
   [Point of Availability](./properties.md) for the blob exists on chain
@@ -55,5 +62,5 @@ permissionless way:
 
 Caches, publishers and end users are not considered trusted components of the system, and they might
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
-for honest end users that use honest intermediaries (caches and publishers). Walrus provides a means for
-end users to audit the correct operation of both caches and publishers.
+for honest end users that use honest intermediaries (caches and publishers). Walrus provides a 
+means for end users to audit the correct operation of both caches and publishers.
