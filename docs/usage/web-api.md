@@ -41,8 +41,8 @@ For some use cases (e.g., a public website), or to just try out the HTTP API, a 
 aggregator and/or publisher is required. For your convenience, we provide these at the following
 hosts:
 
-- Aggregator: `http://sea-dnt-sto-00.devnet.sui.io:9000`
-- Publisher: `http://ord-dnt-sto-00.devnet.sui.io:9000`
+- Aggregator: `https://aggregator.devnet.walrus.space`
+- Publisher: `https://publisher.devnet.walrus.space`
 
 Note that the publisher consumes (testnet) Sui on the service side, and a mainnet deployment would
 likely not be able to provide uncontrolled public access to publishing without requiring some
