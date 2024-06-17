@@ -1,6 +1,6 @@
 # Off-chain operations
 
-While Walrus operations happen off Sui, they might interact with the blockchain flows defining the 
+While Walrus operations happen off Sui, they might interact with the blockchain flows defining the
 resource life cycle.
 
 ## Write paths
@@ -45,10 +45,10 @@ be mediated by a publisher that receives a blob and drives the process to comple
 
 ## Refresh availability
 
-Because no content data is required to refresh the duration of storage, refresh is conducted fully on
-chain within the protocol. To request an extension to the availability of a blob, a user
-provides an appropriate storage resource. Upon success this emits an event that storage nodes
-receive to extend the time for which each sliver is stored.
+Because no content data is required to refresh the duration of storage, refresh is conducted fully
+on chain within the protocol. To request an extension to the availability of a blob, a user provides
+an appropriate storage resource. Upon success this emits an event that storage nodes receive to
+extend the time for which each sliver is stored.
 
 ## Inconsistent resource flow
 
@@ -75,16 +75,15 @@ the read process re-encodes the received blob to check that the blob ID is corre
 consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
 nodes (that do not otherwise run decoding), and does not change the output of read in any case.
 
-Note, however, that partial reads leveraging the systematic nature of the encoding might return partial
-reads for inconsistently encoded files. Thus, if consistency and availability of reads is important,
-dApps should do full reads rather than partial reads.
+Note, however, that partial reads leveraging the systematic nature of the encoding might return
+partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
+important, dApps should do full reads rather than partial reads.
 
 ## Read paths
 
-A user can read stored blobs either directly or through a cache. The direct user journey is discussed
-here because this is also how the cache operates in case of a cache miss. Assume that most
-reads happen through caches for blobs that are hot, and do not result in requests to
-storage nodes.
+A user can read stored blobs either directly or through a cache. The direct user journey is
+discussed here because this is also how the cache operates in case of a cache miss. Assume that most
+reads happen through caches for blobs that are hot, and do not result in requests to storage nodes.
 
 - The reader gets the metadata for the blob ID from any storage node, and authenticates it using
   the blob ID.
@@ -121,6 +120,6 @@ During an epoch, a correct storage node challenges all shards to provide blob sl
 - The challenge/response communication is authenticated.
 
 Challenges provide some reassurance that the storage node can actually recover shard data in a
-probabilistic manner, avoiding storage nodes getting payment without any evidence they might retrieve
-shard data. The sequential nature of the challenge and some reasonable timeout also ensures that
-the process is timely.
+probabilistic manner, avoiding storage nodes getting payment without any evidence they might
+retrieve shard data. The sequential nature of the challenge and some reasonable timeout also ensures
+that the process is timely.
