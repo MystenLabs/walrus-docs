@@ -103,7 +103,7 @@ Store in a variety of ways. As examples we hope to see the community build:
 - **Support a full decentralized web experience:** Walrus can host full decentralized web
   experiences including all resources (such as js, css, html, media). These can provide content but
   also host the UX of dapps, enabling fully decentralized front end and back ends on chain. It
-  brings the full \"web\" back in \"web3\".
+  brings the full "web" back in "web3".
 
 - **Support subscription models for media:** Creators can store encrypted media on Walrus and only
   provide access via decryption keys to parties that have paid a subscription fee or have paid for
