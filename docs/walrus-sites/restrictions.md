@@ -10,7 +10,8 @@ Walrus Sites are fully publicly accessible, as the metadata is stored on Sui and
 stored on Walrus. Therefore, developers _must_ not store secret values within the sites.
 
 We emphasize again that any such backend-specific operations (storing secret values, authentication,
-etc.) are achievable by leveraging the integration with Sui blockchain and a Sui-compatible wallet.
+etc.) are achievable by leveraging the integration with the Sui blockchain and a Sui-compatible
+wallet.
 
 ## There is a maximum redirect depth
 
