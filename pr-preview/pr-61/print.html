@@ -1536,8 +1536,10 @@ sui client call \
     --args "[$MY_WALRUS_SITE_OBJECT]" \
     --args 0x6
 </code></pre>
-<p>Note that the SuiNS package and object on testnet may change, you can find the latest ones in the
-<a href="https://docs.suins.io/#active-constants">SuiNS documentation</a> (make sure you select <em>Testnet</em>).</p>
+<p>Note that the SuiNS package and object on testnet may change, you can
+find the latest ones in the <a href="https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts#L38-L50">SuiNS
+contract</a>
+(make sure look at <em>Testnet</em>).</p>
 <p>If all succeeds, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuring-the-site-builder"><a class="header" href="#configuring-the-site-builder">Configuring the site builder</a></h1>
 <p>Configuring the <code>site-builder</code> tool is straightforward, but care is required to ensure that
