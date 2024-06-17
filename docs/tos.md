@@ -2,9 +2,9 @@
 
 Last updated: June 13, 2024
 
-By using Mysten Labs devnet software, technologies, tools, and other services (collectively
+By using Mysten Labs Devnet software, technologies, tools, and other services (collectively
 “Devnet”), you agree to the general Terms of Service and these additional Devnet Terms of Service
-(together, the “Terms”). If you do not agree, do not participate in DevNet. If you are using Devnet
+(together, the “Terms”). If you do not agree, do not participate in Devnet. If you are using Devnet
 on behalf of an organization, you represent and warrant that you are an authorized representative of
 that organization and have the authority to bind that business or entity to the Terms.
 
