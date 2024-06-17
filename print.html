@@ -383,45 +383,62 @@ and comparing the result to the blob ID in the certificate.</p>
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
 for honest end users that use honest intermediaries (caches and publishers). Walrus provides a
 means for end users to audit the correct operation of both caches and publishers.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-overheads-and-verification"><a class="header" href="#encoding-overheads-and-verification">Encoding, overheads, and verification</a></h1>
-<p>We summarize here the basic encoding and cryptographic techniques used in Walrus.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-overheads-and-verification"><a class="header" href="#encoding-overheads-and-verification">Encoding, overheads and verification</a></h1>
+<p>The following list summarizes the basic encoding and cryptographic techniques used in Walrus:</p>
 <ul>
-<li><strong>Storage nodes</strong> hold one or many <strong>shards</strong> in a storage epoch, out of a larger total (say 1000)
-and each shard contains one blob <strong>sliver</strong> for each blob past PoA. Each shard is assigned to a
-storage node in a storage epoch.</li>
-<li>An <a href="https://en.wikipedia.org/wiki/Online_codes">erasure code</a> <strong>encode algorithm</strong> takes a blob,
+<li>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> in a storage epoch out of a larger total (1000, for
+instance). Each shard contains one blob <strong>sliver</strong> for each blob past point of availability. Each
+shard is assigned to a storage node in a storage epoch.</p>
+</li>
+<li>
+<p>An <a href="https://en.wikipedia.org/wiki/Online_codes">erasure code</a> <strong>encode algorithm</strong> takes a blob
 and encodes it as K symbols, such that any fraction p of symbols can be used to reconstruct
-the blob. Each blob sliver contains a fixed number of such symbols.</li>
-<li>We select p &lt; 1/3 so that a third of symbols and also slivers may be used to reconstruct the blob
-by the <strong>decode algorithm</strong>. The matrix used to produce the erasure code is fixed and the same
-for all blobs by the Walrus system, and encoders have no discretion about it.</li>
-<li>Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
-to all the storage shards. As a result, the overhead of the distributed store is ~5x that of
-the blob itself, no matter how many shards we have. The encoding is systematic meaning that some
-storage nodes hold part of the original blob, allowing for fast random access reads.</li>
+the blob. Each blob sliver contains a fixed number of such symbols.</p>
+</li>
+<li>
+<p>Walrus selects p &lt; 1/3 so that a third of symbols and slivers can be used to reconstruct the blob
+by the <strong>decode algorithm</strong>. The matrix used to produce the erasure code is fixed and is the same
+for all blobs in the Walrus system, and encoders have no discretion about it.</p>
+</li>
+<li>
+<p>Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
+to all the storage shards.</p>
+<p>As a result, the overhead of the distributed store is ~5x that of the blob itself, no matter how
+many shards there are. The encoding is systematic, meaning that some storage nodes hold part of
+the original blob, allowing for fast random access reads.</p>
+</li>
 </ul>
 <p>Each blob is also associated with some metadata including a blob ID to allow verification:</p>
 <ul>
-<li>A <strong>blob ID</strong> is computed as an authenticator of the set of all shard data and metadata (byte
-size,
-encoding, blob hash). We hash a sliver representation in each of the shards and add the resulting
+<li>
+<p>A <strong>blob ID</strong> is computed as an authenticator of the set of all shard data and metadata (byte
+size, encoding, blob hash).</p>
+<p>Walrus hashes a sliver representation in each of the shards and adds the resulting
 hashes into a Merkle tree. Then the root of the Merkle tree is the blob hash used to derive the
-blob ID that identifies the blob in the system.</li>
-<li>Each storage node may use the blob ID to check if some shard data belongs to a blob using the
+blob ID that identifies the blob in the system.</p>
+</li>
+<li>
+<p>Each storage node can use the blob ID to check if some shard data belongs to a blob using the
 authenticated structure corresponding to the blob hash (Merkle tree). A successful check means
-that the data is indeed as intended by the writer of the blob (who, remember, may be corrupt).</li>
-<li>When any party reconstructs a blob ID from shard slivers, or accepts any blob claiming
-to be a specific blob ID, it must check that it encodes to the correct blob ID. This process
-involves re-coding the blob using the erasure correction code, and re-deriving the blob ID to
-check the blob indeed matches. This prevents a malformed blob (i.e., incorrectly erasure coded)
-from ever being read as a valid blob at any correct recipient.</li>
-<li>A set of slivers equal to the reconstruction threshold belonging to a blob ID that are either
+that the data is indeed as intended by the writer of the blob (who might be corrupt).</p>
+</li>
+<li>
+<p>When any party reconstructs a blob ID from shard slivers, or accepts any blob claiming
+to be a specific blob ID, it must check that it encodes to the correct blob ID.</p>
+<p>This process involves re-coding the blob using the erasure correction code, and deriving the
+blob ID again to check that the blob matches. This prevents a malformed blob (incorrectly
+erasure coded) from ever being read as a valid blob at any correct recipient.</p>
+</li>
+<li>
+<p>A set of slivers equal to the reconstruction threshold belonging to a blob ID that are either
 inconsistent or lead to the reconstruction of a different ID represent an incorrect encoding
-(this can only happen if the user that encoded the blob was malicious and encoded it incorrectly).
-We can extract one symbol per sliver to form an inconsistency proof.
-Storage nodes may delete slivers belonging to inconsistently encoded blobs,
+(this happens only if the user that encoded the blob was malicious and encoded it incorrectly).</p>
+<p>Walrus can extract one symbol per sliver to form an inconsistency proof.
+Storage nodes can delete slivers belonging to inconsistently encoded blobs,
 and upon request return either the inconsistency proof or an inconsistency certificate posted
-on-chain.</li>
+on chain.</p>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="operations"><a class="header" href="#operations">Operations</a></h1>
 <p>Walrus operations can be separated in <a href="overview/./operations-sui.html">interactions with the Sui chain</a>, which
@@ -429,154 +446,208 @@ is used by Walrus for coordination and governance, and <a href="overview/./opera
 interactions</a> between clients and storage nodes.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="operations-on-sui"><a class="header" href="#operations-on-sui">Operations on Sui</a></h1>
 <p>Walrus uses Sui smart contracts to coordinate storage operations as resources that have a lifetime,
-and payments. As well as to facilitate governance to determine the storage nodes holding each
-storage shard. We outline here these operations and refer to them below as part of the read / write
-paths. As a reminder, only blob metadata is ever exposed to Sui or its validators, and the content
-of blobs is always stored off-chain on Walrus storage nodes and caches. The storage nodes or caches
-do not have to overlap with any Sui infra (validators etc), and the storage epochs may be of
-different lengths and not have the same start / end times as Sui epochs.</p>
+and payments. Smart contracts also facilitate governance to determine the storage nodes holding each
+storage shard. The following content outlines these operations and refers to them as part of the
+read/write paths.</p>
+<p>Metadata is the only blob element ever exposed to Sui or its validators, as the content
+of blobs is always stored off chain on Walrus storage nodes and caches. The storage nodes or caches
+do not have to overlap with any Sui infrastructure components (such as validators), and the storage
+epochs can be of different lengths and not have the same start/end times as Sui epochs.</p>
 <h2 id="storage-resource-life-cycle-on-sui"><a class="header" href="#storage-resource-life-cycle-on-sui">Storage resource life cycle on Sui</a></h2>
 <p>A number of Sui smart contracts hold the metadata of the Walrus system and all its entities.</p>
 <ul>
-<li>A <strong>Walrus system object</strong> holds the committee of storage nodes for the current storage epoch. The
+<li>
+<p>A <strong>Walrus system object</strong> holds the committee of storage nodes for the current storage epoch. The
 system object also holds the total available space on Walrus and the price per unit of storage (1
-KiB). These values are determined by 2/3 agreement between the storage nodes for the storage
-epoch. Users can pay to purchase storage space for some time duration. These space resources may
-be split, merged and transferred. Later they can be used to place a blob ID into Walrus.</li>
-<li>The <strong>storage fund</strong> holds funds for storing blobs over one, multiple storage epochs or
-perpetually. When purchasing storage space from the system object users pay into the storage fund
-separated over multiple storage epochs, and payments are made each epoch to storage nodes
-according to performance (see below).</li>
-<li>A user acquires some storage through the contracts or transfer, and can assign to it a blob ID,
-signifying they wish to store this blob ID into it. This emits a Move <strong>resource event</strong> that
-both caches and storage nodes listen to to expect and authorize off-chain storage operations.</li>
-<li>Eventually a user holds an off-chain <strong>availability certificate</strong> from storage nodes for a blob
+KiB).</p>
+<p>These values are determined by 2/3 agreement between the storage nodes for the storage
+epoch. Users can pay to purchase storage space for some time duration. These space resources can
+be split, merged and transferred. Later, they can be used to place a blob ID into Walrus.</p>
+</li>
+<li>
+<p>The <strong>storage fund</strong> holds funds for storing blobs over one storage epoch, multiple or
+perpetually. When purchasing storage space from the system object, users pay into the storage fund
+separated over multiple storage epochs. Payments are made each epoch to storage nodes
+according to performance (details follow).</p>
+</li>
+<li>
+<p>A user acquires some storage through the contracts or transfer, and can assign to it a blob ID,
+signifying they want to store this blob ID into it. This emits a Move <strong>resource event</strong> that
+both caches and storage nodes listen for to expect and authorize off-chain storage operations.</p>
+</li>
+<li>
+<p>Eventually a user holds an off-chain <strong>availability certificate</strong> from storage nodes for a blob
 ID. The user <strong>uploads the certificate on chain</strong> to signal that the blob ID is available for an
 availability period. The certificate is checked against the latest Walrus committee,
-and an <strong>availability event</strong> is emitted for the blob ID if correct. This is the PoA for the
-blob.</li>
-<li>At a later time a certified blob's storage may be <strong>extended</strong> by adding a storage object to it
-with a longer expiry period. This facility may be used by smart contracts to extend the
-availability of blobs stored in perpetuity as long as funds exist to continue providing storage.</li>
-<li>In case a blob ID is not correctly encoded a <strong>inconsistency proof certificate</strong> may be uploaded
-on chain at a later time, and an <strong>inconsistent blob event</strong> is emitted signaling to all that the
-blob ID read results will always return None. This indicates that its slivers may be deleted by
-storage nodes, except for an indicator to return None.</li>
+and an <strong>availability event</strong> is emitted for the blob ID if correct. This is the point of
+availability for the blob.</p>
+</li>
+<li>
+<p>At a later time, a certified blob's storage can be <strong>extended</strong> by adding a storage object to it
+with a longer expiry period. This facility can be used by smart contracts to extend the
+availability of blobs stored in perpetuity as long as funds exist to continue providing storage.</p>
+</li>
+<li>
+<p>In case a blob ID is not correctly encoded, an <strong>inconsistency proof certificate</strong> can be uploaded
+on chain at a later time. This action emits an <strong>inconsistent blob event</strong>, signaling that the
+blob ID read results always return <code>None</code>. This indicates that its slivers can be deleted by
+storage nodes, except for an indicator to return <code>None</code>.</p>
+</li>
 </ul>
 <p>Users writing to Walrus, need to perform Sui transactions to acquire storage and certify blobs.
 Users creating or consuming proofs for attestations of blob availability read the chain
-only to prove or verify emission of events. A node that reads Walrus resources only needs to read
-the blockchain to get committee metadata once per epoch, and then they request slivers directly
-from storage nodes by blob ID to perform reads.</p>
+only to prove or verify emission of events. Nodes read
+the blockchain to get committee metadata only once per epoch, and then request slivers directly
+from storage nodes by blob ID to perform reads on Walrus resources.</p>
 <h2 id="governance-operations-on-sui"><a class="header" href="#governance-operations-on-sui">Governance operations on Sui</a></h2>
 <p>Each Walrus storage epoch is represented by the Walrus system object that contains a storage
-committee and various metadata or storage nodes like the mapping between shards and storage nodes,
-available space and current costs. User may go to the system object for the period and <strong>buy some
+committee and various metadata or storage nodes, like the mapping between shards and storage nodes,
+available space and current costs.</p>
+<p>Users can go to the system object for the period and <strong>buy some
 storage</strong> amount for one or more storage epochs. At each storage epoch there is a price for storage,
 and the payment provided becomes part of a <strong>storage fund</strong> for all the storage epochs that span
 the storage bought. There is a maximum number of storage epochs in the future for which storage can
 be bought (~2 years). Storage is a resource that can be split, merged, and transferred.</p>
-<p>At the end of the storage epoch part of the funds in the <strong>storage fund need to be allocated to
-storage nodes</strong>. The idea here is for storage nodes to perform light audits of each others,
+<p>At the end of the storage epoch, part of the funds in the <strong>storage fund need to be allocated to
+storage nodes</strong>. The idea here is for storage nodes to perform light audits of each other,
 and suggest which nodes are to be paid based on the performance of these audits.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="off-chain-operations"><a class="header" href="#off-chain-operations">Off-chain operations</a></h1>
-<p>Walrus operations happen off Sui, but may interact with the Sui flows defining the resource life
-cycle.</p>
+<p>While Walrus operations happen off Sui, they might interact with the blockchain flows defining the
+resource life cycle.</p>
 <h2 id="write-paths"><a class="header" href="#write-paths">Write paths</a></h2>
 <p><img src="overview/../assets/WriteFlow.png" alt="Write paths of Walrus" /></p>
-<p>Systems overview of writes, illustrated above:</p>
+<p>Systems overview of writes, illustrated in the previous image:</p>
 <ul>
-<li>A user acquires a storage resource of appropriate size and duration on-chain, either by directly
-buying it on the Walrus system object, or a secondary market. A user can split, merge, and
-transfer owned storage resources.</li>
-<li>When a user wants to write a blob, it first erasure codes it using encode, and computes the
+<li>
+<p>A user acquires a storage resource of appropriate size and duration on chain, either by directly
+buying it on the Walrus system object, or a secondary market. A user can split, merge and
+transfer owned storage resources.</p>
+</li>
+<li>
+<p>When users want to write a blob, they first erasure code it using encode and compute the
 blob ID. Then they can perform the following steps themselves, or use a publisher to perform steps
-on their behalf.</li>
-<li>The user goes on chain (Sui) and updates a storage resource to register the blob ID with the
-desired size and lifetime. This emits an event, received by storage nodes. Once the
-user receives they then continue the upload.</li>
-<li>The user sends each of the blob slivers and metadata to the storage nodes that currently
-manages the corresponding shards.</li>
-<li>A storage node managing a shard receives a sliver and checks it against the blob ID.
+on their behalf.</p>
+</li>
+<li>
+<p>The user goes on chain (Sui) and updates a storage resource to register the blob ID with the
+desired size and lifetime. This emits an event, received by storage nodes. After the
+user receives they then continue the upload.</p>
+</li>
+<li>
+<p>The user sends each of the blob slivers and metadata to the storage nodes that currently
+manages the corresponding shards.</p>
+</li>
+<li>
+<p>A storage node managing a shard receives a sliver and checks it against the blob ID.
 It also checks that there is a blob resource with the blob ID that is authorized to store
-a blob. If correct, then the storage node signs a statement that it holds the sliver for blob ID
-(and metadata) and returns it to the user.</li>
-<li>The user puts together the signatures returned from storage nodes into an availability certificate
-and sends it on chain. When the certificate is verified on-chain an availability event for the
+a blob. If correct, the storage node then signs a statement that it holds the sliver for blob ID
+(and metadata) and returns it to the user.</p>
+</li>
+<li>
+<p>The user puts together the signatures returned from storage nodes into an availability certificate
+and sends it on chain. When the certificate is verified on chain, an availability event for the
 blob ID is emitted, and all other storage nodes seek to download any missing shards for the blob
-ID. This event emitted by Sui is the <a href="overview/./properties.html">Point of Availability (PoA)</a> for the blob
-ID.</li>
-<li>After the PoA, and without user involvement, storage nodes sync and recover any missing slivers.</li>
+ID. This event emitted by Sui is the <a href="overview/./properties.html">point of availability (PoA)</a> for the blob
+ID.</p>
+</li>
+<li>
+<p>After the PoA, and without user involvement, storage nodes sync and recover any missing slivers.</p>
+</li>
 </ul>
-<p>The user waits for 2/3 of shard signatures to return in order to create the certificate of
-availability. The rate of the code is below 1/3 allowing for reconstruction even if only 1/3 of
-shards return the sliver for a read. Since at most 1/3 of the storage nodes can fail, this ensures
-reconstruction if a reader requests slivers from all storage nodes. Note that the full process can
-be mediated by a publisher, that receives a blob and drives the process to completion.</p>
+<p>The user waits for 2/3 of shard signatures to return to create the certificate of
+availability. The rate of the code is below 1/3, allowing for reconstruction even if only 1/3 of
+shards return the sliver for a read. Because at most 1/3 of the storage nodes can fail, this ensures
+reconstruction if a reader requests slivers from all storage nodes. The full process can
+be mediated by a publisher that receives a blob and drives the process to completion.</p>
 <h2 id="refresh-availability"><a class="header" href="#refresh-availability">Refresh availability</a></h2>
-<p>Since no content data is required to refresh the duration of storage, refresh is conducted fully on
-chain within the protocol. To request an extension to the availability of a blob, a user
-provides an appropriate storage resource. Upon success this emits an event that storage nodes
-receive to extend the time for which each sliver is stored.</p>
+<p>Because no content data is required to refresh the duration of storage, refresh is conducted fully
+on chain within the protocol. To request an extension to the availability of a blob, a user provides
+an appropriate storage resource. Upon success this emits an event that storage nodes receive to
+extend the time for which each sliver is stored.</p>
 <h2 id="inconsistent-resource-flow"><a class="header" href="#inconsistent-resource-flow">Inconsistent resource flow</a></h2>
-<p>When a correct storage node tries to reconstruct a shard it may fail if the encoding of a blob ID
+<p>When a correct storage node tries to reconstruct a shard it might fail if the encoding of a blob ID
 past <a href="overview/./properties.html">PoA</a> was incorrect, but will instead extract an inconsistency proof for the
-blob ID. It will then use the proof to create a inconsistency certificate and upload it on chain.
+blob ID. It then uses the proof to create an inconsistency certificate and upload it on chain.
 The flow is as follows:</p>
 <ul>
-<li>A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.</li>
-<li>The storage node sends the blob ID and inconsistency proof to all storage nodes of the Walrus
-epoch. The storage node verify the proof and sign it.</li>
-<li>The storage node aggregate the signatures into an inconsistency certificate and sends it to the
-Walrus smart contract, that verifies it and emits a inconsistent resource event.</li>
-<li>Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
-blob ID and record in the metadata to return None for the blob ID for the
+<li>
+<p>A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.</p>
+</li>
+<li>
+<p>The storage node sends the blob ID and inconsistency proof to all storage nodes of the Walrus
+epoch. The storage node verifies the proof and signs it.</p>
+</li>
+<li>
+<p>The storage node aggregates the signatures into an inconsistency certificate and sends it to the
+Walrus smart contract, which verifies it and emits a inconsistent resource event.</p>
+</li>
+<li>
+<p>Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
+blob ID and record in the metadata to return <code>None</code> for the blob ID for the
 <a href="overview/./properties.html">availability period</a>. No storage attestation challenges are issued for this
-blob ID.</li>
+blob ID.</p>
+</li>
 </ul>
-<p>Note that a blob ID that is inconsistent will always resolve to None upon reading: this is because
+<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading: this is because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
-consistent encoding. This means that an inconsistency proof only reveals a true fact to storage
-nodes (that do not otherwise ran decoding), and does not change the output of read in any case.</p>
-<p>Note however that partial reads leveraging the systematic nature of the encoding may return partial
-reads for inconsistently encoded files. Thus if consistency and availability of reads is important
-dapps should do full reads rather than partial reads.</p>
+consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
+nodes (that do not otherwise run decoding), and does not change the output of read in any case.</p>
+<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return
+partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
+important, dApps should do full reads rather than partial reads.</p>
 <h2 id="read-paths"><a class="header" href="#read-paths">Read paths</a></h2>
-<p>A user can read stored blobs either directly or through a cache. We discuss here the direct user
-journey since this is also how the cached operates in case of a cache miss. We assume that most
-reads will happen through caches, for blobs that are hot, and will not result in requests to
-storage nodes.</p>
+<p>A user can read stored blobs either directly or through a cache. The direct user journey is
+discussed here because this is also how the cache operates in case of a cache miss. Assume that most
+reads happen through caches for blobs that are hot, and do not result in requests to storage nodes.</p>
 <ul>
-<li>The reader gets the metadata for the blob ID from any storage node, and authenticates it using
-the blob ID.</li>
-<li>The reader then sends a request to the storage node for the shards corresponding to the blob ID,
+<li>
+<p>The reader gets the metadata for the blob ID from any storage node, and authenticates it using
+the blob ID.</p>
+</li>
+<li>
+<p>The reader then sends a request to the storage node for the shards corresponding to the blob ID,
 and waits for f+1 to respond. Sufficient requests are sent in parallel to ensure low latency for
-reads.</li>
-<li>The reader authenticates the slivers returned with the blob ID, reconstructs the blob, and decides
-whether the contents are a valid blob or inconsistent.</li>
-<li>Optionally, for a cache, the result is cached and can be served without reconstruction until it is
+reads.</p>
+</li>
+<li>
+<p>The reader authenticates the slivers returned with the blob ID, reconstructs the blob, and decides
+whether the contents are a valid blob or inconsistent.</p>
+</li>
+<li>
+<p>Optionally, for a cache, the result is cached and can be served without reconstruction until it is
 evicted from the cache. Requests for the blob to the cache return the blob contents, or a proof
-the blob is inconsistently encoded.</li>
+the blob is inconsistently encoded.</p>
+</li>
 </ul>
 <h2 id="challenge-mechanism-for-storage-attestation"><a class="header" href="#challenge-mechanism-for-storage-attestation">Challenge mechanism for storage attestation</a></h2>
-<p>During an epoch a correct storage node challenges all shards to provide blob slivers past PoA:</p>
+<p>During an epoch, a correct storage node challenges all shards to provide blob slivers past PoA:</p>
 <ul>
-<li>The list of available blobs for the epoch is determined by the sequence of Sui events up
+<li>
+<p>The list of available blobs for the epoch is determined by the sequence of Sui events up
 to the past epoch. Inconsistent blobs are not challenged, and a record proving this status
-can be returned instead.</li>
-<li>A challenge sequence is determined by providing a seed to the challenged shard. The sequence is
+can be returned instead.</p>
+</li>
+<li>
+<p>A challenge sequence is determined by providing a seed to the challenged shard. The sequence is
 then computed based both on the seed AND the content of each challenged blob ID. This creates a
-sequential read dependency.</li>
-<li>The response to the challenge provides the sequence of shard contents for the blob IDs in a
-timely manner.</li>
-<li>The challenger node uses thresholds to determine whether the challenge was passed, and reports
-the result on chain.</li>
-<li>The challenge / response communication is authenticated.</li>
+sequential read dependency.</p>
+</li>
+<li>
+<p>The response to the challenge provides the sequence of shard contents for the blob IDs in a
+timely manner.</p>
+</li>
+<li>
+<p>The challenger node uses thresholds to determine whether the challenge was passed, and reports
+the result on chain.</p>
+</li>
+<li>
+<p>The challenge/response communication is authenticated.</p>
+</li>
 </ul>
-<p>Challenges provide some reassurance that the storage node actually can recover shard data in a
-probabilistic manner, avoiding storage nodes getting payment without any evidence they may retrieve
-shard data. The sequential nature of the challenge and some reasonable timeout also ensure that
-the process is timely.</p>
+<p>Challenges provide some reassurance that the storage node can actually recover shard data in a
+probabilistic manner, avoiding storage nodes getting payment without any evidence they might
+retrieve shard data. The sequential nature of the challenge and some reasonable timeout also ensures
+that the process is timely.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-assurance-and-security-properties"><a class="header" href="#walrus-assurance-and-security-properties">Walrus assurance and security properties</a></h1>
 <p>The properties below hold true subject to the assumption that for all storage epochs 2/3 of shards
 are operated by storage nodes that faithfully and correctly follow the Walrus protocol.</p>
