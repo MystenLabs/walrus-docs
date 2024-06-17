@@ -6,7 +6,7 @@ publisher role respectively. We also offer
 [public aggregator and publisher services](#public-services) to try the Walrus HTTP APIs without
 the need to run a local client.
 
-## Starting the daemon locally
+## Starting the daemon locally {#local-daemon}
 
 You can run the daemon with the following command, to offer both an aggregator and publisher on
 the same address and port:
@@ -43,6 +43,9 @@ hosts:
 
 - Aggregator: `https://aggregator.devnet.walrus.space`
 - Publisher: `https://publisher.devnet.walrus.space`
+
+Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
+to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).
 
 Note that the publisher consumes (testnet) Sui on the service side, and a mainnet deployment would
 likely not be able to provide uncontrolled public access to publishing without requiring some
