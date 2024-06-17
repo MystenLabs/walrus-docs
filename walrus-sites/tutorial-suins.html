@@ -207,13 +207,13 @@ above. Now, your Sui CLI address owns the registration NFT, and you can proceed 
 <p>This step associates the name <code>walrusgame</code> to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.</p>
 <p>Here, we issue a transaction using the Sui CLI that creates this mapping:</p>
-<pre><code class="language-sh">SUINS_CORE_PACKAGE=0x22fa05f21b1ad71442491220bb9338f7b7095fe35000ef88d5400d28523bdd93
+<pre><code class="language-sh">SUINS_UTILS_PACKAGE=0x7954ae683314ec7e156acbf0c0fc964ce035fd7f456fe7576848226502cfde1b
 SUINS_CORE_OBJECT=0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3
 MY_SUINS_REGISTRATION_OBJECT=0x6412... # adjust this to your own SuiNS object
 MY_WALRUS_SITE_OBJECT=0x5ac9... # adjust this to your Walrus Site object
 sui client call \
-    --package $SUINS_CORE_PACKAGE \
-    --module controller \
+    --package $SUINS_UTILS_PACKAGE \
+    --module direct_setup \
     --function set_target_address \
     --gas-budget 500000000 \
     --args $SUINS_CORE_OBJECT \
@@ -221,8 +221,9 @@ sui client call \
     --args "[$MY_WALRUS_SITE_OBJECT]" \
     --args 0x6
 </code></pre>
-<p>Note that the SuiNS package and object on testnet may change, you can find the latest ones in the
-<a href="https://docs.suins.io/#active-constants">SuiNS documentation</a> (make sure you select <em>Testnet</em>).</p>
+<p>Note that the SuiNS package and object on testnet may change. You can
+find the latest ones by looking at the <code>TESTNET_CONFIG</code> in the <a href="https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts">SuiNS
+contract</a>.</p>
 <p>If all succeeds, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
 
                     </main>
