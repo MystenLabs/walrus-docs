@@ -5,6 +5,11 @@
 
 ---
 
+- [The Walrus Dev Blog](./blog/00_intro.md)
+  - [Announcing Walrus](./blog/01_announcing_walrus.md)
+
+---
+
 # Design
 
 - [Objectives and use-cases](./overview/objectives_use_cases.md)
