@@ -19,8 +19,17 @@ repos:
   hooks:
   - id: markdownlint-cli2
     args: ["--fix"]
+    pass_filenames: false
 - repo: https://github.com/crate-ci/typos
   rev: v1.22.0
   hooks:
   - id: typos
+    pass_filenames: false
+- repo: local
+  hooks:
+  - id: mdBook
+    name: Build mdBook if it is installed
+    language: system
+    entry: (which mdbook && mdbook build) || ! (which mdbook >> /dev/null)
+    files: 'docs/.*'
     pass_filenames: false
