@@ -47,13 +47,13 @@ many ways to achieve this, and as the SuiNS UI improves this could be done from 
 Here, we issue a transaction using the Sui CLI that creates this mapping:
 
 ```sh
-SUINS_CORE_PACKAGE=0x22fa05f21b1ad71442491220bb9338f7b7095fe35000ef88d5400d28523bdd93
+SUINS_UTILS_PACKAGE=0x7954ae683314ec7e156acbf0c0fc964ce035fd7f456fe7576848226502cfde1b
 SUINS_CORE_OBJECT=0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3
 MY_SUINS_REGISTRATION_OBJECT=0x6412... # adjust this to your own SuiNS object
 MY_WALRUS_SITE_OBJECT=0x5ac9... # adjust this to your Walrus Site object
 sui client call \
-    --package $SUINS_CORE_PACKAGE \
-    --module controller \
+    --package $SUINS_UTILS_PACKAGE \
+    --module direct_setup \
     --function set_target_address \
     --gas-budget 500000000 \
     --args $SUINS_CORE_OBJECT \
