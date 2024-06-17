@@ -175,10 +175,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="walrus"><a class="header" href="#walrus">Walrus</a></h1>
-<p>Welcome to the developer documentation for Walrus, a decentralized storage and availability protocol
-designed specifically for large binary files, or "blobs". Walrus focuses on providing a robust
-solution for storing unstructured content on decentralized storage nodes while ensuring high
-availability and reliability even in the presence of Byzantine faults.</p>
+<p>Welcome to the developer documentation for Walrus, a decentralized storage and data availability
+protocol designed specifically for large binary files, or "blobs". Walrus focuses on providing a
+robust, but affordable solution for storing unstructured content on decentralized storage nodes
+while ensuring high availability and reliability even in the presence of Byzantine faults.</p>
 <p>Fun fact: If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
 Walrus behind the scenes. See the <a href="./walrus-sites/intro.html">Walrus Sites chapter</a> for further
 details on how this works.</p>
@@ -215,17 +215,10 @@ storage nodes are unavailable or malicious. Under the hood it uses modern error 
 techniques based on fast linear fountain codes, augmented to ensure resilience against Byzantine
 faults, and a dynamically changing set of storage nodes. The core of Walrus remains simple, and
 storage node management and blob certification leverages Sui smart contracts.</p>
-<p>This documentation is split into several parts. The first part provides an overview of the
-objectives, security properties, and architecture of the Walrus system. The second part contains
-concrete documentation on the usage of Walrus. At the end, we provide a <a href="./glossary.html">glossary</a>,
-which defines key terms used throughout the project.</p>
-<p>Walrus is architected to provide a reliable and cost-effective solution for large-scale blob
-storage, making it an ideal choice for applications requiring decentralized, affordable, durable,
-and accessible data storage.</p>
 <h2 id="organization"><a class="header" href="#organization">Organization</a></h2>
 <p>This documentation is split into three parts:</p>
 <ol>
-<li><em>About Walrus</em> describes the design and architecture of Walrus.</li>
+<li><em>About Walrus</em> describes the objectives, security properties, and architecture of Walrus.</li>
 <li><em>Usage</em> provides concrete information for developers. If you want to get started quickly, you can
 jump directly to the <a href="./usage/setup.html">setup chapter</a>.</li>
 <li><em>Walrus sites</em> describes how you can use Walrus and Sui together to build truly decentralized
