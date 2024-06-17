@@ -1,9 +1,9 @@
 # Walrus
 
-Welcome to the developer documentation for Walrus, a decentralized storage and availability protocol
-designed specifically for large binary files, or "blobs". Walrus focuses on providing a robust
-solution for storing unstructured content on decentralized storage nodes while ensuring high
-availability and reliability even in the presence of Byzantine faults.
+Welcome to the developer documentation for Walrus, a decentralized storage and data availability
+protocol designed specifically for large binary files, or "blobs". Walrus focuses on providing a
+robust, but affordable solution for storing unstructured content on decentralized storage nodes
+while ensuring high availability and reliability even in the presence of Byzantine faults.
 
 Fun fact: If you are viewing this site at <https://docs.walrus.site>, you are fetching this from
 Walrus behind the scenes. See the [Walrus Sites chapter](./walrus-sites/intro.md) for further
@@ -39,20 +39,11 @@ techniques based on fast linear fountain codes, augmented to ensure resilience a
 faults, and a dynamically changing set of storage nodes. The core of Walrus remains simple, and
 storage node management and blob certification leverages Sui smart contracts.
 
-This documentation is split into several parts. The first part provides an overview of the
-objectives, security properties, and architecture of the Walrus system. The second part contains
-concrete documentation on the usage of Walrus. At the end, we provide a [glossary](./glossary.md),
-which defines key terms used throughout the project.
-
-Walrus is architected to provide a reliable and cost-effective solution for large-scale blob
-storage, making it an ideal choice for applications requiring decentralized, affordable, durable,
-and accessible data storage.
-
 ## Organization
 
 This documentation is split into three parts:
 
-1. _About Walrus_ describes the design and architecture of Walrus.
+1. _About Walrus_ describes the objectives, security properties, and architecture of Walrus.
 1. _Usage_ provides concrete information for developers. If you want to get started quickly, you can
    jump directly to the [setup chapter](./usage/setup.md).
 1. _Walrus sites_ describes how you can use Walrus and Sui together to build truly decentralized
