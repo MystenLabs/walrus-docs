@@ -115,7 +115,7 @@ We are excited to see what else the web3 developer community can imagine!
 ## Getting Started
 
 For this developer preview the public Walrus Devnet is openly available to all developers. Developer
-documentation is available at [https://docs.walrus.site](https://docs.walrus.site).
+documentation is available at <https://docs.walrus.site>.
 
 SUI Testnet token is the main currency for interacting with Walrus.  Developers pay for Walrus
 Devnet storage using SUI Testnet tokens which can be acquired at the [Sui Testnet Discord
