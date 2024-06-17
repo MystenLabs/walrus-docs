@@ -1802,7 +1802,8 @@ when creating or porting a website to Walrus Sites.</p>
 <p>Walrus Sites are fully publicly accessible, as the metadata is stored on Sui and the site content is
 stored on Walrus. Therefore, developers <em>must</em> not store secret values within the sites.</p>
 <p>We emphasize again that any such backend-specific operations (storing secret values, authentication,
-etc.) are achievable by leveraging the integration with Sui blockchain and the Sui wallet.</p>
+etc.) are achievable by leveraging the integration with the Sui blockchain and a Sui-compatible
+wallet.</p>
 <h2 id="there-is-a-maximum-redirect-depth"><a class="header" href="#there-is-a-maximum-redirect-depth">There is a maximum redirect depth</a></h2>
 <p>The number of consecutive redirects a Walrus Site can perform is capped by the
 Portal (see <a href="walrus-sites/./portal.html">Portal configuration</a>).  This measure ensures that loading a Walrus Site
@@ -1821,16 +1822,15 @@ operations:</p>
 </ol>
 <p>Therefore, a site deployed on Walrus Sites cannot use service workers. Installing a service worker
 from within a Walrus Site will result in a dysfunctional site and a poor experience for the user.</p>
-<h2 id="the-ios-sui-wallet-mobile-does-not-work-with-walrus-sites"><a class="header" href="#the-ios-sui-wallet-mobile-does-not-work-with-walrus-sites">The iOS Sui Wallet Mobile does not work with Walrus Sites</a></h2>
+<h2 id="ios-sui-mobile-wallets-do-not-work-with-walrus-sites"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-walrus-sites">iOS Sui Mobile Wallets do not work with Walrus Sites</a></h2>
 <p><strong>WARNING</strong>: This limitation only applies to Portal based on service workers. A web Portal will not
 have this limitation.</p>
 <p>Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
-WebKit engine. As a consequence, Walrus Sites cannot be used within the <a href="https://apps.apple.com/us/app/sui-wallet-mobile/id6476572140">Sui Wallet
-Mobile</a> app on iOS, and therefore
-the Sui wallet can currently not be used on a Walrus Site on iOS. Note, however, that <em>browsing</em> a
-Walrus Site is still possible on iOS through any browser. Only the connection to the wallet is
-impacted.</p>
-<p>The connection with the Sui Wallet Mobile app works on Android devices.</p>
+WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
+iOS. Therefore, Sui wallets cannot currently be used on a Walrus Site on iOS. Note, however, that
+<em>browsing</em> a Walrus Site is still possible on iOS through any browser. Only the connection to the
+wallet is impacted.</p>
+<p>The connection with the Sui Wallet apps works on Android devices.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>
 <p>To make communication as clear and efficient as possible, we make sure to use a single term for
 every Walrus entity/concept and <em>do not</em> use any synonyms. The following table lists various
