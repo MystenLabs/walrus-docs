@@ -62,7 +62,8 @@ sui client call \
     --args 0x6
 ```
 
-Note that the SuiNS package and object on testnet may change, you can find the latest ones in the
-[SuiNS documentation](https://docs.suins.io/#active-constants) (make sure you select _Testnet_).
+Note that the SuiNS package and object on testnet may change. You can
+find the latest ones by looking at the `TESTNET_CONFIG` in the [SuiNS
+contract](https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts).
 
 If all succeeds, we can now browse [https://walrusgame.walrus.site](https://walrusgame.walrus.site)!
