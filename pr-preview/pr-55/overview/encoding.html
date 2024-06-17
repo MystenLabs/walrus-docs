@@ -177,9 +177,9 @@
 <p>The following list summarizes the basic encoding and cryptographic techniques used in Walrus:</p>
 <ul>
 <li>
-<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> in a storage epoch out of a larger total
-(1000, for instance). Each shard contains one blob <strong>sliver</strong> for each blob past point of availability.
-Each shard is assigned to a storage node in a storage epoch.</p>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> in a storage epoch out of a larger total (1000, for
+instance). Each shard contains one blob <strong>sliver</strong> for each blob past point of availability. Each
+shard is assigned to a storage node in a storage epoch.</p>
 </li>
 <li>
 <p>An <a href="https://en.wikipedia.org/wiki/Online_codes">erasure code</a> <strong>encode algorithm</strong> takes a blob
@@ -194,9 +194,9 @@ for all blobs in the Walrus system, and encoders have no discretion about it.</p
 <li>
 <p>Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
 to all the storage shards.</p>
-<p>As a result, the overhead of the distributed store is ~5x that of
-the blob itself, no matter how many shards there are. The encoding is systematic, meaning that some
-storage nodes hold part of the original blob, allowing for fast random access reads.</p>
+<p>As a result, the overhead of the distributed store is ~5x that of the blob itself, no matter how
+many shards there are. The encoding is systematic, meaning that some storage nodes hold part of
+the original blob, allowing for fast random access reads.</p>
 </li>
 </ul>
 <p>Each blob is also associated with some metadata including a blob ID to allow verification:</p>

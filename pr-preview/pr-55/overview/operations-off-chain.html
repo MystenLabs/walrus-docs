@@ -222,10 +222,10 @@ shards return the sliver for a read. Because at most 1/3 of the storage nodes ca
 reconstruction if a reader requests slivers from all storage nodes. The full process can
 be mediated by a publisher that receives a blob and drives the process to completion.</p>
 <h2 id="refresh-availability"><a class="header" href="#refresh-availability">Refresh availability</a></h2>
-<p>Because no content data is required to refresh the duration of storage, refresh is conducted fully on
-chain within the protocol. To request an extension to the availability of a blob, a user
-provides an appropriate storage resource. Upon success this emits an event that storage nodes
-receive to extend the time for which each sliver is stored.</p>
+<p>Because no content data is required to refresh the duration of storage, refresh is conducted fully
+on chain within the protocol. To request an extension to the availability of a blob, a user provides
+an appropriate storage resource. Upon success this emits an event that storage nodes receive to
+extend the time for which each sliver is stored.</p>
 <h2 id="inconsistent-resource-flow"><a class="header" href="#inconsistent-resource-flow">Inconsistent resource flow</a></h2>
 <p>When a correct storage node tries to reconstruct a shard it might fail if the encoding of a blob ID
 past <a href="./properties.html">PoA</a> was incorrect, but will instead extract an inconsistency proof for the
@@ -254,14 +254,13 @@ blob ID.</p>
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
 consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
 nodes (that do not otherwise run decoding), and does not change the output of read in any case.</p>
-<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return partial
-reads for inconsistently encoded files. Thus, if consistency and availability of reads is important,
-dApps should do full reads rather than partial reads.</p>
+<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return
+partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
+important, dApps should do full reads rather than partial reads.</p>
 <h2 id="read-paths"><a class="header" href="#read-paths">Read paths</a></h2>
-<p>A user can read stored blobs either directly or through a cache. The direct user journey is discussed
-here because this is also how the cache operates in case of a cache miss. Assume that most
-reads happen through caches for blobs that are hot, and do not result in requests to
-storage nodes.</p>
+<p>A user can read stored blobs either directly or through a cache. The direct user journey is
+discussed here because this is also how the cache operates in case of a cache miss. Assume that most
+reads happen through caches for blobs that are hot, and do not result in requests to storage nodes.</p>
 <ul>
 <li>
 <p>The reader gets the metadata for the blob ID from any storage node, and authenticates it using
@@ -308,9 +307,9 @@ the result on chain.</p>
 </li>
 </ul>
 <p>Challenges provide some reassurance that the storage node can actually recover shard data in a
-probabilistic manner, avoiding storage nodes getting payment without any evidence they might retrieve
-shard data. The sequential nature of the challenge and some reasonable timeout also ensures that
-the process is timely.</p>
+probabilistic manner, avoiding storage nodes getting payment without any evidence they might
+retrieve shard data. The sequential nature of the challenge and some reasonable timeout also ensures
+that the process is timely.</p>
 
                     </main>
 
