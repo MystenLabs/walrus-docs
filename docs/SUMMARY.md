@@ -5,9 +5,8 @@
 
 ---
 
-# The Walrus Dev Blog
 
-- [Dev Blog Introduction](./blog/00_intro.md)
+- [The Walrus Dev Blog](./blog/00_intro.md)
   - [Announcing Walrus](./blog/01_announcing_walrus.md)
 
 ---
