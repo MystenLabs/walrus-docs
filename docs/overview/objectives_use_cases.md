@@ -48,8 +48,9 @@ There are a few things that Walrus explicitly is not:
 
 ## Use cases
 
-App builders can use Walrus in conjunction with Sui to build experiences that require storage
-of large amounts of data in a decentralized manner and possibly certified as available:
+App builders may use Walrus in conjunction with any L1 or L2 blockchains to build experiences that
+require large amounts of data to be stored in a decentralized manner and possibly certified as
+available:
 
 - **Storage of media for NFT or dApps**: Walrus can directly store and serve media such as images,
   sounds, sprites, videos, other game assets, and so on. This is publicly available media that is
