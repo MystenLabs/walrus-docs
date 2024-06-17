@@ -126,4 +126,4 @@ faucet](https://discord.com/channels/916379725201563759/1037811694564560966).
 The [Walrus Sites website](https://walrus.site/), the [Walrus docs](https://docs.walrus.site), and
 [this very blog](https://blog.walrus.site) are hosted on Walrus. to learn more about Walrus Sites
 and how you can deploy your own, [click
-here](https://mystenlabs.github.io/walrus-docs/walrus-sites/intro.html).
+here](https://docs.walrus.site/walrus-sites/intro.html).
