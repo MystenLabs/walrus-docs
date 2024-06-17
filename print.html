@@ -230,124 +230,159 @@ documentation.</p>
 <p>This documentation is built using <a href="https://rust-lang.github.io/mdBook/">mdBook</a> from source files in
 <a href="https://github.com/MystenLabs/walrus-docs/">github.com/MystenLabs/walrus-docs/</a>. Please report or
 fix any errors you find in this documentation in that GitHub project.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="objectives-and-use-cases"><a class="header" href="#objectives-and-use-cases">Objectives and use-cases</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="objectives-and-use-cases"><a class="header" href="#objectives-and-use-cases">Objectives and use cases</a></h1>
 <p>Walrus supports operations to store and retrieve blobs, and to prove and verify their availability.
 It ensures content survives storage nodes suffering Byzantine faults and remains available and
 retrievable. It provides APIs to access the stored content over a CLI, SDKs and over web2 HTTP
 technologies, and supports content delivery infrastructures like caches and content distribution
 networks (CDNs).</p>
-<p>Under the hood, storage cost is a small fixed multiple of the size of blobs (around 5x) thanks to
-advanced error correction coding, in contrast to the full replication of data traditional to
-blockchains such as &gt;100x for data stored in Sui objects. As a result much bigger resources, up to
-several GiB, may be stored on Walrus at substantially lower cost compared to Sui or other
-blockchains. Since encoded blobs are stored on all storage nodes Walrus also provides superior
-robustness compared with designs with a small amount of replicas storing the full blob.</p>
+<p>Under the hood, storage cost is a small fixed multiple of the size of blobs (around 5x).
+Advanced error correction coding keeps the cost low, in contrast to the full replication of data
+traditional to blockchains, such as the &gt;100x multiple for data stored in Sui objects. As a result,
+storage of much bigger resources (up to several GiB) is possible on Walrus at substantially lower
+cost compared to Sui or other blockchains. Because encoded blobs are stored on all storage nodes,
+Walrus also provides superior robustness compared to designs with a small amount of replicas
+storing the full blob.</p>
 <p>Walrus uses the Sui chain for coordination and payments. Available storage is represented as Sui
 objects that can be acquired, owned, split, merged and transferred. Storage space can be tied to
-a stored blob for a period of time. And the resulting Sui object may be used to prove
+a stored blob for a period of time, with the resulting Sui object used to prove
 availability on chain in smart contracts, or off chain using light clients.</p>
-<p>In the <a href="overview/./overview.html">next chapter</a> we discuss in details the above operations relating to storage,
-retrieval and availability.</p>
+<p>The <a href="overview/./overview.html">next chapter</a> discusses the above operations relating to storage,
+retrieval and availability in detail.</p>
 <p>In the future, we plan to include in Walrus some minimal governance to allow storage nodes to
 change between storage epochs. Walrus is also compatible with periodic payments for continued
-storage. We also plan to implement storage attestation based on challenges to get confidence that
-that blobs are stored or at least available. Walrus also allows light-nodes that store small parts
+storage. We also plan to implement storage attestation based on challenges to get confidence
+that blobs are stored or at least available. Walrus also allows light nodes that store small parts
 of blobs to get rewards for proving availability and assisting recovery. We will cover these
 topics in later documents. We also provide details of the encoding scheme in a separate document.</p>
 <h2 id="non-objectives"><a class="header" href="#non-objectives">Non-objectives</a></h2>
 <p>There are a few things that Walrus explicitly is not:</p>
 <ul>
-<li>Walrus does not reimplement a CDN that might be geo-replicated or have less than tens of
+<li>
+<p>Walrus does not reimplement a CDN that might be geo-replicated or have less than tens of
 milliseconds of latency. Instead, it ensures that traditional CDNs are usable and compatible with
-Walrus caches.</li>
-<li>Walrus does not re-implement a full smart contracts platform with consensus or execution. It
+Walrus caches.</p>
+</li>
+<li>
+<p>Walrus does not re-implement a full smart contracts platform with consensus or execution. It
 relies on Sui smart contracts when necessary, to manage Walrus resources and processes including
-payments, storage epochs etc.</li>
-<li>Walrus supports storage of any blob including encrypted blobs, however Walrus itself is not the
+payments, storage epochs, and so on.</p>
+</li>
+<li>
+<p>Walrus supports storage of any blob, including encrypted blobs, however Walrus itself is not the
 distributed key management infrastructure that manages and distributed encryption or decryption
-keys to support a full private storage eco-system. It can however provide the storage layer of for
-such infrastructures.</li>
+keys to support a full private storage eco-system. It can, however, provide the storage layer for
+such infrastructures.</p>
+</li>
 </ul>
-<h2 id="use-cases"><a class="header" href="#use-cases">Use-cases</a></h2>
-<p>App builders may use Walrus in conjunction with Sui to build experiences that require large
-amounts of  data to be stored in a decentralized manner and possibly certified as available:</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
+<p>App builders can use Walrus in conjunction with Sui to build experiences that require storage
+of large amounts of data in a decentralized manner and possibly certified as available:</p>
 <ul>
-<li><strong>Storage of media for NFT or dapps</strong>: Walrus can directly store and serve media such as images,
-sounds, sprites, videos, other game assets, etc. This is publicly available media that can be
-accessed using HTTP requests at caches to create multimedia dapps.</li>
-<li><strong>AI related use cases</strong>: Walrus can store clean data sets of training data, datasets with a
-known and verified provenance, models weights, and proofs of correct training for AI models.
-Or it may be used to store and ensure the availability of an AI model output.</li>
-<li><strong>Storage of long term archival of blockchain history</strong>: Walrus can be used as a lower cost
-decentralized store to store blockchain history. For Sui this can include sequences of
-checkpoints with all associated transaction and effects content. As well as historic snapshots
-of the blockchain state, code or binaries.</li>
-<li><strong>Support availability for L2s</strong>: Walrus allows parties to certify the availability of blobs, as
+<li>
+<p><strong>Storage of media for NFT or dApps</strong>: Walrus can directly store and serve media such as images,
+sounds, sprites, videos, other game assets, and so on. This is publicly available media that is
+accessed using HTTP requests at caches to create multimedia dApps.</p>
+</li>
+<li>
+<p><strong>AI related use cases</strong>: Walrus can store clean data sets of training data, datasets with a
+known and verified provenance, models, weights and proofs of correct training for AI models.
+It can also store and ensure the availability of an AI model output.</p>
+</li>
+<li>
+<p><strong>Storage of long term archival of blockchain history</strong>: Walrus can act as a lower cost
+decentralized store to store blockchain history. For Sui, this can include sequences of
+checkpoints with all associated transaction and effects content, as well as historic snapshots
+of the blockchain state, code or binaries.</p>
+</li>
+<li>
+<p><strong>Support availability for L2s</strong>: Walrus allows parties to certify the availability of blobs, as
 required by L2s that need data to be stored and be attested as available to all. This may also
 include availability of extra audit data such as validity proofs, zero knowledge proofs of
-correct execution or large fraud proofs.</li>
-<li><strong>Support a full decentralized web experience</strong>: Walrus can host full decentralized web
-experiences including all resources (such as js, css, html, media). These can provide content but
-also host the UX of dapps to build dapps with fully decentralized front end and back ends on
-chain. It brings the full "web" back in "web3".</li>
-<li><strong>Support subscription models for media</strong>: Creators can store encrypted media on Walrus and only
+correct execution or large fraud proofs.</p>
+</li>
+<li>
+<p><strong>Support a fully decentralized web experience</strong>: Walrus can host fully decentralized web
+experiences, including all resources (such as js, css, html, media). These can not only
+provide content, but also host the UX of dApps to enable applications with fully decentralized
+front end and back ends on chain. Walrus puts the full "web" into web3.</p>
+</li>
+<li>
+<p><strong>Support subscription models for media</strong>: Creators can store encrypted media on Walrus and only
 provide access via decryption keys to parties that have paid a subscription fee or have paid for
-contents. (Note that Walrus provides the storage, encryption and decryption needs to happen off
-Walrus).</li>
+content. Walrus provides the storage, encryption and decryption needs to happen off
+the system.</p>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="system-overview"><a class="header" href="#system-overview">System overview</a></h1>
 <p>This chapter provides an overview of the <a href="overview/./properties.html">security properties</a>,
-<a href="overview/./architecture.html">architecture</a>, and <a href="overview/./encoding.html">encoding mechanisms</a> of the Walrus system.</p>
-<p>A <a href="overview/../glossary.html">glossary</a> of terms used is also available for reference.</p>
+<a href="overview/./architecture.html">architecture</a> and <a href="overview/./encoding.html">encoding mechanisms</a> of the Walrus system.</p>
+<p>Use the <a href="overview/../glossary.html">Glossary</a> as a reference for bolded terms used in this documentation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-architecture-and-security-assumptions"><a class="header" href="#basic-architecture-and-security-assumptions">Basic architecture and security assumptions</a></h1>
 <p>The key actors in the Walrus architecture are the following:</p>
 <ul>
-<li><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.
-They are ready to pay for service
-when it comes to writes, and when it comes to non-best-effort reads. Users also want to prove
+<li>
+<p><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.</p>
+<p>These actors are ready to pay for service
+when it comes to writes and non-best-effort reads. Users also want to prove
 the <strong>availability</strong> of a blob to third parties without the cost of sending or receiving the full
-blob. Users may be malicious in various ways: they may wish to not pay for services, prove the
-availability of an unavailable blobs, or modify / delete blobs without authorization, try to
-exhaust resources of storage nodes, etc.</li>
-<li><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>. Each blob is erasure
-encoded in many <strong>slivers</strong> and slivers from each stored blob become part of all shards. A shard
-at any storage epoch is associated with a <strong>storage node</strong> that actually stores all slivers of
-the shard, and is ready to serve them. The assignment of storage nodes to shards within
-<strong>storage epochs</strong> is controlled by a Sui smart contract and we assume that more than 2/3 of the
-shards are managed by correct storage nodes within each storage epoch. This means that we must
+blob.</p>
+<p>Users might be malicious in various ways: they might not want to pay for services, prove the
+availability of unavailable blobs, modify/delete blobs without authorization, try to
+exhaust resources of storage nodes, and so on.</p>
+</li>
+<li>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>.</p>
+<p>Each blob is erasure
+encoded in many <strong>slivers</strong>. Slivers from each stored blob become part of all shards. A shard
+at any storage epoch is associated with a storage node that actually stores all slivers of
+the shard and is ready to serve them.</p>
+<p>A Sui smart contract controls the assignment of storage nodes to shards within
+<strong>storage epochs</strong> and Walrus assumes that more than 2/3 of the
+shards are managed by correct storage nodes within each storage epoch. This means that Walrus must
 tolerate up to 1/3 of the shards managed by Byzantine storage nodes (approximately 1/3 of the
-storage nodes being Byzantine) within each storage epoch and across storage epochs.</li>
-<li>All clients and storage nodes operate a <strong>blockchain</strong> client (specifically on Sui), and mediate
-payments, resources (space), mapping of shards to storage nodes, and metadata through blockchain
+storage nodes being Byzantine) within each storage epoch and across storage epochs.</p>
+</li>
+<li>
+<p>All clients and storage nodes operate a <strong>blockchain</strong> client (specifically on Sui), and mediate
+payments, resources (space), mapping of shards to storage nodes and metadata through blockchain
 smart contracts. Users interact with the blockchain to acquire storage resources and upload
 certificates for stored blobs. Storage nodes listen to the blockchain events to coordinate
-their operations.</li>
+their operations.</p>
+</li>
 </ul>
 <p>Walrus supports any additional number of optional infrastructure actors that can operate in a
 permissionless way:</p>
 <ul>
-<li><strong>Caches</strong> are <strong>clients</strong> that store one or more full blobs and make them available to users
-over traditional web2 (HTTP, etc) technologies. They are optional in that end-users may also
+<li>
+<p><strong>Caches</strong> are clients that store one or more full blobs and make them available to users
+over traditional web2 technologies (such as HTTP).</p>
+<p>They are optional in that end users can also
 operate a local cache, and perform Walrus reads over web2 technologies locally. However, cache
-infrastructures may also act as CDNs, split the cost of blob reconstruction over many requests,
-be better connected, etc. A client can always verify that reads from such infrastructures
-are correct.</li>
-<li><strong>Publishers</strong> are <strong>clients</strong> that help end users store a blob using web2 technologies,
-using less bandwidth and custom logic. They in effect receive the blob to be published over
-traditional web2 protocols (e.g., HTTP) and run the Walrus store protocol on the end-user's
+infrastructures can also act as CDNs, split the cost of blob reconstruction over many requests,
+be better connected, and so on. A client can always verify that reads from such infrastructures
+are correct.</p>
+</li>
+<li>
+<p><strong>Publishers</strong> are clients that help end users store a blob using web2 technologies,
+using less bandwidth and custom logic.</p>
+<p>In effect, they receive the blob to be published over
+traditional web2 protocols (like HTTP) and run the Walrus store protocol on the end user's
 behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
 collecting storage-node signatures and aggregating them into a certificate, as well as all
-other on-chain actions. They are optional in that a user may directly interact with Sui and
+other on-chain actions.</p>
+<p>They are optional in that a user can directly interact with Sui and
 the storage nodes to store blobs. An end user can always verify that a publisher
 performed their duties correctly by checking that an event associated with the
-<a href="overview/./properties.html">Point of Availability</a> for the blob exists on-chain
-and then either performing a read to see if Walrus returns the blob or by encoding the blob
-and comparing the result to the blob ID in the certificate.</li>
+<a href="overview/./properties.html">Point of Availability</a> for the blob exists on chain
+and then either performing a read to see if Walrus returns the blob or encoding the blob
+and comparing the result to the blob ID in the certificate.</p>
+</li>
 </ul>
-<p>Caches, publishers, and end-users are not considered trusted components of the system, and they may
+<p>Caches, publishers and end users are not considered trusted components of the system, and they might
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
-for honest end-users that use honest intermediaries (caches and publishers). We provide means for
-end-users to audit the correct operation of both caches and publishers.</p>
+for honest end users that use honest intermediaries (caches and publishers). Walrus provides a
+means for end users to audit the correct operation of both caches and publishers.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-overheads-and-verification"><a class="header" href="#encoding-overheads-and-verification">Encoding, overheads, and verification</a></h1>
 <p>We summarize here the basic encoding and cryptographic techniques used in Walrus.</p>
 <ul>
@@ -1727,7 +1762,7 @@ impacted.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>
 <p>To make communication as clear and efficient as possible, we make sure to use a single term for
 every Walrus entity/concept and <em>do not</em> use any synonyms. The following table lists various
-concepts, their canonical name, how they relate to / differ from other terms.</p>
+concepts, their canonical name, and how they relate to or differ from other terms.</p>
 <p>Italicized terms in the description indicate other specific Walrus terms contained in the table.</p>
 <div class="table-wrapper"><table><thead><tr><th>Approved name</th><th>Description</th></tr></thead><tbody>
 <tr><td>storage node (SN)</td><td>entity storing data for Walrus; holds one or several <em>shards</em></td></tr>
@@ -1737,12 +1772,12 @@ concepts, their canonical name, how they relate to / differ from other terms.</p
 <tr><td>blob ID</td><td>cryptographic ID computed from a <em>blob</em>’s <em>slivers</em></td></tr>
 <tr><td>blob metadata</td><td>metadata of one <em>blob</em>; in particular, this contains a hash per <em>shard</em> to enable the authentication of <em>slivers</em> and recovery symbols</td></tr>
 <tr><td>(end) user</td><td>any entity/person that wants to store or read <em>blobs</em> on/from Walrus; can act as a Walrus client itself or use the simple interface exposed by <em>publishers</em> and <em>caches</em></td></tr>
-<tr><td>publisher</td><td>service interacting with Sui and the <em>SNs</em> to store <em>blobs</em> on Walrus; offers a simple HTTP POST endpoint to <em>end users</em></td></tr>
-<tr><td>aggregator</td><td>service that reconstructs <em>blobs</em> by interacting with <em>SNs</em> and exposes a simple HTTP GET endpoint to <em>end users</em></td></tr>
+<tr><td>publisher</td><td>service interacting with Sui and the <em>SNs</em> to store <em>blobs</em> on Walrus; offers a simple <code>HTTP POST</code> endpoint to <em>end users</em></td></tr>
+<tr><td>aggregator</td><td>service that reconstructs <em>blobs</em> by interacting with <em>SNs</em> and exposes a simple <code>HTTP GET</code> endpoint to <em>end users</em></td></tr>
 <tr><td>cache</td><td>an <em>aggregator</em> with additional caching capabilities</td></tr>
 <tr><td>(Walrus) client</td><td>entity interacting directly with the <em>SNs</em>; this can be an <em>aggregator</em>/<em>cache</em>, a <em>publisher</em>, or an <em>end user</em></td></tr>
 <tr><td>(blob) reconstruction</td><td>decoding of the primary <em>slivers</em> to obtain the blob; includes re-encoding the <em>blob</em> and checking the Merkle proofs</td></tr>
-<tr><td>(shard/sliver) recovery</td><td>process of an SN recovering a <em>sliver</em> or full <em>shard</em> by obtaining recovery symbols from other <em>SNs</em></td></tr>
+<tr><td>(shard/sliver) recovery</td><td>process of an <em>SN</em> recovering a <em>sliver</em> or full <em>shard</em> by obtaining recovery symbols from other <em>SNs</em></td></tr>
 <tr><td>storage attestation</td><td>process where <em>SNs</em> exchange challenges and responses to demonstrate that they are storing their currently assigned <em>shards</em></td></tr>
 <tr><td>certificate of availability (CoA)</td><td>a <em>blob ID</em> with signatures of <em>SNs</em> holding at least $2f+1$ <em>shards</em> in a specific <em>epoch</em></td></tr>
 <tr><td>point of availability (PoA)</td><td>point in time when a <em>CoA</em> is submitted to Sui and the corresponding <em>blob</em> is guaranteed to be available until its expiration</td></tr>
@@ -1752,13 +1787,13 @@ concepts, their canonical name, how they relate to / differ from other terms.</p
 <tr><td>member</td><td>an <em>SN</em> that is part of a <em>committee</em> at some <em>epoch</em></td></tr>
 <tr><td>storage epoch</td><td>the epoch for Walrus as distinct to the epoch for Sui</td></tr>
 <tr><td>availability period</td><td>the period specified in <em>storage epochs</em> for which a <em>blob</em> is certified to be available on Walrus</td></tr>
-<tr><td>expiry</td><td>the end epoch, at which a blob is no more available, and may be deleted.</td></tr>
+<tr><td>expiry</td><td>the end epoch at which a blob is no longer available and can be deleted</td></tr>
 </tbody></table>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="devnet-terms-of-service---walrus"><a class="header" href="#devnet-terms-of-service---walrus">DEVNET TERMS OF SERVICE - WALRUS</a></h1>
 <p>Last updated: June 13, 2024</p>
-<p>By using Mysten Labs devnet software, technologies, tools, and other services (collectively
+<p>By using Mysten Labs Devnet software, technologies, tools, and other services (collectively
 “Devnet”), you agree to the general Terms of Service and these additional Devnet Terms of Service
-(together, the “Terms”). If you do not agree, do not participate in DevNet. If you are using Devnet
+(together, the “Terms”). If you do not agree, do not participate in Devnet. If you are using Devnet
 on behalf of an organization, you represent and warrant that you are an authorized representative of
 that organization and have the authority to bind that business or entity to the Terms.</p>
 <h2 id="eligibility-criteria"><a class="header" href="#eligibility-criteria">Eligibility Criteria</a></h2>

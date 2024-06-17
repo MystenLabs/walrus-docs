@@ -176,52 +176,68 @@
                         <h1 id="basic-architecture-and-security-assumptions"><a class="header" href="#basic-architecture-and-security-assumptions">Basic architecture and security assumptions</a></h1>
 <p>The key actors in the Walrus architecture are the following:</p>
 <ul>
-<li><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.
-They are ready to pay for service
-when it comes to writes, and when it comes to non-best-effort reads. Users also want to prove
+<li>
+<p><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.</p>
+<p>These actors are ready to pay for service
+when it comes to writes and non-best-effort reads. Users also want to prove
 the <strong>availability</strong> of a blob to third parties without the cost of sending or receiving the full
-blob. Users may be malicious in various ways: they may wish to not pay for services, prove the
-availability of an unavailable blobs, or modify / delete blobs without authorization, try to
-exhaust resources of storage nodes, etc.</li>
-<li><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>. Each blob is erasure
-encoded in many <strong>slivers</strong> and slivers from each stored blob become part of all shards. A shard
-at any storage epoch is associated with a <strong>storage node</strong> that actually stores all slivers of
-the shard, and is ready to serve them. The assignment of storage nodes to shards within
-<strong>storage epochs</strong> is controlled by a Sui smart contract and we assume that more than 2/3 of the
-shards are managed by correct storage nodes within each storage epoch. This means that we must
+blob.</p>
+<p>Users might be malicious in various ways: they might not want to pay for services, prove the
+availability of unavailable blobs, modify/delete blobs without authorization, try to
+exhaust resources of storage nodes, and so on.</p>
+</li>
+<li>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>.</p>
+<p>Each blob is erasure
+encoded in many <strong>slivers</strong>. Slivers from each stored blob become part of all shards. A shard
+at any storage epoch is associated with a storage node that actually stores all slivers of
+the shard and is ready to serve them.</p>
+<p>A Sui smart contract controls the assignment of storage nodes to shards within
+<strong>storage epochs</strong> and Walrus assumes that more than 2/3 of the
+shards are managed by correct storage nodes within each storage epoch. This means that Walrus must
 tolerate up to 1/3 of the shards managed by Byzantine storage nodes (approximately 1/3 of the
-storage nodes being Byzantine) within each storage epoch and across storage epochs.</li>
-<li>All clients and storage nodes operate a <strong>blockchain</strong> client (specifically on Sui), and mediate
-payments, resources (space), mapping of shards to storage nodes, and metadata through blockchain
+storage nodes being Byzantine) within each storage epoch and across storage epochs.</p>
+</li>
+<li>
+<p>All clients and storage nodes operate a <strong>blockchain</strong> client (specifically on Sui), and mediate
+payments, resources (space), mapping of shards to storage nodes and metadata through blockchain
 smart contracts. Users interact with the blockchain to acquire storage resources and upload
 certificates for stored blobs. Storage nodes listen to the blockchain events to coordinate
-their operations.</li>
+their operations.</p>
+</li>
 </ul>
 <p>Walrus supports any additional number of optional infrastructure actors that can operate in a
 permissionless way:</p>
 <ul>
-<li><strong>Caches</strong> are <strong>clients</strong> that store one or more full blobs and make them available to users
-over traditional web2 (HTTP, etc) technologies. They are optional in that end-users may also
+<li>
+<p><strong>Caches</strong> are clients that store one or more full blobs and make them available to users
+over traditional web2 technologies (such as HTTP).</p>
+<p>They are optional in that end users can also
 operate a local cache, and perform Walrus reads over web2 technologies locally. However, cache
-infrastructures may also act as CDNs, split the cost of blob reconstruction over many requests,
-be better connected, etc. A client can always verify that reads from such infrastructures
-are correct.</li>
-<li><strong>Publishers</strong> are <strong>clients</strong> that help end users store a blob using web2 technologies,
-using less bandwidth and custom logic. They in effect receive the blob to be published over
-traditional web2 protocols (e.g., HTTP) and run the Walrus store protocol on the end-user's
+infrastructures can also act as CDNs, split the cost of blob reconstruction over many requests,
+be better connected, and so on. A client can always verify that reads from such infrastructures
+are correct.</p>
+</li>
+<li>
+<p><strong>Publishers</strong> are clients that help end users store a blob using web2 technologies,
+using less bandwidth and custom logic.</p>
+<p>In effect, they receive the blob to be published over
+traditional web2 protocols (like HTTP) and run the Walrus store protocol on the end user's
 behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
 collecting storage-node signatures and aggregating them into a certificate, as well as all
-other on-chain actions. They are optional in that a user may directly interact with Sui and
+other on-chain actions.</p>
+<p>They are optional in that a user can directly interact with Sui and
 the storage nodes to store blobs. An end user can always verify that a publisher
 performed their duties correctly by checking that an event associated with the
-<a href="./properties.html">Point of Availability</a> for the blob exists on-chain
-and then either performing a read to see if Walrus returns the blob or by encoding the blob
-and comparing the result to the blob ID in the certificate.</li>
+<a href="./properties.html">Point of Availability</a> for the blob exists on chain
+and then either performing a read to see if Walrus returns the blob or encoding the blob
+and comparing the result to the blob ID in the certificate.</p>
+</li>
 </ul>
-<p>Caches, publishers, and end-users are not considered trusted components of the system, and they may
+<p>Caches, publishers and end users are not considered trusted components of the system, and they might
 deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
-for honest end-users that use honest intermediaries (caches and publishers). We provide means for
-end-users to audit the correct operation of both caches and publishers.</p>
+for honest end users that use honest intermediaries (caches and publishers). Walrus provides a
+means for end users to audit the correct operation of both caches and publishers.</p>
 
                     </main>
 

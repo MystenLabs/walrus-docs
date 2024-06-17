@@ -176,7 +176,7 @@
                         <h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>
 <p>To make communication as clear and efficient as possible, we make sure to use a single term for
 every Walrus entity/concept and <em>do not</em> use any synonyms. The following table lists various
-concepts, their canonical name, how they relate to / differ from other terms.</p>
+concepts, their canonical name, and how they relate to or differ from other terms.</p>
 <p>Italicized terms in the description indicate other specific Walrus terms contained in the table.</p>
 <div class="table-wrapper"><table><thead><tr><th>Approved name</th><th>Description</th></tr></thead><tbody>
 <tr><td>storage node (SN)</td><td>entity storing data for Walrus; holds one or several <em>shards</em></td></tr>
@@ -186,12 +186,12 @@ concepts, their canonical name, how they relate to / differ from other terms.</p
 <tr><td>blob ID</td><td>cryptographic ID computed from a <em>blob</em>’s <em>slivers</em></td></tr>
 <tr><td>blob metadata</td><td>metadata of one <em>blob</em>; in particular, this contains a hash per <em>shard</em> to enable the authentication of <em>slivers</em> and recovery symbols</td></tr>
 <tr><td>(end) user</td><td>any entity/person that wants to store or read <em>blobs</em> on/from Walrus; can act as a Walrus client itself or use the simple interface exposed by <em>publishers</em> and <em>caches</em></td></tr>
-<tr><td>publisher</td><td>service interacting with Sui and the <em>SNs</em> to store <em>blobs</em> on Walrus; offers a simple HTTP POST endpoint to <em>end users</em></td></tr>
-<tr><td>aggregator</td><td>service that reconstructs <em>blobs</em> by interacting with <em>SNs</em> and exposes a simple HTTP GET endpoint to <em>end users</em></td></tr>
+<tr><td>publisher</td><td>service interacting with Sui and the <em>SNs</em> to store <em>blobs</em> on Walrus; offers a simple <code>HTTP POST</code> endpoint to <em>end users</em></td></tr>
+<tr><td>aggregator</td><td>service that reconstructs <em>blobs</em> by interacting with <em>SNs</em> and exposes a simple <code>HTTP GET</code> endpoint to <em>end users</em></td></tr>
 <tr><td>cache</td><td>an <em>aggregator</em> with additional caching capabilities</td></tr>
 <tr><td>(Walrus) client</td><td>entity interacting directly with the <em>SNs</em>; this can be an <em>aggregator</em>/<em>cache</em>, a <em>publisher</em>, or an <em>end user</em></td></tr>
 <tr><td>(blob) reconstruction</td><td>decoding of the primary <em>slivers</em> to obtain the blob; includes re-encoding the <em>blob</em> and checking the Merkle proofs</td></tr>
-<tr><td>(shard/sliver) recovery</td><td>process of an SN recovering a <em>sliver</em> or full <em>shard</em> by obtaining recovery symbols from other <em>SNs</em></td></tr>
+<tr><td>(shard/sliver) recovery</td><td>process of an <em>SN</em> recovering a <em>sliver</em> or full <em>shard</em> by obtaining recovery symbols from other <em>SNs</em></td></tr>
 <tr><td>storage attestation</td><td>process where <em>SNs</em> exchange challenges and responses to demonstrate that they are storing their currently assigned <em>shards</em></td></tr>
 <tr><td>certificate of availability (CoA)</td><td>a <em>blob ID</em> with signatures of <em>SNs</em> holding at least $2f+1$ <em>shards</em> in a specific <em>epoch</em></td></tr>
 <tr><td>point of availability (PoA)</td><td>point in time when a <em>CoA</em> is submitted to Sui and the corresponding <em>blob</em> is guaranteed to be available until its expiration</td></tr>
@@ -201,7 +201,7 @@ concepts, their canonical name, how they relate to / differ from other terms.</p
 <tr><td>member</td><td>an <em>SN</em> that is part of a <em>committee</em> at some <em>epoch</em></td></tr>
 <tr><td>storage epoch</td><td>the epoch for Walrus as distinct to the epoch for Sui</td></tr>
 <tr><td>availability period</td><td>the period specified in <em>storage epochs</em> for which a <em>blob</em> is certified to be available on Walrus</td></tr>
-<tr><td>expiry</td><td>the end epoch, at which a blob is no more available, and may be deleted.</td></tr>
+<tr><td>expiry</td><td>the end epoch at which a blob is no longer available and can be deleted</td></tr>
 </tbody></table>
 </div>
                     </main>
