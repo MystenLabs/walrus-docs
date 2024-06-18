@@ -12,7 +12,7 @@ here the details for all the configuration options.
 
 The config file is expected to be in `./builder.yaml`, and it is possible to point elsewhere with
 the `--config` flag. For your first run, it should be sufficient to call the `site-builder` with
-`--config assets/builder-example.yaml`, which is already configured appropriately.
+`--config site-builder/assets/builder-example.yaml`, which is already configured appropriately.
 
 If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
 binary, see below.

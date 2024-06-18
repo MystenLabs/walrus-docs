@@ -18,9 +18,8 @@ Then, follow these additional setup steps.
 First clone and enter the Walrus Sites repo from <https://github.com/MystenLabs/walrus-sites>.
 
 ``` sh
-git clone git@github.com:MystenLabs/walrus-sites.git
+git clone https://github.com/MystenLabs/walrus-sites.git
 cd walrus-sites
-cd site-builder
 ```
 
 Then, build the release version of the site builder:

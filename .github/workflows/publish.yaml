@@ -94,17 +94,13 @@ jobs:
           curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o ~/.walrus/client_config.yaml
           walrus -h # Ensure the walrus binary works
 
-      # TODO: Use HTTPS instead of SSH and remove SSH secrets as soon as walrus-sites is public. (#32)
       - name: Clone walrus-sites
-        run: |
-          eval `ssh-agent -s`
-          ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
-          git clone git@github.com:MystenLabs/walrus-sites
+        run: git clone https://github.com/MystenLabs/walrus-sites
       - name: Build site-builder
         run: |
-          cd walrus-sites/site-builder
+          cd walrus-sites
           cargo build --release
-          cp target/release/site-builder ../../bin
+          cp target/release/site-builder ../bin
           cd -
 
       - name: Update Walrus Site
