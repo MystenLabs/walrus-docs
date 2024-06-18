@@ -14,8 +14,8 @@ This section provides an overview of how you may use Walrus objects in your Sui 
 Walrus blobs are represented as Sui objects of type `Blob`. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
-availability. When a blob is certified its `certified` field contains the epoch in which it was
-certified.
+availability. When a blob is certified its `certified_epoch` field contains the epoch in which it
+was certified.
 
 A `Storage` object is always associated with a `Blob` object, reserving enough space for
 a long enough period for the blob's storage. A certified blob is available for the period the
@@ -34,8 +34,8 @@ public struct Blob has key, store {
     blob_id: u256,
     size: u64,
     erasure_code_type: u8,
-    certified: option::Option<u64>, // The epoch first certified,
-                                    // or None if not certified.
+    certified_epoch: option::Option<u64>, // The epoch first certified,
+                                          // or None if not certified.
     storage: Storage,
 }
 
@@ -57,7 +57,7 @@ public fun stored_epoch(b: &Blob) : u64;
 public fun blob_id(b: &Blob) : u256;
 public fun size(b: &Blob) : u64;
 public fun erasure_code_type(b: &Blob) : u8;
-public fun certified(b: &Blob) : &Option<u64>;
+public fun certified_epoch(b: &Blob) : &Option<u64>;
 public fun storage(b: &Blob) : &Storage;
 
 // Storage functions
