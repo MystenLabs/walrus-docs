@@ -17,11 +17,10 @@ For the rest of the tutorial, we will use as an example the simple site containe
 Since we have placed the `walrus` binary and configuration in their default locations, publishing
 the `./examples/snake` site is simple:
 
-- Ensure that you are in the `site-builder` directory;
 - Run the publishing command:
 
   ``` sh
-  ./target/release/site-builder --config assets/builder-example.yaml publish ../examples/snake
+  ./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
   ```
 
 The output should look like the following:
@@ -56,14 +55,14 @@ configuration](tutorial-config.md) section.
 Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".
 
-First, make this edit on in the `../examples/snake/index.html` file.
+First, make this edit on in the `./examples/snake/index.html` file.
 
 Then, you can update the existing site by running the `update` command, and providing the directory
-where to find the updated files (still `../example/snake`), and the object ID of the existing site
+where to find the updated files (still `./example/snake`), and the object ID of the existing site
 (`0x5ac988...`):
 
 ``` sh
-./target/release/site-builder --config assets/builder-example.yaml update ../examples/snake 0x5ac9888...
+./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
 ```
 
 The output this time should be:
