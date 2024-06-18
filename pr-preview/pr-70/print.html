@@ -1,0 +1,2070 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Walrus</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded "><a href="blog/00_intro.html"><strong aria-hidden="true">1.</strong> The Walrus Dev Blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="overview/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use-cases</a></li><li class="chapter-item expanded "><a href="overview/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="overview/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="overview/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="overview/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="overview/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="overview/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="overview/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="overview/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="dev-guide/dev-guide.html"><strong aria-hidden="true">7.</strong> Developer Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="dev-guide/components.html"><strong aria-hidden="true">7.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="dev-guide/dev-operations.html"><strong aria-hidden="true">7.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="dev-guide/sui-struct.html"><strong aria-hidden="true">7.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="usage/setup.html"><strong aria-hidden="true">8.</strong> Setup</a></li><li class="chapter-item expanded "><a href="usage/interacting.html"><strong aria-hidden="true">9.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="usage/client-cli.html"><strong aria-hidden="true">9.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="usage/json-api.html"><strong aria-hidden="true">9.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="usage/web-api.html"><strong aria-hidden="true">9.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="usage/examples.html"><strong aria-hidden="true">10.</strong> Examples</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus sites</li><li class="chapter-item expanded "><a href="walrus-sites/intro.html"><strong aria-hidden="true">11.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial.html"><strong aria-hidden="true">12.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/tutorial-install.html"><strong aria-hidden="true">12.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-publish.html"><strong aria-hidden="true">12.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-suins.html"><strong aria-hidden="true">12.3.</strong> Bonus: Set a SuiNS name</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-config.html"><strong aria-hidden="true">12.4.</strong> Advanced configuration</a></li></ol></li><li class="chapter-item expanded "><a href="walrus-sites/overview.html"><strong aria-hidden="true">13.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/linking.html"><strong aria-hidden="true">13.1.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/redirects.html"><strong aria-hidden="true">13.2.</strong> Redirecting objects to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/site-builder.html"><strong aria-hidden="true">13.3.</strong> The site builder</a></li><li class="chapter-item expanded "><a href="walrus-sites/portal.html"><strong aria-hidden="true">13.4.</strong> The Walrus Sites Portal</a></li><li class="chapter-item expanded "><a href="walrus-sites/restrictions.html"><strong aria-hidden="true">13.5.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="tos.html">Devnet terms of service</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Walrus</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="walrus"><a class="header" href="#walrus">Walrus</a></h1>
+<p>Welcome to the developer documentation for Walrus, a decentralized storage and data availability
+protocol designed specifically for large binary files, or "blobs". Walrus focuses on providing a
+robust, but affordable solution for storing unstructured content on decentralized storage nodes
+while ensuring high availability and reliability even in the presence of Byzantine faults.</p>
+<p>Fun fact: If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
+Walrus behind the scenes. See the <a href="./walrus-sites/intro.html">Walrus Sites chapter</a> for further
+details on how this works.</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li>
+<p><strong>Storage and retrieval</strong>: Walrus supports storage operations to write and read blobs. It also
+allows anyone to prove that a blob has been stored and is available for retrieval at a later
+time.</p>
+</li>
+<li>
+<p><strong>Cost efficiency</strong>: By utilizing advanced error correction coding, Walrus maintains storage
+costs at approximately five times the size of the stored blobs and encoded parts of each blob
+are stored on each storage node. This is significantly more cost-effective compared to
+traditional full replication methods and much more robust against failures compared to
+protocols that only store each blob on a subset of storage nodes.</p>
+</li>
+<li>
+<p><strong>Integration with Sui blockchain</strong>: Walrus leverages <a href="https://github.com/MystenLabs/sui">Sui</a>
+for coordination, attesting availability and payments. Storage space can be owned as a resource on
+Sui, split, merged, and transferred. Blob storage is represented using storage objects on Sui, and
+smart contracts can check whether a blob is available and for how long.</p>
+</li>
+<li>
+<p><strong>Flexible access</strong>: Users can interact with Walrus through a command-line interface (CLI),
+software development kits (SDKs), and web2 HTTP technologies. Walrus is designed to work well
+with traditional caches and content distribution networks (CDNs), while ensuring all operations
+can also be run using local tools to maximize decentralization.</p>
+</li>
+</ul>
+<h2 id="architecture-and-operations"><a class="header" href="#architecture-and-operations">Architecture and operations</a></h2>
+<p>Walrus's architecture ensures that content remains accessible and retrievable even when many
+storage nodes are unavailable or malicious. Under the hood it uses modern error correction
+techniques based on fast linear fountain codes, augmented to ensure resilience against Byzantine
+faults, and a dynamically changing set of storage nodes. The core of Walrus remains simple, and
+storage node management and blob certification leverages Sui smart contracts.</p>
+<h2 id="organization"><a class="header" href="#organization">Organization</a></h2>
+<p>This documentation is split into three parts:</p>
+<ol>
+<li><em>About Walrus</em> describes the objectives, security properties, and architecture of Walrus.</li>
+<li><em>Usage</em> provides concrete information for developers. If you want to get started quickly, you can
+jump directly to the <a href="./usage/setup.html">setup chapter</a>.</li>
+<li><em>Walrus sites</em> describes how you can use Walrus and Sui together to build truly decentralized
+websites.</li>
+</ol>
+<p>Finally, we provide a <a href="./glossary.html">glossary</a> that explains the terminology used throughout the
+documentation.</p>
+<h2 id="sources"><a class="header" href="#sources">Sources</a></h2>
+<p>This documentation is built using <a href="https://rust-lang.github.io/mdBook/">mdBook</a> from source files in
+<a href="https://github.com/MystenLabs/walrus-docs/">github.com/MystenLabs/walrus-docs/</a>. Please report or
+fix any errors you find in this documentation in that GitHub project.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-walrus-dev-blog"><a class="header" href="#the-walrus-dev-blog">The Walrus Dev Blog</a></h1>
+<p>We will use this section of the Walrus documentation to publish news and updates about Walrus'
+development!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="announcing-walrus--walrus-sites-a-decentralized-store-and-web-dapp-platform"><a class="header" href="#announcing-walrus--walrus-sites-a-decentralized-store-and-web-dapp-platform">Announcing Walrus &amp; Walrus Sites: A Decentralized Store and Web DApp Platform</a></h1>
+<p>Walrus is an innovative decentralized storage network for blockchain apps and autonomous agents. The
+Walrus storage system is released today as a developer preview to Sui developers to gather
+feedback. We expect a general rollout to other web3 communities very soon!</p>
+<p>Leveraging innovations in erasure coding, Walrus enables fast and robust encoding of unstructured
+data blobs into smaller slivers distributed and stored over a network of storage nodes. A subset of
+slivers can be used to rapidly reconstruct the original blob reliably, even when up to two thirds of
+the slivers are missing. This is possible while keeping the replication factor down to a minimal
+4x-5x, similar to existing cloud-based services, but with the additional benefits of
+decentralization and resilience to more widespread faults.</p>
+<h2 id="the-replication-challenge"><a class="header" href="#the-replication-challenge">The Replication Challenge</a></h2>
+<p>Sui is the most advanced blockchain system in relation to storage on validators, with innovations
+such as a <a href="https://docs.sui.io/concepts/tokenomics/storage-fund">storage fund</a> that future proofs
+the cost of storing on-chain data. Nevertheless, Sui still requires complete data replication among
+all validators, resulting in a replication factor of 100x or more in today's Sui mainnet. This is
+necessary for replicated computing and smart contracts acting on the state of the blockchain, but is
+inefficient when it comes to simply storing unstructured data blobs, such as music, video,
+blockchain history, etc.</p>
+<h2 id="introducing-walrus-efficient-and-robust-decentralized-storage"><a class="header" href="#introducing-walrus-efficient-and-robust-decentralized-storage">Introducing Walrus: Efficient and Robust Decentralized Storage</a></h2>
+<p>To tackle the challenge of high replication costs, Mysten Labs has developed Walrus, a decentralized
+storage network offering exceptional data availability and robustness with a minimal replication
+factor of 4x-5x. Walrus provides two key benefits:</p>
+<ol>
+<li>
+<p><strong>Cost-Effective Blob Storage</strong>: Walrus allows for the upload of gigabytes of data at a time with
+minimal cost, making it an ideal solution for storing large volumes of data.\ Walrus can do this
+because the data blob is transmitted only once over the network, and storage nodes only spend a
+fraction of resources compared to the blob size. As a result, the more storage nodes the system
+has, the fewer resources each storage node uses per blob.</p>
+</li>
+<li>
+<p><strong>High Availability and Robustness</strong>: Data stored on Walrus enjoys enhanced reliability and
+availability under fault conditions. Data recovery is still possible even if two-thirds of the
+storage nodes crash or come under adversarial control. Further, availability may be certified
+efficiently without downloading the full blob.</p>
+</li>
+</ol>
+<p>Decentralized storage can take multiple forms in modern ecosystems. For instance, it offers better
+guarantees for digital assets traded as NFTs.  Unlike current designs that store data off-chain,
+decentralized storage ensures users own the actual resource, not just metadata, mitigating risks of
+data being taken down or misrepresented.</p>
+<p>Additionally, decentralized storage is not only useful for storing data such as pictures or files
+with high availability; it can also double as a low-cost data availability layer for rollups. Here,
+sequencers can upload transactions on Walrus, and the rollup executor only needs to temporarily
+reconstruct them for execution.</p>
+<p>We also believe Walrus will accompany existing disaster recovery strategies for millions of
+enterprise companies. Not only is Walrus low-cost, but it also provides unmatched layers of data
+availability, integrity, transparency, and resilience that centralized solutions by design cannot
+offer.</p>
+<p>Walrus is powered by the Sui Network and scales horizontally to hundreds of networked decentralized
+storage nodes. This should enable Walrus to offer Exabytes of storage at costs competitive with
+current centralized offerings, given the higher assurance and decentralization.</p>
+<h2 id="the-future-of-walrus"><a class="header" href="#the-future-of-walrus">The Future of Walrus</a></h2>
+<p>By releasing this developer preview we hope to share some of the design decisions with the
+decentralized app developer community, and gather feedback on the approach and the APIs for storing,
+retrieving, and certifying blobs. In this developer preview, all storage nodes are operated by
+Mysten Labs to help us understand use-cases, fix bugs, and improve the performance of the software.</p>
+<p>Future updates to Walrus will allow for dynamically changing the set of decentralized storage nodes,
+as well as changing the mapping of what slivers are managed by each storage node. The available
+operations and tools will also be expanded to cover more storage related use-cases.  Many of these
+functions will be designed with the feedback we gather in mind.</p>
+<p>Stay tuned for more updates on how Walrus will revolutionize data storage in the web3 ecosystem.</p>
+<h2 id="what-can-developers-build"><a class="header" href="#what-can-developers-build">What can developers build?</a></h2>
+<p>As part of this developer preview we provide a binary client (currently macos, ubuntu) that can be
+operated from the <a href="https://docs.walrus.site/usage/client-cli.html">command line interface</a>, a <a href="https://docs.walrus.site/usage/json-api.html">JSON
+API</a>, and an <a href="https://docs.walrus.site/usage/web-api.html">HTTP
+API</a>.  We also offer the community an aggregator and
+publisher service, and a Devnet deployment of 10 storage nodes operated by Mysten Labs.</p>
+<p>We hope Sui developers experiment with building applications that leverage the Walrus Decentralized
+Store in a variety of ways. As examples we hope to see the community build:</p>
+<ul>
+<li>
+<p><strong>Storage of media for NFT or dapps:</strong> Walrus can directly store and serve media such as images,
+sounds, sprites, videos, other game assets, etc. This is publicly available media that can be
+accessed using HTTP requests at caches to create multimedia dapps.</p>
+</li>
+<li>
+<p><strong>AI related use cases:</strong> Walrus can store clean data sets of training data, datasets with a known
+and verified provenance, models weights, and proofs of correct training for AI models. Or it may
+be used to store and ensure the availability and authenticity of an AI model output.</p>
+</li>
+<li>
+<p><strong>Storage of long term archival of blockchain history:</strong> Walrus can be used as a lower cost
+decentralized store to store blockchain history. For Sui this can include sequences of checkpoints
+with all associated transaction and effects content. As well as historic snapshots of the
+blockchain state, code or binaries.</p>
+</li>
+<li>
+<p><strong>Support availability for L2s:</strong> Walrus allows parties to certify the availability of blobs, as
+required by L2s that need data to be stored and be attested as available to all. This may also
+include availability of extra audit data such as validity proofs, zero knowledge proofs of correct
+execution or large fraud proofs.</p>
+</li>
+<li>
+<p><strong>Support a full decentralized web experience:</strong> Walrus can host full decentralized web
+experiences including all resources (such as js, css, html, media). These can provide content but
+also host the UX of dapps, enabling fully decentralized front end and back ends on chain. It
+brings the full "web" back in "web3".</p>
+</li>
+<li>
+<p><strong>Support subscription models for media:</strong> Creators can store encrypted media on Walrus and only
+provide access via decryption keys to parties that have paid a subscription fee or have paid for
+contents. (Note that Walrus provides the storage, encryption and decryption must be done off
+Walrus).</p>
+</li>
+</ul>
+<p>We are excited to see what else the web3 developer community can imagine!</p>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<p>For this developer preview the public Walrus Devnet is openly available to all developers. Developer
+documentation is available at <a href="https://docs.walrus.site">https://docs.walrus.site</a>.</p>
+<p>SUI Testnet token is the main currency for interacting with Walrus.  Developers pay for Walrus
+Devnet storage using SUI Testnet tokens which can be acquired at the <a href="https://discord.com/channels/916379725201563759/1037811694564560966">Sui Testnet Discord
+faucet</a>.</p>
+<h2 id="one-more-thing"><a class="header" href="#one-more-thing">One more thing</a></h2>
+<p>The <a href="https://walrus.site/">Walrus Sites website</a>, the <a href="https://docs.walrus.site">Walrus docs</a>, and
+<a href="https://blog.walrus.site">this very blog</a> are hosted on Walrus. To learn more about Walrus Sites
+and how you can deploy your own, <a href="https://docs.walrus.site/walrus-sites/intro.html">click
+here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="objectives-and-use-cases"><a class="header" href="#objectives-and-use-cases">Objectives and use cases</a></h1>
+<p>Walrus supports operations to store and retrieve blobs, and to prove and verify their availability.
+It ensures content survives storage nodes suffering Byzantine faults and remains available and
+retrievable. It provides APIs to access the stored content over a CLI, SDKs and over web2 HTTP
+technologies, and supports content delivery infrastructures like caches and content distribution
+networks (CDNs).</p>
+<p>Under the hood, storage cost is a small fixed multiple of the size of blobs (around 5x).
+Advanced error correction coding keeps the cost low, in contrast to the full replication of data
+traditional to blockchains, such as the &gt;100x multiple for data stored in Sui objects. As a result,
+storage of much bigger resources (up to several GiB) is possible on Walrus at substantially lower
+cost compared to Sui or other blockchains. Because encoded blobs are stored on all storage nodes,
+Walrus also provides superior robustness compared to designs with a small amount of replicas
+storing the full blob.</p>
+<p>Walrus uses the Sui chain for coordination and payments. Available storage is represented as Sui
+objects that can be acquired, owned, split, merged and transferred. Storage space can be tied to
+a stored blob for a period of time, with the resulting Sui object used to prove
+availability on chain in smart contracts, or off chain using light clients.</p>
+<p>The <a href="overview/./overview.html">next chapter</a> discusses the above operations relating to storage,
+retrieval and availability in detail.</p>
+<p>In the future, we plan to include in Walrus some minimal governance to allow storage nodes to
+change between storage epochs. Walrus is also compatible with periodic payments for continued
+storage. We also plan to implement storage attestation based on challenges to get confidence
+that blobs are stored or at least available. Walrus also allows light nodes that store small parts
+of blobs to get rewards for proving availability and assisting recovery. We will cover these
+topics in later documents. We also provide details of the encoding scheme in a separate document.</p>
+<h2 id="non-objectives"><a class="header" href="#non-objectives">Non-objectives</a></h2>
+<p>There are a few things that Walrus explicitly is not:</p>
+<ul>
+<li>
+<p>Walrus does not reimplement a CDN that might be geo-replicated or have less than tens of
+milliseconds of latency. Instead, it ensures that traditional CDNs are usable and compatible with
+Walrus caches.</p>
+</li>
+<li>
+<p>Walrus does not re-implement a full smart contracts platform with consensus or execution. It
+relies on Sui smart contracts when necessary, to manage Walrus resources and processes including
+payments, storage epochs, and so on.</p>
+</li>
+<li>
+<p>Walrus supports storage of any blob, including encrypted blobs, however Walrus itself is not the
+distributed key management infrastructure that manages and distributed encryption or decryption
+keys to support a full private storage eco-system. It can, however, provide the storage layer for
+such infrastructures.</p>
+</li>
+</ul>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
+<p>App builders may use Walrus in conjunction with any L1 or L2 blockchains to build experiences that
+require large amounts of data to be stored in a decentralized manner and possibly certified as
+available:</p>
+<ul>
+<li>
+<p><strong>Storage of media for NFT or dApps</strong>: Walrus can directly store and serve media such as images,
+sounds, sprites, videos, other game assets, and so on. This is publicly available media that is
+accessed using HTTP requests at caches to create multimedia dApps.</p>
+</li>
+<li>
+<p><strong>AI related use cases</strong>: Walrus can store clean data sets of training data, datasets with a
+known and verified provenance, models, weights and proofs of correct training for AI models.
+It can also store and ensure the availability of an AI model output.</p>
+</li>
+<li>
+<p><strong>Storage of long term archival of blockchain history</strong>: Walrus can act as a lower cost
+decentralized store to store blockchain history. For Sui, this can include sequences of
+checkpoints with all associated transaction and effects content, as well as historic snapshots
+of the blockchain state, code or binaries.</p>
+</li>
+<li>
+<p><strong>Support availability for L2s</strong>: Walrus allows parties to certify the availability of blobs, as
+required by L2s that need data to be stored and be attested as available to all. This may also
+include availability of extra audit data such as validity proofs, zero knowledge proofs of
+correct execution or large fraud proofs.</p>
+</li>
+<li>
+<p><strong>Support a fully decentralized web experience</strong>: Walrus can host fully decentralized web
+experiences, including all resources (such as js, css, html, media). These can not only
+provide content, but also host the UX of dApps to enable applications with fully decentralized
+front end and back ends on chain. Walrus puts the full "web" into web3.</p>
+</li>
+<li>
+<p><strong>Support subscription models for media</strong>: Creators can store encrypted media on Walrus and only
+provide access via decryption keys to parties that have paid a subscription fee or have paid for
+content. Walrus provides the storage, encryption and decryption needs to happen off
+the system.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="system-overview"><a class="header" href="#system-overview">System overview</a></h1>
+<p>This chapter provides an overview of the <a href="overview/./properties.html">security properties</a>,
+<a href="overview/./architecture.html">architecture</a> and <a href="overview/./encoding.html">encoding mechanisms</a> of the Walrus system.</p>
+<p>Use the <a href="overview/../glossary.html">Glossary</a> as a reference for bolded terms used in this documentation.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="basic-architecture-and-security-assumptions"><a class="header" href="#basic-architecture-and-security-assumptions">Basic architecture and security assumptions</a></h1>
+<p>The key actors in the Walrus architecture are the following:</p>
+<ul>
+<li>
+<p><strong>Users</strong> through <strong>clients</strong> want to store and read <strong>blobs</strong> identified by their <strong>blob ID</strong>.</p>
+<p>These actors are ready to pay for service
+when it comes to writes and non-best-effort reads. Users also want to prove
+the <strong>availability</strong> of a blob to third parties without the cost of sending or receiving the full
+blob.</p>
+<p>Users might be malicious in various ways: they might not want to pay for services, prove the
+availability of unavailable blobs, modify/delete blobs without authorization, try to
+exhaust resources of storage nodes, and so on.</p>
+</li>
+<li>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>.</p>
+<p>Each blob is erasure
+encoded in many <strong>slivers</strong>. Slivers from each stored blob become part of all shards. A shard
+at any storage epoch is associated with a storage node that actually stores all slivers of
+the shard and is ready to serve them.</p>
+<p>A Sui smart contract controls the assignment of storage nodes to shards within
+<strong>storage epochs</strong> and Walrus assumes that more than 2/3 of the
+shards are managed by correct storage nodes within each storage epoch. This means that Walrus must
+tolerate up to 1/3 of the shards managed by Byzantine storage nodes (approximately 1/3 of the
+storage nodes being Byzantine) within each storage epoch and across storage epochs.</p>
+</li>
+<li>
+<p>All clients and storage nodes operate a <strong>blockchain</strong> client (specifically on Sui), and mediate
+payments, resources (space), mapping of shards to storage nodes and metadata through blockchain
+smart contracts. Users interact with the blockchain to acquire storage resources and upload
+certificates for stored blobs. Storage nodes listen to the blockchain events to coordinate
+their operations.</p>
+</li>
+</ul>
+<p>Walrus supports any additional number of optional infrastructure actors that can operate in a
+permissionless way:</p>
+<ul>
+<li>
+<p><strong>Caches</strong> are clients that store one or more full blobs and make them available to users
+over traditional web2 technologies (such as HTTP).</p>
+<p>They are optional in that end users can also
+operate a local cache, and perform Walrus reads over web2 technologies locally. However, cache
+infrastructures can also act as CDNs, split the cost of blob reconstruction over many requests,
+be better connected, and so on. A client can always verify that reads from such infrastructures
+are correct.</p>
+</li>
+<li>
+<p><strong>Publishers</strong> are clients that help end users store a blob using web2 technologies,
+using less bandwidth and custom logic.</p>
+<p>In effect, they receive the blob to be published over
+traditional web2 protocols (like HTTP) and run the Walrus store protocol on the end user's
+behalf. This includes encoding the blob into slivers, distributing the slivers to shards,
+collecting storage-node signatures and aggregating them into a certificate, as well as all
+other on-chain actions.</p>
+<p>They are optional in that a user can directly interact with Sui and
+the storage nodes to store blobs. An end user can always verify that a publisher
+performed their duties correctly by checking that an event associated with the
+<a href="overview/./properties.html">Point of Availability</a> for the blob exists on chain
+and then either performing a read to see if Walrus returns the blob or encoding the blob
+and comparing the result to the blob ID in the certificate.</p>
+</li>
+</ul>
+<p>Caches, publishers and end users are not considered trusted components of the system, and they might
+deviate from the protocol arbitrarily. However, some of the security properties of Walrus only hold
+for honest end users that use honest intermediaries (caches and publishers). Walrus provides a
+means for end users to audit the correct operation of both caches and publishers.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encoding-overheads-and-verification"><a class="header" href="#encoding-overheads-and-verification">Encoding, overheads and verification</a></h1>
+<p>The following list summarizes the basic encoding and cryptographic techniques used in Walrus:</p>
+<ul>
+<li>
+<p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> in a storage epoch out of a larger total (1000, for
+instance). Each shard contains one blob <strong>sliver</strong> for each blob past point of availability. Each
+shard is assigned to a storage node in a storage epoch.</p>
+</li>
+<li>
+<p>An <a href="https://en.wikipedia.org/wiki/Online_codes">erasure code</a> <strong>encode algorithm</strong> takes a blob
+and encodes it as K symbols, such that any fraction p of symbols can be used to reconstruct
+the blob. Each blob sliver contains a fixed number of such symbols.</p>
+</li>
+<li>
+<p>Walrus selects p &lt; 1/3 so that a third of symbols and slivers can be used to reconstruct the blob
+by the <strong>decode algorithm</strong>. The matrix used to produce the erasure code is fixed and is the same
+for all blobs in the Walrus system, and encoders have no discretion about it.</p>
+</li>
+<li>
+<p>Storage nodes manage one or more shards, and corresponding slivers of each blob are distributed
+to all the storage shards.</p>
+<p>As a result, the overhead of the distributed store is ~5x that of the blob itself, no matter how
+many shards there are. The encoding is systematic, meaning that some storage nodes hold part of
+the original blob, allowing for fast random access reads.</p>
+</li>
+</ul>
+<p>Each blob is also associated with some metadata including a blob ID to allow verification:</p>
+<ul>
+<li>
+<p>A <strong>blob ID</strong> is computed as an authenticator of the set of all shard data and metadata (byte
+size, encoding, blob hash).</p>
+<p>Walrus hashes a sliver representation in each of the shards and adds the resulting
+hashes into a Merkle tree. Then the root of the Merkle tree is the blob hash used to derive the
+blob ID that identifies the blob in the system.</p>
+</li>
+<li>
+<p>Each storage node can use the blob ID to check if some shard data belongs to a blob using the
+authenticated structure corresponding to the blob hash (Merkle tree). A successful check means
+that the data is indeed as intended by the writer of the blob (who might be corrupt).</p>
+</li>
+<li>
+<p>When any party reconstructs a blob ID from shard slivers, or accepts any blob claiming
+to be a specific blob ID, it must check that it encodes to the correct blob ID.</p>
+<p>This process involves re-coding the blob using the erasure correction code, and deriving the
+blob ID again to check that the blob matches. This prevents a malformed blob (incorrectly
+erasure coded) from ever being read as a valid blob at any correct recipient.</p>
+</li>
+<li>
+<p>A set of slivers equal to the reconstruction threshold belonging to a blob ID that are either
+inconsistent or lead to the reconstruction of a different ID represent an incorrect encoding
+(this happens only if the user that encoded the blob was malicious and encoded it incorrectly).</p>
+<p>Walrus can extract one symbol per sliver to form an inconsistency proof.
+Storage nodes can delete slivers belonging to inconsistently encoded blobs,
+and upon request return either the inconsistency proof or an inconsistency certificate posted
+on chain.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operations"><a class="header" href="#operations">Operations</a></h1>
+<p>Walrus operations can be separated in <a href="overview/./operations-sui.html">interactions with the Sui chain</a>, which
+is used by Walrus for coordination and governance, and <a href="overview/./operations-off-chain.html">off-chain
+interactions</a> between clients and storage nodes.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operations-on-sui"><a class="header" href="#operations-on-sui">Operations on Sui</a></h1>
+<p>Walrus uses Sui smart contracts to coordinate storage operations as resources that have a lifetime,
+and payments. Smart contracts also facilitate governance to determine the storage nodes holding each
+storage shard. The following content outlines these operations and refers to them as part of the
+read/write paths.</p>
+<p>Metadata is the only blob element ever exposed to Sui or its validators, as the content
+of blobs is always stored off chain on Walrus storage nodes and caches. The storage nodes or caches
+do not have to overlap with any Sui infrastructure components (such as validators), and the storage
+epochs can be of different lengths and not have the same start/end times as Sui epochs.</p>
+<h2 id="storage-resource-life-cycle-on-sui"><a class="header" href="#storage-resource-life-cycle-on-sui">Storage resource life cycle on Sui</a></h2>
+<p>A number of Sui smart contracts hold the metadata of the Walrus system and all its entities.</p>
+<ul>
+<li>
+<p>A <strong>Walrus system object</strong> holds the committee of storage nodes for the current storage epoch. The
+system object also holds the total available space on Walrus and the price per unit of storage (1
+KiB).</p>
+<p>These values are determined by 2/3 agreement between the storage nodes for the storage
+epoch. Users can pay to purchase storage space for some time duration. These space resources can
+be split, merged and transferred. Later, they can be used to place a blob ID into Walrus.</p>
+</li>
+<li>
+<p>The <strong>storage fund</strong> holds funds for storing blobs over one storage epoch, multiple or
+perpetually. When purchasing storage space from the system object, users pay into the storage fund
+separated over multiple storage epochs. Payments are made each epoch to storage nodes
+according to performance (details follow).</p>
+</li>
+<li>
+<p>A user acquires some storage through the contracts or transfer, and can assign to it a blob ID,
+signifying they want to store this blob ID into it. This emits a Move <strong>resource event</strong> that
+both caches and storage nodes listen for to expect and authorize off-chain storage operations.</p>
+</li>
+<li>
+<p>Eventually a user holds an off-chain <strong>availability certificate</strong> from storage nodes for a blob
+ID. The user <strong>uploads the certificate on chain</strong> to signal that the blob ID is available for an
+availability period. The certificate is checked against the latest Walrus committee,
+and an <strong>availability event</strong> is emitted for the blob ID if correct. This is the point of
+availability for the blob.</p>
+</li>
+<li>
+<p>At a later time, a certified blob's storage can be <strong>extended</strong> by adding a storage object to it
+with a longer expiry period. This facility can be used by smart contracts to extend the
+availability of blobs stored in perpetuity as long as funds exist to continue providing storage.</p>
+</li>
+<li>
+<p>In case a blob ID is not correctly encoded, an <strong>inconsistency proof certificate</strong> can be uploaded
+on chain at a later time. This action emits an <strong>inconsistent blob event</strong>, signaling that the
+blob ID read results always return <code>None</code>. This indicates that its slivers can be deleted by
+storage nodes, except for an indicator to return <code>None</code>.</p>
+</li>
+</ul>
+<p>Users writing to Walrus, need to perform Sui transactions to acquire storage and certify blobs.
+Users creating or consuming proofs for attestations of blob availability read the chain
+only to prove or verify emission of events. Nodes read
+the blockchain to get committee metadata only once per epoch, and then request slivers directly
+from storage nodes by blob ID to perform reads on Walrus resources.</p>
+<h2 id="governance-operations-on-sui"><a class="header" href="#governance-operations-on-sui">Governance operations on Sui</a></h2>
+<p>Each Walrus storage epoch is represented by the Walrus system object that contains a storage
+committee and various metadata or storage nodes, like the mapping between shards and storage nodes,
+available space and current costs.</p>
+<p>Users can go to the system object for the period and <strong>buy some
+storage</strong> amount for one or more storage epochs. At each storage epoch there is a price for storage,
+and the payment provided becomes part of a <strong>storage fund</strong> for all the storage epochs that span
+the storage bought. There is a maximum number of storage epochs in the future for which storage can
+be bought (~2 years). Storage is a resource that can be split, merged, and transferred.</p>
+<p>At the end of the storage epoch, part of the funds in the <strong>storage fund need to be allocated to
+storage nodes</strong>. The idea here is for storage nodes to perform light audits of each other,
+and suggest which nodes are to be paid based on the performance of these audits.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="off-chain-operations"><a class="header" href="#off-chain-operations">Off-chain operations</a></h1>
+<p>While Walrus operations happen off Sui, they might interact with the blockchain flows defining the
+resource life cycle.</p>
+<h2 id="write-paths"><a class="header" href="#write-paths">Write paths</a></h2>
+<p><img src="overview/../assets/WriteFlow.png" alt="Write paths of Walrus" /></p>
+<p>Systems overview of writes, illustrated in the previous image:</p>
+<ul>
+<li>
+<p>A user acquires a storage resource of appropriate size and duration on chain, either by directly
+buying it on the Walrus system object, or a secondary market. A user can split, merge and
+transfer owned storage resources.</p>
+</li>
+<li>
+<p>When users want to write a blob, they first erasure code it using encode and compute the
+blob ID. Then they can perform the following steps themselves, or use a publisher to perform steps
+on their behalf.</p>
+</li>
+<li>
+<p>The user goes on chain (Sui) and updates a storage resource to register the blob ID with the
+desired size and lifetime. This emits an event, received by storage nodes. After the
+user receives they then continue the upload.</p>
+</li>
+<li>
+<p>The user sends each of the blob slivers and metadata to the storage nodes that currently
+manages the corresponding shards.</p>
+</li>
+<li>
+<p>A storage node managing a shard receives a sliver and checks it against the blob ID.
+It also checks that there is a blob resource with the blob ID that is authorized to store
+a blob. If correct, the storage node then signs a statement that it holds the sliver for blob ID
+(and metadata) and returns it to the user.</p>
+</li>
+<li>
+<p>The user puts together the signatures returned from storage nodes into an availability certificate
+and sends it on chain. When the certificate is verified on chain, an availability event for the
+blob ID is emitted, and all other storage nodes seek to download any missing shards for the blob
+ID. This event emitted by Sui is the <a href="overview/./properties.html">point of availability (PoA)</a> for the blob
+ID.</p>
+</li>
+<li>
+<p>After the PoA, and without user involvement, storage nodes sync and recover any missing slivers.</p>
+</li>
+</ul>
+<p>The user waits for 2/3 of shard signatures to return to create the certificate of
+availability. The rate of the code is below 1/3, allowing for reconstruction even if only 1/3 of
+shards return the sliver for a read. Because at most 1/3 of the storage nodes can fail, this ensures
+reconstruction if a reader requests slivers from all storage nodes. The full process can
+be mediated by a publisher that receives a blob and drives the process to completion.</p>
+<h2 id="refresh-availability"><a class="header" href="#refresh-availability">Refresh availability</a></h2>
+<p>Because no content data is required to refresh the duration of storage, refresh is conducted fully
+on chain within the protocol. To request an extension to the availability of a blob, a user provides
+an appropriate storage resource. Upon success this emits an event that storage nodes receive to
+extend the time for which each sliver is stored.</p>
+<h2 id="inconsistent-resource-flow"><a class="header" href="#inconsistent-resource-flow">Inconsistent resource flow</a></h2>
+<p>When a correct storage node tries to reconstruct a shard it might fail if the encoding of a blob ID
+past <a href="overview/./properties.html">PoA</a> was incorrect, but will instead extract an inconsistency proof for the
+blob ID. It then uses the proof to create an inconsistency certificate and upload it on chain.
+The flow is as follows:</p>
+<ul>
+<li>
+<p>A storage node fails to reconstruct a shard, and instead holds an inconsistency proof.</p>
+</li>
+<li>
+<p>The storage node sends the blob ID and inconsistency proof to all storage nodes of the Walrus
+epoch. The storage node verifies the proof and signs it.</p>
+</li>
+<li>
+<p>The storage node aggregates the signatures into an inconsistency certificate and sends it to the
+Walrus smart contract, which verifies it and emits a inconsistent resource event.</p>
+</li>
+<li>
+<p>Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
+blob ID and record in the metadata to return <code>None</code> for the blob ID for the
+<a href="overview/./properties.html">availability period</a>. No storage attestation challenges are issued for this
+blob ID.</p>
+</li>
+</ul>
+<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading: this is because
+the read process re-encodes the received blob to check that the blob ID is correctly derived from a
+consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
+nodes (that do not otherwise run decoding), and does not change the output of read in any case.</p>
+<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return
+partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
+important, dApps should do full reads rather than partial reads.</p>
+<h2 id="read-paths"><a class="header" href="#read-paths">Read paths</a></h2>
+<p>A user can read stored blobs either directly or through a cache. The direct user journey is
+discussed here because this is also how the cache operates in case of a cache miss. Assume that most
+reads happen through caches for blobs that are hot, and do not result in requests to storage nodes.</p>
+<ul>
+<li>
+<p>The reader gets the metadata for the blob ID from any storage node, and authenticates it using
+the blob ID.</p>
+</li>
+<li>
+<p>The reader then sends a request to the storage node for the shards corresponding to the blob ID,
+and waits for f+1 to respond. Sufficient requests are sent in parallel to ensure low latency for
+reads.</p>
+</li>
+<li>
+<p>The reader authenticates the slivers returned with the blob ID, reconstructs the blob, and decides
+whether the contents are a valid blob or inconsistent.</p>
+</li>
+<li>
+<p>Optionally, for a cache, the result is cached and can be served without reconstruction until it is
+evicted from the cache. Requests for the blob to the cache return the blob contents, or a proof
+the blob is inconsistently encoded.</p>
+</li>
+</ul>
+<h2 id="challenge-mechanism-for-storage-attestation"><a class="header" href="#challenge-mechanism-for-storage-attestation">Challenge mechanism for storage attestation</a></h2>
+<p>During an epoch, a correct storage node challenges all shards to provide blob slivers past PoA:</p>
+<ul>
+<li>
+<p>The list of available blobs for the epoch is determined by the sequence of Sui events up
+to the past epoch. Inconsistent blobs are not challenged, and a record proving this status
+can be returned instead.</p>
+</li>
+<li>
+<p>A challenge sequence is determined by providing a seed to the challenged shard. The sequence is
+then computed based both on the seed AND the content of each challenged blob ID. This creates a
+sequential read dependency.</p>
+</li>
+<li>
+<p>The response to the challenge provides the sequence of shard contents for the blob IDs in a
+timely manner.</p>
+</li>
+<li>
+<p>The challenger node uses thresholds to determine whether the challenge was passed, and reports
+the result on chain.</p>
+</li>
+<li>
+<p>The challenge/response communication is authenticated.</p>
+</li>
+</ul>
+<p>Challenges provide some reassurance that the storage node can actually recover shard data in a
+probabilistic manner, avoiding storage nodes getting payment without any evidence they might
+retrieve shard data. The sequential nature of the challenge and some reasonable timeout also ensures
+that the process is timely.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-assurance-and-security-properties"><a class="header" href="#walrus-assurance-and-security-properties">Walrus assurance and security properties</a></h1>
+<p>The properties below hold true subject to the assumption that for all storage epochs 2/3 of shards
+are operated by storage nodes that faithfully and correctly follow the Walrus protocol.</p>
+<p>Each blob is encoded using error correction into slivers and a <strong>blob ID</strong> is cryptographically
+derived. For a given blob ID there is a <strong>point of availability</strong> (PoA) and an <strong>availability
+period</strong>, observable through an event on the Sui chain.</p>
+<p>The following properties relate to the PoA:</p>
+<ul>
+<li>After the PoA, for a blob ID, any correct user that performs a read within the availability
+period will eventually terminate and get a value V which is either the blob contents F or None.</li>
+<li>After PoA if two correct users perform a read and get V and V’ then V = V’.</li>
+<li>A correct user with an appropriate storage resource can always perform store for a blob F with a
+blob ID and advance the protocol until the PoA.</li>
+<li>A read after PoA for a blob F stored by a correct user, will result in F.</li>
+</ul>
+<p>Some assurance properties ensure the correct internal processes of Walrus storage nodes.
+For the purposes of defining these, an <strong>inconsistency proof</strong> proves that a blob ID was
+stored by a user that incorrectly encoded a blob.</p>
+<ul>
+<li>After PoA and for a blob ID stored by a correct user, a storage node is always able to recover
+the correct sliver for its shards for this blob ID.</li>
+<li>After PoA if a correct storage node cannot recover a sliver, it can produce an inconsistency proof
+for the blob ID.</li>
+<li>If a blob ID is stored by a correct user, an inconsistently proof cannot be derived for it.</li>
+<li>A read by a correct user for a blob ID for which an inconsistency proof may exist returns None.</li>
+</ul>
+<p>Note that there is no delete operation and a blob ID past PoA will be available for the full
+availability period.</p>
+<p>As a rule of thumb: before PoA it is the responsibility of a client to ensure the availability of
+a blob and its upload to Walrus. After PoA it is the responsibility of Walrus as a system to
+maintain the availability of the blob as part of its operation for the full availability period
+remaining. Emission of the event corresponding to the PoA for a blob ID attests its
+availability.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="future-discussion"><a class="header" href="#future-discussion">Future discussion</a></h1>
+<p>In this document, we left out details of the following features:</p>
+<ul>
+<li>Shard transfer and recovery upon storage epoch change. The encoding scheme used has been designed
+to allow this operation to be efficient. A storage node needs to only get data of the same
+magnitude to the missing sliver data to reconstruct them.</li>
+<li>Details of light clients that can be used to sample availability. Individual clients may sample
+the certified blobs from Sui metadata, and sample the availability of some slivers that they
+store. On-chain bounties may be used to retrieve these slivers for missing blobs.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="developer-guide"><a class="header" href="#developer-guide">Developer Guide</a></h1>
+<p>This guide introduces all the concepts needed to build applications that use Walrus as a storage
+or availability layer. The <a href="dev-guide/../overview/overview.html">overview</a> provides more background and explains
+in more detail how Walrus operates internally.</p>
+<p>This developer guide describes:</p>
+<ul>
+<li><a href="dev-guide/components.html">Components</a> of Walrus of interest to developers that wish to use it for
+storage or availability.</li>
+<li><a href="dev-guide/dev-operations.html">Operations</a> supported through client binaries, APIs, or Sui operations.</li>
+<li><a href="dev-guide/sui-struct.html">The Sui structures</a> Walrus uses to store metadata, and how they can be read
+from Sui smart contracts, or through the Sui SDK.</li>
+</ul>
+<p>A <a href="dev-guide/../glossary.html">glossary</a> of terms used is also available for reference.</p>
+<h2 id="disclaimer-about-the-walrus-developer-preview"><a class="header" href="#disclaimer-about-the-walrus-developer-preview">Disclaimer about the Walrus developer preview</a></h2>
+<p><strong>This release of Walrus &amp; Walrus Sites is a
+developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
+and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
+and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
+point and possibly with no warning. Do not rely on this developer preview for any production
+purposes, it comes with no availability or persistence guarantees.</strong></p>
+<p>Also see the <a href="dev-guide/../tos.html">Devnet terms of service</a> under which this developer preview is made
+available.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="components"><a class="header" href="#components">Components</a></h1>
+<p>From a developer perspective, some Walrus components are objects and smart contracts on
+Sui, and some components are Walrus-specific binaries and services. As a rule Sui is used to
+manage blob and storage node metadata, while Walrus-specific services are used to store and
+read blob contents, which can be very large.</p>
+<p>Walrus defines a number of objects and smart contracts on Sui:</p>
+<ul>
+<li>A shared <em>system object</em>, records and manages the current committee of storage nodes.</li>
+<li><em>Storage resources</em>, represent empty storage space that may be used to store blobs.</li>
+<li><em>Blob resources</em>, represent blobs being registered and certified as stored.</li>
+<li>Changes to these objects emit <em>Walrus-related events</em>.</li>
+</ul>
+<p>The Walrus system object ID can be found in the Walrus <code>client_config.yaml</code> file (see
+<a href="dev-guide/../usage/setup.html#configuration">Configuration</a>). You may use any Sui explorer to look at its
+content, as well as explore the content of blob objects. There is more information about these in
+the <a href="dev-guide/sui-struct.html">quick reference to the Walrus Sui structures</a>.</p>
+<p>Walrus is also composed of a number of Walrus-specific services and binaries:</p>
+<ul>
+<li>A client (binary) can be executed locally and provides a
+<a href="dev-guide/../usage/client-cli.html">Command Line Interface (CLI)</a>, a <a href="dev-guide/../usage/json-api.html">JSON API</a>
+and an <a href="dev-guide/../usage/web-api.html">HTTP API</a> to perform Walrus operations.</li>
+<li>Aggregators services allow reading blobs via HTTP requests.</li>
+<li>Publishers services are used store blobs to Walrus.</li>
+<li>A set of storage nodes store encoded blobs. These nodes form the decentralized
+storage infrastructure of Walrus.</li>
+</ul>
+<p>Aggregators, publishers and other services use the client APIs to interact with Walrus. End-users
+of services using Walrus interact with the store via custom services, aggregators or publishers that
+expose HTTP APIs to avoid the need to run locally a binary client.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operations-1"><a class="header" href="#operations-1">Operations</a></h1>
+<h2 id="blob-encoding-and-blob-id"><a class="header" href="#blob-encoding-and-blob-id">Blob encoding and blob ID</a></h2>
+<p>Walrus stores blobs across storage nodes in an <a href="dev-guide/../overview/encoding.html">encoded form</a>, and refers
+to blobs by their <em>blob ID</em>. The blob ID is deterministically derived from the content of a blob
+and the Walrus configuration. The blob ID of two files with the same content will be the same.</p>
+<p>You can derive the blob ID of a file locally using the command: <code>walrus blob-id &lt;file path&gt;</code></p>
+<h2 id="store"><a class="header" href="#store">Store</a></h2>
+<p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher.</p>
+<blockquote>
+<p><strong>All blobs
+stored in Walrus are public and discoverable by all</strong>. Therefore you must not use Walrus to store
+anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
+</blockquote>
+<p>Under the hood a number of operations happen both on Sui as well as on storage nodes:</p>
+<ul>
+<li>The client or publisher encodes the blob and derives a <em>blob ID</em> that identifies the blob. This
+is a <code>u256</code> often encoded as a URL safe base64 string.</li>
+<li>A transaction is executed on Sui to purchase some storage from the system object, and then to
+<em>register the blob ID</em> occupying this storage. Client APIs return the <em>Sui blob object ID</em>. The
+transactions use SUI to purchase storage and pay for gas.</li>
+<li>Encoded slivers of the blob are distributed to all storage nodes. They each sign a receipt.</li>
+<li>Signed receipts are aggregated and submitted to the Sui blob object to <em>certify the blob</em>.
+Certifying a blob emits a Sui event with the blob ID and the period of availability.</li>
+</ul>
+<p>A blob is considered available on Walrus once the corresponding Sui blob object has been
+certified in the final step. The steps involved in a store operation can be executed by the binary
+client, or a publisher that accepts and publishes blobs via HTTP.</p>
+<p>Walrus currently allows the storage of blobs up to a maximum size that may be determined
+through the <a href="dev-guide/../usage/client-cli.html#walrus-system-information"><code>walrus info</code></a> CLI command. The
+maximum blob size is currently 957 MiB. You may store larger blobs by splitting them into
+smaller chunks.</p>
+<p>Blobs are stored for a certain number of <em>epochs</em>, as specified at the time they were stored. Walrus
+storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
+epoch today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
+Future devnets may span across multiple epochs.</p>
+<h2 id="read"><a class="header" href="#read">Read</a></h2>
+<p>Walrus can also be used to <strong>read a blob</strong> after it is stored by providing its blob ID.
+A read is executed by performing the following steps:</p>
+<ul>
+<li>The system object on Sui is read to determine the Walrus storage node committee.</li>
+<li>A number of storage nodes are queried for blob metadata and the slivers they store.</li>
+<li>The blob is reconstructed from the recovered slivers and checked against the blob ID.</li>
+</ul>
+<p>The steps involved in the read operation are performed by the binary client, or the aggregator
+service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
+succeed in recovering the blob stored even if up to one-third of storage nodes are
+unavailable in all cases. Eventually, after synchronization is complete, even if two-thirds
+of storage nodes are down reads will succeed.</p>
+<h2 id="certify-availability"><a class="header" href="#certify-availability">Certify Availability</a></h2>
+<p>Walrus can be used to <strong>certify the availability of a blob</strong> using Sui. Checking that this happened
+may currently be done in 3 different ways:</p>
+<ul>
+<li>A Sui SDK read can be
+used to authenticate the certified blob event emitted when the blob ID was certified on Sui. The
+client <code>walrus blob-status</code> command may be used to identify the event ID that needs to be checked.</li>
+<li>A Sui SDK read may be
+used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified.</li>
+<li>A Sui smart contract can read the blob object on Sui (or a reference to it) to check
+is is certified.</li>
+</ul>
+<p>The underlying protocol of the
+<a href="https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client">Sui light client</a>
+returns digitally signed evidence for emitted events
+or objects, and can be used by off-line or non-interactive applications as a proof of availability
+for the blob ID for a certain number of epochs.</p>
+<p>Once a blob is certified, Walrus will ensure that sufficient slivers will always be
+available on storage nodes to recover it within the specified epochs.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sui-structures"><a class="header" href="#sui-structures">Sui Structures</a></h1>
+<p>This section is optional and enables advanced use cases.</p>
+<p>You can interact with Walrus purely
+through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
+on Sui directly. However, Walrus uses Sui to manage its metadata and smart contract developers can
+read information about the Walrus system, as well as stored blobs, on Sui.</p>
+<p>This section provides an overview of how you may use Walrus objects in your Sui smart contracts.</p>
+<h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
+<p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
+that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
+indicating that a sufficient number of slivers have been stored to guarantee the blob's
+availability. When a blob is certified its <code>certified</code> field contains the epoch in which it was
+certified.</p>
+<p>A <code>Storage</code> object is always associated with a <code>Blob</code> object, reserving enough space for
+a long enough period for the blob's storage. A certified blob is available for the period the
+underlying storage resource guarantees storage.</p>
+<p>Concretely, <code>Blob</code> and <code>Storage</code> objects have the following fields, that can be read through the
+Sui SDKs:</p>
+<pre><code class="language-move">/// The blob structure represents a blob that has been registered to with some
+/// storage, and then may eventually be certified as being available in the
+/// system.
+public struct Blob has key, store {
+    id: UID,
+    stored_epoch: u64,
+    blob_id: u256,
+    size: u64,
+    erasure_code_type: u8,
+    certified: option::Option&lt;u64&gt;, // The epoch first certified,
+                                    // or None if not certified.
+    storage: Storage,
+}
+
+/// Reservation for storage for a given period, which is inclusive start,
+/// exclusive end.
+public struct Storage has key, store {
+    id: UID,
+    start_epoch: u64,
+    end_epoch: u64,
+    storage_size: u64,
+}
+</code></pre>
+<p>All fields of <code>Blob</code> and <code>Storage</code> objects can be read using the expected functions:</p>
+<pre><code class="language-move">// Blob functions
+public fun stored_epoch(b: &amp;Blob) : u64;
+public fun blob_id(b: &amp;Blob) : u256;
+public fun size(b: &amp;Blob) : u64;
+public fun erasure_code_type(b: &amp;Blob) : u8;
+public fun certified(b: &amp;Blob) : &amp;Option&lt;u64&gt;;
+public fun storage(b: &amp;Blob) : &amp;Storage;
+
+// Storage functions
+public fun start_epoch(self: &amp;Storage) : u64;
+public fun end_epoch(self: &amp;Storage) : u64;
+public fun storage_size(self: &amp;Storage) : u64;
+</code></pre>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<p>When a blob is first registered a <code>BlobRegistered</code> event is emitted that informs storage nodes
+that they should expect slivers associated with its Blob ID. Eventually when the blob is
+certified a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
+after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
+<pre><code class="language-move">/// Signals a blob with metadata is registered.
+public struct BlobRegistered has copy, drop {
+    epoch: u64,
+    blob_id: u256,
+    size: u64,
+    erasure_code_type: u8,
+    end_epoch: u64,
+}
+
+/// Signals a blob is certified.
+public struct BlobCertified has copy, drop {
+    epoch: u64,
+    blob_id: u256,
+    end_epoch: u64,
+}
+</code></pre>
+<p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect an incorrectly encoded blob.
+Anyone attempting a read on such a blob is guaranteed to also detect it as invalid.</p>
+<pre><code class="language-move">/// Signals that a BlobID is invalid.
+public struct InvalidBlobID has copy, drop {
+    epoch: u64, // The epoch in which the blob ID is first registered as invalid
+    blob_id: u256,
+}
+</code></pre>
+<h2 id="system-information"><a class="header" href="#system-information">System information</a></h2>
+<p>The Walrus system object contains metadata about the available and used storage, as well as the
+price of storage per Kib of storage in MIST. The committee
+structure within the system object can be used to read the current epoch number, as well as
+information about the committee.</p>
+<pre><code class="language-move">const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+
+public struct System&lt;phantom WAL&gt; has key, store {
+
+    id: UID,
+
+    /// The current committee, with the current epoch.
+    /// The option is always Some, but need it for swap.
+    current_committee: Option&lt;Committee&gt;,
+
+    /// When we first enter the current epoch we SYNC,
+    /// and then we are DONE after a cert from a quorum.
+    epoch_status: u8,
+
+    // Some accounting
+    total_capacity_size : u64,
+    used_capacity_size : u64,
+
+    /// The price per unit size of storage.
+    price_per_unit_size: u64,
+
+    /// Tables about the future and the past.
+    past_committees: Table&lt;u64, Committee&gt;,
+    future_accounting: FutureAccountingRingBuffer&lt;WAL&gt;,
+}
+
+public struct Committee has store {
+    epoch: u64,
+    bls_committee : BlsCommittee,
+}
+</code></pre>
+<p>A few public functions of the committee allow contracts to read Walrus metadata:</p>
+<pre><code class="language-move">/// Get epoch. Uses the committee to get the epoch.
+public fun epoch&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
+
+/// Accessor for total capacity size.
+public fun total_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
+
+/// Accessor for used capacity size.
+public fun used_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u64;
+
+// The number of shards
+public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u16;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setup"><a class="header" href="#setup">Setup</a></h1>
+<p>At this stage of the project, our Walrus code is not yet public. Instead, we provide a pre-compiled
+<code>walrus</code> client binary for macOS (Intel and Apple CPUs) and Ubuntu, which supports different usage
+patterns (see <a href="usage/./interacting.html">the next chapter</a>). This chapter describes the
+<a href="usage/setup.html#prerequisites">prerequisites</a>, <a href="usage/setup.html#installation">installation</a>, and <a href="usage/setup.html#configuration">configuration</a>
+of the Walrus client.</p>
+<p>Note that our Walrus devnet uses Sui <strong>testnet</strong> for coordination.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>Interacting with Walrus requires a valid Sui <strong>testnet</strong> wallet with some amount of SUI tokens. The
+easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
+instructions</a> in the Sui
+documentation.</p>
+<p>After installing the Sui CLI, you need to set up a testnet wallet by running <code>sui client</code>, which
+prompts you to set up a new configuration. Make sure to point it to Sui testnet, you can use the
+full node at <code>https://fullnode.testnet.sui.io:443</code> for this. See
+<a href="https://docs.sui.io/guides/developer/getting-started/connect">here</a> for further details.</p>
+<p>If you already have a Sui wallet configured, you can directly set up the testnet environment (if you
+don't have it yet),</p>
+<pre><code class="language-sh">sui client new-env --alias testnet --rpc https://fullnode.testnet.sui.io:443
+</code></pre>
+<p>and switch the active environment to it:</p>
+<pre><code class="language-sh">sui client switch --env testnet
+</code></pre>
+<p>After this, you should get something like this (everything besides the "testnet" line is optional):</p>
+<pre><code class="language-terminal">$ sui client envs
+╭──────────┬─────────────────────────────────────┬────────╮
+│ alias    │ url                                 │ active │
+├──────────┼─────────────────────────────────────┼────────┤
+│ devnet   │ https://fullnode.devnet.sui.io:443  │        │
+│ localnet │ http://127.0.0.1:9000               │        │
+│ testnet  │ https://fullnode.testnet.sui.io:443 │ *      │
+│ mainnet  │ https://fullnode.mainnet.sui.io:443 │        │
+╰──────────┴─────────────────────────────────────┴────────╯
+</code></pre>
+<p>Finally, make sure you have at least 2 separate gas coins, with at least 1 SUI each. You can obtain
+these coins from the testnet faucet:</p>
+<pre><code class="language-sh">sui client faucet &amp;&amp; sui client faucet
+</code></pre>
+<p>After some seconds, you should see your new SUI coins:</p>
+<pre><code class="language-terminal">$ sui client gas
+╭─────────────────┬────────────────────┬──────────────────╮
+│ gasCoinId       │ mistBalance (MIST) │ suiBalance (SUI) │
+├─────────────────┼────────────────────┼──────────────────┤
+│ 0x65dca966dc... │ 1000000000         │ 1.00             │
+│ 0xb07a091c1f... │ 1000000000         │ 1.00             │
+╰─────────────────┴────────────────────┴──────────────────╯
+</code></pre>
+<p>The system-wide wallet will be used by Walrus if no other path is specified. If you want to use a
+different Sui wallet, you can specify this in the <a href="usage/setup.html#configuration">Walrus configuration file</a> or
+when <a href="usage/./interacting.html">running the CLI</a>.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>We currently provide the <code>walrus</code> client binary for macOS (Intel and Apple CPUs) and Ubuntu:</p>
+<div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+</tbody></table>
+</div>
+<p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
+<code>$SYSTEM</code> variable) and move it to a directory included in your <code>$PATH</code>:</p>
+<pre><code class="language-sh">SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
+curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-$SYSTEM -o walrus
+chmod +x walrus
+mv walrus ~/.local/bin
+</code></pre>
+<p>Once this is done, you should be able to simply type <code>walrus</code> in your terminal. For example you can
+get usage instructions (see <a href="usage/./interacting.html">the next chapter</a> for further details):</p>
+<pre><code class="language-terminal">$ walrus --help
+Walrus client
+
+Usage: walrus [OPTIONS] &lt;COMMAND&gt;
+
+Commands:
+⋮
+</code></pre>
+<h3 id="binary-custom-path"><a class="header" href="#binary-custom-path">Custom path (optional)</a></h3>
+<p>Instead of <code>~/.local/bin</code>, you can place the binary in any other directory you like. You need to
+either make sure to add that directory to your <code>$PATH</code> or always call the binary as
+<code>/full/path/to/walrus</code>.</p>
+<h3 id="previous-versions-optional"><a class="header" href="#previous-versions-optional">Previous versions (optional)</a></h3>
+<p>In addition to the latest version of the <code>walrus</code> binary, the GCS bucket also contains previous
+versions. An overview in XML format is available at
+<a href="https://storage.googleapis.com/mysten-walrus-binaries/">https://storage.googleapis.com/mysten-walrus-binaries/</a>.</p>
+<h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
+<p>A single parameter is required to configure Walrus, namely the ID of the <a href="usage/../dev-guide/sui-struct.html#system-information">system
+object</a> on Sui. You can create your client
+configuration as follows:</p>
+<!-- TODO: Make sure this is consistent with our default paths. -->
+<pre><code class="language-sh">mkdir ~/.walrus
+curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml \
+     -o ~/.walrus/client_config.yaml
+</code></pre>
+<h3 id="config-custom-path"><a class="header" href="#config-custom-path">Custom path (optional)</a></h3>
+<p>By default, the Walrus client will look for the <code>client_config.yaml</code> configuration file in the
+current directory or in <code>~/.walrus/</code>, but you can place the file anywhere and name it anything you
+like; in this case you need to use the <code>--config</code> option when running the <code>walrus</code> binary.</p>
+<h3 id="advanced-configuration-optional"><a class="header" href="#advanced-configuration-optional">Advanced configuration (optional)</a></h3>
+<p>The configuration file currently supports the following parameters:</p>
+<pre><code class="language-yaml"># This is the only mandatory field. The system object is specific for a particular Walrus
+# deployment.
+#
+# NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
+# You can get the object ID for the current Walrus devnet deployment as described above.
+system_object: 0x3243....
+
+# You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
+# the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
+# the system-wide wallet at `~/.sui/sui_config/client.yaml` in this order.
+wallet_config: null
+
+# The following parameters can be used to tune the networking behavior of the client. There is no
+# risk in playing around with these values. In the worst case, you may not be able to store/read
+# blob due to timeouts or other networking errors.
+communication_config:
+  max_concurrent_writes: null
+  max_concurrent_sliver_reads: null
+  max_concurrent_metadata_reads: 3
+  max_concurrent_status_reads: null
+  reqwest_config:
+    total_timeout:
+      secs: 180
+      nanos: 0
+    pool_idle_timeout: null
+    http2_keep_alive_timeout:
+      secs: 5
+      nanos: 0
+    http2_keep_alive_interval:
+      secs: 30
+      nanos: 0
+    http2_keep_alive_while_idle: true
+  request_rate_config:
+    max_node_connections: 10
+    max_retries: 5
+    min_backoff:
+      secs: 2
+      nanos: 0
+    max_backoff:
+      secs: 60
+      nanos: 0
+</code></pre>
+<p><strong>Important</strong>: If you specify a wallet path, make sure your wallet is set up for Sui <strong>testnet</strong>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
+<p>We provide 3 ways to interact directly with the Walrus storage system:</p>
+<ul>
+<li>Through the Walrus <a href="usage/./client-cli.html">client command line interface (CLI)</a>.</li>
+<li>Through a <a href="usage/./json-api.html">JSON API</a> of the Walrus CLI.</li>
+<li>Through an <a href="usage/./web-api.html">HTTP API</a> exposed by a public or local Walrus client daemon.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-the-walrus-client"><a class="header" href="#using-the-walrus-client">Using the Walrus client</a></h1>
+<p>The <code>walrus</code> binary can be used to interact with Walrus as a client. See the <a href="usage/./setup.html">setup
+chapter</a> for prerequisites, installation, and configuration.</p>
+<p>Detailed usage information is available through</p>
+<pre><code class="language-sh">walrus --help
+</code></pre>
+<p>Each sub-command of <code>walrus</code> can also be called with <code>--help</code> to print its specific
+arguments and their meaning.</p>
+<h2 id="walrus-system-information"><a class="header" href="#walrus-system-information">Walrus system information</a></h2>
+<p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,</p>
+<pre><code class="language-console">$ walrus info
+
+Walrus system information
+
+Storage nodes
+Number of nodes: 10
+Number of shards: 270
+
+Blob size
+Maximum blob size: 957 MiB (1,003,471,920 B)
+
+Approximate storage prices per epoch
+Price per encoded storage unit: 50 MIST/KiB
+Price to store metadata: 850 MIST
+Marginal price per additional 1 MiB (w/o metadata): 239,250 MIST
+Total price per max blob (957 MiB): 0.227 SUI
+</code></pre>
+<p>gives an overview of the number of storage nodes and shards in the system, the maximum blob size,
+and the current cost in (testnet) Sui for storing blobs.</p>
+<p>Additional information such as encoding parameters and sizes, BFT system information, and
+information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
+argument: <code>walrus info --dev</code>.</p>
+<h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status and reading blobs</a></h2>
+<p>Storing blobs on Walrus can be achieved through the following commands:</p>
+<pre><code class="language-sh">walrus store &lt;some file&gt;
+</code></pre>
+<p>The store command takes a CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicating the number of
+epochs the blob should be stored for. This defaults to 1 epoch, namely the current one. If the blob
+is already stored on Walrus for a sufficient number of epochs the command does not store it again.</p>
+<p>However, this behavior can be overwritten with the <code>--force</code> (or <code>-f</code>) CLI option, which stores
+the blob again and creates a fresh blob object on Sui belonging to the wallet address.</p>
+<p>The status of a blob by blob ID can be queried using the command:</p>
+<pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
+</code></pre>
+<p>This returns whether the blob is stored and its availability period. You can also query the
+status of a blob by using a file that stores it, as:</p>
+<pre><code class="language-sh">walrus blob-status --file &lt;FILE&gt;
+</code></pre>
+<p>This command re-encodes the content of the file, derives the blob ID and returns whether it
+is stored on Walrus and its availability period.</p>
+<p>When the blob is available the <code>blob-status</code> command also returns the <code>BlobCertified</code> Sui event ID,
+which consists of a transaction ID and a sequence number in the events emitted by the transaction.
+The existence of this event certifies the availability of the blob.</p>
+<p>Reading blobs from Walrus can be achieved through the following command:</p>
+<pre><code class="language-sh">walrus read &lt;some blob ID&gt;
+</code></pre>
+<p>By default the blob data is written to the standard output. The <code>--out &lt;OUT&gt;</code> CLI option (or <code>-o</code>)
+can be used to specify and output file name. The <code>--rpc-url &lt;URL&gt;</code> (or <code>-r</code>) may be used to specify
+a Sui RPC node to use instead of the one set in the wallet configuration or the default one.</p>
+<h2 id="changing-the-default-configuration"><a class="header" href="#changing-the-default-configuration">Changing the default configuration</a></h2>
+<p>Use the <code>--config</code> option to specify a custom path to the
+<a href="usage/../usage/setup.html#configuration">configuration location</a>.</p>
+<p>The
+<code>--wallet &lt;WALLET&gt;</code> argument may be used to specify a non standard Sui wallet configuration file.
+And a <code>--gas-budget &lt;GAS_BUDGET&gt;</code> argument may be used to change the maximum amount of Sui (in MIST)
+that the command is allowed to use.</p>
+<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
+<p>If you get an error like "the specified Walrus system object does not exist", make sure your wallet
+is set up for Sui <strong>testnet</strong> and you use the latest <a href="usage/./setup.html#configuration">configuration</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
+<p>All Walrus client commands (except, currently, the <code>info</code> command) are also available in JSON mode.
+In this mode, all the command line flags of the original CLI command can be specified in JSON
+format. The JSON mode therefore simplifies programmatic access to the CLI.</p>
+<p>For example, to store a blob, run:</p>
+<pre><code class="language-sh">walrus json \
+    '{
+        "config": "path/to/client_config.yaml",
+        "command": {
+            "store": {
+                "file": "README.md"
+            }
+        }
+    }'
+</code></pre>
+<p>Or, to read a blob knowing the blob ID:</p>
+<pre><code class="language-sh">walrus json \
+    '{
+        "config": "path/to/client_config.yaml",
+        "command": {
+            "read": {
+                "blobId": "4BKcDC0Ih5RJ8R0tFMz3MZVNZV8b2goT6_JiEEwNHQo"
+            }
+        }
+    }'
+</code></pre>
+<p>All options, default values, and commands are equal to those of the "standard" CLI mode, except that
+they are written in "camelCase" instead of "kebab-case".</p>
+<p>The <code>json</code> command also accepts input from <code>stdin</code>.</p>
+<p>The output of a <code>json</code> command will itself be JSON-formatted, again to simplify parsing the results
+in a programmatic way. For example, the JSON output can be piped to the <code>jq</code> command for parsing and
+manually extracting relevant fields.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="client-daemon-mode--http-api"><a class="header" href="#client-daemon-mode--http-api">Client Daemon mode &amp; HTTP API</a></h1>
+<p>In addition to the CLI and JSON modes, the Walrus client offers a <em>daemon mode</em>. In this mode, it
+runs a simple web server offering HTTP interfaces to store and read blobs in an aggregator and
+publisher role respectively. We also offer
+<a href="usage/web-api.html#public-services">public aggregator and publisher services</a> to try the Walrus HTTP APIs without
+the need to run a local client.</p>
+<h2 id="local-daemon"><a class="header" href="#local-daemon">Starting the daemon locally</a></h2>
+<p>You can run the daemon with the following command, to offer both an aggregator and publisher on
+the same address and port:</p>
+<pre><code class="language-sh">ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415 for both
+walrus daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
+</code></pre>
+<p>Or you may run two separate processes. One for the aggregator:</p>
+<pre><code class="language-sh">AGG_ADDRESS="127.0.0.1:31415" # Aggregator only port
+walrus aggregator -b $AGG_ADDRESS # run an aggregator to read blobs
+</code></pre>
+<p>And a different one for the publisher:</p>
+<pre><code class="language-sh">PUB_ADDRESS="127.0.0.1:31416" # Note different port for publisher
+walrus publisher -b $PUB_ADDRESS # run a publisher to store blobs
+</code></pre>
+<p>The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
+both. Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
+However, the publisher does perform actions on-chain and will consume gas. It is therefore important
+to ensure only authorized parties may access it, or other measures to manage gas costs.</p>
+<h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
+<p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
+aggregator and/or publisher is required. For your convenience, we provide these at the following
+hosts:</p>
+<ul>
+<li>Aggregator: <code>https://aggregator-devnet.walrus.space</code></li>
+<li>Publisher: <code>https://publisher-devnet.walrus.space</code></li>
+</ul>
+<p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
+to <a href="usage/web-api.html#local-daemon">run your own publisher</a> or use the <a href="usage/./client-cli.html">CLI</a>.</p>
+<p>Note that the publisher consumes (testnet) Sui on the service side, and a mainnet deployment would
+likely not be able to provide uncontrolled public access to publishing without requiring some
+authentication and compensation for the Sui used.</p>
+<h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
+<h3 id="store-1"><a class="header" href="#store-1">Store</a></h3>
+<p>You can interact with the daemon through simple HTTP PUT requests. For example, with
+<a href="https://curl.se">cURL</a>, you can store blobs using a publisher or daemon as follows:</p>
+<pre><code class="language-sh">ADDRESS="127.0.0.1:31415"
+curl -X PUT "http://$ADDRESS/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
+curl -X PUT "http://$ADDRESS/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
+</code></pre>
+<p>The store HTTP API end points return information about the blob stored in JSON format. When a blob
+is stored for the first time, a <code>newlyCreated</code> field contains information about the
+new blob:</p>
+<pre><code class="language-sh">$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+{
+  "newlyCreated":{
+    "id":"0xa74d376bb6923c4b8d73825fce3b798524e2bda34d02dae64ab5865556c54000",
+    "storedEpoch":0,
+    "blobId":"gsYzDXsK326Wihzt3X5evZCPFgaNZrb84zCjodLJaVs",
+    "size":36,
+    "erasureCodeType":"RedStuff",
+    "certified":0,
+    "storage":{
+        "id":"0x2479b3096efa58fa9bfbebe805268746c235110ee0713e5a123d8f1754c2ccc3",
+        "startEpoch":0,
+        "endEpoch":1,
+        "storageSize":4747680
+    }
+  }
+}
+</code></pre>
+<p>The information returned is the content of the <a href="usage/../dev-guide/sui-struct.html">Sui blob object</a>.</p>
+<p>When the aggregator finds a certified blob with the same blob ID and a sufficient validity period,
+it returns a <code>alreadyCertified</code> JSON structure:</p>
+<pre><code class="language-sh">$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+{
+  "alreadyCertified":{
+    "blobId":"gsYzDXsK326Wihzt3X5evZCPFgaNZrb84zCjodLJaVs",
+    "event":{
+      "txDigest":"2oMC1dTaMGpApphFWKzARSsTM9837ox4zN8rY2RqLf6c",
+      "eventSeq":"0"
+    },
+    "endEpoch":1
+  }
+}
+</code></pre>
+<p>The field <code>event</code> returns the <a href="usage/../dev-guide/sui-struct.html">Sui event ID</a> that can be used to
+find the transaction that created the Sui Blob object on the Sui explorer or using a Sui SDK.</p>
+<h3 id="read-1"><a class="header" href="#read-1">Read</a></h3>
+<p>Blobs may be read from an aggregator or daemon using HTTP GET. For example the following cURL
+command reads a blob and writes it to an output file:</p>
+<pre><code class="language-sh">ADDRESS="127.0.0.1:31415"
+curl "http://$ADDRESS/v1/&lt;some blob ID&gt; -o &lt;some file name&gt;"
+</code></pre>
+<p>Alternatively you may print the contents of a blob in the terminal with the cURL command:</p>
+<pre><code class="language-sh">ADDRESS="127.0.0.1:31415"
+curl "http://$ADDRESS/v1/&lt;some blob ID&gt;
+</code></pre>
+<p>Modern browsers will attempt to sniff the content type for such resources, and will generally do a
+good job of inferring content types for media. However, the aggregator on purpose prevents such
+sniffing from inferring dangerous executable types such as javascript or style sheet types.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
+<p>As inspiration, we provide several simple examples in different programming languages to interact
+with Walrus through the various interfaces. They are located at
+<a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples">https://github.com/MystenLabs/walrus-docs/tree/main/examples</a> and described below.</p>
+<p>In addition, we have built actual applications on top of Walrus. The prime example is <a href="usage/../walrus-sites/intro.html">Walrus
+Sites</a>, with code available in the
+<a href="https://github.com/MystenLabs/walrus-sites">github.com/MystenLabs/walrus-sites</a> repository.</p>
+<p>And for an example of how to build a static website and store it as a Walrus Site with GitHub
+actions, just look at the <a href="https://github.com/MystenLabs/walrus-docs/blob/main/.github/workflows/publish.yaml">CI
+workflow</a> we use
+to publish this very site.</p>
+<h2 id="python"><a class="header" href="#python">Python</a></h2>
+<p>The <a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples/python">Python examples</a> folder
+contains a number of examples:</p>
+<ul>
+<li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/hello_walrus_webapi.py">use the HTTP
+API</a>
+to store and read a blob.</li>
+<li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/hello_walrus_jsonapi.py">use the JSON
+API</a>
+to store, read, and check the availability of a blob. Checking the certification of a blob
+illustrates reading the Blob Sui object that certifies (see the <a href="usage/../dev-guide/sui-struct.html">Walrus Sui
+reference</a>).</li>
+<li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/hello_walrus_sui_system.py">read information from the Walrus system
+object</a>.</li>
+<li>How to <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/python/track_walrus_events.py">track Walrus related
+Events</a>.</li>
+</ul>
+<h2 id="javascript"><a class="header" href="#javascript">JavaScript</a></h2>
+<p>A <a href="https://github.com/MystenLabs/walrus-docs/tree/main/examples/javascript">JavaScript example</a> is
+provided showing how to upload and download a blob through a web form using the HTTP API.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-to-walrus-sites"><a class="header" href="#introduction-to-walrus-sites">Introduction to Walrus Sites</a></h1>
+<p><em>Walrus Sites</em> are "web"-sites that use Sui and Walrus as their underlying technology. They are a
+prime example of how Walrus can be used to build new and exciting decentralized applications. Anyone
+can build and deploy a Walrus Site and make it accessible to the World! Funnily, this documentation
+is itself available as a Walrus site at <a href="https://docs.walrus.site/walrus-sites/intro.html">https://docs.walrus.site/walrus-sites/intro.html</a> (if you
+aren't there already).</p>
+<p>At a high level, the most exciting features include:</p>
+<ul>
+<li>Publishing a site does not require managing servers or complex configurations; just provide the
+source files (produced by your favorite web framework), publish them to Walrus Sites using the
+<a href="walrus-sites/./site-builder.html">site builder tool</a>, and you are done!</li>
+<li>Sites can be linked to from ordinary Sui objects. This feature enables, for example, creating an
+NFT collection in which <em>every single NFT</em> has a <em>personalized website dedicated to it</em>.</li>
+<li>Walrus Sites are owned by addresses on Sui and can be exchanged, shared, and updated thanks to
+Sui's flexible programming model. This means, among other things, that Walrus Sites can leverage
+the <a href="https://suins.io/">SuiNS</a> naming system to have human readable names. No more messing around
+with DNS!</li>
+<li>Thanks to Walrus' decentralization and extremely high data availability, there is no risk of
+having your site wiped for no reason.</li>
+<li>Since they live on Walrus, these sites cannot have a backend in the traditional sense, and can be
+therefore considered "static" sites. However, the developer can harness Sui's programmability
+to add backend functionality to Walrus Sites!</li>
+</ul>
+<h2 id="show-me"><a class="header" href="#show-me">Show me</a></h2>
+<p>To give you a very high level intuition of how Walrus Sites work, let's look at an example: A simple
+NFT collection on Sui that has a frontend dApp to mint the NFTs hosted on Walrus Sites, and in
+which <em>each NFT</em> has a <em>specific, personalized Walrus Site</em>.</p>
+<p>You can check out the mint page at <a href="https://flatland.walrus.site/">https://flatland.walrus.site/</a>. This site is served to your
+browser through the Walrus Site <em>Portal</em> <a href="https://walrus.site">https://walrus.site</a>. While the Portal's operation is
+explained in a <a href="walrus-sites/./portal.html">later section</a>, consider for now that there can be many Portals (hosted
+by whoever wants to have their own, and even on <code>localhost</code>). Further, the only function of the
+Portal is to provide the browser with some code (specifically, a service worker) that allows it to
+fetch the Walrus Site from Sui and Walrus.</p>
+<p>If you have a Sui wallet with some Testnet SUI, you can try and "mint a new Flatlander" from the
+site. This creates an NFT from the collection, and shows you two links, one to the explorer, and one
+to the "Flatlander site". This latter site is a special Walrus Site that exists only for that NFT,
+and has special characteristics (the background color, the image...) that are based on the contents
+of the NFT.</p>
+<p>The URL to this per-NFT site look something like this
+<code>https://4egmmrw9izzjn0dm2lkd3k0l8phk386z60ub1tpdc1jswbb5dr.walrus.site/</code>.  You'll notice that the
+domain remains <code>walrus.site</code>, but the subdomain is a long and random-looking string.  This string is
+actually the <a href="https://en.wikipedia.org/wiki/Base36">Base36</a> encoding of the object ID of the NFT,
+which is
+<a href="https://suiscan.xyz/testnet/object/0xb09b312b28049467dd6173b6cebb60ed5fe3046883e248632bf9fb20b7dbdaff">0xb09b312b...</a>.</p>
+<p>In summary:</p>
+<ul>
+<li>Walrus Sites are served through a Portal; in this case, <code>https://walrus.site</code>. There can be many
+Portals, and anyone can host one.</li>
+<li>The subdomain on the URL points to a specific object on Sui, that allows the browser to fetch and
+render the site resources. This pointer can be:
+<ul>
+<li>A SuiNS name, such as <code>flatland</code> in <code>https://flatland.walrus.site</code>; or</li>
+<li>the Base36 encoding of a the Sui object ID, such as <code>0xb09b312b...</code> in the example above.</li>
+</ul>
+</li>
+</ul>
+<p>Curious to know how this magic is possible? Read the <a href="walrus-sites/./overview.html">technical
+overview</a>! If you just want to get started trying Walrus Sites out, check the
+<a href="walrus-sites/./tutorial.html">tutorial</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="your-first-walrus-site"><a class="header" href="#your-first-walrus-site">Your first Walrus Site</a></h1>
+<p>This tutorial walks you through the steps necessary to publish a Walrus Site. We also provide the
+instructions on how to add a SuiNS name to it for convenient browsing.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-the-site-builder"><a class="header" href="#installing-the-site-builder">Installing the site builder</a></h1>
+<p>We describe here the steps necessary to setup the Walrus Sites' <code>site-builder</code> tool, and prepare
+your environment for development.</p>
+<h2 id="prerequisites-1"><a class="header" href="#prerequisites-1">Prerequisites</a></h2>
+<p>Before you start, make sure you:</p>
+<ul>
+<li>have a recent version of <a href="https://www.rust-lang.org/tools/install">Rust</a> installed;</li>
+<li>have <code>git</code> installed; and</li>
+<li>followed all <a href="walrus-sites/../usage/setup.html">Walrus setup instructions</a>.</li>
+</ul>
+<p>Then, follow these additional setup steps.</p>
+<h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
+<p>First clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>.</p>
+<pre><code class="language-sh">git clone git@github.com:MystenLabs/walrus-sites.git
+cd walrus-sites
+cd site-builder
+</code></pre>
+<p>Then, build the release version of the site builder:</p>
+<pre><code class="language-sh">cargo build --release
+</code></pre>
+<p>After the build process completes, you are ready to run the site builder:</p>
+<pre><code class="language-terminal">$ ./target/release/site-builder
+Usage: site-builder [OPTIONS] &lt;COMMAND&gt;
+
+Commands:
+  publish  Publish a new site on Sui
+  update   Update an existing site
+  convert  Convert an object ID in hex format to the equivalent Base36
+               format
+  sitemap  Show the pages composing the Walrus site at the given object ID
+  help     Print this message or the help of the given subcommand(s)
+
+⋮
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="publishing-a-walrus-site"><a class="header" href="#publishing-a-walrus-site">Publishing a Walrus Site</a></h1>
+<p>Now that everything is installed and configured, you should be able to start publishing
+your first Walrus Site!</p>
+<h2 id="select-the-source-material-for-the-site"><a class="header" href="#select-the-source-material-for-the-site">Select the source material for the site</a></h2>
+<p>The <code>site-builder</code> works by uploading a directory of files produced by any web framework to Walrus,
+and adding the relevant metadata to Sui. This directory should have a file called <code>index.html</code> in
+its root, which will be the entry point to the Walrus Site.</p>
+<p>For the rest of the tutorial, we will use as an example the simple site contained in
+<code>./examples/snake</code>.</p>
+<h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
+<p>Since we have placed the <code>walrus</code> binary and configuration in their default locations, publishing
+the <code>./examples/snake</code> site is simple:</p>
+<ul>
+<li>
+<p>Ensure that you are in the <code>site-builder</code> directory;</p>
+</li>
+<li>
+<p>Run the publishing command:</p>
+<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml publish ../examples/snake
+</code></pre>
+</li>
+</ul>
+<p>The output should look like the following:</p>
+<pre><code class="language-txt">Operations performed:
+- created resource /Oi-Regular.ttf with blob ID 2YLU3Usb-WoJAgoNSZUNAFnmyo8cfV8hJYt2YdHL2Hs
+- created resource /file.png with blob ID R584P82qm4Dn8LoQMlzkGZS9IAkU0lNZTVlruOsUyOs
+- created resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
+- created resource /walrus.png with blob ID SGrrw5NQyFWtqtxzLAQ1tLpcChGc0VNbtFRhfsQPuiM
+
+Created new site: test site
+New site object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
+
+Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
+</code></pre>
+<p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
+respective blob ID.  Further it prints the object ID of the Walrus Site object on Sui (so you can
+have a look in the explorer, and use it to set the SuiNS name), and, finally, the URL at which you
+can browse the site.</p>
+<p>Note here that we are passing the example config <code>assets/builder-example.yaml</code> as the config for the
+site builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the
+correct Sui package for the Walrus Sites logic.</p>
+<p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="walrus-sites/tutorial-config.html">advanced
+configuration</a> section.</p>
+<h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
+<p>Let's say now you want to update the content of the site, for example by changing the title from
+"eat all the blobs!" to "Glob all the Blobs!".</p>
+<p>First, make this edit on in the <code>../examples/snake/index.html</code> file.</p>
+<p>Then, you can update the existing site by running the <code>update</code> command, and providing the directory
+where to find the updated files (still <code>../example/snake</code>), and the object ID of the existing site
+(<code>0x5ac988...</code>):</p>
+<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml update ../examples/snake 0x5ac9888...
+</code></pre>
+<p>The output this time should be:</p>
+<pre><code class="language-txt">Operations performed:
+  - deleted resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
+  - created resource /index.html with blob ID LXtY0VdY5kM-3Ph7gLvj8URdz5yiRa5DUy3ZxYqDView
+
+Updated site at object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
+
+Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
+</code></pre>
+<p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
+old <code>index.html</code>, and update it with the newer one.</p>
+<p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
+<h2 id="additional-commands"><a class="header" href="#additional-commands">Additional commands</a></h2>
+<p>The <code>site-builder</code> tool provides two additional utilities:</p>
+<ul>
+<li>the <code>convert</code> command, which converts an object ID in hex format to the equivalent Base36
+format. This command is useful if you have the Sui object ID of a Walrus Site, and want to know
+the subdomain where you can browse it.</li>
+<li>the <code>sitemap</code> command, which shows the resources that compose the Walrus Site at the given object
+ID.</li>
+</ul>
+<p>In general, the <code>--help</code> flag is your friend!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bonus-set-a-suins-name"><a class="header" href="#bonus-set-a-suins-name">Bonus: Set a SuiNS name</a></h1>
+<p>Browsing a URL like <code>https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site</code> is not
+particularly nice. Therefore, Walrus Sites allows to use SuiNS names (this is like DNS for Sui) to
+give human-readable names to site. To do so, you simply have to get a SuiNS name you like, and point
+it to the object ID of the Walrus Site (as provided by the <code>publish</code> or <code>update</code> commands).</p>
+<p>Let's do this step by step.</p>
+<h2 id="get-a-suins-name"><a class="header" href="#get-a-suins-name">Get a SuiNS name</a></h2>
+<ul>
+<li>Navigate to <a href="https://testnet.suins.io/">https://testnet.suins.io/</a>, and buy a domain name with
+your testnet wallet. For example, <code>walrusgame</code> (NOTE: this is already taken, choose another you
+like!). NOTE: At the moment, you can only select names that are composed of letters <code>a-z</code> and
+numbers <code>0-9</code>, but no special characters (e.g., <code>-</code>).</li>
+<li>In the <a href="https://testnet.suins.io/account/my-names">page</a> listing the domains you own, you should
+see the newly-bought name.</li>
+<li>Click the three-dots menu on the top-right corner of the name you want to assign. Choose "View all
+info", and copy the <code>ObjectID</code>. In our case, this is
+<code>0x6412c4cfbe50e219c2d4d30108d7321d064e15bf64e752307100bff5eb91da38</code>.</li>
+</ul>
+<h2 id="send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli"><a class="header" href="#send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli">Send the SuiNS registration object to the address you use with the Sui CLI</a></h2>
+<p>The steps that follow require that the SuiNS registration object is owned by the address you are
+using on the Sui CLI. Therefore, we need to send this registration object from the address you use
+in your browser wallet, to the address of your Sui CLI.</p>
+<p>To find the Sui CLI address, execute:</p>
+<pre><code class="language-sh">sui client active-address
+</code></pre>
+<p>Then, from your browser wallet, select the "Assets" tab, and look for the NFT of the SuiNS
+registration, which should look as follows:</p>
+<p><img src="walrus-sites/../assets/suins-asset.png" alt="the SuiNS registration inside the wallet" /></p>
+<p>Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
+above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.</p>
+<h2 id="map-the-suins-name-to-the-walrus-site"><a class="header" href="#map-the-suins-name-to-the-walrus-site">Map the SuiNS name to the Walrus Site</a></h2>
+<p>This step associates the name <code>walrusgame</code> to the object ID of our Walrus Site. There are possibly
+many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.</p>
+<p>Here, we issue a transaction using the Sui CLI that creates this mapping:</p>
+<pre><code class="language-sh">SUINS_UTILS_PACKAGE=0x7954ae683314ec7e156acbf0c0fc964ce035fd7f456fe7576848226502cfde1b
+SUINS_CORE_OBJECT=0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3
+MY_SUINS_REGISTRATION_OBJECT=0x6412... # adjust this to your own SuiNS object
+MY_WALRUS_SITE_OBJECT=0x5ac9... # adjust this to your Walrus Site object
+sui client call \
+    --package $SUINS_UTILS_PACKAGE \
+    --module direct_setup \
+    --function set_target_address \
+    --gas-budget 500000000 \
+    --args $SUINS_CORE_OBJECT \
+    --args $MY_SUINS_REGISTRATION_OBJECT \
+    --args "[$MY_WALRUS_SITE_OBJECT]" \
+    --args 0x6
+</code></pre>
+<p>Note that the SuiNS package and object on testnet may change. You can
+find the latest ones by looking at the <code>TESTNET_CONFIG</code> in the <a href="https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts">SuiNS
+contract</a>.</p>
+<p>If all succeeds, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuring-the-site-builder"><a class="header" href="#configuring-the-site-builder">Configuring the site builder</a></h1>
+<p>Configuring the <code>site-builder</code> tool is straightforward, but care is required to ensure that
+everything works correctly.</p>
+<p>The <code>site-builder</code> tool requires a configuration file to know which package to use on Sui, which
+wallet to use, the gas budget, and other operational details. Most of these are abstracted away
+through sensible defaults, so you should not need to touch them. Yet, for completeness, we provide
+here the details for all the configuration options.</p>
+<h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
+<p>The config file is expected to be in <code>./builder.yaml</code>, and it is possible to point elsewhere with
+the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code> with
+<code>--config assets/builder-example.yaml</code>, which is already configured appropriately.</p>
+<p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
+binary, see below.</p>
+<h2 id="advanced-configuration"><a class="header" href="#advanced-configuration">Advanced configuration</a></h2>
+<p>If you want to have more control over the behavior of the site builder, you can customize the
+following variables in the config file:</p>
+<ul>
+<li><code>package</code>: the object ID of the Walrus Sites package on Sui. This must always be specified in the
+config, and is already appropriately configured in <code>assets/example-config.yaml</code>.</li>
+<li><code>portal</code>: the name of the Portal through which the site will be viewed; this only affects the
+output of the CLI, and nothing else (default: <code>walrus.site</code>).
+All Walrus Sites are accessible through any Portal independent of this setting.</li>
+<li><code>general</code>: these are general options, that can be configured both through the CLI and the config:
+<ul>
+<li><code>rpc_url</code>: The URL of the Sui RPC node to use. If not set, the <code>site-builder</code> will infer it from
+the wallet.</li>
+<li><code>wallet</code>: Pointer to the Sui wallet to be used. By default, it uses the system-wide wallet (the
+one from <code>sui client addresses</code>).</li>
+<li><code>walrus_binary</code>: Pointer to the <code>walrus</code> binary. By default, this is expected to be run from
+<code>$PATH</code>.</li>
+<li><code>walrus_config</code>: The configuration for the <code>walrus</code> client binary, see the <a href="walrus-sites/../usage/setup.html">relevant
+chapter</a>.</li>
+<li><code>gas_budget</code>: The maximum amount of gas to be spent for transactions (default: 500M MIST).</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="technical-overview"><a class="header" href="#technical-overview">Technical Overview</a></h1>
+<p>In the following sections, we delve deeper in the technical specification of Walrus Sites.</p>
+<h2 id="high-level-picture"><a class="header" href="#high-level-picture">High-level picture</a></h2>
+<p>Walrus Sites are enabled by Sui and Walrus.  The sites' resources (<code>html</code>, <code>css</code>, <code>js</code>, images,
+etc.) are stored on Walrus, while the main entry points to the sites are objects stored on Sui,
+which contain the metadata for the site and point to the Walrus blob IDs.</p>
+<h3 id="the-walrus-sites-objects-on-sui"><a class="header" href="#the-walrus-sites-objects-on-sui">The Walrus Sites objects on Sui</a></h3>
+<p>A Walrus <code>Site</code> is represented on Sui as a very simple object:</p>
+<pre><code class="language-move">struct Site has key, store {
+    id: UID,
+    name: String,
+}
+</code></pre>
+<p>The resources associated with this site are then added to this object as <a href="https://docs.sui.io/concepts/dynamic-fields/">dynamic
+fields</a> of type <code>Resource</code>:</p>
+<pre><code class="language-move">struct Resource has store, drop {
+    path: String,
+    content_type: String,
+    content_encoding: String,
+    // The walrus blob id containing the bytes for this resource
+    blob_id: u256,
+}
+</code></pre>
+<p>Each resource contains:</p>
+<ul>
+<li>The <code>path</code> of the resource, for example <code>/index.html</code> (all the paths are always represented as
+starting from root <code>/</code>);</li>
+<li>the <code>content_type</code> of the resource, for example <code>text/html</code>;</li>
+<li>the <code>content_encoding</code> of the resource. At the moment the only available value is <code>plaintext</code>; and</li>
+<li>the <code>blob_id</code>, which is the Walrus blob ID where the resource can be found.</li>
+</ul>
+<p>These <code>Resource</code> dynamic fields are keyed with a struct of type <code>ResourcePath</code></p>
+<pre><code class="language-move">struct ResourcePath has copy, store, drop {
+    path: String,
+}
+</code></pre>
+<p>This struct just holds the string of the path (<code>/index.html</code>); having a separate type ensures that
+we will not have namespace collisions with other dynamic fields, possibly added by other packages.</p>
+<p>To see this in action, look at <a href="https://suiscan.xyz/testnet/object/0x049b6d3f34789904efcc20254400b7dca5548ee35cd7b5b145a211f85b2532fa">a Walrus Site in the
+explorer</a>,
+and check its dynamic fields.</p>
+<h3 id="the-site-rendering-path"><a class="header" href="#the-site-rendering-path">The site rendering path</a></h3>
+<p>Given the Sui object ID of a Walrus Site, then, it is easy to look up the resources that compose it
+by looking at the dynamic fields, and then fetch these resources from Walrus using the blob ID
+contained in the <code>Resource</code> struct.</p>
+<p>The only outstanding question is, therefore, how to perform these lookups on the client. A few
+approaches are possible:</p>
+<ul>
+<li>Having a server that accepts requests for a Sui object ID and possibly a path, and performs this
+resolution on behalf of the client, serving back the resource as a standard HTML Response.</li>
+<li>Using a custom application on the client, that has both a web browser and knowledge of how Walrus
+Sites work, and can locally perform this resolution.</li>
+<li>A hybrid approach based on service workers, where a service worker that is able to perform the
+resolution is installed in the browser from a Portal.</li>
+</ul>
+<p>All of these approaches are viable (the first has been used for similar applications in IPFS
+gateways, for example), and have trade offs. As an initial step, we have chosen to use the
+service-worker based approach, as it is light weight and ensures that the Portal does not have to
+process all the traffic from clients. In the following, therefore, we present the details of this
+Portal-based approach.</p>
+<h3 id="browsing-and-domain-isolation"><a class="header" href="#browsing-and-domain-isolation">Browsing and domain isolation</a></h3>
+<p>We must ensure that, when browsing multiple sites through a Portal, for example the one hosted at
+<a href="https://walrus.site">https://walrus.site</a>, these sites are isolated. Isolation is necessary for security, and to ensure
+that the wallet connection in the browser works as expected.</p>
+<p>To do so, we give each Walrus Site a specific <em>subdomain</em> of the Portal's domain. For example, the
+Flatland mint dApp is hosted at <a href="https://flatland.walrus.site">https://flatland.walrus.site</a>, where the subdomain <code>flatland</code> is
+uniquely associated to the object ID of the Walrus Site through SuiNS.</p>
+<p>Walrus Sites also work without SuiNS: a site can <em>always</em> be browsed by using as subdomain the
+Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
+<a href="https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.blocksite.net">https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.blocksite.net</a> .</p>
+<p>Base36 was chosen for two reasons, forced by the subdomain standards:</p>
+<ol>
+<li>A subdomain can have at most 63, while a Hex-encoded Sui object ID requires 64.</li>
+<li>A subdomain is case <em>insensitive</em>, ruling out other popular encodings, e.g., Base64 or Base58.</li>
+</ol>
+<h2 id="the-end-to-end-resolution-of-a-walrus-site"><a class="header" href="#the-end-to-end-resolution-of-a-walrus-site">The end-to-end resolution of a Walrus Site</a></h2>
+<p>We now show in greater detail how a Walrus Site is rendered in a client's browser with the service
+worker approach. The steps below all reference the following figure:</p>
+<p><img src="walrus-sites/../assets/walrus-site-diagram.svg" alt="Walrus Site resolution" /></p>
+<ul>
+<li><strong>Site publishing</strong> (step 0) The site developer publishes the Walrus Site using the
+<a href="walrus-sites/./site-builder.html"><code>site-builder</code></a>, or making use of a publisher. Assume the developer uses the
+SuiNS name <code>dapp.sui</code> to point to the object ID of the created Walrus Site.</li>
+<li><strong>Browsing starts</strong> (step 1) A client browses <code>dapp.walrus.site/index.html</code> in their browser.</li>
+<li><strong>Service worker installation</strong> (steps 2-6) The browser connects to the Portal hosted at
+<code>walrus.site</code>, which responds with a page that installs the service worker for
+<code>dapp.walrus.site</code>. The page is refreshed to activate the service worker.</li>
+<li><strong>Site resolution</strong> (steps 7-10) The service worker, which is now installed, interprets its
+<em>origin</em> <code>dapp.walrus.site</code>, and makes a SuiNS resolution for <code>dapp.sui</code>, obtaining the relative
+object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
+<a href="walrus-sites/./portal.html">redirects</a>). From the dynamic fields, it selects the one for <code>/index.html</code>, and
+extracts its Walrus blob ID and content type.</li>
+<li><strong>Blob fetch</strong> (steps 11-14) Given the blob ID, the service worker queries a Walrus aggregator for
+the blob.</li>
+<li><strong>Returning the response</strong> (steps 15-16) Now that the service worker has the bytes for
+<code>/index.html</code>, and its <code>content_type</code>, it can craft a response that is then rendered by the
+browser.</li>
+</ul>
+<p>These steps are executed for all resources the browser may query thereafter (for example, if
+<code>/index.html</code> points to <code>assets/cat.png</code>).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linking-from-and-to-walrus-sites"><a class="header" href="#linking-from-and-to-walrus-sites">Linking from and to Walrus Sites</a></h1>
+<p>Links in Walrus Sites work <em>almost</em> as you would expect in a regular website. We specify here a few
+of the details.</p>
+<h2 id="linking-to-resources-within-the-same-site"><a class="header" href="#linking-to-resources-within-the-same-site">Linking to resources within the same site</a></h2>
+<p>Relative and absolute links (<code>href="/path/to/resource.html"</code>) work as usual.</p>
+<h2 id="linking-to-resources-on-the-web"><a class="header" href="#linking-to-resources-on-the-web">Linking to resources on the Web</a></h2>
+<p>Linking to a resource on the web (<code>href="https://some.cdn.example.com/stylesheet.css"</code>) also work as
+usual.</p>
+<h2 id="linking-to-resources-in-other-walrus-sites"><a class="header" href="#linking-to-resources-in-other-walrus-sites">Linking to resources in other Walrus Sites</a></h2>
+<p>Here is the part that is a bit different. Assume there is some image that you can browse at
+<code>https://gallery.walrus.site/walrus_arctic.webp</code>, and you want to link it from your own Walrus Site.</p>
+<p>Recall that, however, <code>https://walrus.site</code> is just one of the possibly many Portals. I.e., the same
+resource is browsable from a local portal (<code>http://gallery.localhost:8080/walrus_arctic.webp</code>), or
+from any other portal (e.g., <code>https://gallery.myotherportal.com/walrus_arctic.webp</code>). Therefore, how
+can you link the resource in a <em>Portal independent way</em>? This is important for interoperability,
+availability, and respecting the user's choice of portal.</p>
+<h3 id="the-solution-walrus-sites-links"><a class="header" href="#the-solution-walrus-sites-links">The solution: Walrus Sites links</a></h3>
+<p>We solve this problem by having the Portals interpret special links, that are normally invalid on
+the Web, and redirect to the corresponding Walrus Sites resource in the portal itself.</p>
+<p>Consider the example above, where the resource <code>/walrus_arctic.webp</code> is browsed from the Walrus Site
+with SuiNS name <code>gallery</code>, which points to the object ID <code>abcd123…</code> (in Base36 encoding). Then,
+the Portal-independent link is: <code>https://gallery.suiobj/walrus_arctic.webp</code>.  To fix the object ID
+instead of the SuiNS name, you can use <code>https://abcd123….suiobj/walrus_arctic.webp</code>.</p>
+<p>Another possibility is to directly point to the Walrus <em>blob ID</em> of the resource, and have the
+browser "sniff" the content type. This works for images, for example, but not for script or
+stylesheets. For example to point to the blob ID (e.g., containing an image) <code>qwer5678…</code>, use the
+URL <code>https://blobid.walrus/qwer5678…</code>.</p>
+<p>With such a link, the Portal will extract the blob ID and redirect the request to the aggregator it
+is using to fetch blobs.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="redirecting-objects-to-walrus-sites"><a class="header" href="#redirecting-objects-to-walrus-sites">Redirecting objects to Walrus Sites</a></h1>
+<p>We have seen in the <a href="walrus-sites/./overview.html">overview</a> how a Walrus Site object on Sui looks like. We will
+discuss now how you can create ensure that a <em>set of arbitrary objects</em> can all be tied to a
+specific, and possibly unique, Walrus site.</p>
+<h2 id="the-goal"><a class="header" href="#the-goal">The goal</a></h2>
+<p>Consider a collection of NFTs, such as the one published by <a href="https://flatland.walrus.site">https://flatland.walrus.site</a>. As we
+show there, each minted NFT has its own Walrus Site, that can be personalized based on the contents
+(e.g., the color) of the NFT itself. How can we achieve this?</p>
+<h2 id="redirect-links"><a class="header" href="#redirect-links">Redirect links</a></h2>
+<p>The solution is simple: We add a "redirect" in the NFT's
+<a href="https://docs.sui.io/standards/display#sui-utility-objects"><code>Display</code></a> property. Each time an NFT's
+object ID is browsed through a Portal, the Portal will check the <code>Display</code> of the NFT and, if it
+encounters the <code>walrus site address</code> key, it will go fetch the Walrus Site that is at the
+corresponding object ID.</p>
+<h3 id="redirects-in-move"><a class="header" href="#redirects-in-move">Redirects in Move</a></h3>
+<p>Practically speaking, when creating the <code>Display</code> of the NFT, you can include the key-value pair
+that points to the Walrus site that is to beused.</p>
+<pre><code class="language-move">...
+const VISUALIZATION_SITE: address = @0x901fb0...;
+display.add(b"walrus site address".to_string(), VISUALIZATION_SITE.to_string());
+...
+</code></pre>
+<h3 id="how-to-personalize-based-on-the-nft"><a class="header" href="#how-to-personalize-based-on-the-nft">How to personalize based on the NFT?</a></h3>
+<p>The code above will only open the specified Walrus Site when browsing the object ID of the NFT. How
+do we ensure that the properties of the NFT can be used to personalize the site?</p>
+<p>This needs to be done in the <code>VISUALIZATION_SITE</code>: Since the subdomain is still pointing to the
+NFT's object ID, the Walrus Site that is loaded can check its <code>origin</code> in Javascript, and use the
+subdomain to determine the NFT, fetch it from chain, and use its internal fields to modify the
+displayed site.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-site-builder"><a class="header" href="#the-site-builder">The site builder</a></h1>
+<p>To facilitate the creation of Walrus Sites, we provide the "site builder" tool. The site builder
+takes care of creating Walrus Sites object on Sui, with the correct structure, and stores the site
+resources to Walrus.</p>
+<h2 id="site-builder-commands"><a class="header" href="#site-builder-commands">Site builder commands</a></h2>
+<p>The site builder tool exposes the following commands:</p>
+<ul>
+<li><code>publish</code>: Allows to publish a specific directory to Walrus. The directory must contain files that
+can be served with HTTP, and have an <code>index.html</code> file. This command will return a Sui object ID
+for the newly created site.</li>
+<li><code>update</code>: After creating a site, you can update it with this command. It takes as input a
+directory, as above, with the new or updated files, and the object ID of the site to update. Note
+that the wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update
+it. This command will remove and create resources as required, to ensure that the Walrus Sites
+object on Sui matches the local directory. If run with <code>--watch</code>, this command re-updates the site
+<em>every time a file in the directory changes</em>. This is useful during development, but pay attention
+to costs!</li>
+<li><code>convert</code>: A utility tool. Given a Sui object ID in Hex format, it converts it to Base36. This is
+useful if you know the Sui object ID of a site, and want to find the URL.</li>
+<li><code>sitemap</code>: A utility tool. For a give Walrus Sites Sui object ID, prints out all the resources
+that compose the site and their object ID.</li>
+</ul>
+<p>Check the commands' <code>--help</code> for more information.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-walrus-sites-portal"><a class="header" href="#the-walrus-sites-portal">The Walrus Sites Portal</a></h1>
+<p>We use the term "Portal" to indicate any technology that is used to access an browse Walrus Sites.
+As mentioned in the <a href="walrus-sites/./overview.html#the-site-rendering-path">overview</a>, we foresee three kinds of
+Portals:</p>
+<ol>
+<li>Server-side Portals;</li>
+<li>custom local apps; and</li>
+<li>service-worker based Portals in the browser.</li>
+</ol>
+<p>Currently, only the service-worker based Portal is available.</p>
+<h2 id="running-the-portal-locally"><a class="header" href="#running-the-portal-locally">Running the Portal locally</a></h2>
+<p>You can run a service worker Portal locally:</p>
+<ul>
+<li>To browse Walrus Sites without accessing external Portals; or</li>
+<li>for development purposes.</li>
+</ul>
+<p>This requires having the <a href="https://pnpm.io/"><code>pnpm</code></a> tool installed. To start, clone the
+<code>walrus-sites</code> repo and enter the <code>portal</code> directory. Here, run:</p>
+<pre><code class="language-sh">pnpm install
+</code></pre>
+<p>to install the dependencies, and</p>
+<pre><code class="language-sh">pnpm serve
+</code></pre>
+<p>to serve the Portal. Typically, you will find it served at <code>localhost:8080</code> (but check the output of
+the serve command).</p>
+<h2 id="configuring-the-portal"><a class="header" href="#configuring-the-portal">Configuring the Portal</a></h2>
+<p>The most important configuration parameters for the Portal are in <code>constants.ts</code>.</p>
+<ul>
+<li><code>NETWORK</code>: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
+use Sui <code>testnet</code>.</li>
+<li><code>AGGREGATOR</code>: The URL of the <a href="walrus-sites/../usage/web-api.html">aggregator</a> from which the service worker will
+fetch the Walrus blobs.</li>
+<li><code>SITE_PACKAGE</code>: "0x514cf7ce2df33b9e2ca69e75bc9645ef38aca67b6f2852992a34e35e9f907f58"</li>
+<li><code>MAX_REDIRECT_DEPTH</code>: The number of <a href="walrus-sites/./redirects.html">redirects</a> the service worker will follow
+before stopping.</li>
+<li><code>SITE_NAMES</code>: Hard coded <code>name: objectID</code> mappings, to override the SuiNS names. For development
+only.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="known-restrictions"><a class="header" href="#known-restrictions">Known restrictions</a></h1>
+<p>Walrus Sites can be used to deploy almost any form of traditional static "Web 2" website build for
+modern browsers. There are, however, a number of restrictions that a developer should keep in mind
+when creating or porting a website to Walrus Sites.</p>
+<h2 id="no-secret-values"><a class="header" href="#no-secret-values">No secret values</a></h2>
+<p>Walrus Sites are fully publicly accessible, as the metadata is stored on Sui and the site content is
+stored on Walrus. Therefore, developers <em>must</em> not store secret values within the sites.</p>
+<p>We emphasize again that any such backend-specific operations (storing secret values, authentication,
+etc.) are achievable by leveraging the integration with the Sui blockchain and a Sui-compatible
+wallet.</p>
+<h2 id="there-is-a-maximum-redirect-depth"><a class="header" href="#there-is-a-maximum-redirect-depth">There is a maximum redirect depth</a></h2>
+<p>The number of consecutive redirects a Walrus Site can perform is capped by the
+Portal (see <a href="walrus-sites/./portal.html">Portal configuration</a>).  This measure ensures that loading a Walrus Site
+does not result in an infinite loading loop.</p>
+<p>Different Portals can set this limit as they desire. The limit for the Portal hosted at
+<a href="http://walrus.site">walrus.site</a> has a maximum redirect depth of 3.</p>
+<h2 id="service-workers-are-not-available"><a class="header" href="#service-workers-are-not-available">Service workers are not available</a></h2>
+<p><strong>WARNING</strong>: This limitation only applies to Portal based on service workers. A web Portal will not
+have this limitation.</p>
+<p>Walrus Sites leverage service workers in the clients' browsers to perform these essential
+operations:</p>
+<ol>
+<li>reading the site metadata from Sui;</li>
+<li>fetching the page content from Walrus; and</li>
+<li>serving the content to the browser.</li>
+</ol>
+<p>Therefore, a site deployed on Walrus Sites cannot use service workers. Installing a service worker
+from within a Walrus Site will result in a dysfunctional site and a poor experience for the user.</p>
+<h2 id="ios-sui-mobile-wallets-do-not-work-with-walrus-sites"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-walrus-sites">iOS Sui Mobile Wallets do not work with Walrus Sites</a></h2>
+<p><strong>WARNING</strong>: This limitation only applies to Portal based on service workers. A web Portal will not
+have this limitation.</p>
+<p>Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
+WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
+iOS. Therefore, Sui wallets cannot currently be used on a Walrus Site on iOS. Note, however, that
+<em>browsing</em> a Walrus Site is still possible on iOS through any browser. Only the connection to the
+wallet is impacted.</p>
+<p>The connection with the Sui Wallet apps works on Android devices.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>
+<p>To make communication as clear and efficient as possible, we make sure to use a single term for
+every Walrus entity/concept and <em>do not</em> use any synonyms. The following table lists various
+concepts, their canonical name, and how they relate to or differ from other terms.</p>
+<p>Italicized terms in the description indicate other specific Walrus terms contained in the table.</p>
+<div class="table-wrapper"><table><thead><tr><th>Approved name</th><th>Description</th></tr></thead><tbody>
+<tr><td>storage node (SN)</td><td>entity storing data for Walrus; holds one or several <em>shards</em></td></tr>
+<tr><td>blob</td><td>single unstructured data object stored on Walrus</td></tr>
+<tr><td>shard</td><td>(disjoint) subset of erasure-encoded data of all <em>blobs</em>; at every point in time, a <em>shard</em> is assigned to and stored on a single <em>SN</em></td></tr>
+<tr><td>sliver</td><td>erasure-encoded data of one <em>shard</em> corresponding to a single blob for one of the two encodings; this contains several erasure-encoded symbols of that blob but not the <em>blob metadata</em></td></tr>
+<tr><td>blob ID</td><td>cryptographic ID computed from a <em>blob</em>’s <em>slivers</em></td></tr>
+<tr><td>blob metadata</td><td>metadata of one <em>blob</em>; in particular, this contains a hash per <em>shard</em> to enable the authentication of <em>slivers</em> and recovery symbols</td></tr>
+<tr><td>(end) user</td><td>any entity/person that wants to store or read <em>blobs</em> on/from Walrus; can act as a Walrus client itself or use the simple interface exposed by <em>publishers</em> and <em>caches</em></td></tr>
+<tr><td>publisher</td><td>service interacting with Sui and the <em>SNs</em> to store <em>blobs</em> on Walrus; offers a simple <code>HTTP POST</code> endpoint to <em>end users</em></td></tr>
+<tr><td>aggregator</td><td>service that reconstructs <em>blobs</em> by interacting with <em>SNs</em> and exposes a simple <code>HTTP GET</code> endpoint to <em>end users</em></td></tr>
+<tr><td>cache</td><td>an <em>aggregator</em> with additional caching capabilities</td></tr>
+<tr><td>(Walrus) client</td><td>entity interacting directly with the <em>SNs</em>; this can be an <em>aggregator</em>/<em>cache</em>, a <em>publisher</em>, or an <em>end user</em></td></tr>
+<tr><td>(blob) reconstruction</td><td>decoding of the primary <em>slivers</em> to obtain the blob; includes re-encoding the <em>blob</em> and checking the Merkle proofs</td></tr>
+<tr><td>(shard/sliver) recovery</td><td>process of an <em>SN</em> recovering a <em>sliver</em> or full <em>shard</em> by obtaining recovery symbols from other <em>SNs</em></td></tr>
+<tr><td>storage attestation</td><td>process where <em>SNs</em> exchange challenges and responses to demonstrate that they are storing their currently assigned <em>shards</em></td></tr>
+<tr><td>certificate of availability (CoA)</td><td>a <em>blob ID</em> with signatures of <em>SNs</em> holding at least $2f+1$ <em>shards</em> in a specific <em>epoch</em></td></tr>
+<tr><td>point of availability (PoA)</td><td>point in time when a <em>CoA</em> is submitted to Sui and the corresponding <em>blob</em> is guaranteed to be available until its expiration</td></tr>
+<tr><td>inconsistency proof</td><td>set of several recovery symbols with their Merkle proofs such that the decoded <em>sliver</em> does not match the corresponding hash; this proves an incorrect/inconsistent encoding by the client</td></tr>
+<tr><td>inconsistency certificate</td><td>an aggregated signature from 2/3 of <em>SNs</em> (weighted by their number of <em>shards</em>) that they have seen and stored an <em>inconsistency proof</em> for a <em>blob ID</em></td></tr>
+<tr><td>storage committee</td><td>the set of <em>SNs</em> for a <em>storage epoch</em>, including metadata about the <em>shards</em> they are responsible for and other metadata</td></tr>
+<tr><td>member</td><td>an <em>SN</em> that is part of a <em>committee</em> at some <em>epoch</em></td></tr>
+<tr><td>storage epoch</td><td>the epoch for Walrus as distinct to the epoch for Sui</td></tr>
+<tr><td>availability period</td><td>the period specified in <em>storage epochs</em> for which a <em>blob</em> is certified to be available on Walrus</td></tr>
+<tr><td>expiry</td><td>the end epoch at which a blob is no longer available and can be deleted</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="devnet-terms-of-service---walrus"><a class="header" href="#devnet-terms-of-service---walrus">DEVNET TERMS OF SERVICE - WALRUS</a></h1>
+<p>Last updated: June 13, 2024</p>
+<p>By using Mysten Labs Devnet software, technologies, tools, and other services (collectively
+“Devnet”), you agree to the general Terms of Service and these additional Devnet Terms of Service
+(together, the “Terms”). If you do not agree, do not participate in Devnet. If you are using Devnet
+on behalf of an organization, you represent and warrant that you are an authorized representative of
+that organization and have the authority to bind that business or entity to the Terms.</p>
+<h2 id="eligibility-criteria"><a class="header" href="#eligibility-criteria">Eligibility Criteria</a></h2>
+<p>You may use Devnet only if you:</p>
+<ul>
+<li>Are 18 years or older and capable of forming a binding contract with us.</li>
+<li>Are not otherwise barred from participating in Devnet under applicable law.</li>
+</ul>
+<p>We may, at our discretion, introduce new or change existing eligibility criteria or conditions we
+deem appropriate. Devnet may operate in certain phases, and your participation in any one phase of
+Devnet does not guarantee that you will be selected for any other phases of Devnet.</p>
+<h2 id="duration"><a class="header" href="#duration">Duration</a></h2>
+<p>Devnet will commence on the date we prescribe and continue until terminated at our discretion. We
+may change, discontinue, or wipe, temporarily or permanently, all or any part of Devnet, at any
+time and without notice at our discretion, including, without limitation, the modification of the
+presence, amounts, or any other conditions applicable to data you have stored within Devnet, without
+any liability to you or other Devnet users.</p>
+<h2 id="no-warranty"><a class="header" href="#no-warranty">No Warranty</a></h2>
+<p>Mysten Labs provides the Devnet platform solely as a developer preview. Devnet is provided "as is"
+and "with all faults." We make no warranties, express or implied, regarding the reliability,
+accuracy, performance, or fitness for a particular purpose of the service provided. You accept all
+risks associated with the use of Devnet and agree that Mysten Labs, its affiliates, and its
+employees shall not be liable for any damages, whether direct, indirect, incidental, special,
+consequential, or punitive, arising out of the use or inability to use the service, including but
+not limited to lost profits, loss of business, or data loss.</p>
+<p>No employee or representative of Mysten Labs is authorized to make any warranties or representations
+beyond those stated in this agreement. Any statements made by employees or representatives of Mysten
+Labs regarding the service shall not be construed as warranties or representations, and customers
+agree to indemnify and hold harmless Mysten Labs from any such statements.</p>
+<p>Any deficiencies or errors in the Devnet platform shall not constitute a breach of this agreement,
+and customers agree to waive any right to seek a refund or compensation based on such deficiencies
+or errors. This "as is, no warranty" provision shall survive the termination or expiration of any
+other agreements between you and Mysten Labs.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
