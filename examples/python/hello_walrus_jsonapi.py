@@ -30,21 +30,30 @@ try:
         capture_output=True,
         input=store_json_command,
     )
+
     assert result.returncode == 0
 
     # Parse the response and display key information
     json_result_dict = json.loads(result.stdout.strip())
+    if "newlyCreated" in json_result_dict:
+        blob_id = json_result_dict["newlyCreated"]["blobObject"]["blobId"]
+        sui_object_id = json_result_dict["newlyCreated"]["blobObject"]["id"]
+    elif "alreadyCertified" in json_result_dict:
+        blob_id = json_result_dict["alreadyCertified"]["blobObject"]["blobId"]
+        sui_object_id = json_result_dict["alreadyCertified"]["blobObject"]["id"]
+    else:
+        raise ValueError("Unexpected response from Walrus")
+
     print(
-        f"Upload Blob ID: {json_result_dict['blob_id']} Size {len(random_data)} bytes"
+        f"Upload Blob ID: {blob_id} Size {len(random_data)} bytes"
     )
-    sui_object_id = json_result_dict["sui_object_id"]
-    blob_id = json_result_dict["blob_id"]
+
     print(f"Certificate in Object ID: {sui_object_id}")
 
     # Part 2. Download the file from the Walrus service
     read_json_command = f"""{{ "config" : "{PATH_TO_WALRUS_CONFIG}",
         "command" : {{ "read" :
-        {{ "blob_id" : "{json_result_dict['blob_id']}" }}}}
+        {{ "blobId" : "{blob_id}" }}}}
     }}"""
     result = subprocess.run(
         [PATH_TO_WALRUS, "json"],
@@ -52,6 +61,7 @@ try:
         capture_output=True,
         input=read_json_command,
     )
+
     assert result.returncode == 0
 
     # Parse the response and display key information
@@ -60,7 +70,7 @@ try:
     assert downloaded_data == random_data
 
     print(
-        f"Download Blob ID: {json_result_dict['blob_id']} Size {len(downloaded_data)} bytes"
+        f"Download Blob ID: {json_result_dict['blobId']} Size {len(downloaded_data)} bytes"
     )
 
     # Part 3. Check the availability of the blob

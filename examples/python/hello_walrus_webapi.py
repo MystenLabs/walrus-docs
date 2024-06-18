@@ -14,7 +14,7 @@ import time
 # External requests HTTP library
 import requests
 
-ADDRESS = "127.0.0.1:8899"
+ADDRESS = "127.0.0.1:31415"
 EPOCHS = "5"
 
 
@@ -26,7 +26,7 @@ def upload_blob(ADDRESS, EPOCHS, data):
 
     # Assert the response status code
     assert response.status_code == 200
-    blob_id = response.text
+    blob_id = response.json()["newlyCreated"]["blobObject"]["blobId"]
     return blob_id
 
 
