@@ -233,35 +233,35 @@ fix any errors you find in this documentation in that GitHub project.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-walrus-dev-blog"><a class="header" href="#the-walrus-dev-blog">The Walrus Dev Blog</a></h1>
 <p>We will use this section of the Walrus documentation to publish news and updates about Walrus'
 development!</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="announcing-walrus--walrus-sites-a-decentralized-store-and-web-dapp-platform"><a class="header" href="#announcing-walrus--walrus-sites-a-decentralized-store-and-web-dapp-platform">Announcing Walrus &amp; Walrus Sites: A Decentralized Store and Web DApp Platform</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="announcing-walrus-a-decentralized-storage-and-data-availability-protocol"><a class="header" href="#announcing-walrus-a-decentralized-storage-and-data-availability-protocol">Announcing Walrus: A Decentralized Storage and Data Availability Protocol</a></h1>
 <p>Walrus is an innovative decentralized storage network for blockchain apps and autonomous agents. The
-Walrus storage system is released today as a developer preview to Sui developers to gather
-feedback. We expect a general rollout to other web3 communities very soon!</p>
+Walrus storage system is being released today as a developer preview for Sui builders in order to
+gather feedback. We expect a broad rollout to other web3 communities very soon!</p>
 <p>Leveraging innovations in erasure coding, Walrus enables fast and robust encoding of unstructured
 data blobs into smaller slivers distributed and stored over a network of storage nodes. A subset of
-slivers can be used to rapidly reconstruct the original blob reliably, even when up to two thirds of
-the slivers are missing. This is possible while keeping the replication factor down to a minimal
-4x-5x, similar to existing cloud-based services, but with the additional benefits of
-decentralization and resilience to more widespread faults.</p>
+slivers can be used to rapidly reconstruct the original blob, even when up to two-thirds of the
+slivers are missing. This is possible while keeping the replication factor down to a minimal 4x-5x,
+similar to existing cloud-based services, but with the additional benefits of decentralization and
+resilience to more widespread faults.</p>
 <h2 id="the-replication-challenge"><a class="header" href="#the-replication-challenge">The Replication Challenge</a></h2>
 <p>Sui is the most advanced blockchain system in relation to storage on validators, with innovations
-such as a <a href="https://docs.sui.io/concepts/tokenomics/storage-fund">storage fund</a> that future proofs
-the cost of storing on-chain data. Nevertheless, Sui still requires complete data replication among
-all validators, resulting in a replication factor of 100x or more in today's Sui mainnet. This is
-necessary for replicated computing and smart contracts acting on the state of the blockchain, but is
-inefficient when it comes to simply storing unstructured data blobs, such as music, video,
-blockchain history, etc.</p>
+such as a <a href="https://docs.sui.io/concepts/tokenomics/storage-fund">storage fund</a> that future-proofs
+the cost of storing data on-chain. Nevertheless, Sui still requires complete data replication among
+all validators, resulting in a replication factor of 100x or more in today’s Sui mainnet. While this
+is necessary for replicated computing and smart contracts acting on the state of the blockchain, it
+is inefficient for simply storing unstructured data blobs, such as music, video, blockchain history,
+etc.</p>
 <h2 id="introducing-walrus-efficient-and-robust-decentralized-storage"><a class="header" href="#introducing-walrus-efficient-and-robust-decentralized-storage">Introducing Walrus: Efficient and Robust Decentralized Storage</a></h2>
 <p>To tackle the challenge of high replication costs, Mysten Labs has developed Walrus, a decentralized
 storage network offering exceptional data availability and robustness with a minimal replication
 factor of 4x-5x. Walrus provides two key benefits:</p>
 <ol>
 <li>
-<p><strong>Cost-Effective Blob Storage</strong>: Walrus allows for the upload of gigabytes of data at a time with
-minimal cost, making it an ideal solution for storing large volumes of data.\ Walrus can do this
-because the data blob is transmitted only once over the network, and storage nodes only spend a
-fraction of resources compared to the blob size. As a result, the more storage nodes the system
-has, the fewer resources each storage node uses per blob.</p>
+<p><strong>Cost-Effective Blob Storage</strong>: Walrus allows for the uploading of gigabytes of data at a time
+with minimal cost, making it an ideal solution for storing large volumes of data. Walrus can do
+this because the data blob is transmitted only once over the network, and storage nodes only
+spend a fraction of resources compared to the blob size. As a result, the more storage nodes the
+system has, the fewer resources each storage node uses per blob.</p>
 </li>
 <li>
 <p><strong>High Availability and Robustness</strong>: Data stored on Walrus enjoys enhanced reliability and
@@ -271,7 +271,7 @@ efficiently without downloading the full blob.</p>
 </li>
 </ol>
 <p>Decentralized storage can take multiple forms in modern ecosystems. For instance, it offers better
-guarantees for digital assets traded as NFTs.  Unlike current designs that store data off-chain,
+guarantees for digital assets traded as NFTs. Unlike current designs that store data off-chain,
 decentralized storage ensures users own the actual resource, not just metadata, mitigating risks of
 data being taken down or misrepresented.</p>
 <p>Additionally, decentralized storage is not only useful for storing data such as pictures or files
@@ -279,30 +279,30 @@ with high availability; it can also double as a low-cost data availability layer
 sequencers can upload transactions on Walrus, and the rollup executor only needs to temporarily
 reconstruct them for execution.</p>
 <p>We also believe Walrus will accompany existing disaster recovery strategies for millions of
-enterprise companies. Not only is Walrus low-cost, but it also provides unmatched layers of data
+enterprise companies. Not only is Walrus low-cost, it also provides unmatched layers of data
 availability, integrity, transparency, and resilience that centralized solutions by design cannot
 offer.</p>
-<p>Walrus is powered by the Sui Network and scales horizontally to hundreds of networked decentralized
-storage nodes. This should enable Walrus to offer Exabytes of storage at costs competitive with
-current centralized offerings, given the higher assurance and decentralization.</p>
+<p>Walrus is powered by the Sui Network and scales horizontally to hundreds or thousands of networked
+decentralized storage nodes. This should enable Walrus to offer Exabytes of storage at costs
+competitive with current centralized offerings, given the higher assurance and decentralization.</p>
 <h2 id="the-future-of-walrus"><a class="header" href="#the-future-of-walrus">The Future of Walrus</a></h2>
 <p>By releasing this developer preview we hope to share some of the design decisions with the
-decentralized app developer community, and gather feedback on the approach and the APIs for storing,
+decentralized app developer community and gather feedback on the approach and the APIs for storing,
 retrieving, and certifying blobs. In this developer preview, all storage nodes are operated by
-Mysten Labs to help us understand use-cases, fix bugs, and improve the performance of the software.</p>
+Mysten Labs to help us understand use cases, fix bugs, and improve the performance of the software.</p>
 <p>Future updates to Walrus will allow for dynamically changing the set of decentralized storage nodes,
 as well as changing the mapping of what slivers are managed by each storage node. The available
-operations and tools will also be expanded to cover more storage related use-cases.  Many of these
+operations and tools will also be expanded to cover more storage-related use cases. Many of these
 functions will be designed with the feedback we gather in mind.</p>
 <p>Stay tuned for more updates on how Walrus will revolutionize data storage in the web3 ecosystem.</p>
 <h2 id="what-can-developers-build"><a class="header" href="#what-can-developers-build">What can developers build?</a></h2>
-<p>As part of this developer preview we provide a binary client (currently macos, ubuntu) that can be
+<p>As part of this developer preview, we provide a binary client (currently macOS, ubuntu) that can be
 operated from the <a href="https://docs.walrus.site/usage/client-cli.html">command line interface</a>, a <a href="https://docs.walrus.site/usage/json-api.html">JSON
 API</a>, and an <a href="https://docs.walrus.site/usage/web-api.html">HTTP
-API</a>.  We also offer the community an aggregator and
-publisher service, and a Devnet deployment of 10 storage nodes operated by Mysten Labs.</p>
-<p>We hope Sui developers experiment with building applications that leverage the Walrus Decentralized
-Store in a variety of ways. As examples we hope to see the community build:</p>
+API</a>. We also offer the community an aggregator and
+publisher service and a Devnet deployment of 10 storage nodes operated by Mysten Labs.</p>
+<p>We hope developers will experiment with building applications that leverage the Walrus Decentralized
+Store in a variety of ways. As examples, we hope to see the community build:</p>
 <ul>
 <li>
 <p><strong>Storage of media for NFT or dapps:</strong> Walrus can directly store and serve media such as images,
@@ -310,32 +310,32 @@ sounds, sprites, videos, other game assets, etc. This is publicly available medi
 accessed using HTTP requests at caches to create multimedia dapps.</p>
 </li>
 <li>
-<p><strong>AI related use cases:</strong> Walrus can store clean data sets of training data, datasets with a known
-and verified provenance, models weights, and proofs of correct training for AI models. Or it may
-be used to store and ensure the availability and authenticity of an AI model output.</p>
+<p><strong>AI-related use cases:</strong> Walrus can store clean data sets of training data, datasets with a known
+and verified provenance, model weights, and proofs of correct training for AI models. Or it may be
+used to store and ensure the availability and authenticity of an AI model output.</p>
 </li>
 <li>
-<p><strong>Storage of long term archival of blockchain history:</strong> Walrus can be used as a lower cost
-decentralized store to store blockchain history. For Sui this can include sequences of checkpoints
-with all associated transaction and effects content. As well as historic snapshots of the
-blockchain state, code or binaries.</p>
+<p><strong>Storage of long term archival of blockchain history:</strong> Walrus can be used as a lower-cost
+decentralized store to store blockchain history. For Sui, this can include sequences of
+checkpoints with all associated transaction and effects content, as well as historic snapshots of
+the blockchain state, code, or binaries.</p>
 </li>
 <li>
-<p><strong>Support availability for L2s:</strong> Walrus allows parties to certify the availability of blobs, as
-required by L2s that need data to be stored and be attested as available to all. This may also
-include availability of extra audit data such as validity proofs, zero knowledge proofs of correct
-execution or large fraud proofs.</p>
+<p><strong>Support availability for L2s:</strong> Walrus enables parties to certify the availability of blobs, as
+required by L2s that need data to be stored and attested as available to all. This may also
+include the availability of extra audit data such as validity proofs, zero-knowledge proofs of
+correct execution, or large fraud proofs.</p>
 </li>
 <li>
 <p><strong>Support a full decentralized web experience:</strong> Walrus can host full decentralized web
-experiences including all resources (such as js, css, html, media). These can provide content but
-also host the UX of dapps, enabling fully decentralized front end and back ends on chain. It
-brings the full "web" back in "web3".</p>
+experiences including all resources (such as js, css, html, and media). These can provide content
+but also host the UX of dapps, enabling fully decentralized front- and back-ends on chain. It
+brings the full "web" back into "web3".</p>
 </li>
 <li>
 <p><strong>Support subscription models for media:</strong> Creators can store encrypted media on Walrus and only
 provide access via decryption keys to parties that have paid a subscription fee or have paid for
-contents. (Note that Walrus provides the storage, encryption and decryption must be done off
+content. (Note that Walrus provides the storage; encryption and decryption must be done off
 Walrus).</p>
 </li>
 </ul>
@@ -343,14 +343,13 @@ Walrus).</p>
 <h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
 <p>For this developer preview the public Walrus Devnet is openly available to all developers. Developer
 documentation is available at <a href="https://docs.walrus.site">https://docs.walrus.site</a>.</p>
-<p>SUI Testnet token is the main currency for interacting with Walrus.  Developers pay for Walrus
-Devnet storage using SUI Testnet tokens which can be acquired at the <a href="https://discord.com/channels/916379725201563759/1037811694564560966">Sui Testnet Discord
+<p>SUI Testnet token is the main currency for interacting with Walrus. Developers pay for Walrus Devnet
+storage using SUI Testnet tokens which can be acquired at the <a href="https://discord.com/channels/916379725201563759/1037811694564560966">Sui Testnet Discord
 faucet</a>.</p>
-<h2 id="one-more-thing"><a class="header" href="#one-more-thing">One more thing</a></h2>
-<p>The <a href="https://walrus.site/">Walrus Sites website</a>, the <a href="https://docs.walrus.site">Walrus docs</a>, and
+<h2 id="one-more-thing-"><a class="header" href="#one-more-thing-">One more thing …</a></h2>
+<p>The <a href="https://walrus.site">Walrus Sites website</a>, the <a href="https://docs.walrus.site">Walrus docs</a>, and
 <a href="https://blog.walrus.site">this very blog</a> are hosted on Walrus. To learn more about Walrus Sites
-and how you can deploy your own, <a href="https://docs.walrus.site/walrus-sites/intro.html">click
-here</a>.</p>
+and how you can deploy your own, <a href="https://docs.walrus.site/walrus-sites/intro.html">click here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="objectives-and-use-cases"><a class="header" href="#objectives-and-use-cases">Objectives and use cases</a></h1>
 <p>Walrus supports operations to store and retrieve blobs, and to prove and verify their availability.
 It ensures content survives storage nodes suffering Byzantine faults and remains available and
@@ -943,8 +942,8 @@ read information about the Walrus system, as well as stored blobs, on Sui.</p>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
-availability. When a blob is certified its <code>certified</code> field contains the epoch in which it was
-certified.</p>
+availability. When a blob is certified its <code>certified_epoch</code> field contains the epoch in which it
+was certified.</p>
 <p>A <code>Storage</code> object is always associated with a <code>Blob</code> object, reserving enough space for
 a long enough period for the blob's storage. A certified blob is available for the period the
 underlying storage resource guarantees storage.</p>
@@ -959,8 +958,8 @@ public struct Blob has key, store {
     blob_id: u256,
     size: u64,
     erasure_code_type: u8,
-    certified: option::Option&lt;u64&gt;, // The epoch first certified,
-                                    // or None if not certified.
+    certified_epoch: option::Option&lt;u64&gt;, // The epoch first certified,
+                                          // or None if not certified.
     storage: Storage,
 }
 
@@ -979,7 +978,7 @@ public fun stored_epoch(b: &amp;Blob) : u64;
 public fun blob_id(b: &amp;Blob) : u256;
 public fun size(b: &amp;Blob) : u64;
 public fun erasure_code_type(b: &amp;Blob) : u8;
-public fun certified(b: &amp;Blob) : &amp;Option&lt;u64&gt;;
+public fun certified_epoch(b: &amp;Blob) : &amp;Option&lt;u64&gt;;
 public fun storage(b: &amp;Blob) : &amp;Storage;
 
 // Storage functions
@@ -1343,8 +1342,8 @@ to ensure only authorized parties may access it, or other measures to manage gas
 aggregator and/or publisher is required. For your convenience, we provide these at the following
 hosts:</p>
 <ul>
-<li>Aggregator: <code>https://aggregator.devnet.walrus.space</code></li>
-<li>Publisher: <code>https://publisher.devnet.walrus.space</code></li>
+<li>Aggregator: <code>https://aggregator-devnet.walrus.space</code></li>
+<li>Publisher: <code>https://publisher-devnet.walrus.space</code></li>
 </ul>
 <p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to <a href="usage/web-api.html#local-daemon">run your own publisher</a> or use the <a href="usage/./client-cli.html">CLI</a>.</p>
@@ -1516,9 +1515,8 @@ your environment for development.</p>
 <p>Then, follow these additional setup steps.</p>
 <h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
 <p>First clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>.</p>
-<pre><code class="language-sh">git clone git@github.com:MystenLabs/walrus-sites.git
+<pre><code class="language-sh">git clone https://github.com/MystenLabs/walrus-sites.git
 cd walrus-sites
-cd site-builder
 </code></pre>
 <p>Then, build the release version of the site builder:</p>
 <pre><code class="language-sh">cargo build --release
@@ -1551,11 +1549,8 @@ its root, which will be the entry point to the Walrus Site.</p>
 the <code>./examples/snake</code> site is simple:</p>
 <ul>
 <li>
-<p>Ensure that you are in the <code>site-builder</code> directory;</p>
-</li>
-<li>
 <p>Run the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml publish ../examples/snake
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
 </code></pre>
 </li>
 </ul>
@@ -1583,11 +1578,11 @@ configuration</a> section.</p>
 <h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
 <p>Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".</p>
-<p>First, make this edit on in the <code>../examples/snake/index.html</code> file.</p>
+<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, and providing the directory
-where to find the updated files (still <code>../example/snake</code>), and the object ID of the existing site
+where to find the updated files (still <code>./example/snake</code>), and the object ID of the existing site
 (<code>0x5ac988...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml update ../examples/snake 0x5ac9888...
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Operations performed:
@@ -1673,7 +1668,7 @@ here the details for all the configuration options.</p>
 <h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
 <p>The config file is expected to be in <code>./builder.yaml</code>, and it is possible to point elsewhere with
 the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code> with
-<code>--config assets/builder-example.yaml</code>, which is already configured appropriately.</p>
+<code>--config site-builder/assets/builder-example.yaml</code>, which is already configured appropriately.</p>
 <p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
 binary, see below.</p>
 <h2 id="advanced-configuration"><a class="header" href="#advanced-configuration">Advanced configuration</a></h2>
@@ -2686,14 +2681,14 @@ Palo Alto, CA 94301 <br />
 +1 (408) 384-8237</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- markdownlint-disable -->
 <h1 id="walrus-sites---terms-of-service"><a class="header" href="#walrus-sites---terms-of-service">Walrus Sites - TERMS of SERVICE</a></h1>
-<p>Last Updated: June 17, 2024</p>
+<p>Last Updated: June 18, 2024</p>
 <p>These Terms of Service (“<strong>Terms</strong>”) govern your use of certain software services, including Walrus
 Sites provided by Mysten Labs, Inc.  (“<strong>Mysten Labs</strong>”) (collectively the "<strong>Services</strong>"). By
 accessing the Services, you agree to and accept these terms and conditions. If you don’t agree to be
 bound by these Terms, do not use the Services.</p>
 <p>IMPORTANT NOTICE REGARDING ARBITRATION FOR U.S. CUSTOMERS: WHEN YOU AGREE TO THESE TERMS YOU ARE
 AGREEING (WITH LIMITED EXCEPTION) TO RESOLVE ANY DISPUTE BETWEEN YOU AND MYSTEN LABS THROUGH
-BINDING, INDIVIDUAL ARBITRATION RATHER THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XVII “DISPUTE
+BINDING, INDIVIDUAL ARBITRATION RATHER THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XIV “DISPUTE
 RESOLUTION” BELOW FOR DETAILS REGARDING ARBITRATION.</p>
 <h2 id="i-privacy-policy"><a class="header" href="#i-privacy-policy">I. Privacy Policy</a></h2>
 <p>Please review our Privacy Policy, which also governs your use of the Services, for information on
@@ -2771,47 +2766,50 @@ copies of the Services. These Terms do not grant you any rights to our trademark
 <p>You may submit feedback, comments, or ideas about the Services (“<strong>Ideas</strong>”). Submitting Ideas is
 entirely voluntary, and we will be free to use such Ideas as we see fit and without any obligation
 to you.</p>
-<h2 id="vi-your-content"><a class="header" href="#vi-your-content">VI. Your Content</a></h2>
+<h2 id="vi-general-prohibitions-and-mysten-labss-enforcement-rights"><a class="header" href="#vi-general-prohibitions-and-mysten-labss-enforcement-rights">VI. General Prohibitions and Mysten Labs’s Enforcement Rights.</a></h2>
+<p>You agree not to do any of the following:</p>
 <ol>
-<li><u>Posting Content</u>. Our Services may allow you to store or share content such as text (in
-posts or communications with others), files, documents, graphics, images, music, software, audio
-and video. Anything (other than Feedback) that you post or otherwise make available through the
-Services is referred to as “User Content”. Mysten Labs does not claim any ownership rights in any
-User Content and nothing in these Terms will be deemed to restrict any rights that you may have
-to your User Content.</li>
-<li><u>Permissions to Your User Content</u>. By making any User Content available through the
-Services you hereby grant to Mysten Labs a non-exclusive, transferable, worldwide, royalty-free
-license, with the right to sublicense, to use, copy, modify, create derivative works based upon,
-distribute, publicly display, and publicly perform your User Content in connection with operating
-and providing the Services. NFTs stored in the Wallet shall not be considered User Content for
-purposes of this Section.</li>
-<li><u>Your Responsibility for User Content</u>. You are solely responsible for all your User
-Content. You represent and warrant that you have (and will have) all rights that are necessary to
-grant us the license rights in your User Content under these Terms. You represent and warrant
-that neither your User Content, nor your use and provision of your User Content to be made
-available through the Services, nor any use of your User Content by Mysten Labs on or through the
-Services will infringe, misappropriate or violate a third party’s intellectual property rights,
-or rights of publicity or privacy, or result in the violation of any applicable law or
-regulation. You shall not post, upload, publish, submit or transmit any User Content that: (ii)
-violates, or encourages any conduct that would violate, any applicable law or regulation or would
-give rise to civil liability; (ii) is fraudulent, false, misleading or deceptive; (iii) is
-defamatory, obscene, pornographic, vulgar or offensive; (iv) promotes discrimination, bigotry,
-racism, hatred, harassment or harm against any individual or group; (v) is violent or threatening
-or promotes violence or actions that are threatening to any person or entity; or (vi) promotes
-illegal or harmful activities or substances.</li>
-<li><u>iFrames</u>. Without prior approval and written permission, you may not alter in any way the
-visual presentation or appearance of our websites.</li>
-<li><u>Removal of User Content</u>. You can remove your User Content by specifically deleting it. You
-should know that in certain instances, some of your User Content (such as posts or comments you
-make) may not be completely removed and copies of your User Content may continue to exist on the
-Services. To the maximum extent permitted by law, we are not responsible or liable for the
-removal or deletion of (or the failure to remove or delete) any of your User Content. We reserve
-the right, but are not obligated, to remove or disable access to any content, including User
-Content, at any time and without notice, including, but not limited to, if we, at our sole
-discretion, consider it objectionable or in violation of these Terms. We have the right to
-investigate violations of these Terms or conduct that affects the Services. We may also consult
-and cooperate with law enforcement authorities to prosecute users who violate the law.</li>
+<li>Use, display, mirror or frame the Services or any individual element within the Services, Mysten
+Labs’s name, any Mysten Labs trademark, logo or other proprietary information, or the layout and
+design of any page or form contained on a page, without Mysten Labs’s express written consent;</li>
+<li>Access, tamper with, or use non-public areas of the Services, Mysten Labs’s computer systems, or
+the technical delivery systems of Mysten Labs’s providers;</li>
+<li>Attempt to probe, scan or test the vulnerability of any Mysten Labs system or network or breach
+any security or authentication measures;</li>
+<li>Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological
+measure implemented by Mysten Labs or any of Mysten Labs’s providers or any other third party
+(including another user) to protect the Services;</li>
+<li>Attempt to access or search the Services or download content from the Services using any engine,
+software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining
+tools or the like) other than the software and/or search agents provided by Mysten Labs or other
+generally available third-party web browsers;</li>
+<li>Send any unsolicited or unauthorized advertising, promotional materials, email, junk mail, spam,
+chain letters or other form of solicitation;</li>
+<li>Use any meta tags or other hidden text or metadata utilizing a Mysten Labs trademark, logo URL or
+product name without Mysten Labs’s express written consent;</li>
+<li>Use the Services, or any portion thereof, for any commercial purpose or for the benefit of any
+third party or in any manner not permitted by these Terms;</li>
+<li>Forge any TCP/IP packet header or any part of the header information in any email or newsgroup
+posting, or in any way use the Services to send altered, deceptive or false source-identifying
+information;</li>
+<li>Attempt to decipher, decompile, disassemble or reverse engineer any of the software used to
+provide the Services;</li>
+<li>Interfere with, or attempt to interfere with, the access of any user, host or network,
+including, without limitation, sending a virus, overloading, flooding, spamming, or mail-bombing
+the Services;</li>
+<li>Collect or store any personally identifiable information from the Services from other users of
+the Services without their express permission;</li>
+<li>Impersonate or misrepresent your affiliation with any person or entity;</li>
+<li>Violate any applicable law or regulation; or</li>
+<li>Encourage or enable any other individual to do any of the foregoing. Mysten Labs is not obligated
+to monitor access to or use of the Services or to review or edit any content. However, we have
+the right to do so for the purpose of operating the Services, to ensure compliance with these
+Terms and to comply with applicable law or other legal requirements. We reserve the right, but
+are not obligated, to remove or disable access to any content, at any time and without notice,
+including, but not limited to, if we, at our sole discretion, consider it objectionable or in
+violation of these Terms.</li>
 </ol>
+<p>We have the right to investigate violations of these Terms or conduct that affects the Services. We may also consult and cooperate with law enforcement authorities to prosecute users who violate the law.</p>
 <h2 id="vii-dmcacopyright-policy"><a class="header" href="#vii-dmcacopyright-policy">VII. DMCA/Copyright Policy</a></h2>
 <p>Mysten Labs respects copyright law and expects its users to do the same. It is Mysten Labs’ policy
 to terminate in appropriate circumstances users who repeatedly infringe or are believed to be
@@ -2830,8 +2828,7 @@ Unverified List, or Entity List.</p>
 or terminating your account, at our sole discretion, at any time and without notice to you. You may
 cancel your account, if you have one, at any time by removing the Wallet web browser extension and
 ceasing any and all use of the Services. Upon any termination, discontinuation or cancellation of
-the Services or your account, the <span class="mark">following Sections will survive: VIII(B),
-VIII(C), 5III(E), XII, XIII, XIV, XV, XVII, XVIII and XIX.</span></p>
+the Services or your account, the following Sections will survive: VIII and IX- XV</p>
 <h2 id="x-warranty-disclaimers"><a class="header" href="#x-warranty-disclaimers">X. Warranty Disclaimers</a></h2>
 <p>THE SERVICES ARE PROVIDED “AS IS,” WITHOUT WARRANTY OF ANY KIND. WITHOUT LIMITING THE FOREGOING, WE
 EXPLICITLY DISCLAIM ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
@@ -2864,16 +2861,16 @@ THE AMOUNTS YOU HAVE PAID OR ARE PAYABLE BY YOU TO MYSTEN LABS FOR USE OF THE SE
 HUNDRED DOLLARS ($100), IF YOU HAVE NOT HAD ANY PAYMENT OBLIGATIONS TO MYSTEN LABS, AS
 APPLICABLE.</li>
 <li>THE EXCLUSIONS AND LIMITATIONS OF DAMAGES SET FORTH ABOVE ARE FUNDAMENTAL ELEMENTS OF THE BASIS
-OF THE BARGAIN BETWEEN Mysten Labs AND YOU.</li>
+OF THE BARGAIN BETWEEN MYSTEN LABS AND YOU.</li>
 </ol>
-<h2 id="xvi-governing-law-and-forum-choice"><a class="header" href="#xvi-governing-law-and-forum-choice">XVI. Governing Law and Forum Choice.</a></h2>
+<h2 id="xiii-governing-law-and-forum-choice"><a class="header" href="#xiii-governing-law-and-forum-choice">XIII. Governing Law and Forum Choice.</a></h2>
 <p>These Terms and any action related thereto will be governed by the Federal Arbitration Act, federal
 arbitration law, and the laws of the State of California, without regard to its conflict of laws
 provisions. Except as otherwise expressly set forth in Section XVII “Dispute Resolution,” the
 exclusive jurisdiction for all Disputes (defined below) that you and Mysten Labs are not required to
 arbitrate will be the state and federal courts located in the County of Santa Clara, and you and
 Mysten Labs each waive any objection to jurisdiction and venue in such courts.</p>
-<h2 id="xvii-dispute-resolution"><a class="header" href="#xvii-dispute-resolution">XVII. Dispute Resolution</a></h2>
+<h2 id="xiv-dispute-resolution"><a class="header" href="#xiv-dispute-resolution">XIV. Dispute Resolution</a></h2>
 <ol>
 <li><u>Mandatory Arbitration of Disputes</u>. We each agree that any dispute, claim or controversy
 arising out of or relating to these Terms or the breach, termination, enforcement, interpretation
@@ -2925,7 +2922,7 @@ Terms (“<strong>Class Action Waiver</strong>”), if an arbitrator or court of
 that any part of these Terms is invalid or unenforceable, the other parts of these Terms will
 still apply.</li>
 </ol>
-<h2 id="xviii-general-terms"><a class="header" href="#xviii-general-terms">XVIII. General Terms</a></h2>
+<h2 id="xv-general-terms"><a class="header" href="#xv-general-terms">XV. General Terms</a></h2>
 <ol>
 <li><u>Reservation of Rights</u>. Mysten Labs and its licensors exclusively own all right, title and
 interest in and to the Services, including all associated intellectual property rights. You
@@ -2954,7 +2951,7 @@ Mysten Labs. Except as expressly set forth in these Terms, the exercise by eithe
 its remedies under these Terms will be without prejudice to its other remedies under these Terms
 or otherwise.</li>
 </ol>
-<h2 id="xix-contact-information"><a class="header" href="#xix-contact-information">XIX. Contact Information</a></h2>
+<h2 id="xvi-contact-information"><a class="header" href="#xvi-contact-information">XVI. Contact Information</a></h2>
 <p>If you have any questions about these Terms or the Services, please contact Mysten Labs at
 <a href="mailto:legal@mystenlabs.com"><u>legal@mystenlabs.com</u></a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="walrus-glossary"><a class="header" href="#walrus-glossary">Walrus Glossary</a></h1>

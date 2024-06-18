@@ -184,8 +184,8 @@ read information about the Walrus system, as well as stored blobs, on Sui.</p>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
-availability. When a blob is certified its <code>certified</code> field contains the epoch in which it was
-certified.</p>
+availability. When a blob is certified its <code>certified_epoch</code> field contains the epoch in which it
+was certified.</p>
 <p>A <code>Storage</code> object is always associated with a <code>Blob</code> object, reserving enough space for
 a long enough period for the blob's storage. A certified blob is available for the period the
 underlying storage resource guarantees storage.</p>
@@ -200,8 +200,8 @@ public struct Blob has key, store {
     blob_id: u256,
     size: u64,
     erasure_code_type: u8,
-    certified: option::Option&lt;u64&gt;, // The epoch first certified,
-                                    // or None if not certified.
+    certified_epoch: option::Option&lt;u64&gt;, // The epoch first certified,
+                                          // or None if not certified.
     storage: Storage,
 }
 
@@ -220,7 +220,7 @@ public fun stored_epoch(b: &amp;Blob) : u64;
 public fun blob_id(b: &amp;Blob) : u256;
 public fun size(b: &amp;Blob) : u64;
 public fun erasure_code_type(b: &amp;Blob) : u8;
-public fun certified(b: &amp;Blob) : &amp;Option&lt;u64&gt;;
+public fun certified_epoch(b: &amp;Blob) : &amp;Option&lt;u64&gt;;
 public fun storage(b: &amp;Blob) : &amp;Storage;
 
 // Storage functions
