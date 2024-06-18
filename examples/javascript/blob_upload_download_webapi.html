@@ -192,9 +192,11 @@
                 <hgroup >
                     <h2>Blob Upload</h2>
                     <p>Upload blobs to Walrus, and display them on this page. See the
-                    <a href="https://mystenlabs.github.io/walrus-docs"target="_blank">
+                    <a href="https://mystenlabs.github.io/walrus-docs" target="_blank">
                         Walrus documentation</a> for more information. The file size is limited to
-                        10 MiB on this uploader. Use the CLI tool to store bigger files.</p>
+                        10 MiB on the default publisher. Use
+                        the <a href="https://docs.walrus.site/usage/client-cli.html"
+                        target="_blank">CLI tool</a> to store bigger files.</p>
                 </hgroup>
 
                 <form id="upload-form" onsubmit="return onSubmit(event)" class="mb-3">
@@ -221,8 +223,8 @@
 
                         <div class="col-12">
                             <label for="file-input" class="form-label">Blob to upload (<strong>Max
-                            10 MiB size!</strong>)</label> <input id="file-input" type="file"
-                            class="form-control" required />
+                            10 MiB size</strong> on the default publisher!)</label>
+                            <input id="file-input" type="file" class="form-control" required />
                         </div>
 
                         <div class="col-12">
