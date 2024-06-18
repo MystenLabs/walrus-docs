@@ -1630,7 +1630,17 @@ see the newly-bought name.</li>
 info", and copy the <code>ObjectID</code>. In our case, this is
 <code>0x6412c4cfbe50e219c2d4d30108d7321d064e15bf64e752307100bff5eb91da38</code>.</li>
 </ul>
-<h2 id="send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli"><a class="header" href="#send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli">Send the SuiNS registration object to the address you use with the Sui CLI</a></h2>
+<h2 id="map-the-suins-name-to-the-walrus-site"><a class="header" href="#map-the-suins-name-to-the-walrus-site">Map the SuiNS name to the Walrus Site</a></h2>
+<p>Now, you can set the SuiNS name to point to the address of your Walrus Site. To do so, go to the
+<a href="https://testnet.suins.io/account/my-names">"names you own"</a> section of the SuiNS website, click on
+the "three dots" menu icon above the name you want to map, and click "Link To Wallet Address". Paste
+in the bar the object ID of the Walrus Site, check that it is correct, and click "Apply".</p>
+<p>After approving the transaction, we can now browse
+<a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
+<h3 id="the-cli-way"><a class="header" href="#the-cli-way">The CLI way</a></h3>
+<p>For completeness, we report here a manual way of setting the mapping between the SuiNS name and the
+Walrus Site, using the CLI.</p>
+<h4 id="send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli"><a class="header" href="#send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli">Send the SuiNS registration object to the address you use with the Sui CLI</a></h4>
 <p>The steps that follow require that the SuiNS registration object is owned by the address you are
 using on the Sui CLI. Therefore, we need to send this registration object from the address you use
 in your browser wallet, to the address of your Sui CLI.</p>
@@ -1642,7 +1652,7 @@ registration, which should look as follows:</p>
 <p><img src="walrus-sites/../assets/suins-asset.png" alt="the SuiNS registration inside the wallet" /></p>
 <p>Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
 above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.</p>
-<h2 id="map-the-suins-name-to-the-walrus-site"><a class="header" href="#map-the-suins-name-to-the-walrus-site">Map the SuiNS name to the Walrus Site</a></h2>
+<h4 id="use-the-cli-to-map-the-suins-name-to-the-walrus-site"><a class="header" href="#use-the-cli-to-map-the-suins-name-to-the-walrus-site">Use the CLI to map the SuiNS name to the Walrus Site</a></h4>
 <p>This step associates the name <code>walrusgame</code> to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.</p>
 <p>Here, we issue a transaction using the Sui CLI that creates this mapping:</p>
@@ -1663,7 +1673,6 @@ sui client call \
 <p>Note that the SuiNS package and object on testnet may change. You can
 find the latest ones by looking at the <code>TESTNET_CONFIG</code> in the <a href="https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts">SuiNS
 contract</a>.</p>
-<p>If all succeeds, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuring-the-site-builder"><a class="header" href="#configuring-the-site-builder">Configuring the site builder</a></h1>
 <p>Configuring the <code>site-builder</code> tool is straightforward, but care is required to ensure that
 everything works correctly.</p>
