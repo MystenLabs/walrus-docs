@@ -348,7 +348,7 @@ Devnet storage using SUI Testnet tokens which can be acquired at the <a href="ht
 faucet</a>.</p>
 <h2 id="one-more-thing"><a class="header" href="#one-more-thing">One more thing</a></h2>
 <p>The <a href="https://walrus.site/">Walrus Sites website</a>, the <a href="https://docs.walrus.site">Walrus docs</a>, and
-<a href="https://blog.walrus.site">this very blog</a> are hosted on Walrus. to learn more about Walrus Sites
+<a href="https://blog.walrus.site">this very blog</a> are hosted on Walrus. To learn more about Walrus Sites
 and how you can deploy your own, <a href="https://docs.walrus.site/walrus-sites/intro.html">click
 here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="objectives-and-use-cases"><a class="header" href="#objectives-and-use-cases">Objectives and use cases</a></h1>
@@ -1140,7 +1140,7 @@ Usage: walrus [OPTIONS] &lt;COMMAND&gt;
 Commands:
 ⋮
 </code></pre>
-<h3 binary-custom-path="">Custom path (optional)</h3>
+<h3 id="binary-custom-path"><a class="header" href="#binary-custom-path">Custom path (optional)</a></h3>
 <p>Instead of <code>~/.local/bin</code>, you can place the binary in any other directory you like. You need to
 either make sure to add that directory to your <code>$PATH</code> or always call the binary as
 <code>/full/path/to/walrus</code>.</p>
@@ -1157,7 +1157,7 @@ configuration as follows:</p>
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml \
      -o ~/.walrus/client_config.yaml
 </code></pre>
-<h3 config-custom-path="">Custom path (optional)</h3>
+<h3 id="config-custom-path"><a class="header" href="#config-custom-path">Custom path (optional)</a></h3>
 <p>By default, the Walrus client will look for the <code>client_config.yaml</code> configuration file in the
 current directory or in <code>~/.walrus/</code>, but you can place the file anywhere and name it anything you
 like; in this case you need to use the <code>--config</code> option when running the <code>walrus</code> binary.</p>
@@ -1320,7 +1320,7 @@ runs a simple web server offering HTTP interfaces to store and read blobs in an 
 publisher role respectively. We also offer
 <a href="usage/web-api.html#public-services">public aggregator and publisher services</a> to try the Walrus HTTP APIs without
 the need to run a local client.</p>
-<h2 id="starting-the-daemon-locally"><a class="header" href="#starting-the-daemon-locally">Starting the daemon locally</a></h2>
+<h2 id="local-daemon"><a class="header" href="#local-daemon">Starting the daemon locally</a></h2>
 <p>You can run the daemon with the following command, to offer both an aggregator and publisher on
 the same address and port:</p>
 <pre><code class="language-sh">ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415 for both
@@ -1346,6 +1346,8 @@ hosts:</p>
 <li>Aggregator: <code>https://aggregator.devnet.walrus.space</code></li>
 <li>Publisher: <code>https://publisher.devnet.walrus.space</code></li>
 </ul>
+<p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
+to <a href="usage/web-api.html#local-daemon">run your own publisher</a> or use the <a href="usage/./client-cli.html">CLI</a>.</p>
 <p>Note that the publisher consumes (testnet) Sui on the service side, and a mainnet deployment would
 likely not be able to provide uncontrolled public access to publishing without requiring some
 authentication and compensation for the Sui used.</p>
@@ -1512,7 +1514,7 @@ your environment for development.</p>
 <li>followed all <a href="walrus-sites/../usage/setup.html">Walrus setup instructions</a>.</li>
 </ul>
 <p>Then, follow these additional setup steps.</p>
-<h2 install-site-builder="">Clone the repository and build the <code>site-builder</code> tool</h2>
+<h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
 <p>First clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>.</p>
 <pre><code class="language-sh">git clone git@github.com:MystenLabs/walrus-sites.git
 cd walrus-sites
