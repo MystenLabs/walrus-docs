@@ -103,7 +103,7 @@ Commands:
 ⋮
 ```
 
-### Custom path (optional) {binary-custom-path}
+### Custom path (optional) {#binary-custom-path}
 
 Instead of `~/.local/bin`, you can place the binary in any other directory you like. You need to
 either make sure to add that directory to your `$PATH` or always call the binary as
@@ -128,7 +128,7 @@ curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client
      -o ~/.walrus/client_config.yaml
 ```
 
-### Custom path (optional) {config-custom-path}
+### Custom path (optional) {#config-custom-path}
 
 By default, the Walrus client will look for the `client_config.yaml` configuration file in the
 current directory or in `~/.walrus/`, but you can place the file anywhere and name it anything you

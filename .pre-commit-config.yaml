@@ -30,6 +30,6 @@ repos:
   - id: mdBook
     name: Build mdBook if it is installed
     language: system
-    entry: which mdbook && mdbook build || ! which mdbook >> /dev/null
+    entry: bash -c 'which mdbook && mdbook build || ! which mdbook >> /dev/null'
     files: 'docs/.*'
     pass_filenames: false

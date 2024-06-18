@@ -13,7 +13,7 @@ Before you start, make sure you:
 
 Then, follow these additional setup steps.
 
-## Clone the repository and build the `site-builder` tool {install-site-builder}
+## Clone the repository and build the `site-builder` tool
 
 First clone and enter the Walrus Sites repo from <https://github.com/MystenLabs/walrus-sites>.
 
