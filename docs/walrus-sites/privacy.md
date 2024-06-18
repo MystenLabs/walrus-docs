@@ -740,7 +740,7 @@ associated with your account. Please note that we do not currently sell
 your personal information as sales are defined in Nevada Revised
 Statutes Chapter 603A.
 
-## CHILDREN'S INFORMATION(#childrens-information)
+## CHILDREN'S INFORMATION
 
 The Services are not directed to children under 13 (or other age as
 required by local law), and we do not knowingly collect personal
