@@ -19,7 +19,22 @@ Let's do this step by step.
   info", and copy the `ObjectID`. In our case, this is
   `0x6412c4cfbe50e219c2d4d30108d7321d064e15bf64e752307100bff5eb91da38`.
 
-## Send the SuiNS registration object to the address you use with the Sui CLI
+## Map the SuiNS name to the Walrus Site
+
+Now, you can set the SuiNS name to point to the address of your Walrus Site. To do so, go to the
+["names you own"](https://testnet.suins.io/account/my-names) section of the SuiNS website, click on
+the "three dots" menu icon above the name you want to map, and click "Link To Wallet Address". Paste
+in the bar the object ID of the Walrus Site, check that it is correct, and click "Apply".
+
+After approving the transaction, we can now browse
+[https://walrusgame.walrus.site](https://walrusgame.walrus.site)!
+
+### The CLI way
+
+For completeness, we report here a manual way of setting the mapping between the SuiNS name and the
+Walrus Site, using the CLI.
+
+#### Send the SuiNS registration object to the address you use with the Sui CLI
 
 The steps that follow require that the SuiNS registration object is owned by the address you are
 using on the Sui CLI. Therefore, we need to send this registration object from the address you use
@@ -39,7 +54,7 @@ registration, which should look as follows:
 Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
 above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.
 
-## Map the SuiNS name to the Walrus Site
+#### Use the CLI to map the SuiNS name to the Walrus Site
 
 This step associates the name `walrusgame` to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, and as the SuiNS UI improves this could be done from the webapp as well.
@@ -65,5 +80,3 @@ sui client call \
 Note that the SuiNS package and object on testnet may change. You can
 find the latest ones by looking at the `TESTNET_CONFIG` in the [SuiNS
 contract](https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts).
-
-If all succeeds, we can now browse [https://walrusgame.walrus.site](https://walrusgame.walrus.site)!
