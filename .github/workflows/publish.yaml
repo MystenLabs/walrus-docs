@@ -55,6 +55,8 @@ jobs:
       SUI_CONFIG_DIR: /home/runner/.sui/sui_config
       SUI_KEYSTORE_FILE: /home/runner/.sui/sui_config/sui.keystore
       SUI_CONFIG_FILE: /home/runner/.sui/sui_config/client.yaml
+      # Colors don't seem to work properly with the multiline commands.
+      NO_COLOR: 1
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
@@ -77,7 +79,7 @@ jobs:
           echo '${{ secrets.SUI_KEYSTORE }}' > $SUI_KEYSTORE_FILE
       - name: Get SUI from faucet
         run: >
-          curl --location --request POST 'https://faucet.devnet.sui.io/gas'
+          curl --location --request POST 'https://faucet.testnet.sui.io/gas'
           --header 'Content-Type: application/json'
           --data-raw "{
               \"FixedAmountRequest\": {
@@ -105,7 +107,7 @@ jobs:
 
       - name: Update Walrus Site
         run: >
-          RUST_LOG=debug
+          RUST_LOG=site_builder=debug,walrus=debug,info
           site-builder
           --config walrus-sites/site-builder/assets/builder-example.yaml
           update build/html ${{ vars.WALRUS_SITE_OBJECT }}
