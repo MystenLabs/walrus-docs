@@ -1516,9 +1516,8 @@ your environment for development.</p>
 <p>Then, follow these additional setup steps.</p>
 <h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
 <p>First clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>.</p>
-<pre><code class="language-sh">git clone git@github.com:MystenLabs/walrus-sites.git
+<pre><code class="language-sh">git clone https://github.com/MystenLabs/walrus-sites.git
 cd walrus-sites
-cd site-builder
 </code></pre>
 <p>Then, build the release version of the site builder:</p>
 <pre><code class="language-sh">cargo build --release
@@ -1551,11 +1550,8 @@ its root, which will be the entry point to the Walrus Site.</p>
 the <code>./examples/snake</code> site is simple:</p>
 <ul>
 <li>
-<p>Ensure that you are in the <code>site-builder</code> directory;</p>
-</li>
-<li>
 <p>Run the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml publish ../examples/snake
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
 </code></pre>
 </li>
 </ul>
@@ -1583,11 +1579,11 @@ configuration</a> section.</p>
 <h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
 <p>Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".</p>
-<p>First, make this edit on in the <code>../examples/snake/index.html</code> file.</p>
+<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, and providing the directory
-where to find the updated files (still <code>../example/snake</code>), and the object ID of the existing site
+where to find the updated files (still <code>./example/snake</code>), and the object ID of the existing site
 (<code>0x5ac988...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml update ../examples/snake 0x5ac9888...
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Operations performed:
@@ -1673,7 +1669,7 @@ here the details for all the configuration options.</p>
 <h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
 <p>The config file is expected to be in <code>./builder.yaml</code>, and it is possible to point elsewhere with
 the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code> with
-<code>--config assets/builder-example.yaml</code>, which is already configured appropriately.</p>
+<code>--config site-builder/assets/builder-example.yaml</code>, which is already configured appropriately.</p>
 <p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
 binary, see below.</p>
 <h2 id="advanced-configuration"><a class="header" href="#advanced-configuration">Advanced configuration</a></h2>
