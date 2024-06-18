@@ -31,5 +31,5 @@ repos:
     name: Build mdBook if it is installed
     language: system
     entry: bash -c 'which mdbook && mdbook build || ! which mdbook >> /dev/null'
-    files: 'docs/.*'
+    files: 'book.toml|docs/.*'
     pass_filenames: false
