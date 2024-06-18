@@ -2,7 +2,7 @@
 
 # Walrus Sites - TERMS of SERVICE
 
-Last Updated: June 17, 2024
+Last Updated: June 18, 2024
 
 These Terms of Service (“**Terms**”) govern your use of certain software services, including Walrus
 Sites provided by Mysten Labs, Inc.  (“**Mysten Labs**”) (collectively the "**Services**"). By
@@ -11,7 +11,7 @@ bound by these Terms, do not use the Services.
 
 IMPORTANT NOTICE REGARDING ARBITRATION FOR U.S. CUSTOMERS: WHEN YOU AGREE TO THESE TERMS YOU ARE
 AGREEING (WITH LIMITED EXCEPTION) TO RESOLVE ANY DISPUTE BETWEEN YOU AND MYSTEN LABS THROUGH
-BINDING, INDIVIDUAL ARBITRATION RATHER THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XVII “DISPUTE
+BINDING, INDIVIDUAL ARBITRATION RATHER THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XIV “DISPUTE
 RESOLUTION” BELOW FOR DETAILS REGARDING ARBITRATION.
 
 ## I. Privacy Policy
@@ -98,46 +98,53 @@ You may submit feedback, comments, or ideas about the Services (“**Ideas**”)
 entirely voluntary, and we will be free to use such Ideas as we see fit and without any obligation
 to you.
 
-## VI. Your Content
 
-1. <u>Posting Content</u>. Our Services may allow you to store or share content such as text (in
-   posts or communications with others), files, documents, graphics, images, music, software, audio
-   and video. Anything (other than Feedback) that you post or otherwise make available through the
-   Services is referred to as “User Content”. Mysten Labs does not claim any ownership rights in any
-   User Content and nothing in these Terms will be deemed to restrict any rights that you may have
-   to your User Content.
-1. <u>Permissions to Your User Content</u>. By making any User Content available through the
-   Services you hereby grant to Mysten Labs a non-exclusive, transferable, worldwide, royalty-free
-   license, with the right to sublicense, to use, copy, modify, create derivative works based upon,
-   distribute, publicly display, and publicly perform your User Content in connection with operating
-   and providing the Services. NFTs stored in the Wallet shall not be considered User Content for
-   purposes of this Section.
-1. <u>Your Responsibility for User Content</u>. You are solely responsible for all your User
-   Content. You represent and warrant that you have (and will have) all rights that are necessary to
-   grant us the license rights in your User Content under these Terms. You represent and warrant
-   that neither your User Content, nor your use and provision of your User Content to be made
-   available through the Services, nor any use of your User Content by Mysten Labs on or through the
-   Services will infringe, misappropriate or violate a third party’s intellectual property rights,
-   or rights of publicity or privacy, or result in the violation of any applicable law or
-   regulation. You shall not post, upload, publish, submit or transmit any User Content that: (ii)
-   violates, or encourages any conduct that would violate, any applicable law or regulation or would
-   give rise to civil liability; (ii) is fraudulent, false, misleading or deceptive; (iii) is
-   defamatory, obscene, pornographic, vulgar or offensive; (iv) promotes discrimination, bigotry,
-   racism, hatred, harassment or harm against any individual or group; (v) is violent or threatening
-   or promotes violence or actions that are threatening to any person or entity; or (vi) promotes
-   illegal or harmful activities or substances.
-1. <u>iFrames</u>. Without prior approval and written permission, you may not alter in any way the
-   visual presentation or appearance of our websites.
-1. <u>Removal of User Content</u>. You can remove your User Content by specifically deleting it. You
-   should know that in certain instances, some of your User Content (such as posts or comments you
-   make) may not be completely removed and copies of your User Content may continue to exist on the
-   Services. To the maximum extent permitted by law, we are not responsible or liable for the
-   removal or deletion of (or the failure to remove or delete) any of your User Content. We reserve
-   the right, but are not obligated, to remove or disable access to any content, including User
-   Content, at any time and without notice, including, but not limited to, if we, at our sole
-   discretion, consider it objectionable or in violation of these Terms. We have the right to
-   investigate violations of these Terms or conduct that affects the Services. We may also consult
-   and cooperate with law enforcement authorities to prosecute users who violate the law.
+## VI. General Prohibitions and Mysten Labs’s Enforcement Rights.
+
+You agree not to do any of the following:
+
+1. Use, display, mirror or frame the Services or any individual element within the Services, Mysten
+   Labs’s name, any Mysten Labs trademark, logo or other proprietary information, or the layout and
+   design of any page or form contained on a page, without Mysten Labs’s express written consent;
+1. Access, tamper with, or use non-public areas of the Services, Mysten Labs’s computer systems, or
+   the technical delivery systems of Mysten Labs’s providers;
+1. Attempt to probe, scan or test the vulnerability of any Mysten Labs system or network or breach
+   any security or authentication measures;
+1. Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological
+   measure implemented by Mysten Labs or any of Mysten Labs’s providers or any other third party
+   (including another user) to protect the Services;
+1. Attempt to access or search the Services or download content from the Services using any engine,
+   software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining
+   tools or the like) other than the software and/or search agents provided by Mysten Labs or other
+   generally available third-party web browsers;
+1. Send any unsolicited or unauthorized advertising, promotional materials, email, junk mail, spam,
+   chain letters or other form of solicitation;
+1. Use any meta tags or other hidden text or metadata utilizing a Mysten Labs trademark, logo URL or
+   product name without Mysten Labs’s express written consent;
+1. Use the Services, or any portion thereof, for any commercial purpose or for the benefit of any
+   third party or in any manner not permitted by these Terms;
+1. Forge any TCP/IP packet header or any part of the header information in any email or newsgroup
+   posting, or in any way use the Services to send altered, deceptive or false source-identifying
+   information;
+1. Attempt to decipher, decompile, disassemble or reverse engineer any of the software used to
+   provide the Services;
+1. Interfere with, or attempt to interfere with, the access of any user, host or network,
+   including, without limitation, sending a virus, overloading, flooding, spamming, or mail-bombing
+   the Services;
+1. Collect or store any personally identifiable information from the Services from other users of
+   the Services without their express permission;
+1. Impersonate or misrepresent your affiliation with any person or entity;
+1. Violate any applicable law or regulation; or
+1. Encourage or enable any other individual to do any of the foregoing. Mysten Labs is not obligated
+   to monitor access to or use of the Services or to review or edit any content. However, we have
+   the right to do so for the purpose of operating the Services, to ensure compliance with these
+   Terms and to comply with applicable law or other legal requirements. We reserve the right, but
+   are not obligated, to remove or disable access to any content, at any time and without notice,
+   including, but not limited to, if we, at our sole discretion, consider it objectionable or in
+   violation of these Terms.
+
+We have the right to investigate violations of these Terms or conduct that affects the Services. We may also consult and cooperate with law enforcement authorities to prosecute users who violate the law.
+
 
 ## VII. DMCA/Copyright Policy
 
@@ -162,8 +169,7 @@ We may suspend or terminate your access to and use of the Services, including su
 or terminating your account, at our sole discretion, at any time and without notice to you. You may
 cancel your account, if you have one, at any time by removing the Wallet web browser extension and
 ceasing any and all use of the Services. Upon any termination, discontinuation or cancellation of
-the Services or your account, the <span class="mark">following Sections will survive: VIII(B),
-VIII(C), 5III(E), XII, XIII, XIV, XV, XVII, XVIII and XIX.</span>
+the Services or your account, the following Sections will survive: VIII and IX- XV
 
 ## X. Warranty Disclaimers
 
@@ -201,9 +207,9 @@ violation of these Terms.
    HUNDRED DOLLARS ($100), IF YOU HAVE NOT HAD ANY PAYMENT OBLIGATIONS TO MYSTEN LABS, AS
    APPLICABLE.
 1. THE EXCLUSIONS AND LIMITATIONS OF DAMAGES SET FORTH ABOVE ARE FUNDAMENTAL ELEMENTS OF THE BASIS
-   OF THE BARGAIN BETWEEN Mysten Labs AND YOU.
+   OF THE BARGAIN BETWEEN MYSTEN LABS AND YOU.
 
-## XVI. Governing Law and Forum Choice.
+## XIII. Governing Law and Forum Choice.
 
 These Terms and any action related thereto will be governed by the Federal Arbitration Act, federal
 arbitration law, and the laws of the State of California, without regard to its conflict of laws
@@ -212,7 +218,7 @@ exclusive jurisdiction for all Disputes (defined below) that you and Mysten Labs
 arbitrate will be the state and federal courts located in the County of Santa Clara, and you and
 Mysten Labs each waive any objection to jurisdiction and venue in such courts.
 
-## XVII. Dispute Resolution
+## XIV. Dispute Resolution
 
 1. <u>Mandatory Arbitration of Disputes</u>. We each agree that any dispute, claim or controversy
   arising out of or relating to these Terms or the breach, termination, enforcement, interpretation
@@ -264,7 +270,7 @@ Mysten Labs each waive any objection to jurisdiction and venue in such courts.
   that any part of these Terms is invalid or unenforceable, the other parts of these Terms will
   still apply.
 
-## XVIII. General Terms
+## XV. General Terms
 
 1. <u>Reservation of Rights</u>. Mysten Labs and its licensors exclusively own all right, title and
   interest in and to the Services, including all associated intellectual property rights. You
@@ -293,7 +299,7 @@ Mysten Labs each waive any objection to jurisdiction and venue in such courts.
   its remedies under these Terms will be without prejudice to its other remedies under these Terms
   or otherwise.
 
-## XIX. Contact Information
+## XVI. Contact Information
 
 If you have any questions about these Terms or the Services, please contact Mysten Labs at
 [<u>legal@mystenlabs.com</u>](mailto:legal@mystenlabs.com).
