@@ -2,7 +2,7 @@
 
 ## Blob encoding and blob ID
 
-Walrus stores blobs across storage nodes in an [encoded form](../overview/encoding.md), and refers
+Walrus stores blobs across storage nodes in an [encoded form](../design/encoding.md), and refers
 to blobs by their _blob ID_. The blob ID is deterministically derived from the content of a blob
 and the Walrus configuration. The blob ID of two files with the same content will be the same.
 

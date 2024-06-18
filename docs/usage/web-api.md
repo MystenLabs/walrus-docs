@@ -53,15 +53,22 @@ authentication and compensation for the Sui used.
 
 ## HTTP API Usage
 
+For the following examples, we assume you set the `AGGREGATOR` and `PUBLISHER` environment variables
+to your desired aggregator and publisher, respectively. For example:
+
+```sh
+AGGREGATOR=https://aggregator-devnet.walrus.space
+PUBLISHER=https://publisher-devnet.walrus.space
+```
+
 ### Store
 
 You can interact with the daemon through simple HTTP PUT requests. For example, with
 [cURL](https://curl.se), you can store blobs using a publisher or daemon as follows:
 
 ```sh
-ADDRESS="127.0.0.1:31415"
-curl -X PUT "http://$ADDRESS/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
-curl -X PUT "http://$ADDRESS/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
+curl -X PUT "$PUBLISHER/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
+curl -X PUT "$PUBLISHER/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
 ```
 
 The store HTTP API end points return information about the blob stored in JSON format. When a blob
@@ -69,21 +76,25 @@ is stored for the first time, a `newlyCreated` field contains information about 
 new blob:
 
 ```sh
-$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+$ curl -X PUT "$PUBLISHER/v1/store" -d "some other string"
 {
-  "newlyCreated":{
-    "id":"0xa74d376bb6923c4b8d73825fce3b798524e2bda34d02dae64ab5865556c54000",
-    "storedEpoch":0,
-    "blobId":"gsYzDXsK326Wihzt3X5evZCPFgaNZrb84zCjodLJaVs",
-    "size":36,
-    "erasureCodeType":"RedStuff",
-    "certified":0,
-    "storage":{
-        "id":"0x2479b3096efa58fa9bfbebe805268746c235110ee0713e5a123d8f1754c2ccc3",
-        "startEpoch":0,
-        "endEpoch":1,
-        "storageSize":4747680
-    }
+  "newlyCreated": {
+    "blobObject": {
+      "id": "0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235",
+      "storedEpoch": 0,
+      "blobId": "Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM",
+      "size": 17,
+      "erasureCodeType": "RedStuff",
+      "certifiedEpoch": 0,
+      "storage": {
+        "id": "0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e",
+        "startEpoch": 0,
+        "endEpoch": 1,
+        "storageSize": 4747680
+      }
+    },
+    "encodedSize": 4747680,
+    "cost": 231850
   }
 }
 ```
@@ -94,15 +105,15 @@ When the aggregator finds a certified blob with the same blob ID and a sufficien
 it returns a `alreadyCertified` JSON structure:
 
 ```sh
-$ curl -X PUT "http://ord-dnt-sto-00.devnet.sui.io:9000/v1/store" -d "some other string"
+$ curl -X PUT "$PUBLISHER/v1/store" -d "some other string"
 {
-  "alreadyCertified":{
-    "blobId":"gsYzDXsK326Wihzt3X5evZCPFgaNZrb84zCjodLJaVs",
-    "event":{
-      "txDigest":"2oMC1dTaMGpApphFWKzARSsTM9837ox4zN8rY2RqLf6c",
-      "eventSeq":"0"
+  "alreadyCertified": {
+    "blobId": "Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM",
+    "event": {
+      "txDigest": "CLE41JTPR2CgZRC1gyKK6P3xpQRHCetQMsmtEgqGjwst",
+      "eventSeq": "0"
     },
-    "endEpoch":1
+    "endEpoch": 1
   }
 }
 ```
@@ -116,15 +127,13 @@ Blobs may be read from an aggregator or daemon using HTTP GET. For example the f
 command reads a blob and writes it to an output file:
 
 ```sh
-ADDRESS="127.0.0.1:31415"
-curl "http://$ADDRESS/v1/<some blob ID> -o <some file name>"
+curl "$AGGREGATOR/v1/<some blob ID> -o <some file name>"
 ```
 
 Alternatively you may print the contents of a blob in the terminal with the cURL command:
 
 ```sh
-ADDRESS="127.0.0.1:31415"
-curl "http://$ADDRESS/v1/<some blob ID>
+curl "$AGGREGATOR/v1/<some blob ID>
 ```
 
 Modern browsers will attempt to sniff the content type for such resources, and will generally do a

@@ -14,15 +14,15 @@
 
 # Design
 
-- [Objectives and use-cases](./overview/objectives_use_cases.md)
-- [Overview](./overview/overview.md)
-  - [Architecture](./overview/architecture.md)
-  - [Encoding](./overview/encoding.md)
-- [Operations](./overview/operations.md)
-  - [Sui operations](./overview/operations-sui.md)
-  - [Off-chain operations](./overview/operations-off-chain.md)
-- [Properties](./overview/properties.md)
-- [Future discussion](./overview/future.md)
+- [Objectives and use-cases](./design/objectives_use_cases.md)
+- [Overview](./design/overview.md)
+  - [Architecture](./design/architecture.md)
+  - [Encoding](./design/encoding.md)
+- [Operations](./design/operations.md)
+  - [Sui operations](./design/operations-sui.md)
+  - [Off-chain operations](./design/operations-off-chain.md)
+- [Properties](./design/properties.md)
+- [Future discussion](./design/future.md)
 
 # Usage
 
