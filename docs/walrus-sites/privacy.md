@@ -11,29 +11,29 @@ rights in accordance with applicable law. This Policy applies when you use our w
 team members, engage with us on social media or otherwise interact with us.
 
 1. [SCOPE](#scope)
-2. [CHANGES TO OUR PRIVACY POLICY](#changes-to-our-privacy-policy)
-3. [PERSONAL INFORMATION WE
+1. [CHANGES TO OUR PRIVACY POLICY](#changes-to-our-privacy-policy)
+1. [PERSONAL INFORMATION WE
    COLLECT](#personal-information-we-collect)
-4. [HOW WE USE YOUR INFORMATION](#how-we-use-your-information)
-5. [HOW WE DISCLOSE YOUR
+1. [HOW WE USE YOUR INFORMATION](#how-we-use-your-information)
+1. [HOW WE DISCLOSE YOUR
    INFORMATION](#how-we-disclose-your-information)
-6. [YOUR PRIVACY CHOICES AND
+1. [YOUR PRIVACY CHOICES AND
    RIGHTS](#your-privacy-choices-and-rights)
-7. [SECURITY OF YOUR
+1. [SECURITY OF YOUR
    INFORMATION](#security-of-your-information)
-8. [INTERNATIONAL DATA
+1. [INTERNATIONAL DATA
    TRANSFERS](#international-data-transfers)
-9. [RETENTION OF PERSONAL
+1. [RETENTION OF PERSONAL
    INFORMATION](#retention-of-personal-information)
-10.[SUPPLEMENTAL NOTICE FOR CALIFORNIA
+1. [SUPPLEMENTAL NOTICE FOR CALIFORNIA
    RESIDENTS](#supplemental-notice-for-california-residents)
-11.[SUPPLEMENTAL NOTICE FOR NEVADA
+1. [SUPPLEMENTAL NOTICE FOR NEVADA
    RESIDENTS](#supplemental-notice-for-nevada-residents)
-12.[CHILDREN'S INFORMATION](#childrens-information)
-13.[THIRD-PARTY'S
+1. [CHILDREN'S INFORMATION](#childrens-information)
+1. [THIRD-PARTY'S
    WEBSITES/APPLICATIONS](#third-party-websitesapplications)
-14.[SUPERVISORY AUTHORITY](#supervisory-authority)
-15.[CONTACT US](#contact-us)
+1. [SUPERVISORY AUTHORITY](#supervisory-authority)
+1. [CONTACT US](#contact-us)
 
 ## SCOPE
 
