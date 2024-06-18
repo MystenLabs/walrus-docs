@@ -14,9 +14,6 @@ build-dir = "build"
 optional = true
 follow-web-links = true
 warning-policy = "error"
-# TODO: Remove these after making the repositories public (#32).
 exclude = [
-  'github\.com/MystenLabs/walrus-docs', # Currently still private.
-  'github\.com/MystenLabs/walrus-sites', # Currently still private.
   'walrus\.site', # No service worker in the link checker.
 ]
