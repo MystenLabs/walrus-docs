@@ -98,10 +98,10 @@
             } else if ("newlyCreated" in storage_info) {
                 info = {
                     status: "Newly created",
-                    blobId: storage_info.newlyCreated.blobId,
-                    endEpoch: storage_info.newlyCreated.storage.endEpoch,
+                    blobId: storage_info.newlyCreated.blobObject.blobId,
+                    endEpoch: storage_info.newlyCreated.blobObject.storage.endEpoch,
                     suiRefType: "Associated Sui Object",
-                    suiRef: storage_info.newlyCreated.id,
+                    suiRef: storage_info.newlyCreated.blobObject.id,
                     suiBaseUrl: SUI_VIEW_OBJECT_URL,
                 };
             } else {
