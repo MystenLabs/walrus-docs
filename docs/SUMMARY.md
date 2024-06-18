@@ -51,6 +51,9 @@
   - [The site builder](./walrus-sites/site-builder.md)
   - [The Walrus Sites Portal](./walrus-sites/portal.md)
   - [Known restrictions](./walrus-sites/restrictions.md)
+- [Legal terms](./walrus-sites/legal.md)
+  - [Privacy policy](./walrus-sites/privacy.md)
+  - [Terms of service](./walrus-sites/tos.md)
 
 ---
 

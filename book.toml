@@ -8,6 +8,7 @@ title = "Walrus"
 [build]
 build-dir = "build"
 
+
 [output.html]
 
 [output.linkcheck]
@@ -19,4 +20,5 @@ exclude = [
   'github\.com/MystenLabs/walrus-docs', # Currently still private.
   'github\.com/MystenLabs/walrus-sites', # Currently still private.
   'walrus\.site', # No service worker in the link checker.
+  'google\.com'
 ]
