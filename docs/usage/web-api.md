@@ -41,8 +41,8 @@ For some use cases (e.g., a public website), or to just try out the HTTP API, a 
 aggregator and/or publisher is required. For your convenience, we provide these at the following
 hosts:
 
-- Aggregator: `https://aggregator.devnet.walrus.space`
-- Publisher: `https://publisher.devnet.walrus.space`
+- Aggregator: `https://aggregator-devnet.walrus.space`
+- Publisher: `https://publisher-devnet.walrus.space`
 
 Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).

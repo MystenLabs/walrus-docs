@@ -4,7 +4,8 @@
 
 - Set up Sui and Walrus as described in the
   [documentation](https://mystenlabs.github.io/walrus-docs/usage/setup).
-- Run the client in [daemon mode](https://mystenlabs.github.io/walrus-docs/usage/web-api).
+- If you don't want to use the public aggregator and publisher: Run the client in [daemon
+  mode](https://mystenlabs.github.io/walrus-docs/usage/web-api).
 
 ## Index of examples
 
