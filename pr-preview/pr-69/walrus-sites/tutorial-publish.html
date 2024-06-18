@@ -188,7 +188,7 @@ the <code>./examples/snake</code> site is simple:</p>
 <ul>
 <li>
 <p>Run the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml publish ./examples/snake
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
 </code></pre>
 </li>
 </ul>
@@ -220,7 +220,7 @@ configuration</a> section.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, and providing the directory
 where to find the updated files (still <code>./example/snake</code>), and the object ID of the existing site
 (<code>0x5ac988...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder --config assets/builder-example.yaml update ./examples/snake 0x5ac9888...
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Operations performed:
