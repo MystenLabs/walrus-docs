@@ -2,7 +2,7 @@
 
 # Walrus Sites - PRIVACY POLICY
 
-**Last Updated:** June 17, 2024
+**Last Updated:** June 18, 2024
 
 This Privacy Policy is designed to help you understand how Mysten Labs, Inc., its subsidiaries and
 affiliates (collectively called "**Mysten Labs**", "**we**," "**us**," and "**our**") collects,
