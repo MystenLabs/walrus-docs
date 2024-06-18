@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # Walrus Sites - PRIVACY POLICY
 
 **Last Updated:** June 17, 2024

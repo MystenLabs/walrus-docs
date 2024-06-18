@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # Walrus Sites - TERMS of SERVICE
 
 Last Updated: June 17, 2024
