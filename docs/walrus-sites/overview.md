@@ -89,7 +89,7 @@ uniquely associated to the object ID of the Walrus Site through SuiNS.
 
 Walrus Sites also work without SuiNS: a site can _always_ be browsed by using as subdomain the
 Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
-<https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.blocksite.net> .
+<https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.walrus.site> .
 
 Base36 was chosen for two reasons, forced by the subdomain standards:
 
