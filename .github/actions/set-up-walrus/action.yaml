@@ -1,0 +1,73 @@
+name: Set up Walrus and Walrus Sites
+description: Install and configure Walrus and build the Walrus Sites site-builder
+
+inputs:
+  SUI_ADDRESS:
+    description: The Sui address to use
+    required: true
+  SUI_KEYSTORE:
+    description: The content of the Sui keystore file
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Create bin directory and add to $PATH
+      run: |
+        mkdir -p bin
+        echo "$(pwd)/bin" >> ${GITHUB_PATH}
+      shell: bash
+    - name: Define environment variables
+      run: |
+        echo "SUI_CONFIG_DIR=/home/runner/.sui/sui_config" >> $GITHUB_ENV
+        echo "SUI_KEYSTORE_FILE=/home/runner/.sui/sui_config/sui.keystore" >> $GITHUB_ENV
+        echo "SUI_CONFIG_FILE=/home/runner/.sui/sui_config/client.yaml" >> $GITHUB_ENV
+        echo "SUI_ADDRESS=${{ inputs.SUI_ADDRESS }}" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Set up Sui wallet
+      run: |
+        mkdir -p $SUI_CONFIG_DIR
+        CLIENT_CONF="---
+        keystore:
+          File: $SUI_KEYSTORE_FILE
+        envs:
+          - alias: testnet
+            rpc: \"https://fullnode.testnet.sui.io:443\"
+        active_env: testnet
+        active_address: \"$SUI_ADDRESS\""
+        echo "$CLIENT_CONF" > $SUI_CONFIG_FILE
+        cat $SUI_CONFIG_FILE
+        echo '${{ inputs.SUI_KEYSTORE }}' > $SUI_KEYSTORE_FILE
+      shell: bash
+    - name: Get SUI from faucet
+      run: >
+        curl --location --request POST 'https://faucet.testnet.sui.io/gas'
+        --header 'Content-Type: application/json'
+        --data-raw "{
+            \"FixedAmountRequest\": {
+                \"recipient\": \"$SUI_ADDRESS\"
+            }
+        }"
+      shell: bash
+
+    - name: Install and configure Walrus
+      run: |
+        # The bin directory was already created and added to $PATH in the build-mdbook action
+        curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64 -o bin/walrus
+        chmod +x bin/walrus
+        mkdir -p ~/.walrus
+        curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o ~/.walrus/client_config.yaml
+        walrus -h # Ensure the walrus binary works
+      shell: bash
+
+    - name: Clone walrus-sites
+      run: git clone https://github.com/MystenLabs/walrus-sites
+      shell: bash
+    - name: Build site-builder
+      run: |
+        cd walrus-sites
+        cargo build --release
+        cp target/release/site-builder ../bin
+        cd -
+      shell: bash

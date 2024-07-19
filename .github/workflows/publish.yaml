@@ -1,4 +1,5 @@
 name: Build docs and publish to GitHub Pages and Walrus
+
 on:
   push:
     branches:
@@ -51,59 +52,15 @@ jobs:
     runs-on: ubuntu-ghcloud
     if: ${{ github.event_name == 'push' || inputs.update-walrus-site == true }}
     env:
-      SUI_ADDRESS: ${{ vars.SUI_ADDRESS }}
-      SUI_CONFIG_DIR: /home/runner/.sui/sui_config
-      SUI_KEYSTORE_FILE: /home/runner/.sui/sui_config/sui.keystore
-      SUI_CONFIG_FILE: /home/runner/.sui/sui_config/client.yaml
       # Colors don't seem to work properly with the multiline commands.
       NO_COLOR: 1
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
-      - name: Clean docs
-        run: rm build/**/.nojekyll
-
-      - name: Set up Sui wallet
-        run: |
-          mkdir -p $SUI_CONFIG_DIR
-          CLIENT_CONF="---
-          keystore:
-            File: $SUI_KEYSTORE_FILE
-          envs:
-            - alias: testnet
-              rpc: \"https://fullnode.testnet.sui.io:443\"
-          active_env: testnet
-          active_address: \"$SUI_ADDRESS\""
-          echo "$CLIENT_CONF" > $SUI_CONFIG_FILE
-          cat $SUI_CONFIG_FILE
-          echo '${{ secrets.SUI_KEYSTORE }}' > $SUI_KEYSTORE_FILE
-      - name: Get SUI from faucet
-        run: >
-          curl --location --request POST 'https://faucet.testnet.sui.io/gas'
-          --header 'Content-Type: application/json'
-          --data-raw "{
-              \"FixedAmountRequest\": {
-                  \"recipient\": \"$SUI_ADDRESS\"
-              }
-          }"
-
-      - name: Install and configure Walrus
-        run: |
-          # The bin directory was already created and added to $PATH in the build-mdbook action
-          curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64 -o bin/walrus
-          chmod +x bin/walrus
-          mkdir -p ~/.walrus
-          curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o ~/.walrus/client_config.yaml
-          walrus -h # Ensure the walrus binary works
-
-      - name: Clone walrus-sites
-        run: git clone https://github.com/MystenLabs/walrus-sites
-      - name: Build site-builder
-        run: |
-          cd walrus-sites
-          cargo build --release
-          cp target/release/site-builder ../bin
-          cd -
+      - uses: ./.github/actions/set-up-walrus
+        with:
+          SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
+          SUI_KEYSTORE: "${{ secrets.SUI_KEYSTORE }}"
 
       - name: Update Walrus Site
         run: >
