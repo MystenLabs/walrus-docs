@@ -1,0 +1,47 @@
+name: Update bin.walrus.site with latest binaries
+
+on:
+  # every week
+  schedule:
+    - cron: '14 3 * * 0'
+  # on demand
+  workflow_dispatch:
+
+concurrency: ci-${{ github.ref }}
+
+permissions:
+  contents: read
+
+jobs:
+  # We store the data for the Sui wallet and the site object in GitHub variables
+  # (https://github.com/MystenLabs/walrus-docs/settings/variables/actions) and secrets
+  # (https://github.com/MystenLabs/walrus-docs/settings/secrets/actions).
+  update-bin-walrus-site:
+    name: Update Walrus Site bin.walrus.site
+    runs-on: ubuntu-ghcloud
+    env:
+      # Colors don't seem to work properly with the multiline commands.
+      NO_COLOR: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/set-up-walrus
+        with:
+          SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
+          SUI_KEYSTORE: "${{ secrets.SUI_KEYSTORE }}"
+
+      - name: Create temporary directory
+        run: "mkdir -p site"
+      - name: Download latest binaries
+        run: |
+          for arch in ubuntu-x86_64 macos-x86_64 macos-arm64; do
+          curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-$arch -o site/walrus-$arch
+          done
+      - name: Copy site-builder binary
+        run: "cp bin/site-builder site/site-builder-ubuntu-x86_64"
+
+      - name: Update Walrus Site
+        run: >
+          RUST_LOG=site_builder=debug,walrus=debug,info
+          site-builder
+          --config walrus-sites/site-builder/assets/builder-example.yaml
+          update --list-directory site ${{ vars.WALRUS_SITE_BIN_OBJECT }}
