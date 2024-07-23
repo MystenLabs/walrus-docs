@@ -1,0 +1,11 @@
+[package]
+name = "walrus_dep"
+edition = "2024.beta"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "testnet-v1.29.2" }
+blob_store = { local = "../../../contracts/blob_store" }
+
+[addresses]
+walrus_dep = "0x0"
+sui = "0x2"
