@@ -3,7 +3,7 @@ module walrus_dep::wrapped_blob {
 
     public struct WrappedBlob has key {
         id: UID,
-        blob: Blob
+        blob: Blob,
     }
 
     public fun wrap(blob: Blob, ctx: &mut TxContext): WrappedBlob {

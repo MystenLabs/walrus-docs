@@ -1,8 +1,7 @@
-/*
 #[test_only]
+#[allow(unused_use)]
 module walrus_dep::walrus_dep_tests {
-    // uncomment this line to import the module
-    // use walrus_dep::walrus_dep;
+    use walrus_dep::wrapped_blob;
 
     const ENotImplemented: u64 = 0;
 
@@ -16,4 +15,3 @@ module walrus_dep::walrus_dep_tests {
         abort ENotImplemented
     }
 }
-*/
