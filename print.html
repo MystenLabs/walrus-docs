@@ -933,11 +933,19 @@ for the blob ID for a certain number of epochs.</p>
 available on storage nodes to recover it within the specified epochs.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sui-structures"><a class="header" href="#sui-structures">Sui Structures</a></h1>
 <p>This section is optional and enables advanced use cases.</p>
-<p>You can interact with Walrus purely
-through the client CLI, and JSON or HTTP APIs provided, without querying or executing transactions
-on Sui directly. However, Walrus uses Sui to manage its metadata and smart contract developers can
-read information about the Walrus system, as well as stored blobs, on Sui.</p>
-<p>This section provides an overview of how you may use Walrus objects in your Sui smart contracts.</p>
+<p>You can interact with Walrus purely through the client CLI, and JSON or HTTP APIs provided, without
+querying or executing transactions on Sui directly. However, Walrus uses Sui to manage its metadata
+and smart contract developers can read information about the Walrus system, as well as stored blobs,
+on Sui.</p>
+<p>The Move code of the Walrus devnet contracts is available at
+<a href="https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store">https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store</a>. An example package using
+the Walrus contracts is available at
+<a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/move">https://github.com/MystenLabs/walrus-docs/blob/main/examples/move</a>.</p>
+<p>The following sections provide further insights into the contract and an overview of how you may use
+Walrus objects in your own Sui smart contracts.</p>
+<p><strong>A word of caution:</strong> Walrus testnet will use new Move packages with struct layouts and function
+signatures that may not be compatible with this package. Move code that builds against this package
+will need to rewritten.</p>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
