@@ -24,7 +24,7 @@ indent_size = 2
 max_line_length = 150
 
 # Ignore paths
-[{.git/**/*,LICENSE}]
+[{.git/**/*,LICENSE,**/Move.lock}]
 charset = unset
 end_of_line = unset
 indent_size = unset

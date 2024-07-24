@@ -1,0 +1,51 @@
+// Copyright (c) Mysten Labs, Inc.
+// SPDX-License-Identifier: Apache-2.0
+
+
+We document here off-chain message formats.
+
+Signatures
+----------
+
+All certified or signed messages SHOULD be signed with the scheme:
+BLS_SIG_BLS12381G2_XMD:SHA-256_SSWU_RO_NUL_
+
+Public keys are 48 byte vector<u8>.
+Signatures are 96 byte vector<u8>.
+
+Signed Message Header
+---------------------
+
+All messages MUST start with a header of 3 + 8 bytes:
+- (Intent_type, Intent_version, Intent_app_id) : (u8, u8, u8)
+- epoch: u64
+- body: remaining vec<u8>, no length prefix
+
+The intent types are enumerated below, the version is as of now 0,
+and the app id for storage is 3. Th epoch is the storage epoch the
+signing storage node is in when signing the message.
+
+Intent types (add here):
+
+const SYNC_DONE_MSG_TYPE: u8 = 0;
+const BLOB_CERT_MSG_TYPE: u8 = 1;
+const INVALID_BLOB_ID_MSG_TYPE : u8 = 2;
+
+SYNC_DONE message
+-----------------
+
+The body is empty, and the epoch for which sync is done is the epoch in the header.
+
+
+BLOB_CERT message
+-----------------
+
+The body is the blob_id : u256 (32 bytes) of a blob. The storage node certified that all
+shards that were assigned to it for the message epoch have been received, checked and
+persisted to store.
+
+INVALID_BLOB_ID
+---------------
+
+The body is the blob_id : u256 (32 bytes) of a blob. The storage node certified that
+it has verified an inconsistency proof and the blob id is invalid.
