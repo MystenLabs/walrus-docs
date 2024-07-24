@@ -32,7 +32,7 @@ module blob_store::system {
     const EPOCH_STATUS_SYNC : u8 = 1;
 
     /// The maximum number of periods ahead we allow for storage reservations.
-    /// TODO: the number here is a placeholder, and assumes an epoch is a week,
+    /// This number is a placeholder, and assumes an epoch is a week,
     /// and therefore 2 x 52 weeks = 2 years.
     const MAX_PERIODS_AHEAD : u64 = 104;
 

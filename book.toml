@@ -16,6 +16,8 @@ optional = true
 follow-web-links = true
 warning-policy = "error"
 exclude = [
+  # TODO(mlegner): remove again after merging PR #94
+  'MystenLabs/walrus-docs',
   'walrus\.site', # No service worker in the link checker.
-  'google\.com'
+  'google\.com',
 ]
