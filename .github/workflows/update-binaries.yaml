@@ -3,8 +3,6 @@ name: Update bin.walrus.site with latest binaries
 on:
   repository_dispatch:
     types: [update-sites-bins]
-
-on:
   # every week
   schedule:
     - cron: '14 3 * * 0'
