@@ -21,6 +21,11 @@ runs:
         unzip "$_" -d bin
         chmod +x bin/mdbook-linkcheck
       shell: bash
+    - name: Install mdbook-admonish
+      run: |
+        url="https://github.com/tommilligan/mdbook-admonish/releases/download/v1.18.0/mdbook-admonish-v1.18.0-x86_64-unknown-linux-gnu.tar.gz"
+        curl -sSL "$url" | tar -xz --directory=bin
+      shell: bash
     - name: Build the book and check for broken links
       run: mdbook build
       env:

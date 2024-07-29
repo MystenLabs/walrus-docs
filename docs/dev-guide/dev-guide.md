@@ -14,14 +14,14 @@ This developer guide describes:
 
 A [glossary](../glossary.md) of terms used is also available for reference.
 
-## Disclaimer about the Walrus developer preview
-
-**This release of Walrus \& Walrus Sites is a
-developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
-and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
-and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
-point and possibly with no warning. Do not rely on this developer preview for any production
-purposes, it comes with no availability or persistence guarantees.**
+```admonish danger title="Disclaimer about the Walrus developer preview"
+The current Devnet release of Walrus and Walrus Sites is a developer preview, to showcase the
+technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs, all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store can and will be wiped, at any point and possibly with no warning. Do
+not rely on this developer preview for any production purposes, it comes with no availability or
+persistence guarantees.
 
 Also see the [Devnet terms of service](../tos.md) under which this developer preview is made
 available.
+```

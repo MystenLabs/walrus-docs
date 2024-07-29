@@ -30,8 +30,9 @@ stored by a user that incorrectly encoded a blob.
 Note that there is no delete operation and a blob ID past PoA will be available for the full
 availability period.
 
-As a rule of thumb: before PoA it is the responsibility of a client to ensure the availability of
-a blob and its upload to Walrus. After PoA it is the responsibility of Walrus as a system to
-maintain the availability of the blob as part of its operation for the full availability period
-remaining. Emission of the event corresponding to the PoA for a blob ID attests its
-availability.
+```admonish tip title="Rule of thumb"
+Before the PoA it is the responsibility of a client to ensure the availability of a blob and its
+upload to Walrus. After the PoA it is the responsibility of Walrus as a system to maintain the
+availability of the blob as part of its operation for the full availability period remaining.
+Emission of the event corresponding to the PoA for a blob ID attests its availability.
+```

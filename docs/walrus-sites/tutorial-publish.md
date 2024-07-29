@@ -82,6 +82,10 @@ old `index.html`, and update it with the newer one.
 
 Browsing to the provided URL should reflect the change. You've updated the site!
 
+```admonish note
+The wallet you are using must be the *owner* of the Walrus Site object to be able to update it.
+```
+
 ## Additional commands
 
 The `site-builder` tool provides two additional utilities:
@@ -92,4 +96,8 @@ The `site-builder` tool provides two additional utilities:
 - the `sitemap` command, which shows the resources that compose the Walrus Site at the given object
   ID.
 
-In general, the `--help` flag is your friend!
+```admonish tip
+In general, the `--help` flag is your friend, you can add it to get further details for the whole
+CLI (`./target/release/site-builder --help`) or individual commands (e.g.,
+`./target/release/site-builder update --help`).
+```
