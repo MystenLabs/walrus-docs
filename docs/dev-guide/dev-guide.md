@@ -4,7 +4,7 @@ This guide introduces all the concepts needed to build applications that use Wal
 or availability layer. The [overview](../design/overview.md) provides more background and explains
 in more detail how Walrus operates internally.
 
-This developer guide describes:
+This developer guide describes the following:
 
 - [Components](components.md) of Walrus of interest to developers that wish to use it for
   storage or availability.
@@ -12,7 +12,7 @@ This developer guide describes:
 - [The Sui structures](sui-struct.md) Walrus uses to store metadata, and how they can be read
   from Sui smart contracts, or through the Sui SDK.
 
-A [glossary](../glossary.md) of terms used is also available for reference.
+Refer again to the [glossary](../glossary.md) of terms as a reference.
 
 ```admonish danger title="Disclaimer about the Walrus developer preview"
 The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase

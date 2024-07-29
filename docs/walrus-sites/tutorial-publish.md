@@ -5,7 +5,7 @@ your first Walrus Site!
 
 ## Select the source material for the site
 
-The `site-builder` works by uploading a directory of files produced by any web framework to Walrus,
+The `site-builder` works by uploading a directory of files produced by any web framework to Walrus
 and adding the relevant metadata to Sui. This directory should have a file called `index.html` in
 its root, which will be the entry point to the Walrus Site.
 
@@ -15,13 +15,11 @@ For the rest of the tutorial, we will use as an example the simple site containe
 ## Publish the site
 
 Since we have placed the `walrus` binary and configuration in their default locations, publishing
-the `./examples/snake` site is simple:
+the `./examples/snake` site is as simple as calling the publishing command:
 
-- Run the publishing command:
-
-  ``` sh
-  ./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
-  ```
+``` sh
+./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
+```
 
 The output should look like the following:
 
@@ -39,8 +37,8 @@ Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh
 ```
 
 This output tells you that, for each file in the folder, a new Walrus blob was created, and the
-respective blob ID.  Further it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer, and use it to set the SuiNS name), and, finally, the URL at which you
+respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
+have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.
 
 Note here that we are passing the example config `assets/builder-example.yaml` as the config for the
@@ -57,8 +55,8 @@ Let's say now you want to update the content of the site, for example by changin
 
 First, make this edit on in the `./examples/snake/index.html` file.
 
-Then, you can update the existing site by running the `update` command, and providing the directory
-where to find the updated files (still `./example/snake`), and the object ID of the existing site
+Then, you can update the existing site by running the `update` command, providing the directory
+where to find the updated files (still `./example/snake`) and the object ID of the existing site
 (`0x5ac988...`):
 
 ``` sh
@@ -90,11 +88,10 @@ The wallet you are using must be the *owner* of the Walrus Site object to be abl
 
 The `site-builder` tool provides two additional utilities:
 
-- the `convert` command, which converts an object ID in hex format to the equivalent Base36
+- The `convert` command converts an object ID in hex format to the equivalent Base36
   format. This command is useful if you have the Sui object ID of a Walrus Site, and want to know
   the subdomain where you can browse it.
-- the `sitemap` command, which shows the resources that compose the Walrus Site at the given object
-  ID.
+- The `sitemap` command shows the resources that compose the Walrus Site at the given object ID.
 
 ```admonish tip
 In general, the `--help` flag is your friend, you can add it to get further details for the whole

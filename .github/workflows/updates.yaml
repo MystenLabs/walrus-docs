@@ -41,6 +41,6 @@ jobs:
           body: |
             Update pre-commit hooks to latest version.
 
-            **Warning**: Some checks did not succeed. Please check the [action output][run] before merging this PR.
+            **Warning:** Some checks did not succeed. Please check the [action output][run] before merging this PR.
 
             [run]: https://github.com/MystenLabs/walrus/actions/runs/${{ github.run_id }}

@@ -1,13 +1,13 @@
 # Redirecting objects to Walrus Sites
 
 We have seen in the [overview](./overview.md) how a Walrus Site object on Sui looks like. We will
-discuss now how you can create ensure that a _set of arbitrary objects_ can all be tied to a
-specific, and possibly unique, Walrus site.
+discuss now how you can create ensure that a *set of arbitrary objects* can all be tied to a
+specific, and possibly unique, Walrus Site.
 
 ## The goal
 
 Consider a collection of NFTs, such as the one published by <https://flatland.walrus.site>. As we
-show there, each minted NFT has its own Walrus Site, that can be personalized based on the contents
+show there, each minted NFT has its own Walrus Site, which can be personalized based on the contents
 (e.g., the color) of the NFT itself. How can we achieve this?
 
 ## Redirect links
@@ -21,7 +21,7 @@ corresponding object ID.
 ### Redirects in Move
 
 Practically speaking, when creating the `Display` of the NFT, you can include the key-value pair
-that points to the Walrus site that is to beused.
+that points to the Walrus Site that is to be used.
 
 ``` move
 ...
@@ -36,6 +36,6 @@ The code above will only open the specified Walrus Site when browsing the object
 do we ensure that the properties of the NFT can be used to personalize the site?
 
 This needs to be done in the `VISUALIZATION_SITE`: Since the subdomain is still pointing to the
-NFT's object ID, the Walrus Site that is loaded can check its `origin` in Javascript, and use the
+NFT's object ID, the Walrus Site that is loaded can check its `origin` in JavaScript, and use the
 subdomain to determine the NFT, fetch it from chain, and use its internal fields to modify the
 displayed site.

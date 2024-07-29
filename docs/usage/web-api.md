@@ -1,33 +1,25 @@
 # Client Daemon mode & HTTP API
 
 In addition to the CLI and JSON modes, the Walrus client offers a *daemon mode*. In this mode, it
-runs a simple web server offering HTTP interfaces to store and read blobs in an aggregator and
-publisher role respectively. We also offer
+runs a simple web server offering HTTP interfaces to store and read blobs in an *aggregator* and
+*publisher* role respectively. We also offer
 [public aggregator and publisher services](#public-services) to try the Walrus HTTP APIs without
 the need to run a local client.
 
 ## Starting the daemon locally {#local-daemon}
 
 You can run the daemon with the following command, to offer both an aggregator and publisher on
-the same address and port:
+the same address (`127.0.0.1`) and port (`31415`):
 
 ```sh
-ADDRESS="127.0.0.1:31415" # bind the daemon to localhost and port 31415 for both
-walrus daemon -b $ADDRESS # run a daemon combining an aggregator and a publisher
+walrus daemon -b "127.0.0.1:31415"
 ```
 
-Or you may run two separate processes. One for the aggregator:
+Or you may run the aggregator and publisher processes separately on different addresses/ports:
 
 ```sh
-AGG_ADDRESS="127.0.0.1:31415" # Aggregator only port
-walrus aggregator -b $AGG_ADDRESS # run an aggregator to read blobs
-```
-
-And a different one for the publisher:
-
-```sh
-PUB_ADDRESS="127.0.0.1:31416" # Note different port for publisher
-walrus publisher -b $PUB_ADDRESS # run a publisher to store blobs
+walrus aggregator -b "127.0.0.1:31415" # run an aggregator to read blobs
+walrus publisher -b "127.0.0.1:31416" # run a publisher to store blobs
 ```
 
 The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
@@ -51,7 +43,7 @@ hosts:
 Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).
 
-Note that the publisher consumes (testnet) Sui on the service side, and a mainnet deployment would
+Note that the publisher consumes (Testnet) Sui on the service side, and a Mainnet deployment would
 likely not be able to provide uncontrolled public access to publishing without requiring some
 authentication and compensation for the Sui used.
 
@@ -127,7 +119,7 @@ find the transaction that created the Sui Blob object on the Sui explorer or usi
 
 ### Read
 
-Blobs may be read from an aggregator or daemon using HTTP GET. For example the following cURL
+Blobs may be read from an aggregator or daemon using HTTP GET. For example, the following cURL
 command reads a blob and writes it to an output file:
 
 ```sh

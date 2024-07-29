@@ -1,7 +1,7 @@
 # JSON mode
 
 All Walrus client commands (except, currently, the `info` command) are also available in JSON mode.
-In this mode, all the command line flags of the original CLI command can be specified in JSON
+In this mode, all the command-line flags of the original CLI command can be specified in JSON
 format. The JSON mode therefore simplifies programmatic access to the CLI.
 
 For example, to store a blob, run:

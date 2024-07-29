@@ -1,4 +1,4 @@
-# Walrus HTML + Javascript Examples
+# Walrus HTML + JavaScript Examples
 
 ## Prerequisites
 
@@ -9,5 +9,5 @@
 
 ## Index of examples
 
-- `blob_upload_download_webapi.html` shows how to store a blob using javascript and to embed the
+- `blob_upload_download_webapi.html` shows how to store a blob using JavaScript and to embed the
    blob accessible from a Walrus aggregator in an HTML document.
