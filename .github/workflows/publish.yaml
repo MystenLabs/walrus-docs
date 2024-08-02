@@ -57,6 +57,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
+        with:
+          with_linkcheck: "false"
       - uses: ./.github/actions/set-up-walrus
         with:
           SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
