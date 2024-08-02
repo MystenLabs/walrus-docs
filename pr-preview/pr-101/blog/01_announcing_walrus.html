@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Announcing Walrus - Walrus</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev blog</li><li class="chapter-item expanded "><a href="../blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../blog/01_announcing_walrus.html" class="active"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="../design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="../design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="../design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="../design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="../design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../design/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="../dev-guide/dev-guide.html"><strong aria-hidden="true">7.</strong> Developer Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev-guide/components.html"><strong aria-hidden="true">7.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="../dev-guide/dev-operations.html"><strong aria-hidden="true">7.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="../dev-guide/sui-struct.html"><strong aria-hidden="true">7.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/setup.html"><strong aria-hidden="true">8.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../usage/interacting.html"><strong aria-hidden="true">9.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/client-cli.html"><strong aria-hidden="true">9.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="../usage/json-api.html"><strong aria-hidden="true">9.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="../usage/web-api.html"><strong aria-hidden="true">9.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/examples.html"><strong aria-hidden="true">10.</strong> Examples</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="../walrus-sites/intro.html"><strong aria-hidden="true">11.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial.html"><strong aria-hidden="true">12.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-install.html"><strong aria-hidden="true">12.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-publish.html"><strong aria-hidden="true">12.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-suins.html"><strong aria-hidden="true">12.3.</strong> Bonus: Set a SuiNS name</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-config.html"><strong aria-hidden="true">12.4.</strong> Advanced configuration</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/overview.html"><strong aria-hidden="true">13.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/linking.html"><strong aria-hidden="true">13.1.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/redirects.html"><strong aria-hidden="true">13.2.</strong> Redirecting objects to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/portal.html"><strong aria-hidden="true">13.3.</strong> The Walrus Sites Portal</a></li><li class="chapter-item expanded "><a href="../walrus-sites/restrictions.html"><strong aria-hidden="true">13.4.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/legal.html"><strong aria-hidden="true">14.</strong> Legal terms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/privacy.html"><strong aria-hidden="true">14.1.</strong> Privacy policy</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tos.html"><strong aria-hidden="true">14.2.</strong> Terms of service</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="../tos.html">Devnet terms of service</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Walrus</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="announcing-walrus-a-decentralized-storage-and-data-availability-protocol"><a class="header" href="#announcing-walrus-a-decentralized-storage-and-data-availability-protocol">Announcing Walrus: A Decentralized Storage and Data Availability Protocol</a></h1>
+<p>Walrus is an innovative decentralized storage network for blockchain apps and autonomous agents. The
+Walrus storage system is being released today as a developer preview for Sui builders in order to
+gather feedback. We expect a broad rollout to other web3 communities very soon!</p>
+<p>Leveraging innovations in erasure coding, Walrus enables fast and robust encoding of unstructured
+data blobs into smaller slivers distributed and stored over a network of storage nodes. A subset of
+slivers can be used to rapidly reconstruct the original blob, even when up to two-thirds of the
+slivers are missing. This is possible while keeping the replication factor down to a minimal 4x-5x,
+similar to existing cloud-based services, but with the additional benefits of decentralization and
+resilience to more widespread faults.</p>
+<h2 id="the-replication-challenge"><a class="header" href="#the-replication-challenge">The Replication Challenge</a></h2>
+<p>Sui is the most advanced blockchain system in relation to storage on validators, with innovations
+such as a <a href="https://docs.sui.io/concepts/tokenomics/storage-fund">storage fund</a> that future-proofs
+the cost of storing data on-chain. Nevertheless, Sui still requires complete data replication among
+all validators, resulting in a replication factor of 100x or more in today’s Sui Mainnet. While this
+is necessary for replicated computing and smart contracts acting on the state of the blockchain, it
+is inefficient for simply storing unstructured data blobs, such as music, video, blockchain history,
+etc.</p>
+<h2 id="introducing-walrus-efficient-and-robust-decentralized-storage"><a class="header" href="#introducing-walrus-efficient-and-robust-decentralized-storage">Introducing Walrus: Efficient and Robust Decentralized Storage</a></h2>
+<p>To tackle the challenge of high replication costs, Mysten Labs has developed Walrus, a decentralized
+storage network offering exceptional data availability and robustness with a minimal replication
+factor of 4x-5x. Walrus provides two key benefits:</p>
+<ol>
+<li>
+<p><strong>Cost-Effective Blob Storage:</strong> Walrus allows for the uploading of gigabytes of data at a time
+with minimal cost, making it an ideal solution for storing large volumes of data. Walrus can do
+this because the data blob is transmitted only once over the network, and storage nodes only
+spend a fraction of resources compared to the blob size. As a result, the more storage nodes the
+system has, the fewer resources each storage node uses per blob.</p>
+</li>
+<li>
+<p><strong>High Availability and Robustness:</strong> Data stored on Walrus enjoys enhanced reliability and
+availability under fault conditions. Data recovery is still possible even if two-thirds of the
+storage nodes crash or come under adversarial control. Further, availability may be certified
+efficiently without downloading the full blob.</p>
+</li>
+</ol>
+<p>Decentralized storage can take multiple forms in modern ecosystems. For instance, it offers better
+guarantees for digital assets traded as NFTs. Unlike current designs that store data off-chain,
+decentralized storage ensures users own the actual resource, not just metadata, mitigating risks of
+data being taken down or misrepresented.</p>
+<p>Additionally, decentralized storage is not only useful for storing data such as pictures or files
+with high availability; it can also double as a low-cost data availability layer for rollups. Here,
+sequencers can upload transactions on Walrus, and the rollup executor only needs to temporarily
+reconstruct them for execution.</p>
+<p>We also believe Walrus will accompany existing disaster recovery strategies for millions of
+enterprise companies. Not only is Walrus low-cost, it also provides unmatched layers of data
+availability, integrity, transparency, and resilience that centralized solutions by design cannot
+offer.</p>
+<p>Walrus is powered by the Sui Network and scales horizontally to hundreds or thousands of networked
+decentralized storage nodes. This should enable Walrus to offer Exabytes of storage at costs
+competitive with current centralized offerings, given the higher assurance and decentralization.</p>
+<h2 id="the-future-of-walrus"><a class="header" href="#the-future-of-walrus">The Future of Walrus</a></h2>
+<p>By releasing this developer preview we hope to share some of the design decisions with the
+decentralized app developer community and gather feedback on the approach and the APIs for storing,
+retrieving, and certifying blobs. In this developer preview, all storage nodes are operated by
+Mysten Labs to help us understand use cases, fix bugs, and improve the performance of the software.</p>
+<p>Future updates to Walrus will allow for dynamically changing the set of decentralized storage nodes,
+as well as changing the mapping of what slivers are managed by each storage node. The available
+operations and tools will also be expanded to cover more storage-related use cases. Many of these
+functions will be designed with the feedback we gather in mind.</p>
+<p>Stay tuned for more updates on how Walrus will revolutionize data storage in the web3 ecosystem.</p>
+<h2 id="what-can-developers-build"><a class="header" href="#what-can-developers-build">What can developers build?</a></h2>
+<p>As part of this developer preview, we provide a binary client (currently macOS, ubuntu) that can be
+operated from the <a href="https://docs.walrus.site/usage/client-cli.html">command line interface</a>, a <a href="https://docs.walrus.site/usage/json-api.html">JSON
+API</a>, and an <a href="https://docs.walrus.site/usage/web-api.html">HTTP
+API</a>. We also offer the community an aggregator and
+publisher service and a Devnet deployment of 10 storage nodes operated by Mysten Labs.</p>
+<p>We hope developers will experiment with building applications that leverage the Walrus Decentralized
+Store in a variety of ways. As examples, we hope to see the community build:</p>
+<ul>
+<li>
+<p><strong>Storage of media for NFT or dapps:</strong> Walrus can directly store and serve media such as images,
+sounds, sprites, videos, other game assets, etc. This is publicly available media that can be
+accessed using HTTP requests at caches to create multimedia dapps.</p>
+</li>
+<li>
+<p><strong>AI-related use cases:</strong> Walrus can store clean data sets of training data, datasets with a known
+and verified provenance, model weights, and proofs of correct training for AI models. Or it may be
+used to store and ensure the availability and authenticity of an AI model output.</p>
+</li>
+<li>
+<p><strong>Storage of long term archival of blockchain history:</strong> Walrus can be used as a lower-cost
+decentralized store to store blockchain history. For Sui, this can include sequences of
+checkpoints with all associated transaction and effects content, as well as historic snapshots of
+the blockchain state, code, or binaries.</p>
+</li>
+<li>
+<p><strong>Support availability for L2s:</strong> Walrus enables parties to certify the availability of blobs, as
+required by L2s that need data to be stored and attested as available to all. This may also
+include the availability of extra audit data such as validity proofs, zero-knowledge proofs of
+correct execution, or large fraud proofs.</p>
+</li>
+<li>
+<p><strong>Support a full decentralized web experience:</strong> Walrus can host full decentralized web
+experiences including all resources (such as js, css, html, and media). These can provide content
+but also host the UX of dapps, enabling fully decentralized front- and back-ends on chain. It
+brings the full "web" back into "web3".</p>
+</li>
+<li>
+<p><strong>Support subscription models for media:</strong> Creators can store encrypted media on Walrus and only
+provide access via decryption keys to parties that have paid a subscription fee or have paid for
+content. (Note that Walrus provides the storage; encryption and decryption must be done off
+Walrus).</p>
+</li>
+</ul>
+<p>We are excited to see what else the web3 developer community can imagine!</p>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<p>For this developer preview the public Walrus Devnet is openly available to all developers. Developer
+documentation is available at <a href="https://docs.walrus.site">https://docs.walrus.site</a>.</p>
+<p>SUI Testnet token is the main currency for interacting with Walrus. Developers pay for Walrus Devnet
+storage using SUI Testnet tokens which can be acquired at the <a href="https://discord.com/channels/916379725201563759/1037811694564560966">Sui Testnet Discord
+faucet</a>.</p>
+<h2 id="one-more-thing-"><a class="header" href="#one-more-thing-">One more thing …</a></h2>
+<p>The <a href="https://walrus.site">Walrus Sites website</a>, the <a href="https://docs.walrus.site">Walrus docs</a>, and
+<a href="https://blog.walrus.site">this very blog</a> are hosted on Walrus. To learn more about Walrus Sites
+and how you can deploy your own, <a href="https://docs.walrus.site/walrus-sites/intro.html">click here</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../blog/00_intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../design/objectives_use_cases.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../blog/00_intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../design/objectives_use_cases.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
