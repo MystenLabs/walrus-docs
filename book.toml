@@ -17,7 +17,6 @@ optional = true
 follow-web-links = true
 warning-policy = "error"
 exclude = [
-  # TODO(mlegner): remove again after merging PR #94
   'MystenLabs/walrus-docs',
   'walrus\.site', # No service worker in the link checker.
   'google\.com',
@@ -29,3 +28,8 @@ exclude = [
 command = "mdbook-admonish"
 on_failure = "bail"
 assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.katex]
+# Using `\(` and `\)` for inline math and `\[` and `\]` for math blocks.
+block-delimiter = { left = "\\[", right = "\\]" }
+inline-delimiter = { left = "\\(", right = "\\)" }

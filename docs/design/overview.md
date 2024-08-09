@@ -1,6 +1,7 @@
 # System overview
 
-This chapter provides an overview of the [security properties](./properties.md),
-[architecture](./architecture.md) and [encoding mechanisms](./encoding.md) of the Walrus system.
+This chapter provides an overview of the [architecture](./architecture.md) and [encoding
+mechanisms](./encoding.md) of the Walrus system.
 
-Use the [Glossary](../glossary.md) as a reference for bolded terms used in this documentation.
+Use the [glossary](../glossary.md) as a reference for many of the bolded terms used in this
+documentation.

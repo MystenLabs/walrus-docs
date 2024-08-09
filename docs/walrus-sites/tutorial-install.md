@@ -1,11 +1,11 @@
 # Installing the site builder
 
-We describe here the steps necessary to setup the Walrus Sites' `site-builder` tool, and prepare
-your environment for development.
+This section describes the steps necessary to setup the Walrus Sites' `site-builder` tool and
+prepare your environment for development.
 
 ## Prerequisites
 
-Before you start, make sure you:
+Before you start, make sure you
 
 - have a recent version of [Rust](https://www.rust-lang.org/tools/install) installed;
 - have `git` installed; and
@@ -15,7 +15,7 @@ Then, follow these additional setup steps.
 
 ## Clone the repository and build the `site-builder` tool
 
-First clone and enter the Walrus Sites repo from <https://github.com/MystenLabs/walrus-sites>.
+First, clone and enter the Walrus Sites repo from <https://github.com/MystenLabs/walrus-sites>:
 
 ``` sh
 git clone https://github.com/MystenLabs/walrus-sites.git

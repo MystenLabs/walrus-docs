@@ -1,3 +1,4 @@
+<!-- markdownlint-disable proper-names -->
 # DEVNET TERMS OF SERVICE - WALRUS
 
 Last updated: June 13, 2024

@@ -27,7 +27,7 @@ following variables in the config file:
 - `portal`: the name of the Portal through which the site will be viewed; this only affects the
   output of the CLI, and nothing else (default: `walrus.site`).
   All Walrus Sites are accessible through any Portal independent of this setting.
-- `general`: these are general options, that can be configured both through the CLI and the config:
+- `general`: these are general options that can be configured both through the CLI and the config:
   - `rpc_url`: The URL of the Sui RPC node to use. If not set, the `site-builder` will infer it from
     the wallet.
   - `wallet`: Pointer to the Sui wallet to be used. By default, it uses the system-wide wallet (the

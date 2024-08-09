@@ -12,17 +12,17 @@ Note that our Walrus Devnet uses Sui **Testnet** for coordination.
 
 ## Prerequisites
 
-Interacting with Walrus requires a valid Sui **testnet** wallet with some amount of SUI tokens. The
+Interacting with Walrus requires a valid Sui **Testnet** wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the [installation
 instructions](https://docs.sui.io/guides/developer/getting-started/sui-install) in the Sui
 documentation.
 
-After installing the Sui CLI, you need to set up a testnet wallet by running `sui client`, which
-prompts you to set up a new configuration. Make sure to point it to Sui testnet, you can use the
+After installing the Sui CLI, you need to set up a Testnet wallet by running `sui client`, which
+prompts you to set up a new configuration. Make sure to point it to Sui Testnet, you can use the
 full node at `https://fullnode.testnet.sui.io:443` for this. See
 [here](https://docs.sui.io/guides/developer/getting-started/connect) for further details.
 
-If you already have a Sui wallet configured, you can directly set up the testnet environment (if you
+If you already have a Sui wallet configured, you can directly set up the Testnet environment (if you
 don't have it yet),
 
 ```sh
@@ -35,7 +35,7 @@ and switch the active environment to it:
 sui client switch --env testnet
 ```
 
-After this, you should get something like this (everything besides the "testnet" line is optional):
+After this, you should get something like this (everything besides the `testnet` line is optional):
 
 ```terminal
 $ sui client envs
@@ -50,7 +50,7 @@ $ sui client envs
 ```
 
 Finally, make sure you have at least 2 separate gas coins, with at least 1 SUI each. You can obtain
-these coins from the testnet faucet:
+these coins from the Testnet faucet:
 
 ```sh
 sui client faucet && sui client faucet

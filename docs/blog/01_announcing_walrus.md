@@ -16,7 +16,7 @@ resilience to more widespread faults.
 Sui is the most advanced blockchain system in relation to storage on validators, with innovations
 such as a [storage fund](https://docs.sui.io/concepts/tokenomics/storage-fund) that future-proofs
 the cost of storing data on-chain. Nevertheless, Sui still requires complete data replication among
-all validators, resulting in a replication factor of 100x or more in today’s Sui mainnet. While this
+all validators, resulting in a replication factor of 100x or more in today’s Sui Mainnet. While this
 is necessary for replicated computing and smart contracts acting on the state of the blockchain, it
 is inefficient for simply storing unstructured data blobs, such as music, video, blockchain history,
 etc.
@@ -27,13 +27,13 @@ To tackle the challenge of high replication costs, Mysten Labs has developed Wal
 storage network offering exceptional data availability and robustness with a minimal replication
 factor of 4x-5x. Walrus provides two key benefits:
 
-1. **Cost-Effective Blob Storage**: Walrus allows for the uploading of gigabytes of data at a time
+1. **Cost-Effective Blob Storage:** Walrus allows for the uploading of gigabytes of data at a time
    with minimal cost, making it an ideal solution for storing large volumes of data. Walrus can do
    this because the data blob is transmitted only once over the network, and storage nodes only
    spend a fraction of resources compared to the blob size. As a result, the more storage nodes the
    system has, the fewer resources each storage node uses per blob.
 
-1. **High Availability and Robustness**: Data stored on Walrus enjoys enhanced reliability and
+1. **High Availability and Robustness:** Data stored on Walrus enjoys enhanced reliability and
    availability under fault conditions. Data recovery is still possible even if two-thirds of the
    storage nodes crash or come under adversarial control. Further, availability may be certified
    efficiently without downloading the full blob.

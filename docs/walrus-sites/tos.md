@@ -5,7 +5,7 @@
 Last Updated: June 18, 2024
 
 These Terms of Service (“**Terms**”) govern your use of certain software services, including Walrus
-Sites provided by Mysten Labs, Inc.  (“**Mysten Labs**”) (collectively the "**Services**"). By
+Sites provided by Mysten Labs, Inc. (“**Mysten Labs**”) (collectively the "**Services**"). By
 accessing the Services, you agree to and accept these terms and conditions. If you don’t agree to be
 bound by these Terms, do not use the Services.
 
@@ -29,10 +29,10 @@ applicable U.S. and non-U.S. export control and trade sanctions laws.
 ## III. Walrus Sites
 
 The Services allow you access website resources (“**Stored Objects**”) that are stored in the Walrus
-Store and linked by the Sui blockchain.  In providing the Services, Mysten Labs provides you with a
+Store and linked by the Sui blockchain. In providing the Services, Mysten Labs provides you with a
 means to access the Stored Objects, but Mysten Labs does not process the Stored Objects
 directly. Mysten Labs has no responsibility to screen or moderate Stored Objects accessible via the
-Services. Stored Objects are developed by people over whom Mysten Labs exercises no control.  The
+Services. Stored Objects are developed by people over whom Mysten Labs exercises no control. The
 Services may provide you with access to Stored Objects that some people find objectionable,
 inappropriate, or offensive. We assume no responsibility for the content of Stored Objects accessed
 through the Services.
@@ -41,9 +41,9 @@ through the Services.
 
 1. <u>Fees</u>. We may charge fees for some or part of the Services we make available to you. We
    reserve the right to change those fees at any time, in our sole and absolute discretion.
-1. <u>Acknowledgment of Certain Risks; Disclaimers</u>.  Mysten Labs disclaims any and all
+1. <u>Acknowledgment of Certain Risks; Disclaimers</u>. Mysten Labs disclaims any and all
    responsibility or liability for the accuracy, content, completeness, legality, reliability, or
-   operability or availability of information or material accessed via the Services.  Mysten Labs
+   operability or availability of information or material accessed via the Services. Mysten Labs
    disclaims any responsibility for the deletion, failure to store, misdelivery, or untimely
    delivery of any information or material. Mysten Labs disclaims any responsibility for any harm
    resulting from accessing any information or material on any blockchain through the Services. YOU
@@ -156,7 +156,7 @@ repeatedly infringing the rights of copyright holders.
 
 Without limiting the foregoing, you may not download or use the Services if (i) you are in, under
 the control of, or a national or resident of Cuba, Iran, North Korea, Syria or any other country
-subject to United States embargo, or if you are on the U.S.  Treasury Department's Specially
+subject to United States embargo, or if you are on the U.S. Treasury Department's Specially
 Designated Nationals List or the U.S. Commerce Department's Denied Persons List, Unverified List, or
 Entity List; or (ii) you intend to supply any Services to Cuba, Iran, North Korea, Sudan or Syria or
 any other country subject to United States embargo (or a national or resident of one of these
@@ -224,7 +224,7 @@ Mysten Labs each waive any objection to jurisdiction and venue in such courts.
   arising out of or relating to these Terms or the breach, termination, enforcement, interpretation
   or validity thereof or the use of the Services (collectively, “Disputes”) will be resolved solely
   by binding, individual arbitration and not in a class, representative or consolidated action or
-  proceeding. You and Mysten Labs agree that the U.S.  Federal Arbitration Act governs the
+  proceeding. You and Mysten Labs agree that the U.S. Federal Arbitration Act governs the
   interpretation and enforcement of these Terms, and that you and Mysten Labs are each waiving the
   right to a trial by jury or to participate in a class action. This arbitration provision shall
   survive termination of these Terms.

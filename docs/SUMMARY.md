@@ -1,11 +1,11 @@
-<!-- markdownlint-disable MD025 MD042 -->
+<!-- markdownlint-disable headings no-empty-links -->
 # Summary
 
 [Walrus](./README.md)
 
 ---
 
-# Dev Blog
+# Dev blog
 
 - [Blog preface](./blog/00_intro.md)
   - [Announcing Walrus](./blog/01_announcing_walrus.md)
@@ -14,7 +14,7 @@
 
 # Design
 
-- [Objectives and use-cases](./design/objectives_use_cases.md)
+- [Objectives and use cases](./design/objectives_use_cases.md)
 - [Overview](./design/overview.md)
   - [Architecture](./design/architecture.md)
   - [Encoding](./design/encoding.md)
@@ -37,7 +37,7 @@
   - [Using the client HTTP API](./usage/web-api.md)
 - [Examples](./usage/examples.md)
 
-# Walrus sites
+# Walrus Sites
 
 - [Introduction to Walrus Sites](./walrus-sites/intro.md)
 - [Your first Walrus Site](./walrus-sites/tutorial.md)
@@ -48,7 +48,6 @@
 - [Technical overview](./walrus-sites/overview.md)
   - [Linking from and to Walrus Sites](./walrus-sites/linking.md)
   - [Redirecting objects to Walrus Sites](./walrus-sites/redirects.md)
-  - [The site builder](./walrus-sites/site-builder.md)
   - [The Walrus Sites Portal](./walrus-sites/portal.md)
   - [Known restrictions](./walrus-sites/restrictions.md)
 - [Legal terms](./walrus-sites/legal.md)

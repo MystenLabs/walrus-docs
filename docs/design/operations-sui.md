@@ -20,16 +20,16 @@ A number of Sui smart contracts hold the metadata of the Walrus system and all i
 
   These values are determined by 2/3 agreement between the storage nodes for the storage
   epoch. Users can pay to purchase storage space for some time duration. These space resources can
-  be split, merged and transferred. Later, they can be used to place a blob ID into Walrus.
+  be split, merged, and transferred. Later, they can be used to place a blob ID into Walrus.
 
-- The **storage fund** holds funds for storing blobs over one storage epoch, multiple or
-  perpetually. When purchasing storage space from the system object, users pay into the storage fund
-  separated over multiple storage epochs. Payments are made each epoch to storage nodes
-  according to performance (details follow).
+- The **storage fund** holds funds for storing blobs over one or multiple storage epochs. When
+  purchasing storage space from the system object, users pay into the storage fund separated over
+  multiple storage epochs. Payments are made each epoch to storage nodes according to performance
+  (details follow).
 
-- A user acquires some storage through the contracts or transfer, and can assign to it a blob ID,
+- A user acquires some storage through the contracts or transfer and can assign to it a blob ID,
   signifying they want to store this blob ID into it. This emits a Move **resource event** that
-  both caches and storage nodes listen for to expect and authorize off-chain storage operations.
+  storage nodes listen for to expect and authorize off-chain storage operations.
 
 - Eventually a user holds an off-chain **availability certificate** from storage nodes for a blob
   ID. The user **uploads the certificate on chain** to signal that the blob ID is available for an
@@ -56,13 +56,13 @@ from storage nodes by blob ID to perform reads on Walrus resources.
 
 Each Walrus storage epoch is represented by the Walrus system object that contains a storage
 committee and various metadata or storage nodes, like the mapping between shards and storage nodes,
-available space and current costs.
+available space, and current costs.
 
-Users can go to the system object for the period and **buy some
-storage** amount for one or more storage epochs. At each storage epoch there is a price for storage,
-and the payment provided becomes part of a **storage fund** for all the storage epochs that span
-the storage bought. There is a maximum number of storage epochs in the future for which storage can
-be bought (~2 years). Storage is a resource that can be split, merged, and transferred.
+Users can go to the system object for the period and **buy some storage** amount for one or more
+storage epochs. At each storage epoch there is a price for storage, and the payment provided becomes
+part of a **storage fund** for all the storage epochs that span the storage bought. There is a
+maximum number of storage epochs in the future for which storage can be bought (approximately 2
+years). Storage is a resource that can be split, merged, and transferred.
 
 At the end of the storage epoch, part of the funds in the **storage fund need to be allocated to
 storage nodes**. The idea here is for storage nodes to perform light audits of each other,

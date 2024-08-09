@@ -1,3 +1,6 @@
+# See https://github.com/DavidAnson/markdownlint-cli2?tab=readme-ov-file#markdownlint-cli2jsonc
+# for configuration options and https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+# for available rules.
 globs:
   - "**/*.md"
 gitignore: true
@@ -15,3 +18,35 @@ config:
     style: dash
   ol-prefix:
     style: one
+  emphasis-style:
+    style: asterisk
+  bold-style:
+    style: asterisk
+  proper-names:
+    code_blocks: false
+    html_elements: false
+    names:
+      - Byzantine
+      - dApp
+      - Devnet
+      - devnets
+      - GitHub
+      - internet
+      - JavaScript
+      - Mainnet
+      - Merkle
+      - Mysten Labs
+      - Portal
+      - Python
+      - Rust
+      - Sui
+      - SUI
+      - SuiNS
+      - Testnet
+      - testnets
+      - Walrus
+      - Walrus Site
+      - Walrus Sites
+      - web
+      - web2
+      - web3

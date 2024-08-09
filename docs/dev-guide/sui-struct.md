@@ -7,7 +7,7 @@ querying or executing transactions on Sui directly. However, Walrus uses Sui to 
 and smart contract developers can read information about the Walrus system, as well as stored blobs,
 on Sui.
 
-The Move code of the Walrus devnet contracts is available at
+The Move code of the Walrus Devnet contracts is available at
 <https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store>. An example package using
 the Walrus contracts is available at
 <https://github.com/MystenLabs/walrus-docs/blob/main/examples/move>.
@@ -20,19 +20,19 @@ Walrus Testnet will use new Move packages with struct layouts and function signa
 be compatible with this package. Move code that builds against this package will need to rewritten.
 ```
 
-## Blob and Storage Objects
+## Blob and storage objects
 
 Walrus blobs are represented as Sui objects of type `Blob`. A blob is first registered, indicating
-that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
+that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified,
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
-availability. When a blob is certified its `certified_epoch` field contains the epoch in which it
+availability. When a blob is certified, its `certified_epoch` field contains the epoch in which it
 was certified.
 
 A `Storage` object is always associated with a `Blob` object, reserving enough space for
 a long enough period for the blob's storage. A certified blob is available for the period the
 underlying storage resource guarantees storage.
 
-Concretely, `Blob` and `Storage` objects have the following fields, that can be read through the
+Concretely, `Blob` and `Storage` objects have the following fields, which can be read through the
 Sui SDKs:
 
 ```move
@@ -64,24 +64,24 @@ All fields of `Blob` and `Storage` objects can be read using the expected functi
 
 ```move
 // Blob functions
-public fun stored_epoch(b: &Blob) : u64;
-public fun blob_id(b: &Blob) : u256;
-public fun size(b: &Blob) : u64;
-public fun erasure_code_type(b: &Blob) : u8;
-public fun certified_epoch(b: &Blob) : &Option<u64>;
-public fun storage(b: &Blob) : &Storage;
+public fun stored_epoch(b: &Blob): u64;
+public fun blob_id(b: &Blob): u256;
+public fun size(b: &Blob): u64;
+public fun erasure_code_type(b: &Blob): u8;
+public fun certified_epoch(b: &Blob): &Option<u64>;
+public fun storage(b: &Blob): &Storage;
 
 // Storage functions
-public fun start_epoch(self: &Storage) : u64;
-public fun end_epoch(self: &Storage) : u64;
-public fun storage_size(self: &Storage) : u64;
+public fun start_epoch(self: &Storage): u64;
+public fun end_epoch(self: &Storage): u64;
+public fun storage_size(self: &Storage): u64;
 ```
 
 ## Events
 
-When a blob is first registered a `BlobRegistered` event is emitted that informs storage nodes
+When a blob is first registered, a `BlobRegistered` event is emitted that informs storage nodes
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
-certified a `BlobCertified` is emitted containing information about the blob ID and the epoch
+certified, a `BlobCertified` is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.
 
 ```move
@@ -116,15 +116,14 @@ public struct InvalidBlobID has copy, drop {
 ## System information
 
 The Walrus system object contains metadata about the available and used storage, as well as the
-price of storage per Kib of storage in MIST. The committee
+price of storage per KiB of storage in MIST. The committee
 structure within the system object can be used to read the current epoch number, as well as
 information about the committee.
 
 ```move
-const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+const BYTES_PER_UNIT_SIZE: u64 = 1_024;
 
 public struct System<phantom WAL> has key, store {
-
     id: UID,
 
     /// The current committee, with the current epoch.
@@ -136,8 +135,8 @@ public struct System<phantom WAL> has key, store {
     epoch_status: u8,
 
     // Some accounting
-    total_capacity_size : u64,
-    used_capacity_size : u64,
+    total_capacity_size: u64,
+    used_capacity_size: u64,
 
     /// The price per unit size of storage.
     price_per_unit_size: u64,
@@ -149,7 +148,7 @@ public struct System<phantom WAL> has key, store {
 
 public struct Committee has store {
     epoch: u64,
-    bls_committee : BlsCommittee,
+    bls_committee: BlsCommittee,
 }
 ```
 
@@ -157,14 +156,14 @@ A few public functions of the committee allow contracts to read Walrus metadata:
 
 ```move
 /// Get epoch. Uses the committee to get the epoch.
-public fun epoch<WAL>(self: &System<WAL>) : u64;
+public fun epoch<WAL>(self: &System<WAL>): u64;
 
 /// Accessor for total capacity size.
-public fun total_capacity_size<WAL>(self: &System<WAL>) : u64;
+public fun total_capacity_size<WAL>(self: &System<WAL>): u64;
 
 /// Accessor for used capacity size.
-public fun used_capacity_size<WAL>(self: &System<WAL>) : u64;
+public fun used_capacity_size<WAL>(self: &System<WAL>): u64;
 
 // The number of shards
-public fun n_shards<WAL>(self: &System<WAL>) : u16;
+public fun n_shards<WAL>(self: &System<WAL>): u16;
 ```
