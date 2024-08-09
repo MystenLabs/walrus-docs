@@ -30,7 +30,9 @@ discussion](https://github.com/MystenLabs/walrus-docs/discussions/new?category=q
 
 If you experience any issues or bugs, please [check for existing
 issues](https://github.com/MystenLabs/walrus-docs/issues) and [file an
-issue](https://github.com/MystenLabs/walrus-docs/issues/new) if it hasn't been reported yet.
+issue](https://github.com/MystenLabs/walrus-docs/issues/new) if it hasn't been reported yet. Please
+include the version of the `walrus` binary in your bug report (you can obtain it with `walrus
+--version`).
 
 ## License
 
