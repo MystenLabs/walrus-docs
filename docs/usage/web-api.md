@@ -31,9 +31,13 @@ walrus publisher -b $PUB_ADDRESS # run a publisher to store blobs
 ```
 
 The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
-both. Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
-However, the publisher does perform actions on-chain and will consume gas. It is therefore important
-to ensure only authorized parties may access it, or other measures to manage gas costs.
+both.
+
+```admonish warning
+While the aggregator does not perform Sui on-chain actions, and therefore consumes no gas, the
+publisher does perform actions on-chain and will consume gas. It is therefore important to ensure
+only authorized parties may access it, or other measures to manage gas costs.
+```
 
 ## Using a public aggregator or publisher {#public-services}
 
@@ -136,6 +140,8 @@ Alternatively you may print the contents of a blob in the terminal with the cURL
 curl "$AGGREGATOR/v1/<some blob ID>
 ```
 
+```admonish tip title="Content sniffing"
 Modern browsers will attempt to sniff the content type for such resources, and will generally do a
 good job of inferring content types for media. However, the aggregator on purpose prevents such
-sniffing from inferring dangerous executable types such as javascript or style sheet types.
+sniffing from inferring dangerous executable types such as JavaScript or style sheet types.
+```

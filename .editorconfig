@@ -19,12 +19,12 @@ indent_size = unset
 max_line_length = unset
 trim_trailing_whitespace = unset
 
-[{*.yml,*.yaml,*.toml}]
+[{*.yml,*.yaml,*.toml,*.css}]
 indent_size = 2
 max_line_length = 150
 
 # Ignore paths
-[{.git/**/*,LICENSE,**/Move.lock}]
+[{.git/**/*,LICENSE,**/Move.lock,mdbook-admonish.css}]
 charset = unset
 end_of_line = unset
 indent_size = unset

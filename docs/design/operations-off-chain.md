@@ -70,14 +70,16 @@ The flow is as follows:
   [availability period](./properties.md). No storage attestation challenges are issued for this
   blob ID.
 
-A blob ID that is inconsistent always resolves to `None` upon reading: this is because
+```admonish tip title="Reading inconsistent blobs"
+A blob ID that is inconsistent always resolves to `None` upon reading because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
 consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
 nodes (that do not otherwise run decoding), and does not change the output of read in any case.
 
-Note, however, that partial reads leveraging the systematic nature of the encoding might return
+However, partial reads leveraging the systematic nature of the encoding might successfully return
 partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
 important, dApps should do full reads rather than partial reads.
+```
 
 ## Read paths
 

@@ -6,7 +6,9 @@ patterns (see [the next chapter](./interacting.md)). This chapter describes the
 [prerequisites](#prerequisites), [installation](#installation), and [configuration](#configuration)
 of the Walrus client.
 
-Note that our Walrus devnet uses Sui **testnet** for coordination.
+```admonish note
+Note that our Walrus Devnet uses Sui **Testnet** for coordination.
+```
 
 ## Prerequisites
 
@@ -103,6 +105,13 @@ Commands:
 ⋮
 ```
 
+```admonish tip
+Our latest Walrus binaries are also available on Walrus itself, namely on <https://bin.walrus.site>.
+Note, however, that you can only access this through a web browser and not through CLI tools like
+cURL due to the service-worker architecture (see the [Walrus Sites docs](../walrus-sites/portal.md)
+for further insights).
+```
+
 ### Custom path (optional) {#binary-custom-path}
 
 Instead of `~/.local/bin`, you can place the binary in any other directory you like. You need to
@@ -182,4 +191,6 @@ communication_config:
       nanos: 0
 ```
 
-**Important**: If you specify a wallet path, make sure your wallet is set up for Sui **testnet**.
+```admonish warning title="Important"
+If you specify a wallet path, make sure your wallet is set up for Sui **Testnet**.
+```
