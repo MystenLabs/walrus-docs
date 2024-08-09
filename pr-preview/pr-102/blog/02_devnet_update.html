@@ -185,7 +185,8 @@ the <a href="../usage/setup.html">setup chapter</a>.</p>
 <p>If you had deployed any Walrus Sites, the site object on Sui and any SuiNS name are still valid.
 However, you need to re-store all blobs on Walrus. You can achieve this by running the site-builder
 tool (from the <code>walrus-sites</code> directory) as follows:</p>
-<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update --force path/to/the/site
+<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update --force \
+    &lt;path to the site&gt; &lt;site object ID&gt;
 </code></pre>
 <h2 id="changes"><a class="header" href="#changes">Changes</a></h2>
 <p>Besides many improvements to the storage nodes, the new version of Walrus includes the following
