@@ -15,12 +15,16 @@ This developer guide describes:
 A [glossary](../glossary.md) of terms used is also available for reference.
 
 ```admonish danger title="Disclaimer about the Walrus developer preview"
-The current Devnet release of Walrus and Walrus Sites is a developer preview, to showcase the
-technology and solicit feedback from builders. All storage nodes and aggregators are operated by
-Mysten Labs, all transactions are executed on the Sui Testnet and use Testnet SUI which has no
-value. The state of the store can and will be wiped, at any point and possibly with no warning. Do
-not rely on this developer preview for any production purposes, it comes with no availability or
+The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
+the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store **can and will be wiped**, at any point and possibly with no warning.
+Do not rely on this developer preview for any production purposes, it comes with no availability or
 persistence guarantees.
+
+Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
+migration guides will be provided when Testnet becomes available.
 
 Also see the [Devnet terms of service](../tos.md) under which this developer preview is made
 available.
