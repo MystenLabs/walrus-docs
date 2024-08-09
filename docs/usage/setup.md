@@ -49,11 +49,11 @@ $ sui client envs
 ╰──────────┴─────────────────────────────────────┴────────╯
 ```
 
-Finally, make sure you have at least 2 separate gas coins, with at least 1 SUI each. You can obtain
-these coins from the Testnet faucet:
+Finally, make sure you have at least one gas coin with at least 1 SUI. You can obtain one from the
+Testnet faucet:
 
 ```sh
-sui client faucet && sui client faucet
+sui client faucet
 ```
 
 After some seconds, you should see your new SUI coins:
@@ -64,7 +64,6 @@ $ sui client gas
 │ gasCoinId       │ mistBalance (MIST) │ suiBalance (SUI) │
 ├─────────────────┼────────────────────┼──────────────────┤
 │ 0x65dca966dc... │ 1000000000         │ 1.00             │
-│ 0xb07a091c1f... │ 1000000000         │ 1.00             │
 ╰─────────────────┴────────────────────┴──────────────────╯
 ```
 
@@ -132,16 +131,17 @@ configuration as follows:
 
 <!-- TODO: Make sure this is consistent with our default paths. -->
 ```sh
-mkdir ~/.walrus
+mkdir -p ~/.config/walrus
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml \
-     -o ~/.walrus/client_config.yaml
+     -o ~/.config/walrus/client_config.yaml
 ```
 
 ### Custom path (optional) {#config-custom-path}
 
-By default, the Walrus client will look for the `client_config.yaml` configuration file in the
-current directory or in `~/.walrus/`, but you can place the file anywhere and name it anything you
-like; in this case you need to use the `--config` option when running the `walrus` binary.
+By default, the Walrus client will look for the `client_config.yaml` (or `client_config.yml`)
+configuration file in the current directory, `$XDG_CONFIG_HOME/walrus/`, `~/.config/walrus/`, or
+`~/.walrus/`. However, you can place the file anywhere and name it anything you like; in this case
+you need to use the `--config` option when running the `walrus` binary.
 
 ### Advanced configuration (optional)
 
@@ -152,7 +152,7 @@ The configuration file currently supports the following parameters:
 # deployment.
 #
 # NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
-# You can get the object ID for the current Walrus devnet deployment as described above.
+# You can get the object ID for the current Walrus Devnet deployment as described above.
 system_object: 0x3243....
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,

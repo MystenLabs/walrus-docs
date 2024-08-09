@@ -9,6 +9,7 @@
 
 - [Blog preface](./blog/00_intro.md)
   - [Announcing Walrus](./blog/01_announcing_walrus.md)
+  - [2024-08-12 Devnet update](./blog/02_devnet_update.md)
 
 ---
 
