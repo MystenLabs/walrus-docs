@@ -32,11 +32,11 @@ Storage unit: 1.00 KiB
 
 Approximate storage prices per epoch
 Price per encoded storage unit: 50 MIST
-Price to store metadata: 850 MIST
+Price to store metadata: 228,250 MIST
 Marginal price per additional 1 MiB (w/o metadata): 239,250 MIST
 
 Total price for example blob sizes
-1.00 MiB unencoded (9.13 MiB encoded): 467,600 MIST per epoch
+1.00 MiB unencoded (9.13 MiB encoded): 467,500 MIST per epoch
 32.0 MiB unencoded (153 MiB encoded): 0.0078 SUI per epoch
 957 MiB unencoded (4.34 GiB encoded): 0.227 SUI per epoch
 ```
