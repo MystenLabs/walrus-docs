@@ -3,10 +3,10 @@
 ## Blob encoding and blob ID
 
 Walrus stores blobs across storage nodes in an [encoded form](../design/encoding.md), and refers
-to blobs by their _blob ID_. The blob ID is deterministically derived from the content of a blob
+to blobs by their *blob ID*. The blob ID is deterministically derived from the content of a blob
 and the Walrus configuration. The blob ID of two files with the same content will be the same.
 
-You can derive the blob ID of a file locally using the command: `walrus blob-id <file path>`
+You can derive the blob ID of a file locally using the command: `walrus blob-id <file path>`.
 
 ## Store
 
@@ -20,13 +20,13 @@ confidentiality.
 
 Under the hood a number of operations happen both on Sui as well as on storage nodes:
 
-- The client or publisher encodes the blob and derives a _blob ID_ that identifies the blob. This
-  is a `u256` often encoded as a URL safe base64 string.
+- The client or publisher encodes the blob and derives a *blob ID* that identifies the blob. This
+  is a `u256` often encoded as a URL-safe base64 string.
 - A transaction is executed on Sui to purchase some storage from the system object, and then to
-  _register the blob ID_ occupying this storage. Client APIs return the _Sui blob object ID_. The
+  *register the blob ID* occupying this storage. Client APIs return the *Sui blob object ID*. The
   transactions use SUI to purchase storage and pay for gas.
 - Encoded slivers of the blob are distributed to all storage nodes. They each sign a receipt.
-- Signed receipts are aggregated and submitted to the Sui blob object to _certify the blob_.
+- Signed receipts are aggregated and submitted to the Sui blob object to *certify the blob*.
   Certifying a blob emits a Sui event with the blob ID and the period of availability.
 
 A blob is considered available on Walrus once the corresponding Sui blob object has been
@@ -38,9 +38,9 @@ through the [`walrus info`](../usage/client-cli.md#walrus-system-information) CL
 maximum blob size is currently 957&nbsp;MiB. You may store larger blobs by splitting them into
 smaller chunks.
 
-Blobs are stored for a certain number of _epochs_, as specified at the time they were stored. Walrus
-storage nodes ensure that within these epochs a read succeeds. The Walrus devnet only uses a single
-epoch today, and blobs uploaded will be available in that single epoch (until the devnet is wiped).
+Blobs are stored for a certain number of *epochs*, as specified at the time they were stored. Walrus
+storage nodes ensure that within these epochs a read succeeds. The Walrus Devnet only uses a single
+epoch today, and blobs uploaded will be available in that single epoch (until the Devnet is wiped).
 Future devnets may span across multiple epochs.
 
 ## Read
@@ -53,10 +53,10 @@ A read is executed by performing the following steps:
 - The blob is reconstructed from the recovered slivers and checked against the blob ID.
 
 The steps involved in the read operation are performed by the binary client, or the aggregator
-service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will
-succeed in recovering the blob stored even if up to one-third of storage nodes are
-unavailable in all cases. Eventually, after synchronization is complete, even if two-thirds
-of storage nodes are down reads will succeed.
+service that exposes an HTTP interface to read blobs. Reads are extremely resilient and will succeed
+in recovering the blob in all cases even if up to one-third of storage nodes are unavailable. In
+most cases, after synchronization is complete, blob can be read even if two-thirds of storage nodes
+are down.
 
 ## Certify Availability
 
