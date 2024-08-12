@@ -5,7 +5,7 @@ on:
     types: [update-sites-bins]
   # every week
   schedule:
-    - cron: '14 3 * * 0'
+    - cron: "14 3 * * 0"
   # on demand
   workflow_dispatch:
 
@@ -36,7 +36,7 @@ jobs:
       - name: Download latest binaries
         run: |
           for arch in ubuntu-x86_64 macos-x86_64 macos-arm64; do
-          curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-$arch -o site/walrus-$arch
+          curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$arch -o site/walrus-$arch
           done
       - name: Copy site-builder binary
         run: "cp bin/site-builder site/site-builder-ubuntu-x86_64"

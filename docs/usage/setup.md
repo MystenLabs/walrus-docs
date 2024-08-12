@@ -77,16 +77,16 @@ We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs)
 
 | OS     | CPU           | Architecture                                                                                                |
 | ------ | ------------- | ----------------------------------------------------------------------------------------------------------- |
-| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-arm64)     |
-| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-x86_64)   |
-| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64) |
+| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64)     |
+| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64)   |
+| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64) |
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 `$SYSTEM` variable) and move it to a directory included in your `$PATH`:
 
 ```sh
 SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
-curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-$SYSTEM -o walrus
+curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
 mv walrus ~/.local/bin
 ```
