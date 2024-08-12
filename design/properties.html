@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -201,11 +202,20 @@ for the blob ID.</li>
 </ul>
 <p>Note that there is no delete operation and a blob ID past PoA will be available for the full
 availability period.</p>
-<p>As a rule of thumb: before PoA it is the responsibility of a client to ensure the availability of
-a blob and its upload to Walrus. After PoA it is the responsibility of Walrus as a system to
-maintain the availability of the blob as part of its operation for the full availability period
-remaining. Emission of the event corresponding to the PoA for a blob ID attests its
-availability.</p>
+<div id="admonition-rule-of-thumb" class="admonition admonish-tip" role="note" aria-labelledby="admonition-rule-of-thumb-title">
+<div class="admonition-title">
+<div id="admonition-rule-of-thumb-title">
+<p>Rule of thumb</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-rule-of-thumb"></a>
+</div>
+<div>
+<p>Before the PoA it is the responsibility of a client to ensure the availability of a blob and its
+upload to Walrus. After the PoA it is the responsibility of Walrus as a system to maintain the
+availability of the blob as part of its operation for the full availability period remaining.
+Emission of the event corresponding to the PoA for a blob ID attests its availability.</p>
+</div>
+</div>
 
                     </main>
 

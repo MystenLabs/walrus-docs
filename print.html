@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -179,9 +180,40 @@
 protocol designed specifically for large binary files, or "blobs". Walrus focuses on providing a
 robust, but affordable solution for storing unstructured content on decentralized storage nodes
 while ensuring high availability and reliability even in the presence of Byzantine faults.</p>
-<p>Fun fact: If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
+<div id="admonition-fun-fact" class="admonition admonish-tip" role="note" aria-labelledby="admonition-fun-fact-title">
+<div class="admonition-title">
+<div id="admonition-fun-fact-title">
+<p>Fun fact</p>
+</div>
+<a class="admonition-anchor-link" href="index.html#admonition-fun-fact"></a>
+</div>
+<div>
+<p>If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
 Walrus behind the scenes. See the <a href="./walrus-sites/intro.html">Walrus Sites chapter</a> for further
 details on how this works.</p>
+</div>
+</div>
+<div id="admonition-disclaimer-about-the-walrus-developer-preview" class="admonition admonish-danger" role="note" aria-labelledby="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<div class="admonition-title">
+<div id="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<p>Disclaimer about the Walrus developer preview</p>
+</div>
+<a class="admonition-anchor-link" href="index.html#admonition-disclaimer-about-the-walrus-developer-preview"></a>
+</div>
+<div>
+<p>The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
+the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store <strong>can and will be wiped</strong>, at any point and possibly with no warning.
+Do not rely on this developer preview for any production purposes, it comes with no availability or
+persistence guarantees.</p>
+<p>Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
+migration guides will be provided when Testnet becomes available.</p>
+<p>Also see the <a href="../tos.html">Devnet terms of service</a> under which this developer preview is made
+available.</p>
+</div>
+</div>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
 <ul>
 <li>
@@ -709,13 +741,23 @@ blob ID and record in the metadata to return <code>None</code> for the blob ID f
 blob ID.</p>
 </li>
 </ul>
-<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading: this is because
+<div id="admonition-reading-inconsistent-blobs" class="admonition admonish-tip" role="note" aria-labelledby="admonition-reading-inconsistent-blobs-title">
+<div class="admonition-title">
+<div id="admonition-reading-inconsistent-blobs-title">
+<p>Reading inconsistent blobs</p>
+</div>
+<a class="admonition-anchor-link" href="design/operations-off-chain.html#admonition-reading-inconsistent-blobs"></a>
+</div>
+<div>
+<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
 consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
 nodes (that do not otherwise run decoding), and does not change the output of read in any case.</p>
-<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return
+<p>However, partial reads leveraging the systematic nature of the encoding might successfully return
 partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
 important, dApps should do full reads rather than partial reads.</p>
+</div>
+</div>
 <h2 id="read-paths"><a class="header" href="#read-paths">Read paths</a></h2>
 <p>A user can read stored blobs either directly or through a cache. The direct user journey is
 discussed here because this is also how the cache operates in case of a cache miss. Assume that most
@@ -797,11 +839,20 @@ for the blob ID.</li>
 </ul>
 <p>Note that there is no delete operation and a blob ID past PoA will be available for the full
 availability period.</p>
-<p>As a rule of thumb: before PoA it is the responsibility of a client to ensure the availability of
-a blob and its upload to Walrus. After PoA it is the responsibility of Walrus as a system to
-maintain the availability of the blob as part of its operation for the full availability period
-remaining. Emission of the event corresponding to the PoA for a blob ID attests its
-availability.</p>
+<div id="admonition-rule-of-thumb" class="admonition admonish-tip" role="note" aria-labelledby="admonition-rule-of-thumb-title">
+<div class="admonition-title">
+<div id="admonition-rule-of-thumb-title">
+<p>Rule of thumb</p>
+</div>
+<a class="admonition-anchor-link" href="design/properties.html#admonition-rule-of-thumb"></a>
+</div>
+<div>
+<p>Before the PoA it is the responsibility of a client to ensure the availability of a blob and its
+upload to Walrus. After the PoA it is the responsibility of Walrus as a system to maintain the
+availability of the blob as part of its operation for the full availability period remaining.
+Emission of the event corresponding to the PoA for a blob ID attests its availability.</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="future-discussion"><a class="header" href="#future-discussion">Future discussion</a></h1>
 <p>In this document, we left out details of the following features:</p>
 <ul>
@@ -825,15 +876,27 @@ storage or availability.</li>
 from Sui smart contracts, or through the Sui SDK.</li>
 </ul>
 <p>A <a href="dev-guide/../glossary.html">glossary</a> of terms used is also available for reference.</p>
-<h2 id="disclaimer-about-the-walrus-developer-preview"><a class="header" href="#disclaimer-about-the-walrus-developer-preview">Disclaimer about the Walrus developer preview</a></h2>
-<p><strong>This release of Walrus &amp; Walrus Sites is a
-developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
-and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
-and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
-point and possibly with no warning. Do not rely on this developer preview for any production
-purposes, it comes with no availability or persistence guarantees.</strong></p>
+<div id="admonition-disclaimer-about-the-walrus-developer-preview" class="admonition admonish-danger" role="note" aria-labelledby="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<div class="admonition-title">
+<div id="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<p>Disclaimer about the Walrus developer preview</p>
+</div>
+<a class="admonition-anchor-link" href="dev-guide/dev-guide.html#admonition-disclaimer-about-the-walrus-developer-preview"></a>
+</div>
+<div>
+<p>The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
+the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store <strong>can and will be wiped</strong>, at any point and possibly with no warning.
+Do not rely on this developer preview for any production purposes, it comes with no availability or
+persistence guarantees.</p>
+<p>Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
+migration guides will be provided when Testnet becomes available.</p>
 <p>Also see the <a href="dev-guide/../tos.html">Devnet terms of service</a> under which this developer preview is made
 available.</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="components"><a class="header" href="#components">Components</a></h1>
 <p>From a developer perspective, some Walrus components are objects and smart contracts on
 Sui, and some components are Walrus-specific binaries and services. As a rule Sui is used to
@@ -871,12 +934,19 @@ and the Walrus configuration. The blob ID of two files with the same content wil
 <p>You can derive the blob ID of a file locally using the command: <code>walrus blob-id &lt;file path&gt;</code></p>
 <h2 id="store"><a class="header" href="#store">Store</a></h2>
 <p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher.</p>
-<blockquote>
-<p><strong>All blobs
-stored in Walrus are public and discoverable by all</strong>. Therefore you must not use Walrus to store
-anything that contains secrets or private data without additional measures to protect
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="dev-guide/dev-operations.html#admonition-warning"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
 confidentiality.</p>
-</blockquote>
+</div>
+</div>
 <p>Under the hood a number of operations happen both on Sui as well as on storage nodes:</p>
 <ul>
 <li>The client or publisher encodes the blob and derives a <em>blob ID</em> that identifies the blob. This
@@ -943,9 +1013,18 @@ the Walrus contracts is available at
 <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/move">https://github.com/MystenLabs/walrus-docs/blob/main/examples/move</a>.</p>
 <p>The following sections provide further insights into the contract and an overview of how you may use
 Walrus objects in your own Sui smart contracts.</p>
-<p><strong>A word of caution:</strong> Walrus testnet will use new Move packages with struct layouts and function
-signatures that may not be compatible with this package. Move code that builds against this package
-will need to rewritten.</p>
+<div id="admonition-a-word-of-caution" class="admonition admonish-danger" role="note" aria-labelledby="admonition-a-word-of-caution-title">
+<div class="admonition-title">
+<div id="admonition-a-word-of-caution-title">
+<p>A word of caution</p>
+</div>
+<a class="admonition-anchor-link" href="dev-guide/sui-struct.html#admonition-a-word-of-caution"></a>
+</div>
+<div>
+<p>Walrus Testnet will use new Move packages with struct layouts and function signatures that may not
+be compatible with this package. Move code that builds against this package will need to rewritten.</p>
+</div>
+</div>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified
@@ -1078,7 +1157,17 @@ public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;) : u16;
 patterns (see <a href="usage/./interacting.html">the next chapter</a>). This chapter describes the
 <a href="usage/setup.html#prerequisites">prerequisites</a>, <a href="usage/setup.html#installation">installation</a>, and <a href="usage/setup.html#configuration">configuration</a>
 of the Walrus client.</p>
-<p>Note that our Walrus devnet uses Sui <strong>testnet</strong> for coordination.</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="usage/setup.html#admonition-note"></a>
+</div>
+<div>
+<p>Note that our Walrus Devnet uses Sui <strong>Testnet</strong> for coordination.</p>
+</div>
+</div>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>Interacting with Walrus requires a valid Sui <strong>testnet</strong> wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
@@ -1147,6 +1236,20 @@ Usage: walrus [OPTIONS] &lt;COMMAND&gt;
 Commands:
 ⋮
 </code></pre>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="usage/setup.html#admonition-tip"></a>
+</div>
+<div>
+<p>Our latest Walrus binaries are also available on Walrus itself, namely on <a href="https://bin.walrus.site">https://bin.walrus.site</a>.
+Note, however, that you can only access this through a web browser and not through CLI tools like
+cURL due to the service-worker architecture (see the <a href="usage/../walrus-sites/portal.html">Walrus Sites docs</a>
+for further insights).</p>
+</div>
+</div>
 <h3 id="binary-custom-path"><a class="header" href="#binary-custom-path">Custom path (optional)</a></h3>
 <p>Instead of <code>~/.local/bin</code>, you can place the binary in any other directory you like. You need to
 either make sure to add that directory to your <code>$PATH</code> or always call the binary as
@@ -1212,7 +1315,17 @@ communication_config:
       secs: 60
       nanos: 0
 </code></pre>
-<p><strong>Important</strong>: If you specify a wallet path, make sure your wallet is set up for Sui <strong>testnet</strong>.</p>
+<div id="admonition-important" class="admonition admonish-warning" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="usage/setup.html#admonition-important"></a>
+</div>
+<div>
+<p>If you specify a wallet path, make sure your wallet is set up for Sui <strong>Testnet</strong>.</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
 <p>We provide 3 ways to interact directly with the Walrus storage system:</p>
 <ul>
@@ -1342,9 +1455,20 @@ walrus aggregator -b $AGG_ADDRESS # run an aggregator to read blobs
 walrus publisher -b $PUB_ADDRESS # run a publisher to store blobs
 </code></pre>
 <p>The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
-both. Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
-However, the publisher does perform actions on-chain and will consume gas. It is therefore important
-to ensure only authorized parties may access it, or other measures to manage gas costs.</p>
+both.</p>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="usage/web-api.html#admonition-warning"></a>
+</div>
+<div>
+<p>While the aggregator does not perform Sui on-chain actions, and therefore consumes no gas, the
+publisher does perform actions on-chain and will consume gas. It is therefore important to ensure
+only authorized parties may access it, or other measures to manage gas costs.</p>
+</div>
+</div>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
 aggregator and/or publisher is required. For your convenience, we provide these at the following
@@ -1420,9 +1544,19 @@ command reads a blob and writes it to an output file:</p>
 <p>Alternatively you may print the contents of a blob in the terminal with the cURL command:</p>
 <pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt;
 </code></pre>
+<div id="admonition-content-sniffing" class="admonition admonish-tip" role="note" aria-labelledby="admonition-content-sniffing-title">
+<div class="admonition-title">
+<div id="admonition-content-sniffing-title">
+<p>Content sniffing</p>
+</div>
+<a class="admonition-anchor-link" href="usage/web-api.html#admonition-content-sniffing"></a>
+</div>
+<div>
 <p>Modern browsers will attempt to sniff the content type for such resources, and will generally do a
 good job of inferring content types for media. However, the aggregator on purpose prevents such
-sniffing from inferring dangerous executable types such as javascript or style sheet types.</p>
+sniffing from inferring dangerous executable types such as JavaScript or style sheet types.</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <p>As inspiration, we provide several simple examples in different programming languages to interact
 with Walrus through the various interfaces. They are located at
@@ -1610,6 +1744,17 @@ Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh
 <p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
 old <code>index.html</code>, and update it with the newer one.</p>
 <p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note"></a>
+</div>
+<div>
+<p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
+</div>
+</div>
 <h2 id="additional-commands"><a class="header" href="#additional-commands">Additional commands</a></h2>
 <p>The <code>site-builder</code> tool provides two additional utilities:</p>
 <ul>
@@ -1619,7 +1764,19 @@ the subdomain where you can browse it.</li>
 <li>the <code>sitemap</code> command, which shows the resources that compose the Walrus Site at the given object
 ID.</li>
 </ul>
-<p>In general, the <code>--help</code> flag is your friend!</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-tip"></a>
+</div>
+<div>
+<p>In general, the <code>--help</code> flag is your friend, you can add it to get further details for the whole
+CLI (<code>./target/release/site-builder --help</code>) or individual commands (e.g.,
+<code>./target/release/site-builder update --help</code>).</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bonus-set-a-suins-name"><a class="header" href="#bonus-set-a-suins-name">Bonus: Set a SuiNS name</a></h1>
 <p>Browsing a URL like <code>https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site</code> is not
 particularly nice. Therefore, Walrus Sites allows to use SuiNS names (this is like DNS for Sui) to

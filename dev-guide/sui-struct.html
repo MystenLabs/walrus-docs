@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -185,9 +186,18 @@ the Walrus contracts is available at
 <a href="https://github.com/MystenLabs/walrus-docs/blob/main/examples/move">https://github.com/MystenLabs/walrus-docs/blob/main/examples/move</a>.</p>
 <p>The following sections provide further insights into the contract and an overview of how you may use
 Walrus objects in your own Sui smart contracts.</p>
-<p><strong>A word of caution:</strong> Walrus testnet will use new Move packages with struct layouts and function
-signatures that may not be compatible with this package. Move code that builds against this package
-will need to rewritten.</p>
+<div id="admonition-a-word-of-caution" class="admonition admonish-danger" role="note" aria-labelledby="admonition-a-word-of-caution-title">
+<div class="admonition-title">
+<div id="admonition-a-word-of-caution-title">
+<p>A word of caution</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-a-word-of-caution"></a>
+</div>
+<div>
+<p>Walrus Testnet will use new Move packages with struct layouts and function signatures that may not
+be compatible with this package. Move code that builds against this package will need to rewritten.</p>
+</div>
+</div>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and Storage Objects</a></h2>
 <p>Walrus blobs are represented as Sui objects of type <code>Blob</code>. A blob is first registered, indicating
 that the storage nodes should expect slivers from a Blob ID to be stored. Then a blob is certified

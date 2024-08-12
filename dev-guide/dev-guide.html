@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -186,15 +187,27 @@ storage or availability.</li>
 from Sui smart contracts, or through the Sui SDK.</li>
 </ul>
 <p>A <a href="../glossary.html">glossary</a> of terms used is also available for reference.</p>
-<h2 id="disclaimer-about-the-walrus-developer-preview"><a class="header" href="#disclaimer-about-the-walrus-developer-preview">Disclaimer about the Walrus developer preview</a></h2>
-<p><strong>This release of Walrus &amp; Walrus Sites is a
-developer preview, to showcase the technology and solicit feedback from builders. All storage nodes
-and aggregators are operated by Mysten Labs, all transactions are executed on the Sui testnet,
-and use testnet SUI which has no value. The state of the store can be, and will be wiped, at any
-point and possibly with no warning. Do not rely on this developer preview for any production
-purposes, it comes with no availability or persistence guarantees.</strong></p>
+<div id="admonition-disclaimer-about-the-walrus-developer-preview" class="admonition admonish-danger" role="note" aria-labelledby="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<div class="admonition-title">
+<div id="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<p>Disclaimer about the Walrus developer preview</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-disclaimer-about-the-walrus-developer-preview"></a>
+</div>
+<div>
+<p>The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
+the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store <strong>can and will be wiped</strong>, at any point and possibly with no warning.
+Do not rely on this developer preview for any production purposes, it comes with no availability or
+persistence guarantees.</p>
+<p>Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
+migration guides will be provided when Testnet becomes available.</p>
 <p>Also see the <a href="../tos.html">Devnet terms of service</a> under which this developer preview is made
 available.</p>
+</div>
+</div>
 
                     </main>
 

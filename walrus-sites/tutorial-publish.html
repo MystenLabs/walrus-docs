@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -234,6 +235,17 @@ Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh
 <p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
 old <code>index.html</code>, and update it with the newer one.</p>
 <p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
+</div>
+</div>
 <h2 id="additional-commands"><a class="header" href="#additional-commands">Additional commands</a></h2>
 <p>The <code>site-builder</code> tool provides two additional utilities:</p>
 <ul>
@@ -243,7 +255,19 @@ the subdomain where you can browse it.</li>
 <li>the <code>sitemap</code> command, which shows the resources that compose the Walrus Site at the given object
 ID.</li>
 </ul>
-<p>In general, the <code>--help</code> flag is your friend!</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>In general, the <code>--help</code> flag is your friend, you can add it to get further details for the whole
+CLI (<code>./target/release/site-builder --help</code>) or individual commands (e.g.,
+<code>./target/release/site-builder update --help</code>).</p>
+</div>
+</div>
 
                     </main>
 

@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -250,13 +251,23 @@ blob ID and record in the metadata to return <code>None</code> for the blob ID f
 blob ID.</p>
 </li>
 </ul>
-<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading: this is because
+<div id="admonition-reading-inconsistent-blobs" class="admonition admonish-tip" role="note" aria-labelledby="admonition-reading-inconsistent-blobs-title">
+<div class="admonition-title">
+<div id="admonition-reading-inconsistent-blobs-title">
+<p>Reading inconsistent blobs</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-reading-inconsistent-blobs"></a>
+</div>
+<div>
+<p>A blob ID that is inconsistent always resolves to <code>None</code> upon reading because
 the read process re-encodes the received blob to check that the blob ID is correctly derived from a
 consistent encoding. This means that an inconsistency proof reveals only a true fact to storage
 nodes (that do not otherwise run decoding), and does not change the output of read in any case.</p>
-<p>Note, however, that partial reads leveraging the systematic nature of the encoding might return
+<p>However, partial reads leveraging the systematic nature of the encoding might successfully return
 partial reads for inconsistently encoded files. Thus, if consistency and availability of reads is
 important, dApps should do full reads rather than partial reads.</p>
+</div>
+</div>
 <h2 id="read-paths"><a class="header" href="#read-paths">Read paths</a></h2>
 <p>A user can read stored blobs either directly or through a cache. The direct user journey is
 discussed here because this is also how the cache operates in case of a cache miss. Assume that most

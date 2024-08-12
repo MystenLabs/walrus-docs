@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -178,9 +179,40 @@
 protocol designed specifically for large binary files, or "blobs". Walrus focuses on providing a
 robust, but affordable solution for storing unstructured content on decentralized storage nodes
 while ensuring high availability and reliability even in the presence of Byzantine faults.</p>
-<p>Fun fact: If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
+<div id="admonition-fun-fact" class="admonition admonish-tip" role="note" aria-labelledby="admonition-fun-fact-title">
+<div class="admonition-title">
+<div id="admonition-fun-fact-title">
+<p>Fun fact</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-fun-fact"></a>
+</div>
+<div>
+<p>If you are viewing this site at <a href="https://docs.walrus.site">https://docs.walrus.site</a>, you are fetching this from
 Walrus behind the scenes. See the <a href="./walrus-sites/intro.html">Walrus Sites chapter</a> for further
 details on how this works.</p>
+</div>
+</div>
+<div id="admonition-disclaimer-about-the-walrus-developer-preview" class="admonition admonish-danger" role="note" aria-labelledby="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<div class="admonition-title">
+<div id="admonition-disclaimer-about-the-walrus-developer-preview-title">
+<p>Disclaimer about the Walrus developer preview</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-disclaimer-about-the-walrus-developer-preview"></a>
+</div>
+<div>
+<p>The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
+the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
+Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+value. The state of the store <strong>can and will be wiped</strong>, at any point and possibly with no warning.
+Do not rely on this developer preview for any production purposes, it comes with no availability or
+persistence guarantees.</p>
+<p>Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
+migration guides will be provided when Testnet becomes available.</p>
+<p>Also see the <a href="../tos.html">Devnet terms of service</a> under which this developer preview is made
+available.</p>
+</div>
+</div>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
 <ul>
 <li>

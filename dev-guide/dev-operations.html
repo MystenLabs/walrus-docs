@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -181,12 +182,19 @@ and the Walrus configuration. The blob ID of two files with the same content wil
 <p>You can derive the blob ID of a file locally using the command: <code>walrus blob-id &lt;file path&gt;</code></p>
 <h2 id="store"><a class="header" href="#store">Store</a></h2>
 <p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher.</p>
-<blockquote>
-<p><strong>All blobs
-stored in Walrus are public and discoverable by all</strong>. Therefore you must not use Walrus to store
-anything that contains secrets or private data without additional measures to protect
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
 confidentiality.</p>
-</blockquote>
+</div>
+</div>
 <p>Under the hood a number of operations happen both on Sui as well as on storage nodes:</p>
 <ul>
 <li>The client or publisher encodes the blob and derives a <em>blob ID</em> that identifies the blob. This

@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -194,9 +195,20 @@ walrus aggregator -b $AGG_ADDRESS # run an aggregator to read blobs
 walrus publisher -b $PUB_ADDRESS # run a publisher to store blobs
 </code></pre>
 <p>The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
-both. Note that the aggregator does not perform Sui on-chain actions, and therefore consumes no gas.
-However, the publisher does perform actions on-chain and will consume gas. It is therefore important
-to ensure only authorized parties may access it, or other measures to manage gas costs.</p>
+both.</p>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
+</div>
+<div>
+<p>While the aggregator does not perform Sui on-chain actions, and therefore consumes no gas, the
+publisher does perform actions on-chain and will consume gas. It is therefore important to ensure
+only authorized parties may access it, or other measures to manage gas costs.</p>
+</div>
+</div>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
 aggregator and/or publisher is required. For your convenience, we provide these at the following
@@ -272,9 +284,19 @@ command reads a blob and writes it to an output file:</p>
 <p>Alternatively you may print the contents of a blob in the terminal with the cURL command:</p>
 <pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt;
 </code></pre>
+<div id="admonition-content-sniffing" class="admonition admonish-tip" role="note" aria-labelledby="admonition-content-sniffing-title">
+<div class="admonition-title">
+<div id="admonition-content-sniffing-title">
+<p>Content sniffing</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-content-sniffing"></a>
+</div>
+<div>
 <p>Modern browsers will attempt to sniff the content type for such resources, and will generally do a
 good job of inferring content types for media. However, the aggregator on purpose prevents such
-sniffing from inferring dangerous executable types such as javascript or style sheet types.</p>
+sniffing from inferring dangerous executable types such as JavaScript or style sheet types.</p>
+</div>
+</div>
 
                     </main>
 

@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body class="sidebar-visible no-js">
@@ -179,7 +180,17 @@
 patterns (see <a href="./interacting.html">the next chapter</a>). This chapter describes the
 <a href="#prerequisites">prerequisites</a>, <a href="#installation">installation</a>, and <a href="#configuration">configuration</a>
 of the Walrus client.</p>
-<p>Note that our Walrus devnet uses Sui <strong>testnet</strong> for coordination.</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>Note that our Walrus Devnet uses Sui <strong>Testnet</strong> for coordination.</p>
+</div>
+</div>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>Interacting with Walrus requires a valid Sui <strong>testnet</strong> wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
@@ -248,6 +259,20 @@ Usage: walrus [OPTIONS] &lt;COMMAND&gt;
 Commands:
 ⋮
 </code></pre>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>Our latest Walrus binaries are also available on Walrus itself, namely on <a href="https://bin.walrus.site">https://bin.walrus.site</a>.
+Note, however, that you can only access this through a web browser and not through CLI tools like
+cURL due to the service-worker architecture (see the <a href="../walrus-sites/portal.html">Walrus Sites docs</a>
+for further insights).</p>
+</div>
+</div>
 <h3 id="binary-custom-path"><a class="header" href="#binary-custom-path">Custom path (optional)</a></h3>
 <p>Instead of <code>~/.local/bin</code>, you can place the binary in any other directory you like. You need to
 either make sure to add that directory to your <code>$PATH</code> or always call the binary as
@@ -313,7 +338,17 @@ communication_config:
       secs: 60
       nanos: 0
 </code></pre>
-<p><strong>Important</strong>: If you specify a wallet path, make sure your wallet is set up for Sui <strong>testnet</strong>.</p>
+<div id="admonition-important" class="admonition admonish-warning" role="note" aria-labelledby="admonition-important-title">
+<div class="admonition-title">
+<div id="admonition-important-title">
+<p>Important</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-important"></a>
+</div>
+<div>
+<p>If you specify a wallet path, make sure your wallet is set up for Sui <strong>Testnet</strong>.</p>
+</div>
+</div>
 
                     </main>
 
