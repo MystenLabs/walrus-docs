@@ -15,9 +15,10 @@ the Walrus contracts is available at
 The following sections provide further insights into the contract and an overview of how you may use
 Walrus objects in your own Sui smart contracts.
 
-**A word of caution:** Walrus testnet will use new Move packages with struct layouts and function
-signatures that may not be compatible with this package. Move code that builds against this package
-will need to rewritten.
+```admonish danger title="A word of caution"
+Walrus Testnet will use new Move packages with struct layouts and function signatures that may not
+be compatible with this package. Move code that builds against this package will need to rewritten.
+```
 
 ## Blob and Storage Objects
 

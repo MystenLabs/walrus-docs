@@ -12,10 +12,11 @@ You can derive the blob ID of a file locally using the command: `walrus blob-id 
 
 Walrus may be used to **store a blob**, via the native client APIs or a publisher.
 
-> **All blobs
-> stored in Walrus are public and discoverable by all**. Therefore you must not use Walrus to store
-> anything that contains secrets or private data without additional measures to protect
-> confidentiality.
+```admonish warning
+**All blobs stored in Walrus are public and discoverable by all.** Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.
+```
 
 Under the hood a number of operations happen both on Sui as well as on storage nodes:
 

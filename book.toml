@@ -10,6 +10,7 @@ build-dir = "build"
 
 
 [output.html]
+additional-css = ["./mdbook-admonish.css"]
 
 [output.linkcheck]
 optional = true
@@ -21,3 +22,10 @@ exclude = [
   'walrus\.site', # No service worker in the link checker.
   'google\.com',
 ]
+
+[preprocessor]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+on_failure = "bail"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
