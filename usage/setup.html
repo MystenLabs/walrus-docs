@@ -237,15 +237,15 @@ when <a href="./interacting.html">running the CLI</a>.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
 <p>We currently provide the <code>walrus</code> client binary for macOS (Intel and Apple CPUs) and Ubuntu:</p>
 <div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
-<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
-<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
-<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
 </tbody></table>
 </div>
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 <code>$SYSTEM</code> variable) and move it to a directory included in your <code>$PATH</code>:</p>
 <pre><code class="language-sh">SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
-curl https://storage.googleapis.com/mysten-walrus-binaries/latest/walrus-latest-$SYSTEM -o walrus
+curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
 mv walrus ~/.local/bin
 </code></pre>
