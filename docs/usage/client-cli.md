@@ -9,8 +9,8 @@ Detailed usage information is available through
 walrus --help
 ```
 
-Each sub-command of `walrus` can also be called with `--help` to print its specific
-arguments and their meaning.
+Each sub-command of `walrus` can also be called with `--help` to print its specific arguments and
+their meaning.
 
 ## Walrus system information
 
@@ -20,19 +20,25 @@ Information about the Walrus system is available through the `walrus info` comma
 $ walrus info
 
 Walrus system information
+Current epoch: 0
 
 Storage nodes
 Number of nodes: 10
-Number of shards: 270
+Number of shards: 1000
 
 Blob size
-Maximum blob size: 957 MiB (1,003,471,920 B)
+Maximum blob size: 13.3 GiB (14,273,391,930 B)
+Storage unit: 1.00 KiB
 
 Approximate storage prices per epoch
-Price per encoded storage unit: 50 MIST/KiB
-Price to store metadata: 850 MIST
-Marginal price per additional 1 MiB (w/o metadata): 239,250 MIST
-Total price per max blob (957 MiB): 0.227 SUI
+Price per encoded storage unit: 50 MIST
+Price to store metadata: 0.0031 SUI
+Marginal price per additional 1 MiB (w/o metadata): 241,950 MIST
+
+Total price for example blob sizes
+16.0 MiB unencoded (135 MiB encoded): 0.0069 SUI per epoch
+512 MiB unencoded (2.33 GiB encoded): 0.122 SUI per epoch
+13.3 GiB unencoded (60.5 GiB encoded): 3.174 SUI per epoch
 ```
 
 gives an overview of the number of storage nodes and shards in the system, the maximum blob size,
