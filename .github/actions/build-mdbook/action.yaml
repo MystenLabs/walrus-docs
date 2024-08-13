@@ -1,6 +1,11 @@
 name: Build the mdBook
 description: Generate static site from markdown files through mdBook
 
+inputs:
+  with_linkcheck:
+    description: Check for broken links
+    default: "true"
+
 runs:
   using: "composite"
   steps:
@@ -15,6 +20,7 @@ runs:
         curl -sSL "$url" | tar -xz --directory=bin
       shell: bash
     - name: Install mdbook-linkcheck
+      if: ${{ inputs.with_linkcheck == 'true' }}
       run: |
         url="https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/latest/download/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip"
         curl -sSL "$url" -o mdbook-linkcheck.zip
