@@ -1,11 +1,11 @@
 # Walrus Storage Node
 
-The binary of the storage node is not yet publicly available. It will be made available in September to
-operators for Testnet nodes. Prior to offical network launch the code will be open-sourced.
+The binary of the storage node is not yet publicly available. It will be made available in September
+to operators for Testnet nodes. Prior to official network launch the code will be open-sourced.
 
 A basic systemd service running the Storage Node could look like this:
 
-```
+```sh
 [Unit]
 Description=Walrus Storage Node
 
@@ -19,11 +19,12 @@ Restart=always
 LimitNOFILE=65536
 ```
 
-The `walrus-node` binary stores slivers in RocksDB, which means the data will be stored on disk, to a path configured by the `/opt/walrus/config/walrus-node.yaml` file.
+The `walrus-node` binary stores slivers in RocksDB, which means the data will be stored on disk, to
+a path configured by the `/opt/walrus/config/walrus-node.yaml` file.
 
 Here are some important config params from a shortened version of the `walrus-node.yaml` config file
 
-```
+```yaml
 storage_path: /opt/walrus/db
 metrics_address: 127.0.0.1:9184
 rest_api_address: 0.0.0.0:9185
@@ -40,4 +41,5 @@ blob_recovery:
   invalidity_sync_timeout_secs: 300
 ```
 
-For monitoring, you can configure Grafana Agent to fetch metrics from `localhost:9184/metrics` (or whatever you've configured `metrics_address` to be).
+For monitoring, you can configure Grafana Agent to fetch metrics from `localhost:9184/metrics`
+(or whatever you've configured `metrics_address` to be).
