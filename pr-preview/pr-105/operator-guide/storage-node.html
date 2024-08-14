@@ -176,10 +176,10 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="walrus-storage-node"><a class="header" href="#walrus-storage-node">Walrus Storage Node</a></h1>
-<p>The binary of the storage node is not yet publicly available. It will be made available in September to
-operators for Testnet nodes. Prior to offical network launch the code will be open-sourced.</p>
+<p>The binary of the storage node is not yet publicly available. It will be made available in September
+to operators for Testnet nodes. Prior to official network launch the code will be open-sourced.</p>
 <p>A basic systemd service running the Storage Node could look like this:</p>
-<pre><code>[Unit]
+<pre><code class="language-sh">[Unit]
 Description=Walrus Storage Node
 
 [Service]
@@ -191,9 +191,10 @@ Restart=always
 
 LimitNOFILE=65536
 </code></pre>
-<p>The <code>walrus-node</code> binary stores slivers in RocksDB, which means the data will be stored on disk, to a path configured by the <code>/opt/walrus/config/walrus-node.yaml</code> file.</p>
+<p>The <code>walrus-node</code> binary stores slivers in RocksDB, which means the data will be stored on disk, to
+a path configured by the <code>/opt/walrus/config/walrus-node.yaml</code> file.</p>
 <p>Here are some important config params from a shortened version of the <code>walrus-node.yaml</code> config file</p>
-<pre><code>storage_path: /opt/walrus/db
+<pre><code class="language-yaml">storage_path: /opt/walrus/db
 metrics_address: 127.0.0.1:9184
 rest_api_address: 0.0.0.0:9185
 sui:
@@ -208,7 +209,8 @@ blob_recovery:
   sliver_request_timeout_secs: 300
   invalidity_sync_timeout_secs: 300
 </code></pre>
-<p>For monitoring, you can configure Grafana Agent to fetch metrics from <code>localhost:9184/metrics</code> (or whatever you've configured <code>metrics_address</code> to be).</p>
+<p>For monitoring, you can configure Grafana Agent to fetch metrics from <code>localhost:9184/metrics</code>
+(or whatever you've configured <code>metrics_address</code> to be).</p>
 
                     </main>
 
