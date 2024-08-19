@@ -12,15 +12,14 @@ module blob_store::epoch_change_tests {
     use blob_store::storage_resource as sr;
 
     // Keep in sync with the same constant in `blob_store::system`
-    const BYTES_PER_UNIT_SIZE : u64 = 1_024;
+    const BYTES_PER_UNIT_SIZE: u64 = 1_024;
 
     public struct TESTWAL has store, drop {}
 
-        // ------------- TESTS --------------------
+    // ------------- TESTS --------------------
 
     #[test]
-    public fun test_use_system() : system::System<TESTWAL> {
-
+    public fun test_use_system(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -30,8 +29,12 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1_000 * BYTES_PER_UNIT_SIZE, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(
+            committee,
+            1_000 * BYTES_PER_UNIT_SIZE,
+            2,
+            &mut ctx,
+        );
 
         // Get some space for a few epochs
         let (storage, fake_coin) = system::reserve_space(
@@ -39,7 +42,7 @@ module blob_store::epoch_change_tests {
             10 * BYTES_PER_UNIT_SIZE,
             3,
             fake_coin,
-            &mut ctx
+            &mut ctx,
         );
         sr::destroy(storage);
 
@@ -58,7 +61,7 @@ module blob_store::epoch_change_tests {
             &mut system,
             committee,
             1_000 * BYTES_PER_UNIT_SIZE,
-            3
+            3,
         );
         assert!(balance::value(sa::rewards_to_distribute(&mut epoch_accounts)) == 20, 0);
 
@@ -68,7 +71,7 @@ module blob_store::epoch_change_tests {
             5 * BYTES_PER_UNIT_SIZE,
             1,
             fake_coin,
-            &mut ctx
+            &mut ctx,
         );
         sr::destroy(storage);
         // The value of the coin should be 40 - 3 x 5
@@ -84,7 +87,7 @@ module blob_store::epoch_change_tests {
             &mut system,
             committee,
             1_000 * BYTES_PER_UNIT_SIZE,
-            3
+            3,
         );
         assert!(balance::value(sa::rewards_to_distribute(&mut epoch_accounts)) == 35, 0);
         sa::burn_for_testing(epoch_accounts);
@@ -98,7 +101,7 @@ module blob_store::epoch_change_tests {
             &mut system,
             committee,
             1_000 * BYTES_PER_UNIT_SIZE,
-            3
+            3,
         );
         assert!(balance::value(sa::rewards_to_distribute(&mut epoch_accounts)) == 20, 0);
         sa::burn_for_testing(epoch_accounts);
@@ -113,7 +116,7 @@ module blob_store::epoch_change_tests {
             &mut system,
             committee,
             1_000 * BYTES_PER_UNIT_SIZE,
-            3
+            3,
         );
         assert!(balance::value(sa::rewards_to_distribute(&mut epoch_accounts)) == 0, 0);
         sa::burn_for_testing(epoch_accounts);
@@ -126,9 +129,8 @@ module blob_store::epoch_change_tests {
         system
     }
 
-    #[test, expected_failure(abort_code=system::ERROR_SYNC_EPOCH_CHANGE)]
-    public fun test_move_sync_err_system() : system::System<TESTWAL> {
-
+    #[test, expected_failure(abort_code=system::ESyncEpochChange)]
+    public fun test_move_sync_err_system(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -138,8 +140,7 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1000, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(committee, 1000, 2, &mut ctx);
 
         // Advance epoch -- to epoch 1
         let committee = committee::committee_for_testing(1);
@@ -157,9 +158,8 @@ module blob_store::epoch_change_tests {
         system
     }
 
-    #[test, expected_failure(abort_code=system::ERROR_STORAGE_EXCEEDED)]
-    public fun test_fail_capacity_system() : system::System<TESTWAL> {
-
+    #[test, expected_failure(abort_code=system::EStorageExceeded)]
+    public fun test_fail_capacity_system(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -169,8 +169,7 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1000, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(committee, 1000, 2, &mut ctx);
 
         // Get some space for a few epochs
         let (storage, fake_coin) = system::reserve_space(&mut system, 10, 3, fake_coin, &mut ctx);
@@ -192,8 +191,7 @@ module blob_store::epoch_change_tests {
     }
 
     #[test]
-    public fun test_sync_done_happy() : system::System<TESTWAL> {
-
+    public fun test_sync_done_happy(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -203,8 +201,7 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1000, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(committee, 1000, 2, &mut ctx);
 
         // Advance epoch -- to epoch 1
         let committee = committee::committee_for_testing(1);
@@ -228,9 +225,8 @@ module blob_store::epoch_change_tests {
         system
     }
 
-    #[test, expected_failure(abort_code=system::ERROR_SYNC_EPOCH_CHANGE)]
-    public fun test_sync_done_unhappy() : system::System<TESTWAL> {
-
+    #[test, expected_failure(abort_code=system::ESyncEpochChange)]
+    public fun test_sync_done_unhappy(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -240,8 +236,7 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1000, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(committee, 1000, 2, &mut ctx);
 
         // Advance epoch -- to epoch 1
         let committee = committee::committee_for_testing(1);
@@ -259,9 +254,8 @@ module blob_store::epoch_change_tests {
         system
     }
 
-    #[test, expected_failure(abort_code=system::ERROR_SYNC_EPOCH_CHANGE)]
-    public fun test_twice_unhappy() : system::System<TESTWAL> {
-
+    #[test, expected_failure(abort_code=system::ESyncEpochChange)]
+    public fun test_twice_unhappy(): system::System<TESTWAL> {
         let mut ctx = tx_context::dummy();
 
         // A test coin.
@@ -271,8 +265,7 @@ module blob_store::epoch_change_tests {
         let committee = committee::committee_for_testing(0);
 
         // Create a new system object
-        let mut system : system::System<TESTWAL> = system::new(committee,
-            1000, 2, &mut ctx);
+        let mut system: system::System<TESTWAL> = system::new(committee, 1000, 2, &mut ctx);
 
         // Advance epoch -- to epoch 1
         let committee = committee::committee_for_testing(1);

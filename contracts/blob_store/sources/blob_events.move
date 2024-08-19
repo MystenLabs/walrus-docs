@@ -37,32 +37,14 @@ module blob_store::blob_events {
         erasure_code_type: u8,
         end_epoch: u64,
     ) {
-        event::emit(BlobRegistered {
-            epoch,
-            blob_id,
-            size,
-            erasure_code_type,
-            end_epoch,
-        });
+        event::emit(BlobRegistered { epoch, blob_id, size, erasure_code_type, end_epoch });
     }
 
-    public(package) fun emit_blob_certified(
-        epoch: u64,
-        blob_id: u256,
-        end_epoch: u64,
-    ) {
-        event::emit(BlobCertified {
-            epoch,
-            blob_id,
-            end_epoch,
-        });
+    public(package) fun emit_blob_certified(epoch: u64, blob_id: u256, end_epoch: u64) {
+        event::emit(BlobCertified { epoch, blob_id, end_epoch });
     }
 
     public(package) fun emit_invalid_blob_id(epoch: u64, blob_id: u256) {
-        event::emit(InvalidBlobID {
-            epoch,
-            blob_id,
-        });
+        event::emit(InvalidBlobID { epoch, blob_id });
     }
-
 }
