@@ -64,7 +64,7 @@ module blob_store::bls_tests {
 
     }
 
-    #[test, expected_failure(abort_code = bls_aggregate::ERROR_SIG_VERIFICATION) ]
+    #[test, expected_failure(abort_code = bls_aggregate::ESigVerification) ]
     public fun test_add_members_error(): BlsCommittee {
         let pk0 = vector[166, 14, 117, 25, 14, 98, 182, 165, 65, 66, 209, 71, 40, 154, 115, 92, 76, 225, 26, 157, 153, 117, 67, 218, 83, 154, 61, 181, 125, 239, 94, 216, 59, 164, 11, 116, 229, 80, 101, 240, 43, 53, 170, 29, 80, 76, 64, 75];
         let pk1 = vector[174, 18, 3, 148, 89, 198, 4, 145, 103, 43, 106, 98, 130, 53, 93, 135, 101, 186, 98, 114, 56, 127, 185, 26, 62, 150, 4, 250, 42, 129, 69, 12, 241, 107, 135, 11, 180, 70, 252, 58, 62, 10, 24, 127, 255, 111, 137, 69];
@@ -98,7 +98,7 @@ module blob_store::bls_tests {
 
     }
 
-    #[test, expected_failure(abort_code = bls_aggregate::ERROR_SIG_VERIFICATION) ]
+    #[test, expected_failure(abort_code = bls_aggregate::ESigVerification) ]
     public fun test_incorrect_signature_error(): BlsCommittee {
         let pk0 = vector[166, 14, 117, 25, 14, 98, 182, 165, 65, 66, 209, 71, 40, 154, 115, 92, 76, 225, 26, 157, 153, 117, 67, 218, 83, 154, 61, 181, 125, 239, 94, 216, 59, 164, 11, 116, 229, 80, 101, 240, 43, 53, 170, 29, 80, 76, 64, 75];
         let pk1 = vector[174, 18, 3, 148, 89, 198, 4, 145, 103, 43, 106, 98, 130, 53, 93, 135, 101, 186, 98, 114, 56, 127, 185, 26, 62, 150, 4, 250, 42, 129, 69, 12, 241, 107, 135, 11, 180, 70, 252, 58, 62, 10, 24, 127, 255, 111, 137, 69];
@@ -133,7 +133,7 @@ module blob_store::bls_tests {
 
     }
 
-    #[test, expected_failure(abort_code = bls_aggregate::ERROR_TOTAL_MEMBER_ORDER) ]
+    #[test, expected_failure(abort_code = bls_aggregate::ETotalMemberOrder) ]
     public fun test_duplicate_member_error(): BlsCommittee {
         let pk0 = vector[166, 14, 117, 25, 14, 98, 182, 165, 65, 66, 209, 71, 40, 154, 115, 92, 76, 225, 26, 157, 153, 117, 67, 218, 83, 154, 61, 181, 125, 239, 94, 216, 59, 164, 11, 116, 229, 80, 101, 240, 43, 53, 170, 29, 80, 76, 64, 75];
         let pk1 = vector[174, 18, 3, 148, 89, 198, 4, 145, 103, 43, 106, 98, 130, 53, 93, 135, 101, 186, 98, 114, 56, 127, 185, 26, 62, 150, 4, 250, 42, 129, 69, 12, 241, 107, 135, 11, 180, 70, 252, 58, 62, 10, 24, 127, 255, 111, 137, 69];
@@ -168,7 +168,7 @@ module blob_store::bls_tests {
 
     }
 
-        #[test, expected_failure(abort_code = bls_aggregate::ERROR_NOT_ENOUGH_STAKE) ]
+        #[test, expected_failure(abort_code = bls_aggregate::ENotEnoughStake) ]
     public fun test_incorrect_stake_error(): BlsCommittee {
         let pk0 = vector[166, 14, 117, 25, 14, 98, 182, 165, 65, 66, 209, 71, 40, 154, 115, 92, 76, 225, 26, 157, 153, 117, 67, 218, 83, 154, 61, 181, 125, 239, 94, 216, 59, 164, 11, 116, 229, 80, 101, 240, 43, 53, 170, 29, 80, 76, 64, 75];
         let pk1 = vector[174, 18, 3, 148, 89, 198, 4, 145, 103, 43, 106, 98, 130, 53, 93, 135, 101, 186, 98, 114, 56, 127, 185, 26, 62, 150, 4, 250, 42, 129, 69, 12, 241, 107, 135, 11, 180, 70, 252, 58, 62, 10, 24, 127, 255, 111, 137, 69];

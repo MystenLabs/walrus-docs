@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 module blob_store::storage_resource {
-
     const EInvalidEpoch: u64 = 0;
     const EIncompatibleEpochs: u64 = 1;
     const EIncompatibleAmount: u64 = 2;
@@ -15,15 +14,15 @@ module blob_store::storage_resource {
         storage_size: u64,
     }
 
-    public fun start_epoch(self: &Storage) : u64 {
+    public fun start_epoch(self: &Storage): u64 {
         self.start_epoch
     }
 
-    public fun end_epoch(self: &Storage) : u64 {
+    public fun end_epoch(self: &Storage): u64 {
         self.end_epoch
     }
 
-    public fun storage_size(self: &Storage) : u64 {
+    public fun storage_size(self: &Storage): u64 {
         self.storage_size
     }
 
@@ -35,13 +34,8 @@ module blob_store::storage_resource {
         end_epoch: u64,
         storage_size: u64,
         ctx: &mut TxContext,
-    ) : Storage {
-        Storage {
-            id: object::new(ctx),
-            start_epoch,
-            end_epoch,
-            storage_size,
-        }
+    ): Storage {
+        Storage { id: object::new(ctx), start_epoch, end_epoch, storage_size }
     }
 
     /// Split the storage object into two based on `split_epoch`
@@ -52,10 +46,10 @@ module blob_store::storage_resource {
         storage: &mut Storage,
         split_epoch: u64,
         ctx: &mut TxContext,
-    ) : Storage {
+    ): Storage {
         assert!(
             split_epoch >= storage.start_epoch && split_epoch <= storage.end_epoch,
-            EInvalidEpoch
+            EInvalidEpoch,
         );
         let end_epoch = storage.end_epoch;
         storage.end_epoch = split_epoch;
@@ -71,11 +65,7 @@ module blob_store::storage_resource {
     ///
     /// `storage` is modified to cover `split_size` and a new object covering
     /// `storage.storage_size - split_size` is created.
-    public fun split_by_size(
-        storage: &mut Storage,
-        split_size: u64,
-        ctx: &mut TxContext,
-    ) : Storage {
+    public fun split_by_size(storage: &mut Storage, split_size: u64, ctx: &mut TxContext): Storage {
         let storage_size = storage.storage_size - split_size;
         storage.storage_size = split_size;
         Storage {
@@ -87,19 +77,16 @@ module blob_store::storage_resource {
     }
 
     /// Fuse two storage objects that cover adjacent periods with the same storage size.
-    public fun fuse_periods(
-        first: &mut Storage,
-        second: Storage,
-    ) {
+    public fun fuse_periods(first: &mut Storage, second: Storage) {
         let Storage {
-                id,
-                start_epoch: second_start,
-                end_epoch: second_end,
-                storage_size: second_size,
-            } = second;
-        object::delete(id);
+            id,
+            start_epoch: second_start,
+            end_epoch: second_end,
+            storage_size: second_size,
+        } = second;
+        id.delete();
         assert!(first.storage_size == second_size, EIncompatibleAmount);
-        if(first.end_epoch == second_start) {
+        if (first.end_epoch == second_start) {
             first.end_epoch = second_end;
         } else {
             assert!(first.start_epoch == second_end, EIncompatibleEpochs);
@@ -108,30 +95,24 @@ module blob_store::storage_resource {
     }
 
     /// Fuse two storage objects that cover the same period
-    public fun fuse_amount(
-        first: &mut Storage,
-        second: Storage,
-    ) {
+    public fun fuse_amount(first: &mut Storage, second: Storage) {
         let Storage {
-                id,
-                start_epoch: second_start,
-                end_epoch: second_end,
-                storage_size: second_size,
-            } = second;
-        object::delete(id);
+            id,
+            start_epoch: second_start,
+            end_epoch: second_end,
+            storage_size: second_size,
+        } = second;
+        id.delete();
         assert!(
             first.start_epoch == second_start && first.end_epoch == second_end,
-            EIncompatibleEpochs
+            EIncompatibleEpochs,
         );
         first.storage_size = first.storage_size + second_size;
     }
 
     /// Fuse two storage objects that either cover the same period
     /// or adjacent periods with the same storage size.
-    public fun fuse(
-        first: &mut Storage,
-        second: Storage,
-    ) {
+    public fun fuse(first: &mut Storage, second: Storage) {
         if (first.start_epoch == second.start_epoch) {
             // Fuse by storage_size
             fuse_amount(first, second);
@@ -148,25 +129,18 @@ module blob_store::storage_resource {
         end_epoch: u64,
         storage_size: u64,
         ctx: &mut TxContext,
-    ) : Storage {
-        Storage {
-            id: object::new(ctx),
-            start_epoch,
-            end_epoch,
-            storage_size,
-        }
+    ): Storage {
+        Storage { id: object::new(ctx), start_epoch, end_epoch, storage_size }
     }
 
     /// Destructor for [Storage] objects
-    public fun destroy(
-        storage: Storage,
-    ) {
+    public fun destroy(storage: Storage) {
         let Storage {
             id,
             start_epoch: _,
             end_epoch: _,
             storage_size: _,
         } = storage;
-        object::delete(id);
+        id.delete();
     }
 }

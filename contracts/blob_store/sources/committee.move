@@ -7,8 +7,8 @@ module blob_store::committee {
     const APP_ID: u8 = 3;
 
     // Errors
-    const ERROR_INCORRECT_APP_ID: u64 = 0;
-    const ERROR_INCORRECT_EPOCH: u64 = 1;
+    const EIncorrectAppId: u64 = 0;
+    const EIncorrectEpoch: u64 = 1;
 
     #[test_only]
     use blob_store::bls_aggregate::new_bls_committee_for_testing;
@@ -31,11 +31,11 @@ module blob_store::committee {
     /// signal that the new epoch has started.
     public struct Committee has store {
         epoch: u64,
-        bls_committee : BlsCommittee,
+        bls_committee: BlsCommittee,
     }
 
     /// Get the epoch of the committee.
-    public fun epoch(self: &Committee) : u64 {
+    public fun epoch(self: &Committee): u64 {
         self.epoch
     }
 
@@ -44,18 +44,18 @@ module blob_store::committee {
 
     /// A constructor for the capability to create committees
     /// This is only accessible through friend modules.
-    public(package) fun create_committee_cap() : CreateCommitteeCap {
+    public(package) fun create_committee_cap(): CreateCommitteeCap {
         CreateCommitteeCap {}
     }
 
     /// Returns the number of shards held by the committee.
-    public fun n_shards(self: &Committee) : u16 {
+    public fun n_shards(self: &Committee): u16 {
         bls_aggregate::n_shards(&self.bls_committee)
     }
 
     #[test_only]
     /// A constructor for the capability to create committees for tests
-    public fun create_committee_cap_for_tests() : CreateCommitteeCap {
+    public fun create_committee_cap_for_tests(): CreateCommitteeCap {
         CreateCommitteeCap {}
     }
 
@@ -65,7 +65,7 @@ module blob_store::committee {
         _cap: &CreateCommitteeCap,
         epoch: u64,
         members: vector<StorageNodeInfo>,
-    ) : Committee {
+    ): Committee {
         // Make BlsCommittee
         let bls_committee = new_bls_committee(members);
 
@@ -73,18 +73,13 @@ module blob_store::committee {
     }
 
     #[test_only]
-    public fun committee_for_testing(
-        epoch: u64,
-    ) : Committee {
+    public fun committee_for_testing(epoch: u64): Committee {
         let bls_committee = new_bls_committee_for_testing();
         Committee { epoch, bls_committee }
     }
 
     #[test_only]
-    public fun committee_for_testing_with_bls(
-        epoch: u64,
-        bls_committee: BlsCommittee,
-    ) : Committee {
+    public fun committee_for_testing_with_bls(epoch: u64, bls_committee: BlsCommittee): Committee {
         Committee { epoch, bls_committee }
     }
 
@@ -103,33 +98,33 @@ module blob_store::committee {
         cert_epoch: u64,
         stake_support: u16,
         message: vector<u8>,
-    ) : CertifiedMessage {
+    ): CertifiedMessage {
         CertifiedMessage { intent_type, intent_version, cert_epoch, stake_support, message }
     }
 
     // Make accessors for the CertifiedMessage
-    public fun intent_type(self: &CertifiedMessage) : u8 {
+    public fun intent_type(self: &CertifiedMessage): u8 {
         self.intent_type
     }
 
-    public fun intent_version(self: &CertifiedMessage) : u8 {
+    public fun intent_version(self: &CertifiedMessage): u8 {
         self.intent_version
     }
 
-    public fun cert_epoch(self: &CertifiedMessage) : u64 {
+    public fun cert_epoch(self: &CertifiedMessage): u64 {
         self.cert_epoch
     }
 
-    public fun stake_support(self: &CertifiedMessage) : u16 {
+    public fun stake_support(self: &CertifiedMessage): u16 {
         self.stake_support
     }
 
-    public fun message(self: &CertifiedMessage) : &vector<u8> {
+    public fun message(self: &CertifiedMessage): &vector<u8> {
         &self.message
     }
 
     // Deconstruct into the vector of message bytes
-    public fun into_message(self: CertifiedMessage) : vector<u8> {
+    public fun into_message(self: CertifiedMessage): vector<u8> {
         self.message
     }
 
@@ -143,24 +138,27 @@ module blob_store::committee {
         signature: vector<u8>,
         members: vector<u16>,
         message: vector<u8>,
-        ) : CertifiedMessage {
-
-        let stake_support =
-            verify_certificate(&committee.bls_committee, &signature, &members, &message);
+    ): CertifiedMessage {
+        let stake_support = verify_certificate(
+            &committee.bls_committee,
+            &signature,
+            &members,
+            &message,
+        );
 
         // Here we BCS decode the header of the message to check intents, epochs, etc.
 
         let mut bcs_message = bcs::new(message);
-        let intent_type = bcs::peel_u8(&mut bcs_message);
-        let intent_version = bcs::peel_u8(&mut bcs_message);
+        let intent_type = bcs_message.peel_u8();
+        let intent_version = bcs_message.peel_u8();
 
-        let intent_app = bcs::peel_u8(&mut bcs_message);
-        assert!(intent_app == APP_ID, ERROR_INCORRECT_APP_ID);
+        let intent_app = bcs_message.peel_u8();
+        assert!(intent_app == APP_ID, EIncorrectAppId);
 
-        let cert_epoch = bcs::peel_u64(&mut bcs_message);
-        assert!(cert_epoch == epoch(committee), ERROR_INCORRECT_EPOCH);
+        let cert_epoch = bcs_message.peel_u64();
+        assert!(cert_epoch == epoch(committee), EIncorrectEpoch);
 
-        let message = bcs::into_remainder_bytes(bcs_message);
+        let message = bcs_message.into_remainder_bytes();
 
         CertifiedMessage { intent_type, intent_version, cert_epoch, stake_support, message }
     }

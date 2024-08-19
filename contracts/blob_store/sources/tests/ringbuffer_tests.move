@@ -11,10 +11,8 @@ module blob_store::ringbuffer_tests {
     // ------------- TESTS --------------------
 
     #[test]
-    public fun test_basic_ring_buffer() : FutureAccountingRingBuffer<TESTCOIN>{
-
-        let mut buffer : FutureAccountingRingBuffer<TESTCOIN>
-            = sa::ring_new(3);
+    public fun test_basic_ring_buffer(): FutureAccountingRingBuffer<TESTCOIN> {
+        let mut buffer: FutureAccountingRingBuffer<TESTCOIN> = sa::ring_new(3);
 
         assert!(sa::epoch(sa::ring_lookup_mut(&mut buffer, 0)) == 0, 100);
         assert!(sa::epoch(sa::ring_lookup_mut(&mut buffer, 1)) == 1, 100);
@@ -36,14 +34,11 @@ module blob_store::ringbuffer_tests {
     }
 
     #[test, expected_failure]
-    public fun test_oob_fail_ring_buffer() : FutureAccountingRingBuffer<TESTCOIN>{
-
-        let mut buffer : FutureAccountingRingBuffer<TESTCOIN>
-            = sa::ring_new(3);
+    public fun test_oob_fail_ring_buffer(): FutureAccountingRingBuffer<TESTCOIN> {
+        let mut buffer: FutureAccountingRingBuffer<TESTCOIN> = sa::ring_new(3);
 
         sa::epoch(sa::ring_lookup_mut(&mut buffer, 3));
 
         buffer
     }
-
 }
