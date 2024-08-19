@@ -88,7 +88,7 @@ You can download the latest build from our Google Cloud Storage (GCS) bucket (co
 SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
-mv walrus ~/.local/bin
+mv walrus ~/.local/bin/
 ```
 
 Once this is done, you should be able to simply type `walrus` in your terminal. For example you can
