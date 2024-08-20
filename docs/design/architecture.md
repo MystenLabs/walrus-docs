@@ -15,7 +15,7 @@ The key actors in the Walrus architecture are the following:
 
 - **Storage nodes** hold one or many **shards** within a **storage epoch**.
 
-  Each blob is erasure into encoded in many **slivers**. Slivers from each stored blob become part
+  Each blob is erasure-encoded into many **slivers**. Slivers from each stored blob become part
   of all shards. A shard at any storage epoch is associated with a storage node that actually stores
   all slivers of the shard and is ready to serve them.
 
