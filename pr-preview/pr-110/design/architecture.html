@@ -190,7 +190,7 @@ exhaust resources of storage nodes, and so on.</p>
 </li>
 <li>
 <p><strong>Storage nodes</strong> hold one or many <strong>shards</strong> within a <strong>storage epoch</strong>.</p>
-<p>Each blob is encoded into many <strong>slivers</strong>. Slivers from each stored blob become part
+<p>Each blob is erasure-encoded into many <strong>slivers</strong>. Slivers from each stored blob become part
 of all shards. A shard at any storage epoch is associated with a storage node that actually stores
 all slivers of the shard and is ready to serve them.</p>
 <p>A Sui smart contract controls the assignment of shards to storage nodes within
