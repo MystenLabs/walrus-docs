@@ -27,6 +27,12 @@ Also see the [Devnet terms of service](../tos.md) under which this developer pre
 available.
 ```
 
+```admonish danger title="Public access"
+**All blobs stored in Walrus are public and discoverable by all.** Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.
+```
+
 ## Features
 
 - **Storage and retrieval:** Walrus supports storage operations to write and read blobs. It also
