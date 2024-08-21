@@ -102,8 +102,3 @@ Use the `--config` option to specify a custom path to the
 The `--wallet <WALLET>` argument may be used to specify a non-standard Sui wallet configuration
 file. And a `--gas-budget <GAS_BUDGET>` argument may be used to change the maximum amount of Sui (in
 MIST) that the command is allowed to use.
-
-## Troubleshooting
-
-If you get an error like "the specified Walrus system object does not exist", make sure your wallet
-is set up for Sui **Testnet** and you use the latest [configuration](./setup.md#configuration).
