@@ -1,0 +1,25 @@
+name: Feature Request
+description: File a feature request.
+title: "[Feature request]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to improve Walrus!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the new feature and what would be the benefit.
+      value: "I would like to be able to ..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our
+        [Code of Conduct](https://github.com/MystenLabs/walrus-sites/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true
