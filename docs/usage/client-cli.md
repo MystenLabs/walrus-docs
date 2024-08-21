@@ -50,6 +50,12 @@ argument: `walrus info --dev`.
 
 ## Storing, querying status, and reading blobs
 
+```admonish danger title="Public access"
+**All blobs stored in Walrus are public and discoverable by all.** Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.
+```
+
 Storing blobs on Walrus can be achieved through the following command:
 
 ```sh

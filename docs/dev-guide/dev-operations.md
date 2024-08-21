@@ -12,7 +12,7 @@ You can derive the blob ID of a file locally using the command: `walrus blob-id 
 
 Walrus may be used to **store a blob**, via the native client APIs or a publisher.
 
-```admonish warning
+```admonish danger title="Public access"
 **All blobs stored in Walrus are public and discoverable by all.** Therefore you must not use Walrus
 to store anything that contains secrets or private data without additional measures to protect
 confidentiality.
