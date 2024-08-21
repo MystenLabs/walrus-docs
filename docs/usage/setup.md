@@ -75,20 +75,29 @@ when [running the CLI](./interacting.md).
 
 We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs) and Ubuntu:
 
-| OS     | CPU           | Architecture                                                                                                |
-| ------ | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| OS     | CPU           | Architecture                                                                                         |
+|--------|---------------|------------------------------------------------------------------------------------------------------|
 | MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64)     |
 | MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64)   |
 | Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64) |
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-`$SYSTEM` variable) and move it to a directory included in your `$PATH`:
+`$SYSTEM` variable)`:
 
 ```sh
 SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
-mv walrus ~/.local/bin
+```
+
+To be able to run it simply as `walrus`, move the binary to any directory included in your `$PATH`
+environment variable. Standard locations are `/usr/local/bin/`, `$HOME/bin/`, or
+`$HOME/.local/bin/`.
+
+```admonish warn
+Previously, this guide recommended placing the binary in `$HOME/.local/bin/`. If you install the
+latest binary somewhere else, make sure to clean up old versions. You can find the binary in use by
+calling `which walrus`.
 ```
 
 Once this is done, you should be able to simply type `walrus` in your terminal. For example you can
@@ -110,12 +119,6 @@ Note, however, that you can only access this through a web browser and not throu
 cURL due to the service-worker architecture (see the [Walrus Sites docs](../walrus-sites/portal.md)
 for further insights).
 ```
-
-### Custom path (optional) {#binary-custom-path}
-
-Instead of `~/.local/bin`, you can place the binary in any other directory you like. You need to
-either make sure to add that directory to your `$PATH` or always call the binary as
-`/full/path/to/walrus`.
 
 ### Previous versions (optional)
 
