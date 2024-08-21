@@ -215,6 +215,19 @@ migration guides will be provided when Testnet becomes available.</p>
 available.</p>
 </div>
 </div>
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
+<div class="admonition-title">
+<div id="admonition-public-access-title">
+<p>Public access</p>
+</div>
+<a class="admonition-anchor-link" href="index.html#admonition-public-access"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
+</div>
+</div>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
 <ul>
 <li>
@@ -1001,12 +1014,12 @@ and the Walrus configuration. The blob ID of two files with the same content wil
 <p>You can derive the blob ID of a file locally using the command: <code>walrus blob-id &lt;file path&gt;</code>.</p>
 <h2 id="store"><a class="header" href="#store">Store</a></h2>
 <p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher.</p>
-<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
 <div class="admonition-title">
-<div id="admonition-warning-title">
-<p>Warning</p>
+<div id="admonition-public-access-title">
+<p>Public access</p>
 </div>
-<a class="admonition-anchor-link" href="dev-guide/dev-operations.html#admonition-warning"></a>
+<a class="admonition-anchor-link" href="dev-guide/dev-operations.html#admonition-public-access"></a>
 </div>
 <div>
 <p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
@@ -1453,6 +1466,19 @@ and the current cost in (Testnet) SUI for storing blobs.</p>
 information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
 argument: <code>walrus info --dev</code>.</p>
 <h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status, and reading blobs</a></h2>
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
+<div class="admonition-title">
+<div id="admonition-public-access-title">
+<p>Public access</p>
+</div>
+<a class="admonition-anchor-link" href="usage/client-cli.html#admonition-public-access"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
+</div>
+</div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
 <pre><code class="language-sh">walrus store &lt;some file&gt;
 </code></pre>

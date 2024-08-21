@@ -214,6 +214,19 @@ and the current cost in (Testnet) SUI for storing blobs.</p>
 information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
 argument: <code>walrus info --dev</code>.</p>
 <h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status, and reading blobs</a></h2>
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
+<div class="admonition-title">
+<div id="admonition-public-access-title">
+<p>Public access</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-public-access"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
+</div>
+</div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
 <pre><code class="language-sh">walrus store &lt;some file&gt;
 </code></pre>
