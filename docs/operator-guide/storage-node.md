@@ -1,11 +1,11 @@
-# Walrus Storage Node
+# Operating a storage node
 
 The binary of the storage node is not yet publicly available. It will be made available in September
 to operators for Testnet nodes. Prior to official network launch the code will be open-sourced.
 
 A basic systemd service running the Storage Node could look like this:
 
-```sh
+```ini
 [Unit]
 Description=Walrus Storage Node
 
@@ -19,10 +19,14 @@ Restart=always
 LimitNOFILE=65536
 ```
 
-The `walrus-node` binary stores slivers in RocksDB, which means the data will be stored on disk, to
-a path configured by the `/opt/walrus/config/walrus-node.yaml` file.
+Make sure to adjust any paths and, if desired, the log level.
 
-Here are some important config params from a shortened version of the `walrus-node.yaml` config file
+The `walrus-node` binary stores slivers in RocksDB, which means the data will be stored on disk, to
+a path configured by the `/opt/walrus/config/walrus-node.yaml` file. The full format with all
+mandatory and optional configuration parameters will be made available with the binary.
+
+Here are some important config params from a shortened version of the `walrus-node.yaml` config
+file:
 
 ```yaml
 storage_path: /opt/walrus/db
