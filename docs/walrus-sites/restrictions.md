@@ -39,7 +39,7 @@ This limitation only applies to Portal based on service workers. A web Portal wi
 have this limitation.
 ```
 
-## iOS Sui Mobile Wallets do not work with Walrus Sites
+## iOS Sui mobile wallets do not work with Walrus Sites
 
 Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
 WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
@@ -53,3 +53,7 @@ The connection with the Sui Wallet apps works on Android devices.
 This limitation only applies to Portal based on service workers. A web Portal will not
 have this limitation.
 ```
+
+## No support for progressive web apps (PWAs)
+
+With the current design, Walrus Sites cannot be used for progressive web apps (PWAs).
