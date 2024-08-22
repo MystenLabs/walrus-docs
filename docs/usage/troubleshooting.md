@@ -8,7 +8,7 @@ You can enable debug logging for Walrus by setting the environment variable `RUS
 
 Before undertaking any other steps, make sure you have the [latest `walrus`
 binary](./setup.md#installation). If you have multiple versions in different locations, find the
-actually used binary with `which walrus`.
+the binary that will actually be used with `which walrus`.
 
 ## Latest Walrus configuration
 
@@ -19,8 +19,8 @@ this case, update your configuration file with the latest [configuration](./setu
 and make sure the CLI uses the intended configuration.
 
 ```admonish tip
-The path to the Walrus configuration file used by the `walrus` client binary is printed at the
-beginning.
+The `walrus` client binary prints information about the used configuration when starting execution,
+including the path to the Walrus configuration file and the Sui wallet.
 ```
 
 ## Correct Sui network configuration
