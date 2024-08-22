@@ -8,8 +8,8 @@ title = "Walrus"
 [build]
 build-dir = "build"
 
-
 [output.html]
+theme = "theme"
 additional-css = ["./mdbook-admonish.css"]
 
 [output.linkcheck]
