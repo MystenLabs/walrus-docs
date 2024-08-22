@@ -1,0 +1,74 @@
+name: Bug Report
+description: File a bug report.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug! 🐞
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what you expected to happen.
+      placeholder: Tell us what you see, and what you expected to see.
+    validations:
+      required: true
+  - type: textarea
+    id: search
+    attributes:
+      label: Search terms
+      description: >
+        Please make sure your issue hasn't been reported before by searching for similar issues and
+        provide the search terms you used here.
+      placeholder: Please paste the content from the issue search bar.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: Steps to reproduce
+      description: Please provide detailed steps for reproducing the issue.
+      placeholder: Provide a step-by-step guide on how to reproduce the issue.
+      value: |
+        Example:
+        1. Create an empty file: `touch empty`
+        2. Try to store the empty file: `walrus store empty`
+    validations:
+      required: true
+  - type: textarea
+    id: deviation-steps
+    attributes:
+      label: Deviation steps
+      description: If you have deviated from the
+        [setup instructions](https://docs.walrus.site/usage/setup.html), please describe how.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: >
+        Please copy and paste any relevant log output.
+        To get detailed output, set the `RUST_LOG` environment variable as follows:
+        `RUST_LOG="walrus=DEBUG"`.
+        Your input will be automatically formatted as code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: version
+    attributes:
+      label: Version
+      description: >
+        Have you made sure that you are using the latest versions of the `walrus` binary
+        and the configuration?
+      options:
+        - label: My `walrus` binary and configuration are up to date.
+          required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our
+        [Code of Conduct](https://github.com/MystenLabs/walrus-docs/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true
