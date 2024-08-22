@@ -1,4 +1,5 @@
 <!-- markdownlint-disable headings no-empty-links -->
+
 # Summary
 
 [Walrus](./README.md)
@@ -27,10 +28,13 @@
 
 # Usage
 
-- [Developer Guide](./dev-guide/dev-guide.md)
+- [Developer guide](./dev-guide/dev-guide.md)
   - [Components](./dev-guide/components.md)
   - [Operations](./dev-guide/dev-operations.md)
   - [Sui structures](./dev-guide/sui-struct.md)
+- [Operator guide](./operator-guide/operator-guide.md)
+  - [Storage node](./operator-guide/storage-node.md)
+  - [Aggregator](./operator-guide/aggregator.md)
 - [Setup](./usage/setup.md)
 - [Interacting with Walrus](./usage/interacting.md)
   - [Using the client CLI](./usage/client-cli.md)
