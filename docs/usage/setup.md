@@ -75,11 +75,12 @@ when [running the CLI](./interacting.md).
 
 We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs) and Ubuntu:
 
-| OS     | CPU           | Architecture                                                                                         |
-|--------|---------------|------------------------------------------------------------------------------------------------------|
-| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64)     |
-| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64)   |
-| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64) |
+| OS     | CPU                   | Architecture                                                                                                         |
+| ------ | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| MacOS  | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64)                     |
+| MacOS  | Intel 64bit           | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64)                   |
+| Ubuntu | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64)                 |
+| Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic) |
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 `$SYSTEM` variable)`:
@@ -89,6 +90,10 @@ SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
 ```
+
+On Ubuntu, you should generally use the `ubuntu-x86_64` version. However, this is incompatible with
+old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
+error); in these cases you can use the `ubuntu-x86_64-generic` version.
 
 To be able to run it simply as `walrus`, move the binary to any directory included in your `$PATH`
 environment variable. Standard locations are `/usr/local/bin/`, `$HOME/bin/`, or
