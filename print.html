@@ -2382,7 +2382,7 @@ user.</p>
 have this limitation.</p>
 </div>
 </div>
-<h2 id="ios-sui-mobile-wallets-do-not-work-with-walrus-sites"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-walrus-sites">iOS Sui Mobile Wallets do not work with Walrus Sites</a></h2>
+<h2 id="ios-sui-mobile-wallets-do-not-work-with-walrus-sites"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-walrus-sites">iOS Sui mobile wallets do not work with Walrus Sites</a></h2>
 <p>Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
 WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
 iOS. Therefore, Sui wallets cannot currently be used on a Walrus Site on iOS. Note, however, that
@@ -2401,6 +2401,20 @@ wallet is impacted.</p>
 have this limitation.</p>
 </div>
 </div>
+<h2 id="no-support-for-progressive-web-apps-pwas"><a class="header" href="#no-support-for-progressive-web-apps-pwas">No support for progressive web apps (PWAs)</a></h2>
+<p>With the current design, Walrus Sites cannot be used for progressive web apps (PWAs).</p>
+<p>Two characteristics of the service-worker Portal prevent support for PWAs:</p>
+<ul>
+<li>Since the service worker needs to be registered for the page to work, the PWA's manifest file
+cannot be loaded by the browser directly.</li>
+<li>There can only be one service worker registered per origin. Therefore, registering a PWA's service
+worker would remove the Walrus Sites service worker, breaking Walrus Sites' functionality.</li>
+</ul>
+<p>Note that the server-side Portal does not share these limitations. However, for the moment, we
+support both technologies: Walrus Sites must be able to load from both a service-worker Portal and a
+server-side Portal, and therefore have to be built with the more restrictive feature set. For more
+details, see the <a href="https://en.wikipedia.org/wiki/Progressive_web_app#Installation_criteria">installation requirements for
+PWAs</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="legal-terms"><a class="header" href="#legal-terms">Legal terms</a></h1>
 <p>The following sections contain the legal terms for Walrus Sites.</p>
