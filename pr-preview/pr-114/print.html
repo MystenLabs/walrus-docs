@@ -8,7 +8,15 @@
 
 
         <!-- Custom HTML head -->
-        
+        <script type="text/javascript">
+          // Hacky check to only load Amplitude in production since we don't have environments:
+          const localAddresses = ['localhost', '127.0.0.1', '[::1]'];
+          if (localAddresses.indexOf(document.location.hostname) === -1) {
+            !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{var n=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}},s=function(e,t,r){return function(n){e._q.push({name:t,args:Array.prototype.slice.call(r,0),resolve:n})}},o=function(e,t,r){e._q.push({name:t,args:Array.prototype.slice.call(r,0)})},i=function(e,t,r){e[t]=function(){if(r)return{promise:new Promise(s(e,t,Array.prototype.slice.call(arguments)))};o(e,t,Array.prototype.slice.call(arguments))}},a=function(e){for(var t=0;t<g.length;t++)i(e,g[t],!1);for(var r=0;r<m.length;r++)i(e,m[r],!0)};r.invoked=!0;var c=t.createElement("script");c.type="text/javascript",c.integrity="sha384-pY2pkwHaLM/6UIseFHVU3hOKr6oAvhLcdYkoRZyaMDWLjpM6B7nTxtOdE823WAOQ",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(c,u);for(var p=function(){return this._q=[],this},l=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],d=0;d<l.length;d++)n(p,l[d]);r.Identify=p;for(var f=function(){return this._q=[],this},v=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],y=0;y<v.length;y++)n(f,v[y]);r.Revenue=f;var g=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],m=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];a(r),r.createInstance=function(e){return r._iq[e]={_q:[]},a(r._iq[e]),r._iq[e]},e.amplitude=r}}(window,document)}();
+            amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
+          }
+        </script>
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -90,7 +98,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev blog</li><li class="chapter-item expanded "><a href="blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li><li class="chapter-item expanded "><a href="blog/02_devnet_update.html"><strong aria-hidden="true">1.2.</strong> 2024-08-12 Devnet update</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="design/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="dev-guide/dev-guide.html"><strong aria-hidden="true">7.</strong> Developer Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="dev-guide/components.html"><strong aria-hidden="true">7.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="dev-guide/dev-operations.html"><strong aria-hidden="true">7.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="dev-guide/sui-struct.html"><strong aria-hidden="true">7.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="usage/setup.html"><strong aria-hidden="true">8.</strong> Setup</a></li><li class="chapter-item expanded "><a href="usage/interacting.html"><strong aria-hidden="true">9.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="usage/client-cli.html"><strong aria-hidden="true">9.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="usage/json-api.html"><strong aria-hidden="true">9.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="usage/web-api.html"><strong aria-hidden="true">9.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="usage/examples.html"><strong aria-hidden="true">10.</strong> Examples</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="walrus-sites/intro.html"><strong aria-hidden="true">11.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial.html"><strong aria-hidden="true">12.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/tutorial-install.html"><strong aria-hidden="true">12.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-publish.html"><strong aria-hidden="true">12.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-suins.html"><strong aria-hidden="true">12.3.</strong> Bonus: Set a SuiNS name</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-config.html"><strong aria-hidden="true">12.4.</strong> Advanced configuration</a></li></ol></li><li class="chapter-item expanded "><a href="walrus-sites/overview.html"><strong aria-hidden="true">13.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/linking.html"><strong aria-hidden="true">13.1.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/redirects.html"><strong aria-hidden="true">13.2.</strong> Redirecting objects to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/portal.html"><strong aria-hidden="true">13.3.</strong> The Walrus Sites Portal</a></li><li class="chapter-item expanded "><a href="walrus-sites/restrictions.html"><strong aria-hidden="true">13.4.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="walrus-sites/legal.html"><strong aria-hidden="true">14.</strong> Legal terms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/privacy.html"><strong aria-hidden="true">14.1.</strong> Privacy policy</a></li><li class="chapter-item expanded "><a href="walrus-sites/tos.html"><strong aria-hidden="true">14.2.</strong> Terms of service</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="tos.html">Devnet terms of service</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev blog</li><li class="chapter-item expanded "><a href="blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li><li class="chapter-item expanded "><a href="blog/02_devnet_update.html"><strong aria-hidden="true">1.2.</strong> 2024-08-12 Devnet update</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="design/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="dev-guide/dev-guide.html"><strong aria-hidden="true">7.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="dev-guide/components.html"><strong aria-hidden="true">7.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="dev-guide/dev-operations.html"><strong aria-hidden="true">7.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="dev-guide/sui-struct.html"><strong aria-hidden="true">7.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="operator-guide/operator-guide.html"><strong aria-hidden="true">8.</strong> Operator guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="operator-guide/storage-node.html"><strong aria-hidden="true">8.1.</strong> Storage node</a></li><li class="chapter-item expanded "><a href="operator-guide/aggregator.html"><strong aria-hidden="true">8.2.</strong> Aggregator</a></li></ol></li><li class="chapter-item expanded "><a href="usage/setup.html"><strong aria-hidden="true">9.</strong> Setup</a></li><li class="chapter-item expanded "><a href="usage/interacting.html"><strong aria-hidden="true">10.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="usage/client-cli.html"><strong aria-hidden="true">10.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="usage/json-api.html"><strong aria-hidden="true">10.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="usage/web-api.html"><strong aria-hidden="true">10.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="usage/troubleshooting.html"><strong aria-hidden="true">11.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="usage/examples.html"><strong aria-hidden="true">12.</strong> Examples</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="walrus-sites/intro.html"><strong aria-hidden="true">13.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial.html"><strong aria-hidden="true">14.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/tutorial-install.html"><strong aria-hidden="true">14.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-publish.html"><strong aria-hidden="true">14.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-suins.html"><strong aria-hidden="true">14.3.</strong> Bonus: Set a SuiNS name</a></li><li class="chapter-item expanded "><a href="walrus-sites/tutorial-config.html"><strong aria-hidden="true">14.4.</strong> Advanced configuration</a></li></ol></li><li class="chapter-item expanded "><a href="walrus-sites/overview.html"><strong aria-hidden="true">15.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/linking.html"><strong aria-hidden="true">15.1.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/redirects.html"><strong aria-hidden="true">15.2.</strong> Redirecting objects to Walrus Sites</a></li><li class="chapter-item expanded "><a href="walrus-sites/portal.html"><strong aria-hidden="true">15.3.</strong> The Walrus Sites Portal</a></li><li class="chapter-item expanded "><a href="walrus-sites/restrictions.html"><strong aria-hidden="true">15.4.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="walrus-sites/legal.html"><strong aria-hidden="true">16.</strong> Legal terms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="walrus-sites/privacy.html"><strong aria-hidden="true">16.1.</strong> Privacy policy</a></li><li class="chapter-item expanded "><a href="walrus-sites/tos.html"><strong aria-hidden="true">16.2.</strong> Terms of service</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="tos.html">Devnet terms of service</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -213,6 +221,19 @@ developers will be responsible for migrating any Devnet applications and data to
 migration guides will be provided when Testnet becomes available.</p>
 <p>Also see the <a href="../tos.html">Devnet terms of service</a> under which this developer preview is made
 available.</p>
+</div>
+</div>
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
+<div class="admonition-title">
+<div id="admonition-public-access-title">
+<p>Public access</p>
+</div>
+<a class="admonition-anchor-link" href="index.html#admonition-public-access"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
 </div>
 </div>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
@@ -928,7 +949,7 @@ sample the certified blobs from Sui metadata and sample the availability of some
 they store. On-chain bounties may be used to retrieve these slivers for missing blobs.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="developer-guide"><a class="header" href="#developer-guide">Developer Guide</a></h1>
+<h1 id="developer-guide"><a class="header" href="#developer-guide">Developer guide</a></h1>
 <p>This guide introduces all the concepts needed to build applications that use Walrus as a storage
 or availability layer. The <a href="dev-guide/../design/overview.html">overview</a> provides more background and explains
 in more detail how Walrus operates internally.</p>
@@ -1001,12 +1022,12 @@ and the Walrus configuration. The blob ID of two files with the same content wil
 <p>You can derive the blob ID of a file locally using the command: <code>walrus blob-id &lt;file path&gt;</code>.</p>
 <h2 id="store"><a class="header" href="#store">Store</a></h2>
 <p>Walrus may be used to <strong>store a blob</strong>, via the native client APIs or a publisher.</p>
-<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
 <div class="admonition-title">
-<div id="admonition-warning-title">
-<p>Warning</p>
+<div id="admonition-public-access-title">
+<p>Public access</p>
 </div>
-<a class="admonition-anchor-link" href="dev-guide/dev-operations.html#admonition-warning"></a>
+<a class="admonition-anchor-link" href="dev-guide/dev-operations.html#admonition-public-access"></a>
 </div>
 <div>
 <p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
@@ -1219,6 +1240,74 @@ public fun used_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u64;
 public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u16;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="operator-guide"><a class="header" href="#operator-guide">Operator guide</a></h1>
+<p>This chapter introduces all the concepts needed for operators of the different components that make
+up the Walrus system. It is currently a work in progress and will be updated as the platform grows.</p>
+<p>Specifically, this guide describes the following:</p>
+<ul>
+<li><a href="operator-guide/storage-node.html">Storage node</a> contains the most relevant instructions for operators of a Walrus
+storage node.</li>
+<li><a href="operator-guide/aggregator.html">Aggregator</a> describes the operation of a Walrus aggregator host.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="operating-a-storage-node"><a class="header" href="#operating-a-storage-node">Operating a storage node</a></h1>
+<p>The binary of the storage node is not yet publicly available. It will be made available in September
+to operators for Testnet nodes. Prior to official network launch the code will be open-sourced.</p>
+<p>A basic systemd service running the Storage Node could look like this:</p>
+<pre><code class="language-ini">[Unit]
+Description=Walrus Storage Node
+
+[Service]
+User=walrus
+Environment=RUST_BACKTRACE=1
+Environment=RUST_LOG=info,walrus=debug
+ExecStart=/opt/walrus/bin/walrus-node run --config-path /opt/walrus/config/walrus-node.yaml
+Restart=always
+
+LimitNOFILE=65536
+</code></pre>
+<p>Make sure to adjust any paths and, if desired, the log level.</p>
+<p>The <code>walrus-node</code> binary stores slivers in RocksDB, which means the data will be stored on disk, to
+a path configured by the <code>/opt/walrus/config/walrus-node.yaml</code> file. The full format with all
+mandatory and optional configuration parameters will be made available with the binary.</p>
+<p>Here are some important config params from a shortened version of the <code>walrus-node.yaml</code> config
+file:</p>
+<pre><code class="language-yaml">storage_path: /opt/walrus/db
+metrics_address: 127.0.0.1:9184
+rest_api_address: 0.0.0.0:9185
+sui:
+  rpc: https://fullnode.testnet.sui.io:443
+  system_object: 0xWALRUS_CONTRACT
+blob_recovery:
+  max_concurrent_blob_syncs: 10
+  retry_interval_min_secs: 1
+  retry_interval_max_secs: 3600
+  metadata_request_timeout_secs: 5
+  max_concurrent_metadata_requests: 1
+  sliver_request_timeout_secs: 300
+  invalidity_sync_timeout_secs: 300
+</code></pre>
+<p>For monitoring, you can configure Grafana Agent to fetch metrics from <code>localhost:9184/metrics</code>
+(or whatever you've configured <code>metrics_address</code> to be).</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="operating-an-aggregator"><a class="header" href="#operating-an-aggregator">Operating an aggregator</a></h1>
+<p>Below is an example of an aggregator node which hosts a HTTP endpoint that can be used
+to fetch data from Walrus over the web.</p>
+<p>The aggregator process is run via the <code>walrus</code> client binary in <a href="operator-guide/../usage/web-api.html">daemon mode</a>.
+It can be run in many ways, one example being via a systemd service:</p>
+<pre><code class="language-ini">[Unit]
+Description=Walrus Aggregator
+
+[Service]
+User=walrus
+Environment=RUST_BACKTRACE=1
+Environment=RUST_LOG=info,walrus=debug
+ExecStart=/opt/walrus/bin/walrus --config /opt/walrus/config/client_config.yaml aggregator --bind-address 0.0.0.0:9000
+Restart=always
+
+LimitNOFILE=65536
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="setup"><a class="header" href="#setup">Setup</a></h1>
 <p>At this stage of the project, our Walrus code is not yet public. Instead, we provide a pre-compiled
 <code>walrus</code> client binary for macOS (Intel and Apple CPUs) and Ubuntu, which supports different usage
@@ -1284,15 +1373,34 @@ when <a href="usage/./interacting.html">running the CLI</a>.</p>
 <tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
 <tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
 <tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
 </tbody></table>
 </div>
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-<code>$SYSTEM</code> variable) and move it to a directory included in your <code>$PATH</code>:</p>
+<code>$SYSTEM</code> variable)`:</p>
 <pre><code class="language-sh">SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
-mv walrus ~/.local/bin
 </code></pre>
+<p>On Ubuntu, you should generally use the <code>ubuntu-x86_64</code> version. However, this is incompatible with
+old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
+error); in these cases you can use the <code>ubuntu-x86_64-generic</code> version.</p>
+<p>To be able to run it simply as <code>walrus</code>, move the binary to any directory included in your <code>$PATH</code>
+environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
+<code>$HOME/.local/bin/</code>.</p>
+<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div class="admonition-title">
+<div id="admonition-note-1-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="usage/setup.html#admonition-note-1"></a>
+</div>
+<div>
+<p>Previously, this guide recommended placing the binary in <code>$HOME/.local/bin/</code>. If you install the
+latest binary somewhere else, make sure to clean up old versions. You can find the binary in use by
+calling <code>which walrus</code>.</p>
+</div>
+</div>
 <p>Once this is done, you should be able to simply type <code>walrus</code> in your terminal. For example you can
 get usage instructions (see <a href="usage/./interacting.html">the next chapter</a> for further details):</p>
 <pre><code class="language-terminal">$ walrus --help
@@ -1317,10 +1425,6 @@ cURL due to the service-worker architecture (see the <a href="usage/../walrus-si
 for further insights).</p>
 </div>
 </div>
-<h3 id="binary-custom-path"><a class="header" href="#binary-custom-path">Custom path (optional)</a></h3>
-<p>Instead of <code>~/.local/bin</code>, you can place the binary in any other directory you like. You need to
-either make sure to add that directory to your <code>$PATH</code> or always call the binary as
-<code>/full/path/to/walrus</code>.</p>
 <h3 id="previous-versions-optional"><a class="header" href="#previous-versions-optional">Previous versions (optional)</a></h3>
 <p>In addition to the latest version of the <code>walrus</code> binary, the GCS bucket also contains previous
 versions. An overview in XML format is available at
@@ -1442,6 +1546,19 @@ and the current cost in (Testnet) SUI for storing blobs.</p>
 information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
 argument: <code>walrus info --dev</code>.</p>
 <h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status, and reading blobs</a></h2>
+<div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
+<div class="admonition-title">
+<div id="admonition-public-access-title">
+<p>Public access</p>
+</div>
+<a class="admonition-anchor-link" href="usage/client-cli.html#admonition-public-access"></a>
+</div>
+<div>
+<p><strong>All blobs stored in Walrus are public and discoverable by all.</strong> Therefore you must not use Walrus
+to store anything that contains secrets or private data without additional measures to protect
+confidentiality.</p>
+</div>
+</div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
 <pre><code class="language-sh">walrus store &lt;some file&gt;
 </code></pre>
@@ -1472,9 +1589,6 @@ a Sui RPC node to use instead of the one set in the wallet configuration or the 
 <p>The <code>--wallet &lt;WALLET&gt;</code> argument may be used to specify a non-standard Sui wallet configuration
 file. And a <code>--gas-budget &lt;GAS_BUDGET&gt;</code> argument may be used to change the maximum amount of Sui (in
 MIST) that the command is allowed to use.</p>
-<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
-<p>If you get an error like "the specified Walrus system object does not exist", make sure your wallet
-is set up for Sui <strong>Testnet</strong> and you use the latest <a href="usage/./setup.html#configuration">configuration</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="json-mode"><a class="header" href="#json-mode">JSON mode</a></h1>
 <p>All Walrus client commands are also available in JSON mode. In this mode, all the command-line flags
@@ -1639,6 +1753,49 @@ good job of inferring content types for media. However, the aggregator on purpos
 sniffing from inferring dangerous executable types such as JavaScript or style sheet types.</p>
 </div>
 </div>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<div id="admonition-debug-logging" class="admonition admonish-tip" role="note" aria-labelledby="admonition-debug-logging-title">
+<div class="admonition-title">
+<div id="admonition-debug-logging-title">
+<p>Debug logging</p>
+</div>
+<a class="admonition-anchor-link" href="usage/troubleshooting.html#admonition-debug-logging"></a>
+</div>
+<div>
+<p>You can enable debug logging for Walrus by setting the environment variable <code>RUST_LOG=walrus=debug</code>.</p>
+</div>
+</div>
+<h2 id="latest-binary"><a class="header" href="#latest-binary">Latest binary</a></h2>
+<p>Before undertaking any other steps, make sure you have the <a href="usage/./setup.html#installation">latest <code>walrus</code>
+binary</a>. If you have multiple versions in different locations, find the
+the binary that will actually be used with <code>which walrus</code>.</p>
+<h2 id="old-hardware-or-incompatible-vms"><a class="header" href="#old-hardware-or-incompatible-vms">Old hardware or incompatible VMs</a></h2>
+<p>Our standard Ubuntu binary is known to cause problems on certain old hardware and in certain
+virtualized environments. If you experience errors like "Illegal instruction (core dumped)",
+<a href="usage/./setup.html#installation">install</a> the <code>ubuntu-x86_64-generic</code> version instead, which is compiled
+specifically to be compatible with almost all physical and virtual x86-64 CPUs.</p>
+<h2 id="latest-walrus-configuration"><a class="header" href="#latest-walrus-configuration">Latest Walrus configuration</a></h2>
+<p>The Walrus Devnet and Testnet are wiped periodically and require updating to the latest binary and
+configuration. If you get an error like "could not retrieve enough confirmations to certify the
+blob", you are probably using an outdated configuration pointing to an inactive Walrus system. In
+this case, update your configuration file with the latest <a href="usage/./setup.html#configuration">configuration</a>
+and make sure the CLI uses the intended configuration.</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="usage/troubleshooting.html#admonition-tip"></a>
+</div>
+<div>
+<p>The <code>walrus</code> client binary prints information about the used configuration when starting execution,
+including the path to the Walrus configuration file and the Sui wallet.</p>
+</div>
+</div>
+<h2 id="correct-sui-network-configuration"><a class="header" href="#correct-sui-network-configuration">Correct Sui network configuration</a></h2>
+<p>If you get an error like "the specified Walrus system object does not exist", make sure your wallet
+is set up for Sui <strong>Testnet</strong> and you use the latest <a href="usage/./setup.html#configuration">configuration</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <p>As inspiration, we provide several simple examples in different programming languages to interact
@@ -2245,7 +2402,13 @@ have this limitation.</p>
 </div>
 </div>
 <h2 id="no-support-for-progressive-web-apps-pwas"><a class="header" href="#no-support-for-progressive-web-apps-pwas">No support for progressive web apps (PWAs)</a></h2>
-<p>With the current design, Walrus Sites cannot be used for progressive web apps (PWAs).</p>
+<p>With the current design, Walrus Sites cannot be used for progressive web apps (PWAs).
+Two characteristics of the service-worker portal prevent support for PWAs:</p>
+<ul>
+<li>Since the service worker needs to be registered for the page to work, the PWA's manifest file cannot be loaded by the browser directly;</li>
+<li>There can only be one service worker registered per origin. Therefore, registering a PWA's service worker would remove the Walrus Sites service worker, breaking Walrus Sites' functionality.</li>
+</ul>
+<p>Note that the server-side portal does share these limitations. However, for the moment, we support both technologies: Walrus Sites must be able to load from both a service-worker portal and a server-side portal, and therefore have to be built with the more restrictive feature set. For more details, see the <a href="https://en.wikipedia.org/wiki/Progressive_web_app#Installation_criteria">installation requirements for PWAs</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="legal-terms"><a class="header" href="#legal-terms">Legal terms</a></h1>
 <p>The following sections contain the legal terms for Walrus Sites.</p>
