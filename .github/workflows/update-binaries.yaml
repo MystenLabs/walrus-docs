@@ -35,7 +35,7 @@ jobs:
         run: "mkdir -p site"
       - name: Download latest binaries
         run: |
-          for arch in ubuntu-x86_64 macos-x86_64 macos-arm64; do
+          for arch in ubuntu-x86_64 ubuntu-x86_64-generic macos-x86_64 macos-arm64; do
           curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$arch -o site/walrus-$arch
           done
       - name: Copy site-builder binary

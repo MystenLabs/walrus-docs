@@ -10,6 +10,13 @@ Before undertaking any other steps, make sure you have the [latest `walrus`
 binary](./setup.md#installation). If you have multiple versions in different locations, find the
 the binary that will actually be used with `which walrus`.
 
+## Old hardware or incompatible VMs
+
+Our standard Ubuntu binary is known to cause problems on certain old hardware and in certain
+virtualized environments. If you experience errors like "Illegal instruction (core dumped)",
+[install](./setup.md#installation) the `ubuntu-x86_64-generic` version instead, which is compiled
+specifically to be compatible with almost all physical and virtual x86-64 CPUs.
+
 ## Latest Walrus configuration
 
 The Walrus Devnet and Testnet are wiped periodically and require updating to the latest binary and
