@@ -248,6 +248,7 @@ when <a href="./interacting.html">running the CLI</a>.</p>
 <tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
 <tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
 <tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
 </tbody></table>
 </div>
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
@@ -256,6 +257,9 @@ when <a href="./interacting.html">running the CLI</a>.</p>
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
 </code></pre>
+<p>On Ubuntu, you should generally use the <code>ubuntu-x86_64</code> version. However, this is incompatible with
+old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
+error); in these cases you can use the <code>ubuntu-x86_64-generic</code> version.</p>
 <p>To be able to run it simply as <code>walrus</code>, move the binary to any directory included in your <code>$PATH</code>
 environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
 <code>$HOME/.local/bin/</code>.</p>

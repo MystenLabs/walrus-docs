@@ -1373,6 +1373,7 @@ when <a href="usage/./interacting.html">running the CLI</a>.</p>
 <tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
 <tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
 <tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
 </tbody></table>
 </div>
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
@@ -1381,6 +1382,9 @@ when <a href="usage/./interacting.html">running the CLI</a>.</p>
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
 chmod +x walrus
 </code></pre>
+<p>On Ubuntu, you should generally use the <code>ubuntu-x86_64</code> version. However, this is incompatible with
+old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
+error); in these cases you can use the <code>ubuntu-x86_64-generic</code> version.</p>
 <p>To be able to run it simply as <code>walrus</code>, move the binary to any directory included in your <code>$PATH</code>
 environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
 <code>$HOME/.local/bin/</code>.</p>
@@ -1766,6 +1770,11 @@ sniffing from inferring dangerous executable types such as JavaScript or style s
 <p>Before undertaking any other steps, make sure you have the <a href="usage/./setup.html#installation">latest <code>walrus</code>
 binary</a>. If you have multiple versions in different locations, find the
 the binary that will actually be used with <code>which walrus</code>.</p>
+<h2 id="old-hardware-or-incompatible-vms"><a class="header" href="#old-hardware-or-incompatible-vms">Old hardware or incompatible VMs</a></h2>
+<p>Our standard Ubuntu binary is known to cause problems on certain old hardware and in certain
+virtualized environments. If you experience errors like "Illegal instruction (core dumped)",
+<a href="usage/./setup.html#installation">install</a> the <code>ubuntu-x86_64-generic</code> version instead, which is compiled
+specifically to be compatible with almost all physical and virtual x86-64 CPUs.</p>
 <h2 id="latest-walrus-configuration"><a class="header" href="#latest-walrus-configuration">Latest Walrus configuration</a></h2>
 <p>The Walrus Devnet and Testnet are wiped periodically and require updating to the latest binary and
 configuration. If you get an error like "could not retrieve enough confirmations to certify the
