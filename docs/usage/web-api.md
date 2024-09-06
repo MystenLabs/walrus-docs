@@ -128,13 +128,13 @@ Blobs may be read from an aggregator or daemon using HTTP GET. For example, the 
 command reads a blob and writes it to an output file:
 
 ```sh
-curl "$AGGREGATOR/v1/<some blob ID> -o <some file name>"
+curl "$AGGREGATOR/v1/<some blob ID>" -o <some file name>
 ```
 
 Alternatively you may print the contents of a blob in the terminal with the cURL command:
 
 ```sh
-curl "$AGGREGATOR/v1/<some blob ID>
+curl "$AGGREGATOR/v1/<some blob ID>"
 ```
 
 ```admonish tip title="Content sniffing"
