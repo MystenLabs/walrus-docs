@@ -1735,10 +1735,10 @@ find the transaction that created the Sui Blob object on the Sui explorer or usi
 <h3 id="read-1"><a class="header" href="#read-1">Read</a></h3>
 <p>Blobs may be read from an aggregator or daemon using HTTP GET. For example, the following cURL
 command reads a blob and writes it to an output file:</p>
-<pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt; -o &lt;some file name&gt;"
+<pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt;" -o &lt;some file name&gt;
 </code></pre>
 <p>Alternatively you may print the contents of a blob in the terminal with the cURL command:</p>
-<pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt;
+<pre><code class="language-sh">curl "$AGGREGATOR/v1/&lt;some blob ID&gt;"
 </code></pre>
 <div id="admonition-content-sniffing" class="admonition admonish-tip" role="note" aria-labelledby="admonition-content-sniffing-title">
 <div class="admonition-title">
