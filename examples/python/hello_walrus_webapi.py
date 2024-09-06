@@ -14,7 +14,7 @@ import time
 # External requests HTTP library
 import requests
 
-ADDRESS = "127.0.0.1:31415"
+ADDRESS = "127.0.0.1:8899"
 EPOCHS = "5"
 
 
