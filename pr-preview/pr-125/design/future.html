@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Future discussion - Walrus</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript">
+          // Hacky check to only load Amplitude in production since we don't have environments:
+          const localAddresses = ['localhost', '127.0.0.1', '[::1]'];
+          if (localAddresses.indexOf(document.location.hostname) === -1) {
+            !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{var n=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}},s=function(e,t,r){return function(n){e._q.push({name:t,args:Array.prototype.slice.call(r,0),resolve:n})}},o=function(e,t,r){e._q.push({name:t,args:Array.prototype.slice.call(r,0)})},i=function(e,t,r){e[t]=function(){if(r)return{promise:new Promise(s(e,t,Array.prototype.slice.call(arguments)))};o(e,t,Array.prototype.slice.call(arguments))}},a=function(e){for(var t=0;t<g.length;t++)i(e,g[t],!1);for(var r=0;r<m.length;r++)i(e,m[r],!0)};r.invoked=!0;var c=t.createElement("script");c.type="text/javascript",c.integrity="sha384-pY2pkwHaLM/6UIseFHVU3hOKr6oAvhLcdYkoRZyaMDWLjpM6B7nTxtOdE823WAOQ",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(c,u);for(var p=function(){return this._q=[],this},l=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],d=0;d<l.length;d++)n(p,l[d]);r.Identify=p;for(var f=function(){return this._q=[],this},v=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],y=0;y<v.length;y++)n(f,v[y]);r.Revenue=f;var g=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],m=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];a(r),r.createInstance=function(e){return r._iq[e]={_q:[]},a(r._iq[e]),r._iq[e]},e.amplitude=r}}(window,document)}();
+            amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
+          }
+        </script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev blog</li><li class="chapter-item expanded "><a href="../blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li><li class="chapter-item expanded "><a href="../blog/02_devnet_update.html"><strong aria-hidden="true">1.2.</strong> 2024-08-12 Devnet update</a></li><li class="chapter-item expanded "><a href="../blog/03_walrus_whitepaper.html"><strong aria-hidden="true">1.3.</strong> Announcing the official Walrus whitepaper</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="../design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="../design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="../design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="../design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="../design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../design/future.html" class="active"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="../dev-guide/dev-guide.html"><strong aria-hidden="true">7.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev-guide/components.html"><strong aria-hidden="true">7.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="../dev-guide/dev-operations.html"><strong aria-hidden="true">7.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="../dev-guide/sui-struct.html"><strong aria-hidden="true">7.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="../operator-guide/operator-guide.html"><strong aria-hidden="true">8.</strong> Operator guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator-guide/storage-node.html"><strong aria-hidden="true">8.1.</strong> Storage node</a></li><li class="chapter-item expanded "><a href="../operator-guide/aggregator.html"><strong aria-hidden="true">8.2.</strong> Aggregator</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/setup.html"><strong aria-hidden="true">9.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../usage/interacting.html"><strong aria-hidden="true">10.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/client-cli.html"><strong aria-hidden="true">10.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="../usage/json-api.html"><strong aria-hidden="true">10.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="../usage/web-api.html"><strong aria-hidden="true">10.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/troubleshooting.html"><strong aria-hidden="true">11.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="../usage/examples.html"><strong aria-hidden="true">12.</strong> Examples</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="../walrus-sites/intro.html"><strong aria-hidden="true">13.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial.html"><strong aria-hidden="true">14.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-install.html"><strong aria-hidden="true">14.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-publish.html"><strong aria-hidden="true">14.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-suins.html"><strong aria-hidden="true">14.3.</strong> Bonus: Set a SuiNS name</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-config.html"><strong aria-hidden="true">14.4.</strong> Advanced configuration</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/overview.html"><strong aria-hidden="true">15.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/linking.html"><strong aria-hidden="true">15.1.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/redirects.html"><strong aria-hidden="true">15.2.</strong> Redirecting objects to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/portal.html"><strong aria-hidden="true">15.3.</strong> The Walrus Sites Portal</a></li><li class="chapter-item expanded "><a href="../walrus-sites/restrictions.html"><strong aria-hidden="true">15.4.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/legal.html"><strong aria-hidden="true">16.</strong> Legal terms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/privacy.html"><strong aria-hidden="true">16.1.</strong> Privacy policy</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tos.html"><strong aria-hidden="true">16.2.</strong> Terms of service</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="../tos.html">Devnet terms of service</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Walrus</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="future-discussion"><a class="header" href="#future-discussion">Future discussion</a></h1>
+<p>In this document, we left out details of the following features:</p>
+<ul>
+<li><strong>Shard transfer and recovery upon storage epoch change:</strong> The encoding scheme used in Walrus has
+been designed to allow for highly efficient recovery in case of shard failures. A storage node
+attempting to recover slivers only needs to get data of the same magnitude as the missing data to
+reconstruct them.</li>
+<li><strong>Details of light clients that can be used to sample availability:</strong> Individual clients may
+sample the certified blobs from Sui metadata and sample the availability of some slivers that
+they store. On-chain bounties may be used to retrieve these slivers for missing blobs.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../design/properties.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../dev-guide/dev-guide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../design/properties.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../dev-guide/dev-guide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
