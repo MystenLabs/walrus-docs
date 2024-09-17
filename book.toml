@@ -20,6 +20,7 @@ exclude = [
   'MystenLabs/walrus-docs',
   'walrus\.site', # No service worker in the link checker.
   'google\.com',
+  'x\.com', # Twitter returns 403 forbidden.
 ]
 
 [preprocessor]
