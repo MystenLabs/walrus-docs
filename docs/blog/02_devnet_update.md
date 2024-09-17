@@ -1,10 +1,10 @@
-# 2024-08-12 Devnet update
+# 2024-08-12 Devnet Update
 
 We have redeployed the Walrus Devnet to incorporate various improvements to the Walrus storage nodes
 and clients. In this process, all blobs stored on Walrus were wiped. Note that this may happen again
 on Devnet and Testnet, but obviously *not on the future Mainnet*.
 
-## Migration and re-deployment of Walrus Sites
+## Migration and Re-deployment of Walrus Sites
 
 You can obtain the latest version of the `walrus` binary and the new configuration as described in
 the [setup chapter](../usage/setup.md).
