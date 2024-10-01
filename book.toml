@@ -21,6 +21,7 @@ exclude = [
   'walrus\.site', # No service worker in the link checker.
   'google\.com',
   'x\.com',
+  'suiscan\.xyz',
 ]
 
 [preprocessor]
