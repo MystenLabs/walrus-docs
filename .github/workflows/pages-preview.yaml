@@ -28,6 +28,6 @@ jobs:
       - uses: ./.github/actions/build-mdbook
         if: github.event.action != 'closed'
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1.4.7
+        uses: rossjrw/pr-preview-action@v1.4.8
         with:
           source-dir: build/html

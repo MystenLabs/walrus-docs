@@ -34,14 +34,14 @@ jobs:
     name: Lint all markdown files
     steps:
       - uses: actions/checkout@v4
-      - uses: DavidAnson/markdownlint-cli2-action@v16.0.0
+      - uses: DavidAnson/markdownlint-cli2-action@v17.0.0
 
   typos:
     runs-on: ubuntu-latest
     name: Check spelling
     steps:
       - uses: actions/checkout@v4
-      - uses: crate-ci/typos@v1.23.6
+      - uses: crate-ci/typos@v1.24.6
 
   check-all:
     name: Check if all lint jobs succeeded
