@@ -1153,6 +1153,7 @@ available on storage nodes to recover it within the specified epochs.</p>
 querying or executing transactions on Sui directly. However, Walrus uses Sui to manage its metadata
 and smart contract developers can read information about the Walrus system, as well as stored blobs,
 on Sui.</p>
+<!-- TODO Update URLs -->
 <p>The Move code of the Walrus Testnet contracts is available at
 <a href="https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store">https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store</a>. An example package using
 the Walrus contracts is available at
@@ -1167,7 +1168,7 @@ Walrus objects in your own Sui smart contracts.</p>
 <a class="admonition-anchor-link" href="dev-guide/sui-struct.html#admonition-a-word-of-caution"></a>
 </div>
 <div>
-<p>Walrus Mainnet will use new Move packages with struct layouts and function signatures that may not
+<p>Walrus Mainnet will use new Move packages with <code>struct</code> layouts and function signatures that may not
 be compatible with this package. Move code that builds against this package will need to rewritten.</p>
 </div>
 </div>
@@ -1177,126 +1178,147 @@ that the storage nodes should expect slivers from a Blob ID to be stored. Then a
 indicating that a sufficient number of slivers have been stored to guarantee the blob's
 availability. When a blob is certified, its <code>certified_epoch</code> field contains the epoch in which it
 was certified.</p>
-<p>A <code>Storage</code> object is always associated with a <code>Blob</code> object, reserving enough space for
+<p>A <code>Blob</code> object is always associated with a <code>Storage</code> object, reserving enough space for
 a long enough period for the blob's storage. A certified blob is available for the period the
 underlying storage resource guarantees storage.</p>
 <p>Concretely, <code>Blob</code> and <code>Storage</code> objects have the following fields, which can be read through the
 Sui SDKs:</p>
-<pre><code class="language-move">/// The blob structure represents a blob that has been registered to with some
-/// storage, and then may eventually be certified as being available in the
-/// system.
+<pre><code class="language-move">
+/// The blob structure represents a blob that has been registered to with some storage,
+/// and then may eventually be certified as being available in the system.
 public struct Blob has key, store {
     id: UID,
-    stored_epoch: u64,
+    registered_epoch: u32,
     blob_id: u256,
     size: u64,
-    erasure_code_type: u8,
-    certified_epoch: option::Option&lt;u64&gt;, // The epoch first certified,
-                                          // or None if not certified.
+    encoding_type: u8,
+    // Stores the epoch first certified.
+    certified_epoch: option::Option&lt;u32&gt;,
     storage: Storage,
+    // Marks if this blob can be deleted.
+    deletable: bool,
 }
 
-/// Reservation for storage for a given period, which is inclusive start,
-/// exclusive end.
+/// Reservation for storage for a given period, which is inclusive start, exclusive end.
 public struct Storage has key, store {
     id: UID,
-    start_epoch: u64,
-    end_epoch: u64,
+    start_epoch: u32,
+    end_epoch: u32,
     storage_size: u64,
 }
 </code></pre>
 <p>All fields of <code>Blob</code> and <code>Storage</code> objects can be read using the expected functions:</p>
 <pre><code class="language-move">// Blob functions
-public fun stored_epoch(b: &amp;Blob): u64;
 public fun blob_id(b: &amp;Blob): u256;
 public fun size(b: &amp;Blob): u64;
 public fun erasure_code_type(b: &amp;Blob): u8;
-public fun certified_epoch(b: &amp;Blob): &amp;Option&lt;u64&gt;;
+public fun registered_epoch(self: &amp;Blob): u32;
+public fun certified_epoch(b: &amp;Blob): &amp;Option&lt;u32&gt;;
 public fun storage(b: &amp;Blob): &amp;Storage;
+...
 
 // Storage functions
-public fun start_epoch(self: &amp;Storage): u64;
-public fun end_epoch(self: &amp;Storage): u64;
+public fun start_epoch(self: &amp;Storage): u32;
+public fun end_epoch(self: &amp;Storage): u32;
 public fun storage_size(self: &amp;Storage): u64;
+...
 </code></pre>
 <h2 id="events"><a class="header" href="#events">Events</a></h2>
 <p>When a blob is first registered, a <code>BlobRegistered</code> event is emitted that informs storage nodes
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified, a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
-<pre><code class="language-move">/// Signals a blob with metadata is registered.
+<pre><code class="language-move">/// Signals that a blob with meta-data has been registered.
 public struct BlobRegistered has copy, drop {
-    epoch: u64,
+    epoch: u32,
     blob_id: u256,
     size: u64,
-    erasure_code_type: u8,
-    end_epoch: u64,
+    encoding_type: u8,
+    end_epoch: u32,
+    deletable: bool,
+    // The object id of the related `Blob` object
+    object_id: ID,
 }
 
-/// Signals a blob is certified.
+/// Signals that a blob is certified.
 public struct BlobCertified has copy, drop {
-    epoch: u64,
+    epoch: u32,
     blob_id: u256,
-    end_epoch: u64,
+    end_epoch: u32,
+    deletable: bool,
+    // The object id of the related `Blob` object
+    object_id: ID,
+    // Marks if this is an extension for explorers, etc.
+    is_extension: bool,
+}
+</code></pre>
+<p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and a <code>end_epoch</code> in the future indicates
+that the blob will be available until this epoch. A light client proof this event was emitted
+for a blob ID constitutes a proof of availability for the data with this blob ID.</p>
+<p>When a deletable blob is deleted, a <code>BlobDeleted</code> event is emitted:</p>
+<pre><code class="language-move">/// Signals that a blob has been deleted.
+public struct BlobDeleted has copy, drop {
+    epoch: u32,
+    blob_id: u256,
+    end_epoch: u32,
+    // The object ID of the related `Blob` object.
+    object_id: ID,
+    // If the blob object was previously certified.
+    was_certified: bool,
 }
 </code></pre>
 <p>The <code>InvalidBlobID</code> event is emitted when storage nodes detect an incorrectly encoded blob.
 Anyone attempting a read on such a blob is guaranteed to also detect it as invalid.</p>
 <pre><code class="language-move">/// Signals that a BlobID is invalid.
 public struct InvalidBlobID has copy, drop {
-    epoch: u64, // The epoch in which the blob ID is first registered as invalid
+    epoch: u32, // The epoch in which the blob ID is first registered as invalid
     blob_id: u256,
 }
 </code></pre>
+<p>System level events such as <code>EpochChangeStart</code> and <code>EpochChangeDone</code> indicate transitions
+between epochs. And associated events such as <code>ShardsReceived</code>, <code>EpochParametersSelected</code>,
+and <code>ShardRecoveryStart</code> indicate storage node level events related to epoch transitions,
+shard migrations and epoch parameters.</p>
 <h2 id="system-information"><a class="header" href="#system-information">System information</a></h2>
 <p>The Walrus system object contains metadata about the available and used storage, as well as the
-price of storage per KiB of storage in MIST. The committee
+price of storage per KiB of storage in FROST. The committee
 structure within the system object can be used to read the current epoch number, as well as
 information about the committee.</p>
-<pre><code class="language-move">const BYTES_PER_UNIT_SIZE: u64 = 1_024;
-
-public struct System&lt;phantom WAL&gt; has key, store {
+<pre><code class="language-move">public struct SystemStateInnerV1 has key, store {
     id: UID,
-
     /// The current committee, with the current epoch.
-    /// The option is always Some, but need it for swap.
-    current_committee: Option&lt;Committee&gt;,
-
-    /// When we first enter the current epoch we SYNC,
-    /// and then we are DONE after a cert from a quorum.
-    epoch_status: u8,
-
+    committee: BlsCommittee,
     // Some accounting
     total_capacity_size: u64,
     used_capacity_size: u64,
-
     /// The price per unit size of storage.
-    price_per_unit_size: u64,
-
-    /// Tables about the future and the past.
-    past_committees: Table&lt;u64, Committee&gt;,
-    future_accounting: FutureAccountingRingBuffer&lt;WAL&gt;,
+    storage_price_per_unit_size: u64,
+    /// The write price per unit size.
+    write_price_per_unit_size: u64,
+    /// Accounting ring buffer for future epochs.
+    future_accounting: FutureAccountingRingBuffer,
+    /// Event blob certification state
+    event_blob_certification_state: EventBlobCertificationState,
 }
 
-public struct Committee has store {
-    epoch: u64,
-    bls_committee: BlsCommittee,
+/// This represents a BLS signing committee for a given epoch.
+public struct BlsCommittee has store, copy, drop {
+    /// A vector of committee members
+    members: vector&lt;BlsCommitteeMember&gt;,
+    /// The total number of shards held by the committee
+    n_shards: u16,
+    /// The epoch in which the committee is active.
+    epoch: u32,
 }
+
+public struct BlsCommitteeMember has store, copy, drop {
+    public_key: Element&lt;G1&gt;,
+    weight: u16,
+    node_id: ID,
+}
+
 </code></pre>
-<p>A few public functions of the committee allow contracts to read Walrus metadata:</p>
-<pre><code class="language-move">/// Get epoch. Uses the committee to get the epoch.
-public fun epoch&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u64;
-
-/// Accessor for total capacity size.
-public fun total_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u64;
-
-/// Accessor for used capacity size.
-public fun used_capacity_size&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u64;
-
-// The number of shards
-public fun n_shards&lt;WAL&gt;(self: &amp;System&lt;WAL&gt;): u16;
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<!-- TODO: say more about staking structures --><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="operator-guide"><a class="header" href="#operator-guide">Operator guide</a></h1>
 <p>This chapter introduces all the concepts needed for operators of the different components that make
 up the Walrus system. It is currently a work in progress and will be updated as the platform
