@@ -1,6 +1,6 @@
 <!-- markdownlint-disable proper-names -->
 # TESTNET TERMS OF SERVICE - WALRUS
-<!-- Update for testnet -->
+<!-- TODO Update for testnet -->
 
 Last updated: June 13, 2024
 
