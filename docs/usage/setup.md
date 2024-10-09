@@ -7,7 +7,7 @@ patterns (see [the next chapter](./interacting.md)). This chapter describes the
 of the Walrus client.
 
 ```admonish note
-Note that our Walrus Devnet uses Sui **Testnet** for coordination.
+Note that the Walrus Testnet uses Sui **Testnet** for coordination.
 ```
 
 ## Prerequisites
@@ -131,6 +131,36 @@ In addition to the latest version of the `walrus` binary, the GCS bucket also co
 versions. An overview in XML format is available at
 <https://storage.googleapis.com/mysten-walrus-binaries/>.
 
+## Testnet WAL faucet
+
+The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
+value and can be exchanged for some Testnet SUI tokens, which also have no value, thought the
+command:
+
+```
+walrus get-wal
+```
+
+You can check you have received Testnet WAL by checking the Sui balances:
+
+```
+sui client balance
+╭─────────────────────────────────────────╮
+│ Balance of coins owned by this address  │
+├─────────────────────────────────────────┤
+│ ╭─────────────────────────────────────╮ │
+│ │ coin  balance (raw)     balance     │ │
+│ ├─────────────────────────────────────┤ │
+│ │ Sui   8869252670        8.86 SUI    │ │
+│ │ WAL   500000000         0.50 WAL    │ │
+│ ╰─────────────────────────────────────╯ │
+╰─────────────────────────────────────────╯
+```
+
+By default 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged
+using the `--amount` option, and a specific coin ID may be used through the `--exchange-id`.
+The `walrus get-wal --help` command provides more information about those.
+
 ## Configuration
 
 A single parameter is required to configure Walrus, namely the ID of the [system
@@ -152,6 +182,8 @@ configuration file in the current directory, `$XDG_CONFIG_HOME/walrus/`, `~/.con
 you need to use the `--config` option when running the `walrus` binary.
 
 ### Advanced configuration (optional)
+
+<!-- TODO: Latest config -->
 
 The configuration file currently supports the following parameters:
 

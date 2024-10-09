@@ -11,19 +11,19 @@ Walrus behind the scenes. See the [Walrus Sites chapter](./walrus-sites/intro.md
 details on how this works.
 ```
 
-```admonish danger title="Disclaimer about the Walrus developer preview"
-The current Devnet release of Walrus and Walrus Sites is a developer preview intended to showcase
-the technology and solicit feedback from builders. All storage nodes and aggregators are operated by
-Mysten Labs and all transactions are executed on the Sui Testnet and use Testnet SUI which has no
+```admonish danger title="Disclaimer about the Walrus Testnet"
+The current Testnet release of Walrus and Walrus Sites is a preview intended to showcase
+the technology and solicit feedback from builders, users and storage node operators.
+All transactions are executed on the Sui Testnet and use Testnet WAL and SUI which has no
 value. The state of the store **can and will be wiped**, at any point and possibly with no warning.
-Do not rely on this developer preview for any production purposes, it comes with no availability or
+Do not rely on this Testnet for any production purposes, it comes with no availability or
 persistence guarantees.
 
 Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
-developers will be responsible for migrating any Devnet applications and data to Testnet. Detailed
-migration guides will be provided when Testnet becomes available.
+developers will be responsible for migrating any Testnet applications and data to Mainnet. Detailed
+migration guides will be provided when Mainnet becomes available.
 
-Also see the [Devnet terms of service](../tos.md) under which this developer preview is made
+Also see the [Testnet terms of service](../testnet_tos.md) under which this Testnet is made
 available.
 ```
 
@@ -49,7 +49,14 @@ confidentiality.
   for coordination, attesting availability, and payments. Storage space is represented as a resource
   on Sui, which can be owned, split, merged, and transferred. Stored blobs are also represented by
   objects on Sui, which means that smart contracts can check whether a blob is available and for how
-  long.
+  long, extend its lifetime or optionally delete it.
+
+- **Epochs, Tokenomics and Delegated Proof of Stake** Walrus is operated by a committee of storage
+  nodes that evolve between epochs. A native token, WAL (and its subdivision FROST), is used
+  to delegate stake to storage nodes, and those with high stake become part of the epoch committee.
+  The WAL token is also used for payments for storage. At the end of each epoch rewards for
+  selecting storage nodes, storing and serving blobs are distributed to storage nodes and whose that
+  stake with them. All these processes are mediated by smart contracts on the Sui platform.
 
 - **Flexible access:** Users can interact with Walrus through a command-line interface (CLI),
   software development kits (SDKs), and web2 HTTP technologies. Walrus is designed to work well

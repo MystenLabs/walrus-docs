@@ -7,7 +7,7 @@ querying or executing transactions on Sui directly. However, Walrus uses Sui to 
 and smart contract developers can read information about the Walrus system, as well as stored blobs,
 on Sui.
 
-The Move code of the Walrus Devnet contracts is available at
+The Move code of the Walrus Testnet contracts is available at
 <https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store>. An example package using
 the Walrus contracts is available at
 <https://github.com/MystenLabs/walrus-docs/blob/main/examples/move>.
@@ -16,7 +16,7 @@ The following sections provide further insights into the contract and an overvie
 Walrus objects in your own Sui smart contracts.
 
 ```admonish danger title="A word of caution"
-Walrus Testnet will use new Move packages with struct layouts and function signatures that may not
+Walrus Mainnet will use new Move packages with struct layouts and function signatures that may not
 be compatible with this package. Move code that builds against this package will need to rewritten.
 ```
 

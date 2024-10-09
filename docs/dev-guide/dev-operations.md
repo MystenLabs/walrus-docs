@@ -39,9 +39,9 @@ maximum blob size is currently 957&nbsp;MiB. You may store larger blobs by split
 smaller chunks.
 
 Blobs are stored for a certain number of *epochs*, as specified at the time they were stored. Walrus
-storage nodes ensure that within these epochs a read succeeds. The Walrus Devnet only uses a single
-epoch today, and blobs uploaded will be available in that single epoch (until the Devnet is wiped).
-Future devnets may span across multiple epochs.
+storage nodes ensure that within these epochs a read succeeds. The current Testnet uses a short
+epoch duration of one day for testing purposes, but Mainnet epochs are likely to be longer such as
+many weeks each.
 
 ## Read
 
