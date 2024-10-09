@@ -268,7 +268,7 @@ may be invoked with the <code>--deletable</code> flag, to indicate the blob may 
 by the owner of the Sui blob object representing the blob. Deletable blobs are indicated as such
 in the Sui events that certify them, and should not be relied upon for availability by others.</p>
 <p>A deletable blob may be deleted with the command:</p>
-<pre><code>walrus delete --blob-id &lt;BLOB_ID&gt;
+<pre><code class="language-sh">walrus delete --blob-id &lt;BLOB_ID&gt;
 </code></pre>
 <p>Optionally the delete command can be invoked by specifying a <code>--file &lt;PATH&gt;</code> option, to derive the
 blob ID from a file, or <code>--object-id &lt;SUI_ID&gt;</code> to delete the blob in the Sui blob object specified.</p>
