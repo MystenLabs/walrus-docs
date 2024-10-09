@@ -137,13 +137,13 @@ The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL
 value and can be exchanged for some Testnet SUI tokens, which also have no value, thought the
 command:
 
-```
+```sh
 walrus get-wal
 ```
 
 You can check you have received Testnet WAL by checking the Sui balances:
 
-```
+```sh
 sui client balance
 ╭─────────────────────────────────────────╮
 │ Balance of coins owned by this address  │

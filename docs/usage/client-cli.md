@@ -105,9 +105,11 @@ by the owner of the Sui blob object representing the blob. Deletable blobs are i
 in the Sui events that certify them, and should not be relied upon for availability by others.
 
 A deletable blob may be deleted with the command:
-```
+
+```sh
 walrus delete --blob-id <BLOB_ID>
 ```
+
 Optionally the delete command can be invoked by specifying a `--file <PATH>` option, to derive the
 blob ID from a file, or `--object-id <SUI_ID>` to delete the blob in the Sui blob object specified.
 
