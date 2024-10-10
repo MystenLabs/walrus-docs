@@ -70,7 +70,7 @@ nodes and those that delegate stake to them. Furthermore, important network para
 total available storage and storage price - are set by the selected storage operators each epoch
 according to their stake weight.
 
-A staking web dapps is provided to experiment with this functionality. Community members have also
+A staking web dApps is provided to experiment with this functionality. Community members have also
 created explorers that can be used to view storage nodes when considering who to stake with. Staking
 ensures that the ultimate governance of Walrus, directly in terms of storage nodes, and indirectly
 in terms of parameters and software they chose, rests with WAL Token holders.
@@ -80,8 +80,9 @@ storage node committee changes: better shard allocation mechanisms upon changes 
 stake; efficient ways to sync state between storage nodes; as well as better ways for storage nodes
 to follow Sui event streams.
 
-- Explore the [Walrus staking dapp]()
-- Look at recent activity on the [Walrus Explorer]()
+<!-- TODO Update links -->
+- Explore the [Walrus staking dApp](https://app.org)
+- Look at recent activity on the [Walrus Explorer](https://app.org)
 
 ## New Move Contracts & documentation
 
