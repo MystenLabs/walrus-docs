@@ -1511,9 +1511,12 @@ when <a href="usage/./interacting.html">running the CLI</a>.</p>
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
 chmod +x walrus
 </code></pre>
-<p>On Ubuntu, you should generally use the <code>ubuntu-x86_64</code> version. However, this is incompatible with
+<!-- TODO: Add again -->
+<!--
+On Ubuntu, you should generally use the `ubuntu-x86_64` version. However, this is incompatible with
 old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
-error); in these cases you can use the <code>ubuntu-x86_64-generic</code> version.</p>
+error); in these cases you can use the `ubuntu-x86_64-generic` version.
+-->
 <p>To be able to run it simply as <code>walrus</code>, move the binary to any directory included in your <code>$PATH</code>
 environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
 <code>$HOME/.local/bin/</code>.</p>
@@ -1527,7 +1530,7 @@ environment variable. Standard locations are <code>/usr/local/bin/</code>, <code
 <div>
 <p>Previously, this guide recommended placing the binary in <code>$HOME/.local/bin/</code>. If you install the
 latest binary somewhere else, make sure to clean up old versions. You can find the binary in use by
-calling <code>which walrus</code>.</p>
+calling <code>which walrus</code> and its version through <code>walrus -V</code>.</p>
 </div>
 </div>
 <p>Once this is done, you should be able to simply type <code>walrus</code> in your terminal. For example you can
@@ -1558,28 +1561,6 @@ for further insights).</p>
 <p>In addition to the latest version of the <code>walrus</code> binary, the GCS bucket also contains previous
 versions. An overview in XML format is available at
 <a href="https://storage.googleapis.com/mysten-walrus-binaries/">https://storage.googleapis.com/mysten-walrus-binaries/</a>.</p>
-<h2 id="testnet-wal-faucet"><a class="header" href="#testnet-wal-faucet">Testnet WAL faucet</a></h2>
-<p>The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
-value and can be exchanged for some Testnet SUI tokens, which also have no value, thought the
-command:</p>
-<pre><code class="language-sh">walrus get-wal
-</code></pre>
-<p>You can check you have received Testnet WAL by checking the Sui balances:</p>
-<pre><code class="language-sh">sui client balance
-╭─────────────────────────────────────────╮
-│ Balance of coins owned by this address  │
-├─────────────────────────────────────────┤
-│ ╭─────────────────────────────────────╮ │
-│ │ coin  balance (raw)     balance     │ │
-│ ├─────────────────────────────────────┤ │
-│ │ Sui   8869252670        8.86 SUI    │ │
-│ │ WAL   500000000         0.50 WAL    │ │
-│ ╰─────────────────────────────────────╯ │
-╰─────────────────────────────────────────╯
-</code></pre>
-<p>By default 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged
-using the <code>--amount</code> option, and a specific coin ID may be used through the <code>--exchange-id</code>.
-The <code>walrus get-wal --help</code> command provides more information about those.</p>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
 <p>The Walrus client needs to know about the Sui objects that store the Walrus system and staking
 information, see the <a href="usage/../dev-guide/sui-struct.html#system-and-staking-information">developer guide</a>.
@@ -1596,7 +1577,6 @@ configuration file in the current directory, <code>$XDG_CONFIG_HOME/walrus/</cod
 <code>~/.walrus/</code>. However, you can place the file anywhere and name it anything you like; in this case
 you need to use the <code>--config</code> option when running the <code>walrus</code> binary.</p>
 <h3 id="advanced-configuration-optional"><a class="header" href="#advanced-configuration-optional">Advanced configuration (optional)</a></h3>
-<!-- TODO: Latest config -->
 <p>The configuration file currently supports the following parameters:</p>
 <pre><code class="language-yaml"># These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
@@ -1658,6 +1638,28 @@ communication_config:
 <p>If you specify a wallet path, make sure your wallet is set up for Sui <strong>Testnet</strong>.</p>
 </div>
 </div>
+<h2 id="testnet-wal-faucet"><a class="header" href="#testnet-wal-faucet">Testnet WAL faucet</a></h2>
+<p>The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
+value and can be exchanged for some Testnet SUI tokens, which also have no value, through the
+command:</p>
+<pre><code class="language-sh">walrus get-wal
+</code></pre>
+<p>You can check that you have received Testnet WAL by checking the Sui balances:</p>
+<pre><code class="language-sh">sui client balance
+╭─────────────────────────────────────────╮
+│ Balance of coins owned by this address  │
+├─────────────────────────────────────────┤
+│ ╭─────────────────────────────────────╮ │
+│ │ coin  balance (raw)     balance     │ │
+│ ├─────────────────────────────────────┤ │
+│ │ Sui   8869252670        8.86 SUI    │ │
+│ │ WAL   500000000         0.50 WAL    │ │
+│ ╰─────────────────────────────────────╯ │
+╰─────────────────────────────────────────╯
+</code></pre>
+<p>By default, 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged using
+the <code>--amount</code> option, and a specific SUI/WAL exchange object may be used through the
+<code>--exchange-id</code> option. The <code>walrus get-wal --help</code> command provides more information about those.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
 <p>We provide 3 ways to interact directly with the Walrus storage system:</p>
