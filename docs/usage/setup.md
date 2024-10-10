@@ -80,7 +80,7 @@ We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs)
 | Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64) |
 
 <!-- markdownlint-disable -->
-<!-- TODO: Add this again -->               |
+<!-- TODO: Add this again -->
 <!-- | Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64-generic) | -->
 <!-- markdownlint-enable -->
 
