@@ -1,4 +1,6 @@
-# 2024-08-12 Devnet Update
+# Devnet Update
+
+Published on: 2024-08-12
 
 We have redeployed the Walrus Devnet to incorporate various improvements to the Walrus storage nodes
 and clients. In this process, all blobs stored on Walrus were wiped. Note that this may happen again

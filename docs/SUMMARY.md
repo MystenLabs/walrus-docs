@@ -10,8 +10,9 @@
 
 - [Blog Preface](./blog/00_intro.md)
   - [Announcing Walrus](./blog/01_announcing_walrus.md)
-  - [2024-08-12 Devnet Update](./blog/02_devnet_update.md)
+  - [Devnet Update](./blog/02_devnet_update.md)
   - [Announcing the Walrus Whitepaper](./blog/03_whitepaper.md)
+  - [Announcing Testnet](./blog/04_testnet_update.md)
 
 ---
 
@@ -29,6 +30,11 @@
 
 # Usage
 
+- [Setup](./usage/setup.md)
+- [Interacting with Walrus](./usage/interacting.md)
+  - [Using the client CLI](./usage/client-cli.md)
+  - [Using the client JSON API](./usage/json-api.md)
+  - [Using the client HTTP API](./usage/web-api.md)
 - [Developer guide](./dev-guide/dev-guide.md)
   - [Components](./dev-guide/components.md)
   - [Operations](./dev-guide/dev-operations.md)
@@ -36,13 +42,9 @@
 - [Operator guide](./operator-guide/operator-guide.md)
   - [Storage node](./operator-guide/storage-node.md)
   - [Aggregator](./operator-guide/aggregator.md)
-- [Setup](./usage/setup.md)
-- [Interacting with Walrus](./usage/interacting.md)
-  - [Using the client CLI](./usage/client-cli.md)
-  - [Using the client JSON API](./usage/json-api.md)
-  - [Using the client HTTP API](./usage/web-api.md)
-- [Troubleshooting](./usage/troubleshooting.md)
+- [Stake and Unstake](./usage/stake.md)
 - [Examples](./usage/examples.md)
+- [Troubleshooting](./usage/troubleshooting.md)
 
 # Walrus Sites
 
@@ -64,4 +66,5 @@
 ---
 
 [Glossary](./glossary.md)
-[Devnet terms of service](./tos.md)
+[Devnet terms of service](./devnet_tos.md)
+[Testnet terms of service](./testnet_tos.md)

@@ -1,7 +1,8 @@
 # Operating a storage node
+<!-- (TODO - update with operator instructions) -->
 
-The binary of the storage node is not yet publicly available. It will be made available in September
-to operators for Testnet nodes. Prior to official network launch the code will be open-sourced.
+The binary of the storage node is not yet publicly available. Prior to official network launch the
+code will be open-sourced.
 
 A basic systemd service running the Storage Node could look like this:
 

@@ -37,8 +37,9 @@ For some use cases (e.g., a public website), or to just try out the HTTP API, a 
 aggregator and/or publisher is required. For your convenience, we provide these at the following
 hosts:
 
-- Aggregator: `https://aggregator-devnet.walrus.space`
-- Publisher: `https://publisher-devnet.walrus.space`
+<!-- TODO: Point to correct instances. -->
+- Aggregator: `http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000`
+- Publisher: `http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000`
 
 Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).
@@ -52,14 +53,15 @@ authentication and compensation for the Sui used.
 For the following examples, we assume you set the `AGGREGATOR` and `PUBLISHER` environment variables
 to your desired aggregator and publisher, respectively. For example:
 
+<!-- TODO: Point to correct instances. -->
 ```sh
-AGGREGATOR=https://aggregator-devnet.walrus.space
-PUBLISHER=https://publisher-devnet.walrus.space
+AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
+PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
 ```
 
 ```admonish tip title="API specification"
 Walrus aggregators and publishers expose their API specifications at the path `/v1/api`. You can
-view this in the browser` e.g., at <https://aggregator-devnet.walrus.space/v1/api>
+view this in the browser` e.g., at <http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api>
 ```
 
 ### Store
