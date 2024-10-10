@@ -1152,7 +1152,7 @@ certified in the final step. The steps involved in a store operation can be exec
 client, or a publisher that accepts and publishes blobs via HTTP.</p>
 <p>Walrus currently allows the storage of blobs up to a maximum size that may be determined
 through the <a href="dev-guide/../usage/client-cli.html#walrus-system-information"><code>walrus info</code></a> CLI command. The
-maximum blob size is currently 957 MiB. You may store larger blobs by splitting them into
+maximum blob size is currently 13.3 GiB. You may store larger blobs by splitting them into
 smaller chunks.</p>
 <p>Blobs are stored for a certain number of <em>epochs</em>, as specified at the time they were stored. Walrus
 storage nodes ensure that within these epochs a read succeeds. The current Testnet uses a short
@@ -1179,9 +1179,10 @@ may currently be done in 3 different ways:</p>
 used to authenticate the certified blob event emitted when the blob ID was certified on Sui. The
 client <code>walrus blob-status</code> command may be used to identify the event ID that needs to be checked.</li>
 <li>A Sui SDK read may be
-used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified.</li>
+used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified,
+before the expiry epoch, and not deletable.</li>
 <li>A Sui smart contract can read the blob object on Sui (or a reference to it) to check
-is is certified.</li>
+is is certified, before the expiry epoch, and not deletable.</li>
 </ul>
 <p>The underlying protocol of the
 <a href="https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client">Sui light client</a>
@@ -1190,6 +1191,15 @@ or objects, and can be used by off-line or non-interactive applications as a pro
 for the blob ID for a certain number of epochs.</p>
 <p>Once a blob is certified, Walrus will ensure that sufficient slivers will always be
 available on storage nodes to recover it within the specified epochs.</p>
+<h2 id="delete"><a class="header" href="#delete">Delete</a></h2>
+<p>Stored blobs can be optionally set as deletable by the user that creates them. This meta-data is
+stored in the Sui blob object, and whether a blob is deletable or not is included in certified blob
+events. A deletable blob may be deleted by the owner of the blob object, to reclaim and re-use
+the storage resource associated with it.</p>
+<p>If no other copies of the blob exist in Walrus, deleting a blob will eventually make it
+unrecoverable using read commands. However, if other copies of the blob exist on Walrus, a delete
+command will reclaim storage space for the user that invoked it, but will not make the blob
+unavailable until all other copies have been deleted or expire.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="sui-structures"><a class="header" href="#sui-structures">Sui Structures</a></h1>
 <p>This section is optional and enables advanced use cases.</p>
