@@ -27,6 +27,11 @@ or devices. Furthermore, if the identical blob is stored by multiple Walrus user
 still be available on Walrus until no copy exists. Thus deleting your own copy of a blob cannot
 guarantee that it is deleted from Walrus as a whole.
 
+- Find out how to
+  [upload and delete deletable blobs](../usage/client-cli.md#reclaiming-space-via-deletable-blobs)
+  thought the CLI.
+- Find out more about how [delete operations work](../dev-guide/dev-operations.md#delete).
+
 ## Epochs
 
 Walrus Testnet enables multiple epochs. Initially an epoch is a single day to ensure the logic of
@@ -36,6 +41,10 @@ Now stored blob expiry epoch is meaningful, and blobs will become unavailable af
 epoch. The store command may be used to extend the expiry epoch of a blob that is still available.
 This operation is efficient and only affects payments and meta-data, and does not re-upload blob
 contents.
+
+- Find out the [current epoch](../usage/client-cli.md#walrus-system-information) through the CLI.
+- Find out how to store a blob for
+  [multiple epochs](../usage/client-cli.md#storing-querying-status-and-reading-blobs).
 
 ## The WAL token and the Testnet WAL faucet
 
@@ -47,6 +56,8 @@ To make Testnet WAL available to all who want to experiment with the Walrus Test
 utility and smart contract to convert Testnet SUI (which also has no value) into Testnet WAL using
 a one-to-one exchange rate. This is chosen arbitrarily, and generally one should not read too much
 into the actual WAL denominated costs of storage on Testnet. They have been chosen arbitrarily.
+
+- Find out how to [request Test WAL tokens](../usage/setup.md#testnet-wal-faucet) through the CLI.
 
 ## Decentralization through staking & unstaking
 
@@ -68,3 +79,12 @@ Under the hood and over the next months we will be testing many aspects of epoch
 storage node committee changes: better shard allocation mechanisms upon changes or storage node
 stake; efficient ways to sync state between storage nodes; as well as better ways for storage nodes
 to follow Sui event streams.
+
+- Explore the [Walrus staking dapp]()
+- Look at recent activity on the [Walrus Explorer]()
+
+## New Move Contracts & documentation
+
+As part of the Testnet release of Walrus the documentation and Move Smart contracts have been
+updated, and can be found at the [Walrus-docs repository](https://github.com/MystenLabs/walrus-docs)
+and as a [Walrus Docs Site](https://docs.walrus.site/).

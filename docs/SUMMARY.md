@@ -42,6 +42,7 @@
   - [Using the client CLI](./usage/client-cli.md)
   - [Using the client JSON API](./usage/json-api.md)
   - [Using the client HTTP API](./usage/web-api.md)
+- [Stake and Unstake](./usage/stake.md)
 - [Troubleshooting](./usage/troubleshooting.md)
 - [Examples](./usage/examples.md)
 
