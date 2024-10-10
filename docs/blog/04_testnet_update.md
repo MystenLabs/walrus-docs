@@ -1,4 +1,4 @@
-#  Announcing Testnet
+# Announcing Testnet
 
 <!-- TODO change this date -->
 Published on: 2024-10-XX
