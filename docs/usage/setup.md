@@ -6,13 +6,11 @@ patterns (see [the next chapter](./interacting.md)). This chapter describes the
 [prerequisites](#prerequisites), [installation](#installation), and [configuration](#configuration)
 of the Walrus client.
 
-```admonish note
-Note that the Walrus Testnet uses Sui **Testnet** for coordination.
-```
-
 ## Prerequisites
 
-Interacting with Walrus requires a valid Sui **Testnet** wallet with some amount of SUI tokens. The
+<!-- TODO: mention new generate-sui-wallet command -->
+
+Interacting with Walrus requires a valid Sui Testnet wallet with some amount of SUI tokens. The
 easiest way to set this up is via the Sui CLI; see the [installation
 instructions](https://docs.sui.io/guides/developer/getting-started/sui-install) in the Sui
 documentation.
