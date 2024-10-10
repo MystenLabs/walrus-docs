@@ -35,7 +35,7 @@ client, or a publisher that accepts and publishes blobs via HTTP.
 
 Walrus currently allows the storage of blobs up to a maximum size that may be determined
 through the [`walrus info`](../usage/client-cli.md#walrus-system-information) CLI command. The
-maximum blob size is currently 957&nbsp;MiB. You may store larger blobs by splitting them into
+maximum blob size is currently 13.3&nbsp;GiB. You may store larger blobs by splitting them into
 smaller chunks.
 
 Blobs are stored for a certain number of *epochs*, as specified at the time they were stored. Walrus
@@ -67,9 +67,10 @@ may currently be done in 3 different ways:
   used to authenticate the certified blob event emitted when the blob ID was certified on Sui. The
   client `walrus blob-status` command may be used to identify the event ID that needs to be checked.
 - A Sui SDK read may be
-  used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified.
+  used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified,
+  before the expiry epoch, and not deletable.
 - A Sui smart contract can read the blob object on Sui (or a reference to it) to check
-  is is certified.
+  is is certified, before the expiry epoch, and not deletable.
 
 The underlying protocol of the
 [Sui light client](https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client)
@@ -79,3 +80,15 @@ for the blob ID for a certain number of epochs.
 
 Once a blob is certified, Walrus will ensure that sufficient slivers will always be
 available on storage nodes to recover it within the specified epochs.
+
+## Delete
+
+Stored blobs can be optionally set as deletable by the user that creates them. This meta-data is
+stored in the Sui blob object, and whether a blob is deletable or not is included in certified blob
+events. A deletable blob may be deleted by the owner of the blob object, to reclaim and re-use
+the storage resource associated with it.
+
+If no other copies of the blob exist in Walrus, deleting a blob will eventually make it
+unrecoverable using read commands. However, if other copies of the blob exist on Walrus, a delete
+command will reclaim storage space for the user that invoked it, but will not make the blob
+unavailable until all other copies have been deleted or expire.
