@@ -245,16 +245,18 @@ when <a href="./interacting.html">running the CLI</a>.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
 <p>We currently provide the <code>walrus</code> client binary for macOS (Intel and Apple CPUs) and Ubuntu:</p>
 <div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
-<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
-<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
-<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
-<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
 </tbody></table>
-</div>
+</div><!-- markdownlint-disable -->
+<!-- TODO: Add this again -->               |
+<!-- | Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64-generic) | -->
+<!-- markdownlint-enable -->
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 <code>$SYSTEM</code> variable)`:</p>
 <pre><code class="language-sh">SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
-curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
+curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
 chmod +x walrus
 </code></pre>
 <p>On Ubuntu, you should generally use the <code>ubuntu-x86_64</code> version. However, this is incompatible with
@@ -327,13 +329,14 @@ command:</p>
 using the <code>--amount</code> option, and a specific coin ID may be used through the <code>--exchange-id</code>.
 The <code>walrus get-wal --help</code> command provides more information about those.</p>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
-<p>A single parameter is required to configure Walrus, namely the ID of the <a href="../dev-guide/sui-struct.html#system-information">system
-object</a> on Sui. You can create your client
-configuration as follows:</p>
-<!-- TODO: Make sure this is consistent with our default paths. -->
-<pre><code class="language-sh">mkdir -p ~/.config/walrus
-curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml \
-     -o ~/.config/walrus/client_config.yaml
+<p>The Walrus client needs to know about the Sui objects that store the Walrus system and staking
+information, see the <a href="../dev-guide/sui-struct.html#system-and-staking-information">developer guide</a>.
+These need to be configured in a file <code>~/.config/walrus/client_config.yaml</code>.</p>
+<p>The current Testnet deployment uses the following objects:</p>
+<!-- TODO: Update these values when (re-)deploying the Testnet. -->
+<pre><code class="language-yaml">system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
+staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
+exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
 </code></pre>
 <h3 id="config-custom-path"><a class="header" href="#config-custom-path">Custom path (optional)</a></h3>
 <p>By default, the Walrus client will look for the <code>client_config.yaml</code> (or <code>client_config.yml</code>)
@@ -343,12 +346,11 @@ you need to use the <code>--config</code> option when running the <code>walrus</
 <h3 id="advanced-configuration-optional"><a class="header" href="#advanced-configuration-optional">Advanced configuration (optional)</a></h3>
 <!-- TODO: Latest config -->
 <p>The configuration file currently supports the following parameters:</p>
-<pre><code class="language-yaml"># This is the only mandatory field. The system object is specific for a particular Walrus
-# deployment.
-#
-# NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
-# You can get the object ID for the current Walrus Devnet deployment as described above.
-system_object: 0x3243....
+<pre><code class="language-yaml"># These are the only mandatory fields. These objects are specific for a particular Walrus
+# deployment but then do not change over time.
+system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
+staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
+exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
@@ -361,11 +363,12 @@ wallet_config: null
 communication_config:
   max_concurrent_writes: null
   max_concurrent_sliver_reads: null
-  max_concurrent_metadata_reads: 3
+  max_concurrent_metadata_reads: null
   max_concurrent_status_reads: null
+  max_data_in_flight: null
   reqwest_config:
     total_timeout:
-      secs: 180
+      secs: 30
       nanos: 0
     pool_idle_timeout: null
     http2_keep_alive_timeout:
@@ -384,6 +387,13 @@ communication_config:
     max_backoff:
       secs: 60
       nanos: 0
+  disable_proxy: false
+  disable_native_certs: false
+  sliver_write_extra_time:
+    factor: 0.5
+    base:
+      secs: 0
+      nanos: 500000000
 </code></pre>
 <div id="admonition-important" class="admonition admonish-warning" role="note" aria-labelledby="admonition-important-title">
 <div class="admonition-title">
