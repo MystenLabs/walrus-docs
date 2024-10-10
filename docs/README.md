@@ -13,13 +13,13 @@ details on how this works.
 
 ```admonish danger title="Disclaimer about the Walrus Testnet"
 The current Testnet release of Walrus and Walrus Sites is a preview intended to showcase
-the technology and solicit feedback from builders, users and storage node operators.
-All transactions are executed on the Sui Testnet and use Testnet WAL and SUI which has no
-value. The state of the store **can and will be wiped**, at any point and possibly with no warning.
+the technology and solicit feedback from builders, users, and storage-node operators.
+All transactions are executed on the Sui Testnet and use Testnet WAL and SUI which have no
+value. The state of the store **can and will be wiped** at any point and possibly with no warning.
 Do not rely on this Testnet for any production purposes, it comes with no availability or
 persistence guarantees.
 
-Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet, and
 developers will be responsible for migrating any Testnet applications and data to Mainnet. Detailed
 migration guides will be provided when Mainnet becomes available.
 
@@ -51,10 +51,10 @@ confidentiality.
   objects on Sui, which means that smart contracts can check whether a blob is available and for how
   long, extend its lifetime or optionally delete it.
 
-- **Epochs, Tokenomics and Delegated Proof of Stake** Walrus is operated by a committee of storage
+- **Epochs, tokenomics, and delegated proof of stake** Walrus is operated by a committee of storage
   nodes that evolve between epochs. A native token, WAL (and its subdivision FROST), is used
   to delegate stake to storage nodes, and those with high stake become part of the epoch committee.
-  The WAL token is also used for payments for storage. At the end of each epoch rewards for
+  The WAL token is also used for payments for storage. At the end of each epoch, rewards for
   selecting storage nodes, storing and serving blobs are distributed to storage nodes and whose that
   stake with them. All these processes are mediated by smart contracts on the Sui platform.
 

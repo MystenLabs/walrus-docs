@@ -1,5 +1,7 @@
 # Walrus Testnet Move contracts
- <!-- TODO Update latest package ID -->
+
+> TODO: directory still contains the Devnet contracts, these and the package ID below need to be
+> updated for Testnet.
 
 This is the Move source code for the Walrus Testnet instance. We provide this so developers can
 experiment with building Walrus apps that require Move extensions. This code is published on Sui

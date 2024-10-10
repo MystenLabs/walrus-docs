@@ -14,15 +14,15 @@ This developer guide describes the following:
 
 Refer again to the [glossary](../glossary.md) of terms as a reference.
 
-```admonish danger title="Disclaimer about the Walrus developer preview"
+```admonish danger title="Disclaimer about the Walrus Testnet"
 The current Testnet release of Walrus and Walrus Sites is a preview intended to showcase
-the technology and solicit feedback from builders, users and storage node operators.
-All transactions are executed on the Sui Testnet and use Testnet WAL and SUI which has no
-value. The state of the store **can and will be wiped**, at any point and possibly with no warning.
+the technology and solicit feedback from builders, users, and storage-node operators.
+All transactions are executed on the Sui Testnet and use Testnet WAL and SUI which have no
+value. The state of the store **can and will be wiped** at any point and possibly with no warning.
 Do not rely on this Testnet for any production purposes, it comes with no availability or
 persistence guarantees.
 
-Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet and
+Furthermore, encodings and blob IDs may be incompatible with the future Testnet and Mainnet, and
 developers will be responsible for migrating any Testnet applications and data to Mainnet. Detailed
 migration guides will be provided when Mainnet becomes available.
 
