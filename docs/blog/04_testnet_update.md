@@ -1,4 +1,6 @@
-# 2024-10-17 Announcing Testnet
+#  Announcing Testnet
+
+Published on: 2024-10-17
 <!-- TODO write this section -->
 
 Today, a community of storage node operators launches the first public Testnet employing the Walrus
@@ -58,4 +60,6 @@ total available storage and storage price - are set by the selected storage oper
 according to their stake weight.
 
 A staking web dapps is provided to experiment with this functionality. Community members have also
-created explorers that can be used to view storage nodes when considering who to stake with.
+created explorers that can be used to view storage nodes when considering who to stake with. Staking
+ensures that the ultimate governance of Walrus, directly in terms of storage nodes, and indirectly
+in terms of parameters and software they chose, rests with WAL Token holders.

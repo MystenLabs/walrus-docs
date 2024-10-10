@@ -10,9 +10,9 @@
 
 - [Blog Preface](./blog/00_intro.md)
   - [Announcing Walrus](./blog/01_announcing_walrus.md)
-  - [2024-08-12 Devnet Update](./blog/02_devnet_update.md)
+  - [Devnet Update](./blog/02_devnet_update.md)
   - [Announcing the Walrus Whitepaper](./blog/03_whitepaper.md)
-  - [2024-10-17 Testnet Update](./blog/04_testnet_update.md)
+  - [Announcing Testnet](./blog/04_testnet_update.md)
 
 ---
 
