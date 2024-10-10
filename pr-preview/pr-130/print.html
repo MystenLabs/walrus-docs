@@ -1807,9 +1807,10 @@ only authorized parties may access it, or other measures to manage gas costs.</p
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
 aggregator and/or publisher is required. For your convenience, we provide these at the following
 hosts:</p>
+<!-- TODO: Point to correct instances. -->
 <ul>
-<li>Aggregator: <code>https://aggregator-devnet.walrus.space</code></li>
-<li>Publisher: <code>https://publisher-devnet.walrus.space</code></li>
+<li>Aggregator: <code>http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000</code></li>
+<li>Publisher: <code>http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000</code></li>
 </ul>
 <p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to <a href="usage/web-api.html#local-daemon">run your own publisher</a> or use the <a href="usage/./client-cli.html">CLI</a>.</p>
@@ -1819,8 +1820,9 @@ authentication and compensation for the Sui used.</p>
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
 <p>For the following examples, we assume you set the <code>AGGREGATOR</code> and <code>PUBLISHER</code> environment variables
 to your desired aggregator and publisher, respectively. For example:</p>
-<pre><code class="language-sh">AGGREGATOR=https://aggregator-devnet.walrus.space
-PUBLISHER=https://publisher-devnet.walrus.space
+<!-- TODO: Point to correct instances. -->
+<pre><code class="language-sh">AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
+PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
 </code></pre>
 <div id="admonition-api-specification" class="admonition admonish-tip" role="note" aria-labelledby="admonition-api-specification-title">
 <div class="admonition-title">
@@ -1831,7 +1833,7 @@ PUBLISHER=https://publisher-devnet.walrus.space
 </div>
 <div>
 <p>Walrus aggregators and publishers expose their API specifications at the path <code>/v1/api</code>. You can
-view this in the browser` e.g., at <a href="https://aggregator-devnet.walrus.space/v1/api">https://aggregator-devnet.walrus.space/v1/api</a></p>
+view this in the browser` e.g., at <a href="http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api">http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api</a></p>
 </div>
 </div>
 <h3 id="store-1"><a class="header" href="#store-1">Store</a></h3>
@@ -3647,32 +3649,33 @@ other agreements between you and Mysten Labs.</p>
 <!-- markdownlint-disable proper-names -->
 <h1 id="testnet-terms-of-service---walrus"><a class="header" href="#testnet-terms-of-service---walrus">TESTNET TERMS OF SERVICE - WALRUS</a></h1>
 <!-- TODO Update for testnet -->
-<p>Last updated: June 13, 2024</p>
-<p>By using Mysten Labs Devnet software, technologies, tools, and other services (collectively
-“Devnet”), you agree to the general Terms of Service and these additional Devnet Terms of Service
-(together, the “Terms”). If you do not agree, do not participate in Devnet. If you are using Devnet
-on behalf of an organization, you represent and warrant that you are an authorized representative of
-that organization and have the authority to bind that business or entity to the Terms.</p>
+<p>Last updated: October 10, 2024</p>
+<p>By using Mysten Labs Testnet software, technologies, tools, and other services (collectively
+“Testnet”), you agree to the general Terms of Service and these additional Testnet Terms of Service
+(together, the “Terms”). If you do not agree, do not participate in Testnet. If you are using
+Testnet on behalf of an organization, you represent and warrant that you are an authorized
+representative of that organization and have the authority to bind that business or entity to the
+Terms.</p>
 <h2 id="eligibility-criteria-1"><a class="header" href="#eligibility-criteria-1">Eligibility Criteria</a></h2>
-<p>You may use Devnet only if you:</p>
+<p>You may use Testnet only if you:</p>
 <ul>
 <li>Are 18 years or older and capable of forming a binding contract with us.</li>
-<li>Are not otherwise barred from participating in Devnet under applicable law.</li>
+<li>Are not otherwise barred from participating in Testnet under applicable law.</li>
 </ul>
 <p>We may, at our discretion, introduce new or change existing eligibility criteria or conditions we
-deem appropriate. Devnet may operate in certain phases, and your participation in any one phase of
-Devnet does not guarantee that you will be selected for any other phases of Devnet.</p>
+deem appropriate. Testnet may operate in certain phases, and your participation in any one phase of
+Testnet does not guarantee that you will be selected for any other phases of Testnet.</p>
 <h2 id="duration-1"><a class="header" href="#duration-1">Duration</a></h2>
-<p>Devnet will commence on the date we prescribe and continue until terminated at our discretion. We
-may change, discontinue, or wipe, temporarily or permanently, all or any part of Devnet, at any
+<p>Testnet will commence on the date we prescribe and continue until terminated at our discretion. We
+may change, discontinue, or wipe, temporarily or permanently, all or any part of Testnet, at any
 time and without notice at our discretion, including, without limitation, the modification of the
-presence, amounts, or any other conditions applicable to data you have stored within Devnet, without
-any liability to you or other Devnet users.</p>
+presence, amounts, or any other conditions applicable to data you have stored within Testnet,
+without any liability to you or other Testnet users.</p>
 <h2 id="no-warranty-1"><a class="header" href="#no-warranty-1">No Warranty</a></h2>
-<p>Mysten Labs provides the Devnet platform solely as a developer preview. Devnet is provided "as is"
+<p>Mysten Labs provides the Testnet platform solely as a developer preview. Testnet is provided "as is"
 and "with all faults." We make no warranties, express or implied, regarding the reliability,
 accuracy, performance, or fitness for a particular purpose of the service provided. You accept all
-risks associated with the use of Devnet and agree that Mysten Labs, its affiliates, and its
+risks associated with the use of Testnet and agree that Mysten Labs, its affiliates, and its
 employees shall not be liable for any damages, whether direct, indirect, incidental, special,
 consequential, or punitive, arising out of the use or inability to use the service, including but
 not limited to lost profits, loss of business, or data loss.</p>
@@ -3680,7 +3683,7 @@ not limited to lost profits, loss of business, or data loss.</p>
 beyond those stated in this agreement. Any statements made by employees or representatives of Mysten
 Labs regarding the service shall not be construed as warranties or representations, and customers
 agree to indemnify and hold harmless Mysten Labs from any such statements.</p>
-<p>Any deficiencies or errors in the Devnet platform shall not constitute a breach of this agreement,
+<p>Any deficiencies or errors in the Testnet platform shall not constitute a breach of this agreement,
 and customers agree to waive any right to seek a refund or compensation based on such deficiencies
 or errors. This "as is, no warranty" provision shall survive the termination or expiration of any
 other agreements between you and Mysten Labs.</p>
