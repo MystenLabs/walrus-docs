@@ -149,7 +149,7 @@ between epochs. And associated events such as `ShardsReceived`, `EpochParameters
 and `ShardRecoveryStart` indicate storage node level events related to epoch transitions,
 shard migrations and epoch parameters.
 
-## System information
+## System and staking information
 
 The Walrus system object contains metadata about the available and used storage, as well as the
 price of storage per KiB of storage in FROST. The committee

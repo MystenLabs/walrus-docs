@@ -75,19 +75,23 @@ when [running the CLI](./interacting.md).
 
 We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs) and Ubuntu:
 
-| OS     | CPU                   | Architecture                                                                                                         |
-| ------ | --------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| MacOS  | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-arm64)                     |
-| MacOS  | Intel 64bit           | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-macos-x86_64)                   |
-| Ubuntu | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64)                 |
-| Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64-generic) |
+| OS     | CPU           | Architecture                                                                                                 |
+| ------ | ------------- | ------------------------------------------------------------------------------------------------------------ |
+| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-arm64)     |
+| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-x86_64)   |
+| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64) |
+
+<!-- markdownlint-disable -->
+<!-- TODO: Add this again -->               |
+<!-- | Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64-generic) | -->
+<!-- markdownlint-enable -->
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 `$SYSTEM` variable)`:
 
 ```sh
 SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
-curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$SYSTEM -o walrus
+curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
 chmod +x walrus
 ```
 
@@ -163,15 +167,18 @@ The `walrus get-wal --help` command provides more information about those.
 
 ## Configuration
 
-A single parameter is required to configure Walrus, namely the ID of the [system
-object](../dev-guide/sui-struct.md#system-information) on Sui. You can create your client
-configuration as follows:
+The Walrus client needs to know about the Sui objects that store the Walrus system and staking
+information, see the [developer guide](../dev-guide/sui-struct.md#system-and-staking-information).
+These need to be configured in a file `~/.config/walrus/client_config.yaml`.
 
-<!-- TODO: Make sure this is consistent with our default paths. -->
-```sh
-mkdir -p ~/.config/walrus
-curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml \
-     -o ~/.config/walrus/client_config.yaml
+The current Testnet deployment uses the following objects:
+
+<!-- TODO: Update these values when (re-)deploying the Testnet. -->
+
+```yaml
+system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
+staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
+exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
 ```
 
 ### Custom path (optional) {#config-custom-path}
@@ -188,12 +195,11 @@ you need to use the `--config` option when running the `walrus` binary.
 The configuration file currently supports the following parameters:
 
 ```yaml
-# This is the only mandatory field. The system object is specific for a particular Walrus
-# deployment.
-#
-# NOTE: THE VALUE INCLUDED HERE IS AN EXAMPLE VALUE.
-# You can get the object ID for the current Walrus Devnet deployment as described above.
-system_object: 0x3243....
+# These are the only mandatory fields. These objects are specific for a particular Walrus
+# deployment but then do not change over time.
+system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
+staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
+exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
@@ -206,11 +212,12 @@ wallet_config: null
 communication_config:
   max_concurrent_writes: null
   max_concurrent_sliver_reads: null
-  max_concurrent_metadata_reads: 3
+  max_concurrent_metadata_reads: null
   max_concurrent_status_reads: null
+  max_data_in_flight: null
   reqwest_config:
     total_timeout:
-      secs: 180
+      secs: 30
       nanos: 0
     pool_idle_timeout: null
     http2_keep_alive_timeout:
@@ -229,6 +236,13 @@ communication_config:
     max_backoff:
       secs: 60
       nanos: 0
+  disable_proxy: false
+  disable_native_certs: false
+  sliver_write_extra_time:
+    factor: 0.5
+    base:
+      secs: 0
+      nanos: 500000000
 ```
 
 ```admonish warning title="Important"
