@@ -30,6 +30,11 @@
 
 # Usage
 
+- [Setup](./usage/setup.md)
+- [Interacting with Walrus](./usage/interacting.md)
+  - [Using the client CLI](./usage/client-cli.md)
+  - [Using the client JSON API](./usage/json-api.md)
+  - [Using the client HTTP API](./usage/web-api.md)
 - [Developer guide](./dev-guide/dev-guide.md)
   - [Components](./dev-guide/components.md)
   - [Operations](./dev-guide/dev-operations.md)
@@ -37,13 +42,8 @@
 - [Operator guide](./operator-guide/operator-guide.md)
   - [Storage node](./operator-guide/storage-node.md)
   - [Aggregator](./operator-guide/aggregator.md)
-- [Setup](./usage/setup.md)
-- [Interacting with Walrus](./usage/interacting.md)
-  - [Using the client CLI](./usage/client-cli.md)
-  - [Using the client JSON API](./usage/json-api.md)
-  - [Using the client HTTP API](./usage/web-api.md)
-- [Troubleshooting](./usage/troubleshooting.md)
 - [Examples](./usage/examples.md)
+- [Troubleshooting](./usage/troubleshooting.md)
 
 # Walrus Sites
 
