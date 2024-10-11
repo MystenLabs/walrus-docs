@@ -9,7 +9,7 @@ on Sui.
 
 <!-- TODO Update URLs -->
 The Move code of the Walrus Testnet contracts is available at
-<https://github.com/MystenLabs/walrus-docs/blob/main/contracts/blob_store>. An example package using
+<https://github.com/MystenLabs/walrus-docs/blob/main/contracts>. An example package using
 the Walrus contracts is available at
 <https://github.com/MystenLabs/walrus-docs/blob/main/examples/move>.
 

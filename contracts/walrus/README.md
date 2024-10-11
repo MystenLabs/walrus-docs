@@ -1,11 +1,11 @@
 # Walrus Testnet Move contracts
 
-> TODO: directory still contains the Devnet contracts, these and the package ID below need to be
-> updated for Testnet.
+<!-- TODO: Update to latest contracts and update object ID. -->
 
 This is the Move source code for the Walrus Testnet instance. We provide this so developers can
-experiment with building Walrus apps that require Move extensions. This code is published on Sui
-Testnet at package ID `0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe`.
+experiment with building Walrus apps that require Move extensions. A slightly different version of
+these contracts is deployed on Sui Testnet as package
+`0x668fb342c7ea45a3a8d645efefbb41d6b732a5fd4ead552f58df7fabe443c12e`.
 
 **A word of caution:** Walrus Mainnet will use new Move packages with struct layouts and function
 signatures that may not be compatible with this package. Move code that builds against this package

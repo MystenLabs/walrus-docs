@@ -26,6 +26,7 @@ working_dir
 
 # Walrus binary and configuration
 walrus
+!/contracts/walrus
 examples/CONFIG/bin/walrus
 client_config.yaml
 examples/CONFIG/config_dir/client_config.yaml

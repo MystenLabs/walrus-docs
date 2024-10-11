@@ -16,9 +16,9 @@ Signatures are 96 byte vector<u8>.
 Signed Message Header
 ---------------------
 
-All messages MUST start with a header of 3 + 8 bytes:
+All messages MUST start with a header of 3 + 4 bytes:
 - (Intent_type, Intent_version, Intent_app_id) : (u8, u8, u8)
-- epoch: u64
+- epoch: u32
 - body: remaining vec<u8>, no length prefix
 
 The intent types are enumerated below, the version is as of now 0,
@@ -27,14 +27,15 @@ signing storage node is in when signing the message.
 
 Intent types (add here):
 
-const SYNC_DONE_MSG_TYPE: u8 = 0;
+const PROOF_OF_POSSESSION_MSG_TYPE: u8 = 0;
 const BLOB_CERT_MSG_TYPE: u8 = 1;
 const INVALID_BLOB_ID_MSG_TYPE : u8 = 2;
 
-SYNC_DONE message
+PROOF_OF_POSSESSION message
 -----------------
 
-The body is empty, and the epoch for which sync is done is the epoch in the header.
+The body contains the sui address followed by the bls public key (encoded as 48 byte fixed
+size array) of the signer.
 
 
 BLOB_CERT message
