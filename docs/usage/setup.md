@@ -147,9 +147,9 @@ The current Testnet deployment uses the following objects:
 <!-- TODO: Update these values when (re-)deploying the Testnet. -->
 
 ```yaml
-system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
-staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
-exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
+system_object: 0xccb3f5c1f63adf8d1e40d9bda649cc6ed3a46d399ce2b205b187e028f4253e57
+staking_object: 0x6d1380cc205471c73fc048033d0c4f031fc1ac3628a27a1baf5e17729a396345
+exchange_object: 0x41d3fdd9c5007d551d005af097af45ad37c1ba5f15b7b50ad5c1072bd069dcb6
 ```
 
 ### Custom path (optional) {#config-custom-path}
@@ -166,9 +166,9 @@ The configuration file currently supports the following parameters:
 ```yaml
 # These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
-system_object: 0x24d91f106fc001a04bda01922295ea96a299bffa06c03679b5becd74acaf43d3
-staking_object: 0xa006240ac8a29f60644e1eb4785a3417aa165b497ea50e4c969e1fd89d541b77
-exchange_object: 0x5246ab7860b3c661af2bc6555fe68b5299a52402c82ecb96b6ad6ff7c2bc20b3
+system_object: 0xccb3f5c1f63adf8d1e40d9bda649cc6ed3a46d399ce2b205b187e028f4253e57
+staking_object: 0x6d1380cc205471c73fc048033d0c4f031fc1ac3628a27a1baf5e17729a396345
+exchange_object: 0x41d3fdd9c5007d551d005af097af45ad37c1ba5f15b7b50ad5c1072bd069dcb6
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
