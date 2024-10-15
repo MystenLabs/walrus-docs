@@ -42,5 +42,5 @@ Commands:
   sitemap  Show the pages composing the Walrus site at the given object ID
   help     Print this message or the help of the given subcommand(s)
 
-⋮
+  ⋮
 ```

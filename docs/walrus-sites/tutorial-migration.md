@@ -11,6 +11,9 @@ objects on Walrus testnet.
 
 The steps are the following:
 
+- Get the latest version of the `walrus` binary, as well as the latest Walrus
+  configuration file, following the [Walrus installation
+  instructions](../usage/setup.md).
 - Ensure you have the latest version of the `site-builder` binary by following the [installation
   instructions](./tutorial-install.md) again. Remember to `git pull` if you are building from the
   repo and have cloned it previously. Pulling the repo also guarantees you have the latest

@@ -25,21 +25,18 @@ fields](https://docs.sui.io/concepts/dynamic-fields/) of type `Resource`:
 ``` move
 struct Resource has store, drop {
     path: String,
-    content_type: String,
-    content_encoding: String,
     // The walrus blob id containing the bytes for this resource
     blob_id: u256,
+    ⋮
 }
 ```
 
-Each resource contains
+Importantly, each resource contains:
 
 - the `path` of the resource, for example `/index.html` (all the paths are always represented as
   starting from root `/`);
-- the `content_type` of the resource, for example `text/html`;
-- the `content_encoding` of the resource (at the moment the only available value is `plaintext`);
-  and
-- the `blob_id`, which is the Walrus blob ID where the resource can be found.
+- the `blob_id`, which is the Walrus blob ID where the resource can be found; and
+- additional fields, that will be explained later in the documentation.
 
 These `Resource` dynamic fields are keyed with a struct of type `ResourcePath`
 
@@ -73,9 +70,9 @@ approaches are possible:
   resolution is installed in the browser from a Portal.
 
 All of these approaches are viable (the first has been used for similar applications in IPFS
-gateways, for example), and have trade-offs. As an initial step, we have chosen to use the
-service-worker based approach, as it is light weight and ensures that the Portal does not have to
-process all the traffic from clients. This approach is described in the following.
+gateways, for example), and have trade-offs.
+
+Currently, we provide the server-side and the service-worker based approaches.
 
 ### Browsing and domain isolation
 
@@ -96,7 +93,21 @@ Base36 was chosen for two reasons, forced by the subdomain standards:
 1. A subdomain can have at most 63 characters, while a Hex-encoded Sui object ID requires 64.
 1. A subdomain is case *insensitive*, ruling out other popular encodings, e.g., Base64 or Base58.
 
-## The end-to-end resolution of a Walrus Site
+## Walrus Site portals
+
+### Portal types
+
+As mentioned before, we provide two types of portals to browse Walrus Sites:
+
+- The server-side Portal, which is a server that resolves a Walrus Site, returning it to the
+  browser. The server-side Portal is hosted at <https://blob.store>.
+- The service worker Portal, which is a service worker that is installed in the browser and resolves
+  a Walrus Site. The service worker Portal is hosted at <https://walrus.site>.
+
+We now describe the resolution process of a Walrus Site in the browser using the service-worker
+Portal as an example.
+
+### The end-to-end resolution of a Walrus Site
 
 We now show in greater detail how a Walrus Site is rendered in a client's browser with the service
 worker approach. The steps below all reference the following figure:
@@ -108,17 +119,17 @@ worker approach. The steps below all reference the following figure:
   SuiNS name `dapp.sui` to point to the object ID of the created Walrus Site.
 - **Browsing starts** (step 1): A client browses `dapp.walrus.site/index.html` in their browser.
 - **Service worker installation** (steps 2-6): The browser connects to the Portal hosted at
-  `walrus.site`, which responds with a page that installs the service worker for
-  `dapp.walrus.site`. The page is refreshed to activate the service worker.
+  `walrus.site`, which responds with a page that installs the service worker for `dapp.walrus.site`.
+  The page is refreshed to activate the service worker.
 - **Site resolution** (steps 7-10): The service worker, which is now installed, interprets its
   *origin* `dapp.walrus.site`, and makes a SuiNS resolution for `dapp.sui`, obtaining the related
   object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
   [redirects](./portal.md)). From the dynamic fields, it selects the one for `/index.html`, and
-  extracts its Walrus blob ID and content type.
+  extracts its Walrus blob ID and headers (see the [advanced section on headers](./routing.md).
 - **Blob fetch** (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
   for the blob.
 - **Returning the response** (steps 15-16): Now that the service worker has the bytes for
-  `/index.html`, and its `content_type`, it can craft a response that is then rendered by the
+  `/index.html`, and its headers, it can craft a response that is then rendered by the
   browser.
 
 These steps are executed for all resources the browser may query thereafter (for example, if

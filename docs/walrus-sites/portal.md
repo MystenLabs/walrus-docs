@@ -8,7 +8,8 @@ Portals:
 1. custom local apps; and
 1. service-worker based Portals in the browser.
 
-Currently, only the service-worker based Portal is available.
+Currently, the server-side and service-workers Portals are available at <https://blob.store> and
+<https://walrus.site>, respectively.
 
 ## Running the Portal locally
 
@@ -19,21 +20,28 @@ This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, cl
 `walrus-sites` repo and enter the `portal` directory. Here, run
 
 ``` sh
+cd portal
 pnpm install
 ```
 
-to install the dependencies, and
+to install the dependencies, and then either one of the following commands:
 
 ``` sh
-pnpm serve
+# Serve the server-side Portal
+pnpm serve:dev:server
+
+# Serve the service-worker Portal
+pnpm serve:dev:worker
 ```
 
-to serve the Portal. Typically, you will find it served at `localhost:8080` (but check the output of
-the serve command).
+to serve one of the Portals. Typically, you will find it served at `localhost:8080` (but check the
+output of the serve command).
+
+For the production versions, use the `prod` commands: `serve:prod:server` and `serve:prod:worker`.
 
 ## Configuring the Portal
 
-The most important configuration parameters for the Portal are in `constants.ts`:
+The most important configuration parameters for the Portal are in `portal/common/lib/constants.ts`:
 
 - `NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
   use Sui `testnet`.
