@@ -200,20 +200,17 @@ which contains the metadata for the site and point to the Walrus blob IDs.</p>
 fields</a> of type <code>Resource</code>:</p>
 <pre><code class="language-move">struct Resource has store, drop {
     path: String,
-    content_type: String,
-    content_encoding: String,
     // The walrus blob id containing the bytes for this resource
     blob_id: u256,
+    ⋮
 }
 </code></pre>
-<p>Each resource contains</p>
+<p>Importantly, each resource contains:</p>
 <ul>
 <li>the <code>path</code> of the resource, for example <code>/index.html</code> (all the paths are always represented as
 starting from root <code>/</code>);</li>
-<li>the <code>content_type</code> of the resource, for example <code>text/html</code>;</li>
-<li>the <code>content_encoding</code> of the resource (at the moment the only available value is <code>plaintext</code>);
-and</li>
-<li>the <code>blob_id</code>, which is the Walrus blob ID where the resource can be found.</li>
+<li>the <code>blob_id</code>, which is the Walrus blob ID where the resource can be found; and</li>
+<li>additional fields, that will be explained later in the documentation.</li>
 </ul>
 <p>These <code>Resource</code> dynamic fields are keyed with a struct of type <code>ResourcePath</code></p>
 <pre><code class="language-move">struct ResourcePath has copy, store, drop {
@@ -240,9 +237,8 @@ Sites work, and can locally perform this resolution.</li>
 resolution is installed in the browser from a Portal.</li>
 </ul>
 <p>All of these approaches are viable (the first has been used for similar applications in IPFS
-gateways, for example), and have trade-offs. As an initial step, we have chosen to use the
-service-worker based approach, as it is light weight and ensures that the Portal does not have to
-process all the traffic from clients. This approach is described in the following.</p>
+gateways, for example), and have trade-offs.</p>
+<p>Currently, we provide the server-side and the service-worker based approaches.</p>
 <h3 id="browsing-and-domain-isolation"><a class="header" href="#browsing-and-domain-isolation">Browsing and domain isolation</a></h3>
 <p>We must ensure that, when browsing multiple sites through a Portal, for example the one hosted at
 <a href="https://walrus.site">https://walrus.site</a>, these sites are isolated. Isolation is necessary for security, and to ensure
@@ -258,7 +254,18 @@ Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this UR
 <li>A subdomain can have at most 63 characters, while a Hex-encoded Sui object ID requires 64.</li>
 <li>A subdomain is case <em>insensitive</em>, ruling out other popular encodings, e.g., Base64 or Base58.</li>
 </ol>
-<h2 id="the-end-to-end-resolution-of-a-walrus-site"><a class="header" href="#the-end-to-end-resolution-of-a-walrus-site">The end-to-end resolution of a Walrus Site</a></h2>
+<h2 id="walrus-site-portals"><a class="header" href="#walrus-site-portals">Walrus Site portals</a></h2>
+<h3 id="portal-types"><a class="header" href="#portal-types">Portal types</a></h3>
+<p>As mentioned before, we provide two types of portals to browse Walrus Sites:</p>
+<ul>
+<li>The server-side Portal, which is a server that resolves a Walrus Site, returning it to the
+browser. The server-side Portal is hosted at <a href="https://blob.store">https://blob.store</a>.</li>
+<li>The service worker Portal, which is a service worker that is installed in the browser and resolves
+a Walrus Site. The service worker Portal is hosted at <a href="https://walrus.site">https://walrus.site</a>.</li>
+</ul>
+<p>We now describe the resolution process of a Walrus Site in the browser using the service-worker
+Portal as an example.</p>
+<h3 id="the-end-to-end-resolution-of-a-walrus-site"><a class="header" href="#the-end-to-end-resolution-of-a-walrus-site">The end-to-end resolution of a Walrus Site</a></h3>
 <p>We now show in greater detail how a Walrus Site is rendered in a client's browser with the service
 worker approach. The steps below all reference the following figure:</p>
 <p><img src="../assets/walrus-site-diagram.svg" alt="Walrus Site resolution" /></p>
@@ -268,17 +275,17 @@ worker approach. The steps below all reference the following figure:</p>
 SuiNS name <code>dapp.sui</code> to point to the object ID of the created Walrus Site.</li>
 <li><strong>Browsing starts</strong> (step 1): A client browses <code>dapp.walrus.site/index.html</code> in their browser.</li>
 <li><strong>Service worker installation</strong> (steps 2-6): The browser connects to the Portal hosted at
-<code>walrus.site</code>, which responds with a page that installs the service worker for
-<code>dapp.walrus.site</code>. The page is refreshed to activate the service worker.</li>
+<code>walrus.site</code>, which responds with a page that installs the service worker for <code>dapp.walrus.site</code>.
+The page is refreshed to activate the service worker.</li>
 <li><strong>Site resolution</strong> (steps 7-10): The service worker, which is now installed, interprets its
 <em>origin</em> <code>dapp.walrus.site</code>, and makes a SuiNS resolution for <code>dapp.sui</code>, obtaining the related
 object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
 <a href="./portal.html">redirects</a>). From the dynamic fields, it selects the one for <code>/index.html</code>, and
-extracts its Walrus blob ID and content type.</li>
+extracts its Walrus blob ID and headers (see the <a href="./routing.html">advanced section on headers</a>.</li>
 <li><strong>Blob fetch</strong> (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
 for the blob.</li>
 <li><strong>Returning the response</strong> (steps 15-16): Now that the service worker has the bytes for
-<code>/index.html</code>, and its <code>content_type</code>, it can craft a response that is then rendered by the
+<code>/index.html</code>, and its headers, it can craft a response that is then rendered by the
 browser.</li>
 </ul>
 <p>These steps are executed for all resources the browser may query thereafter (for example, if

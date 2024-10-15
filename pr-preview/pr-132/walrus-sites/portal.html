@@ -192,21 +192,28 @@ Portals:</p>
 <li>custom local apps; and</li>
 <li>service-worker based Portals in the browser.</li>
 </ol>
-<p>Currently, only the service-worker based Portal is available.</p>
+<p>Currently, the server-side and service-workers Portals are available at <a href="https://blob.store">https://blob.store</a> and
+<a href="https://walrus.site">https://walrus.site</a>, respectively.</p>
 <h2 id="running-the-portal-locally"><a class="header" href="#running-the-portal-locally">Running the Portal locally</a></h2>
 <p>You can run a service-worker Portal locally if you want to browse Walrus Sites without accessing
 external Portals or for development purposes.</p>
 <p>This requires having the <a href="https://pnpm.io/"><code>pnpm</code></a> tool installed. To start, clone the
 <code>walrus-sites</code> repo and enter the <code>portal</code> directory. Here, run</p>
-<pre><code class="language-sh">pnpm install
+<pre><code class="language-sh">cd portal
+pnpm install
 </code></pre>
-<p>to install the dependencies, and</p>
-<pre><code class="language-sh">pnpm serve
+<p>to install the dependencies, and then either one of the following commands:</p>
+<pre><code class="language-sh"># Serve the server-side Portal
+pnpm serve:dev:server
+
+# Serve the service-worker Portal
+pnpm serve:dev:worker
 </code></pre>
-<p>to serve the Portal. Typically, you will find it served at <code>localhost:8080</code> (but check the output of
-the serve command).</p>
+<p>to serve one of the Portals. Typically, you will find it served at <code>localhost:8080</code> (but check the
+output of the serve command).</p>
+<p>For the production versions, use the <code>prod</code> commands: <code>serve:prod:server</code> and <code>serve:prod:worker</code>.</p>
 <h2 id="configuring-the-portal"><a class="header" href="#configuring-the-portal">Configuring the Portal</a></h2>
-<p>The most important configuration parameters for the Portal are in <code>constants.ts</code>:</p>
+<p>The most important configuration parameters for the Portal are in <code>portal/common/lib/constants.ts</code>:</p>
 <ul>
 <li><code>NETWORK</code>: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
 use Sui <code>testnet</code>.</li>
