@@ -6,6 +6,20 @@ can build and deploy a Walrus Site and make it accessible to the world! Funnily,
 is itself available as a Walrus Site at <https://docs.walrus.site/walrus-sites/intro.html> (if you
 aren't there already).
 
+```admonish tip title="Make sure you update!"
+With the move to Walrus testnet, Walrus Sites are also being updated! They now use Walrus testnet as
+the backing store, and they have been improved with new awesome features. [Migrate your
+site](./tutorial-migration.md) today to take advantage of these new features!
+```
+
+```admonish danger title="Walrus Sites devnet being discontinued"
+Since the Walrus devnet will be soon shut down, all the Walrus Sites stored on it will be wiped. To
+minimize the downtime, the devnet Walrus Sites will be available after the testnet upgrade for two
+weeks, to ensure that everyone has enough time to update.
+
+Make sure to reupload your sites to the Walrus devnet before the shutdown to avoid downtime!
+```
+
 At a high level, here are some of the most exciting features:
 
 - Publishing a site does not require managing servers or complex configurations; just provide the

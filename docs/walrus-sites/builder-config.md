@@ -17,7 +17,7 @@ the `--config` flag. For your first run, it should be sufficient to call the `si
 If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
 binary, see below.
 
-## Advanced configuration
+## Additional options
 
 If you want to have more control over the behavior of the site builder, you can customize the
 following variables in the config file:

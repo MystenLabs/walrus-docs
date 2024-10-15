@@ -46,7 +46,7 @@ site builder. The configuration file is necessary to ensure that the `site-build
 correct Sui package for the Walrus Sites logic.
 
 More details on the configuration of the `site-builder` can be found under the [advanced
-configuration](tutorial-config.md) section.
+configuration](./builder-config.md) section.
 
 ## Update the site
 
@@ -82,19 +82,4 @@ Browsing to the provided URL should reflect the change. You've updated the site!
 
 ```admonish note
 The wallet you are using must be the *owner* of the Walrus Site object to be able to update it.
-```
-
-## Additional commands
-
-The `site-builder` tool provides two additional utilities:
-
-- The `convert` command converts an object ID in hex format to the equivalent Base36
-  format. This command is useful if you have the Sui object ID of a Walrus Site, and want to know
-  the subdomain where you can browse it.
-- The `sitemap` command shows the resources that compose the Walrus Site at the given object ID.
-
-```admonish tip
-In general, the `--help` flag is your friend, you can add it to get further details for the whole
-CLI (`./target/release/site-builder --help`) or individual commands (e.g.,
-`./target/release/site-builder update --help`).
 ```
