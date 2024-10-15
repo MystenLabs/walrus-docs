@@ -2834,6 +2834,9 @@ external Portals or for development purposes.</p>
 <code>walrus-sites</code> repo and enter the <code>portal</code> directory. Here, run</p>
 <pre><code class="language-sh">cd portal
 pnpm install
+# Build the portal you want to use, or both
+pnpm build:worker
+pnpm build:server
 </code></pre>
 <p>to install the dependencies, and then either one of the following commands:</p>
 <pre><code class="language-sh"># Serve the server-side Portal
