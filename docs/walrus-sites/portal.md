@@ -22,6 +22,9 @@ This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, cl
 ``` sh
 cd portal
 pnpm install
+# Build the portal you want to use, or both
+pnpm build:worker
+pnpm build:server
 ```
 
 to install the dependencies, and then either one of the following commands:
