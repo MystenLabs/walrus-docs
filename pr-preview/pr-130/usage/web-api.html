@@ -215,24 +215,23 @@ only authorized parties may access it, or other measures to manage gas costs.</p
 </div>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
-aggregator and/or publisher is required. For your convenience, we provide these at the following
-hosts:</p>
-<!-- TODO: Point to correct instances. -->
+aggregator and/or publisher is required. Several entities run such aggregators and publishers; the
+instances run by Mysten Labs are accessible at the following hosts:</p>
 <ul>
-<li>Aggregator: <code>http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000</code></li>
-<li>Publisher: <code>http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000</code></li>
+<li>Aggregator: <code>https://aggregator.walrus-testnet.walrus.space</code></li>
+<li>Publisher: <code>https://publisher.walrus-testnet.walrus.space</code></li>
 </ul>
+<!-- TODO: Full list of instances? -->
 <p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to <a href="#local-daemon">run your own publisher</a> or use the <a href="./client-cli.html">CLI</a>.</p>
-<p>Note that the publisher consumes (Testnet) Sui on the service side, and a Mainnet deployment would
-likely not be able to provide uncontrolled public access to publishing without requiring some
-authentication and compensation for the Sui used.</p>
+<p>Note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet deployment
+would likely not be able to provide uncontrolled public access to publishing without requiring some
+authentication and compensation for the funds used.</p>
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
 <p>For the following examples, we assume you set the <code>AGGREGATOR</code> and <code>PUBLISHER</code> environment variables
 to your desired aggregator and publisher, respectively. For example:</p>
-<!-- TODO: Point to correct instances. -->
-<pre><code class="language-sh">AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
-PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
+<pre><code class="language-sh">AGGREGATOR=https://aggregator.walrus-testnet.walrus.space
+PUBLISHER=https://publisher.walrus-testnet.walrus.space
 </code></pre>
 <div id="admonition-api-specification" class="admonition admonish-tip" role="note" aria-labelledby="admonition-api-specification-title">
 <div class="admonition-title">
@@ -243,7 +242,7 @@ PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
 </div>
 <div>
 <p>Walrus aggregators and publishers expose their API specifications at the path <code>/v1/api</code>. You can
-view this in the browser` e.g., at <a href="http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api">http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api</a></p>
+view this in the browser` e.g., at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a></p>
 </div>
 </div>
 <h3 id="store"><a class="header" href="#store">Store</a></h3>

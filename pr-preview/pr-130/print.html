@@ -1194,10 +1194,9 @@ versions. An overview in XML format is available at
 information, see the <a href="usage/../dev-guide/sui-struct.html#system-and-staking-information">developer guide</a>.
 These need to be configured in a file <code>~/.config/walrus/client_config.yaml</code>.</p>
 <p>The current Testnet deployment uses the following objects:</p>
-<!-- TODO: Update these values when (re-)deploying the Testnet. -->
-<pre><code class="language-yaml">system_object: 0xccb3f5c1f63adf8d1e40d9bda649cc6ed3a46d399ce2b205b187e028f4253e57
-staking_object: 0x6d1380cc205471c73fc048033d0c4f031fc1ac3628a27a1baf5e17729a396345
-exchange_object: 0x41d3fdd9c5007d551d005af097af45ad37c1ba5f15b7b50ad5c1072bd069dcb6
+<pre><code class="language-yaml">system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
+staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
+exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
 </code></pre>
 <h3 id="config-custom-path"><a class="header" href="#config-custom-path">Custom path (optional)</a></h3>
 <p>By default, the Walrus client will look for the <code>client_config.yaml</code> (or <code>client_config.yml</code>)
@@ -1208,9 +1207,9 @@ you need to use the <code>--config</code> option when running the <code>walrus</
 <p>The configuration file currently supports the following parameters:</p>
 <pre><code class="language-yaml"># These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
-system_object: 0xccb3f5c1f63adf8d1e40d9bda649cc6ed3a46d399ce2b205b187e028f4253e57
-staking_object: 0x6d1380cc205471c73fc048033d0c4f031fc1ac3628a27a1baf5e17729a396345
-exchange_object: 0x41d3fdd9c5007d551d005af097af45ad37c1ba5f15b7b50ad5c1072bd069dcb6
+system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
+staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
+exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
@@ -1491,24 +1490,23 @@ only authorized parties may access it, or other measures to manage gas costs.</p
 </div>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
-aggregator and/or publisher is required. For your convenience, we provide these at the following
-hosts:</p>
-<!-- TODO: Point to correct instances. -->
+aggregator and/or publisher is required. Several entities run such aggregators and publishers; the
+instances run by Mysten Labs are accessible at the following hosts:</p>
 <ul>
-<li>Aggregator: <code>http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000</code></li>
-<li>Publisher: <code>http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000</code></li>
+<li>Aggregator: <code>https://aggregator.walrus-testnet.walrus.space</code></li>
+<li>Publisher: <code>https://publisher.walrus-testnet.walrus.space</code></li>
 </ul>
+<!-- TODO: Full list of instances? -->
 <p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to <a href="usage/web-api.html#local-daemon">run your own publisher</a> or use the <a href="usage/./client-cli.html">CLI</a>.</p>
-<p>Note that the publisher consumes (Testnet) Sui on the service side, and a Mainnet deployment would
-likely not be able to provide uncontrolled public access to publishing without requiring some
-authentication and compensation for the Sui used.</p>
+<p>Note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet deployment
+would likely not be able to provide uncontrolled public access to publishing without requiring some
+authentication and compensation for the funds used.</p>
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
 <p>For the following examples, we assume you set the <code>AGGREGATOR</code> and <code>PUBLISHER</code> environment variables
 to your desired aggregator and publisher, respectively. For example:</p>
-<!-- TODO: Point to correct instances. -->
-<pre><code class="language-sh">AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
-PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
+<pre><code class="language-sh">AGGREGATOR=https://aggregator.walrus-testnet.walrus.space
+PUBLISHER=https://publisher.walrus-testnet.walrus.space
 </code></pre>
 <div id="admonition-api-specification" class="admonition admonish-tip" role="note" aria-labelledby="admonition-api-specification-title">
 <div class="admonition-title">
@@ -1519,7 +1517,7 @@ PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
 </div>
 <div>
 <p>Walrus aggregators and publishers expose their API specifications at the path <code>/v1/api</code>. You can
-view this in the browser` e.g., at <a href="http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api">http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api</a></p>
+view this in the browser` e.g., at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a></p>
 </div>
 </div>
 <h3 id="store"><a class="header" href="#store">Store</a></h3>
@@ -1749,7 +1747,6 @@ unavailable until all other copies have been deleted or expire.</p>
 querying or executing transactions on Sui directly. However, Walrus uses Sui to manage its metadata
 and smart contract developers can read information about the Walrus system, as well as stored blobs,
 on Sui.</p>
-<!-- TODO Update URLs -->
 <p>The Move code of the Walrus Testnet contracts is available at
 <a href="https://github.com/MystenLabs/walrus-docs/blob/main/contracts">https://github.com/MystenLabs/walrus-docs/blob/main/contracts</a>. An example package using
 the Walrus contracts is available at
