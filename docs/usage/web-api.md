@@ -34,34 +34,34 @@ only authorized parties may access it, or other measures to manage gas costs.
 ## Using a public aggregator or publisher {#public-services}
 
 For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
-aggregator and/or publisher is required. For your convenience, we provide these at the following
-hosts:
+aggregator and/or publisher is required. Several entities run such aggregators and publishers; the
+instances run by Mysten Labs are accessible at the following hosts:
 
-<!-- TODO: Point to correct instances. -->
-- Aggregator: `http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000`
-- Publisher: `http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000`
+- Aggregator: `https://aggregator.walrus-testnet.walrus.space`
+- Publisher: `https://publisher.walrus-testnet.walrus.space`
+
+<!-- TODO: Full list of instances? -->
 
 Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
 to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).
 
-Note that the publisher consumes (Testnet) Sui on the service side, and a Mainnet deployment would
-likely not be able to provide uncontrolled public access to publishing without requiring some
-authentication and compensation for the Sui used.
+Note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet deployment
+would likely not be able to provide uncontrolled public access to publishing without requiring some
+authentication and compensation for the funds used.
 
 ## HTTP API Usage
 
 For the following examples, we assume you set the `AGGREGATOR` and `PUBLISHER` environment variables
 to your desired aggregator and publisher, respectively. For example:
 
-<!-- TODO: Point to correct instances. -->
 ```sh
-AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
-PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
+AGGREGATOR=https://aggregator.walrus-testnet.walrus.space
+PUBLISHER=https://publisher.walrus-testnet.walrus.space
 ```
 
 ```admonish tip title="API specification"
 Walrus aggregators and publishers expose their API specifications at the path `/v1/api`. You can
-view this in the browser` e.g., at <http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api>
+view this in the browser` e.g., at <https://aggregator.walrus-testnet.walrus.space/v1/api>
 ```
 
 ### Store

@@ -14,7 +14,6 @@ use walrus::{
 };
 
 // Error codes
-// Keep errors in `walrus-sui/types/move_errors.rs` up to date with changes here.
 const ENotCertified: u64 = 0;
 const EBlobNotDeletable: u64 = 1;
 const EResourceBounds: u64 = 2;
