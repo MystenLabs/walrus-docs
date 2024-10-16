@@ -16,9 +16,9 @@ RESOLUTION” BELOW FOR DETAILS REGARDING ARBITRATION.
 
 ## I. Privacy Policy
 
-Please review our Privacy Policy, which also governs your use of the Services, for information on
-how we collect, use and share your information. By using the Services you agree to be bound by our
-Privacy Policy.
+Please review our [Privacy Policy](../legal/privacy.md), which also governs your use of the
+Services, for information on how we collect, use and share your information. By using the Services
+you agree to be bound by our Privacy Policy.
 
 ## II. Eligibility
 
