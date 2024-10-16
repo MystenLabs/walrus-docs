@@ -215,18 +215,69 @@ only authorized parties may access it, or other measures to manage gas costs.</p
 </div>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
-aggregator and/or publisher is required. Several entities run such aggregators and publishers; the
-instances run by Mysten Labs are accessible at the following hosts:</p>
-<ul>
-<li>Aggregator: <code>https://aggregator.walrus-testnet.walrus.space</code></li>
-<li>Publisher: <code>https://publisher.walrus-testnet.walrus.space</code></li>
-</ul>
-<!-- TODO: Full list of instances? -->
-<p>Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
+aggregator and/or publisher is required. Several entities run such aggregators and publishers, see
+the lists of public <a href="#public-aggregators">aggregators</a> and <a href="#public-publishers">publishers</a> below.</p>
+<p>Public publishers limit requests to 10 MiB by default. If you want to upload larger files, you need
 to <a href="#local-daemon">run your own publisher</a> or use the <a href="./client-cli.html">CLI</a>.</p>
-<p>Note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet deployment
-would likely not be able to provide uncontrolled public access to publishing without requiring some
-authentication and compensation for the funds used.</p>
+<p>Also, note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet
+deployment would likely not be able to provide uncontrolled public access to publishing without
+requiring some authentication and compensation for the funds used.</p>
+<h3 id="public-aggregators"><a class="header" href="#public-aggregators">Public aggregators</a></h3>
+<p>The following is a list of know public aggregators; they are checked periodically, but each of them
+may still be temporarily unavailable:</p>
+<ul>
+<li><code>https://aggregator.walrus-testnet.walrus.space</code></li>
+<li><code>https://wal-aggregator-testnet.staketab.org</code></li>
+<li><code>https://walrus-testnet-aggregator.bartestnet.com</code></li>
+<li><code>https://walrus-testnet.blockscope.net</code></li>
+<li><code>https://walrus-testnet-aggregator.nodes.guru</code></li>
+<li><code>https://walrus-cache-testnet.overclock.run</code></li>
+<li><code>https://sui-walrus-testnet.bwarelabs.com/aggregator</code></li>
+<li><code>https://walrus-testnet-aggregator.stakin-nodes.com</code></li>
+<li><code>https://testnet-aggregator-walrus.kiliglab.io</code></li>
+<li><code>https://walrus-cache-testnet.latitude-sui.com</code></li>
+<li><code>https://walrus-tn.juicystake.io:9443</code></li>
+<li><code>https://walrus-agg-testnet.chainode.tech:9002</code></li>
+<li><code>https://walrus-testnet-aggregator.starduststaking.com:444</code></li>
+<li><code>http://walrus-testnet-aggregator.everstake.one:9000</code></li>
+<li><code>http://walrus.testnet.pops.one:9000</code></li>
+<li><code>http://scarlet-brussels-376c2.walrus.bdnodes.net:9000</code></li>
+<li><code>http://aggregator.testnet.sui.rpcpool.com:9000</code></li>
+<li><code>http://walrus.krates.ai:9000</code></li>
+<li><code>http://walrus-testnet.stakingdefenseleague.com:9000</code></li>
+<li><code>http://walrus.sui.thepassivetrust.com:9000</code></li>
+</ul>
+<!--
+Reported but currently not available:
+- `https://walrus-testnet-aggregator.nodeinfra.com`
+-->
+<h3 id="public-publishers"><a class="header" href="#public-publishers">Public publishers</a></h3>
+<ul>
+<li><code>https://publisher.walrus-testnet.walrus.space</code></li>
+<li><code>https://wal-publisher-testnet.staketab.org</code></li>
+<li><code>https://walrus-testnet-publisher.bartestnet.com</code></li>
+<li><code>https://walrus-testnet.blockscope.net:444</code></li>
+<li><code>https://walrus-testnet-publisher.nodes.guru</code></li>
+<li><code>https://walrus-publish-testnet.chainode.tech:9003</code></li>
+<li><code>https://sui-walrus-testnet.bwarelabs.com/publisher</code></li>
+<li><code>https://walrus-testnet-publisher.stakin-nodes.com</code></li>
+<li><code>https://testnet-publisher-walrus.kiliglab.io</code></li>
+<li><code>http://walrus-publisher-testnet.overclock.run:9001</code></li>
+<li><code>http://walrus-testnet-publisher.everstake.one:9001</code></li>
+<li><code>http://walrus.testnet.pops.one:9001</code></li>
+<li><code>http://ivory-dakar-e5812.walrus.bdnodes.net:9001</code></li>
+<li><code>http://publisher.testnet.sui.rpcpool.com:9001</code></li>
+<li><code>http://walrus.krates.ai:9001</code></li>
+<li><code>http://walrus-publisher-testnet.latitude-sui.com:9001</code></li>
+<li><code>http://walrus-tn.juicystake.io:9090</code></li>
+<li><code>http://walrus-testnet.stakingdefenseleague.com:9001</code></li>
+<li><code>http://walrus.sui.thepassivetrust.com:9001</code></li>
+</ul>
+<!--
+Reported but currently not available:
+- https://walrus-testnet-publisher.nodeinfra.com
+- https://walrus-testnet-aggregator.starduststaking.com:445
+-->
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
 <p>For the following examples, we assume you set the <code>AGGREGATOR</code> and <code>PUBLISHER</code> environment variables
 to your desired aggregator and publisher, respectively. For example:</p>
