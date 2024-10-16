@@ -61,7 +61,7 @@ may still be temporarily unavailable:
 - `https://walrus-cache-testnet.latitude-sui.com`
 - `https://walrus-tn.juicystake.io:9443`
 - `https://walrus-agg-testnet.chainode.tech:9002`
-- `https://walrus-testnet-aggregator.starduststaking.com:444`
+- `https://walrus-testnet-aggregator.starduststaking.com:11444`
 - `http://walrus-testnet-aggregator.everstake.one:9000`
 - `http://walrus.testnet.pops.one:9000`
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
@@ -80,12 +80,13 @@ Reported but currently not available:
 - `https://publisher.walrus-testnet.walrus.space`
 - `https://wal-publisher-testnet.staketab.org`
 - `https://walrus-testnet-publisher.bartestnet.com`
-- `https://walrus-testnet.blockscope.net:444`
 - `https://walrus-testnet-publisher.nodes.guru`
-- `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://sui-walrus-testnet.bwarelabs.com/publisher`
 - `https://walrus-testnet-publisher.stakin-nodes.com`
 - `https://testnet-publisher-walrus.kiliglab.io`
+- `https://walrus-testnet.blockscope.net:444`
+- `https://walrus-publish-testnet.chainode.tech:9003`
+- `https://walrus-testnet-publisher.starduststaking.com:11445`
 - `http://walrus-publisher-testnet.overclock.run:9001`
 - `http://walrus-testnet-publisher.everstake.one:9001`
 - `http://walrus.testnet.pops.one:9001`
@@ -100,7 +101,6 @@ Reported but currently not available:
 <!--
 Reported but currently not available:
 - https://walrus-testnet-publisher.nodeinfra.com
-- https://walrus-testnet-aggregator.starduststaking.com:445
 -->
 
 ## HTTP API Usage
