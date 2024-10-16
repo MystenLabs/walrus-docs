@@ -39,15 +39,17 @@ This limitation only applies to Portal based on service workers. A web Portal wi
 have this limitation.
 ```
 
-## iOS Sui mobile wallets do not work with Walrus Sites
+## iOS Sui mobile wallets do not work with the service worker Portal
 
 Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
 WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
-iOS. Therefore, Sui wallets cannot currently be used on a Walrus Site on iOS. Note, however, that
-*browsing* a Walrus Site is still possible on iOS through any browser. Only the connection to the
-wallet is impacted.
+iOS. Therefore, Sui wallets cannot currently be used on a service-worker Portal on iOS. Note,
+however, that *browsing* a Walrus Site is still possible on iOS through any browser.
 
-The connection with the Sui Wallet apps works on Android devices.
+To provide a seamless experience for iOS users (and other users on browsers that do not support
+service workers), we implemented a redidect to a server-side Portal (<https://blob.store>). Whenever
+a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them to the
+`<site_name>.blob.store` server-side Portal. This way, the user can still use the wallet.
 
 ```admonish note
 This limitation only applies to Portal based on service workers. A web Portal will not
