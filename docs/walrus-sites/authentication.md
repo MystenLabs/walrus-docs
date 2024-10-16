@@ -2,7 +2,8 @@
 
 Walrus Sites offers a simple mechanism to authenticate the data that is served from the Walrus
 storage on the client side. Thus, Walrus Sites can guarantee (with various degrees of confidence,
-depending on the setup) that the site data is authentic and has not and has not tampered with by a malicious aggregator.
+depending on the setup) that the site data is authentic and has not been tampered with by a
+malicious aggregator.
 
 ## Authentication mechanism
 
