@@ -221,13 +221,15 @@ user.</p>
 have this limitation.</p>
 </div>
 </div>
-<h2 id="ios-sui-mobile-wallets-do-not-work-with-walrus-sites"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-walrus-sites">iOS Sui mobile wallets do not work with Walrus Sites</a></h2>
+<h2 id="ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal">iOS Sui mobile wallets do not work with the service worker Portal</a></h2>
 <p>Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
 WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
-iOS. Therefore, Sui wallets cannot currently be used on a Walrus Site on iOS. Note, however, that
-<em>browsing</em> a Walrus Site is still possible on iOS through any browser. Only the connection to the
-wallet is impacted.</p>
-<p>The connection with the Sui Wallet apps works on Android devices.</p>
+iOS. Therefore, Sui wallets cannot currently be used on a service-worker Portal on iOS. Note,
+however, that <em>browsing</em> a Walrus Site is still possible on iOS through any browser.</p>
+<p>To provide a seamless experience for iOS users (and other users on browsers that do not support
+service workers), we implemented a redidect to a server-side Portal (<a href="https://blob.store">https://blob.store</a>). Whenever
+a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them to the
+<code>&lt;site_name&gt;.blob.store</code> server-side Portal. This way, the user can still use the wallet.</p>
 <div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
 <div class="admonition-title">
 <div id="admonition-note-1-title">
