@@ -19,7 +19,7 @@ Here is the part that is a bit different. Assume there is some image that you ca
 
 Recall that, however, `https://walrus.site` is just one of the possibly many Portals. I.e., the same
 resource is browsable from a local Portal (`http://gallery.localhost:8080/walrus_arctic.webp`), or
-from any other Portal (e.g., `https://gallery.myotherportal.com/walrus_arctic.webp`). Therefore, how
+from any other Portal (e.g., `https://gallery.blob.store/walrus_arctic.webp`). Therefore, how
 can you link the resource in a *Portal independent way*? This is important for interoperability,
 availability, and respecting the user's choice of Portal.
 

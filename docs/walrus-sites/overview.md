@@ -50,7 +50,7 @@ This struct just holds the string of the path (`/index.html`); having a separate
 we will not have namespace collisions with other dynamic fields, possibly added by other packages.
 
 To see this in action, look at [a Walrus Site in the
-explorer](https://suiscan.xyz/testnet/object/0x049b6d3f34789904efcc20254400b7dca5548ee35cd7b5b145a211f85b2532fa),
+explorer](https://suiscan.xyz/testnet/object/0xd20b90149409ba5d005d4a2cd981db9494bc3cdb2f04c47ca1af98dd8f71610a),
 and check its dynamic fields.
 
 ### The site rendering path
@@ -86,7 +86,7 @@ uniquely associated to the object ID of the Walrus Site through SuiNS.
 
 Walrus Sites also work without SuiNS: a site can *always* be browsed by using as subdomain the
 Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
-<https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.walrus.site>.
+<https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site>.
 
 Base36 was chosen for two reasons, forced by the subdomain standards:
 

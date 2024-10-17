@@ -9,6 +9,11 @@ The migration will result in a new Site object on Sui (with a different object I
 objects on Walrus testnet.
 ```
 
+``` admonish danger title="New default configuration path"
+The default configuration file for the `site-builder` has been moved to the `./sites-config.yaml`
+instead of the old `./site-builder/assets/builder-example.yaml`.
+```
+
 The steps are the following:
 
 - Get the latest version of the `walrus` binary, as well as the latest Walrus
