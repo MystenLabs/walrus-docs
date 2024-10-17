@@ -17,16 +17,16 @@ the `--config` flag. For your first run, it should be sufficient to call the `si
 If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
 binary, see below.
 
-## Advanced configuration
+## Additional options
 
 If you want to have more control over the behavior of the site builder, you can customize the
 following variables in the config file:
 
 - `package`: the object ID of the Walrus Sites package on Sui. This must always be specified in the
   config, and is already appropriately configured in `assets/example-config.yaml`.
-- `portal`: the name of the Portal through which the site will be viewed; this only affects the
+- `portal`: the name of the portal through which the site will be viewed; this only affects the
   output of the CLI, and nothing else (default: `walrus.site`).
-  All Walrus Sites are accessible through any Portal independent of this setting.
+  All Walrus Sites are accessible through any portal independent of this setting.
 - `general`: these are general options that can be configured both through the CLI and the config:
   - `rpc_url`: The URL of the Sui RPC node to use. If not set, the `site-builder` will infer it from
     the wallet.

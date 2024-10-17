@@ -6,6 +6,20 @@ can build and deploy a Walrus Site and make it accessible to the world! Funnily,
 is itself available as a Walrus Site at <https://docs.walrus.site/walrus-sites/intro.html> (if you
 aren't there already).
 
+```admonish tip title="Make sure you update!"
+With the move to Walrus Testnet, Walrus Sites are also being updated! They now use Walrus Testnet as
+the backing store, and they have been improved with new awesome features. [Migrate your
+site](./tutorial-migration.md) today to take advantage of these new features!
+```
+
+```admonish danger title="Walrus Sites Devnet being discontinued"
+Since the Walrus Devnet will be shut down soon, all the Walrus Sites stored on it will be wiped. To
+minimize the downtime, the Devnet Walrus Sites will be available after the Testnet upgrade for two
+weeks (until **2024-10-31**), to ensure that everyone has enough time to update.
+
+Make sure to reupload your sites to the Walrus Tevnet before the shutdown to avoid downtime!
+```
+
 At a high level, here are some of the most exciting features:
 
 - Publishing a site does not require managing servers or complex configurations; just provide the
@@ -30,10 +44,10 @@ NFT collection on Sui that has a frontend dApp to mint the NFTs hosted on Walrus
 which *each NFT* has a *specific, personalized Walrus Site*.
 
 You can check out the mint page at <https://flatland.walrus.site/>. This site is served to your
-browser through the Walrus Site *Portal* <https://walrus.site>. While the Portal's operation is
-explained in a [later section](./portal.md), consider for now that there can be many Portals (hosted
+browser through the Walrus Site *portal* <https://walrus.site>. While the portal's operation is
+explained in a [later section](./portal.md), consider for now that there can be many portals (hosted
 by whoever wants to have their own, and even on `localhost`). Further, the only function of the
-Portal is to provide the browser with some code (specifically, a service worker) that allows it to
+portal is to provide the browser with some code (specifically, a service worker) that allows it to
 fetch the Walrus Site from Sui and Walrus.
 
 If you have a Sui wallet with some Testnet SUI, you can try and "mint a new Flatlander" from the
@@ -51,8 +65,8 @@ which is
 
 In summary:
 
-- Walrus Sites are served through a Portal; in this case, `https://walrus.site`. There can be many
-  Portals, and anyone can host one.
+- Walrus Sites are served through a portal; in this case, `https://walrus.site`. There can be many
+  portals, and anyone can host one.
 - The subdomain on the URL points to a specific object on Sui that allows the browser to fetch and
   render the site resources. This pointer can be
   - a SuiNS name, such as `flatland` in `https://flatland.walrus.site`, or

@@ -27,18 +27,20 @@ in the bar the object ID of the Walrus Site, check that it is correct, and click
 
 After approving the transaction, we can now browse <https://walrusgame.walrus.site>!
 
-### The CLI way
+---
+
+## The CLI way
 
 For completeness, we report here a manual way of setting the mapping between the SuiNS name and the
 Walrus Site, using the CLI.
 
-#### Get the SuiNS object ID
+### Get the SuiNS object ID
 
 Go to the ["names you own"](https://testnet.suins.io/account/my-names) section of the SuiNS website,
 click the three-dots menu on the top-right corner of the name, choose "View all info", and copy the
 `ObjectID`. In our case, this is `0x6412...`.
 
-#### Send the SuiNS registration object to the address you use with the Sui CLI
+### Send the SuiNS registration object to the address you use with the Sui CLI
 
 The steps that follow require that the SuiNS registration object is owned by the address you are
 using on the Sui CLI. Therefore, unless you use the same address in your browser wallet and the CLI,
@@ -53,13 +55,12 @@ sui client active-address
 
 Then, from your browser wallet, select the "Assets" tab and look for the NFT of the SuiNS
 registration, which should look as follows:
-
 ![the SuiNS registration inside the wallet](../assets/suins-asset.png)
 
 Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
 above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.
 
-#### Use the CLI to map the SuiNS name to the Walrus Site
+### Use the CLI to map the SuiNS name to the Walrus Site
 
 This step associates the name `walrusgame` to the object ID of our Walrus Site. There are possibly
 many ways to achieve this, one is to issue the following transaction using the Sui CLI to create

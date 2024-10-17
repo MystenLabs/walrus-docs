@@ -36,7 +36,6 @@ config:
       - Mainnet
       - Merkle
       - Mysten Labs
-      - Portal
       - Python
       - Rust
       - Sui
