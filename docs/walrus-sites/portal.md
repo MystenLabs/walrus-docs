@@ -1,20 +1,20 @@
-# The Walrus Sites Portal
+# The Walrus Sites portal
 
-We use the term "Portal" to indicate any technology that is used to access an browse Walrus Sites.
+We use the term "portal" to indicate any technology that is used to access an browse Walrus Sites.
 As mentioned in the [overview](./overview.md#the-site-rendering-path), we foresee three kinds of
-Portals:
+portals:
 
-1. server-side Portals;
+1. server-side portals;
 1. custom local apps; and
-1. service-worker based Portals in the browser.
+1. service-worker based portals in the browser.
 
-Currently, the server-side and service-workers Portals are available at <https://blob.store> and
+Currently, the server-side and service-workers portals are available at <https://blob.store> and
 <https://walrus.site>, respectively.
 
-## Running the Portal locally
+## Running the portal locally
 
-You can run a service-worker Portal locally if you want to browse Walrus Sites without accessing
-external Portals or for development purposes.
+You can run a service-worker portal locally if you want to browse Walrus Sites without accessing
+external portals or for development purposes.
 
 This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, clone the
 `walrus-sites` repo and enter the `portal` directory. Here, run
@@ -30,21 +30,21 @@ pnpm build:server
 to install the dependencies, and then either one of the following commands:
 
 ``` sh
-# Serve the server-side Portal
+# Serve the server-side portal
 pnpm serve:dev:server
 
-# Serve the service-worker Portal
+# Serve the service-worker portal
 pnpm serve:dev:worker
 ```
 
-to serve one of the Portals. Typically, you will find it served at `localhost:8080` (but check the
+to serve one of the portals. Typically, you will find it served at `localhost:8080` (but check the
 output of the serve command).
 
 For the production versions, use the `prod` commands: `serve:prod:server` and `serve:prod:worker`.
 
-## Configuring the Portal
+## Configuring the portal
 
-The most important configuration parameters for the Portal are in `portal/common/lib/constants.ts`:
+The most important configuration parameters for the portal are in `portal/common/lib/constants.ts`:
 
 - `NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
   use Sui `testnet`.

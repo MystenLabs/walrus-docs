@@ -4,7 +4,7 @@
 The following features have been released with the Walrus Sites testnet version.
 ```
 
-In its base configuration, Walrus Sites serves static assets through a Portal. However, many modern
+In its base configuration, Walrus Sites serves static assets through a portal. However, many modern
 web applications require more advanced features, such as custom headers and client-side routing.
 
 Therefore, the site-builder can read a `ws-resource.json` configuration file, in which you can
@@ -14,7 +14,7 @@ directly specify resource headers and routing rules.
 
 This file is optionally placed in the root of the site directory, and it is *not* uploaded with the
 site's resources (in other words, the file is not part of the resulting Walrus Site and is not
-served by the Portal).
+served by the portal).
 
 If you don't want to use this default location, you can specify the path to the configuration file
 with the `--ws-resources` flag when running the `publish` or `update` commands.
@@ -43,7 +43,7 @@ We now describe in details the two sections of the configuration file, `headers`
 
 The `headers` section allows you to specify custom HTTP response headers for specific resources.
 The keys in the `headers` object are the paths of the resources, and the values are lists of
-key-value pairs corresponding to the headers that the Portal will attach to the response.
+key-value pairs corresponding to the headers that the portal will attach to the response.
 
 For example, in the configuration above, the file `index.html` will be served with the
 `Content-Type` header set to `text/html; charset=utf-8` and the `Cache-Control` header set to
@@ -92,13 +92,13 @@ that points to a non-existing resource.
 
 The simple routing algorithm is as follows:
 
-- Whenever a resource path *is not found among the sites resources*, the Portal tries to match the
+- Whenever a resource path *is not found among the sites resources*, the portal tries to match the
   path to the `routes`.
 - All matching routes are then *lexicographically ordered*, and the *longest* match is chosen.
 - The resource corresponding to this longest match is then served.
 
 ```admonish
-In other words, the Portal will _always_ serve a resource if present, and if not present will serve
+In other words, the portal will _always_ serve a resource if present, and if not present will serve
 the resource with the _longest matching prefix_ among the routes.
 ```
 

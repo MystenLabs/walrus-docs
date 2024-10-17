@@ -67,7 +67,7 @@ approaches are possible:
 - Using a custom application on the client that has both a web browser and knowledge of how Walrus
   Sites work, and can locally perform this resolution.
 - A hybrid approach based on service workers, where a service worker that is able to perform the
-  resolution is installed in the browser from a Portal.
+  resolution is installed in the browser from a portal.
 
 All of these approaches are viable (the first has been used for similar applications in IPFS
 gateways, for example), and have trade-offs.
@@ -76,11 +76,11 @@ Currently, we provide the server-side and the service-worker based approaches.
 
 ### Browsing and domain isolation
 
-We must ensure that, when browsing multiple sites through a Portal, for example the one hosted at
+We must ensure that, when browsing multiple sites through a portal, for example the one hosted at
 <https://walrus.site>, these sites are isolated. Isolation is necessary for security, and to ensure
 that the wallet connection in the browser works as expected.
 
-To do so, we give each Walrus Site a specific *subdomain* of the Portal's domain. For example, the
+To do so, we give each Walrus Site a specific *subdomain* of the portal's domain. For example, the
 Flatland mint dApp is hosted at <https://flatland.walrus.site>, where the subdomain `flatland` is
 uniquely associated to the object ID of the Walrus Site through SuiNS.
 
@@ -99,13 +99,13 @@ Base36 was chosen for two reasons, forced by the subdomain standards:
 
 As mentioned before, we provide two types of portals to browse Walrus Sites:
 
-- The server-side Portal, which is a server that resolves a Walrus Site, returning it to the
-  browser. The server-side Portal is hosted at <https://blob.store>.
-- The service worker Portal, which is a service worker that is installed in the browser and resolves
-  a Walrus Site. The service worker Portal is hosted at <https://walrus.site>.
+- The server-side portal, which is a server that resolves a Walrus Site, returning it to the
+  browser. The server-side portal is hosted at <https://blob.store>.
+- The service-worker portal, which is a service worker that is installed in the browser and resolves
+  a Walrus Site. The service-worker portal is hosted at <https://walrus.site>.
 
 We now describe the resolution process of a Walrus Site in the browser using the service-worker
-Portal as an example.
+portal as an example.
 
 ### The end-to-end resolution of a Walrus Site
 
@@ -118,7 +118,7 @@ worker approach. The steps below all reference the following figure:
   [`site-builder`](#the-site-builder), or making use of a publisher. Assume the developer uses the
   SuiNS name `dapp.sui` to point to the object ID of the created Walrus Site.
 - **Browsing starts** (step 1): A client browses `dapp.walrus.site/index.html` in their browser.
-- **Service worker installation** (steps 2-6): The browser connects to the Portal hosted at
+- **Service worker installation** (steps 2-6): The browser connects to the portal hosted at
   `walrus.site`, which responds with a page that installs the service worker for `dapp.walrus.site`.
   The page is refreshed to activate the service worker.
 - **Site resolution** (steps 7-10): The service worker, which is now installed, interprets its

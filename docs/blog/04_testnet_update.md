@@ -94,7 +94,7 @@ and as a [Walrus Docs Site](https://docs.walrus.site/).
 
 With the move to Walrus Testnet, Walrus Sites have also been updated! The new features in this
 update greatly increase the flexibility, speed, and security of Walrus Sites. Developers can now
-specify client-side routing rules, and add custom HTTP headers to the Portals' responses for their
+specify client-side routing rules, and add custom HTTP headers to the portals' responses for their
 site, expanding the possibilities for what Walrus Sites can do.
 
 [Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of these new features!

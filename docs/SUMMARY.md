@@ -61,7 +61,7 @@
   - [Linking from and to Walrus Sites](./walrus-sites/linking.md)
   - [Redirecting objects to Walrus Sites](./walrus-sites/redirects.md)
 - [Technical overview](./walrus-sites/overview.md)
-  - [The Walrus Sites Portal](./walrus-sites/portal.md)
+  - [The Walrus Sites portal](./walrus-sites/portal.md)
   - [Site data authentication](./walrus-sites/authentication.md)
   - [Known restrictions](./walrus-sites/restrictions.md)
 - [Terms of service](./walrus-sites/tos.md)
