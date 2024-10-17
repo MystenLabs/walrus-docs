@@ -214,10 +214,10 @@ thought the CLI.</li>
 <p>Walrus Testnet enables multiple epochs. Initially, the epoch duration is set to a single day to
 ensure the logic of epoch change is thoroughly tested. At Mainnet, epochs will likely be multiple
 weeks long.</p>
-<p>Now the expiry epoch of blobs is meaningful, and blobs will become unavailable after their expiry
-epoch. The store command may be used to extend the expiry epoch of a blob that is still available.
-This operation is efficient and only affects payments and metadata, and does not re-upload blob
-contents.</p>
+<p>The progress of epochs makes the expiry epoch of blobs meaningful, and blobs will become unavailable
+after their expiry epoch. The store command may be used to extend the expiry epoch of a blob that is
+still available. This operation is efficient and only affects payments and metadata, and does not
+re-upload blob contents.</p>
 <ul>
 <li>Find out the <a href="../usage/client-cli.html#walrus-system-information">current epoch</a> through the CLI.</li>
 <li>Find out how to store a blob for
