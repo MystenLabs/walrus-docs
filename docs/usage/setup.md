@@ -149,6 +149,9 @@ staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d439
 exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
 ```
 
+The easiest way to obtain the latest configuration is by downloading it from
+<https://github.com/MystenLabs/walrus-docs/blob/main/docs/client_config.yaml>.
+
 ### Custom path (optional) {#config-custom-path}
 
 By default, the Walrus client will look for the `client_config.yaml` (or `client_config.yml`)
