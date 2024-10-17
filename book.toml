@@ -22,6 +22,7 @@ exclude = [
   'google\.com',
   'x\.com',
   'suiscan\.xyz',
+  'blob\.store', # TODO: remove this when the portal no longer returns a 404
 ]
 
 [preprocessor]
