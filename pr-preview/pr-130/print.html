@@ -274,11 +274,12 @@ long, extend its lifetime or optionally delete it.</p>
 </li>
 <li>
 <p><strong>Epochs, tokenomics, and delegated proof of stake</strong> Walrus is operated by a committee of storage
-nodes that evolve between epochs. A native token, WAL (and its subdivision FROST), is used
-to delegate stake to storage nodes, and those with high stake become part of the epoch committee.
-The WAL token is also used for payments for storage. At the end of each epoch, rewards for
-selecting storage nodes, storing and serving blobs are distributed to storage nodes and whose that
-stake with them. All these processes are mediated by smart contracts on the Sui platform.</p>
+nodes that evolve between epochs. A native token, WAL (and its subdivision FROST, where 1 WAL is
+equal to 1 billion FROST), is used to delegate stake to storage nodes, and those with high stake
+become part of the epoch committee. The WAL token is also used for payments for storage. At the
+end of each epoch, rewards for selecting storage nodes, storing and serving blobs are distributed
+to storage nodes and whose that stake with them. All these processes are mediated by smart
+contracts on the Sui platform.</p>
 </li>
 <li>
 <p><strong>Flexible access:</strong> Users can interact with Walrus through a command-line interface (CLI),
@@ -553,13 +554,13 @@ contents.</p>
 <p>Payments for blob storage and extending blob expiry are denominated in Testnet WAL, a
 Walrus token issued on the Sui Testnet. Testnet WAL has no value, and an unlimited supply - so no
 need to covet or hoard it - its just for testing purposes and only issued on Sui Testnet.</p>
+<p>WAL also has a smaller unit called FROST, similar to MIST for SUI. 1 WAL is equal to 1 billion
+(1000000000) FROST.</p>
 <p>To make Testnet WAL available to all who want to experiment with the Walrus Testnet we provide a
 utility and smart contract to convert Testnet SUI (which also has no value) into Testnet WAL using
 a one-to-one exchange rate. This is chosen arbitrarily, and generally one should not read too much
 into the actual WAL denominated costs of storage on Testnet. They have been chosen arbitrarily.</p>
-<ul>
-<li>Find out how to <a href="blog/../usage/setup.html#testnet-wal-faucet">request Test WAL tokens</a> through the CLI.</li>
-</ul>
+<p>Find out how to <a href="blog/../usage/setup.html#testnet-wal-faucet">request Test WAL tokens</a> through the CLI.</p>
 <h2 id="decentralization-through-staking--unstaking"><a class="header" href="#decentralization-through-staking--unstaking">Decentralization through staking &amp; unstaking</a></h2>
 <p>The WAL token may also be used to stake with storage operators. Staked WAL can be unstaked and
 re-staked with other operators or used to purchase storage.</p>
@@ -1332,34 +1333,44 @@ chapter</a> for prerequisites, installation, and configuration.</p>
 <p>Each sub-command of <code>walrus</code> can also be called with <code>--help</code> to print its specific arguments and
 their meaning.</p>
 <h2 id="walrus-system-information"><a class="header" href="#walrus-system-information">Walrus system information</a></h2>
-<p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,</p>
-<!-- (TODO - update with final) -->
+<p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,
+<code>walrus info</code> gives an overview of the number of storage nodes and shards in the system, the maximum
+blob size, and the current cost in (Testnet) WAL for storing blobs:</p>
 <pre><code class="language-console">$ walrus info
 
 Walrus system information
-Current epoch: 54
+Current epoch: 2
 
 Storage nodes
-Number of nodes: 10
+Number of nodes: 25
 Number of shards: 1000
 
 Blob size
 Maximum blob size: 13.3 GiB (14,273,391,930 B)
-Storage unit: 1.00 KiB
+Storage unit: 1.00 MiB
 
 Approximate storage prices per epoch
-Price per encoded storage unit: 5 FROST
-Price to store metadata: 0.0003 WAL
-Marginal price per additional 1 MiB (w/o metadata): 24,195 FROST
+Price per encoded storage unit: 100 FROST
+Price to store metadata: 6,200 FROST
+Marginal price per additional 1 MiB (w/o metadata): 500 FROST
 
 Total price for example blob sizes
-16.0 MiB unencoded (135 MiB encoded): 0.0007 WAL per epoch
-512 MiB unencoded (2.33 GiB encoded): 0.012 WAL per epoch
-13.3 GiB unencoded (60.5 GiB encoded): 0.317 WAL per epoch
-
+16.0 MiB unencoded (135 MiB encoded): 13,500 FROST per epoch
+512 MiB unencoded (2.33 GiB encoded): 0.0002 WAL per epoch
+13.3 GiB unencoded (60.5 GiB encoded): 0.0062 WAL per epoch
 </code></pre>
-<p>gives an overview of the number of storage nodes and shards in the system, the maximum blob size,
-and the current cost in (Testnet) WAL for storing blobs. (Note: 1 WAL = 1 000 000 000 FROST)</p>
+<div id="admonition-frost-and-wal" class="admonition admonish-tip" role="note" aria-labelledby="admonition-frost-and-wal-title">
+<div class="admonition-title">
+<div id="admonition-frost-and-wal-title">
+<p>FROST and WAL</p>
+</div>
+<a class="admonition-anchor-link" href="usage/client-cli.html#admonition-frost-and-wal"></a>
+</div>
+<div>
+<p>FROST is the smaller unit of WAL, similar to MIST for SUI. The conversion is also the same as for
+SUI: <code>1 WAL = 1 000 000 000 FROST</code>.</p>
+</div>
+</div>
 <p>Additional information such as encoding parameters and sizes, BFT system information, and
 information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
 argument: <code>walrus info --dev</code>.</p>
