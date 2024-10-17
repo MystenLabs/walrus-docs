@@ -84,7 +84,7 @@ Reported but currently not available:
 - `https://sui-walrus-testnet.bwarelabs.com/publisher`
 - `https://walrus-testnet-publisher.stakin-nodes.com`
 - `https://testnet-publisher-walrus.kiliglab.io`
-- `https://walrus-testnet.blockscope.net:444`
+- `https://walrus-testnet.blockscope.net:11444`
 - `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://walrus-testnet-publisher.starduststaking.com:11445`
 - `http://walrus-publisher-testnet.overclock.run:9001`
