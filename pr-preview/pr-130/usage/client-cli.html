@@ -247,6 +247,19 @@ to store anything that contains secrets or private data without additional measu
 confidentiality.</p>
 </div>
 </div>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+<div class="admonition-title">
+<div id="admonition-warning-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
+</div>
+<div>
+<p>It must be ensured that only a single process uses the Sui wallet for write actions (storing or
+deleting). When using multiple instances of the client simultaneously, each of them must be pointed
+to a different wallet.</p>
+</div>
+</div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
 <pre><code class="language-sh">walrus store &lt;some file&gt;
 </code></pre>
