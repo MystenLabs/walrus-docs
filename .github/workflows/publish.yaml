@@ -71,3 +71,5 @@ jobs:
           site-builder
           --config walrus-sites/sites-config.yaml
           update build/html ${{ vars.WALRUS_SITE_OBJECT }}
+          --epochs 200
+          --force
