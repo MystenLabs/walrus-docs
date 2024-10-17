@@ -97,6 +97,6 @@ update greatly increase the flexibility, speed, and security of Walrus Sites. De
 specify client-side routing rules, and add custom HTTP headers to the Portals' responses for their
 site, expanding the possibilities for what Walrus Sites can do.
 
-[Migrate now](../walrus-sites/tutorial-migration.md) now to take advantage of these new features!
+[Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of these new features!
 The old Walrus Sites, based on Walrus Devnet, will still be available for a short time. However,
 Devnet will be wiped soon, so it is recommended to migrate as soon as possible.
