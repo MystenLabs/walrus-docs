@@ -26,7 +26,7 @@ jobs:
     name: Check editorconfig
     steps:
       - uses: actions/checkout@v4
-      - run: pip install editorconfig-checker=="2.7.3" --break-system-packages
+      - run: pip install editorconfig-checker=="3.0.3"
       - run: ec
 
   markdownlint:
