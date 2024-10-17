@@ -66,6 +66,11 @@ deleting). When using multiple instances of the client simultaneously, each of t
 to a different wallet.
 ```
 
+```admonish tip title="Obtaining Testnet WAL"
+You can exchange Testnet SUI for Testnet WAL by running `walrus get-wal`. See the [setup
+page](./setup.md#testnet-wal-faucet) for further details.
+```
+
 Storing blobs on Walrus can be achieved through the following command:
 
 ```sh
