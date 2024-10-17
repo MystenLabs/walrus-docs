@@ -63,15 +63,10 @@ You can exchange your Testnet SUI to WAL using the dApp
 
 ### Unstake
 
-- Find the `Staked Wal` you want to unstake
-  - Below the `Current Committee` list you will find all your `Staked Wal`
+- Find the `Staked WAL` you want to unstake
+  - Below the `Current Committee` list you will find all your `Staked WAL`
   - Also you can expand a Storage Node and find all your stakes with that node
-- Depending on the state of the `Staked Wal` you will be able to Unstake or Withdraw your funds
+- Depending on the state of the `Staked WAL` you will be able to unstake or Withdraw your funds
 - Click the `Unstake` or `Withdraw` button
 - Click continue to confirm your action
 - (Follow the instructions in your wallet to approve the transaction)
-
-<!-- TODO -->
-
-- How to monitor nodes for stake / apr etc
-- Move contracts to stake / unstake

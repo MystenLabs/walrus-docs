@@ -191,4 +191,4 @@ public struct BlsCommitteeMember has store, copy, drop {
 
 ```
 
-<!-- TODO: say more about staking structures -->
+<!-- TODO (#146): say more about staking contracts. -->

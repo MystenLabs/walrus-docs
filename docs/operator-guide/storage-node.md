@@ -1,5 +1,5 @@
 # Operating a storage node
-<!-- (TODO - update with operator instructions) -->
+<!-- TODO (#141): Update and add further details, also on monitoring. -->
 
 The binary of the storage node is not yet publicly available. Prior to official network launch the
 code will be open-sourced.
