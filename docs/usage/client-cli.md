@@ -75,9 +75,20 @@ walrus store <some file>
 The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) indicating the number of
 epochs the blob should be stored for. This defaults to 1 epoch, namely the current one.
 
-If the blob is already stored on Walrus for a sufficient number of epochs the command does not store
-it again. However, this behavior can be overwritten with the `--force` (or `-f`) CLI option, which
-stores the blob again and creates a fresh blob object on Sui belonging to the wallet address.
+```admonish tip title="Automatic optimizations"
+When storing a blob, the client performs a number of automatic optimizations, including the
+following:
+
+- If the blob is already stored as a *permanent blob* on Walrus for a sufficient number of epochs
+  the command does not store it again. This behavior can be overwritten with the `--force` (or `-f`)
+  CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
+  wallet address.
+- If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
+  new one.
+- If the blob is already certified on Walrus but as a *deletable* blob or not for a sufficient
+  number of epochs, the command skips sending data to the storage nodes and just collects the
+  availability certificate
+```
 
 The status of a blob can be queried through one of the following commands:
 
