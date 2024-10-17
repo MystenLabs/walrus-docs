@@ -265,9 +265,29 @@ to a different wallet.</p>
 </code></pre>
 <p>The store command takes a CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicating the number of
 epochs the blob should be stored for. This defaults to 1 epoch, namely the current one.</p>
-<p>If the blob is already stored on Walrus for a sufficient number of epochs the command does not store
-it again. However, this behavior can be overwritten with the <code>--force</code> (or <code>-f</code>) CLI option, which
-stores the blob again and creates a fresh blob object on Sui belonging to the wallet address.</p>
+<div id="admonition-automatic-optimizations" class="admonition admonish-tip" role="note" aria-labelledby="admonition-automatic-optimizations-title">
+<div class="admonition-title">
+<div id="admonition-automatic-optimizations-title">
+<p>Automatic optimizations</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-automatic-optimizations"></a>
+</div>
+<div>
+<p>When storing a blob, the client performs a number of automatic optimizations, including the
+following:</p>
+<ul>
+<li>If the blob is already stored as a <em>permanent blob</em> on Walrus for a sufficient number of epochs
+the command does not store it again. This behavior can be overwritten with the <code>--force</code> (or <code>-f</code>)
+CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
+wallet address.</li>
+<li>If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
+new one.</li>
+<li>If the blob is already certified on Walrus but as a <em>deletable</em> blob or not for a sufficient
+number of epochs, the command skips sending data to the storage nodes and just collects the
+availability certificate</li>
+</ul>
+</div>
+</div>
 <p>The status of a blob can be queried through one of the following commands:</p>
 <pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
 walrus blob-status --file &lt;FILE&gt;
