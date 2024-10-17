@@ -88,7 +88,7 @@ certified, a `BlobCertified` is emitted containing information about the blob ID
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.
 
 ```move
-/// Signals that a blob with meta-data has been registered.
+/// Signals that a blob with metadata has been registered.
 public struct BlobRegistered has copy, drop {
     epoch: u32,
     blob_id: u256,
