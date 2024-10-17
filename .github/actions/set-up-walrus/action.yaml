@@ -8,6 +8,9 @@ inputs:
   SUI_KEYSTORE:
     description: The content of the Sui keystore file
     required: true
+  WALRUS_CONFIG:
+    description: The content of the Walrus configuration file
+    required: true
 
 runs:
   using: "composite"
@@ -54,11 +57,12 @@ runs:
     - name: Install and configure Walrus
       run: |
         # The bin directory was already created and added to $PATH in the build-mdbook action
-        curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-ubuntu-x86_64 -o bin/walrus
+        curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64 -o bin/walrus
         chmod +x bin/walrus
-        mkdir -p ~/.walrus
-        curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-configs/client_config.yaml -o ~/.walrus/client_config.yaml
-        walrus -h # Ensure the walrus binary works
+        mkdir -p ~/.config/walrus
+        echo '${{ inputs.WALRUS_CONFIG }}' > ~/.config/walrus/client_config.yaml
+        walrus --version
+        walrus info # Ensure the walrus binary works
       shell: bash
 
     - name: Clone walrus-sites
