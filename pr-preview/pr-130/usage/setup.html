@@ -386,8 +386,8 @@ communication_config:
 </div>
 <h2 id="testnet-wal-faucet"><a class="header" href="#testnet-wal-faucet">Testnet WAL faucet</a></h2>
 <p>The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
-value and can be exchanged for some Testnet SUI tokens, which also have no value, through the
-command:</p>
+value and can be exchanged (at a 1:1 rate) for some Testnet SUI tokens, which also have no value,
+through the following command:</p>
 <pre><code class="language-sh">walrus get-wal
 </code></pre>
 <p>You can check that you have received Testnet WAL by checking the Sui balances:</p>
@@ -404,8 +404,9 @@ command:</p>
 ╰─────────────────────────────────────────╯
 </code></pre>
 <p>By default, 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged using
-the <code>--amount</code> option, and a specific SUI/WAL exchange object may be used through the
-<code>--exchange-id</code> option. The <code>walrus get-wal --help</code> command provides more information about those.</p>
+the <code>--amount</code> option (the value is in MIST/FROST), and a specific SUI/WAL exchange object may be
+used through the <code>--exchange-id</code> option. The <code>walrus get-wal --help</code> command provides more
+information about those.</p>
 
                     </main>
 

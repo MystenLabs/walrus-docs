@@ -1304,8 +1304,8 @@ communication_config:
 </div>
 <h2 id="testnet-wal-faucet"><a class="header" href="#testnet-wal-faucet">Testnet WAL faucet</a></h2>
 <p>The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
-value and can be exchanged for some Testnet SUI tokens, which also have no value, through the
-command:</p>
+value and can be exchanged (at a 1:1 rate) for some Testnet SUI tokens, which also have no value,
+through the following command:</p>
 <pre><code class="language-sh">walrus get-wal
 </code></pre>
 <p>You can check that you have received Testnet WAL by checking the Sui balances:</p>
@@ -1322,8 +1322,9 @@ command:</p>
 ╰─────────────────────────────────────────╯
 </code></pre>
 <p>By default, 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged using
-the <code>--amount</code> option, and a specific SUI/WAL exchange object may be used through the
-<code>--exchange-id</code> option. The <code>walrus get-wal --help</code> command provides more information about those.</p>
+the <code>--amount</code> option (the value is in MIST/FROST), and a specific SUI/WAL exchange object may be
+used through the <code>--exchange-id</code> option. The <code>walrus get-wal --help</code> command provides more
+information about those.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="interacting-with-walrus"><a class="header" href="#interacting-with-walrus">Interacting with Walrus</a></h1>
 <p>We provide 3 ways to interact directly with the Walrus storage system:</p>
@@ -1410,6 +1411,18 @@ confidentiality.</p>
 <p>It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
 to a different wallet.</p>
+</div>
+</div>
+<div id="admonition-obtaining-testnet-wal" class="admonition admonish-tip" role="note" aria-labelledby="admonition-obtaining-testnet-wal-title">
+<div class="admonition-title">
+<div id="admonition-obtaining-testnet-wal-title">
+<p>Obtaining Testnet WAL</p>
+</div>
+<a class="admonition-anchor-link" href="usage/client-cli.html#admonition-obtaining-testnet-wal"></a>
+</div>
+<div>
+<p>You can exchange Testnet SUI for Testnet WAL by running <code>walrus get-wal</code>. See the <a href="usage/./setup.html#testnet-wal-faucet">setup
+page</a> for further details.</p>
 </div>
 </div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
