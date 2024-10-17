@@ -124,10 +124,8 @@ Commands:
 ```
 
 ```admonish tip
-Our latest Walrus binaries are also available on Walrus itself, namely on <https://bin.walrus.site>.
-Note, however, that you can only access this through a web browser and not through CLI tools like
-cURL due to the service-worker architecture (see the [Walrus Sites docs](../walrus-sites/portal.md)
-for further insights).
+Our latest Testnet Walrus binaries are also available on Walrus itself, namely on
+<https://bin.blob.store>, for example, <https://bin.blob.store/walrus-testnet-latest-ubuntu-x86_64>.
 ```
 
 ### Previous versions (optional)

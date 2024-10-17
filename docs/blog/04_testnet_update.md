@@ -1,7 +1,6 @@
 # Announcing Testnet
 
-<!-- TODO change this date -->
-Published on: 2024-10-XX
+Published on: 2024-10-17
 
 Today, a community of operators launches the first public Walrus Testnet.
 This is an important milestone in validating the operation of Walrus as a decentralized blob store,
@@ -80,11 +79,10 @@ storage node committee changes: better shard allocation mechanisms upon changes 
 stake; efficient ways to sync state between storage nodes; as well as better ways for storage nodes
 to follow Sui event streams.
 
-<!-- TODO Update links -->
-- Explore the [Walrus staking dApp](https://app.org)
-- Look at recent activity on the [Walrus Explorer](https://app.org)
+- Explore the [Walrus staking dApp](https://stake.walrus.site)
+- Look at recent activity on the [Walrus Explorer](https://walruscan.com/testnet/home)
 
-## New Move Contracts & documentation
+## New Move contracts & documentation
 
 As part of the Testnet release of Walrus the documentation and Move Smart contracts have been
 updated, and can be found at the [Walrus-docs repository](https://github.com/MystenLabs/walrus-docs)
@@ -97,6 +95,14 @@ update greatly increase the flexibility, speed, and security of Walrus Sites. De
 specify client-side routing rules, and add custom HTTP headers to the portals' responses for their
 site, expanding the possibilities for what Walrus Sites can do.
 
-[Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of these new features!
-The old Walrus Sites, based on Walrus Devnet, will still be available for a short time. However,
-Devnet will be wiped soon, so it is recommended to migrate as soon as possible.
+[Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of these new features! The
+old Walrus Sites, based on Walrus Devnet, will still be available for a short time. However, Devnet
+will be wiped soon (as described below), so it is recommended to migrate as soon as possible.
+
+## Discontinuation of Walrus Devnet
+
+The previous Walrus Devnet instance is now deprecated and **will be shut down after 2024-10-31**.
+All data stored on Walrus Devnet (including Walrus Sites) will no longer be accessible at that
+point. You need to re-upload all data to Walrus Testnet if you want it to remain accessible. Walrus
+Sites also need to be migrated as described on the dedicated [migration
+page](../walrus-sites/tutorial-migration.md).
