@@ -34,13 +34,12 @@ jobs:
 
       - name: Create temporary directory
         run: "mkdir -p site"
-      - name: Download latest binaries
+      - name: Download latest testnet binaries
         run: |
-          for arch in ubuntu-x86_64 ubuntu-x86_64-generic macos-x86_64 macos-arm64; do
-          curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-latest-$arch -o site/walrus-$arch
+          for arch in ubuntu-x86_64 ubuntu-x86_64-generic macos-x86_64 macos-arm64 windows-x86_64.exe; do
+          name=walrus-testnet-latest-$arch
+          curl https://storage.googleapis.com/mysten-walrus-binaries/$name -o site/$name
           done
-      - name: Copy site-builder binary
-        run: "cp bin/site-builder site/site-builder-ubuntu-x86_64"
 
       - name: Update Walrus Site
         run: >
