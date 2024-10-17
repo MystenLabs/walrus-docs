@@ -60,6 +60,12 @@ to store anything that contains secrets or private data without additional measu
 confidentiality.
 ```
 
+```admonish warning
+It must be ensured that only a single process uses the Sui wallet for write actions (storing or
+deleting). When using multiple instances of the client simultaneously, each of them must be pointed
+to a different wallet.
+```
+
 Storing blobs on Walrus can be achieved through the following command:
 
 ```sh
