@@ -6,14 +6,13 @@ implementing the Walrus Sites functionality have been updated.
 
 ``` admonish tip
 The migration will result in a new Site object on Sui (with a different object ID), and new blob
-objects on Walrus testnet.
+objects on Walrus Testnet.
 ```
 
 The steps are the following:
 
-- Get the latest version of the `walrus` binary, as well as the latest Walrus
-  configuration file, following the [Walrus installation
-  instructions](../usage/setup.md).
+- Get the latest version of the `walrus` binary, as well as the latest Walrus configuration file,
+  following the [Walrus installation instructions](../usage/setup.md).
 - Ensure you have the latest version of the `site-builder` binary by following the [installation
   instructions](./tutorial-install.md) again. Remember to `git pull` if you are building from the
   repo and have cloned it previously. Pulling the repo also guarantees you have the latest

@@ -1,7 +1,7 @@
 # Specifying headers and routing
 
-``` admonish tip title="New with Walrus Sites testnet version"
-The following features have been released with the Walrus Sites testnet version.
+``` admonish tip title="New with Walrus Sites Testnet version"
+The following features have been released with the Walrus Sites Testnet version.
 ```
 
 In its base configuration, Walrus Sites serves static assets through a portal. However, many modern
@@ -78,7 +78,7 @@ The **`routes` keys** are path patterns in the form `/path/to/some/*`, where the
 represents a wildcard.
 
 ```admonish
-Currently, the wildcard _can only be only be specified at the end of the path_.
+Currently, the wildcard *can only be only be specified at the end of the path*.
 Therefore, `/path/*` is a valid path, while `/path/*/to` and `*/path/to/*` are not.
 ```
 
@@ -98,8 +98,8 @@ The simple routing algorithm is as follows:
 - The resource corresponding to this longest match is then served.
 
 ```admonish
-In other words, the portal will _always_ serve a resource if present, and if not present will serve
-the resource with the _longest matching prefix_ among the routes.
+In other words, the portal will *always* serve a resource if present, and if not present will serve
+the resource with the *longest matching prefix* among the routes.
 ```
 
 Recall the example above:

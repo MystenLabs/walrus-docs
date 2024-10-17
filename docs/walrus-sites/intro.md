@@ -7,17 +7,17 @@ is itself available as a Walrus Site at <https://docs.walrus.site/walrus-sites/i
 aren't there already).
 
 ```admonish tip title="Make sure you update!"
-With the move to Walrus testnet, Walrus Sites are also being updated! They now use Walrus testnet as
+With the move to Walrus Testnet, Walrus Sites are also being updated! They now use Walrus Testnet as
 the backing store, and they have been improved with new awesome features. [Migrate your
 site](./tutorial-migration.md) today to take advantage of these new features!
 ```
 
-```admonish danger title="Walrus Sites devnet being discontinued"
-Since the Walrus devnet will be soon shut down, all the Walrus Sites stored on it will be wiped. To
-minimize the downtime, the devnet Walrus Sites will be available after the testnet upgrade for two
-weeks, to ensure that everyone has enough time to update.
+```admonish danger title="Walrus Sites Devnet being discontinued"
+Since the Walrus Devnet will be shut down soon, all the Walrus Sites stored on it will be wiped. To
+minimize the downtime, the Devnet Walrus Sites will be available after the Testnet upgrade for two
+weeks (until **2024-10-31**), to ensure that everyone has enough time to update.
 
-Make sure to reupload your sites to the Walrus devnet before the shutdown to avoid downtime!
+Make sure to reupload your sites to the Walrus Tevnet before the shutdown to avoid downtime!
 ```
 
 At a high level, here are some of the most exciting features:
