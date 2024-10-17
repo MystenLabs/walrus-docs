@@ -51,12 +51,15 @@ Payments for blob storage and extending blob expiry are denominated in Testnet W
 Walrus token issued on the Sui Testnet. Testnet WAL has no value, and an unlimited supply - so no
 need to covet or hoard it - its just for testing purposes and only issued on Sui Testnet.
 
+WAL also has a smaller unit called FROST, similar to MIST for SUI. 1 WAL is equal to 1 billion
+(1000000000) FROST.
+
 To make Testnet WAL available to all who want to experiment with the Walrus Testnet we provide a
 utility and smart contract to convert Testnet SUI (which also has no value) into Testnet WAL using
 a one-to-one exchange rate. This is chosen arbitrarily, and generally one should not read too much
 into the actual WAL denominated costs of storage on Testnet. They have been chosen arbitrarily.
 
-- Find out how to [request Test WAL tokens](../usage/setup.md#testnet-wal-faucet) through the CLI.
+Find out how to [request Test WAL tokens](../usage/setup.md#testnet-wal-faucet) through the CLI.
 
 ## Decentralization through staking & unstaking
 

@@ -60,11 +60,12 @@ page](./walrus-sites/tutorial-migration.md).
   long, extend its lifetime or optionally delete it.
 
 - **Epochs, tokenomics, and delegated proof of stake** Walrus is operated by a committee of storage
-  nodes that evolve between epochs. A native token, WAL (and its subdivision FROST), is used
-  to delegate stake to storage nodes, and those with high stake become part of the epoch committee.
-  The WAL token is also used for payments for storage. At the end of each epoch, rewards for
-  selecting storage nodes, storing and serving blobs are distributed to storage nodes and whose that
-  stake with them. All these processes are mediated by smart contracts on the Sui platform.
+  nodes that evolve between epochs. A native token, WAL (and its subdivision FROST, where 1 WAL is
+  equal to 1 billion FROST), is used to delegate stake to storage nodes, and those with high stake
+  become part of the epoch committee. The WAL token is also used for payments for storage. At the
+  end of each epoch, rewards for selecting storage nodes, storing and serving blobs are distributed
+  to storage nodes and whose that stake with them. All these processes are mediated by smart
+  contracts on the Sui platform.
 
 - **Flexible access:** Users can interact with Walrus through a command-line interface (CLI),
   software development kits (SDKs), and web2 HTTP technologies. Walrus is designed to work well

@@ -15,36 +15,38 @@ their meaning.
 ## Walrus system information
 
 Information about the Walrus system is available through the `walrus info` command. For example,
-<!-- (TODO - update with final) -->
+`walrus info` gives an overview of the number of storage nodes and shards in the system, the maximum
+blob size, and the current cost in (Testnet) WAL for storing blobs:
 
 ```console
 $ walrus info
 
 Walrus system information
-Current epoch: 54
+Current epoch: 2
 
 Storage nodes
-Number of nodes: 10
+Number of nodes: 25
 Number of shards: 1000
 
 Blob size
 Maximum blob size: 13.3 GiB (14,273,391,930 B)
-Storage unit: 1.00 KiB
+Storage unit: 1.00 MiB
 
 Approximate storage prices per epoch
-Price per encoded storage unit: 5 FROST
-Price to store metadata: 0.0003 WAL
-Marginal price per additional 1 MiB (w/o metadata): 24,195 FROST
+Price per encoded storage unit: 100 FROST
+Price to store metadata: 6,200 FROST
+Marginal price per additional 1 MiB (w/o metadata): 500 FROST
 
 Total price for example blob sizes
-16.0 MiB unencoded (135 MiB encoded): 0.0007 WAL per epoch
-512 MiB unencoded (2.33 GiB encoded): 0.012 WAL per epoch
-13.3 GiB unencoded (60.5 GiB encoded): 0.317 WAL per epoch
-
+16.0 MiB unencoded (135 MiB encoded): 13,500 FROST per epoch
+512 MiB unencoded (2.33 GiB encoded): 0.0002 WAL per epoch
+13.3 GiB unencoded (60.5 GiB encoded): 0.0062 WAL per epoch
 ```
 
-gives an overview of the number of storage nodes and shards in the system, the maximum blob size,
-and the current cost in (Testnet) WAL for storing blobs. (Note: 1 WAL = 1 000 000 000 FROST)
+```admonish tip title="FROST and WAL"
+FROST is the smaller unit of WAL, similar to MIST for SUI. The conversion is also the same as for
+SUI: `1 WAL = 1 000 000 000 FROST`.
+```
 
 Additional information such as encoding parameters and sizes, BFT system information, and
 information on the storage nodes and their shard distribution can be viewed with the `--dev`
