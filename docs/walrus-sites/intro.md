@@ -58,11 +58,11 @@ and has special characteristics (the background color, the image, ...) that are 
 contents of the NFT.
 
 The URL to this per-NFT site looks something like this:
-`https://4egmmrw9izzjn0dm2lkd3k0l8phk386z60ub1tpdc1jswbb5dr.walrus.site/`. You'll notice that the
+`https://2hzpawjycxuiuh36047yocxapc69g8ercrypa7ccsk8ek4iqu6.walrus.site/`. You'll notice that the
 domain remains `walrus.site`, but the subdomain is a long and random-looking string. This string is
 actually the [Base36](https://en.wikipedia.org/wiki/Base36) encoding of the object ID of the NFT,
 which is
-[0xb09b312b...](https://suiscan.xyz/testnet/object/0xb09b312b28049467dd6173b6cebb60ed5fe3046883e248632bf9fb20b7dbdaff).
+[0x644bc958...](https://suiscan.xyz/testnet/object/0x644bc958052463785c026a13be051d579c8a4d2dc93b1874dce5839d4fb18c5e).
 
 In summary:
 
@@ -71,7 +71,7 @@ In summary:
 - The subdomain on the URL points to a specific object on Sui that allows the browser to fetch and
   render the site resources. This pointer can be
   - a SuiNS name, such as `flatland` in `https://flatland.walrus.site`, or
-  - the Base36 encoding of a the Sui object ID, such as `0xb09b312b...` in the example above.
+  - the Base36 encoding of a the Sui object ID, such as `0x644bc958...` in the example above.
 
 Curious to know how this magic is possible? Read the [technical overview](./overview.md)! If you
 just want to get started trying Walrus Sites out, check the [tutorial](./tutorial.md).
