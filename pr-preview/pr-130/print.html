@@ -1107,10 +1107,23 @@ they store. On-chain bounties may be used to retrieve these slivers for missing 
 patterns (see <a href="usage/./interacting.html">the next chapter</a>). This chapter describes the
 <a href="usage/setup.html#prerequisites">prerequisites</a>, <a href="usage/setup.html#installation">installation</a>, and <a href="usage/setup.html#configuration">configuration</a>
 of the Walrus client.</p>
-<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
-<!-- TODO: mention new generate-sui-wallet command -->
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites: Sui wallet and Testnet SUI</a></h2>
+<div id="admonition-quick-wallet-setup" class="admonition admonish-tip" role="note" aria-labelledby="admonition-quick-wallet-setup-title">
+<div class="admonition-title">
+<div id="admonition-quick-wallet-setup-title">
+<p>Quick wallet setup</p>
+</div>
+<a class="admonition-anchor-link" href="usage/setup.html#admonition-quick-wallet-setup"></a>
+</div>
+<div>
+<p>If you just want to set up a new SUI wallet for Walrus, you can skip this section and use the
+<code>walrus generate-sui-wallet</code> command after <a href="usage/setup.html#installation">installing Walrus</a>. In that case, make
+sure to set the <code>wallet_config</code> parameter in the <a href="usage/setup.html#advanced-configuration-optional">Walrus
+configuration</a> to the newly generated wallet.</p>
+</div>
+</div>
 <p>Interacting with Walrus requires a valid Sui Testnet wallet with some amount of SUI tokens. The
-easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
+normal way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
 instructions</a> in the Sui
 documentation.</p>
 <p>After installing the Sui CLI, you need to set up a Testnet wallet by running <code>sui client</code>, which
@@ -2055,7 +2068,7 @@ public struct BlsCommitteeMember has store, copy, drop {
 }
 
 </code></pre>
-<!-- TODO: say more about staking structures -->
+<!-- TODO (#146): say more about staking contracts. -->
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="operator-guide"><a class="header" href="#operator-guide">Operator guide</a></h1>
 <p>This chapter introduces all the concepts needed for operators of the different components that make
@@ -2069,7 +2082,7 @@ storage node.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="operating-a-storage-node"><a class="header" href="#operating-a-storage-node">Operating a storage node</a></h1>
-<!-- (TODO - update with operator instructions) -->
+<!-- TODO (#141): Update and add further details, also on monitoring. -->
 <p>The binary of the storage node is not yet publicly available. Prior to official network launch the
 code will be open-sourced.</p>
 <p>A basic systemd service running the Storage Node could look like this:</p>
@@ -2110,7 +2123,7 @@ blob_recovery:
 (or whatever you've configured <code>metrics_address</code> to be).</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="operating-an-aggregator"><a class="header" href="#operating-an-aggregator">Operating an aggregator</a></h1>
-<!-- (TODO - with example cache setup) -->
+<!-- TODO (#141): Add further details and example cache setup. -->
 <p>Below is an example of an aggregator node which hosts a HTTP endpoint that can be used
 to fetch data from Walrus over the web.</p>
 <p>The aggregator process is run via the <code>walrus</code> client binary in <a href="operator-guide/../usage/web-api.html">daemon mode</a>.
@@ -2193,21 +2206,16 @@ You can exchange your Testnet SUI to WAL using the dApp</p>
 </ul>
 <h3 id="unstake"><a class="header" href="#unstake">Unstake</a></h3>
 <ul>
-<li>Find the <code>Staked Wal</code> you want to unstake
+<li>Find the <code>Staked WAL</code> you want to unstake
 <ul>
-<li>Below the <code>Current Committee</code> list you will find all your <code>Staked Wal</code></li>
+<li>Below the <code>Current Committee</code> list you will find all your <code>Staked WAL</code></li>
 <li>Also you can expand a Storage Node and find all your stakes with that node</li>
 </ul>
 </li>
-<li>Depending on the state of the <code>Staked Wal</code> you will be able to Unstake or Withdraw your funds</li>
+<li>Depending on the state of the <code>Staked WAL</code> you will be able to unstake or Withdraw your funds</li>
 <li>Click the <code>Unstake</code> or <code>Withdraw</code> button</li>
 <li>Click continue to confirm your action</li>
 <li>(Follow the instructions in your wallet to approve the transaction)</li>
-</ul>
-<!-- TODO -->
-<ul>
-<li>How to monitor nodes for stake / apr etc</li>
-<li>Move contracts to stake / unstake</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
@@ -2386,7 +2394,7 @@ instructions on how to add a SuiNS name to it for convenient browsing.</p>
 <h1 id="installing-the-site-builder"><a class="header" href="#installing-the-site-builder">Installing the site builder</a></h1>
 <p>This section describes the steps necessary to setup the Walrus Sites' <code>site-builder</code> tool and
 prepare your environment for development.</p>
-<h2 id="prerequisites-1"><a class="header" href="#prerequisites-1">Prerequisites</a></h2>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>Before you start, make sure you</p>
 <ul>
 <li>have a recent version of <a href="https://www.rust-lang.org/tools/install">Rust</a> installed;</li>

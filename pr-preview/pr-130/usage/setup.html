@@ -189,10 +189,23 @@
 patterns (see <a href="./interacting.html">the next chapter</a>). This chapter describes the
 <a href="#prerequisites">prerequisites</a>, <a href="#installation">installation</a>, and <a href="#configuration">configuration</a>
 of the Walrus client.</p>
-<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
-<!-- TODO: mention new generate-sui-wallet command -->
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites: Sui wallet and Testnet SUI</a></h2>
+<div id="admonition-quick-wallet-setup" class="admonition admonish-tip" role="note" aria-labelledby="admonition-quick-wallet-setup-title">
+<div class="admonition-title">
+<div id="admonition-quick-wallet-setup-title">
+<p>Quick wallet setup</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-quick-wallet-setup"></a>
+</div>
+<div>
+<p>If you just want to set up a new SUI wallet for Walrus, you can skip this section and use the
+<code>walrus generate-sui-wallet</code> command after <a href="#installation">installing Walrus</a>. In that case, make
+sure to set the <code>wallet_config</code> parameter in the <a href="#advanced-configuration-optional">Walrus
+configuration</a> to the newly generated wallet.</p>
+</div>
+</div>
 <p>Interacting with Walrus requires a valid Sui Testnet wallet with some amount of SUI tokens. The
-easiest way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
+normal way to set this up is via the Sui CLI; see the <a href="https://docs.sui.io/guides/developer/getting-started/sui-install">installation
 instructions</a> in the Sui
 documentation.</p>
 <p>After installing the Sui CLI, you need to set up a Testnet wallet by running <code>sui client</code>, which
