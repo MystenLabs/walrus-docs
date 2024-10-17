@@ -2,263 +2,265 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        rel="stylesheet" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Upload Blobs</title>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"
+    crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload Blobs</title>
 
-    <style>
-        dt { opacity: 80%;}
-        object { object-fit: cover; }
-    </style>
+  <style>
+    dt {
+      opacity: 80%;
+    }
+
+    object {
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body>
-    <script>
-        const SUI_NETWORK = "testnet";
-        const SUI_VIEW_TX_URL = `https://suiscan.xyz/${SUI_NETWORK}/tx`;
-        const SUI_VIEW_OBJECT_URL = `https://suiscan.xyz/${SUI_NETWORK}/object`;
+  <script>
+    const SUI_NETWORK = "testnet";
+    const SUI_VIEW_TX_URL = `https://suiscan.xyz/${SUI_NETWORK}/tx`;
+    const SUI_VIEW_OBJECT_URL = `https://suiscan.xyz/${SUI_NETWORK}/object`;
 
-        /**
-         * Handler for submit events from the HTML form.
-         *
-         * Stores the blob provided in the form, and disable the default HTML form submission.
-         */
-        function onSubmit(event) {
-            // Ensure that the event does not propagate, so that the browser does not
-            // perform a POST with the file.
-            event.preventDefault();
+    /**
+     * Handler for submit events from the HTML form.
+     *
+     * Stores the blob provided in the form, and disable the default HTML form submission.
+     */
+    function onSubmit(event) {
+      // Ensure that the event does not propagate, so that the browser does not
+      // perform a POST with the file.
+      event.preventDefault();
 
-            // Disable the form while uploading.
-            enableForm(false);
+      // Disable the form while uploading.
+      enableForm(false);
 
-            // Store and display the blob, then re-enable the form.
-            storeBlob().then((storageInfo) => {
-                displayUpload(storageInfo.info, storageInfo.media_type);
-                alert(null);
-                enableForm(true);
-            }).catch((error) => {
-                console.error(error);
-                alert(
-                    "An error occurred while uploading. Check the browser console and ensure that \
+      // Store and display the blob, then re-enable the form.
+      storeBlob().then((storageInfo) => {
+        displayUpload(storageInfo.info, storageInfo.media_type);
+        alert(null);
+        enableForm(true);
+      }).catch((error) => {
+        console.error(error);
+        alert(
+          "An error occurred while uploading. Check the browser console and ensure that \
                     the aggregator and publisher URLs are correct."
-                );
-                enableForm(true);
-            });
+        );
+        enableForm(true);
+      });
 
-            // Return false to cancel form submission.
-            return false;
+      // Return false to cancel form submission.
+      return false;
+    }
+
+    /**
+     * Stores the file from the HTML form on Walrus.
+     */
+    function storeBlob() {
+      const inputFile = document.getElementById("file-input").files[0];
+      const numEpochs = document.getElementById("epochs-input").value;
+      const basePublisherUrl = document.getElementById("publisher-url-input").value;
+
+      // Submit a PUT request with the file's content as the body to the /v1/store endpoint.
+      return fetch(`${basePublisherUrl}/v1/store?epochs=${numEpochs}`, {
+        method: "PUT",
+        body: inputFile,
+      }).then((response) => {
+        if (response.status === 200) {
+          // Parse successful responses as JSON, and return it along with the
+          // mime type from the the file input element.
+          return response.json().then((info) => {
+            console.log(info);
+            return { info: info, media_type: inputFile.type };
+          });
+        } else {
+          throw new Error("Something went wrong when storing the blob!");
         }
+      })
+    }
 
-        /**
-         * Stores the file from the HTML form on Walrus.
-         */
-        function storeBlob() {
-            const inputFile = document.getElementById("file-input").files[0];
-            const numEpochs = document.getElementById("epochs-input").value;
-            const basePublisherUrl = document.getElementById("publisher-url-input").value;
+    /**
+     * Display the result of uploading the file to Walrus.
+     */
+    function displayUpload(storage_info, media_type) {
+      // Extract the displayed fields from either of the two successful responses:
+      // - newlyCreated for blobs that have been uploaded for the first time,
+      //   or whose duration has been extended.
+      // - alreadyCertified for blobs that have already been uploaded and certified.
+      if ("alreadyCertified" in storage_info) {
+        info = {
+          status: "Already certified",
+          blobId: storage_info.alreadyCertified.blobId,
+          endEpoch: storage_info.alreadyCertified.endEpoch,
+          suiRefType: "Previous Sui Certified Event",
+          suiRef: storage_info.alreadyCertified.event.txDigest,
+          suiBaseUrl: SUI_VIEW_TX_URL,
+        };
+      } else if ("newlyCreated" in storage_info) {
+        info = {
+          status: "Newly created",
+          blobId: storage_info.newlyCreated.blobObject.blobId,
+          endEpoch: storage_info.newlyCreated.blobObject.storage.endEpoch,
+          suiRefType: "Associated Sui Object",
+          suiRef: storage_info.newlyCreated.blobObject.id,
+          suiBaseUrl: SUI_VIEW_OBJECT_URL,
+        };
+      } else {
+        throw Error("Unhandled successful response!");
+      }
 
-            // Submit a PUT request with the file's content as the body to the /v1/store endpoint.
-            return fetch(`${basePublisherUrl}/v1/store?epochs=${numEpochs}`, {
-                method: "PUT",
-                body: inputFile,
-            }).then((response) => {
-                if (response.status === 200) {
-                    // Parse successful responses as JSON, and return it along with the
-                    // mime type from the the file input element.
-                    return response.json().then((info) => {
-                        console.log(info);
-                        return { info: info, media_type: inputFile.type };
-                    });
-                } else {
-                    throw new Error("Something went wrong when storing the blob!");
-                }
-            })
-        }
+      // The URL used to download and view the blob.
+      const baseAggregatorUrl = document.getElementById("aggregator-url-input").value;
+      const blobUrl = `${baseAggregatorUrl}/v1/${info.blobId}`;
 
-        /**
-         * Display the result of uploading the file to Walrus.
-         */
-        function displayUpload(storage_info, media_type) {
-            // Extract the displayed fields from either of the two successful responses:
-            // - newlyCreated for blobs that have been uploaded for the first time,
-            //   or whose duration has been extended.
-            // - alreadyCertified for blobs that have already been uploaded and certified.
-            if ("alreadyCertified" in storage_info) {
-                info = {
-                    status: "Already certified",
-                    blobId: storage_info.alreadyCertified.blobId,
-                    endEpoch: storage_info.alreadyCertified.endEpoch,
-                    suiRefType: "Previous Sui Certified Event",
-                    suiRef: storage_info.alreadyCertified.event.txDigest,
-                    suiBaseUrl: SUI_VIEW_TX_URL,
-                };
-            } else if ("newlyCreated" in storage_info) {
-                info = {
-                    status: "Newly created",
-                    blobId: storage_info.newlyCreated.blobObject.blobId,
-                    endEpoch: storage_info.newlyCreated.blobObject.storage.endEpoch,
-                    suiRefType: "Associated Sui Object",
-                    suiRef: storage_info.newlyCreated.blobObject.id,
-                    suiBaseUrl: SUI_VIEW_OBJECT_URL,
-                };
-            } else {
-                throw Error("Unhandled successful response!");
-            }
+      // The URL for viewing the event or object on chain
+      const suiUrl = `${info.suiBaseUrl}/${info.suiRef}`
 
-            // The URL used to download and view the blob.
-            const baseAggregatorUrl = document.getElementById("aggregator-url-input").value;
-            const blobUrl = `${baseAggregatorUrl}/v1/${info.blobId}`;
+      const isImage = media_type.startsWith("image");
+      // Create the HTML entry in the page for the uploaded blob.
+      //
+      // For the associated icon, we use the `<object/>` HTML element, as it allows specifying
+      // the media type. The walrus aggregator returns blobs as `application/octect-stream`,
+      // so it's necessary to specify the content type to the browser in the `object` element.
+      document.getElementById("uploaded-blobs").insertAdjacentHTML(
+        "afterBegin",
+        `<article class="row border rounded-2 shadow-sm mb-3">
+          <object type="${isImage ? media_type : ''}" data="${isImage ? blobUrl : ''}" class="col-4 ps-0"></object>
+          <dl class="blob-info col-8 my-2">
+            <dt>Status</dt><dd>${info.status}</dd>
 
-            // The URL for viewing the event or object on chain
-            const suiUrl = `${info.suiBaseUrl}/${info.suiRef}`
+            <dt>Blob ID</dt>
+            <dd class="text-truncate"><a href="${blobUrl}">${info.blobId}</a></dd>
 
-            const isImage = media_type.startsWith("image");
-            // Create the HTML entry in the page for the uploaded blob.
-            //
-            // For the associated icon, we use the `<object/>` HTML element, as it allows specifying
-            // the media type. The walrus aggregator returns blobs as `application/octect-stream`,
-            // so it's necessary to specify the content type to the browser in the `object` element.
-            document.getElementById("uploaded-blobs").insertAdjacentHTML(
-                "afterBegin",
-                `<article class="row border rounded-2 shadow-sm mb-3">
-                    <object type="${isImage ? media_type : ''}" data="${isImage ? blobUrl : ''}"
-                        class="col-4 ps-0"></object>
-                    <dl class="blob-info col-8 my-2">
-                        <dt>Status</dt><dd>${info.status}</dd>
+            <dt>${info.suiRefType}</dt>
+            <dd class="text-truncate">
+              <a href="${suiUrl}" target="_blank">${info.suiRef}</a>
+            </dd>
+            <dt>Stored until epoch</dt><dd>${info.endEpoch}</dd>
+          </dl>
+        </article>`
+      );
+    }
 
-                        <dt>Blob ID</dt>
-                        <dd class="text-truncate"><a href="${blobUrl}">${info.blobId}</a></dd>
+    /**
+     * Helper function to disable the form while uploading.
+     */
+    function enableForm(isEnabled) {
+      if (isEnabled) {
+        // Copy the urls, so that they are not reset.
+        const publisherUrl = document.getElementById("publisher-url-input").value;
+        const aggregatorUrl = document.getElementById("aggregator-url-input").value;
+        // Reset the form
+        document.getElementById("upload-form").reset()
+        // Revert the URLs to their previous values
+        document.getElementById("publisher-url-input").value = publisherUrl;
+        document.getElementById("aggregator-url-input").value = aggregatorUrl;
+        // Disable the progress indication
+        document.getElementById("submit-spinner").style.visibility = "collapse";
+        document.getElementById("submit-text").textContent = "Upload";
+        // Re-enable the form
+        document.querySelector("#upload-form fieldset").removeAttribute("disabled");
+      } else {
+        document.querySelector("#upload-form fieldset").setAttribute("disabled", "");
+        document.getElementById("submit-spinner").style.visibility = "visible";
+        document.getElementById("submit-text").textContent = "Uploading ...";
+      }
+    }
 
-                        <dt>${info.suiRefType}</dt>
-                        <dd class="text-truncate">
-                            <a href="${suiUrl}" target="_blank">${info.suiRef}</a>
-                        </dd>
-                        <dt>Stored until epoch</dt><dd>${info.endEpoch}</dd>
-                    </dl>
-                </article>`
-            );
-        }
+    /**
+     * Helper to display an error message.
+     */
+    function alert(message) {
+      const alertElement = document.getElementById("alert");
+      if (message !== null) {
+        alertElement.textContent = message;
+      }
+      alertElement.style.visibility = message !== null ? "visible" : "hidden";
+    }
+  </script>
 
-        /**
-         * Helper function to disable the form while uploading.
-         */
-        function enableForm(isEnabled) {
-            if (isEnabled) {
-                // Copy the urls, so that they are not reset.
-                const publisherUrl = document.getElementById("publisher-url-input").value;
-                const aggregatorUrl = document.getElementById("aggregator-url-input").value;
-                // Reset the form
-                document.getElementById("upload-form").reset()
-                // Revert the URLs to their previous values
-                document.getElementById("publisher-url-input").value = publisherUrl;
-                document.getElementById("aggregator-url-input").value = aggregatorUrl;
-                // Disable the progress indication
-                document.getElementById("submit-spinner").style.visibility = "collapse";
-                document.getElementById("submit-text").textContent = "Upload";
-                // Re-enable the form
-                document.querySelector("#upload-form fieldset").removeAttribute("disabled");
-            } else {
-                document.querySelector("#upload-form fieldset").setAttribute("disabled", "");
-                document.getElementById("submit-spinner").style.visibility = "visible";
-                document.getElementById("submit-text").textContent = "Uploading ...";
-            }
-        }
+  <header class="container my-3">
+    <hgroup>
+      <h1>Walrus Blob Upload</h1>
+      <p class="lead">An example uploading and displaying files with Walrus.</p>
+    </hgroup>
+  </header>
+  <main class="container">
 
-        /**
-         * Helper to display an error message.
-         */
-        function alert(message) {
-            const alertElement = document.getElementById("alert");
-            if (message !== null) {
-                alertElement.textContent = message;
-            }
-            alertElement.style.visibility = message !== null ? "visible" : "hidden";
-        }
-    </script>
-
-    <header class="container my-3">
+    <div class="row align-items-start gx-5">
+      <section class="col-lg-5 mb-3">
         <hgroup>
-            <h1>Walrus Blob Upload</h1>
-            <p class="lead">An example uploading and displaying files with Walrus.</p>
+          <h2>Blob Upload</h2>
+          <p>
+            Upload blobs to Walrus, and display them on this page. See the
+            <a href="https://docs.walrus.site" target="_blank">
+              Walrus documentation
+            </a> for more information.
+            The file size is limited to 10 MiB on the default publisher. Use the <a
+              href="https://docs.walrus.site/usage/client-cli.html" target="_blank">CLI
+              tool</a> to store bigger files.
+          </p>
         </hgroup>
-    </header>
-    <main class="container">
 
-        <div class="row align-items-start gx-5">
-            <section class="col-lg-5 mb-3">
-                <hgroup >
-                    <h2>Blob Upload</h2>
-                    <p>
-                        Upload blobs to Walrus, and display them on this page. See the
-                        <a href="https://docs.walrus.site" target="_blank">
-                            Walrus documentation
-                        </a> for more information.
-                        The file size is limited to 10 MiB on the default publisher. Use the <a
-                        href="https://docs.walrus.site/usage/client-cli.html" target="_blank">CLI
-                        tool</a> to store bigger files.
-                    </p>
-                </hgroup>
+        <form id="upload-form" onsubmit="return onSubmit(event)" class="mb-3">
+          <fieldset class="row g-3">
+            <div class="col-lg-6">
+              <label for="publisher-url-input" class="form-label">
+                Walrus publisher URL
+              </label>
+              <input id="publisher-url-input" type="url" class="form-control"
+                placeholder="https://publisher.walrus-testnet.walrus.space"
+                value="https://publisher.walrus-testnet.walrus.space" required />
+            </div>
 
-                <form id="upload-form" onsubmit="return onSubmit(event)" class="mb-3">
-                    <fieldset class="row g-3">
-                        <div class="col-lg-6">
-                            <label for="publisher-url-input" class="form-label" >
-                                Walrus publisher URL
-                            </label>
-                            <input id="publisher-url-input" type="url" class="form-control"
-                                placeholder="https://publisher-devnet.walrus.space"
-                                value="https://publisher-devnet.walrus.space"
-                                required />
-                        </div>
+            <div class="col-lg-6">
+              <label for="aggregator-url-input" class="form-label">
+                Walrus aggregator URL
+              </label>
+              <input id="aggregator-url-input" type="url" class="form-control"
+                placeholder="https://aggregator.walrus-testnet.walrus.space"
+                value="https://aggregator.walrus-testnet.walrus.space" required />
+            </div>
 
-                        <div class="col-lg-6">
-                            <label for="aggregator-url-input" class="form-label" >
-                                Walrus aggregator URL
-                            </label>
-                            <input id="aggregator-url-input" type="url" class="form-control"
-                                placeholder="https://aggregator-devnet.walrus.space"
-                                value="https://aggregator-devnet.walrus.space"
-                                required />
-                        </div>
+            <div class="col-12">
+              <label for="file-input" class="form-label">Blob to upload (<strong>Max
+                  10 MiB size</strong> on the default publisher!)</label>
+              <input id="file-input" type="file" class="form-control" required />
+            </div>
 
-                        <div class="col-12">
-                            <label for="file-input" class="form-label">Blob to upload (<strong>Max
-                            10 MiB size</strong> on the default publisher!)</label>
-                            <input id="file-input" type="file" class="form-control" required />
-                        </div>
+            <div class="col-12">
+              <label for="epochs-input" class="form-label">Epochs</label>
+              <input id="epochs-input" type="number" value="1" min="1" placeholder="Epochs" class="form-control"
+                required />
+              <div class="form-text">
+                The number of Walrus epochs for which to store the blob.
+              </div>
+            </div>
 
-                        <div class="col-12">
-                            <label for="epochs-input" class="form-label">Epochs</label>
-                            <input id="epochs-input" type="number" value="1" min="1"
-                                placeholder="Epochs" class="form-control" required />
-                            <div class="form-text">
-                                The number of Walrus epochs for which to store the blob.
-                            </div>
-                        </div>
+            <button id="submit" class="btn btn-primary">
+              <span id="submit-spinner" class="spinner-border spinner-border-sm" aria-hidden="true"
+                style="visibility: collapse;"></span>
+              <span id="submit-text" role="status">Upload</span>
+            </button>
+          </fieldset>
+        </form>
 
-                        <button id="submit" class="btn btn-primary">
-                            <span id="submit-spinner" class="spinner-border spinner-border-sm"
-                                aria-hidden="true" style="visibility: collapse;"></span>
-                            <span id="submit-text" role="status">Upload</span>
-                        </button>
-                    </fieldset>
-                </form>
-
-                <div id="alert" class="alert alert-danger" role="alert" style="visibility: hidden;">
-                </div>
-            </section>
-
-            <section class="col-lg-7">
-                <h2>Uploaded Blobs</h2>
-                <div id="uploaded-blobs">
-                    <!-- Container for info about uploaded blobs -->
-                </div>
-            </section>
+        <div id="alert" class="alert alert-danger" role="alert" style="visibility: hidden;">
         </div>
-    </main>
+      </section>
+
+      <section class="col-lg-7">
+        <h2>Uploaded Blobs</h2>
+        <div id="uploaded-blobs">
+          <!-- Container for info about uploaded blobs -->
+        </div>
+      </section>
+    </div>
+  </main>
 </body>
 
 </html>

@@ -21,11 +21,20 @@ permissions:
   pull-requests: write
 
 jobs:
+  build-with-linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/build-mdbook
+        if: github.event.action != 'closed'
+
   preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
+        with:
+          with_linkcheck: "false"
         if: github.event.action != 'closed'
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1.4.8

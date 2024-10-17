@@ -18,22 +18,34 @@ Since we have placed the `walrus` binary and configuration in their default loca
 the `./examples/snake` site is as simple as calling the publishing command:
 
 ``` sh
-./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
+./target/release/site-builder publish ./examples/snake --epochs 100
 ```
 
-The output should look like the following:
+``` admonish tip
+Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
+longer, specify the number of epochs with the `--epochs` flag!
+```
+
+```admonish note
+The site builder will look for the default configuration file `sites-config.yaml` in the
+`./walrus-sites` directory. In case you are calling the `site-builder` command from a different
+location, use the `--config` flag to specify the path to the configuration file.
+```
+
+The end of the output should look like the following:
 
 ``` txt
-Operations performed:
-- created resource /Oi-Regular.ttf with blob ID 2YLU3Usb-WoJAgoNSZUNAFnmyo8cfV8hJYt2YdHL2Hs
-- created resource /file.png with blob ID R584P82qm4Dn8LoQMlzkGZS9IAkU0lNZTVlruOsUyOs
-- created resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
-- created resource /walrus.png with blob ID SGrrw5NQyFWtqtxzLAQ1tLpcChGc0VNbtFRhfsQPuiM
+Execution completed
+Resource operations performed:
+  - created resource /Oi-Regular.ttf with blob ID 76npyqDyGF10-jP_ov-UBHpi-RaRFnxcWgslueGEfr0
+  - created resource /file.svg with blob ID w70pYgtLmi--38Jg1sTGaLlZkQtximNMHXjxDQdXKa0
+  - created resource /index.html with blob ID LVLk9VSnBrEgQ2HJHAgU3p8IarKypQpfn38aSeUZzzE
+  - created resource /walrus.svg with blob ID 866UDjMAy_BB8SsTcgjGEOFp2uAO9BbcVbLh5-_oBNE
+The site routes were modified
 
 Created new site: test site
-New site object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
-
-Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
+New site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
+Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 ```
 
 This output tells you that, for each file in the folder, a new Walrus blob was created, and the
@@ -41,12 +53,12 @@ respective blob ID. Further, it prints the object ID of the Walrus Site object o
 have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.
 
-Note here that we are passing the example config `assets/builder-example.yaml` as the config for the
-site builder. The configuration file is necessary to ensure that the `site-builder` knows the
-correct Sui package for the Walrus Sites logic.
+Note here that we are passing the default config `./sites-config.yaml` as the config for the site
+builder. The configuration file is necessary to ensure that the `site-builder` knows the correct Sui
+package for the Walrus Sites logic.
 
 More details on the configuration of the `site-builder` can be found under the [advanced
-configuration](tutorial-config.md) section.
+configuration](./builder-config.md) section.
 
 ## Update the site
 
@@ -57,22 +69,23 @@ First, make this edit on in the `./examples/snake/index.html` file.
 
 Then, you can update the existing site by running the `update` command, providing the directory
 where to find the updated files (still `./example/snake`) and the object ID of the existing site
-(`0x5ac988...`):
+(`0x407a3081...`):
 
 ``` sh
-./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
+./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
 ```
 
 The output this time should be:
 
 ``` txt
-Operations performed:
-  - deleted resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
-  - created resource /index.html with blob ID LXtY0VdY5kM-3Ph7gLvj8URdz5yiRa5DUy3ZxYqDView
+Execution completed
+Resource operations performed:
+  - deleted resource /index.html with blob ID LVLk9VSnBrEgQ2HJHAgU3p8IarKypQpfn38aSeUZzzE
+  - created resource /index.html with blob ID pcZaosgEFtmP2d2IV3QdVhnUjajvQzY2ev8d9U_D5VY
+The site routes were left unchanged
 
-Updated site at object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
-
-Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
+Site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
+Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 ```
 
 Compared to the `publish` action, we can see that now the only actions performed were to delete the
@@ -82,19 +95,4 @@ Browsing to the provided URL should reflect the change. You've updated the site!
 
 ```admonish note
 The wallet you are using must be the *owner* of the Walrus Site object to be able to update it.
-```
-
-## Additional commands
-
-The `site-builder` tool provides two additional utilities:
-
-- The `convert` command converts an object ID in hex format to the equivalent Base36
-  format. This command is useful if you have the Sui object ID of a Walrus Site, and want to know
-  the subdomain where you can browse it.
-- The `sitemap` command shows the resources that compose the Walrus Site at the given object ID.
-
-```admonish tip
-In general, the `--help` flag is your friend, you can add it to get further details for the whole
-CLI (`./target/release/site-builder --help`) or individual commands (e.g.,
-`./target/release/site-builder update --help`).
 ```

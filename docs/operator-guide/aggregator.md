@@ -1,4 +1,5 @@
 # Operating an aggregator
+<!-- TODO (#141): Add further details and example cache setup. -->
 
 Below is an example of an aggregator node which hosts a HTTP endpoint that can be used
 to fetch data from Walrus over the web.
