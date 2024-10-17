@@ -2359,11 +2359,11 @@ to the "Flatlander site". This latter site is a special Walrus Site that exists 
 and has special characteristics (the background color, the image, ...) that are based on the
 contents of the NFT.</p>
 <p>The URL to this per-NFT site looks something like this:
-<code>https://4egmmrw9izzjn0dm2lkd3k0l8phk386z60ub1tpdc1jswbb5dr.walrus.site/</code>. You'll notice that the
+<code>https://2hzpawjycxuiuh36047yocxapc69g8ercrypa7ccsk8ek4iqu6.walrus.site/</code>. You'll notice that the
 domain remains <code>walrus.site</code>, but the subdomain is a long and random-looking string. This string is
 actually the <a href="https://en.wikipedia.org/wiki/Base36">Base36</a> encoding of the object ID of the NFT,
 which is
-<a href="https://suiscan.xyz/testnet/object/0xb09b312b28049467dd6173b6cebb60ed5fe3046883e248632bf9fb20b7dbdaff">0xb09b312b...</a>.</p>
+<a href="https://suiscan.xyz/testnet/object/0x644bc958052463785c026a13be051d579c8a4d2dc93b1874dce5839d4fb18c5e">0x644bc958...</a>.</p>
 <p>In summary:</p>
 <ul>
 <li>Walrus Sites are served through a portal; in this case, <code>https://walrus.site</code>. There can be many
@@ -2372,7 +2372,7 @@ portals, and anyone can host one.</li>
 render the site resources. This pointer can be
 <ul>
 <li>a SuiNS name, such as <code>flatland</code> in <code>https://flatland.walrus.site</code>, or</li>
-<li>the Base36 encoding of a the Sui object ID, such as <code>0xb09b312b...</code> in the example above.</li>
+<li>the Base36 encoding of a the Sui object ID, such as <code>0x644bc958...</code> in the example above.</li>
 </ul>
 </li>
 </ul>
@@ -2429,50 +2429,20 @@ its root, which will be the entry point to the Walrus Site.</p>
 <h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
 <p>Since we have placed the <code>walrus</code> binary and configuration in their default locations, publishing
 the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
+<pre><code class="language-sh">./target/release/site-builder publish ./examples/snake --epochs 100
 </code></pre>
-<p>The output should look like the following:</p>
-<pre><code class="language-txt">Operations performed:
-- created resource /Oi-Regular.ttf with blob ID 2YLU3Usb-WoJAgoNSZUNAFnmyo8cfV8hJYt2YdHL2Hs
-- created resource /file.png with blob ID R584P82qm4Dn8LoQMlzkGZS9IAkU0lNZTVlruOsUyOs
-- created resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
-- created resource /walrus.png with blob ID SGrrw5NQyFWtqtxzLAQ1tLpcChGc0VNbtFRhfsQPuiM
-
-Created new site: test site
-New site object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
-
-Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
-</code></pre>
-<p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
-respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
-can browse the site.</p>
-<p>Note here that we are passing the example config <code>assets/builder-example.yaml</code> as the config for the
-site builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the
-correct Sui package for the Walrus Sites logic.</p>
-<p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="walrus-sites/./builder-config.html">advanced
-configuration</a> section.</p>
-<h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
-<p>Let's say now you want to update the content of the site, for example by changing the title from
-"eat all the blobs!" to "Glob all the Blobs!".</p>
-<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
-<p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
-where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
-(<code>0x5ac988...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
-</code></pre>
-<p>The output this time should be:</p>
-<pre><code class="language-txt">Operations performed:
-  - deleted resource /index.html with blob ID SSzbpPfO2Tqk6xNyF1i-NG9I9CjUjuWnhUATVSs5nic
-  - created resource /index.html with blob ID LXtY0VdY5kM-3Ph7gLvj8URdz5yiRa5DUy3ZxYqDView
-
-Updated site at object ID: 0x5ac988828a0c9842d91e6d5bdd9552ec9fcdddf11c56bf82dff6d5566685a31e
-
-Browse the resulting site at: https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site
-</code></pre>
-<p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
-old <code>index.html</code>, and update it with the newer one.</p>
-<p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-tip"></a>
+</div>
+<div>
+<p>Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
+longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
+</div>
+</div>
 <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
 <div class="admonition-title">
 <div id="admonition-note-title">
@@ -2481,12 +2451,69 @@ old <code>index.html</code>, and update it with the newer one.</p>
 <a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note"></a>
 </div>
 <div>
+<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
+<code>./walrus-sites</code> directory. In case you are calling the <code>site-builder</code> command from a different
+location, use the <code>--config</code> flag to specify the path to the configuration file.</p>
+</div>
+</div>
+<p>The end of the output should look like the following:</p>
+<pre><code class="language-txt">Execution completed
+Resource operations performed:
+  - created resource /Oi-Regular.ttf with blob ID 76npyqDyGF10-jP_ov-UBHpi-RaRFnxcWgslueGEfr0
+  - created resource /file.svg with blob ID w70pYgtLmi--38Jg1sTGaLlZkQtximNMHXjxDQdXKa0
+  - created resource /index.html with blob ID LVLk9VSnBrEgQ2HJHAgU3p8IarKypQpfn38aSeUZzzE
+  - created resource /walrus.svg with blob ID 866UDjMAy_BB8SsTcgjGEOFp2uAO9BbcVbLh5-_oBNE
+The site routes were modified
+
+Created new site: test site
+New site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
+Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
+</code></pre>
+<p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
+respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
+have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
+can browse the site.</p>
+<p>Note here that we are passing the default config <code>./sites-config.yaml</code> as the config for the site
+builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
+package for the Walrus Sites logic.</p>
+<p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="walrus-sites/./builder-config.html">advanced
+configuration</a> section.</p>
+<h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
+<p>Let's say now you want to update the content of the site, for example by changing the title from
+"eat all the blobs!" to "Glob all the Blobs!".</p>
+<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
+<p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
+where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
+(<code>0x407a3081...</code>):</p>
+<pre><code class="language-sh">./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+</code></pre>
+<p>The output this time should be:</p>
+<pre><code class="language-txt">Execution completed
+Resource operations performed:
+  - deleted resource /index.html with blob ID LVLk9VSnBrEgQ2HJHAgU3p8IarKypQpfn38aSeUZzzE
+  - created resource /index.html with blob ID pcZaosgEFtmP2d2IV3QdVhnUjajvQzY2ev8d9U_D5VY
+The site routes were left unchanged
+
+Site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
+Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
+</code></pre>
+<p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
+old <code>index.html</code>, and update it with the newer one.</p>
+<p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
+<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div class="admonition-title">
+<div id="admonition-note-1-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note-1"></a>
+</div>
+<div>
 <p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
 </div>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="bonus-set-a-suins-name"><a class="header" href="#bonus-set-a-suins-name">Bonus: Set a SuiNS name</a></h1>
-<p>Browsing a URL like <code>https://29gjzk8yjl1v7zm2etee1siyzaqfj9jaru5ufs6yyh1yqsgun2.walrus.site</code> is not
+<p>Browsing a URL like <code>https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site</code> is not
 particularly nice. Therefore, Walrus Sites allows to use SuiNS names (this is like DNS for Sui) to
 assign a human-readable name to a Walrus Site. To do so, you simply have to get a SuiNS name you
 like, and point it to the object ID of the Walrus Site (as provided by the <code>publish</code> or <code>update</code>
@@ -2517,58 +2544,6 @@ no special characters (e.g., <code>-</code>).</p>
 the "three dots" menu icon above the name you want to map, and click "Link To Wallet Address". Paste
 in the bar the object ID of the Walrus Site, check that it is correct, and click "Apply".</p>
 <p>After approving the transaction, we can now browse <a href="https://walrusgame.walrus.site">https://walrusgame.walrus.site</a>!</p>
-<hr />
-<h2 id="the-cli-way"><a class="header" href="#the-cli-way">The CLI way</a></h2>
-<p>For completeness, we report here a manual way of setting the mapping between the SuiNS name and the
-Walrus Site, using the CLI.</p>
-<h3 id="get-the-suins-object-id"><a class="header" href="#get-the-suins-object-id">Get the SuiNS object ID</a></h3>
-<p>Go to the <a href="https://testnet.suins.io/account/my-names">"names you own"</a> section of the SuiNS website,
-click the three-dots menu on the top-right corner of the name, choose "View all info", and copy the
-<code>ObjectID</code>. In our case, this is <code>0x6412...</code>.</p>
-<h3 id="send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli"><a class="header" href="#send-the-suins-registration-object-to-the-address-you-use-with-the-sui-cli">Send the SuiNS registration object to the address you use with the Sui CLI</a></h3>
-<p>The steps that follow require that the SuiNS registration object is owned by the address you are
-using on the Sui CLI. Therefore, unless you use the same address in your browser wallet and the CLI,
-we need to send this registration object from the address you use in your browser wallet to the
-address of your Sui CLI.</p>
-<p>To find the Sui CLI address, execute:</p>
-<pre><code class="language-sh">sui client active-address
-</code></pre>
-<p>Then, from your browser wallet, select the "Assets" tab and look for the NFT of the SuiNS
-registration, which should look as follows:
-<img src="walrus-sites/../assets/suins-asset.png" alt="the SuiNS registration inside the wallet" /></p>
-<p>Click on it, scroll down to "Send NFT", and send it to the address discovered with the command
-above. Now, your Sui CLI address owns the registration NFT, and you can proceed to the next step.</p>
-<h3 id="use-the-cli-to-map-the-suins-name-to-the-walrus-site"><a class="header" href="#use-the-cli-to-map-the-suins-name-to-the-walrus-site">Use the CLI to map the SuiNS name to the Walrus Site</a></h3>
-<p>This step associates the name <code>walrusgame</code> to the object ID of our Walrus Site. There are possibly
-many ways to achieve this, one is to issue the following transaction using the Sui CLI to create
-this mapping:</p>
-<pre><code class="language-sh">SUINS_UTILS_PACKAGE=0x7954ae683314ec7e156acbf0c0fc964ce035fd7f456fe7576848226502cfde1b
-SUINS_CORE_OBJECT=0x300369e8909b9a6464da265b9a5a9ab6fe2158a040e84e808628cde7a07ee5a3
-MY_SUINS_REGISTRATION_OBJECT=0x6412... # adjust this to your own SuiNS object
-MY_WALRUS_SITE_OBJECT=0x5ac9... # adjust this to your Walrus Site object
-sui client call \
-    --package $SUINS_UTILS_PACKAGE \
-    --module direct_setup \
-    --function set_target_address \
-    --gas-budget 500000000 \
-    --args $SUINS_CORE_OBJECT \
-    --args $MY_SUINS_REGISTRATION_OBJECT \
-    --args "[$MY_WALRUS_SITE_OBJECT]" \
-    --args 0x6
-</code></pre>
-<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
-<div class="admonition-title">
-<div id="admonition-note-1-title">
-<p>Note</p>
-</div>
-<a class="admonition-anchor-link" href="walrus-sites/tutorial-suins.html#admonition-note-1"></a>
-</div>
-<div>
-<p>Note that the SuiNS package and object on Testnet may change. You can find the latest ones by
-looking at the <code>TESTNET_CONFIG</code> in the <a href="https://github.com/MystenLabs/suins-contracts/blob/main/sdk/src/constants.ts">SuiNS
-contract</a>.</p>
-</div>
-</div>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="migrating-your-site-from-devnet-to-testnet"><a class="header" href="#migrating-your-site-from-devnet-to-testnet">Migrating your site from Devnet to Testnet</a></h1>
 <p>The migration of a Walrus Site from the Devnet to the Testnet is a very simple manual process.
@@ -2584,6 +2559,18 @@ implementing the Walrus Sites functionality have been updated.</p>
 <div>
 <p>The migration will result in a new Site object on Sui (with a different object ID), and new blob
 objects on Walrus Testnet.</p>
+</div>
+</div>
+<div id="admonition-new-default-configuration-path" class="admonition admonish-danger" role="note" aria-labelledby="admonition-new-default-configuration-path-title">
+<div class="admonition-title">
+<div id="admonition-new-default-configuration-path-title">
+<p>New default configuration path</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-migration.html#admonition-new-default-configuration-path"></a>
+</div>
+<div>
+<p>The default configuration file for the <code>site-builder</code> has been moved to the <code>./sites-config.yaml</code>
+instead of the old <code>./site-builder/assets/builder-example.yaml</code>.</p>
 </div>
 </div>
 <p>The steps are the following:</p>
@@ -2855,7 +2842,7 @@ as usual.</p>
 <code>https://gallery.walrus.site/walrus_arctic.webp</code>, and you want to link it from your own Walrus Site.</p>
 <p>Recall that, however, <code>https://walrus.site</code> is just one of the possibly many portals. I.e., the same
 resource is browsable from a local portal (<code>http://gallery.localhost:8080/walrus_arctic.webp</code>), or
-from any other portal (e.g., <code>https://gallery.myotherportal.com/walrus_arctic.webp</code>). Therefore, how
+from any other portal (e.g., <code>https://gallery.blob.store/walrus_arctic.webp</code>). Therefore, how
 can you link the resource in a <em>portal-independent way</em>? This is important for interoperability,
 availability, and respecting the user's choice of portal.</p>
 <h3 id="the-solution-walrus-sites-links"><a class="header" href="#the-solution-walrus-sites-links">The solution: Walrus Sites links</a></h3>
@@ -2894,13 +2881,15 @@ const VISUALIZATION_SITE: address = @0x901fb0...;
 display.add(b"walrus site address".to_string(), VISUALIZATION_SITE.to_string());
 ...
 </code></pre>
-<h3 id="how-to-personalize-based-on-the-nft"><a class="header" href="#how-to-personalize-based-on-the-nft">How to personalize based on the NFT?</a></h3>
+<h3 id="how-to-change-the-site-based-on-the-nft"><a class="header" href="#how-to-change-the-site-based-on-the-nft">How to change the site based on the NFT?</a></h3>
 <p>The code above will only open the specified Walrus Site when browsing the object ID of the NFT. How
 do we ensure that the properties of the NFT can be used to personalize the site?</p>
 <p>This needs to be done in the <code>VISUALIZATION_SITE</code>: Since the subdomain is still pointing to the
 NFT's object ID, the Walrus Site that is loaded can check its <code>origin</code> in JavaScript, and use the
 subdomain to determine the NFT, fetch it from chain, and use its internal fields to modify the
 displayed site.</p>
+<p>For an end-to-end example, see the <code>flatland</code>
+<a href="https://github.com/MystenLabs/example-walrus-sites/tree/main/flatland">repo</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="technical-overview"><a class="header" href="#technical-overview">Technical Overview</a></h1>
 <p>In the following sections, we delve deeper in the technical specification of Walrus Sites.</p>
@@ -2938,7 +2927,7 @@ starting from root <code>/</code>);</li>
 </code></pre>
 <p>This struct just holds the string of the path (<code>/index.html</code>); having a separate type ensures that
 we will not have namespace collisions with other dynamic fields, possibly added by other packages.</p>
-<p>To see this in action, look at <a href="https://suiscan.xyz/testnet/object/0x049b6d3f34789904efcc20254400b7dca5548ee35cd7b5b145a211f85b2532fa">a Walrus Site in the
+<p>To see this in action, look at <a href="https://suiscan.xyz/testnet/object/0xd20b90149409ba5d005d4a2cd981db9494bc3cdb2f04c47ca1af98dd8f71610a">a Walrus Site in the
 explorer</a>,
 and check its dynamic fields.</p>
 <h3 id="the-site-rendering-path"><a class="header" href="#the-site-rendering-path">The site rendering path</a></h3>
@@ -2967,7 +2956,7 @@ Flatland mint dApp is hosted at <a href="https://flatland.walrus.site">https://f
 uniquely associated to the object ID of the Walrus Site through SuiNS.</p>
 <p>Walrus Sites also work without SuiNS: a site can <em>always</em> be browsed by using as subdomain the
 Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this URL is:
-<a href="https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.walrus.site">https://44terjw9uzwbmtful0387e2bx3k3ro64s0it82hw9x9sz4ttm.walrus.site</a>.</p>
+<a href="https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site">https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site</a>.</p>
 <p>Base36 was chosen for two reasons, forced by the subdomain standards:</p>
 <ol>
 <li>A subdomain can have at most 63 characters, while a Hex-encoded Sui object ID requires 64.</li>
