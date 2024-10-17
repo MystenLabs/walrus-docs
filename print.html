@@ -520,18 +520,18 @@ proof of stake mechanism. The Testnet also brings functionality updates relating
 epochs, and blob deletion.</p>
 <h2 id="blob-deletion"><a class="header" href="#blob-deletion">Blob deletion</a></h2>
 <p>The most important user-facing new feature is optional blob deletion. The uploader of a blob can
-optionally indicate a blob is "deletable". This information is stored in the Sui blob meta-data
+optionally indicate a blob is "deletable". This information is stored in the Sui blob metadata
 object, and is also included in the event denoting when the blob is certified. Subsequently, the
-owner of the Sui blob meta-data object can "delete" it. As a result storage for the remaining
+owner of the Sui blob metadata object can "delete" it. As a result storage for the remaining
 period is reclaimed and can be used by subsequent blob storage operations.</p>
-<p>Blob deletion allows more fine grained storage cost management: smart contracts that wrap blob
-meta-data objects can define logic that stores blobs and delete them to minimize costs, and reclaim
+<p>Blob deletion allows more fine-grained storage cost management: smart contracts that wrap blob
+metadata objects can define logic that stores blobs and delete them to minimize costs, and reclaim
 storage space before Walrus epochs end.</p>
 <p>However, blob deletion is not an effective privacy mechanism in itself: copies of the blob may exist
-outside Walrus storage nodes on caches and end-user stores
-or devices. Furthermore, if the identical blob is stored by multiple Walrus users, the blob will
-still be available on Walrus until no copy exists. Thus deleting your own copy of a blob cannot
-guarantee that it is deleted from Walrus as a whole.</p>
+outside Walrus storage nodes on caches and end-user stores or devices. Furthermore, if the identical
+blob is stored by multiple Walrus users, the blob will still be available on Walrus until no copy
+exists. Thus deleting your own copy of a blob cannot guarantee that it is deleted from Walrus as a
+whole.</p>
 <ul>
 <li>Find out how to
 <a href="blog/../usage/client-cli.html#reclaiming-space-via-deletable-blobs">upload and delete deletable blobs</a>
@@ -539,12 +539,13 @@ thought the CLI.</li>
 <li>Find out more about how <a href="blog/../dev-guide/dev-operations.html#delete">delete operations work</a>.</li>
 </ul>
 <h2 id="epochs"><a class="header" href="#epochs">Epochs</a></h2>
-<p>Walrus Testnet enables multiple epochs. Initially an epoch is a single day to ensure the logic of
-epoch change is thoroughly tested. At Mainnet epochs will likely be multiple weeks long.</p>
-<p>Now stored blob expiry epoch is meaningful, and blobs will become unavailable after their expiry
-epoch. The store command may be used to extend the expiry epoch of a blob that is still available.
-This operation is efficient and only affects payments and meta-data, and does not re-upload blob
-contents.</p>
+<p>Walrus Testnet enables multiple epochs. Initially, the epoch duration is set to a single day to
+ensure the logic of epoch change is thoroughly tested. At Mainnet, epochs will likely be multiple
+weeks long.</p>
+<p>The progress of epochs makes the expiry epoch of blobs meaningful, and blobs will become unavailable
+after their expiry epoch. The store command may be used to extend the expiry epoch of a blob that is
+still available. This operation is efficient and only affects payments and metadata, and does not
+re-upload blob contents.</p>
 <ul>
 <li>Find out the <a href="blog/../usage/client-cli.html#walrus-system-information">current epoch</a> through the CLI.</li>
 <li>Find out how to store a blob for
@@ -552,24 +553,24 @@ contents.</p>
 </ul>
 <h2 id="the-wal-token-and-the-testnet-wal-faucet"><a class="header" href="#the-wal-token-and-the-testnet-wal-faucet">The WAL token and the Testnet WAL faucet</a></h2>
 <p>Payments for blob storage and extending blob expiry are denominated in Testnet WAL, a
-Walrus token issued on the Sui Testnet. Testnet WAL has no value, and an unlimited supply - so no
-need to covet or hoard it - its just for testing purposes and only issued on Sui Testnet.</p>
+Walrus token issued on the Sui Testnet. Testnet WAL has no value, and an unlimited supply; so no
+need to covet or hoard it, it's just for testing purposes and only issued on Sui Testnet.</p>
 <p>WAL also has a smaller unit called FROST, similar to MIST for SUI. 1 WAL is equal to 1 billion
 (1000000000) FROST.</p>
 <p>To make Testnet WAL available to all who want to experiment with the Walrus Testnet we provide a
 utility and smart contract to convert Testnet SUI (which also has no value) into Testnet WAL using
 a one-to-one exchange rate. This is chosen arbitrarily, and generally one should not read too much
 into the actual WAL denominated costs of storage on Testnet. They have been chosen arbitrarily.</p>
-<p>Find out how to <a href="blog/../usage/setup.html#testnet-wal-faucet">request Test WAL tokens</a> through the CLI.</p>
+<p>Find out how to <a href="blog/../usage/setup.html#testnet-wal-faucet">request Testnet WAL tokens</a> through the CLI.</p>
 <h2 id="decentralization-through-staking--unstaking"><a class="header" href="#decentralization-through-staking--unstaking">Decentralization through staking &amp; unstaking</a></h2>
 <p>The WAL token may also be used to stake with storage operators. Staked WAL can be unstaked and
 re-staked with other operators or used to purchase storage.</p>
 <p>Each epoch storage nodes are selected and allocated storage shards according to their delegated
 stake. At the end of each epoch payments for storing blobs for the epoch are distributed to storage
-nodes and those that delegate stake to them. Furthermore, important network parameters - such as
-total available storage and storage price - are set by the selected storage operators each epoch
+nodes and those that delegate stake to them. Furthermore, important network parameters (such as
+total available storage and storage price) are set by the selected storage operators each epoch
 according to their stake weight.</p>
-<p>A staking web dApps is provided to experiment with this functionality. Community members have also
+<p>A staking web dApp is provided to experiment with this functionality. Community members have also
 created explorers that can be used to view storage nodes when considering who to stake with. Staking
 ensures that the ultimate governance of Walrus, directly in terms of storage nodes, and indirectly
 in terms of parameters and software they chose, rests with WAL Token holders.</p>
@@ -578,13 +579,13 @@ storage node committee changes: better shard allocation mechanisms upon changes 
 stake; efficient ways to sync state between storage nodes; as well as better ways for storage nodes
 to follow Sui event streams.</p>
 <ul>
-<li>Explore the <a href="https://stake.walrus.site">Walrus staking dApp</a></li>
-<li>Look at recent activity on the <a href="https://walruscan.com/testnet/home">Walrus Explorer</a></li>
+<li>Explore the <a href="https://stake.walrus.site">Walrus staking dApp</a>.</li>
+<li>Look at recent activity on the <a href="https://walruscan.com/testnet/home">Walrus Explorer</a>.</li>
 </ul>
 <h2 id="new-move-contracts--documentation"><a class="header" href="#new-move-contracts--documentation">New Move contracts &amp; documentation</a></h2>
-<p>As part of the Testnet release of Walrus the documentation and Move Smart contracts have been
-updated, and can be found at the <a href="https://github.com/MystenLabs/walrus-docs">Walrus-docs repository</a>
-and as a <a href="https://docs.walrus.site/">Walrus Docs Site</a>.</p>
+<p>As part of the Testnet release of Walrus, the documentation and Move Smart contracts have been
+updated, and can be found in the <a href="https://github.com/MystenLabs/walrus-docs"><code>walrus-docs</code>
+repository</a>.</p>
 <h2 id="new-walrus-sites-features"><a class="header" href="#new-walrus-sites-features">New Walrus Sites features</a></h2>
 <p>With the move to Walrus Testnet, Walrus Sites have also been updated! The new features in this
 update greatly increase the flexibility, speed, and security of Walrus Sites. Developers can now
@@ -1187,7 +1188,7 @@ adapt most of those.</p>
 </div>
 </div>
 <p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-<code>$SYSTEM</code> variable)`:</p>
+<code>$SYSTEM</code> variable):</p>
 <pre><code class="language-sh">SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
 chmod +x walrus
@@ -1668,7 +1669,7 @@ PUBLISHER=https://publisher.walrus-testnet.walrus.space
 </div>
 <div>
 <p>Walrus aggregators and publishers expose their API specifications at the path <code>/v1/api</code>. You can
-view this in the browser` e.g., at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a></p>
+view this in the browser, e.g., at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a></p>
 </div>
 </div>
 <h3 id="store"><a class="header" href="#store">Store</a></h3>
@@ -1883,7 +1884,7 @@ for the blob ID for a certain number of epochs.</p>
 <p>Once a blob is certified, Walrus will ensure that sufficient slivers will always be
 available on storage nodes to recover it within the specified epochs.</p>
 <h2 id="delete"><a class="header" href="#delete">Delete</a></h2>
-<p>Stored blobs can be optionally set as deletable by the user that creates them. This meta-data is
+<p>Stored blobs can be optionally set as deletable by the user that creates them. This metadata is
 stored in the Sui blob object, and whether a blob is deletable or not is included in certified blob
 events. A deletable blob may be deleted by the owner of the blob object, to reclaim and re-use
 the storage resource associated with it.</p>
@@ -1972,7 +1973,7 @@ public fun storage_size(self: &amp;Storage): u64;
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified, a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
-<pre><code class="language-move">/// Signals that a blob with meta-data has been registered.
+<pre><code class="language-move">/// Signals that a blob with metadata has been registered.
 public struct BlobRegistered has copy, drop {
     epoch: u32,
     blob_id: u256,

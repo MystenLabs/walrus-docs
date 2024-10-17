@@ -263,7 +263,7 @@ public fun storage_size(self: &amp;Storage): u64;
 that they should expect slivers associated with its Blob ID. Eventually when the blob is
 certified, a <code>BlobCertified</code> is emitted containing information about the blob ID and the epoch
 after which the blob will be deleted. Before that epoch the blob is guaranteed to be available.</p>
-<pre><code class="language-move">/// Signals that a blob with meta-data has been registered.
+<pre><code class="language-move">/// Signals that a blob with metadata has been registered.
 public struct BlobRegistered has copy, drop {
     epoch: u32,
     blob_id: u256,
