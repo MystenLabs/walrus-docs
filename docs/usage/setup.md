@@ -71,34 +71,35 @@ when [running the CLI](./interacting.md).
 
 ## Installation
 
-We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs) and Ubuntu:
+We currently provide the `walrus` client binary for macOS (Intel and Apple CPUs), Ubuntu, and
+Windows:
 
-| OS     | CPU           | Architecture                                                                                                 |
-| ------ | ------------- | ------------------------------------------------------------------------------------------------------------ |
-| MacOS  | Apple Silicon | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-arm64)     |
-| MacOS  | Intel 64bit   | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-x86_64)   |
-| Ubuntu | Intel 64bit   | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64) |
+| OS      | CPU                   | Architecture                                                                                                                 |
+| ------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64)                 |
+| Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64-generic) |
+| MacOS   | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-arm64)                     |
+| MacOS   | Intel 64bit           | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-macos-x86_64)                   |
+| Windows | Intel 64bit           | [`windows-x86_64.exe`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-windows-x86_64.exe)       |
 
-<!-- markdownlint-disable -->
-<!-- TODO: Add this again -->
-<!-- | Ubuntu | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-ubuntu-x86_64-generic) | -->
-<!-- markdownlint-enable -->
+```admonish title="Windows"
+We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
+a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
+adapt most of those.
+```
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
 `$SYSTEM` variable)`:
 
 ```sh
-SYSTEM=ubuntu-x86_64 # or macos-x86_64 or macos-arm64
+SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
 curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
 chmod +x walrus
 ```
 
-<!-- TODO: Add again -->
-<!--
 On Ubuntu, you should generally use the `ubuntu-x86_64` version. However, this is incompatible with
 old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
 error); in these cases you can use the `ubuntu-x86_64-generic` version.
--->
 
 To be able to run it simply as `walrus`, move the binary to any directory included in your `$PATH`
 environment variable. Standard locations are `/usr/local/bin/`, `$HOME/bin/`, or
