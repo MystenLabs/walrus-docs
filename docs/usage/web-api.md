@@ -59,6 +59,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.stakin-nodes.com`
 - `https://testnet-aggregator-walrus.kiliglab.io`
 - `https://walrus-cache-testnet.latitude-sui.com`
+- `https://walrus-testnet-aggregator.nodeinfra.com`
 - `https://walrus-tn.juicystake.io:9443`
 - `https://walrus-agg-testnet.chainode.tech:9002`
 - `https://walrus-testnet-aggregator.starduststaking.com:11444`
@@ -70,11 +71,6 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.stakingdefenseleague.com:9000`
 - `http://walrus.sui.thepassivetrust.com:9000`
 
-<!--
-Reported but currently not available:
-- `https://walrus-testnet-aggregator.nodeinfra.com`
--->
-
 ### Public publishers
 
 - `https://publisher.walrus-testnet.walrus.space`
@@ -84,6 +80,7 @@ Reported but currently not available:
 - `https://sui-walrus-testnet.bwarelabs.com/publisher`
 - `https://walrus-testnet-publisher.stakin-nodes.com`
 - `https://testnet-publisher-walrus.kiliglab.io`
+- `https://walrus-testnet-publisher.nodeinfra.com`
 - `https://walrus-testnet.blockscope.net:11444`
 - `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://walrus-testnet-publisher.starduststaking.com:11445`
@@ -97,11 +94,6 @@ Reported but currently not available:
 - `http://walrus-tn.juicystake.io:9090`
 - `http://walrus-testnet.stakingdefenseleague.com:9001`
 - `http://walrus.sui.thepassivetrust.com:9001`
-
-<!--
-Reported but currently not available:
-- https://walrus-testnet-publisher.nodeinfra.com
--->
 
 ## HTTP API Usage
 
