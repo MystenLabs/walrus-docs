@@ -34,34 +34,88 @@ only authorized parties may access it, or other measures to manage gas costs.
 ## Using a public aggregator or publisher {#public-services}
 
 For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
-aggregator and/or publisher is required. For your convenience, we provide these at the following
-hosts:
+aggregator and/or publisher is required. Several entities run such aggregators and publishers, see
+the lists of public [aggregators](#public-aggregators) and [publishers](#public-publishers) below.
 
-<!-- TODO: Point to correct instances. -->
-- Aggregator: `http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000`
-- Publisher: `http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000`
-
-Our publisher is currently limiting requests to 10 MiB. If you want to upload larger files, you need
+Public publishers limit requests to 10 MiB by default. If you want to upload larger files, you need
 to [run your own publisher](#local-daemon) or use the [CLI](./client-cli.md).
 
-Note that the publisher consumes (Testnet) Sui on the service side, and a Mainnet deployment would
-likely not be able to provide uncontrolled public access to publishing without requiring some
-authentication and compensation for the Sui used.
+Also, note that the publisher consumes (Testnet) SUI and WAL on the service side, and a Mainnet
+deployment would likely not be able to provide uncontrolled public access to publishing without
+requiring some authentication and compensation for the funds used.
+
+### Public aggregators
+
+The following is a list of know public aggregators; they are checked periodically, but each of them
+may still be temporarily unavailable:
+
+- `https://aggregator.walrus-testnet.walrus.space`
+- `https://wal-aggregator-testnet.staketab.org`
+- `https://walrus-testnet-aggregator.bartestnet.com`
+- `https://walrus-testnet.blockscope.net`
+- `https://walrus-testnet-aggregator.nodes.guru`
+- `https://walrus-cache-testnet.overclock.run`
+- `https://sui-walrus-testnet.bwarelabs.com/aggregator`
+- `https://walrus-testnet-aggregator.stakin-nodes.com`
+- `https://testnet-aggregator-walrus.kiliglab.io`
+- `https://walrus-cache-testnet.latitude-sui.com`
+- `https://walrus-tn.juicystake.io:9443`
+- `https://walrus-agg-testnet.chainode.tech:9002`
+- `https://walrus-testnet-aggregator.starduststaking.com:11444`
+- `http://walrus-testnet-aggregator.everstake.one:9000`
+- `http://walrus.testnet.pops.one:9000`
+- `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
+- `http://aggregator.testnet.sui.rpcpool.com:9000`
+- `http://walrus.krates.ai:9000`
+- `http://walrus-testnet.stakingdefenseleague.com:9000`
+- `http://walrus.sui.thepassivetrust.com:9000`
+
+<!--
+Reported but currently not available:
+- `https://walrus-testnet-aggregator.nodeinfra.com`
+-->
+
+### Public publishers
+
+- `https://publisher.walrus-testnet.walrus.space`
+- `https://wal-publisher-testnet.staketab.org`
+- `https://walrus-testnet-publisher.bartestnet.com`
+- `https://walrus-testnet-publisher.nodes.guru`
+- `https://sui-walrus-testnet.bwarelabs.com/publisher`
+- `https://walrus-testnet-publisher.stakin-nodes.com`
+- `https://testnet-publisher-walrus.kiliglab.io`
+- `https://walrus-testnet.blockscope.net:11444`
+- `https://walrus-publish-testnet.chainode.tech:9003`
+- `https://walrus-testnet-publisher.starduststaking.com:11445`
+- `http://walrus-publisher-testnet.overclock.run:9001`
+- `http://walrus-testnet-publisher.everstake.one:9001`
+- `http://walrus.testnet.pops.one:9001`
+- `http://ivory-dakar-e5812.walrus.bdnodes.net:9001`
+- `http://publisher.testnet.sui.rpcpool.com:9001`
+- `http://walrus.krates.ai:9001`
+- `http://walrus-publisher-testnet.latitude-sui.com:9001`
+- `http://walrus-tn.juicystake.io:9090`
+- `http://walrus-testnet.stakingdefenseleague.com:9001`
+- `http://walrus.sui.thepassivetrust.com:9001`
+
+<!--
+Reported but currently not available:
+- https://walrus-testnet-publisher.nodeinfra.com
+-->
 
 ## HTTP API Usage
 
 For the following examples, we assume you set the `AGGREGATOR` and `PUBLISHER` environment variables
 to your desired aggregator and publisher, respectively. For example:
 
-<!-- TODO: Point to correct instances. -->
 ```sh
-AGGREGATOR=http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000
-PUBLISHER=http://lax-ptn-pub-00.walrus-private-testnet.walrus.space:9000
+AGGREGATOR=https://aggregator.walrus-testnet.walrus.space
+PUBLISHER=https://publisher.walrus-testnet.walrus.space
 ```
 
 ```admonish tip title="API specification"
 Walrus aggregators and publishers expose their API specifications at the path `/v1/api`. You can
-view this in the browser` e.g., at <http://ewr-ptn-agg-00.walrus-private-testnet.walrus.space:9000/v1/api>
+view this in the browser` e.g., at <https://aggregator.walrus-testnet.walrus.space/v1/api>
 ```
 
 ### Store

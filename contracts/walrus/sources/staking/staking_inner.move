@@ -31,7 +31,6 @@ const MIN_STAKE: u64 = 0;
 /// Temporary upper limit for the number of storage nodes.
 const TEMP_ACTIVE_SET_SIZE_LIMIT: u16 = 100;
 
-// Keep errors in `walrus-sui/types/move_errors.rs` up to date with changes here.
 const EWrongEpochState: u64 = 0;
 const EInvalidSyncEpoch: u64 = 1;
 const EDuplicateSyncDone: u64 = 2;

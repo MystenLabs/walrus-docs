@@ -12,7 +12,6 @@ module walrus::staked_wal;
 use sui::balance::Balance;
 use wal::wal::WAL;
 
-// Keep errors in `walrus-sui/types/move_errors.rs` up to date with changes here.
 const ENotWithdrawing: u64 = 0;
 const EMetadataMismatch: u64 = 1;
 const EInvalidAmount: u64 = 2;
@@ -22,7 +21,6 @@ const ECantSplitWithdrawing: u64 = 5;
 
 /// The state of the staked WAL. It can be either `Staked` or `Withdrawing`.
 /// The `Withdrawing` state contains the epoch when the staked WAL can be
-///
 public enum StakedWalState has store, copy, drop {
     // Default state of the staked WAL - it is staked in the staking pool.
     Staked,

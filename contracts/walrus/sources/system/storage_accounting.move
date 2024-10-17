@@ -7,7 +7,6 @@ use sui::balance::{Self, Balance};
 use wal::wal::WAL;
 
 // Errors
-// Keep errors in `walrus-sui/types/move_errors.rs` up to date with changes here.
 const ETooFarInFuture: u64 = 0;
 
 /// Holds information about a future epoch, namely how much

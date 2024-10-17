@@ -26,8 +26,52 @@ balance and rewards will be available to withdraw at the start of epoch `e + 1`.
 
 ## How to stake
 
+### Walrus Staking dApp
+
+The Walrus Staking dApp allows users to stake (or unstake) to any of the storage nodes of the system
+
+### How to use the dApp
+
+- Visit [https://stake.walrus.site](https://stake.walrus.site)
+- Connect your wallet
+  - Click the `Connect Wallet` button at the top right corner
+  - Select the wallet (if the wallet was connected before this and the next step wont be required)
+  - Approve the connection
+  - (Make sure the selected wallet network is Testnet)
+
+### Exchange Testnet SUI to WAL
+
+To be able to stake you will need to have WAL in your wallet.
+You can exchange your Testnet SUI to WAL using the dApp
+
+- Click the `Get WAL` button
+- Select the amount of SUI
+- And click `Exchange`
+- (Follow the instructions in your wallet to approve the transaction)
+
+### Stake
+
+- Find the Storage node that you want to stake to
+  - Below the system stats there is the list of the `Current Committee` of storage nodes
+  - You can select one of the nodes in that list
+  - or if the storage node is not in the current committee
+    - find all the Storage nodes at the bottom of the page
+- Once you selected the Storage node click the stake button
+- Select the amount of WAL
+- Click Stake
+- (Follow the instructions in your wallet to approve the transaction)
+
+### Unstake
+
+- Find the `Staked Wal` you want to unstake
+  - Below the `Current Committee` list you will find all your `Staked Wal`
+  - Also you can expand a Storage Node and find all your stakes with that node
+- Depending on the state of the `Staked Wal` you will be able to Unstake or Withdraw your funds
+- Click the `Unstake` or `Withdraw` button
+- Click continue to confirm your action
+- (Follow the instructions in your wallet to approve the transaction)
+
 <!-- TODO -->
 
-- Stake / Unstake dApp link and docs
 - How to monitor nodes for stake / apr etc
 - Move contracts to stake / unstake

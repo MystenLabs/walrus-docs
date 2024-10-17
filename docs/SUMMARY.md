@@ -64,12 +64,11 @@
   - [The Walrus Sites Portal](./walrus-sites/portal.md)
   - [Site data authentication](./walrus-sites/authentication.md)
   - [Known restrictions](./walrus-sites/restrictions.md)
-- [Legal terms](./walrus-sites/legal.md)
-  - [Privacy policy](./walrus-sites/privacy.md)
-  - [Terms of service](./walrus-sites/tos.md)
+- [Terms of service](./walrus-sites/tos.md)
 
 ---
 
 [Glossary](./glossary.md)
-[Devnet terms of service](./devnet_tos.md)
-[Testnet terms of service](./testnet_tos.md)
+[Devnet terms of service](./legal/devnet_tos.md)
+[Testnet terms of service](./legal/testnet_tos.md)
+[Privacy policy](./legal/privacy.md)
