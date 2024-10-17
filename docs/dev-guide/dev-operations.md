@@ -83,7 +83,7 @@ available on storage nodes to recover it within the specified epochs.
 
 ## Delete
 
-Stored blobs can be optionally set as deletable by the user that creates them. This meta-data is
+Stored blobs can be optionally set as deletable by the user that creates them. This metadata is
 stored in the Sui blob object, and whether a blob is deletable or not is included in certified blob
 events. A deletable blob may be deleted by the owner of the blob object, to reclaim and re-use
 the storage resource associated with it.

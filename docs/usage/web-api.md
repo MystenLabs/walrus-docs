@@ -107,7 +107,7 @@ PUBLISHER=https://publisher.walrus-testnet.walrus.space
 
 ```admonish tip title="API specification"
 Walrus aggregators and publishers expose their API specifications at the path `/v1/api`. You can
-view this in the browser` e.g., at <https://aggregator.walrus-testnet.walrus.space/v1/api>
+view this in the browser, e.g., at <https://aggregator.walrus-testnet.walrus.space/v1/api>
 ```
 
 ### Store

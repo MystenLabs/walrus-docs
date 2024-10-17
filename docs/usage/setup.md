@@ -94,7 +94,7 @@ adapt most of those.
 ```
 
 You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-`$SYSTEM` variable)`:
+`$SYSTEM` variable):
 
 ```sh
 SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
