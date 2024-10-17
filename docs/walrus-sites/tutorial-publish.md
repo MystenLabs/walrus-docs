@@ -18,7 +18,7 @@ Since we have placed the `walrus` binary and configuration in their default loca
 the `./examples/snake` site is as simple as calling the publishing command:
 
 ``` sh
-./target/release/site-builder --config site-builder/assets/builder-example.yaml publish ./examples/snake
+./target/release/site-builder --config ./sites-config.yaml publish ./examples/snake
 ```
 
 The output should look like the following:
@@ -41,7 +41,7 @@ respective blob ID. Further, it prints the object ID of the Walrus Site object o
 have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.
 
-Note here that we are passing the example config `assets/builder-example.yaml` as the config for the
+Note here that we are passing the example config `sites-config.yaml` as the config for the
 site builder. The configuration file is necessary to ensure that the `site-builder` knows the
 correct Sui package for the Walrus Sites logic.
 
@@ -60,7 +60,7 @@ where to find the updated files (still `./example/snake`) and the object ID of t
 (`0x5ac988...`):
 
 ``` sh
-./target/release/site-builder --config site-builder/assets/builder-example.yaml update ./examples/snake 0x5ac9888...
+./target/release/site-builder --config ./sites-config.yaml update ./examples/snake 0x5ac9888...
 ```
 
 The output this time should be:
