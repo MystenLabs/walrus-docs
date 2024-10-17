@@ -89,3 +89,14 @@ to follow Sui event streams.
 As part of the Testnet release of Walrus the documentation and Move Smart contracts have been
 updated, and can be found at the [Walrus-docs repository](https://github.com/MystenLabs/walrus-docs)
 and as a [Walrus Docs Site](https://docs.walrus.site/).
+
+## New Walrus Sites features
+
+With the move to Walrus Testnet, Walrus Sites have also been updated! The new features in this
+update greatly increase the flexibility, speed, and security of Walrus Sites. Developers can now
+specify client-side routing rules, and add custom HTTP headers to the Portals' responses for their
+site, expanding the possibilities for what Walrus Sites can do.
+
+[Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of these new features!
+The old Walrus Sites, based on Walrus Devnet, will still be available for a short time. However,
+Devnet will be wiped soon, so it is recommended to migrate as soon as possible.
