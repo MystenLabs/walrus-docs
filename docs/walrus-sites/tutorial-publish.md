@@ -96,3 +96,9 @@ Browsing to the provided URL should reflect the change. You've updated the site!
 ```admonish note
 The wallet you are using must be the *owner* of the Walrus Site object to be able to update it.
 ```
+
+```admonish danger title="Extending the expiration date of an existing site"
+To extend the expiration date of a previously-stored site, use the `update` command with the
+`--force` flag, and specify the number of additional epochs (from the current epoch) with the
+`--epochs` flag.
+```
