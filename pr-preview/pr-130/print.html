@@ -2147,10 +2147,10 @@ nodes get selected for the committee in future epochs, and how many shards these
 Shards are assigned to storage nodes every epoch, roughly proportional to the amount of stake
 that was delegated to them. By staking with a storage node, users also earn rewards, as they
 will receive a share of the storage fees.</p>
-<p>Since moving shards from one storage node to another requires transferring a lot of data and
+<p>Since moving shards from one storage node to another requires transferring a lot of data, and
 storage nodes potentially need to expand their storage capacity, the selection of the committee
 for the next epoch is done ahead of time, in the middle of the previous epoch. This provides
-sufficient time to storage node operators to provision additional resources, if needed.</p>
+sufficient time to storage-node operators to provision additional resources, if needed.</p>
 <p>For stake to affect the shard distribution in epoch <code>e</code> and become "active", it must be staked
 before the committee for this epoch has been selected, meaning that it has to be staked before
 the midpoint of epoch <code>e - 1</code>. If it is staked after that point in time, it will only influence
@@ -2159,63 +2159,54 @@ that epoch.</p>
 <p>Unstaking has a similar delay: because unstaking funds only has an effect on the committee in
 the next committee selection, the stake will remain active until that committee takes over.
 This means that, to unstake at the start of epoch <code>e</code>, the user needs to "request withdrawal"
-before the midpoint of epoch <code>e - 1</code>. Otherwise, i.e., if the user unstakes after this point,
+before the midpoint of epoch <code>e - 1</code>. Otherwise, that is, if the user unstakes after this point,
 the stake will remain active, and continue to accrue rewards, throughout epoch <code>e</code>, and the
 balance and rewards will be available to withdraw at the start of epoch <code>e + 1</code>.</p>
-<h2 id="how-to-stake"><a class="header" href="#how-to-stake">How to stake</a></h2>
-<h3 id="walrus-staking-dapp"><a class="header" href="#walrus-staking-dapp">Walrus Staking dApp</a></h3>
-<p>The Walrus Staking dApp allows users to stake (or unstake) to any of the storage nodes of the system</p>
-<h3 id="how-to-use-the-dapp"><a class="header" href="#how-to-use-the-dapp">How to use the dApp</a></h3>
+<h2 id="how-to-stake-with-the-walrus-staking-dapp"><a class="header" href="#how-to-stake-with-the-walrus-staking-dapp">How to stake with the Walrus Staking dApp</a></h2>
+<p>The Walrus Staking dApp allows users to stake (or unstake) to any of the storage nodes of the
+system.</p>
+<p>To use the dApp, visit <a href="https://stake.walrus.site">https://stake.walrus.site</a> and connect your wallet:</p>
 <ul>
-<li>Visit <a href="https://stake.walrus.site">https://stake.walrus.site</a></li>
-<li>Connect your wallet
-<ul>
-<li>Click the <code>Connect Wallet</code> button at the top right corner</li>
-<li>Select the wallet (if the wallet was connected before this and the next step wont be required)</li>
-<li>Approve the connection</li>
-<li>(Make sure the selected wallet network is Testnet)</li>
-</ul>
-</li>
+<li>Click the <code>Connect Wallet</code> button at the top right corner.</li>
+<li>Select the wallet (if the wallet was connected before, this and the next step won't be required).</li>
+<li>Approve the connection.</li>
+<li>(Make sure the selected wallet network is Testnet).</li>
 </ul>
 <h3 id="exchange-testnet-sui-to-wal"><a class="header" href="#exchange-testnet-sui-to-wal">Exchange Testnet SUI to WAL</a></h3>
-<p>To be able to stake you will need to have WAL in your wallet.
-You can exchange your Testnet SUI to WAL using the dApp</p>
+<p>To be able to stake you will need to have Testnet WAL in your wallet.
+You can exchange your Testnet SUI to WAL using the dApp as follows:</p>
 <ul>
-<li>Click the <code>Get WAL</code> button</li>
-<li>Select the amount of SUI</li>
-<li>And click <code>Exchange</code></li>
-<li>(Follow the instructions in your wallet to approve the transaction)</li>
+<li>Click the <code>Get WAL</code> button.</li>
+<li>Select the amount of SUI. This will be exchanged to WAL at a 1:1 rate.</li>
+<li>And click <code>Exchange</code>.</li>
+<li><em>Follow the instructions in your wallet to approve the transaction.</em></li>
 </ul>
 <h3 id="stake"><a class="header" href="#stake">Stake</a></h3>
 <ul>
-<li>Find the Storage node that you want to stake to
+<li>Find the storage node that you want to stake to.
 <ul>
-<li>Below the system stats there is the list of the <code>Current Committee</code> of storage nodes</li>
-<li>You can select one of the nodes in that list</li>
-<li>or if the storage node is not in the current committee
-<ul>
-<li>find all the Storage nodes at the bottom of the page</li>
+<li>Below the system stats, there is the list of the "Current Committee" of storage nodes.</li>
+<li>You can select one of the nodes in that list or, if the storage node is not in the current
+committee, you find all the storage nodes at the bottom of the page.</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>Once you selected the Storage node click the stake button</li>
-<li>Select the amount of WAL</li>
-<li>Click Stake</li>
-<li>(Follow the instructions in your wallet to approve the transaction)</li>
+<li>Once you selected the storage node, click the stake button.</li>
+<li>Select the amount of WAL.</li>
+<li>Click Stake.</li>
+<li><em>Follow the instructions in your wallet to approve the transaction.</em></li>
 </ul>
 <h3 id="unstake"><a class="header" href="#unstake">Unstake</a></h3>
 <ul>
-<li>Find the <code>Staked WAL</code> you want to unstake
+<li>Find the <code>Staked WAL</code> you want to unstake.
 <ul>
-<li>Below the <code>Current Committee</code> list you will find all your <code>Staked WAL</code></li>
-<li>Also you can expand a Storage Node and find all your stakes with that node</li>
+<li>Below the "Current Committee" list you will find all your <code>Staked WAL</code>.</li>
+<li>Also you can expand a storage node and find all your stakes with that node.</li>
 </ul>
 </li>
-<li>Depending on the state of the <code>Staked WAL</code> you will be able to unstake or Withdraw your funds</li>
-<li>Click the <code>Unstake</code> or <code>Withdraw</code> button</li>
-<li>Click continue to confirm your action</li>
-<li>(Follow the instructions in your wallet to approve the transaction)</li>
+<li>Depending on the state of the <code>Staked WAL</code> you will be able to unstake or Withdraw your funds.</li>
+<li>Click the <code>Unstake</code> or <code>Withdraw</code> button.</li>
+<li>Click continue to confirm your action.</li>
+<li><em>Follow the instructions in your wallet to approve the transaction.</em></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
