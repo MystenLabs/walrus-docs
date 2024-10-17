@@ -48,3 +48,5 @@ jobs:
           site-builder
           --config walrus-sites/sites-config.yaml
           update --list-directory site ${{ vars.WALRUS_SITE_BIN_OBJECT }}
+          --epochs 200
+          --force
