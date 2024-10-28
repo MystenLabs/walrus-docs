@@ -281,7 +281,7 @@ The page is refreshed to activate the service worker.</li>
 <em>origin</em> <code>dapp.walrus.site</code>, and makes a SuiNS resolution for <code>dapp.sui</code>, obtaining the related
 object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
 <a href="./portal.html">redirects</a>). From the dynamic fields, it selects the one for <code>/index.html</code>, and
-extracts its Walrus blob ID and headers (see the <a href="./routing.html">advanced section on headers</a>.</li>
+extracts its Walrus blob ID and headers (see the <a href="./routing.html">advanced section on headers</a>).</li>
 <li><strong>Blob fetch</strong> (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
 for the blob.</li>
 <li><strong>Returning the response</strong> (steps 15-16): Now that the service worker has the bytes for

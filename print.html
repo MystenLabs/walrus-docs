@@ -718,7 +718,7 @@ storage nodes being Byzantine) within each storage epoch and across storage epoc
 </li>
 <li>
 <p>All clients and storage nodes operate a blockchain client (specifically on Sui), and mediate
-payments, resources (space), mapping of shards to storage nodes ,and metadata through blockchain
+payments, resources (space), mapping of shards to storage nodes, and metadata through blockchain
 smart contracts. Users interact with the blockchain to acquire storage resources and upload
 certificates for stored blobs. Storage nodes listen to the blockchain events to coordinate
 their operations.</p>
@@ -1874,7 +1874,7 @@ client <code>walrus blob-status</code> command may be used to identify the event
 used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified,
 before the expiry epoch, and not deletable.</li>
 <li>A Sui smart contract can read the blob object on Sui (or a reference to it) to check
-is is certified, before the expiry epoch, and not deletable.</li>
+it is certified, before the expiry epoch, and not deletable.</li>
 </ul>
 <p>The underlying protocol of the
 <a href="https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client">Sui light client</a>
@@ -2996,7 +2996,7 @@ The page is refreshed to activate the service worker.</li>
 <em>origin</em> <code>dapp.walrus.site</code>, and makes a SuiNS resolution for <code>dapp.sui</code>, obtaining the related
 object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
 <a href="walrus-sites/./portal.html">redirects</a>). From the dynamic fields, it selects the one for <code>/index.html</code>, and
-extracts its Walrus blob ID and headers (see the <a href="walrus-sites/./routing.html">advanced section on headers</a>.</li>
+extracts its Walrus blob ID and headers (see the <a href="walrus-sites/./routing.html">advanced section on headers</a>).</li>
 <li><strong>Blob fetch</strong> (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
 for the blob.</li>
 <li><strong>Returning the response</strong> (steps 15-16): Now that the service worker has the bytes for
@@ -3131,7 +3131,7 @@ WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatib
 iOS. Therefore, Sui wallets cannot currently be used on a service-worker portal on iOS. Note,
 however, that <em>browsing</em> a Walrus Site is still possible on iOS through any browser.</p>
 <p>To provide a seamless experience for iOS users (and other users on browsers that do not support
-service workers), we implemented a redidect to a server-side portal (<a href="https://blob.store">https://blob.store</a>). Whenever
+service workers), we implemented a redirect to a server-side portal (<a href="https://blob.store">https://blob.store</a>). Whenever
 a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them to the
 <code>&lt;site_name&gt;.blob.store</code> server-side portal. This way, the user can still use the wallet.</p>
 <div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
