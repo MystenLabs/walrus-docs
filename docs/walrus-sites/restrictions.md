@@ -47,7 +47,7 @@ iOS. Therefore, Sui wallets cannot currently be used on a service-worker portal 
 however, that *browsing* a Walrus Site is still possible on iOS through any browser.
 
 To provide a seamless experience for iOS users (and other users on browsers that do not support
-service workers), we implemented a redidect to a server-side portal (<https://blob.store>). Whenever
+service workers), we implemented a redirect to a server-side portal (<https://blob.store>). Whenever
 a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them to the
 `<site_name>.blob.store` server-side portal. This way, the user can still use the wallet.
 
