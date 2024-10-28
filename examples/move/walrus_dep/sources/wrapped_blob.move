@@ -1,5 +1,5 @@
 module walrus_dep::wrapped_blob {
-    use blob_store::blob::Blob;
+    use walrus::blob::Blob;
 
     public struct WrappedBlob has key {
         id: UID,
