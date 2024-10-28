@@ -26,7 +26,7 @@ The key actors in the Walrus architecture are the following:
   storage nodes being Byzantine) within each storage epoch and across storage epochs.
 
 - All clients and storage nodes operate a blockchain client (specifically on Sui), and mediate
-  payments, resources (space), mapping of shards to storage nodes ,and metadata through blockchain
+  payments, resources (space), mapping of shards to storage nodes, and metadata through blockchain
   smart contracts. Users interact with the blockchain to acquire storage resources and upload
   certificates for stored blobs. Storage nodes listen to the blockchain events to coordinate
   their operations.

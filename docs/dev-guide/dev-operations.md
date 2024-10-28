@@ -70,7 +70,7 @@ may currently be done in 3 different ways:
   used to authenticate the Sui blob object corresponding to the blob ID, and check it is certified,
   before the expiry epoch, and not deletable.
 - A Sui smart contract can read the blob object on Sui (or a reference to it) to check
-  is is certified, before the expiry epoch, and not deletable.
+  it is certified, before the expiry epoch, and not deletable.
 
 The underlying protocol of the
 [Sui light client](https://github.com/MystenLabs/sui/tree/main/crates/sui-light-client)
