@@ -125,7 +125,7 @@ worker approach. The steps below all reference the following figure:
   *origin* `dapp.walrus.site`, and makes a SuiNS resolution for `dapp.sui`, obtaining the related
   object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
   [redirects](./portal.md)). From the dynamic fields, it selects the one for `/index.html`, and
-  extracts its Walrus blob ID and headers (see the [advanced section on headers](./routing.md).
+  extracts its Walrus blob ID and headers (see the [advanced section on headers](./routing.md)).
 - **Blob fetch** (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
   for the blob.
 - **Returning the response** (steps 15-16): Now that the service worker has the bytes for
