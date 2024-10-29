@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-10-29T21:06:28+08:00\n"
+"POT-Creation-Date: 2024-10-30T04:43:24+08:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -855,7 +855,7 @@ msgid "Join our [Discord](https://discord.com/invite/walrusprotocol)"
 msgstr ""
 
 #: docs/blog/03_whitepaper.md:41
-msgid "[Build apps](../README.md) on Walrus"
+msgid "[Build apps](../index.md) on Walrus"
 msgstr ""
 
 #: docs/blog/03_whitepaper.md:42
@@ -4363,7 +4363,7 @@ msgstr ""
 msgid ""
 "```admonish danger title=\"Walrus Sites Devnet being discontinued\"\n"
 "Since the Walrus Devnet will [be shut down\n"
-"soon](../README.md#admonition-discontinuation-of-walrus-devnet), all the "
+"soon](../index.md#admonition-discontinuation-of-walrus-devnet), all the "
 "Walrus Sites stored on it will\n"
 "be wiped. To minimize the downtime, the Devnet Walrus Sites will be "
 "available after the Testnet\n"

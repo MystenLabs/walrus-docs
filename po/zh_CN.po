@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-10-29T21:06:28+08:00\n"
+"POT-Creation-Date: 2024-10-30T04:43:24+08:00\n"
 "PO-Revision-Date: 2024-10-29 20:05+0800\n"
 "Last-Translator: lispking <lispking@qq.com>\n"
 "Language-Team: Chinese (simplified) <lispking@qq.com>\n"
@@ -236,21 +236,24 @@ msgstr ""
 "下也能保持高可用性和可靠性。"
 
 #: docs/index.md:10
-msgid "```admonish tip title=\"Fun fact\"\n"
+msgid ""
+"```admonish tip title=\"Fun fact\"\n"
 "If you are viewing this site at <https://docs.walrus.site>, you are fetching "
 "this from\n"
 "Walrus behind the scenes. See the [Walrus Sites chapter](./walrus-sites/"
 "intro.md) for further\n"
 "details on how this works.\n"
 "```"
-msgstr "```admonish tip title=\"趣味事实\"\n"
+msgstr ""
+"```admonish tip title=\"趣味事实\"\n"
 "如果你在<https://docs.walrus.site>查看此站点，你实际上是在后台从Walrus获取内"
 "容。请参阅[Walrus站点章节](./walrus-sites/intro.md)了解更多关于其工作原理的详"
 "细信息。\n"
 "```"
 
 #: docs/index.md:16 docs/dev-guide/dev-guide.md:19
-msgid "```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
+msgid ""
+"```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
 "The current Testnet release of Walrus and Walrus Sites is a preview intended "
 "to showcase\n"
 "the technology and solicit feedback from builders, users, and storage-node "
@@ -273,7 +276,8 @@ msgid "```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
 "Testnet is made\n"
 "available.\n"
 "```"
-msgstr "```admonish danger title=\"关于Walrus测试网的免责声明\"\n"
+msgstr ""
+"```admonish danger title=\"关于Walrus测试网的免责声明\"\n"
 "当前的Walrus和Walrus站点测试网版本是一个预览，旨在展示技术并征求构建者、用户"
 "和存储节点操作员的反馈。所有交易都在Sui测试网上执行，并使用没有价值的测试网"
 "WAL和SUI。存储状态**可能会在任何时候被清除**，并且可能没有任何警告。不要依赖"
@@ -466,7 +470,7 @@ msgstr ""
 
 #: docs/blog/00_intro.md:3
 msgid "The Walrus Dev Blog"
-msgstr "Walrus开发博客"
+msgstr "Walrus开发手册"
 
 #: docs/blog/00_intro.md:5
 msgid ""
@@ -1020,7 +1024,8 @@ msgid "Join our [Discord](https://discord.com/invite/walrusprotocol)"
 msgstr "加入我们的[Discord](https://discord.com/invite/walrusprotocol)"
 
 #: docs/blog/03_whitepaper.md:41
-msgid "[Build apps](../README.md) on Walrus"
+#, fuzzy
+msgid "[Build apps](../index.md) on Walrus"
 msgstr "在Walrus上[构建应用](../README.md)"
 
 #: docs/blog/03_whitepaper.md:42
@@ -2367,7 +2372,8 @@ msgid ""
 "storage epochs 2/3 of shards are operated by storage nodes that faithfully "
 "and correctly follow the Walrus protocol."
 msgstr ""
-"以下属性在假设所有存储纪元中有 2/3 的分片由忠实且正确遵循 Walrus 协议的存储节点操作的前提下成立。"
+"以下属性在假设所有存储纪元中有 2/3 的分片由忠实且正确遵循 Walrus 协议的存储节"
+"点操作的前提下成立。"
 
 #: docs/design/properties.md:8
 msgid ""
@@ -2376,7 +2382,9 @@ msgid ""
 "given blob ID there is a **point of availability (PoA)** and an "
 "**availability period**, observable through an event on the Sui chain."
 msgstr ""
-"如前所述，每个 blob 使用纠删码编码成小块，并且 blob ID 是通过加密方式派生的。对于给定的 blob ID，有一个 **可用性点 (PoA)** 和一个 **可用性周期**，可以通过 Sui 链上的事件观察到。"
+"如前所述，每个 blob 使用纠删码编码成小块，并且 blob ID 是通过加密方式派生的。"
+"对于给定的 blob ID，有一个 **可用性点 (PoA)** 和一个 **可用性周期**，可以通"
+"过 Sui 链上的事件观察到。"
 
 #: docs/design/properties.md:12
 msgid "The following properties relate to the PoA:"
@@ -3135,7 +3143,8 @@ msgstr "通过公共或本地 Walrus 客户端守护进程公开的 [HTTP API](.
 msgid ""
 "Furthermore, users can [stake and unstake](./stake.md) through the staking "
 "dApp or Sui smart contracts."
-msgstr "此外，用户可以通过质押 dApp 或 Sui 智能合约 [质押和取消质押](./stake.md)。"
+msgstr ""
+"此外，用户可以通过质押 dApp 或 Sui 智能合约 [质押和取消质押](./stake.md)。"
 
 #: docs/usage/client-cli.md:3
 #, fuzzy
@@ -3147,7 +3156,9 @@ msgid ""
 "The `walrus` binary can be used to interact with Walrus as a client. See the "
 "[setup chapter](./setup.md) for prerequisites, installation, and "
 "configuration."
-msgstr "`walrus` 二进制文件可用作客户端与 Walrus 进行交互。有关先决条件、安装和配置，请参阅 [设置章节](./setup.md)。"
+msgstr ""
+"`walrus` 二进制文件可用作客户端与 Walrus 进行交互。有关先决条件、安装和配置，"
+"请参阅 [设置章节](./setup.md)。"
 
 #: docs/usage/client-cli.md:8
 msgid "Detailed usage information is available through"
@@ -3157,7 +3168,8 @@ msgstr "详细的使用信息可以通过以下方式获得"
 msgid ""
 "Each sub-command of `walrus` can also be called with `--help` to print its "
 "specific arguments and their meaning."
-msgstr "`walrus` 的每个子命令也可以使用 `--help` 调用，以打印其特定参数及其含义。"
+msgstr ""
+"`walrus` 的每个子命令也可以使用 `--help` 调用，以打印其特定参数及其含义。"
 
 #: docs/usage/client-cli.md:17
 #, fuzzy
@@ -3170,7 +3182,10 @@ msgid ""
 "command. For example, `walrus info` gives an overview of the number of "
 "storage nodes and shards in the system, the maximum blob size, and the "
 "current cost in (Testnet) WAL for storing blobs:"
-msgstr "有关 Walrus 系统的信息可以通过 `walrus info` 命令获得。例如，`walrus info` 提供了系统中存储节点和分片的数量概述、最大 blob 大小以及存储 blob 的当前 (Testnet) WAL 成本："
+msgstr ""
+"有关 Walrus 系统的信息可以通过 `walrus info` 命令获得。例如，`walrus info` 提"
+"供了系统中存储节点和分片的数量概述、最大 blob 大小以及存储 blob 的当前 "
+"(Testnet) WAL 成本："
 
 #: docs/usage/client-cli.md:48
 msgid ""
@@ -3181,7 +3196,8 @@ msgid ""
 "```"
 msgstr ""
 "```admonish tip title=\"FROST 和 WAL\"\n"
-"FROST 是 WAL 的较小单位，类似于 SUI 的 MIST。转换也与 SUI 相同：`1 WAL = 1 000 000 000 FROST`。\n"
+"FROST 是 WAL 的较小单位，类似于 SUI 的 MIST。转换也与 SUI 相同：`1 WAL = 1 "
+"000 000 000 FROST`。\n"
 "```"
 
 #: docs/usage/client-cli.md:53
@@ -3189,7 +3205,9 @@ msgid ""
 "Additional information such as encoding parameters and sizes, BFT system "
 "information, and information on the storage nodes and their shard "
 "distribution can be viewed with the `--dev` argument: `walrus info --dev`."
-msgstr "其他信息，如编码参数和大小、BFT 系统信息以及存储节点及其分片分布的信息，可以使用 `--dev` 参数查看：`walrus info --dev`。"
+msgstr ""
+"其他信息，如编码参数和大小、BFT 系统信息以及存储节点及其分片分布的信息，可以"
+"使用 `--dev` 参数查看：`walrus info --dev`。"
 
 #: docs/usage/client-cli.md:57
 msgid "Storing, querying status, and reading blobs"
@@ -3204,7 +3222,8 @@ msgid ""
 "```"
 msgstr ""
 "```admonish tip title=\"获取 Testnet WAL\"\n"
-"您可以通过运行 `walrus get-wal` 将 Testnet SUI 兑换为 Testnet WAL。有关详细信息，请参阅 [设置页面](./setup.md#testnet-wal-faucet)。\n"
+"您可以通过运行 `walrus get-wal` 将 Testnet SUI 兑换为 Testnet WAL。有关详细信"
+"息，请参阅 [设置页面](./setup.md#testnet-wal-faucet)。\n"
 "```"
 
 #: docs/usage/client-cli.md:76
@@ -3217,7 +3236,9 @@ msgid ""
 "The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) "
 "indicating the number of epochs the blob should be stored for. This defaults "
 "to 1 epoch, namely the current one."
-msgstr "store 命令接受一个 CLI 参数 `--epochs <EPOCHS>`（或 `-e`），指示 blob 应存储的 epoch 数量。默认值为 1 个 epoch，即当前 epoch。"
+msgstr ""
+"store 命令接受一个 CLI 参数 `--epochs <EPOCHS>`（或 `-e`），指示 blob 应存储"
+"的 epoch 数量。默认值为 1 个 epoch，即当前 epoch。"
 
 #: docs/usage/client-cli.md:85
 msgid ""
@@ -3246,9 +3267,13 @@ msgstr ""
 "```admonish tip title=\"自动优化\"\n"
 "在存储 blob 时，客户端会执行许多自动优化，包括以下内容：\n"
 "\n"
-"- 如果 blob 已经作为 *永久 blob* 在 Walrus 上存储了足够多的 epoch，则命令不会再次存储它。此行为可以通过 `--force`（或 `-f`）CLI 选项覆盖，该选项会再次存储 blob 并在 Sui 上创建一个属于钱包地址的新 blob 对象。\n"
-"- 如果用户的钱包有兼容的存储资源，则会（重新）使用此资源，而不是购买新的资源。\n"
-"- 如果 blob 已经在 Walrus 上认证，但作为 *可删除* blob 或者没有足够多的 epoch，则命令会跳过向存储节点发送数据，只收集可用性证书。\n"
+"- 如果 blob 已经作为 *永久 blob* 在 Walrus 上存储了足够多的 epoch，则命令不会"
+"再次存储它。此行为可以通过 `--force`（或 `-f`）CLI 选项覆盖，该选项会再次存"
+"储 blob 并在 Sui 上创建一个属于钱包地址的新 blob 对象。\n"
+"- 如果用户的钱包有兼容的存储资源，则会（重新）使用此资源，而不是购买新的资"
+"源。\n"
+"- 如果 blob 已经在 Walrus 上认证，但作为 *可删除* blob 或者没有足够多的 "
+"epoch，则命令会跳过向存储节点发送数据，只收集可用性证书。\n"
 "```"
 
 #: docs/usage/client-cli.md:100
@@ -5265,10 +5290,11 @@ msgstr ""
 "```"
 
 #: docs/walrus-sites/intro.md:17
+#, fuzzy
 msgid ""
 "```admonish danger title=\"Walrus Sites Devnet being discontinued\"\n"
 "Since the Walrus Devnet will [be shut down\n"
-"soon](../README.md#admonition-discontinuation-of-walrus-devnet), all the "
+"soon](../index.md#admonition-discontinuation-of-walrus-devnet), all the "
 "Walrus Sites stored on it will\n"
 "be wiped. To minimize the downtime, the Devnet Walrus Sites will be "
 "available after the Testnet\n"
@@ -7262,7 +7288,10 @@ msgid ""
 "agree to and accept these terms and conditions. If you don’t agree to be "
 "bound by these Terms, do not use the Services."
 msgstr ""
-"这些服务条款（“ **条款** ”）管理您对包括由 Mysten Labs, Inc.（“ **Mysten Labs** ”）提供的 Walrus 站点在内的某些软件服务的使用（统称为“ **服务** ”）。通过访问服务，您同意并接受这些条款和条件。如果您不同意受这些条款的约束，请不要使用服务。"
+"这些服务条款（“ **条款** ”）管理您对包括由 Mysten Labs, Inc.（“ **Mysten "
+"Labs** ”）提供的 Walrus 站点在内的某些软件服务的使用（统称为“ **服务** ”）。"
+"通过访问服务，您同意并接受这些条款和条件。如果您不同意受这些条款的约束，请不"
+"要使用服务。"
 
 #: docs/walrus-sites/tos.md:14
 msgid ""
@@ -7272,7 +7301,9 @@ msgid ""
 "THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XIV “DISPUTE RESOLUTION” "
 "BELOW FOR DETAILS REGARDING ARBITRATION."
 msgstr ""
-"关于美国客户仲裁的重要通知：当您同意这些条款时，您同意（有有限例外）通过具有约束力的个人仲裁而不是在法庭上解决您与 Mysten Labs 之间的任何争议。请仔细阅读以下第十四节“争议解决”以了解有关仲裁的详细信息。"
+"关于美国客户仲裁的重要通知：当您同意这些条款时，您同意（有有限例外）通过具有"
+"约束力的个人仲裁而不是在法庭上解决您与 Mysten Labs 之间的任何争议。请仔细阅读"
+"以下第十四节“争议解决”以了解有关仲裁的详细信息。"
 
 #: docs/walrus-sites/tos.md:19
 msgid "I. Privacy Policy"
@@ -7285,7 +7316,9 @@ msgid ""
 "your information. By using the Services you agree to be bound by our Privacy "
 "Policy."
 msgstr ""
-"请查看我们的[隐私政策](../legal/privacy.md)，该政策也适用于您对服务的使用，以了解我们如何收集、使用和分享您的信息。通过使用服务，您同意受我们的隐私政策约束。"
+"请查看我们的[隐私政策](../legal/privacy.md)，该政策也适用于您对服务的使用，以"
+"了解我们如何收集、使用和分享您的信息。通过使用服务，您同意受我们的隐私政策约"
+"束。"
 
 #: docs/walrus-sites/tos.md:25
 msgid "II. Eligibility"
@@ -7298,7 +7331,9 @@ msgid ""
 "using the Services under applicable law, including applicable U.S. and non-U."
 "S. export control and trade sanctions laws."
 msgstr ""
-"您只能在年满18岁并有能力与 Mysten Labs 签订具有约束力的合同的情况下使用服务，并且在适用法律（包括适用的美国和非美国出口管制和贸易制裁法律）下未被禁止使用服务。"
+"您只能在年满18岁并有能力与 Mysten Labs 签订具有约束力的合同的情况下使用服务，"
+"并且在适用法律（包括适用的美国和非美国出口管制和贸易制裁法律）下未被禁止使用"
+"服务。"
 
 #: docs/walrus-sites/tos.md:31
 msgid "III. Walrus Sites"
@@ -7317,7 +7352,12 @@ msgid ""
 "inappropriate, or offensive. We assume no responsibility for the content of "
 "Stored Objects accessed through the Services."
 msgstr ""
-"服务允许您访问存储在 Walrus Store 并由 Sui 区块链链接的网站资源（“ **存储对象** ”）。在提供服务时，Mysten Labs 为您提供访问存储对象的方式，但 Mysten Labs 不直接处理存储对象。Mysten Labs 对通过服务访问的存储对象不承担筛选或管理的责任。存储对象由 Mysten Labs 无法控制的人开发。服务可能会让您访问一些人认为令人反感、不适当或冒犯的存储对象。我们对通过服务访问的存储对象的内容不承担任何责任。"
+"服务允许您访问存储在 Walrus Store 并由 Sui 区块链链接的网站资源（“ **存储对象"
+"** ”）。在提供服务时，Mysten Labs 为您提供访问存储对象的方式，但 Mysten Labs "
+"不直接处理存储对象。Mysten Labs 对通过服务访问的存储对象不承担筛选或管理的责"
+"任。存储对象由 Mysten Labs 无法控制的人开发。服务可能会让您访问一些人认为令人"
+"反感、不适当或冒犯的存储对象。我们对通过服务访问的存储对象的内容不承担任何责"
+"任。"
 
 #: docs/walrus-sites/tos.md:42
 msgid "IV. Service Conditions and Disclaimers"
@@ -7329,7 +7369,8 @@ msgid ""
 "available to you. We reserve the right to change those fees at any time, in "
 "our sole and absolute discretion."
 msgstr ""
-"<u>费用</u>。我们可能会对我们提供给您的部分或全部服务收取费用。我们保留随时更改这些费用的权利，完全由我们自行决定。"
+"<u>费用</u>。我们可能会对我们提供给您的部分或全部服务收取费用。我们保留随时更"
+"改这些费用的权利，完全由我们自行决定。"
 
 #: docs/walrus-sites/tos.md:46
 msgid ""
@@ -7346,7 +7387,13 @@ msgid ""
 "RESPONSIBLE FOR ANY DAMAGES TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT "
 "RESULTS IN THE DOWNLOAD OF SUCH MATERIAL OR DATA."
 msgstr ""
-"<u>确认某些风险；免责声明</u>。Mysten Labs 对通过服务访问的信息或材料的准确性、内容、完整性、合法性、可靠性或可操作性或可用性不承担任何责任或义务。Mysten Labs 对任何信息或材料的删除、存储失败、错误传递或不及时传递不承担任何责任。Mysten Labs 对通过服务访问任何区块链上的任何信息或材料所造成的任何损害不承担任何责任。您理解并同意，您通过使用服务下载或以其他方式获取材料或数据是出于您自己的判断和风险，您将对下载此类材料或数据导致的任何计算机系统损坏或数据丢失承担全部责任。"
+"<u>确认某些风险；免责声明</u>。Mysten Labs 对通过服务访问的信息或材料的准确"
+"性、内容、完整性、合法性、可靠性或可操作性或可用性不承担任何责任或义务。"
+"Mysten Labs 对任何信息或材料的删除、存储失败、错误传递或不及时传递不承担任何"
+"责任。Mysten Labs 对通过服务访问任何区块链上的任何信息或材料所造成的任何损害"
+"不承担任何责任。您理解并同意，您通过使用服务下载或以其他方式获取材料或数据是"
+"出于您自己的判断和风险，您将对下载此类材料或数据导致的任何计算机系统损坏或数"
+"据丢失承担全部责任。"
 
 #: docs/walrus-sites/tos.md:57
 msgid ""
@@ -7355,7 +7402,8 @@ msgid ""
 "to continue to make its proprietary software, and thus, could impede or "
 "limit your ability to continue to use the Services."
 msgstr ""
-"服务可能会受到一个或多个监管调查或监管行动的影响，这可能会阻碍或限制 Mysten Labs 继续制作其专有软件的能力，从而可能会阻碍或限制您继续使用服务的能力。"
+"服务可能会受到一个或多个监管调查或监管行动的影响，这可能会阻碍或限制 Mysten "
+"Labs 继续制作其专有软件的能力，从而可能会阻碍或限制您继续使用服务的能力。"
 
 #: docs/walrus-sites/tos.md:61
 msgid ""
@@ -7368,7 +7416,10 @@ msgid ""
 "any activities taking place on the Sui blockchain, which may result in price "
 "fluctuations or increased prices for using the Services."
 msgstr ""
-"您理解 Walrus Store 和 Sui 区块链（以及服务可能兼容的所有其他网络）仍在开发中，这在使用服务时会带来技术和安全风险，此外还存在与数字资产及其交易相关的不确定性。您承认，在 Sui 区块链上进行交易的成本是可变的，可能随时增加，从而影响在 Sui 区块链上进行的任何活动，这可能导致价格波动或使用服务的价格增加。"
+"您理解 Walrus Store 和 Sui 区块链（以及服务可能兼容的所有其他网络）仍在开发"
+"中，这在使用服务时会带来技术和安全风险，此外还存在与数字资产及其交易相关的不"
+"确定性。您承认，在 Sui 区块链上进行交易的成本是可变的，可能随时增加，从而影响"
+"在 Sui 区块链上进行的任何活动，这可能导致价格波动或使用服务的价格增加。"
 
 #: docs/walrus-sites/tos.md:68
 msgid ""
@@ -7377,7 +7428,8 @@ msgid ""
 "fitness for a particular purpose of the Services. By using the Services, you "
 "acknowledge and agree to the following:"
 msgstr ""
-"服务是按“原样”和“有所有缺陷”的方式提供给您的。我们不对服务的功能、质量或特定用途的适用性做出任何保证或陈述。通过使用服务，您承认并同意以下内容："
+"服务是按“原样”和“有所有缺陷”的方式提供给您的。我们不对服务的功能、质量或特定"
+"用途的适用性做出任何保证或陈述。通过使用服务，您承认并同意以下内容："
 
 #: docs/walrus-sites/tos.md:72
 msgid ""
@@ -7385,7 +7437,8 @@ msgid ""
 "statutory, including but not limited to any warranties of merchantability, "
 "non-infringement, and fitness for a particular purpose."
 msgstr ""
-"Mysten Labs 不承担任何明示、暗示或法定的保证，包括但不限于任何适销性、非侵权和特定用途适用性的保证。"
+"Mysten Labs 不承担任何明示、暗示或法定的保证，包括但不限于任何适销性、非侵权"
+"和特定用途适用性的保证。"
 
 #: docs/walrus-sites/tos.md:75
 msgid ""
@@ -7394,7 +7447,8 @@ msgid ""
 "you have paid associated gas fees. Any use of the Services is at your own "
 "risk."
 msgstr ""
-"Mysten Labs 不保证服务没有错误、漏洞或服务中断，包括您已支付相关燃气费的失败交易。任何使用服务的行为均由您自行承担风险。"
+"Mysten Labs 不保证服务没有错误、漏洞或服务中断，包括您已支付相关燃气费的失败"
+"交易。任何使用服务的行为均由您自行承担风险。"
 
 #: docs/walrus-sites/tos.md:78
 msgid ""
@@ -7403,42 +7457,38 @@ msgid ""
 "Services or any inability to use the Services, even if Mysten Labs has been "
 "advised of the possibility of such damages."
 msgstr ""
-"Mysten Labs 不对任何直接、间接、附带、特殊或后果性损害承担责任，无论是因使用服务或无法使用服务而引起的，即使 Mysten Labs 已被告知此类损害的可能性。"
+"Mysten Labs 不对任何直接、间接、附带、特殊或后果性损害承担责任，无论是因使用"
+"服务或无法使用服务而引起的，即使 Mysten Labs 已被告知此类损害的可能性。"
 
 #: docs/walrus-sites/tos.md:81
 msgid ""
 "It is your responsibility to evaluate the accuracy, completeness, and "
 "usefulness of any information, content, or data provided by the Services."
-msgstr ""
-"评估服务提供的任何信息、内容或数据的准确性、完整性和有用性是您的责任。"
+msgstr "评估服务提供的任何信息、内容或数据的准确性、完整性和有用性是您的责任。"
 
 #: docs/walrus-sites/tos.md:83
 msgid ""
 "Mysten Labs is under no obligation to provide support, maintenance, updates, "
 "or fixes for the Services."
-msgstr ""
-"Mysten Labs 没有义务为服务提供支持、维护、更新或修复。"
+msgstr "Mysten Labs 没有义务为服务提供支持、维护、更新或修复。"
 
 #: docs/walrus-sites/tos.md:85
 msgid ""
 "Mysten Labs is not obligated to correct or address any errors, defects, or "
 "issues identified in the Services."
-msgstr ""
-"Mysten Labs 没有义务纠正或解决服务中发现的任何错误、缺陷或问题。"
+msgstr "Mysten Labs 没有义务纠正或解决服务中发现的任何错误、缺陷或问题。"
 
 #: docs/walrus-sites/tos.md:87
 msgid ""
 "Mysten Labs may change, update, or discontinue the Services at any time "
 "without notice."
-msgstr ""
-"Mysten Labs 可以随时更改、更新或终止服务，恕不另行通知。"
+msgstr "Mysten Labs 可以随时更改、更新或终止服务，恕不另行通知。"
 
 #: docs/walrus-sites/tos.md:88
 msgid ""
 "Your use of the Services indicates your acceptance of the risk associated "
 "with its use."
-msgstr ""
-"您使用服务表示您接受与使用服务相关的风险。"
+msgstr "您使用服务表示您接受与使用服务相关的风险。"
 
 #: docs/walrus-sites/tos.md:91
 msgid "V. Ownership"
@@ -8450,7 +8500,9 @@ msgid ""
 "customers agree to indemnify and hold harmless Mysten Labs from any such "
 "statements."
 msgstr ""
-"Mysten Labs 的任何员工或代表均无权作出超出本协议规定的任何保证或陈述。Mysten Labs 的员工或代表就服务所作的任何陈述均不得视为保证或陈述，客户同意赔偿并使 Mysten Labs 免受任何此类陈述的损害。"
+"Mysten Labs 的任何员工或代表均无权作出超出本协议规定的任何保证或陈述。Mysten "
+"Labs 的员工或代表就服务所作的任何陈述均不得视为保证或陈述，客户同意赔偿并使 "
+"Mysten Labs 免受任何此类陈述的损害。"
 
 #: docs/legal/devnet_tos.md:48
 msgid ""
