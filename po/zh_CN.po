@@ -190,7 +190,7 @@ msgstr "指定头和路由"
 
 #: docs/SUMMARY.md:61 docs/walrus-sites/linking.md:3
 msgid "Linking from and to Walrus Sites"
-msgstr "从和到Walrus站点的链接"
+msgstr "链接 Walrus 站点以及从 Walrus 站点链接出去"
 
 #: docs/SUMMARY.md:62 docs/walrus-sites/redirects.md:3
 msgid "Redirecting objects to Walrus Sites"
