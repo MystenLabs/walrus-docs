@@ -2,12 +2,11 @@
 
 [move]
 version = 3
-manifest_digest = "A8705FC4DA1640884D71727CDCE9E5C95451481B9AEAEFF0DF4EBC83042B042A"
-deps_digest = "060AD7E57DFB13104F21BE5F5C3759D03F0553FC3229247D9A7A6B45F50D03A3"
+manifest_digest = "7AEFA3AEAE5A828C7DC259D678D9B79B76EF3C980A2DA1DAA9CB1B13287C9FFF"
+deps_digest = "3C4103934B1E040BB6B23F1D610B4EF9F2F1166A50A104EADCF77467C004C600"
 dependencies = [
   { id = "Sui", name = "Sui" },
   { id = "WAL", name = "WAL" },
-  { id = "WAL_exchange", name = "WAL_exchange" },
 ]
 
 [[move.package]]
@@ -30,16 +29,15 @@ dependencies = [
   { id = "Sui", name = "Sui" },
 ]
 
-[[move.package]]
-id = "WAL_exchange"
-source = { local = "../wal_exchange" }
-
-dependencies = [
-  { id = "Sui", name = "Sui" },
-  { id = "WAL", name = "WAL" },
-]
-
 [move.toolchain-version]
 compiler-version = "1.35.0"
 edition = "2024.beta"
 flavor = "sui"
+
+[env]
+
+[env.testnet]
+chain-id = "4c78adac"
+original-published-id = "0x9f992cc2430a1f442ca7a5ca7638169f5d5c00e0ebc3977a65e9ac6e497fe5ef"
+latest-published-id = "0x9f992cc2430a1f442ca7a5ca7638169f5d5c00e0ebc3977a65e9ac6e497fe5ef"
+published-version = "1"

@@ -2,7 +2,7 @@
 
 # Summary
 
-[Walrus](./README.md)
+[Walrus](./index.md)
 
 ---
 

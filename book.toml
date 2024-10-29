@@ -13,17 +13,16 @@ extra-watch-dirs = ["po"]
 theme = "theme"
 additional-css = ["./mdbook-admonish.css"]
 
-# [output.linkcheck2]
-# optional = true
-# follow-web-links = true
-# warning-policy = "error"
-# exclude = [
-#   'MystenLabs/walrus-docs',
-#   'walrus\.site', # No service worker in the link checker.
-#   'google\.com',
-#   'x\.com',
-#   'suiscan\.xyz',
-# ]
+[output.linkcheck]
+optional = true
+follow-web-links = true
+warning-policy = "error"
+exclude = [
+  'walrus\.site', # No service worker in the link checker.
+  'google\.com',
+  'x\.com',
+  'suiscan\.xyz',
+]
 
 [preprocessor]
 
