@@ -32,3 +32,4 @@ examples/CONFIG/bin/walrus
 examples/CONFIG/config_dir/client_config.yaml
 
 book/
+po/*.po~
