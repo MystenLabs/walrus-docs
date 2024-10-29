@@ -236,21 +236,24 @@ msgstr ""
 "下也能保持高可用性和可靠性。"
 
 #: docs/index.md:10
-msgid "```admonish tip title=\"Fun fact\"\n"
+msgid ""
+"```admonish tip title=\"Fun fact\"\n"
 "If you are viewing this site at <https://docs.walrus.site>, you are fetching "
 "this from\n"
 "Walrus behind the scenes. See the [Walrus Sites chapter](./walrus-sites/"
 "intro.md) for further\n"
 "details on how this works.\n"
 "```"
-msgstr "```admonish tip title=\"趣味事实\"\n"
+msgstr ""
+"```admonish tip title=\"趣味事实\"\n"
 "如果你在<https://docs.walrus.site>查看此站点，你实际上是在后台从Walrus获取内"
 "容。请参阅[Walrus站点章节](./walrus-sites/intro.md)了解更多关于其工作原理的详"
 "细信息。\n"
 "```"
 
 #: docs/index.md:16 docs/dev-guide/dev-guide.md:19
-msgid "```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
+msgid ""
+"```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
 "The current Testnet release of Walrus and Walrus Sites is a preview intended "
 "to showcase\n"
 "the technology and solicit feedback from builders, users, and storage-node "
@@ -273,7 +276,8 @@ msgid "```admonish danger title=\"Disclaimer about the Walrus Testnet\"\n"
 "Testnet is made\n"
 "available.\n"
 "```"
-msgstr "```admonish danger title=\"关于Walrus测试网的免责声明\"\n"
+msgstr ""
+"```admonish danger title=\"关于Walrus测试网的免责声明\"\n"
 "当前的Walrus和Walrus站点测试网版本是一个预览，旨在展示技术并征求构建者、用户"
 "和存储节点操作员的反馈。所有交易都在Sui测试网上执行，并使用没有价值的测试网"
 "WAL和SUI。存储状态**可能会在任何时候被清除**，并且可能没有任何警告。不要依赖"
@@ -1497,6 +1501,7 @@ msgstr ""
 "必须在Walrus之外完成）。"
 
 #: docs/design/overview.md:3
+#, fuzzy
 msgid "System overview"
 msgstr "概述"
 
@@ -1508,12 +1513,14 @@ msgstr ""
 "本章概述了Walrus系统的[架构](./architecture.md)和[编码机制](./encoding.md)。"
 
 #: docs/design/overview.md:8
+#, fuzzy
 msgid ""
 "Use the [glossary](../glossary.md) as a reference for many of the bolded "
 "terms used in this documentation."
 msgstr "使用[术语表](../glossary.md)作为本文件中许多加粗术语的参考。"
 
 #: docs/design/architecture.md:3
+#, fuzzy
 msgid "Basic architecture and security assumptions"
 msgstr "基本架构和安全假设"
 
@@ -2358,6 +2365,7 @@ msgstr ""
 "理的超时也确保了过程的及时性。"
 
 #: docs/design/properties.md:3
+#, fuzzy
 msgid "Walrus assurance and security properties"
 msgstr "基本架构和安全假设"
 
@@ -2367,7 +2375,6 @@ msgid ""
 "storage epochs 2/3 of shards are operated by storage nodes that faithfully "
 "and correctly follow the Walrus protocol."
 msgstr ""
-"以下属性在假设所有存储纪元中有 2/3 的分片由忠实且正确遵循 Walrus 协议的存储节点操作的前提下成立。"
 
 #: docs/design/properties.md:8
 msgid ""
@@ -2376,13 +2383,13 @@ msgid ""
 "given blob ID there is a **point of availability (PoA)** and an "
 "**availability period**, observable through an event on the Sui chain."
 msgstr ""
-"如前所述，每个 blob 使用纠删码编码成小块，并且 blob ID 是通过加密方式派生的。对于给定的 blob ID，有一个 **可用性点 (PoA)** 和一个 **可用性周期**，可以通过 Sui 链上的事件观察到。"
 
 #: docs/design/properties.md:12
 msgid "The following properties relate to the PoA:"
-msgstr "以下属性与 PoA 相关："
+msgstr ""
 
 #: docs/design/properties.md:14
+#, fuzzy
 msgid ""
 "After the PoA, for a blob ID, any correct user that performs a read within "
 "the availability period will eventually terminate and get a value <span "
@@ -3114,55 +3121,55 @@ msgstr ""
 
 #: docs/usage/interacting.md:5
 msgid "We provide 3 ways to interact directly with the Walrus storage system:"
-msgstr "我们提供 3 种方式直接与 Walrus 存储系统进行交互："
+msgstr ""
 
 #: docs/usage/interacting.md:7
 msgid ""
 "Through the Walrus [client command line interface (CLI)](./client-cli.md)."
-msgstr "通过 Walrus [客户端命令行界面 (CLI)](./client-cli.md)。"
+msgstr ""
 
 #: docs/usage/interacting.md:8
 msgid "Through a [JSON API](./json-api.md) of the Walrus CLI."
-msgstr "通过 Walrus CLI 的 [JSON API](./json-api.md)。"
+msgstr ""
 
 #: docs/usage/interacting.md:9
 msgid ""
 "Through an [HTTP API](./web-api.md) exposed by a public or local Walrus "
 "client daemon."
-msgstr "通过公共或本地 Walrus 客户端守护进程公开的 [HTTP API](./web-api.md)。"
+msgstr ""
 
 #: docs/usage/interacting.md:11
 msgid ""
 "Furthermore, users can [stake and unstake](./stake.md) through the staking "
 "dApp or Sui smart contracts."
-msgstr "此外，用户可以通过质押 dApp 或 Sui 智能合约 [质押和取消质押](./stake.md)。"
+msgstr ""
 
 #: docs/usage/client-cli.md:3
 #, fuzzy
 msgid "Using the Walrus client"
-msgstr "使用 Walrus 客户端"
+msgstr "使用客户端CLI"
 
 #: docs/usage/client-cli.md:5
 msgid ""
 "The `walrus` binary can be used to interact with Walrus as a client. See the "
 "[setup chapter](./setup.md) for prerequisites, installation, and "
 "configuration."
-msgstr "`walrus` 二进制文件可用作客户端与 Walrus 进行交互。有关先决条件、安装和配置，请参阅 [设置章节](./setup.md)。"
+msgstr ""
 
 #: docs/usage/client-cli.md:8
 msgid "Detailed usage information is available through"
-msgstr "详细的使用信息可以通过以下方式获得"
+msgstr ""
 
 #: docs/usage/client-cli.md:14
 msgid ""
 "Each sub-command of `walrus` can also be called with `--help` to print its "
 "specific arguments and their meaning."
-msgstr "`walrus` 的每个子命令也可以使用 `--help` 调用，以打印其特定参数及其含义。"
+msgstr ""
 
 #: docs/usage/client-cli.md:17
 #, fuzzy
 msgid "Walrus system information"
-msgstr "Walrus 系统信息"
+msgstr "系统和质押信息"
 
 #: docs/usage/client-cli.md:19
 msgid ""
@@ -3170,7 +3177,7 @@ msgid ""
 "command. For example, `walrus info` gives an overview of the number of "
 "storage nodes and shards in the system, the maximum blob size, and the "
 "current cost in (Testnet) WAL for storing blobs:"
-msgstr "有关 Walrus 系统的信息可以通过 `walrus info` 命令获得。例如，`walrus info` 提供了系统中存储节点和分片的数量概述、最大 blob 大小以及存储 blob 的当前 (Testnet) WAL 成本："
+msgstr ""
 
 #: docs/usage/client-cli.md:48
 msgid ""
@@ -3180,20 +3187,17 @@ msgid ""
 "SUI: `1 WAL = 1 000 000 000 FROST`.\n"
 "```"
 msgstr ""
-"```admonish tip title=\"FROST 和 WAL\"\n"
-"FROST 是 WAL 的较小单位，类似于 SUI 的 MIST。转换也与 SUI 相同：`1 WAL = 1 000 000 000 FROST`。\n"
-"```"
 
 #: docs/usage/client-cli.md:53
 msgid ""
 "Additional information such as encoding parameters and sizes, BFT system "
 "information, and information on the storage nodes and their shard "
 "distribution can be viewed with the `--dev` argument: `walrus info --dev`."
-msgstr "其他信息，如编码参数和大小、BFT 系统信息以及存储节点及其分片分布的信息，可以使用 `--dev` 参数查看：`walrus info --dev`。"
+msgstr ""
 
 #: docs/usage/client-cli.md:57
 msgid "Storing, querying status, and reading blobs"
-msgstr "存储、查询状态和读取 blob"
+msgstr ""
 
 #: docs/usage/client-cli.md:71
 msgid ""
@@ -3203,21 +3207,18 @@ msgid ""
 "page](./setup.md#testnet-wal-faucet) for further details.\n"
 "```"
 msgstr ""
-"```admonish tip title=\"获取 Testnet WAL\"\n"
-"您可以通过运行 `walrus get-wal` 将 Testnet SUI 兑换为 Testnet WAL。有关详细信息，请参阅 [设置页面](./setup.md#testnet-wal-faucet)。\n"
-"```"
 
 #: docs/usage/client-cli.md:76
 #, fuzzy
 msgid "Storing blobs on Walrus can be achieved through the following command:"
-msgstr "可以通过以下命令在 Walrus 上存储 blob："
+msgstr "可以通过以下命令从 Walrus 读取 blob："
 
 #: docs/usage/client-cli.md:82
 msgid ""
 "The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) "
 "indicating the number of epochs the blob should be stored for. This defaults "
 "to 1 epoch, namely the current one."
-msgstr "store 命令接受一个 CLI 参数 `--epochs <EPOCHS>`（或 `-e`），指示 blob 应存储的 epoch 数量。默认值为 1 个 epoch，即当前 epoch。"
+msgstr ""
 
 #: docs/usage/client-cli.md:85
 msgid ""
@@ -3243,13 +3244,6 @@ msgid ""
 "  availability certificate\n"
 "```"
 msgstr ""
-"```admonish tip title=\"自动优化\"\n"
-"在存储 blob 时，客户端会执行许多自动优化，包括以下内容：\n"
-"\n"
-"- 如果 blob 已经作为 *永久 blob* 在 Walrus 上存储了足够多的 epoch，则命令不会再次存储它。此行为可以通过 `--force`（或 `-f`）CLI 选项覆盖，该选项会再次存储 blob 并在 Sui 上创建一个属于钱包地址的新 blob 对象。\n"
-"- 如果用户的钱包有兼容的存储资源，则会（重新）使用此资源，而不是购买新的资源。\n"
-"- 如果 blob 已经在 Walrus 上认证，但作为 *可删除* blob 或者没有足够多的 epoch，则命令会跳过向存储节点发送数据，只收集可用性证书。\n"
-"```"
 
 #: docs/usage/client-cli.md:100
 msgid ""
@@ -4746,7 +4740,7 @@ msgstr "以下是 `walrus-node.yaml` 配置文件简化版本中的一些重要�
 
 #: docs/operator-guide/storage-node.md:35
 msgid "storage_path"
-msgstr "storage_path"
+msgstr "存储路径"
 
 #: docs/operator-guide/storage-node.md:35
 msgid "/opt/walrus/db"
@@ -4754,7 +4748,7 @@ msgstr "/opt/walrus/db"
 
 #: docs/operator-guide/storage-node.md:35
 msgid "metrics_address"
-msgstr "metrics_address"
+msgstr "指标地址"
 
 #: docs/operator-guide/storage-node.md:36
 msgid "127.0.0.1:9184"
@@ -4762,7 +4756,7 @@ msgstr "127.0.0.1:9184"
 
 #: docs/operator-guide/storage-node.md:36
 msgid "rest_api_address"
-msgstr "rest_api_address"
+msgstr "rest_api 地址"
 
 #: docs/operator-guide/storage-node.md:37
 msgid "0.0.0.0:9185"
@@ -4790,31 +4784,31 @@ msgstr "blob_recovery"
 
 #: docs/operator-guide/storage-node.md:42
 msgid "max_concurrent_blob_syncs"
-msgstr "max_concurrent_blob_syncs"
+msgstr "最大并发 blob 同步数"
 
 #: docs/operator-guide/storage-node.md:43
 msgid "retry_interval_min_secs"
-msgstr "retry_interval_min_secs"
+msgstr "重试间隔最小秒数"
 
 #: docs/operator-guide/storage-node.md:44
 msgid "retry_interval_max_secs"
-msgstr "retry_interval_max_secs"
+msgstr "重试间隔最大秒数"
 
 #: docs/operator-guide/storage-node.md:45
 msgid "metadata_request_timeout_secs"
-msgstr "metadata_request_timeout_secs"
+msgstr "元数据请求超时秒数"
 
 #: docs/operator-guide/storage-node.md:46
 msgid "max_concurrent_metadata_requests"
-msgstr "max_concurrent_metadata_requests"
+msgstr "最大并发元数据请求数"
 
 #: docs/operator-guide/storage-node.md:47
 msgid "sliver_request_timeout_secs"
-msgstr "sliver_request_timeout_secs"
+msgstr "片段请求超时秒数"
 
 #: docs/operator-guide/storage-node.md:48
 msgid "invalidity_sync_timeout_secs"
-msgstr "invalidity_sync_timeout_secs"
+msgstr "无效同步超时秒数"
 
 #: docs/operator-guide/storage-node.md:51
 msgid ""
@@ -6296,8 +6290,7 @@ msgid ""
 "Links in Walrus Sites work _almost_ as you would expect in a regular "
 "website. We specify here a few of the details."
 msgstr ""
-"Walrus 站点中的链接 _几乎_ 像您在常规网站中预期的那样工作。我们在此指定了一些"
-"细节。"
+"Walrus 站点中的链接 _几乎_ 像您在常规网站中预期的那样工作。我们在此指定了一些细节。"
 
 #: docs/walrus-sites/linking.md:8
 msgid "Linking to resources within the same site"
@@ -6319,8 +6312,7 @@ msgid ""
 "Linking to a resource on the web (`href=\"https://some.cdn.example.com/"
 "stylesheet.css\"`) also works as usual."
 msgstr ""
-"链接到网络上的资源（`href=\"https://some.cdn.example.com/stylesheet.css\"`）"
-"也像往常一样工作。"
+"链接到网络上的资源（`href=\"https://some.cdn.example.com/stylesheet.css\"`）也像往常一样工作。"
 
 #: docs/walrus-sites/linking.md:17
 #, fuzzy
@@ -6333,8 +6325,7 @@ msgid ""
 "you can browse at `https://gallery.walrus.site/walrus_arctic.webp`, and you "
 "want to link it from your own Walrus Site."
 msgstr ""
-"这里有点不同。假设有一些图像，您可以在 `https://gallery.walrus.site/"
-"walrus_arctic.webp` 浏览，并且您想从自己的 Walrus 站点链接它。"
+"这里有点不同。假设有一些图像，您可以在 `https://gallery.walrus.site/walrus_arctic.webp` 浏览，并且您想从自己的 Walrus 站点链接它。"
 
 #: docs/walrus-sites/linking.md:22
 msgid ""
@@ -6345,11 +6336,7 @@ msgid ""
 "link the resource in a _portal-independent way_? This is important for "
 "interoperability, availability, and respecting the user's choice of portal."
 msgstr ""
-"请记住，`https://walrus.site` 只是可能的许多门户之一。也就是说，可以从本地门"
-"户（`http://gallery.localhost:8080/walrus_arctic.webp`）或任何其他门户（例"
-"如，`https://gallery.blob.store/walrus_arctic.webp`）浏览相同的资源。因此，如"
-"何以 _门户无关的方式_ 链接资源？这对于互操作性、可用性以及尊重用户的门户选择"
-"非常重要。"
+"请记住，`https://walrus.site` 只是可能的许多门户之一。也就是说，可以从本地门户（`http://gallery.localhost:8080/walrus_arctic.webp`）或任何其他门户（例如，`https://gallery.blob.store/walrus_arctic.webp`）浏览相同的资源。因此，如何以 _门户无关的方式_ 链接资源？这对于互操作性、可用性以及尊重用户的门户选择非常重要。"
 
 #: docs/walrus-sites/linking.md:28
 #, fuzzy
@@ -6362,8 +6349,7 @@ msgid ""
 "normally invalid on the web and redirect to the corresponding Walrus Sites "
 "resource in the portal itself."
 msgstr ""
-"我们通过让门户解释在网络上通常无效的特殊链接并重定向到门户本身中相应的 "
-"Walrus 站点资源来解决这个问题。"
+"我们通过让门户解释在网络上通常无效的特殊链接并重定向到门户本身中相应的 Walrus 站点资源来解决这个问题。"
 
 #: docs/walrus-sites/linking.md:33
 msgid ""
@@ -6374,10 +6360,7 @@ msgid ""
 "instead of the SuiNS name, you can use `https://abcd123….suiobj/"
 "walrus_arctic.webp`."
 msgstr ""
-"考虑上面的例子，其中资源 `/walrus_arctic.webp` 是从具有 SuiNS 名称 `gallery` "
-"的 Walrus 站点浏览的，该名称指向对象 ID `abcd123…`（Base36 编码）。然后，门户"
-"无关的链接是：`https://gallery.suiobj/walrus_arctic.webp`。要固定对象 ID 而不"
-"是 SuiNS 名称，您可以使用 `https://abcd123….suiobj/walrus_arctic.webp`。"
+"考虑上面的例子，其中资源 `/walrus_arctic.webp` 是从具有 SuiNS 名称 `gallery` 的 Walrus 站点浏览的，该名称指向对象 ID `abcd123…`（Base36 编码）。然后，门户无关的链接是：`https://gallery.suiobj/walrus_arctic.webp`。要固定对象 ID 而不是 SuiNS 名称，您可以使用 `https://abcd123….suiobj/walrus_arctic.webp`。"
 
 #: docs/walrus-sites/linking.md:38
 msgid ""
@@ -6387,9 +6370,7 @@ msgid ""
 "to the blob ID (e.g., containing an image) `qwer5678…`, use the URL `https://"
 "blobid.walrus/qwer5678…`."
 msgstr ""
-"另一种可能性是直接指向资源的 Walrus _blob ID_，并让浏览器“嗅探”内容类型。例"
-"如，这适用于图像，但不适用于脚本或样式表。例如，要指向 blob ID（例如，包含图"
-"像）`qwer5678…`，请使用 URL `https://blobid.walrus/qwer5678…`。"
+"另一种可能性是直接指向资源的 Walrus _blob ID_，并让浏览器“嗅探”内容类型。例如，这适用于图像，但不适用于脚本或样式表。例如，要指向 blob ID（例如，包含图像）`qwer5678…`，请使用 URL `https://blobid.walrus/qwer5678…`。"
 
 #: docs/walrus-sites/linking.md:43
 msgid ""
@@ -6405,9 +6386,7 @@ msgid ""
 "arbitrary objects_ can all be tied to a specific, and possibly unique, "
 "Walrus Site."
 msgstr ""
-"我们已经在[概述](./overview.md)中看到了 Sui 上的 Walrus 站点对象的样子。我们"
-"现在将讨论如何创建确保一组 _任意对象_ 都可以绑定到特定的，可能是唯一的 "
-"Walrus 站点。"
+"我们已经在[概述](./overview.md)中看到了 Sui 上的 Walrus 站点对象的样子。我们现在将讨论如何创建确保一组 _任意对象_ 都可以绑定到特定的，可能是唯一的 Walrus 站点。"
 
 #: docs/walrus-sites/redirects.md:9
 msgid "The goal"
@@ -6420,9 +6399,7 @@ msgid ""
 "Site, which can be personalized based on the contents (e.g., the color) of "
 "the NFT itself. How can we achieve this?"
 msgstr ""
-"考虑一组 NFT，例如由 <https://flatland.walrus.site> 发布的 NFT。正如我们在那"
-"里展示的那样，每个铸造的 NFT 都有自己的 Walrus 站点，可以根据 NFT 本身的内容"
-"（例如颜色）进行个性化。我们如何实现这一点？"
+"考虑一组 NFT，例如由 <https://flatland.walrus.site> 发布的 NFT。正如我们在那里展示的那样，每个铸造的 NFT 都有自己的 Walrus 站点，可以根据 NFT 本身的内容（例如颜色）进行个性化。我们如何实现这一点？"
 
 #: docs/walrus-sites/redirects.md:15
 msgid "Redirect links"
@@ -6436,10 +6413,7 @@ msgid ""
 "the `Display` of the NFT and, if it encounters the `walrus site address` "
 "key, it will go fetch the Walrus Site that is at the corresponding object ID."
 msgstr ""
-"解决方案很简单：我们在 NFT 的 [`Display`](https://docs.sui.io/standards/"
-"display#sui-utility-objects) 属性中添加一个“重定向”。每次通过门户浏览 NFT 的"
-"对象 ID 时，门户将检查 NFT 的 `Display`，如果遇到 `walrus site address` 键，"
-"它将去获取对应对象 ID 的 Walrus 站点。"
+"解决方案很简单：我们在 NFT 的 [`Display`](https://docs.sui.io/standards/display#sui-utility-objects) 属性中添加一个“重定向”。每次通过门户浏览 NFT 的对象 ID 时，门户将检查 NFT 的 `Display`，如果遇到 `walrus site address` 键，它将去获取对应对象 ID 的 Walrus 站点。"
 
 #: docs/walrus-sites/redirects.md:23
 msgid "Redirects in Move"
@@ -6450,8 +6424,7 @@ msgid ""
 "Practically speaking, when creating the `Display` of the NFT, you can "
 "include the key-value pair that points to the Walrus Site that is to be used."
 msgstr ""
-"实际上，在创建 NFT 的 `Display` 时，您可以包含指向要使用的 Walrus 站点的键值"
-"对。"
+"实际上，在创建 NFT 的 `Display` 时，您可以包含指向要使用的 Walrus 站点的键值对。"
 
 #: docs/walrus-sites/redirects.md:28
 msgid ""
@@ -6474,8 +6447,7 @@ msgid ""
 "object ID of the NFT. How do we ensure that the properties of the NFT can be "
 "used to personalize the site?"
 msgstr ""
-"上面的代码只会在浏览 NFT 的对象 ID 时打开指定的 Walrus 站点。我们如何确保可以"
-"使用 NFT 的属性来个性化站点？"
+"上面的代码只会在浏览 NFT 的对象 ID 时打开指定的 Walrus 站点。我们如何确保可以使用 NFT 的属性来个性化站点？"
 
 #: docs/walrus-sites/redirects.md:40
 msgid ""
@@ -6485,17 +6457,14 @@ msgid ""
 "NFT, fetch it from chain, and use its internal fields to modify the "
 "displayed site."
 msgstr ""
-"这需要在 `VISUALIZATION_SITE` 中完成：由于子域仍然指向 NFT 的对象 ID，加载的 "
-"Walrus 站点可以在 JavaScript 中检查其 `origin`，并使用子域来确定 NFT，从链中"
-"获取它，并使用其内部字段来修改显示的站点。"
+"这需要在 `VISUALIZATION_SITE` 中完成：由于子域仍然指向 NFT 的对象 ID，加载的 Walrus 站点可以在 JavaScript 中检查其 `origin`，并使用子域来确定 NFT，从链中获取它，并使用其内部字段来修改显示的站点。"
 
 #: docs/walrus-sites/redirects.md:45
 msgid ""
 "For an end-to-end example, see the `flatland` [repo](https://github.com/"
 "MystenLabs/example-walrus-sites/tree/main/flatland)."
 msgstr ""
-"有关端到端示例，请参见 `flatland` [repo](https://github.com/MystenLabs/"
-"example-walrus-sites/tree/main/flatland)。"
+"有关端到端示例，请参见 `flatland` [repo](https://github.com/MystenLabs/example-walrus-sites/tree/main/flatland)。"
 
 #: docs/walrus-sites/overview.md:3
 #, fuzzy
@@ -6506,7 +6475,8 @@ msgstr "技术概述"
 msgid ""
 "In the following sections, we delve deeper in the technical specification of "
 "Walrus Sites."
-msgstr "在以下部分中，我们将深入探讨 Walrus 站点的技术规范。"
+msgstr ""
+"在以下部分中，我们将深入探讨 Walrus 站点的技术规范。"
 
 #: docs/walrus-sites/overview.md:7
 msgid "High-level picture"
@@ -6519,9 +6489,7 @@ msgid ""
 "entry point to it is an object stored on Sui, which contains the metadata "
 "for the site and point to the Walrus blob IDs."
 msgstr ""
-"Walrus 站点由 Sui 和 Walrus 启用。Walrus 站点的资源（`html`、`css`、`js`、图"
-"像等）存储在 Walrus 上，而其主要入口点是存储在 Sui 上的对象，该对象包含站点的"
-"元数据并指向 Walrus blob ID。"
+"Walrus 站点由 Sui 和 Walrus 启用。Walrus 站点的资源（`html`、`css`、`js`、图像等）存储在 Walrus 上，而其主要入口点是存储在 Sui 上的对象，该对象包含站点的元数据并指向 Walrus blob ID。"
 
 #: docs/walrus-sites/overview.md:13
 #, fuzzy
@@ -6530,7 +6498,8 @@ msgstr "Sui 上的 Walrus 站点对象"
 
 #: docs/walrus-sites/overview.md:15
 msgid "A Walrus `Site` is represented on Sui as a very simple object:"
-msgstr "Walrus `站点` 在 Sui 上表示为一个非常简单的对象："
+msgstr ""
+"Walrus `站点` 在 Sui 上表示为一个非常简单的对象："
 
 #: docs/walrus-sites/overview.md:24
 msgid ""
@@ -6538,8 +6507,7 @@ msgid ""
 "[dynamic fields](https://docs.sui.io/concepts/dynamic-fields/) of type "
 "`Resource`:"
 msgstr ""
-"与此站点关联的资源然后作为类型为 `Resource` 的[动态字段](https://docs.sui.io/"
-"concepts/dynamic-fields/)添加到此对象中："
+"与此站点关联的资源然后作为类型为 `Resource` 的[动态字段](https://docs.sui.io/concepts/dynamic-fields/)添加到此对象中："
 
 #: docs/walrus-sites/overview.md:27
 msgid ""
@@ -6555,7 +6523,8 @@ msgstr ""
 
 #: docs/walrus-sites/overview.md:36
 msgid "Importantly, each resource contains:"
-msgstr "重要的是，每个资源包含："
+msgstr ""
+"重要的是，每个资源包含："
 
 #: docs/walrus-sites/overview.md:38
 msgid ""
@@ -6568,17 +6537,20 @@ msgstr ""
 msgid ""
 "the `blob_id`, which is the Walrus blob ID where the resource can be found; "
 "and"
-msgstr "`blob_id`，即可以找到资源的 Walrus blob ID；以及"
+msgstr ""
+"`blob_id`，即可以找到资源的 Walrus blob ID；以及"
 
 #: docs/walrus-sites/overview.md:41
 msgid "additional fields, that will be explained later in the documentation."
-msgstr "其他字段，将在文档中稍后解释。"
+msgstr ""
+"其他字段，将在文档中稍后解释。"
 
 #: docs/walrus-sites/overview.md:43
 msgid ""
 "These `Resource` dynamic fields are keyed with a struct of type "
 "`ResourcePath`"
-msgstr "这些 `Resource` 动态字段以类型为 `ResourcePath` 的结构为键"
+msgstr ""
+"这些 `Resource` 动态字段以类型为 `ResourcePath` 的结构为键"
 
 #: docs/walrus-sites/overview.md:51
 msgid ""
@@ -6586,8 +6558,7 @@ msgid ""
 "separate type ensures that we will not have namespace collisions with other "
 "dynamic fields, possibly added by other packages."
 msgstr ""
-"这个结构只包含路径的字符串（`/index.html`）；拥有单独的类型可确保我们不会与其"
-"他动态字段发生命名空间冲突，这些字段可能由其他包添加。"
+"这个结构只包含路径的字符串（`/index.html`）；拥有单独的类型可确保我们不会与其他动态字段发生命名空间冲突，这些字段可能由其他包添加。"
 
 #: docs/walrus-sites/overview.md:54
 msgid ""
@@ -6596,14 +6567,12 @@ msgid ""
 "object/0xd20b90149409ba5d005d4a2cd981db9494bc3cdb2f04c47ca1af98dd8f71610a), "
 "and check its dynamic fields."
 msgstr ""
-"要查看其实际操作，请查看[资源管理器中的 Walrus 站点](https://suiscan.xyz/"
-"testnet/"
-"object/0xd20b90149409ba5d005d4a2cd981db9494bc3cdb2f04c47ca1af98dd8f71610a)，"
-"并检查其动态字段。"
+"要查看其实际操作，请查看[资源管理器中的 Walrus 站点](https://suiscan.xyz/testnet/object/0xd20b90149409ba5d005d4a2cd981db9494bc3cdb2f04c47ca1af98dd8f71610a)，并检查其动态字段。"
 
 #: docs/walrus-sites/overview.md:58
 msgid "The site rendering path"
-msgstr "站点渲染路径"
+msgstr ""
+"站点渲染路径"
 
 #: docs/walrus-sites/overview.md:60
 msgid ""
@@ -6612,14 +6581,13 @@ msgid ""
 "these resources from Walrus using the blob ID contained in the `Resource` "
 "struct."
 msgstr ""
-"给定 Walrus 站点的 Sui 对象 ID，通过查看动态字段很容易查找组成它的资源，然后"
-"使用 `Resource` 结构中包含的 blob ID 从 Walrus 获取这些资源。"
-
+"给定 Walrus 站点的 Sui 对象 ID，通过查看动态字段很容易查找组成它的资源，然后使用 `Resource` 结构中包含的 blob ID 从 Walrus 获取这些资源。"
 #: docs/walrus-sites/overview.md:64
 msgid ""
 "The only outstanding question is, therefore, how to perform these lookups on "
 "the client. A few approaches are possible:"
-msgstr "唯一悬而未决的问题是，如何在客户端执行这些查找。有几种方法是可能的："
+msgstr ""
+"唯一悬而未决的问题是，如何在客户端执行这些查找。有几种方法是可能的："
 
 #: docs/walrus-sites/overview.md:67
 msgid ""
@@ -6627,42 +6595,40 @@ msgid ""
 "path, and performs this resolution on behalf of the client, serving back the "
 "resource as a standard HTML Response."
 msgstr ""
-"拥有一个服务器，该服务器接受 Sui 对象 ID 和可能的路径的请求，并代表客户端执行"
-"此解析，将资源作为标准 HTML 响应返回。"
+"拥有一个服务器，该服务器接受 Sui 对象 ID 和可能的路径的请求，并代表客户端执行此解析，将资源作为标准 HTML 响应返回。"
 
 #: docs/walrus-sites/overview.md:69
 msgid ""
 "Using a custom application on the client that has both a web browser and "
 "knowledge of how Walrus Sites work, and can locally perform this resolution."
 msgstr ""
-"在客户端使用一个自定义应用程序，该应用程序既有网络浏览器又了解 Walrus 站点的"
-"工作原理，并且可以在本地执行此解析。"
+"在客户端使用一个自定义应用程序，该应用程序既有网络浏览器又了解 Walrus 站点的工作原理，并且可以在本地执行此解析。"
 
 #: docs/walrus-sites/overview.md:71
 msgid ""
 "A hybrid approach based on service workers, where a service worker that is "
 "able to perform the resolution is installed in the browser from a portal."
 msgstr ""
-"基于服务工作线程的混合方法，其中能够执行解析的服务工作线程从门户安装到浏览器"
-"中。"
+"基于服务工作线程的混合方法，其中能够执行解析的服务工作线程从门户安装到浏览器中。"
 
 #: docs/walrus-sites/overview.md:74
 msgid ""
 "All of these approaches are viable (the first has been used for similar "
 "applications in IPFS gateways, for example), and have trade-offs."
 msgstr ""
-"所有这些方法都是可行的（例如，第一个方法已用于 IPFS 网关中的类似应用程序），"
-"并且各有利弊。"
+"所有这些方法都是可行的（例如，第一个方法已用于 IPFS 网关中的类似应用程序），并且各有利弊。"
 
 #: docs/walrus-sites/overview.md:77
 msgid ""
 "Currently, we provide the server-side and the service-worker based "
 "approaches."
-msgstr "目前，我们提供基于服务器端和服务工作线程的方法。"
+msgstr ""
+"目前，我们提供基于服务器端和服务工作线程的方法。"
 
 #: docs/walrus-sites/overview.md:79
 msgid "Browsing and domain isolation"
-msgstr "浏览和域隔离"
+msgstr ""
+"浏览和域隔离"
 
 #: docs/walrus-sites/overview.md:81
 msgid ""
@@ -6671,9 +6637,7 @@ msgid ""
 "Isolation is necessary for security, and to ensure that the wallet "
 "connection in the browser works as expected."
 msgstr ""
-"我们必须确保，当通过门户浏览多个站点时，例如托管在 <https://walrus.site> 的站"
-"点，这些站点是隔离的。隔离对于安全性是必要的，并确保浏览器中的钱包连接按预期"
-"工作。"
+"我们必须确保，当通过门户浏览多个站点时，例如托管在 <https://walrus.site> 的站点，这些站点是隔离的。隔离对于安全性是必要的，并确保浏览器中的钱包连接按预期工作。"
 
 #: docs/walrus-sites/overview.md:85
 msgid ""
@@ -6682,9 +6646,7 @@ msgid ""
 "walrus.site>, where the subdomain `flatland` is uniquely associated to the "
 "object ID of the Walrus Site through SuiNS."
 msgstr ""
-"为此，我们为每个 Walrus 站点提供门户域的特定 _子域_。例如，Flatland mint "
-"dApp 托管在 <https://flatland.walrus.site>，其中子域 `flatland` 通过 SuiNS 唯"
-"一关联到 Walrus 站点的对象 ID。"
+"为此，我们为每个 Walrus 站点提供门户域的特定 _子域_。例如，Flatland mint dApp 托管在 <https://flatland.walrus.site>，其中子域 `flatland` 通过 SuiNS 唯一关联到 Walrus 站点的对象 ID。"
 
 #: docs/walrus-sites/overview.md:89
 msgid ""
@@ -6693,13 +6655,12 @@ msgid ""
 "the Flatland dApp, this URL is: "
 "<https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site>."
 msgstr ""
-"Walrus 站点也可以在没有 SuiNS 的情况下工作：可以 _始终_ 通过使用站点的 Sui 对"
-"象 ID 的 Base36 编码作为子域来浏览站点。对于 Flatland dApp，此 URL 为："
-"<https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site>。"
+"Walrus 站点也可以在没有 SuiNS 的情况下工作：可以 _始终_ 通过使用站点的 Sui 对象 ID 的 Base36 编码作为子域来浏览站点。对于 Flatland dApp，此 URL 为：<https://58gr4pinoayuijgdixud23441t55jd94ugep68fsm72b8mwmq2.walrus.site>。"
 
 #: docs/walrus-sites/overview.md:93
 msgid "Base36 was chosen for two reasons, forced by the subdomain standards:"
-msgstr "选择 Base36 有两个原因，这是由子域标准强制要求的："
+msgstr ""
+"选择 Base36 有两个原因，这是由子域标准强制要求的："
 
 #: docs/walrus-sites/overview.md:95
 msgid ""
@@ -6712,20 +6673,24 @@ msgstr ""
 msgid ""
 "A subdomain is case _insensitive_, ruling out other popular encodings, e.g., "
 "Base64 or Base58."
-msgstr "子域不区分大小写，排除了其他流行的编码，例如 Base64 或 Base58。"
+msgstr ""
+"子域不区分大小写，排除了其他流行的编码，例如 Base64 或 Base58。"
 
 #: docs/walrus-sites/overview.md:98
 msgid "Walrus Site portals"
-msgstr "Walrus 站点门户"
+msgstr ""
+"Walrus 站点门户"
 
 #: docs/walrus-sites/overview.md:100
 msgid "Portal types"
-msgstr "门户类型"
+msgstr ""
+"门户类型"
 
 #: docs/walrus-sites/overview.md:102
 msgid ""
 "As mentioned before, we provide two types of portals to browse Walrus Sites:"
-msgstr "如前所述，我们提供两种类型的门户来浏览 Walrus 站点："
+msgstr ""
+"如前所述，我们提供两种类型的门户来浏览 Walrus 站点："
 
 #: docs/walrus-sites/overview.md:104
 msgid ""
@@ -6733,8 +6698,7 @@ msgid ""
 "returning it to the browser. The server-side portal is hosted at <https://"
 "blob.store>."
 msgstr ""
-"服务器端门户，这是一个解析 Walrus 站点并将其返回到浏览器的服务器。服务器端门"
-"户托管在 <https://blob.store>。"
+"服务器端门户，这是一个解析 Walrus 站点并将其返回到浏览器的服务器。服务器端门户托管在 <https://blob.store>。"
 
 #: docs/walrus-sites/overview.md:106
 msgid ""
@@ -6742,18 +6706,19 @@ msgid ""
 "the browser and resolves a Walrus Site. The service-worker portal is hosted "
 "at <https://walrus.site>."
 msgstr ""
-"服务工作线程门户，这是一个安装在浏览器中并解析 Walrus 站点的服务工作线程。服"
-"务工作线程门户托管在 <https://walrus.site>。"
+"服务工作线程门户，这是一个安装在浏览器中并解析 Walrus 站点的服务工作线程。服务工作线程门户托管在 <https://walrus.site>。"
 
 #: docs/walrus-sites/overview.md:109
 msgid ""
 "We now describe the resolution process of a Walrus Site in the browser using "
 "the service-worker portal as an example."
-msgstr "现在我们描述在浏览器中使用服务工作线程门户解析 Walrus 站点的过程。"
+msgstr ""
+"现在我们描述在浏览器中使用服务工作线程门户解析 Walrus 站点的过程。"
 
 #: docs/walrus-sites/overview.md:112
 msgid "The end-to-end resolution of a Walrus Site"
-msgstr "Walrus 站点的端到端解析"
+msgstr ""
+"Walrus 站点的端到端解析"
 
 #: docs/walrus-sites/overview.md:114
 msgid ""
@@ -6761,12 +6726,12 @@ msgid ""
 "browser with the service worker approach. The steps below all reference the "
 "following figure:"
 msgstr ""
-"现在我们更详细地展示了如何使用服务工作线程方法在客户端的浏览器中渲染 Walrus "
-"站点。以下步骤均参考下图："
+"现在我们更详细地展示了如何使用服务工作线程方法在客户端的浏览器中渲染 Walrus 站点。以下步骤均参考下图："
 
 #: docs/walrus-sites/overview.md:117
 msgid "![Walrus Site resolution](../assets/walrus-site-diagram.svg)"
-msgstr "![Walrus 站点解析](../assets/walrus-site-diagram.svg)"
+msgstr ""
+"![Walrus 站点解析](../assets/walrus-site-diagram.svg)"
 
 #: docs/walrus-sites/overview.md:119
 msgid ""
@@ -6775,17 +6740,14 @@ msgid ""
 "Assume the developer uses the SuiNS name `dapp.sui` to point to the object "
 "ID of the created Walrus Site."
 msgstr ""
-"** 站点发布 **（步骤 0）：站点开发人员使用 [`site-builder`](#the-site-"
-"builder) 或利用发布者发布 Walrus 站点。假设开发人员使用 SuiNS 名称 `dapp."
-"sui` 指向创建的 Walrus 站点的对象 ID。"
+"** 站点发布 **（步骤 0）：站点开发人员使用 [`site-builder`](#the-site-builder) 或利用发布者发布 Walrus 站点。假设开发人员使用 SuiNS 名称 `dapp.sui` 指向创建的 Walrus 站点的对象 ID。"
 
 #: docs/walrus-sites/overview.md:122
 msgid ""
 "**Browsing starts** (step 1): A client browses `dapp.walrus.site/index.html` "
 "in their browser."
 msgstr ""
-"** 浏览开始 **（步骤 1）：客户端在其浏览器中浏览 `dapp.walrus.site/index."
-"html`。"
+"** 浏览开始 **（步骤 1）：客户端在其浏览器中浏览 `dapp.walrus.site/index.html`。"
 
 #: docs/walrus-sites/overview.md:123
 msgid ""
@@ -6794,9 +6756,7 @@ msgid ""
 "service worker for `dapp.walrus.site`. The page is refreshed to activate the "
 "service worker."
 msgstr ""
-"** 服务工作线程安装 **（步骤 2-6）：浏览器连接到托管在 `walrus.site` 的门户，"
-"该门户响应一个页面，该页面为 `dapp.walrus.site` 安装服务工作线程。页面刷新以"
-"激活服务工作线程。"
+"** 服务工作线程安装 **（步骤 2-6）：浏览器连接到托管在 `walrus.site` 的门户，该门户响应一个页面，该页面为 `dapp.walrus.site` 安装服务工作线程。页面刷新以激活服务工作线程。"
 
 #: docs/walrus-sites/overview.md:126
 msgid ""
@@ -6808,19 +6768,14 @@ msgid ""
 "index.html`, and extracts its Walrus blob ID and headers (see the [advanced "
 "section on headers](./routing.md))."
 msgstr ""
-"** 站点解析 **（步骤 7-10）：现在安装的服务工作线程解释其 _来源_ `dapp."
-"walrus.site`，并进行 `dapp.sui` 的 SuiNS 解析，获取相关的对象 ID。使用对象 "
-"ID，然后获取对象的动态字段（还检查 [重定向](./portal.md)）。从动态字段中，它"
-"选择 `index.html` 的字段，并提取其 Walrus blob ID 和头信息（请参阅 [头信息高"
-"级部分](./routing.md)）。"
+"** 站点解析 **（步骤 7-10）：现在安装的服务工作线程解释其 _来源_ `dapp.walrus.site`，并进行 `dapp.sui` 的 SuiNS 解析，获取相关的对象 ID。使用对象 ID，然后获取对象的动态字段（还检查 [重定向](./portal.md)）。从动态字段中，它选择 `index.html` 的字段，并提取其 Walrus blob ID 和头信息（请参阅 [头信息高级部分](./routing.md)）。"
 
 #: docs/walrus-sites/overview.md:131
 msgid ""
 "**Blob fetch** (steps 11-14): Given the blob ID, the service worker queries "
 "a Walrus aggregator for the blob."
 msgstr ""
-"** Blob 获取 **（步骤 11-14）：给定 blob ID，服务工作线程会向 Walrus 聚合器查"
-"询 blob。"
+"** Blob 获取 **（步骤 11-14）：给定 blob ID，服务工作线程会向 Walrus 聚合器查询 blob。"
 
 #: docs/walrus-sites/overview.md:133
 msgid ""
@@ -6828,16 +6783,14 @@ msgid ""
 "the bytes for `/index.html`, and its headers, it can craft a response that "
 "is then rendered by the browser."
 msgstr ""
-"** 返回响应 **（步骤 15-16）：现在服务工作线程已经获取了 `/index.html` 的字节"
-"及其头信息，它可以构建一个响应，然后由浏览器渲染。"
+"** 返回响应 **（步骤 15-16）：现在服务工作线程已经获取了 `/index.html` 的字节及其头信息，它可以构建一个响应，然后由浏览器渲染。"
 
 #: docs/walrus-sites/overview.md:137
 msgid ""
 "These steps are executed for all resources the browser may query thereafter "
 "(for example, if `/index.html` points to `assets/cat.png`)."
 msgstr ""
-"这些步骤会对浏览器之后可能查询的所有资源执行（例如，如果 `/index.html` 指向 "
-"`assets/cat.png`）。"
+"这些步骤会对浏览器之后可能查询的所有资源执行（例如，如果 `/index.html` 指向 `assets/cat.png`）。"
 
 #: docs/walrus-sites/overview.md:140
 #, fuzzy
@@ -6851,9 +6804,7 @@ msgid ""
 "with the correct structure, and stores the site resources to Walrus. Refer "
 "to the [tutorial](./tutorial.md) for setup and usage instructions."
 msgstr ""
-"为了方便创建 Walrus 站点，我们提供了 \"站点构建器\" 工具。站点构建器负责在 "
-"Sui 上创建 Walrus 站点对象，具有正确的结构，并将站点资源存储到 Walrus。有关设"
-"置和使用说明，请参阅 [教程](./tutorial.md)。"
+"为了方便创建 Walrus 站点，我们提供了 \"站点构建器\" 工具。站点构建器负责在 Sui 上创建 Walrus 站点对象，具有正确的结构，并将站点资源存储到 Walrus。有关设置和使用说明，请参阅 [教程](./tutorial.md)。"
 
 #: docs/walrus-sites/portal.md:5
 msgid ""
@@ -6861,40 +6812,41 @@ msgid ""
 "an browse Walrus Sites. As mentioned in the [overview](./overview.md#the-"
 "site-rendering-path), we foresee three kinds of portals:"
 msgstr ""
-"我们使用术语 \"门户\" 来表示用于访问和浏览 Walrus 站点的任何技术。如 [概述]"
-"(./overview.md#the-site-rendering-path) 中所述，我们预见了三种类型的门户："
+"我们使用术语 \"门户\" 来表示用于访问和浏览 Walrus 站点的任何技术。如 [概述](./overview.md#the-site-rendering-path) 中所述，我们预见了三种类型的门户："
 
 #: docs/walrus-sites/portal.md:9
 msgid "server-side portals;"
-msgstr "服务器端门户；"
+msgstr ""
+"服务器端门户；"
 
 #: docs/walrus-sites/portal.md:10
 msgid "custom local apps; and"
-msgstr "自定义本地应用程序；以及"
+msgstr ""
+"自定义本地应用程序；以及"
 
 #: docs/walrus-sites/portal.md:11
 msgid "service-worker based portals in the browser."
-msgstr "浏览器中基于服务工作线程的门户。"
+msgstr ""
+"浏览器中基于服务工作线程的门户。"
 
 #: docs/walrus-sites/portal.md:13
 msgid ""
 "Currently, the server-side and service-workers portals are available at "
 "<https://blob.store> and <https://walrus.site>, respectively."
 msgstr ""
-"目前，服务器端和服务工作线程门户分别可在 <https://blob.store> 和 <https://"
-"walrus.site> 访问。"
+"目前，服务器端和服务工作线程门户分别可在 <https://blob.store> 和 <https://walrus.site> 访问。"
 
 #: docs/walrus-sites/portal.md:16
 msgid "Running the portal locally"
-msgstr "在本地运行门户"
+msgstr ""
+"在本地运行门户"
 
 #: docs/walrus-sites/portal.md:18
 msgid ""
 "You can run a service-worker portal locally if you want to browse Walrus "
 "Sites without accessing external portals or for development purposes."
 msgstr ""
-"如果您想在不访问外部门户的情况下浏览 Walrus 站点或出于开发目的，您可以在本地"
-"运行服务工作线程门户。"
+"如果您想在不访问外部门户的情况下浏览 Walrus 站点或出于开发目的，您可以在本地运行服务工作线程门户。"
 
 #: docs/walrus-sites/portal.md:21
 msgid ""
@@ -6902,79 +6854,80 @@ msgid ""
 "start, clone the `walrus-sites` repo and enter the `portal` directory. Here, "
 "run"
 msgstr ""
-"这需要安装 [`pnpm`](https://pnpm.io/) 工具。首先，克隆 `walrus-sites` 仓库并"
-"进入 `portal` 目录。在这里，运行"
+"这需要安装 [`pnpm`](https://pnpm.io/) 工具。首先，克隆 `walrus-sites` 仓库并进入 `portal` 目录。在这里，运行"
 
 #: docs/walrus-sites/portal.md:26
 msgid "# Build the portal you want to use, or both\n"
-msgstr "# 构建您要使用的门户，或两者都构建\n"
+msgstr ""
+"# 构建您要使用的门户，或两者都构建\n"
 
 #: docs/walrus-sites/portal.md:32
 msgid ""
 "to install the dependencies, and then either one of the following commands:"
-msgstr "来安装依赖项，然后运行以下命令之一："
+msgstr ""
+"来安装依赖项，然后运行以下命令之一："
 
 #: docs/walrus-sites/portal.md:35
 msgid "# Serve the server-side portal\n"
-msgstr "# 提供服务器端门户服务\n"
+msgstr ""
+"# 提供服务器端门户服务\n"
 
 #: docs/walrus-sites/portal.md:37
 msgid "# Serve the service-worker portal\n"
-msgstr "# 提供服务工作线程门户服务\n"
+msgstr ""
+"# 提供服务工作线程门户服务\n"
 
 #: docs/walrus-sites/portal.md:42
 msgid ""
 "to serve one of the portals. Typically, you will find it served at "
 "`localhost:8080` (but check the output of the serve command)."
 msgstr ""
-"来提供其中一个门户服务。通常，您会发现它在 `localhost:8080` 提供服务（但请检"
-"查服务命令的输出）。"
+"来提供其中一个门户服务。通常，您会发现它在 `localhost:8080` 提供服务（但请检查服务命令的输出）。"
 
 #: docs/walrus-sites/portal.md:45
 msgid ""
 "For the production versions, use the `prod` commands: `serve:prod:server` "
 "and `serve:prod:worker`."
 msgstr ""
-"对于生产版本，请使用 `prod` 命令：`serve:prod:server` 和 `serve:prod:"
-"worker`。"
+"对于生产版本，请使用 `prod` 命令：`serve:prod:server` 和 `serve:prod:worker`。"
 
 #: docs/walrus-sites/portal.md:47
 msgid "Configuring the portal"
-msgstr "配置门户"
+msgstr ""
+"配置门户"
 
 #: docs/walrus-sites/portal.md:49
 msgid ""
 "The most important configuration parameters for the portal are in `portal/"
 "common/lib/constants.ts`:"
-msgstr "门户的最重要配置参数在 `portal/common/lib/constants.ts` 中："
+msgstr ""
+"门户的最重要配置参数在 `portal/common/lib/constants.ts` 中："
 
 #: docs/walrus-sites/portal.md:51
 msgid ""
 "`NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. "
 "Currently, we use Sui `testnet`."
 msgstr ""
-"`NETWORK`：用于获取 Walrus 站点对象的 Sui 网络。目前，我们使用 Sui "
-"`testnet`。"
+"`NETWORK`：用于获取 Walrus 站点对象的 Sui 网络。目前，我们使用 Sui `testnet`。"
 
 #: docs/walrus-sites/portal.md:53
 msgid ""
 "`AGGREGATOR`: The URL of the [aggregator](../usage/web-api.md) from which "
 "the service worker will fetch the Walrus blobs."
 msgstr ""
-"`AGGREGATOR`：服务工作线程将从中获取 Walrus blob 的 [聚合器](../usage/web-"
-"api.md) 的 URL。"
+"`AGGREGATOR`：服务工作线程将从中获取 Walrus blob 的 [聚合器](../usage/web-api.md) 的 URL。"
 
 #: docs/walrus-sites/portal.md:55
 msgid "`SITE_PACKAGE`: The Sui object ID of the Walrus Sites package."
-msgstr "`SITE_PACKAGE`：Walrus 站点包的 Sui 对象 ID。"
+msgstr ""
+"`SITE_PACKAGE`：Walrus 站点包的 Sui 对象 ID。"
 
 #: docs/walrus-sites/portal.md:56
 msgid ""
 "`MAX_REDIRECT_DEPTH`: The number of [redirects](./redirects.md) the service "
 "worker will follow before stopping."
 msgstr ""
-"`MAX_REDIRECT_DEPTH`：服务工作线程在停止之前将遵循的 [重定向](./redirects."
-"md) 数量。"
+"`MAX_REDIRECT_DEPTH`：服务工作线程在停止之前将遵循的 [重定向](./redirects.md) 数量。"
 
 #: docs/walrus-sites/portal.md:58
 msgid ""
@@ -6991,13 +6944,12 @@ msgid ""
 "the site data is authentic and has not been tampered with by a malicious "
 "aggregator."
 msgstr ""
-"Walrus 站点提供了一种简单的机制来验证从客户端的 Walrus 存储中提供的数据。因"
-"此，Walrus 站点可以保证（根据设置的不同，具有不同程度的置信度）站点数据是可信"
-"的，并且没有被恶意聚合器篡改。"
+"Walrus 站点提供了一种简单的机制来验证从客户端的 Walrus 存储中提供的数据。因此，Walrus 站点可以保证（根据设置的不同，具有不同程度的置信度）站点数据是可信的，并且没有被恶意聚合器篡改。"
 
 #: docs/walrus-sites/authentication.md:10
 msgid "Authentication mechanism"
-msgstr "认证机制"
+msgstr ""
+"认证机制"
 
 #: docs/walrus-sites/authentication.md:12
 msgid ""
@@ -7012,22 +6964,24 @@ msgid ""
 "the data received from the Walrus storage (and the Walrus aggregator in "
 "particular) matches the hash stored on Sui."
 msgstr ""
-"当客户端请求资源时，门户将检查从 Walrus 存储（特别是 Walrus 聚合器）接收的数"
-"据的哈希值是否与存储在 Sui 上的哈希值匹配。"
+"当客户端请求资源时，门户将检查从 Walrus 存储（特别是 Walrus 聚合器）接收的数据的哈希值是否与存储在 Sui 上的哈希值匹配。"
 
 #: docs/walrus-sites/authentication.md:18
 msgid ""
 "If the hashes do not match, the portal will return the following warning "
 "page:"
-msgstr "如果哈希值不匹配，门户将返回以下警告页面："
+msgstr ""
+"如果哈希值不匹配，门户将返回以下警告页面："
 
 #: docs/walrus-sites/authentication.md:20
 msgid "![Hash mismatch warning page](../assets/walrus-sites-hash-mismatch.png)"
-msgstr "![哈希不匹配警告页面](../assets/walrus-sites-hash-mismatch.png)"
+msgstr ""
+"![哈希不匹配警告页面](../assets/walrus-sites-hash-mismatch.png)"
 
 #: docs/walrus-sites/authentication.md:22
 msgid "Authentication Guarantees"
-msgstr "认证保证"
+msgstr ""
+"认证保证"
 
 #: docs/walrus-sites/authentication.md:24
 msgid ""
@@ -7035,12 +6989,12 @@ msgid ""
 "of confidence that the site data is authentic. We list them here in "
 "increasing order of assurance."
 msgstr ""
-"根据部署类型，此技术提供了越来越高的置信度，确保站点数据是可信的。我们按置信"
-"度递增的顺序列出它们。"
+"根据部署类型，此技术提供了越来越高的置信度，确保站点数据是可信的。我们按置信度递增的顺序列出它们。"
 
 #: docs/walrus-sites/authentication.md:27
 msgid "Remote server-side portal deployment"
-msgstr "远程服务器端门户部署"
+msgstr ""
+"远程服务器端门户部署"
 
 #: docs/walrus-sites/authentication.md:29
 msgid ""
@@ -7049,12 +7003,12 @@ msgid ""
 "that the aggregator or cache (from which the blob has been fetched) did not "
 "tamper with the contents of the blob."
 msgstr ""
-"在这种情况下，用户必须完全信任门户提供商来验证数据。通过可信的门户，认证机制"
-"保证聚合器或缓存（从中获取 blob）没有篡改 blob 的内容。"
+"在这种情况下，用户必须完全信任门户提供商来验证数据。通过可信的门户，认证机制保证聚合器或缓存（从中获取 blob）没有篡改 blob 的内容。"
 
 #: docs/walrus-sites/authentication.md:33
 msgid "Remote service-worker portal deployment"
-msgstr "远程服务工作线程门户部署"
+msgstr ""
+"远程服务工作线程门户部署"
 
 #: docs/walrus-sites/authentication.md:35
 msgid ""
@@ -7065,14 +7019,12 @@ msgid ""
 "returned by the portal provider and verify its integrity (e.g., by comparing "
 "it the hash of the service worker code to one that is known to be correct)."
 msgstr ""
-"在这里，门户提供商仅被信任向用户提供正确的服务工作线程代码。然后，用户的浏览"
-"器将执行获取和认证。因此，保证与远程服务器端门户相同，此外，用户可以检查门户"
-"提供商返回的代码并验证其完整性（例如，通过将服务工作线程代码的哈希值与已知正"
-"确的哈希值进行比较）。"
+"在这里，门户提供商仅被信任向用户提供正确的服务工作线程代码。然后，用户的浏览器将执行获取和认证。因此，保证与远程服务器端门户相同，此外，用户可以检查门户提供商返回的代码并验证其完整性（例如，通过将服务工作线程代码的哈希值与已知正确的哈希值进行比较）。"
 
 #: docs/walrus-sites/authentication.md:41
 msgid "Local portal deployment"
-msgstr "本地门户部署"
+msgstr ""
+"本地门户部署"
 
 #: docs/walrus-sites/authentication.md:43
 msgid ""
@@ -7082,9 +7034,7 @@ msgid ""
 "Therefore, they can fully authenticate that the data served by Walrus and "
 "Walrus Sites is what the original developer intended."
 msgstr ""
-"最后，用户可以克隆 Walrus 站点仓库并在本地部署门户，通过 `localhost` 浏览 "
-"Walrus 站点。在这种情况下，用户完全控制门户代码并可以验证其操作。因此，他们可"
-"以完全认证 Walrus 和 Walrus 站点提供的数据是原始开发人员所期望的。"
+"最后，用户可以克隆 Walrus 站点仓库并在本地部署门户，通过 `localhost` 浏览 Walrus 站点。在这种情况下，用户完全控制门户代码并可以验证其操作。因此，他们可以完全认证 Walrus 和 Walrus 站点提供的数据是原始开发人员所期望的。"
 
 #: docs/walrus-sites/restrictions.md:5
 msgid ""
@@ -7093,12 +7043,12 @@ msgid ""
 "restrictions that a developer should keep in mind when creating or porting a "
 "website to Walrus Sites."
 msgstr ""
-"Walrus 站点可用于部署几乎任何形式的为现代浏览器构建的传统静态 web2 网站。但"
-"是，开发人员在创建或移植网站到 Walrus 站点时应牢记一些限制。"
+"Walrus 站点可用于部署几乎任何形式的为现代浏览器构建的传统静态 web2 网站。但是，开发人员在创建或移植网站到 Walrus 站点时应牢记一些限制。"
 
 #: docs/walrus-sites/restrictions.md:9
 msgid "No secret values"
-msgstr "没有秘密值"
+msgstr ""
+"没有秘密值"
 
 #: docs/walrus-sites/restrictions.md:11
 msgid ""
@@ -7106,8 +7056,7 @@ msgid ""
 "Sui, and the site content is stored on Walrus. Therefore, developers _must "
 "not_ store secret values within the sites."
 msgstr ""
-"Walrus 站点是完全公开访问的，因为元数据存储在 Sui 上，站点内容存储在 Walrus "
-"上。因此，开发人员 _绝不能_ 在站点中存储秘密值。"
+"Walrus 站点是完全公开访问的，因为元数据存储在 Sui 上，站点内容存储在 Walrus 上。因此，开发人员 _绝不能_ 在站点中存储秘密值。"
 
 #: docs/walrus-sites/restrictions.md:14
 msgid ""
@@ -7115,12 +7064,12 @@ msgid ""
 "values, authentication, etc.) are achievable by leveraging the integration "
 "with the Sui blockchain and a Sui-compatible wallet."
 msgstr ""
-"我们再次强调，任何此类后端特定操作（存储秘密值、认证等）都可以通过利用与 Sui "
-"区块链和 Sui 兼容钱包的集成来实现。"
+"我们再次强调，任何此类后端特定操作（存储秘密值、认证等）都可以通过利用与 Sui 区块链和 Sui 兼容钱包的集成来实现。"
 
 #: docs/walrus-sites/restrictions.md:18
 msgid "There is a maximum redirect depth"
-msgstr "有一个最大重定向深度"
+msgstr ""
+"有一个最大重定向深度"
 
 #: docs/walrus-sites/restrictions.md:20
 msgid ""
@@ -7128,27 +7077,26 @@ msgid ""
 "the portal (see [Portal configuration](./portal.md)). This measure ensures "
 "that loading a Walrus Site does not result in an infinite loading loop."
 msgstr ""
-"Walrus 站点可以执行的连续重定向次数由门户限制（请参阅 [门户配置](./portal."
-"md)）。此措施确保加载 Walrus 站点不会导致无限加载循环。"
+"Walrus 站点可以执行的连续重定向次数由门户限制（请参阅 [门户配置](./portal.md)）。此措施确保加载 Walrus 站点不会导致无限加载循环。"
 
 #: docs/walrus-sites/restrictions.md:24
 msgid ""
 "Different portals can set this limit as they desire. The limit for the "
 "portal hosted at <https://walrus.site> has a maximum redirect depth of 3."
 msgstr ""
-"不同的门户可以根据需要设置此限制。托管在 <https://walrus.site> 的门户的最大重"
-"定向深度为 3。"
+"不同的门户可以根据需要设置此限制。托管在 <https://walrus.site> 的门户的最大重定向深度为 3。"
 
 #: docs/walrus-sites/restrictions.md:27
 msgid "Service workers are not available"
-msgstr "服务工作线程不可用"
+msgstr ""
+"服务工作线程不可用"
 
 #: docs/walrus-sites/restrictions.md:29
 msgid ""
 "Walrus Sites leverage service workers in the clients' browsers to perform "
 "essential operations:"
-msgstr "Walrus 站点利用客户端浏览器中的服务工作线程执行基本操作："
-
+msgstr ""
+"Walrus 站点利用客户端浏览器中的服务工作线程执行基本操作："
 #: docs/walrus-sites/restrictions.md:31
 msgid "reading the site metadata from Sui;"
 msgstr "从 Sui 读取站点元数据；"
@@ -7167,8 +7115,7 @@ msgid ""
 "itself. Installing a service worker from within a Walrus Site will result in "
 "a dysfunctional site and a poor experience for the user."
 msgstr ""
-"因此，部署在 Walrus 站点上的站点本身无法使用服务工作线程。从 Walrus 站点内安"
-"装服务工作线程将导致站点功能失效，并给用户带来不良体验。"
+"因此，部署在 Walrus 站点上的站点本身无法使用服务工作线程。从 Walrus 站点内安装服务工作线程将导致站点功能失效，并给用户带来不良体验。"
 
 #: docs/walrus-sites/restrictions.md:44
 msgid "iOS Sui mobile wallets do not work with the service-worker portal"
@@ -7182,10 +7129,7 @@ msgid ""
 "currently be used on a service-worker portal on iOS. Note, however, that "
 "_browsing_ a Walrus Site is still possible on iOS through any browser."
 msgstr ""
-"由于 WebKit 引擎的限制，服务工作线程无法在 iOS 的应用内浏览器中加载。因此，"
-"Walrus 站点无法在 iOS 上的 Sui 兼容钱包应用中使用。因此，Sui 钱包目前无法在 "
-"iOS 上的服务工作线程门户中使用。但是，请注意，通过任何浏览器在 iOS 上 _浏览_ "
-"Walrus 站点仍然是可能的。"
+"由于 WebKit 引擎的限制，服务工作线程无法在 iOS 的应用内浏览器中加载。因此，Walrus 站点无法在 iOS 上的 Sui 兼容钱包应用中使用。因此，Sui 钱包目前无法在 iOS 上的服务工作线程门户中使用。但是，请注意，通过任何浏览器在 iOS 上 _浏览_ Walrus 站点仍然是可能的。"
 
 #: docs/walrus-sites/restrictions.md:51
 msgid ""
@@ -7195,10 +7139,7 @@ msgid ""
 "a Walrus Site, the redirect will automatically take them to the `<site_name>."
 "blob.store` server-side portal. This way, the user can still use the wallet."
 msgstr ""
-"为了为 iOS 用户（以及其他不支持服务工作线程的浏览器用户）提供无缝体验，我们实"
-"现了重定向到服务器端门户（<https://blob.store>）。每当 iOS 钱包上的用户浏览 "
-"Walrus 站点时，重定向将自动将他们带到 `<site_name>.blob.store` 服务器端门户。"
-"这样，用户仍然可以使用钱包。"
+"为了为 iOS 用户（以及其他不支持服务工作线程的浏览器用户）提供无缝体验，我们实现了重定向到服务器端门户（<https://blob.store>）。每当 iOS 钱包上的用户浏览 Walrus 站点时，重定向将自动将他们带到 `<site_name>.blob.store` 服务器端门户。这样，用户仍然可以使用钱包。"
 
 #: docs/walrus-sites/restrictions.md:61
 msgid "No support for progressive web apps (PWAs)"
@@ -7208,12 +7149,14 @@ msgstr "不支持渐进式网络应用程序（PWAs）"
 msgid ""
 "With the current design, Walrus Sites cannot be used for progressive web "
 "apps (PWAs)."
-msgstr "根据当前设计，Walrus 站点无法用于渐进式网络应用程序（PWAs）。"
+msgstr ""
+"根据当前设计，Walrus 站点无法用于渐进式网络应用程序（PWAs）。"
 
 #: docs/walrus-sites/restrictions.md:65
 msgid ""
 "Two characteristics of the service-worker portal prevent support for PWAs:"
-msgstr "服务工作线程门户的两个特性阻止了对 PWAs 的支持："
+msgstr ""
+"服务工作线程门户的两个特性阻止了对 PWAs 的支持："
 
 #: docs/walrus-sites/restrictions.md:67
 msgid ""
@@ -7228,8 +7171,7 @@ msgid ""
 "registering a PWA's service worker would remove the Walrus Sites service "
 "worker, breaking Walrus Sites' functionality."
 msgstr ""
-"每个源只能注册一个服务工作线程。因此，注册 PWA 的服务工作线程将移除 Walrus 站"
-"点的服务工作线程，从而破坏 Walrus 站点的功能。"
+"每个源只能注册一个服务工作线程。因此，注册 PWA 的服务工作线程将移除 Walrus 站点的服务工作线程，从而破坏 Walrus 站点的功能。"
 
 #: docs/walrus-sites/restrictions.md:72
 msgid ""
@@ -7240,209 +7182,8 @@ msgid ""
 "details, see the [installation requirements for PWAs](https://en.wikipedia."
 "org/wiki/Progressive_web_app#Installation_criteria)."
 msgstr ""
-"请注意，服务器端门户不受这些限制。然而，目前我们支持这两种技术：Walrus 站点必"
-"须能够从服务工作线程门户和服务器端门户加载，因此必须使用更严格的功能集构建。"
-"有关更多详细信息，请参阅 [PWAs 的安装要求](https://en.wikipedia.org/wiki/"
-"Progressive_web_app#Installation_criteria)。"
-
-#: docs/walrus-sites/tos.md:5
-msgid "Walrus Sites - TERMS of SERVICE"
-msgstr "Walrus 站点 - 服务条款"
-
-#: docs/walrus-sites/tos.md:7
-#, fuzzy
-msgid "Last Updated: June 18, 2024"
-msgstr "**最后更新：** 2024年6月18日"
-
-#: docs/walrus-sites/tos.md:9
-msgid ""
-"These Terms of Service (“**Terms**”) govern your use of certain software "
-"services, including Walrus Sites provided by Mysten Labs, Inc. (“**Mysten "
-"Labs**”) (collectively the \"**Services**\"). By accessing the Services, you "
-"agree to and accept these terms and conditions. If you don’t agree to be "
-"bound by these Terms, do not use the Services."
-msgstr ""
-"这些服务条款（“ **条款** ”）管理您对包括由 Mysten Labs, Inc.（“ **Mysten Labs** ”）提供的 Walrus 站点在内的某些软件服务的使用（统称为“ **服务** ”）。通过访问服务，您同意并接受这些条款和条件。如果您不同意受这些条款的约束，请不要使用服务。"
-
-#: docs/walrus-sites/tos.md:14
-msgid ""
-"IMPORTANT NOTICE REGARDING ARBITRATION FOR U.S. CUSTOMERS: WHEN YOU AGREE TO "
-"THESE TERMS YOU ARE AGREEING (WITH LIMITED EXCEPTION) TO RESOLVE ANY DISPUTE "
-"BETWEEN YOU AND MYSTEN LABS THROUGH BINDING, INDIVIDUAL ARBITRATION RATHER "
-"THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XIV “DISPUTE RESOLUTION” "
-"BELOW FOR DETAILS REGARDING ARBITRATION."
-msgstr ""
-"关于美国客户仲裁的重要通知：当您同意这些条款时，您同意（有有限例外）通过具有约束力的个人仲裁而不是在法庭上解决您与 Mysten Labs 之间的任何争议。请仔细阅读以下第十四节“争议解决”以了解有关仲裁的详细信息。"
-
-#: docs/walrus-sites/tos.md:19
-msgid "I. Privacy Policy"
-msgstr "I. 隐私政策"
-
-#: docs/walrus-sites/tos.md:21
-msgid ""
-"Please review our [Privacy Policy](../legal/privacy.md), which also governs "
-"your use of the Services, for information on how we collect, use and share "
-"your information. By using the Services you agree to be bound by our Privacy "
-"Policy."
-msgstr ""
-"请查看我们的[隐私政策](../legal/privacy.md)，该政策也适用于您对服务的使用，以了解我们如何收集、使用和分享您的信息。通过使用服务，您同意受我们的隐私政策约束。"
-
-#: docs/walrus-sites/tos.md:25
-msgid "II. Eligibility"
-msgstr "II. 资格标准"
-
-#: docs/walrus-sites/tos.md:27
-msgid ""
-"You may use the Services only if you are 18 years or older and capable of "
-"forming a binding contract with Mysten Labs, and not otherwise barred from "
-"using the Services under applicable law, including applicable U.S. and non-U."
-"S. export control and trade sanctions laws."
-msgstr ""
-"您只能在年满18岁并有能力与 Mysten Labs 签订具有约束力的合同的情况下使用服务，并且在适用法律（包括适用的美国和非美国出口管制和贸易制裁法律）下未被禁止使用服务。"
-
-#: docs/walrus-sites/tos.md:31
-msgid "III. Walrus Sites"
-msgstr "III. Walrus站点"
-
-#: docs/walrus-sites/tos.md:33
-msgid ""
-"The Services allow you access website resources (“**Stored Objects**”) that "
-"are stored in the Walrus Store and linked by the Sui blockchain. In "
-"providing the Services, Mysten Labs provides you with a means to access the "
-"Stored Objects, but Mysten Labs does not process the Stored Objects "
-"directly. Mysten Labs has no responsibility to screen or moderate Stored "
-"Objects accessible via the Services. Stored Objects are developed by people "
-"over whom Mysten Labs exercises no control. The Services may provide you "
-"with access to Stored Objects that some people find objectionable, "
-"inappropriate, or offensive. We assume no responsibility for the content of "
-"Stored Objects accessed through the Services."
-msgstr ""
-"服务允许您访问存储在 Walrus Store 并由 Sui 区块链链接的网站资源（“ **存储对象** ”）。在提供服务时，Mysten Labs 为您提供访问存储对象的方式，但 Mysten Labs 不直接处理存储对象。Mysten Labs 对通过服务访问的存储对象不承担筛选或管理的责任。存储对象由 Mysten Labs 无法控制的人开发。服务可能会让您访问一些人认为令人反感、不适当或冒犯的存储对象。我们对通过服务访问的存储对象的内容不承担任何责任。"
-
-#: docs/walrus-sites/tos.md:42
-msgid "IV. Service Conditions and Disclaimers"
-msgstr "IV. 服务条件和免责声明"
-
-#: docs/walrus-sites/tos.md:44
-msgid ""
-"<u>Fees</u>. We may charge fees for some or part of the Services we make "
-"available to you. We reserve the right to change those fees at any time, in "
-"our sole and absolute discretion."
-msgstr ""
-"<u>费用</u>。我们可能会对我们提供给您的部分或全部服务收取费用。我们保留随时更改这些费用的权利，完全由我们自行决定。"
-
-#: docs/walrus-sites/tos.md:46
-msgid ""
-"<u>Acknowledgment of Certain Risks; Disclaimers</u>. Mysten Labs disclaims "
-"any and all responsibility or liability for the accuracy, content, "
-"completeness, legality, reliability, or operability or availability of "
-"information or material accessed via the Services. Mysten Labs disclaims any "
-"responsibility for the deletion, failure to store, misdelivery, or untimely "
-"delivery of any information or material. Mysten Labs disclaims any "
-"responsibility for any harm resulting from accessing any information or "
-"material on any blockchain through the Services. YOU UNDERSTAND AND AGREE "
-"THAT YOU DOWNLOAD OR OTHERWISE OBTAIN MATERIAL OR DATA THROUGH THE USE OF "
-"THE SERVICES AT YOUR OWN DISCRETION AND RISK AND THAT YOU WILL BE SOLELY "
-"RESPONSIBLE FOR ANY DAMAGES TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT "
-"RESULTS IN THE DOWNLOAD OF SUCH MATERIAL OR DATA."
-msgstr ""
-"<u>确认某些风险；免责声明</u>。Mysten Labs 对通过服务访问的信息或材料的准确性、内容、完整性、合法性、可靠性或可操作性或可用性不承担任何责任或义务。Mysten Labs 对任何信息或材料的删除、存储失败、错误传递或不及时传递不承担任何责任。Mysten Labs 对通过服务访问任何区块链上的任何信息或材料所造成的任何损害不承担任何责任。您理解并同意，您通过使用服务下载或以其他方式获取材料或数据是出于您自己的判断和风险，您将对下载此类材料或数据导致的任何计算机系统损坏或数据丢失承担全部责任。"
-
-#: docs/walrus-sites/tos.md:57
-msgid ""
-"The Services could be impacted by one or more regulatory inquiries or "
-"regulatory actions, which could impede or limit the ability of Mysten Labs "
-"to continue to make its proprietary software, and thus, could impede or "
-"limit your ability to continue to use the Services."
-msgstr ""
-"服务可能会受到一个或多个监管调查或监管行动的影响，这可能会阻碍或限制 Mysten Labs 继续制作其专有软件的能力，从而可能会阻碍或限制您继续使用服务的能力。"
-
-#: docs/walrus-sites/tos.md:61
-msgid ""
-"You understand that the Walrus Store and Sui blockchain (and all other "
-"networks with which the Services may be compatible) remain under "
-"development, which creates technological and security risks when using the "
-"Services in addition to uncertainty relating to Digital Assets and "
-"transactions therein. You acknowledge that the cost of transacting on the "
-"Sui blockchain is variable and may increase at any time, thereby impacting "
-"any activities taking place on the Sui blockchain, which may result in price "
-"fluctuations or increased prices for using the Services."
-msgstr ""
-"您理解 Walrus Store 和 Sui 区块链（以及服务可能兼容的所有其他网络）仍在开发中，这在使用服务时会带来技术和安全风险，此外还存在与数字资产及其交易相关的不确定性。您承认，在 Sui 区块链上进行交易的成本是可变的，可能随时增加，从而影响在 Sui 区块链上进行的任何活动，这可能导致价格波动或使用服务的价格增加。"
-
-#: docs/walrus-sites/tos.md:68
-msgid ""
-"The Services are provided to you \"as-is\" and \"with all faults.\" We make "
-"no warranties or representations regarding the functionality, quality, or "
-"fitness for a particular purpose of the Services. By using the Services, you "
-"acknowledge and agree to the following:"
-msgstr ""
-"服务是按“原样”和“有所有缺陷”的方式提供给您的。我们不对服务的功能、质量或特定用途的适用性做出任何保证或陈述。通过使用服务，您承认并同意以下内容："
-
-#: docs/walrus-sites/tos.md:72
-msgid ""
-"Mysten Labs disclaims all warranties, whether express, implied, or "
-"statutory, including but not limited to any warranties of merchantability, "
-"non-infringement, and fitness for a particular purpose."
-msgstr ""
-"Mysten Labs 不承担任何明示、暗示或法定的保证，包括但不限于任何适销性、非侵权和特定用途适用性的保证。"
-
-#: docs/walrus-sites/tos.md:75
-msgid ""
-"Mysten Labs does not guarantee that the Services will be free from errors, "
-"bugs, or interruptions in service, including failed transactions for which "
-"you have paid associated gas fees. Any use of the Services is at your own "
-"risk."
-msgstr ""
-"Mysten Labs 不保证服务没有错误、漏洞或服务中断，包括您已支付相关燃气费的失败交易。任何使用服务的行为均由您自行承担风险。"
-
-#: docs/walrus-sites/tos.md:78
-msgid ""
-"Mysten Labs shall not be liable for any direct, indirect, incidental, "
-"special, or consequential damages, whether arising from the use of the "
-"Services or any inability to use the Services, even if Mysten Labs has been "
-"advised of the possibility of such damages."
-msgstr ""
-"Mysten Labs 不对任何直接、间接、附带、特殊或后果性损害承担责任，无论是因使用服务或无法使用服务而引起的，即使 Mysten Labs 已被告知此类损害的可能性。"
-
-#: docs/walrus-sites/tos.md:81
-msgid ""
-"It is your responsibility to evaluate the accuracy, completeness, and "
-"usefulness of any information, content, or data provided by the Services."
-msgstr ""
-"评估服务提供的任何信息、内容或数据的准确性、完整性和有用性是您的责任。"
-
-#: docs/walrus-sites/tos.md:83
-msgid ""
-"Mysten Labs is under no obligation to provide support, maintenance, updates, "
-"or fixes for the Services."
-msgstr ""
-"Mysten Labs 没有义务为服务提供支持、维护、更新或修复。"
-
-#: docs/walrus-sites/tos.md:85
-msgid ""
-"Mysten Labs is not obligated to correct or address any errors, defects, or "
-"issues identified in the Services."
-msgstr ""
-"Mysten Labs 没有义务纠正或解决服务中发现的任何错误、缺陷或问题。"
-
-#: docs/walrus-sites/tos.md:87
-msgid ""
-"Mysten Labs may change, update, or discontinue the Services at any time "
-"without notice."
-msgstr ""
-"Mysten Labs 可以随时更改、更新或终止服务，恕不另行通知。"
-
-#: docs/walrus-sites/tos.md:88
-msgid ""
-"Your use of the Services indicates your acceptance of the risk associated "
-"with its use."
-msgstr ""
-"您使用服务表示您接受与使用服务相关的风险。"
-
-#: docs/walrus-sites/tos.md:91
-msgid "V. Ownership"
-msgstr "V. 所有权"
+ ""
+"请注意，服务器端门户不受这些限制。然而，目前我们支持这两种技术：Walrus 站点必须能够从服务工作线程门户和服务器端门户加载，因此必须使用更严格的功能集构建。有关更多详细信息，请参阅 [PWAs 的安装要求](https://en.wikipedia.org/wiki/Progressive_web_app#Installation_criteria)。"
 
 #: docs/walrus-sites/tos.md:93
 msgid ""
@@ -7470,7 +7211,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:104
 msgid "VI. General Prohibitions and Mysten Labs’s Enforcement Rights."
-msgstr "VI. 一般禁止事项和Mysten Labs的执行权利。"
+msgstr "六、一般禁止事项和Mysten Labs的执行权利。"
 
 #: docs/walrus-sites/tos.md:106
 msgid "You agree not to do any of the following:"
@@ -7617,7 +7358,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:151
 msgid "VII. DMCA/Copyright Policy"
-msgstr "VII. DMCA/版权政策"
+msgstr "七、DMCA/版权政策"
 
 #: docs/walrus-sites/tos.md:153
 msgid ""
@@ -7631,7 +7372,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:157
 msgid "VIII. Sanctions"
-msgstr "VIII. 制裁"
+msgstr "八、制裁"
 
 #: docs/walrus-sites/tos.md:159
 msgid ""
@@ -7655,7 +7396,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:168
 msgid "IX. Termination"
-msgstr "IX. 终止"
+msgstr "九、终止"
 
 #: docs/walrus-sites/tos.md:170
 msgid ""
@@ -7674,7 +7415,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:176
 msgid "X. Warranty Disclaimers"
-msgstr "X. 免责声明"
+msgstr "十、免责声明"
 
 #: docs/walrus-sites/tos.md:178
 msgid ""
@@ -7698,7 +7439,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:187
 msgid "XI. Indemnity"
-msgstr "XI. 赔偿"
+msgstr "十一、赔偿"
 
 #: docs/walrus-sites/tos.md:189
 msgid ""
@@ -7716,7 +7457,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:195
 msgid "XII. Limitation of Liability"
-msgstr "XII. 责任限制"
+msgstr "十二、责任限制"
 
 #: docs/walrus-sites/tos.md:197
 msgid ""
@@ -7763,7 +7504,7 @@ msgstr "上述损害赔偿的排除和限制是Mysten Labs与您之间交易基�
 
 #: docs/walrus-sites/tos.md:214
 msgid "XIII. Governing Law and Forum Choice."
-msgstr "XIII. 适用法律和论坛选择"
+msgstr "十三、适用法律和论坛选择"
 
 #: docs/walrus-sites/tos.md:216
 msgid ""
@@ -7783,7 +7524,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:223
 msgid "XIV. Dispute Resolution"
-msgstr "XIV. 争议解决"
+msgstr "十四、争议解决"
 
 #: docs/walrus-sites/tos.md:225
 msgid ""
@@ -7911,7 +7652,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:275
 msgid "XV. General Terms"
-msgstr "XV. 一般条款"
+msgstr "第十五条 一般条款"
 
 #: docs/walrus-sites/tos.md:277
 msgid ""
@@ -7984,7 +7725,7 @@ msgstr ""
 
 #: docs/walrus-sites/tos.md:304
 msgid "XVI. Contact Information"
-msgstr "XVI. 联系信息"
+msgstr "第十六条 联系信息"
 
 #: docs/walrus-sites/tos.md:306
 msgid ""
@@ -8347,9 +8088,10 @@ msgstr ""
 
 #: docs/legal/devnet_tos.md:4
 msgid "DEVNET TERMS OF SERVICE - WALRUS"
-msgstr "DEVNET 服务条款 - Walrus"
+msgstr ""
 
 #: docs/legal/devnet_tos.md:6
+#, fuzzy
 msgid "Last updated: June 13, 2024"
 msgstr "**最后更新：** 2024年6月18日"
 
@@ -8387,6 +8129,7 @@ msgid ""
 msgstr "在适用法律下未被禁止参与 Devnet。"
 
 #: docs/legal/devnet_tos.md:21
+#, fuzzy
 msgid ""
 "We may, at our discretion, introduce new or change existing eligibility "
 "criteria or conditions we deem appropriate. Devnet may operate in certain "
@@ -8398,10 +8141,12 @@ msgstr ""
 "他阶段。"
 
 #: docs/legal/devnet_tos.md:25 docs/legal/testnet_tos.md:32
+#, fuzzy
 msgid "Duration"
 msgstr "操作"
 
 #: docs/legal/devnet_tos.md:27
+#, fuzzy
 msgid ""
 "Devnet will commence on the date we prescribe and continue until terminated "
 "at our discretion. We may change, discontinue, or wipe, temporarily or "
@@ -8420,9 +8165,10 @@ msgstr ""
 
 #: docs/legal/devnet_tos.md:33 docs/legal/testnet_tos.md:57
 msgid "No Warranty"
-msgstr "无保修"
+msgstr ""
 
 #: docs/legal/devnet_tos.md:35
+#, fuzzy
 msgid ""
 "Mysten Labs provides the Devnet platform solely as a developer preview. "
 "Devnet is provided \"as is\" and \"with all faults.\" We make no warranties, "
@@ -8450,9 +8196,9 @@ msgid ""
 "customers agree to indemnify and hold harmless Mysten Labs from any such "
 "statements."
 msgstr ""
-"Mysten Labs 的任何员工或代表均无权作出超出本协议规定的任何保证或陈述。Mysten Labs 的员工或代表就服务所作的任何陈述均不得视为保证或陈述，客户同意赔偿并使 Mysten Labs 免受任何此类陈述的损害。"
 
 #: docs/legal/devnet_tos.md:48
+#, fuzzy
 msgid ""
 "Any deficiencies or errors in the Devnet platform shall not constitute a "
 "breach of this agreement, and customers agree to waive any right to seek a "
@@ -8466,9 +8212,10 @@ msgstr ""
 
 #: docs/legal/testnet_tos.md:4
 msgid "TESTNET TERMS OF SERVICE - WALRUS"
-msgstr "TESTNET 服务条款 - WALRUS"
+msgstr ""
 
 #: docs/legal/testnet_tos.md:6
+#, fuzzy
 msgid "Last updated: October 17, 2024"
 msgstr "**最后更新：** 2024年6月18日"
 
