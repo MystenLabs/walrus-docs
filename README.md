@@ -18,8 +18,18 @@ You can also build and access the documentation locally (assuming you have Rust 
 cargo install mdbook
 cargo install mdbook-admonish@1.18.0 --locked
 cargo install mdbook-katex@0.9.0 --locked
-cargo install mdbook-linkcheck2@0.8.1 --locked
+cargo install mdbook-linkcheck2 --locked
+cargo install mdbook-i18n-helpers --locked
 mdbook serve
+```
+
+### Using translated version
+
+If there is a translated resource in `po/` directory, it can be specified through `MDBOOK_BOOK__LANGUAGE` like below:
+
+```bash
+MDBOOK_BOOK__LANGUAGE=zh_CN mdbook build
+MDBOOK_BOOK__LANGUAGE=zh_CN mdbook serve
 ```
 
 ## Get help and report issues

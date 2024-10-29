@@ -6,7 +6,8 @@ src = "docs"
 title = "Walrus"
 
 [build]
-build-dir = "build"
+# build-dir = "build"
+extra-watch-dirs = ["po"]
 
 [output.html]
 theme = "theme"
@@ -35,3 +36,6 @@ assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 # Using `\(` and `\)` for inline math and `\[` and `\]` for math blocks.
 block-delimiter = { left = "\\[", right = "\\]" }
 inline-delimiter = { left = "\\(", right = "\\)" }
+
+[preprocessor.gettext]
+after = ["links"]
