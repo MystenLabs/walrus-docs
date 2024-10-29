@@ -18,6 +18,7 @@ You can also build and access the documentation locally (assuming you have Rust 
 cargo install mdbook
 cargo install mdbook-admonish@1.18.0 --locked
 cargo install mdbook-katex@0.9.0 --locked
+cargo install mdbook-linkcheck2@0.8.1 --locked
 mdbook serve
 ```
 
