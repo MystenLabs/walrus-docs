@@ -36,5 +36,5 @@ To be part of this journey:
 
 - Follow us on [Twitter](https://x.com/WalrusProtocol)
 - Join our [Discord](https://discord.com/invite/walrusprotocol)
-- [Build apps](../README.md) on Walrus
+- [Build apps](../index.md) on Walrus
 - [Publish a Walrus Site](../walrus-sites/intro.md) and share it
