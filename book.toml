@@ -17,7 +17,6 @@ optional = true
 follow-web-links = true
 warning-policy = "error"
 exclude = [
-  'MystenLabs/walrus-docs',
   'walrus\.site', # No service worker in the link checker.
   'google\.com',
   'x\.com',
