@@ -217,9 +217,20 @@ msgid "Terms of service"
 msgstr "服务条款"
 
 #: docs/SUMMARY.md:71
-msgid ""
-"Glossary Devnet terms of service Testnet terms of service Privacy policy"
-msgstr "术语表 开发网络服务条款 测试网络服务条款 隐私政策"
+msgid "Glossary"
+msgstr "术语表"
+
+#: docs/SUMMARY.md:71
+msgid "Devnet terms of service"
+msgstr "开发网络服务条款"
+
+#: docs/SUMMARY.md:71
+msgid "Testnet terms of service"
+msgstr "测试网络服务条款"
+
+#: docs/SUMMARY.md:71
+msgid "Privacy policy"
+msgstr "隐私政策"
 
 #: docs/index.md:5
 msgid ""
@@ -1024,7 +1035,6 @@ msgid "Join our [Discord](https://discord.com/invite/walrusprotocol)"
 msgstr "加入我们的[Discord](https://discord.com/invite/walrusprotocol)"
 
 #: docs/blog/03_whitepaper.md:41
-#, fuzzy
 msgid "[Build apps](../index.md) on Walrus"
 msgstr "在Walrus上[构建应用](../README.md)"
 
@@ -1427,7 +1437,6 @@ msgstr ""
 "式存储大量数据并可能认证为可用的体验："
 
 #: docs/design/objectives_use_cases.md:56
-#, fuzzy
 msgid ""
 "**Storage of media for NFT or dApps:** Walrus can directly store and serve "
 "media such as images, sounds, sprites, videos, other game assets, and so on. "
@@ -1439,7 +1448,6 @@ msgstr ""
 "多媒体dapps。"
 
 #: docs/design/objectives_use_cases.md:60
-#, fuzzy
 msgid ""
 "**AI related use cases:** Walrus can store clean data sets of training data, "
 "datasets with a known and verified provenance, models, weights and proofs of "
@@ -1451,7 +1459,6 @@ msgstr ""
 "性和真实性。"
 
 #: docs/design/objectives_use_cases.md:64
-#, fuzzy
 msgid ""
 "**Storage of long term archival of blockchain history:** Walrus can act as a "
 "lower-cost decentralized store to store blockchain history. For Sui, this "
@@ -1464,7 +1471,6 @@ msgstr ""
 "代码或二进制文件的历史快照。"
 
 #: docs/design/objectives_use_cases.md:69
-#, fuzzy
 msgid ""
 "**Support availability for L2s:** Walrus allows parties to certify the "
 "availability of blobs, as required by L2s that need data to be stored and be "
@@ -1477,7 +1483,6 @@ msgstr ""
 "执行的零知识证明或大规模欺诈证明。"
 
 #: docs/design/objectives_use_cases.md:74
-#, fuzzy
 msgid ""
 "**Support a fully decentralized web experience:** Walrus can host fully "
 "decentralized web experiences, including all resources (such as js, css, "
@@ -1490,7 +1495,6 @@ msgstr ""
 "验，使链上完全去中心化的前端和后端成为可能。它将完整的“web”带回“web3”。"
 
 #: docs/design/objectives_use_cases.md:79
-#, fuzzy
 msgid ""
 "**Support subscription models for media:** Creators can store encrypted "
 "media on Walrus and only provide access via decryption keys to parties that "
@@ -3147,7 +3151,6 @@ msgstr ""
 "此外，用户可以通过质押 dApp 或 Sui 智能合约 [质押和取消质押](./stake.md)。"
 
 #: docs/usage/client-cli.md:3
-#, fuzzy
 msgid "Using the Walrus client"
 msgstr "使用 Walrus 客户端"
 
@@ -3172,7 +3175,6 @@ msgstr ""
 "`walrus` 的每个子命令也可以使用 `--help` 调用，以打印其特定参数及其含义。"
 
 #: docs/usage/client-cli.md:17
-#, fuzzy
 msgid "Walrus system information"
 msgstr "Walrus 系统信息"
 
@@ -3227,7 +3229,6 @@ msgstr ""
 "```"
 
 #: docs/usage/client-cli.md:76
-#, fuzzy
 msgid "Storing blobs on Walrus can be achieved through the following command:"
 msgstr "可以通过以下命令在 Walrus 上存储 blob："
 
@@ -5290,7 +5291,6 @@ msgstr ""
 "```"
 
 #: docs/walrus-sites/intro.md:17
-#, fuzzy
 msgid ""
 "```admonish danger title=\"Walrus Sites Devnet being discontinued\"\n"
 "Since the Walrus Devnet will [be shut down\n"
@@ -6349,7 +6349,6 @@ msgstr ""
 "也像往常一样工作。"
 
 #: docs/walrus-sites/linking.md:17
-#, fuzzy
 msgid "Linking to resources in other Walrus Sites"
 msgstr "链接到其他 Walrus 站点中的资源"
 
@@ -6378,7 +6377,6 @@ msgstr ""
 "非常重要。"
 
 #: docs/walrus-sites/linking.md:28
-#, fuzzy
 msgid "The solution: Walrus Sites links"
 msgstr "解决方案： Walrus 站点链接"
 
@@ -6524,7 +6522,6 @@ msgstr ""
 "example-walrus-sites/tree/main/flatland)。"
 
 #: docs/walrus-sites/overview.md:3
-#, fuzzy
 msgid "Technical Overview"
 msgstr "技术概述"
 
@@ -6550,7 +6547,6 @@ msgstr ""
 "元数据并指向 Walrus blob ID。"
 
 #: docs/walrus-sites/overview.md:13
-#, fuzzy
 msgid "The Walrus Sites objects on Sui"
 msgstr "Sui 上的 Walrus 站点对象"
 
@@ -6866,7 +6862,6 @@ msgstr ""
 "`assets/cat.png`）。"
 
 #: docs/walrus-sites/overview.md:140
-#, fuzzy
 msgid "The site builder"
 msgstr "站点构建器"
 
@@ -7276,7 +7271,6 @@ msgid "Walrus Sites - TERMS of SERVICE"
 msgstr "Walrus 站点 - 服务条款"
 
 #: docs/walrus-sites/tos.md:7
-#, fuzzy
 msgid "Last Updated: June 18, 2024"
 msgstr "**最后更新：** 2024年6月18日"
 
@@ -8070,12 +8064,10 @@ msgid "Approved name"
 msgstr "批准名称"
 
 #: docs/glossary.md:11
-#, fuzzy
 msgid "Description"
 msgstr "描述"
 
 #: docs/glossary.md:13
-#, fuzzy
 msgid "storage node (SN)"
 msgstr "存储节点 (SN)"
 
@@ -8691,62 +8683,51 @@ msgid "[PERSONAL INFORMATION WE COLLECT](#personal-information-we-collect)"
 msgstr "[我们收集的个人信息](#personal-information-we-collect)"
 
 #: docs/legal/privacy.md:19
-#, fuzzy
 msgid "[HOW WE USE YOUR INFORMATION](#how-we-use-your-information)"
 msgstr "我们如何使用您的信息"
 
 #: docs/legal/privacy.md:20
-#, fuzzy
 msgid "[HOW WE DISCLOSE YOUR INFORMATION](#how-we-disclose-your-information)"
 msgstr "我们如何披露您的信息"
 
 #: docs/legal/privacy.md:22
-#, fuzzy
 msgid "[YOUR PRIVACY CHOICES AND RIGHTS](#your-privacy-choices-and-rights)"
 msgstr "您的隐私选择和权利"
 
 #: docs/legal/privacy.md:24
-#, fuzzy
 msgid "[SECURITY OF YOUR INFORMATION](#security-of-your-information)"
 msgstr "您的信息安全"
 
 #: docs/legal/privacy.md:26
-#, fuzzy
 msgid "[INTERNATIONAL DATA TRANSFERS](#international-data-transfers)"
 msgstr "国际数据传输"
 
 #: docs/legal/privacy.md:28
-#, fuzzy
 msgid "[RETENTION OF PERSONAL INFORMATION](#retention-of-personal-information)"
 msgstr "个人信息的保留"
 
 #: docs/legal/privacy.md:30
-#, fuzzy
 msgid ""
 "[SUPPLEMENTAL NOTICE FOR CALIFORNIA RESIDENTS](#supplemental-notice-for-"
 "california-residents)"
 msgstr "加利福尼亚州居民的补充通知"
 
 #: docs/legal/privacy.md:32
-#, fuzzy
 msgid ""
 "[SUPPLEMENTAL NOTICE FOR NEVADA RESIDENTS](#supplemental-notice-for-nevada-"
 "residents)"
 msgstr "内华达州居民的补充通知"
 
 #: docs/legal/privacy.md:34
-#, fuzzy
 msgid "[CHILDREN'S INFORMATION](#childrens-information)"
 msgstr "儿童信息"
 
 #: docs/legal/privacy.md:35
-#, fuzzy
 msgid ""
 "[THIRD-PARTY'S WEBSITES/APPLICATIONS](#third-party-websitesapplications)"
 msgstr "第三方网站/应用程序"
 
 #: docs/legal/privacy.md:37
-#, fuzzy
 msgid "[SUPERVISORY AUTHORITY](#supervisory-authority)"
 msgstr "监督机构"
 
@@ -8790,7 +8771,6 @@ msgstr ""
 "务，您将被视为已接受更新的隐私政策。"
 
 #: docs/legal/privacy.md:60
-#, fuzzy
 msgid "PERSONAL INFORMATION WE COLLECT"
 msgstr "我们收集的个人信息"
 
@@ -8915,9 +8895,8 @@ msgstr ""
 "请、简历和/或求职信回复这些职位发布，我们将收集并使用这些信息来评估您的资格。"
 
 #: docs/legal/privacy.md:116
-#, fuzzy
 msgid "B.  **Information Collected Automatically**"
-msgstr "C. **从其他来源收集的信息**"
+msgstr "B. **从其他来源收集的信息**"
 
 #: docs/legal/privacy.md:118
 msgid ""
