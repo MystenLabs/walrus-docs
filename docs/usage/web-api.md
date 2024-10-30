@@ -70,6 +70,7 @@ may still be temporarily unavailable:
 - `http://walrus.krates.ai:9000`
 - `http://walrus-testnet.stakingdefenseleague.com:9000`
 - `http://walrus.sui.thepassivetrust.com:9000`
+- `http://walrus.globalstake.io:9000`
 
 ### Public publishers
 
@@ -94,6 +95,7 @@ may still be temporarily unavailable:
 - `http://walrus-tn.juicystake.io:9090`
 - `http://walrus-testnet.stakingdefenseleague.com:9001`
 - `http://walrus.sui.thepassivetrust.com:9001`
+- `http://walrus.globalstake.io:9001`
 
 ## HTTP API Usage
 
