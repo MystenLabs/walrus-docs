@@ -4,7 +4,7 @@
 
 ### Preparation
 
-RBE uses [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers) as a translation framework.
+It uses [mdbook-i18n-helpers](https://github.com/google/mdbook-i18n-helpers) as a translation framework.
 The following tools are required.
 
 * GNU gettext utilities ( `msgmerge` and `msgcat` )
