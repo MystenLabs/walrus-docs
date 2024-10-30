@@ -24,7 +24,8 @@ mdbook serve
 
 ### Using translated version
 
-If there is a translated resource in `po/` directory, it can be specified through `MDBOOK_BOOK__LANGUAGE` like below:
+If there is a translated resource in `po/` directory, it can be specified through 
+`MDBOOK_BOOK__LANGUAGE` like below:
 
 ```bash
 MDBOOK_BOOK__LANGUAGE=zh_CN mdbook build
