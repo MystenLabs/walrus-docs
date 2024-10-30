@@ -24,7 +24,7 @@ mdbook serve
 
 ### Using translated version
 
-If there is a translated resource in `po/` directory, it can be specified through 
+If there is a translated resource in `po/` directory, it can be specified through  
 `MDBOOK_BOOK__LANGUAGE` like below:
 
 ```bash
