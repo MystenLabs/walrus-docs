@@ -517,7 +517,7 @@ msgid ""
 "widespread faults."
 msgstr ""
 "利用擦除编码的创新，Walrus能够快速且稳健地将非结构化数据blob编码成较小的切"
-"片，分布并存储在存储节点网络中。即使多达三分之二的切片丢失，也可以使用部分切"
+"片，分布并存储在存储节点网络中。即使多达三分之二的slivers丢失，也可以使用部分切"
 "片快速重建原始blob。这在将复制因子保持在最低4x-5x的同时实现，类似于现有的基于"
 "云的服务，但具有去中心化和对更广泛故障的弹性等额外优势。"
 
@@ -657,7 +657,7 @@ msgid ""
 "functions will be designed with the feedback we gather in mind."
 msgstr ""
 "Walrus的未来更新将允许动态更改去中心化存储节点的集合，以及更改每个存储节点管"
-"理的切片的映射。可用的操作和工具也将扩展到涵盖更多与存储相关的用例。许多这些"
+"理的slivers的映射。可用的操作和工具也将扩展到涵盖更多与存储相关的用例。许多这些"
 "功能将根据我们收集的反馈进行设计。"
 
 #: docs/blog/01_announcing_walrus.md:74
@@ -878,7 +878,7 @@ msgid ""
 "OpenAPI specification: Walrus storage nodes, aggregators, and publishers "
 "expose their API specifications at the path `/v1/api`."
 msgstr ""
-"OpenAPI规范：Walrus存储节点、聚合器和发布者在路径`/v1/api`公开其API规范。"
+"OpenAPI规范：Walrus存储节点、聚合器和发布器在路径`/v1/api`公开其API规范。"
 
 #: docs/blog/02_devnet_update.md:36
 msgid ""
@@ -1566,9 +1566,9 @@ msgid ""
 "with a storage node that actually stores all slivers of the shard and is "
 "ready to serve them."
 msgstr ""
-"每个blob都被擦除编码成多个**切片**。每个存储的blob的切片成为所有分片的一部"
+"每个blob都被擦除编码成多个**slivers**。每个存储的blob的slivers成为所有分片的一部"
 "分。在任何存储纪元中的一个分片都与一个存储节点相关联，该节点实际存储该分片的"
-"所有切片并准备提供服务。"
+"所有slivers并准备提供服务。"
 
 #: docs/design/architecture.md:24
 msgid ""
@@ -1611,7 +1611,7 @@ msgid ""
 "They are optional in that end users may reconstruct blobs directly or run a "
 "local aggregator to perform Walrus reads over web2 technologies locally."
 msgstr ""
-"**聚合器**是从切片重建blob并通过传统的web2技术（如HTTP）将其提供给用户的客户"
+"**聚合器**是从slivers重建blob并通过传统的web2技术（如HTTP）将其提供给用户的客户"
 "端。它们是可选的，因为最终用户可以直接重建blob或运行本地聚合器以通过本地的"
 "web2技术执行Walrus读取。"
 
@@ -1632,7 +1632,7 @@ msgid ""
 "**Publishers** are clients that help end users store a blob using web2 "
 "technologies, using less bandwidth and custom logic."
 msgstr ""
-"**发布者**是使用web2技术帮助最终用户存储blob的客户端，使用更少的带宽和自定义"
+"**发布器**是使用web2技术帮助最终用户存储blob的客户端，使用更少的带宽和自定义"
 "逻辑。"
 
 #: docs/design/architecture.md:52
@@ -1644,7 +1644,7 @@ msgid ""
 "them into a certificate, as well as all other on-chain actions."
 msgstr ""
 "实际上，他们通过传统的web2协议（如HTTP）接收要发布的blob，并代表最终用户运行"
-"Walrus存储协议。这包括将blob编码成切片，将切片分发到存储节点，收集存储节点签"
+"Walrus存储协议。这包括将blob编码成slivers，将slivers分发到存储节点，收集存储节点签"
 "名并将其聚合成证书，以及所有其他链上操作。"
 
 #: docs/design/architecture.md:57
@@ -1657,7 +1657,7 @@ msgid ""
 "encoding the blob and comparing the result to the blob ID in the certificate."
 msgstr ""
 "它们是可选的，因为用户可以直接与Sui和存储节点交互以存储blob。最终用户始终可以"
-"通过检查链上与blob的**[可用性点](./properties.md)**相关的事件来验证发布者是否"
+"通过检查链上与blob的**[可用性点](./properties.md)**相关的事件来验证发布器是否"
 "正确履行了职责，然后执行读取以查看Walrus是否返回blob，或对blob进行编码并将结"
 "果与证书中的blob ID进行比较。"
 
@@ -1670,9 +1670,9 @@ msgid ""
 "provides a means for end users to audit the correct operation of both caches "
 "and publishers."
 msgstr ""
-"聚合器、发布者和最终用户不被视为系统的可信组件，它们可能会任意偏离协议。然"
-"而，Walrus的一些安全属性仅适用于使用诚实中介（缓存和发布者）的诚实最终用户。"
-"Walrus为最终用户提供了一种审计缓存和发布者正确操作的方法。"
+"聚合器、发布器和最终用户不被视为系统的可信组件，它们可能会任意偏离协议。然"
+"而，Walrus的一些安全属性仅适用于使用诚实中介（缓存和发布器）的诚实最终用户。"
+"Walrus为最终用户提供了一种审计缓存和发布器正确操作的方法。"
 
 #: docs/design/encoding.md:3
 msgid "Encoding, overheads, and verification"
@@ -1756,13 +1756,13 @@ msgstr "所有编码和解码操作都是确定性的，编码器对此没有自
 msgid ""
 "For each blob, multiple symbols are combined into a **sliver**, which is "
 "then assigned to a shard."
-msgstr "对于每个blob，多个符号被组合成一个**切片**，然后分配给一个分片。"
+msgstr "对于每个blob，多个符号被组合成一个**slivers**，然后分配给一个分片。"
 
 #: docs/design/encoding.md:21
 msgid ""
 "Storage nodes manage one or more shards, and corresponding slivers of each "
 "blob are distributed to all the storage shards."
-msgstr "存储节点管理一个或多个分片，每个blob的相应切片分布到所有存储分片。"
+msgstr "存储节点管理一个或多个分片，每个blob的相应slivers分布到所有存储分片。"
 
 #: docs/design/encoding.md:24
 msgid ""
@@ -1805,7 +1805,7 @@ msgid ""
 "resulting hashes into a Merkle tree. Then the root of the Merkle tree is the "
 "blob hash used to derive the blob ID that identifies the blob in the system."
 msgstr ""
-"Walrus对每个分片中的切片表示进行哈希处理，并将生成的哈希添加到Merkle树中。然"
+"Walrus对每个分片中的slivers表示进行哈希处理，并将生成的哈希添加到Merkle树中。然"
 "后，Merkle树的根是用于派生系统中标识blob的blob哈希。"
 
 #: docs/design/encoding.md:38
@@ -1847,7 +1847,7 @@ msgid ""
 "ID represent an incorrect encoding. This happens only if the user that "
 "encoded the blob was faulty or malicious and encoded it incorrectly."
 msgstr ""
-"一组等于重建阈值的切片属于一个blob ID，这些切片要么不一致，要么导致重建不同的"
+"一组等于重建阈值的slivers属于一个blob ID，这些slivers要么不一致，要么导致重建不同的"
 "ID，代表了不正确的编码。这只有在编码blob的用户有故障或恶意并且错误编码时才会"
 "发生。"
 
@@ -1858,8 +1858,8 @@ msgid ""
 "and upon request return either the inconsistency proof or an inconsistency "
 "certificate posted on chain."
 msgstr ""
-"Walrus可以从每个切片中提取一个符号以形成不一致证明。存储节点可以删除属于不一"
-"致编码blob的切片，并在请求时返回不一致证明或链上发布的不一致证书。"
+"Walrus可以从每个slivers中提取一个符号以形成不一致证明。存储节点可以删除属于不一"
+"致编码blob的slivers，并在请求时返回不一致证明或链上发布的不一致证书。"
 
 #: docs/design/operations.md:5
 msgid ""
@@ -1987,7 +1987,7 @@ msgid ""
 msgstr ""
 "如果一个blob ID没有正确编码，可以在稍后时间将一个**不一致证明证书**上传到链"
 "上。此操作会发出一个**不一致的blob事件**，表示该blob ID的读取结果总是返回"
-"`None`。这表明其切片可以被存储节点删除，除了一个返回`None`的指示器。"
+"`None`。这表明其slivers可以被存储节点删除，除了一个返回`None`的指示器。"
 
 #: docs/design/operations-sui.md:51
 msgid ""
@@ -2000,7 +2000,7 @@ msgid ""
 msgstr ""
 "向Walrus写入数据的用户需要执行Sui交易以获取存储并认证blob。创建或使用blob可用"
 "性证明的用户仅读取链以证明或验证事件的发出。节点每个纪元只读取一次区块链以获"
-"取委员会元数据，然后通过blob ID直接从存储节点请求切片以读取Walrus资源。"
+"取委员会元数据，然后通过blob ID直接从存储节点请求slivers以读取Walrus资源。"
 
 #: docs/design/operations-sui.md:57
 msgid "Governance operations on Sui"
@@ -2077,7 +2077,7 @@ msgid ""
 "publisher to perform steps on their behalf."
 msgstr ""
 "当用户想要存储一个 blob 时，他们首先对其进行纠删编码并计算 blob ID。然后他们"
-"可以自己执行以下步骤，或者使用发布者代为执行这些步骤。"
+"可以自己执行以下步骤，或者使用发布器代为执行这些步骤。"
 
 #: docs/design/operations-off-chain.md:22
 msgid ""
@@ -2093,7 +2093,7 @@ msgid ""
 "The user sends the blob metadata to all storage nodes and each of the blob "
 "slivers to the storage node that currently manages the corresponding shard."
 msgstr ""
-"用户将 blob 元数据发送到所有存储节点，并将每个 blob 切片发送到当前管理相应分"
+"用户将 blob 元数据发送到所有存储节点，并将每个 blob slivers发送到当前管理相应分"
 "片的存储节点。"
 
 #: docs/design/operations-off-chain.md:29
@@ -2104,9 +2104,9 @@ msgid ""
 "statement that it holds the sliver for blob ID (and metadata) and returns it "
 "to the user."
 msgstr ""
-"管理分片的存储节点接收一个切片并根据 blob ID 进行检查。它还检查是否存在具有 "
+"管理分片的存储节点接收一个slivers并根据 blob ID 进行检查。它还检查是否存在具有 "
 "blob ID 的 blob 资源，该资源被授权存储 blob。如果正确，存储节点会签署一份声"
-"明，表明它持有 blob ID（和元数据）的切片，并将其返回给用户。"
+"明，表明它持有 blob ID（和元数据）的slivers，并将其返回给用户。"
 
 #: docs/design/operations-off-chain.md:34
 msgid ""
@@ -2127,7 +2127,7 @@ msgid ""
 "After the PoA, and without user involvement, storage nodes sync and recover "
 "any missing metadata and slivers."
 msgstr ""
-"在 PoA 之后，无需用户参与，存储节点会同步并恢复任何缺失的元数据和切片。"
+"在 PoA 之后，无需用户参与，存储节点会同步并恢复任何缺失的元数据和slivers。"
 
 #: docs/design/operations-off-chain.md:43
 msgid ""
@@ -2140,9 +2140,9 @@ msgid ""
 "process to completion."
 msgstr ""
 "用户等待 2/3 的分片签名返回以创建可用性证书。代码的速率低于 1/3，即使只有 "
-"1/3 的分片返回切片进行读取，也允许重建。因为最多 1/3 的存储节点可能会失败，这"
-"确保了如果读取者从所有存储节点请求切片时的重建。整个过程可以由接收 blob 并推"
-"动过程完成的发布者进行调解。"
+"1/3 的分片返回slivers进行读取，也允许重建。因为最多 1/3 的存储节点可能会失败，这"
+"确保了如果读取者从所有存储节点请求slivers时的重建。整个过程可以由接收 blob 并推"
+"动过程完成的发布器进行调解。"
 
 #: docs/design/operations-off-chain.md:49
 msgid "Refresh availability"
@@ -2158,7 +2158,7 @@ msgid ""
 msgstr ""
 "因为刷新存储持续时间不需要内容数据，刷新完全在协议内的链上进行。要请求延长 "
 "blob 的可用性，用户提供适当的存储资源。成功后，这会发出一个事件，存储节点接收"
-"该事件以延长每个切片的存储时间。"
+"该事件以延长每个slivers的存储时间。"
 
 #: docs/design/operations-off-chain.md:56
 msgid "Inconsistent resource flow"
@@ -2172,7 +2172,7 @@ msgid ""
 "inconsistency proof for the blob ID. It then uses the proof to create an "
 "inconsistency certificate and upload it on chain."
 msgstr ""
-"当一个正确的存储节点尝试重建一个超过 [ PoA ](./properties.md) 的 blob 的切片"
+"当一个正确的存储节点尝试重建一个超过 [ PoA ](./properties.md) 的 blob 的slivers"
 "时，如果 blob 的编码不正确，这可能会失败。在这种情况下，存储节点可以提取 "
 "blob ID 的不一致证明。然后它使用该证明创建一个不一致证书并将其上传到链上。"
 
@@ -2184,7 +2184,7 @@ msgstr "流程如下："
 msgid ""
 "A storage node fails to reconstruct a sliver, and instead computes an "
 "inconsistency proof."
-msgstr "存储节点未能重建切片，而是计算出不一致证明。"
+msgstr "存储节点未能重建slivers，而是计算出不一致证明。"
 
 #: docs/design/operations-off-chain.md:67
 msgid ""
@@ -2210,7 +2210,7 @@ msgid ""
 "the blob ID for the [availability period](./properties.md). No storage "
 "attestation challenges are issued for this blob ID."
 msgstr ""
-"在收到不一致资源事件后，正确的存储节点删除 blob ID 的切片数据，并在元数据中记"
+"在收到不一致资源事件后，正确的存储节点删除 blob ID 的slivers数据，并在元数据中记"
 "录在 [ 可用性期间 ](./properties.md) 返回 `None`。不会为此 blob ID 发出存储认"
 "证挑战。"
 
@@ -2295,7 +2295,7 @@ msgid ""
 "The reader authenticates the slivers returned with the blob ID, reconstructs "
 "the blob, and decides whether the contents are a valid blob or inconsistent."
 msgstr ""
-"读取者使用 blob ID 验证返回的切片，重建 blob，并决定内容是有效的 blob 还是不"
+"读取者使用 blob ID 验证返回的slivers，重建 blob，并决定内容是有效的 blob 还是不"
 "一致的。"
 
 #: docs/design/operations-off-chain.md:106
@@ -2317,7 +2317,7 @@ msgid ""
 "During an epoch, a correct storage node challenges all shards to provide "
 "symbols for blob slivers past PoA:"
 msgstr ""
-"在一个纪元期间，正确的存储节点挑战所有分片以提供超过 PoA 的 blob 切片的符号："
+"在一个纪元期间，正确的存储节点挑战所有分片以提供超过 PoA 的 blob slivers的符号："
 
 #: docs/design/operations-off-chain.md:115
 msgid ""
@@ -2533,7 +2533,7 @@ msgid ""
 "After the PoA, if a correct storage node cannot recover a sliver, it can "
 "produce an inconsistency proof for the blob ID."
 msgstr ""
-"在 PoA 之后，如果正确的存储节点无法恢复切片，它可以为该 blob ID 生成不一致性"
+"在 PoA 之后，如果正确的存储节点无法恢复slivers，它可以为该 blob ID 生成不一致性"
 "证明。"
 
 #: docs/design/properties.md:30
@@ -2587,7 +2587,7 @@ msgid ""
 "reconstruct them."
 msgstr ""
 "**存储纪元更改时的分片传输和恢复：** Walrus 使用的编码方案旨在允许在分片故障"
-"的情况下进行高效恢复。尝试恢复切片的存储节点只需获取与丢失数据相同数量级的数"
+"的情况下进行高效恢复。尝试恢复slivers的存储节点只需获取与丢失数据相同数量级的数"
 "据即可重建它们。"
 
 #: docs/design/future.md:11
@@ -2598,8 +2598,8 @@ msgid ""
 "may be used to retrieve these slivers for missing blobs."
 msgstr ""
 "**可用于采样可用性的轻客户端的详细信息：** 个人客户端可以从 Sui 元数据中采样"
-"已认证的 blobs，并采样它们存储的某些切片的可用性。链上赏金可用于检索这些丢失 "
-"blob 的切片。"
+"已认证的 blobs，并采样它们存储的某些slivers的可用性。链上赏金可用于检索这些丢失 "
+"blob 的slivers。"
 
 #: docs/usage/setup.md:5
 msgid ""
@@ -3546,7 +3546,7 @@ msgid ""
 msgstr ""
 "除了 CLI 和 JSON 模式外，Walrus 客户端还提供 _daemon 模式。在此模式下，它运行"
 "一个简单的 Web 服务器，分别在 _aggregator_ 和 _publisher_ 角色中提供存储和读"
-"取 blob 的 HTTP 接口。我们还提供 [公共聚合器和发布者服务](#public-services) "
+"取 blob 的 HTTP 接口。我们还提供 [公共聚合器和发布器服务](#public-services) "
 "以尝试 Walrus HTTP API，而无需运行本地客户端。"
 
 #: docs/usage/web-api.md:11
@@ -3560,7 +3560,7 @@ msgid ""
 "(`31415`):"
 msgstr ""
 "您可以使用以下命令运行守护进程，在同一地址 (`127.0.0.1`) 和端口 (`31415`) 上"
-"同时提供聚合器和发布者："
+"同时提供聚合器和发布器："
 
 #: docs/usage/web-api.md:17
 msgid "\"127.0.0.1:31415\""
@@ -3570,7 +3570,7 @@ msgstr "\"127.0.0.1:31415\""
 msgid ""
 "Or you may run the aggregator and publisher processes separately on "
 "different addresses/ports:"
-msgstr "或者，您可以在不同的地址/端口上分别运行聚合器和发布者进程："
+msgstr "或者，您可以在不同的地址/端口上分别运行聚合器和发布器进程："
 
 #: docs/usage/web-api.md:23
 msgid "\"127.0.0.1:31415\" # run an aggregator to read blobs\n"
@@ -3578,17 +3578,17 @@ msgstr "\"127.0.0.1:31415\" # 运行聚合器以读取 blob\n"
 
 #: docs/usage/web-api.md:24
 msgid "\"127.0.0.1:31416\" # run a publisher to store blobs\n"
-msgstr "\"127.0.0.1:31416\" # 运行发布者以存储 blob\n"
+msgstr "\"127.0.0.1:31416\" # 运行发布器以存储 blob\n"
 
 #: docs/usage/web-api.md:27
 msgid ""
 "The aggregator provides all read APIs, the publisher all the store APIs, and "
 "the daemon provides both."
-msgstr "聚合器提供所有读取 API，发布者提供所有存储 API，守护进程提供两者。"
+msgstr "聚合器提供所有读取 API，发布器提供所有存储 API，守护进程提供两者。"
 
 #: docs/usage/web-api.md:36
 msgid "Using a public aggregator or publisher"
-msgstr "使用公共聚合器或发布者"
+msgstr "使用公共聚合器或发布器"
 
 #: docs/usage/web-api.md:38
 msgid ""
@@ -3599,8 +3599,8 @@ msgid ""
 "below."
 msgstr ""
 "对于某些用例（例如，公共网站），或者只是尝试 HTTP API，需要一个公开可访问的聚"
-"合器和/或发布者。几家公司运行此类聚合器和发布者，请参阅下面的公共 [聚合器]"
-"(#public-aggregators) 和 [发布者](#public-publishers) 列表。"
+"合器和/或发布器。几家公司运行此类聚合器和发布器，请参阅下面的公共 [聚合器]"
+"(#public-aggregators) 和 [发布器](#public-publishers) 列表。"
 
 #: docs/usage/web-api.md:42
 msgid ""
@@ -3608,8 +3608,8 @@ msgid ""
 "larger files, you need to [run your own publisher](#local-daemon) or use the "
 "[CLI](./client-cli.md)."
 msgstr ""
-"公共发布者默认将请求限制为 10 MiB。如果您想上传更大的文件，您需要 [运行自己的"
-"发布者](#local-daemon) 或使用 [CLI](./client-cli.md)。"
+"公共发布器默认将请求限制为 10 MiB。如果您想上传更大的文件，您需要 [运行自己的"
+"发布器](#local-daemon) 或使用 [CLI](./client-cli.md)。"
 
 #: docs/usage/web-api.md:45
 msgid ""
@@ -3618,7 +3618,7 @@ msgid ""
 "uncontrolled public access to publishing without requiring some "
 "authentication and compensation for the funds used."
 msgstr ""
-"另外，请注意，发布者在服务端消耗 (Testnet) SUI 和 WAL，主网部署可能无法在不要"
+"另外，请注意，发布器在服务端消耗 (Testnet) SUI 和 WAL，主网部署可能无法在不要"
 "求某些身份验证和补偿所用资金的情况下提供不受控制的公共发布访问。"
 
 #: docs/usage/web-api.md:49
@@ -3718,7 +3718,7 @@ msgstr "`http://walrus.sui.thepassivetrust.com:9000`"
 
 #: docs/usage/web-api.md:76
 msgid "Public publishers"
-msgstr "公共发布者"
+msgstr "公共发布器"
 
 #: docs/usage/web-api.md:78
 msgid "`https://publisher.walrus-testnet.walrus.space`"
@@ -3815,7 +3815,7 @@ msgid ""
 "respectively. For example:"
 msgstr ""
 "对于以下示例，我们假设您将 `AGGREGATOR` 和 `PUBLISHER` 环境变量设置为您所需的"
-"聚合器和发布者。例如："
+"聚合器和发布器。例如："
 
 #: docs/usage/web-api.md:106
 msgid "https://aggregator.walrus-testnet.walrus.space"
@@ -3835,7 +3835,7 @@ msgid ""
 "```"
 msgstr ""
 "```admonish tip title=\"API 规范\"\n"
-"Walrus 聚合器和发布者在路径 `/v1/api` 公开其 API 规范。您可以在浏览器中查看，"
+"Walrus 聚合器和发布器在路径 `/v1/api` 公开其 API 规范。您可以在浏览器中查看，"
 "例如，<https://aggregator.walrus-testnet.walrus.space/v1/api>\n"
 "```"
 
@@ -3850,7 +3850,7 @@ msgid ""
 "or daemon as follows:"
 msgstr ""
 "您可以通过简单的 HTTP PUT 请求与守护进程交互。例如，使用 [cURL](https://curl."
-"se)，您可以使用发布者或守护进程存储 blob，如下所示："
+"se)，您可以使用发布器或守护进程存储 blob，如下所示："
 
 #: docs/usage/web-api.md:121 docs/usage/web-api.md:130
 #: docs/usage/web-api.md:159
@@ -4152,7 +4152,7 @@ msgstr "聚合器服务允许通过 HTTP 请求读取 blob。"
 
 #: docs/dev-guide/components.md:28
 msgid "Publisher services are used store blobs to Walrus."
-msgstr "发布者服务用于将 blob 存储到 Walrus。"
+msgstr "发布器服务用于将 blob 存储到 Walrus。"
 
 #: docs/dev-guide/components.md:29
 msgid ""
@@ -4168,8 +4168,8 @@ msgid ""
 "custom services, aggregators, or publishers that expose HTTP APIs to avoid "
 "the need to run locally a binary client."
 msgstr ""
-"聚合器、发布者和其他服务使用客户端 API 与 Walrus 交互。使用 Walrus 的服务的最"
-"终用户通过公开 HTTP API 的自定义服务、聚合器或发布者与存储交互，以避免在本地"
+"聚合器、发布器和其他服务使用客户端 API 与 Walrus 交互。使用 Walrus 的服务的最"
+"终用户通过公开 HTTP API 的自定义服务、聚合器或发布器与存储交互，以避免在本地"
 "运行二进制客户端的需要。"
 
 #: docs/dev-guide/dev-operations.md:5
@@ -4198,7 +4198,7 @@ msgstr "您可以使用命令在本地派生文件的 blob ID：`walrus blob-id 
 msgid ""
 "Walrus may be used to **store a blob**, via the native client APIs or a "
 "publisher."
-msgstr "Walrus 可以通过本机客户端 API 或发布者 **存储 blob**。"
+msgstr "Walrus 可以通过本机客户端 API 或发布器 **存储 blob**。"
 
 #: docs/dev-guide/dev-operations.md:23
 msgid ""
@@ -4212,7 +4212,7 @@ msgid ""
 "identifies the blob. This is a `u256` often encoded as a URL-safe base64 "
 "string."
 msgstr ""
-"客户端或发布者对 blob 进行编码并派生一个标识 blob 的 _blob ID_。这是一个 "
+"客户端或发布器对 blob 进行编码并派生一个标识 blob 的 _blob ID_。这是一个 "
 "`u256`，通常编码为 URL 安全的 base64 字符串。"
 
 #: docs/dev-guide/dev-operations.md:27
@@ -4249,7 +4249,7 @@ msgid ""
 msgstr ""
 "一旦在最后一步中认证了相应的 Sui blob 对象，blob 就被认为在 Walrus 上可用。存"
 "储操作中涉及的步骤可以由二进制客户端执行，或者由通过 HTTP 接受和发布 blob 的"
-"发布者执行。"
+"发布器执行。"
 
 #: docs/dev-guide/dev-operations.md:38
 msgid ""
@@ -6798,7 +6798,7 @@ msgid ""
 "ID of the created Walrus Site."
 msgstr ""
 "** 站点发布 **（步骤 0）：站点开发人员使用 [`site-builder`](#the-site-"
-"builder) 或利用发布者发布 Walrus 站点。假设开发人员使用 SuiNS 名称 `dapp."
+"builder) 或利用发布器发布 Walrus 站点。假设开发人员使用 SuiNS 名称 `dapp."
 "sui` 指向创建的 Walrus 站点的对象 ID。"
 
 #: docs/walrus-sites/overview.md:122
@@ -8184,7 +8184,7 @@ msgstr ""
 
 #: docs/glossary.md:24
 msgid "publisher"
-msgstr "发布者"
+msgstr "发布器"
 
 #: docs/glossary.md:24
 msgid ""
@@ -8223,7 +8223,7 @@ msgid ""
 "entity interacting directly with the _SNs_; this can be an _aggregator_/"
 "_cache_, a _publisher_, or an _end user_"
 msgstr ""
-"直接与 _SNs_ 交互的实体；这可以是一个 _聚合器_/_缓存_、一个 _发布者_ 或一个 _"
+"直接与 _SNs_ 交互的实体；这可以是一个 _聚合器_/_缓存_、一个 _发布器_ 或一个 _"
 "终端用户_"
 
 #: docs/glossary.md:28
