@@ -56,7 +56,7 @@ public struct Blob has key, store {
 public struct Storage has key, store {
     id: UID,
     start_epoch: u32,
-    : u32,
+    end_epoch: u32,
     storage_size: u64,
 }
 ```
@@ -75,7 +75,7 @@ public fun storage(b: &Blob): &Storage;
 
 // Storage functions
 public fun start_epoch(self: &Storage): u32;
-public fun (self: &Storage): u32;
+public fun end_epoch(self: &Storage): u32;
 public fun storage_size(self: &Storage): u64;
 ...
 ```
@@ -94,7 +94,7 @@ public struct BlobRegistered has copy, drop {
     blob_id: u256,
     size: u64,
     encoding_type: u8,
-    : u32,
+    end_epoch: u32,
     deletable: bool,
     // The object id of the related `Blob` object
     object_id: ID,
@@ -104,7 +104,7 @@ public struct BlobRegistered has copy, drop {
 public struct BlobCertified has copy, drop {
     epoch: u32,
     blob_id: u256,
-    : u32,
+    end_epoch: u32,
     deletable: bool,
     // The object id of the related `Blob` object
     object_id: ID,
