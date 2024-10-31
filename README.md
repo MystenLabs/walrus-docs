@@ -22,15 +22,19 @@ cargo install mdbook-i18n-helpers --locked
 mdbook serve
 ```
 
-### Using translated version
+### Using translated versions
 
-If there is a translated resource in `po/` directory, it can be specified through  
-`MDBOOK_BOOK__LANGUAGE` like below:
+If there is a translated resource in `po/` directory, it can be specified through the
+`MDBOOK_BOOK__LANGUAGE` environment variable. For example, to build or serve the Chinese
+translation:
 
 ```bash
 MDBOOK_BOOK__LANGUAGE=zh_CN mdbook build
 MDBOOK_BOOK__LANGUAGE=zh_CN mdbook serve
 ```
+
+Please consult [TRANSLATING.md](./TRANSLATING.md) for further information on how to create and
+maintain translations.
 
 ## Get help and report issues
 

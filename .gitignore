@@ -23,6 +23,7 @@ __pycache__/
 config.yml
 working_dir
 *.log
+*~
 
 # Walrus binary and configuration
 walrus
@@ -30,6 +31,3 @@ walrus
 examples/CONFIG/bin/walrus
 ./client_config.yaml
 examples/CONFIG/config_dir/client_config.yaml
-
-book/
-po/*.po~
