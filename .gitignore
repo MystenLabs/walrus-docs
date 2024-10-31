@@ -23,6 +23,7 @@ __pycache__/
 config.yml
 working_dir
 *.log
+*~
 
 # Walrus binary and configuration
 walrus
