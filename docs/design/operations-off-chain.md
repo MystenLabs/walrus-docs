@@ -66,7 +66,7 @@ The flow is as follows:
   epoch. The storage nodes verify the proof and sign it.
 
 - The storage node who found the inconsistency aggregates the signatures into an inconsistency
-  certificate and sends it to the Walrus smart contract, which verifies it and emits a inconsistent
+  certificate and sends it to the Walrus smart contract, which verifies it and emits an inconsistent
   resource event.
 
 - Upon receiving an inconsistent resource event, correct storage nodes delete sliver data for the
