@@ -55,7 +55,7 @@ jobs:
       # Colors don't seem to work properly with the multiline commands.
       NO_COLOR: 1
       # Update the language picker in index.hbs to link new languages.
-      LANGUAGES: zh-CN
+      LANGUAGES: zh_CN
     steps:
       - uses: actions/checkout@v4
 
