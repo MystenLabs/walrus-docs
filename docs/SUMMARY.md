@@ -53,7 +53,6 @@
   - [Installing the site builder](./walrus-sites/tutorial-install.md)
   - [Publishing a Walrus Site](./walrus-sites/tutorial-publish.md)
   - [Bonus: Set a SuiNS name](./walrus-sites/tutorial-suins.md)
-  - [Migrating your site from Devnet](./walrus-sites/tutorial-migration.md)
 - [Advanced functionality](./walrus-sites/advanced.md)
   - [Site builder commands](./walrus-sites/commands.md)
   - [Advanced site-builder configuration](./walrus-sites/builder-config.md)
@@ -69,6 +68,5 @@
 ---
 
 [Glossary](./glossary.md)
-[Devnet terms of service](./legal/devnet_tos.md)
 [Testnet terms of service](./legal/testnet_tos.md)
 [Privacy policy](./legal/privacy.md)

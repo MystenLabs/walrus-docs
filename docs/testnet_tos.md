@@ -1,1 +1,0 @@
-# Testnet terms of service

@@ -1,1 +1,0 @@
-# Devnet terms of service
