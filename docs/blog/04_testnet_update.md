@@ -28,7 +28,7 @@ whole.
 
 - Find out how to
   [upload and delete deletable blobs](../usage/client-cli.md#reclaiming-space-via-deletable-blobs)
-  thought the CLI.
+  through the CLI.
 - Find out more about how [delete operations work](../dev-guide/dev-operations.md#delete).
 
 ## Epochs

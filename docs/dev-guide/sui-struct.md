@@ -113,7 +113,7 @@ public struct BlobCertified has copy, drop {
 }
 ```
 
-The `BlobCertified` event with `deletable` set to false and a `end_epoch` in the future indicates
+The `BlobCertified` event with `deletable` set to false and an `end_epoch` in the future indicates
 that the blob will be available until this epoch. A light client proof this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.
 

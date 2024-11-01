@@ -8,7 +8,7 @@ You can enable debug logging for Walrus by setting the environment variable `RUS
 
 Before undertaking any other steps, make sure you have the [latest `walrus`
 binary](./setup.md#installation). If you have multiple versions in different locations, find the
-the binary that will actually be used with `which walrus`.
+binary that will actually be used with `which walrus`.
 
 ## Old hardware or incompatible VMs
 

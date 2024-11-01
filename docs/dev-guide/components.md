@@ -23,7 +23,7 @@ Walrus is also composed of a number of Walrus-specific services and binaries:
   [Command Line Interface (CLI)](../usage/client-cli.md), a [JSON API](../usage/json-api.md)
   and an [HTTP API](../usage/web-api.md) to perform Walrus operations.
 - Aggregator services allow reading blobs via HTTP requests.
-- Publisher services are used store blobs to Walrus.
+- Publisher services are used to store blobs to Walrus.
 - A set of storage nodes store encoded blobs. These nodes form the decentralized
   storage infrastructure of Walrus.
 
