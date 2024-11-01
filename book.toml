@@ -11,7 +11,10 @@ extra-watch-dirs = ["po"]
 
 [output.html]
 theme = "theme"
-additional-css = ["./mdbook-admonish.css"]
+additional-css = [
+  "theme/css/mdbook-admonish.css",
+  "theme/css/language-picker.css",
+]
 
 [output.linkcheck]
 optional = true

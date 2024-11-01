@@ -54,11 +54,40 @@ jobs:
     env:
       # Colors don't seem to work properly with the multiline commands.
       NO_COLOR: 1
+      # Update the language picker in index.hbs to link new languages.
+      LANGUAGES: zh-CN
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install Gettext
+        run: |
+          sudo apt update
+          sudo apt install gettext
+
       - uses: ./.github/actions/build-mdbook
         with:
           with_linkcheck: "false"
+
+      - name: Build course in English
+        run: .github/workflows/build.sh en build
+      
+      - name: Build all translations
+        run: |
+          for po_lang in ${{ env.LANGUAGES }}; do
+              .github/workflows/build.sh $po_lang build/$po_lang
+              mv build/$po_lang/html build/html/$po_lang
+          done
+
+      - name: Build translation report
+        run: i18n-report report build/html/translation-report.html po/*.po
+
+      - name: Build synced translation report
+        run: |
+          cp -r po synced-po
+          MDBOOK_OUTPUT='{"xgettext": {"pot-file": "messages.pot", "granularity": 0}}' mdbook build -d synced-po
+          for file in synced-po/*.po; do msgmerge --update $file synced-po/messages.pot ; done
+          i18n-report report build/html/synced-translation-report.html synced-po/*.po
+
       - uses: ./.github/actions/set-up-walrus
         with:
           SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
