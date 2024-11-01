@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-10-30T04:43:24+08:00\n"
+"POT-Creation-Date: 2024-11-01T08:56:55+01:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -263,8 +263,8 @@ msgid ""
 "data to Mainnet. Detailed\n"
 "migration guides will be provided when Mainnet becomes available.\n"
 "\n"
-"Also see the [Testnet terms of service](../testnet_tos.md) under which this "
-"Testnet is made\n"
+"Also see the [Testnet terms of service](../legal/testnet_tos.md) under which "
+"this Testnet is made\n"
 "available.\n"
 "```"
 msgstr ""
@@ -912,7 +912,7 @@ msgstr ""
 #: docs/blog/04_testnet_update.md:31
 msgid ""
 "Find out how to [upload and delete deletable "
-"blobs](../usage/client-cli.md#reclaiming-space-via-deletable-blobs) thought "
+"blobs](../usage/client-cli.md#reclaiming-space-via-deletable-blobs) through "
 "the CLI."
 msgstr ""
 
@@ -1768,7 +1768,7 @@ msgstr ""
 msgid ""
 "The storage node who found the inconsistency aggregates the signatures into "
 "an inconsistency certificate and sends it to the Walrus smart contract, "
-"which verifies it and emits a inconsistent resource event."
+"which verifies it and emits an inconsistent resource event."
 msgstr ""
 
 #: docs/design/operations-off-chain.md:74
@@ -2987,114 +2987,122 @@ msgstr ""
 msgid "`http://walrus.sui.thepassivetrust.com:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:76
+#: docs/usage/web-api.md:75
+msgid "`http://walrus.globalstake.io:9000`"
+msgstr ""
+
+#: docs/usage/web-api.md:77
 msgid "Public publishers"
 msgstr ""
 
-#: docs/usage/web-api.md:78
+#: docs/usage/web-api.md:79
 msgid "`https://publisher.walrus-testnet.walrus.space`"
 msgstr ""
 
-#: docs/usage/web-api.md:79
+#: docs/usage/web-api.md:80
 msgid "`https://wal-publisher-testnet.staketab.org`"
 msgstr ""
 
-#: docs/usage/web-api.md:80
+#: docs/usage/web-api.md:81
 msgid "`https://walrus-testnet-publisher.bartestnet.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:81
+#: docs/usage/web-api.md:82
 msgid "`https://walrus-testnet-publisher.nodes.guru`"
 msgstr ""
 
-#: docs/usage/web-api.md:82
+#: docs/usage/web-api.md:83
 msgid "`https://sui-walrus-testnet.bwarelabs.com/publisher`"
 msgstr ""
 
-#: docs/usage/web-api.md:83
+#: docs/usage/web-api.md:84
 msgid "`https://walrus-testnet-publisher.stakin-nodes.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:84
+#: docs/usage/web-api.md:85
 msgid "`https://testnet-publisher-walrus.kiliglab.io`"
 msgstr ""
 
-#: docs/usage/web-api.md:85
+#: docs/usage/web-api.md:86
 msgid "`https://walrus-testnet-publisher.nodeinfra.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:86
+#: docs/usage/web-api.md:87
 msgid "`https://walrus-testnet.blockscope.net:11444`"
 msgstr ""
 
-#: docs/usage/web-api.md:87
+#: docs/usage/web-api.md:88
 msgid "`https://walrus-publish-testnet.chainode.tech:9003`"
 msgstr ""
 
-#: docs/usage/web-api.md:88
+#: docs/usage/web-api.md:89
 msgid "`https://walrus-testnet-publisher.starduststaking.com:11445`"
 msgstr ""
 
-#: docs/usage/web-api.md:89
+#: docs/usage/web-api.md:90
 msgid "`http://walrus-publisher-testnet.overclock.run:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:90
+#: docs/usage/web-api.md:91
 msgid "`http://walrus-testnet-publisher.everstake.one:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:91
+#: docs/usage/web-api.md:92
 msgid "`http://walrus.testnet.pops.one:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:92
+#: docs/usage/web-api.md:93
 msgid "`http://ivory-dakar-e5812.walrus.bdnodes.net:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:93
+#: docs/usage/web-api.md:94
 msgid "`http://publisher.testnet.sui.rpcpool.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:94
+#: docs/usage/web-api.md:95
 msgid "`http://walrus.krates.ai:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:95
+#: docs/usage/web-api.md:96
 msgid "`http://walrus-publisher-testnet.latitude-sui.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:96
+#: docs/usage/web-api.md:97
 msgid "`http://walrus-tn.juicystake.io:9090`"
 msgstr ""
 
-#: docs/usage/web-api.md:97
+#: docs/usage/web-api.md:98
 msgid "`http://walrus-testnet.stakingdefenseleague.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:98
+#: docs/usage/web-api.md:99
 msgid "`http://walrus.sui.thepassivetrust.com:9001`"
 msgstr ""
 
 #: docs/usage/web-api.md:100
-msgid "HTTP API Usage"
+msgid "`http://walrus.globalstake.io:9001`"
 msgstr ""
 
 #: docs/usage/web-api.md:102
+msgid "HTTP API Usage"
+msgstr ""
+
+#: docs/usage/web-api.md:104
 msgid ""
 "For the following examples, we assume you set the `AGGREGATOR` and "
 "`PUBLISHER` environment variables to your desired aggregator and publisher, "
 "respectively. For example:"
 msgstr ""
 
-#: docs/usage/web-api.md:106
+#: docs/usage/web-api.md:108
 msgid "https://aggregator.walrus-testnet.walrus.space"
 msgstr ""
 
-#: docs/usage/web-api.md:107
+#: docs/usage/web-api.md:109
 msgid "https://publisher.walrus-testnet.walrus.space"
 msgstr ""
 
-#: docs/usage/web-api.md:110
+#: docs/usage/web-api.md:112
 msgid ""
 "```admonish tip title=\"API specification\"\n"
 "Walrus aggregators and publishers expose their API specifications at the "
@@ -3104,181 +3112,181 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/web-api.md:115 docs/dev-guide/dev-operations.md:13
+#: docs/usage/web-api.md:117 docs/dev-guide/dev-operations.md:13
 msgid "Store"
 msgstr ""
 
-#: docs/usage/web-api.md:117
+#: docs/usage/web-api.md:119
 msgid ""
 "You can interact with the daemon through simple HTTP PUT requests. For "
 "example, with [cURL](https://curl.se), you can store blobs using a publisher "
 "or daemon as follows:"
 msgstr ""
 
-#: docs/usage/web-api.md:121 docs/usage/web-api.md:130
-#: docs/usage/web-api.md:159
+#: docs/usage/web-api.md:123 docs/usage/web-api.md:132
+#: docs/usage/web-api.md:161
 msgid "\"$PUBLISHER/v1/store\""
 msgstr ""
 
-#: docs/usage/web-api.md:121
+#: docs/usage/web-api.md:123
 msgid "\"some string\" # store the string `some string` for 1 storage epoch\n"
 msgstr ""
 
-#: docs/usage/web-api.md:122
+#: docs/usage/web-api.md:124
 msgid "\"$PUBLISHER/v1/store?epochs=5\""
 msgstr ""
 
-#: docs/usage/web-api.md:122
+#: docs/usage/web-api.md:124
 msgid "\"some/file\" # store file `some/file` for 5 storage epochs\n"
 msgstr ""
 
-#: docs/usage/web-api.md:125
+#: docs/usage/web-api.md:127
 msgid ""
 "The store HTTP API end points return information about the blob stored in "
 "JSON format. When a blob is stored for the first time, a `newlyCreated` "
 "field contains information about the new blob:"
 msgstr ""
 
-#: docs/usage/web-api.md:130 docs/usage/web-api.md:159
+#: docs/usage/web-api.md:132 docs/usage/web-api.md:161
 msgid "\"some other string\""
 msgstr ""
 
-#: docs/usage/web-api.md:132
+#: docs/usage/web-api.md:134
 msgid "\"newlyCreated\""
 msgstr ""
 
-#: docs/usage/web-api.md:133
+#: docs/usage/web-api.md:135
 msgid "\"blobObject\""
 msgstr ""
 
-#: docs/usage/web-api.md:134 docs/usage/web-api.md:141
+#: docs/usage/web-api.md:136 docs/usage/web-api.md:143
 msgid "\"id\""
 msgstr ""
 
-#: docs/usage/web-api.md:134
+#: docs/usage/web-api.md:136
 msgid "\"0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235\""
 msgstr ""
 
-#: docs/usage/web-api.md:135
+#: docs/usage/web-api.md:137
 msgid "\"storedEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:136 docs/usage/web-api.md:162
+#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
 msgid "\"blobId\""
 msgstr ""
 
-#: docs/usage/web-api.md:136 docs/usage/web-api.md:162
+#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
 msgid "\"Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM\""
 msgstr ""
 
-#: docs/usage/web-api.md:137
+#: docs/usage/web-api.md:139
 msgid "\"size\""
 msgstr ""
 
-#: docs/usage/web-api.md:138
+#: docs/usage/web-api.md:140
 msgid "\"erasureCodeType\""
 msgstr ""
 
-#: docs/usage/web-api.md:138
+#: docs/usage/web-api.md:140
 msgid "\"RedStuff\""
 msgstr ""
 
-#: docs/usage/web-api.md:139
+#: docs/usage/web-api.md:141
 msgid "\"certifiedEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:140
+#: docs/usage/web-api.md:142
 msgid "\"storage\""
 msgstr ""
 
-#: docs/usage/web-api.md:141
+#: docs/usage/web-api.md:143
 msgid "\"0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e\""
 msgstr ""
 
-#: docs/usage/web-api.md:142
+#: docs/usage/web-api.md:144
 msgid "\"startEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:143 docs/usage/web-api.md:167
+#: docs/usage/web-api.md:145 docs/usage/web-api.md:169
 msgid "\"endEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:144
+#: docs/usage/web-api.md:146
 msgid "\"storageSize\""
 msgstr ""
 
-#: docs/usage/web-api.md:147
+#: docs/usage/web-api.md:149
 msgid "\"encodedSize\""
 msgstr ""
 
-#: docs/usage/web-api.md:148
+#: docs/usage/web-api.md:150
 msgid "\"cost\""
 msgstr ""
 
-#: docs/usage/web-api.md:153
+#: docs/usage/web-api.md:155
 msgid ""
 "The information returned is the content of the [Sui blob "
 "object](../dev-guide/sui-struct.md)."
 msgstr ""
 
-#: docs/usage/web-api.md:155
+#: docs/usage/web-api.md:157
 msgid ""
 "When the aggregator finds a certified blob with the same blob ID and a "
 "sufficient validity period, it returns a `alreadyCertified` JSON structure:"
 msgstr ""
 
-#: docs/usage/web-api.md:161
+#: docs/usage/web-api.md:163
 msgid "\"alreadyCertified\""
 msgstr ""
 
-#: docs/usage/web-api.md:163
+#: docs/usage/web-api.md:165
 msgid "\"event\""
 msgstr ""
 
-#: docs/usage/web-api.md:164
+#: docs/usage/web-api.md:166
 msgid "\"txDigest\""
 msgstr ""
 
-#: docs/usage/web-api.md:164
+#: docs/usage/web-api.md:166
 msgid "\"CLE41JTPR2CgZRC1gyKK6P3xpQRHCetQMsmtEgqGjwst\""
 msgstr ""
 
-#: docs/usage/web-api.md:165
+#: docs/usage/web-api.md:167
 msgid "\"eventSeq\""
 msgstr ""
 
-#: docs/usage/web-api.md:165
+#: docs/usage/web-api.md:167
 msgid "\"0\""
 msgstr ""
 
-#: docs/usage/web-api.md:172
+#: docs/usage/web-api.md:174
 msgid ""
 "The field `event` returns the [Sui event ID](../dev-guide/sui-struct.md) "
 "that can be used to find the transaction that created the Sui Blob object on "
 "the Sui explorer or using a Sui SDK."
 msgstr ""
 
-#: docs/usage/web-api.md:175 docs/dev-guide/dev-operations.md:48
+#: docs/usage/web-api.md:177 docs/dev-guide/dev-operations.md:48
 msgid "Read"
 msgstr ""
 
-#: docs/usage/web-api.md:177
+#: docs/usage/web-api.md:179
 msgid ""
 "Blobs may be read from an aggregator or daemon using HTTP GET. For example, "
 "the following cURL command reads a blob and writes it to an output file:"
 msgstr ""
 
-#: docs/usage/web-api.md:181 docs/usage/web-api.md:187
+#: docs/usage/web-api.md:183 docs/usage/web-api.md:189
 msgid "\"$AGGREGATOR/v1/<some blob ID>\""
 msgstr ""
 
-#: docs/usage/web-api.md:184
+#: docs/usage/web-api.md:186
 msgid ""
 "Alternatively you may print the contents of a blob in the terminal with the "
 "cURL command:"
 msgstr ""
 
-#: docs/usage/web-api.md:190
+#: docs/usage/web-api.md:192
 msgid ""
 "```admonish tip title=\"Content sniffing\"\n"
 "Modern browsers will attempt to sniff the content type for such resources, "
@@ -3384,7 +3392,7 @@ msgid "Aggregator services allow reading blobs via HTTP requests."
 msgstr ""
 
 #: docs/dev-guide/components.md:28
-msgid "Publisher services are used store blobs to Walrus."
+msgid "Publisher services are used to store blobs to Walrus."
 msgstr ""
 
 #: docs/dev-guide/components.md:29
@@ -3758,8 +3766,8 @@ msgstr ""
 
 #: docs/dev-guide/sui-struct.md:118
 msgid ""
-"The `BlobCertified` event with `deletable` set to false and a `end_epoch` in "
-"the future indicates that the blob will be available until this epoch. A "
+"The `BlobCertified` event with `deletable` set to false and an `end_epoch` "
+"in the future indicates that the blob will be available until this epoch. A "
 "light client proof this event was emitted for a blob ID constitutes a proof "
 "of availability for the data with this blob ID."
 msgstr ""
@@ -4292,8 +4300,7 @@ msgstr ""
 msgid ""
 "Before undertaking any other steps, make sure you have the [latest `walrus` "
 "binary](./setup.md#installation). If you have multiple versions in different "
-"locations, find the the binary that will actually be used with `which "
-"walrus`."
+"locations, find the binary that will actually be used with `which walrus`."
 msgstr ""
 
 #: docs/usage/troubleshooting.md:15
