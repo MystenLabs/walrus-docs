@@ -287,7 +287,7 @@ public struct BlobCertified has copy, drop {
     is_extension: bool,
 }
 </code></pre>
-<p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and a <code>end_epoch</code> in the future indicates
+<p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and an <code>end_epoch</code> in the future indicates
 that the blob will be available until this epoch. A light client proof this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.</p>
 <p>When a deletable blob is deleted, a <code>BlobDeleted</code> event is emitted:</p>

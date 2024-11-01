@@ -535,7 +535,7 @@ whole.</p>
 <ul>
 <li>Find out how to
 <a href="blog/../usage/client-cli.html#reclaiming-space-via-deletable-blobs">upload and delete deletable blobs</a>
-thought the CLI.</li>
+through the CLI.</li>
 <li>Find out more about how <a href="blog/../dev-guide/dev-operations.html#delete">delete operations work</a>.</li>
 </ul>
 <h2 id="epochs"><a class="header" href="#epochs">Epochs</a></h2>
@@ -964,7 +964,7 @@ epoch. The storage nodes verify the proof and sign it.</p>
 </li>
 <li>
 <p>The storage node who found the inconsistency aggregates the signatures into an inconsistency
-certificate and sends it to the Walrus smart contract, which verifies it and emits a inconsistent
+certificate and sends it to the Walrus smart contract, which verifies it and emits an inconsistent
 resource event.</p>
 </li>
 <li>
@@ -1801,7 +1801,7 @@ the <a href="dev-guide/sui-struct.html">quick reference to the Walrus Sui struct
 <a href="dev-guide/../usage/client-cli.html">Command Line Interface (CLI)</a>, a <a href="dev-guide/../usage/json-api.html">JSON API</a>
 and an <a href="dev-guide/../usage/web-api.html">HTTP API</a> to perform Walrus operations.</li>
 <li>Aggregator services allow reading blobs via HTTP requests.</li>
-<li>Publisher services are used store blobs to Walrus.</li>
+<li>Publisher services are used to store blobs to Walrus.</li>
 <li>A set of storage nodes store encoded blobs. These nodes form the decentralized
 storage infrastructure of Walrus.</li>
 </ul>
@@ -1999,7 +1999,7 @@ public struct BlobCertified has copy, drop {
     is_extension: bool,
 }
 </code></pre>
-<p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and a <code>end_epoch</code> in the future indicates
+<p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and an <code>end_epoch</code> in the future indicates
 that the blob will be available until this epoch. A light client proof this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.</p>
 <p>When a deletable blob is deleted, a <code>BlobDeleted</code> event is emitted:</p>
@@ -2260,7 +2260,7 @@ the Walrus objects.</p>
 <h2 id="latest-binary"><a class="header" href="#latest-binary">Latest binary</a></h2>
 <p>Before undertaking any other steps, make sure you have the <a href="usage/./setup.html#installation">latest <code>walrus</code>
 binary</a>. If you have multiple versions in different locations, find the
-the binary that will actually be used with <code>which walrus</code>.</p>
+binary that will actually be used with <code>which walrus</code>.</p>
 <h2 id="old-hardware-or-incompatible-vms"><a class="header" href="#old-hardware-or-incompatible-vms">Old hardware or incompatible VMs</a></h2>
 <p>Our standard Ubuntu binary is known to cause problems on certain old hardware and in certain
 virtualized environments. If you experience errors like "Illegal instruction (core dumped)",
