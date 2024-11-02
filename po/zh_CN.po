@@ -2368,7 +2368,7 @@ msgstr ""
 
 #: docs/design/properties.md:3
 msgid "Walrus assurance and security properties"
-msgstr "基本架构和安全假设"
+msgstr "Walrus 保证和安全属性"
 
 #: docs/design/properties.md:5
 msgid ""
