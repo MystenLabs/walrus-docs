@@ -26,6 +26,6 @@ Furthermore, encodings and blob IDs may be incompatible with the future Testnet 
 developers will be responsible for migrating any Testnet applications and data to Mainnet. Detailed
 migration guides will be provided when Mainnet becomes available.
 
-Also see the [Testnet terms of service](../testnet_tos.md) under which this Testnet is made
+Also see the [Testnet terms of service](../legal/testnet_tos.md) under which this Testnet is made
 available.
 ```

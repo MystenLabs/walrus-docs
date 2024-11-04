@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-10-30T04:43:24+08:00\n"
+"POT-Creation-Date: 2024-11-01T08:56:55+01:00\n"
 "PO-Revision-Date: 2024-10-29 20:05+0800\n"
 "Last-Translator: lispking <lispking@qq.com>\n"
 "Language-Team: Chinese (simplified) <lispking@qq.com>\n"
@@ -283,8 +283,8 @@ msgid ""
 "data to Mainnet. Detailed\n"
 "migration guides will be provided when Mainnet becomes available.\n"
 "\n"
-"Also see the [Testnet terms of service](../testnet_tos.md) under which this "
-"Testnet is made\n"
+"Also see the [Testnet terms of service](../legal/testnet_tos.md) under which "
+"this Testnet is made\n"
 "available.\n"
 "```"
 msgstr ""
@@ -297,7 +297,7 @@ msgstr ""
 "此外，编码和blob ID可能与未来的测试网和主网不兼容，开发人员将负责将任何测试网"
 "应用程序和数据迁移到主网。当主网可用时，将提供详细的迁移指南。\n"
 "\n"
-"另请参阅[测试网服务条款](../testnet_tos.md)，了解此测试网的使用条款。\n"
+"另请参阅[测试网服务条款](../legal/testnet_tos.md)，了解此测试网的使用条款。\n"
 "```"
 
 #: docs/index.md:32 docs/usage/client-cli.md:59
@@ -517,9 +517,9 @@ msgid ""
 "widespread faults."
 msgstr ""
 "利用擦除编码的创新，Walrus能够快速且稳健地将非结构化数据blob编码成较小的切"
-"片，分布并存储在存储节点网络中。即使多达三分之二的slivers丢失，也可以使用部分切"
-"片快速重建原始blob。这在将复制因子保持在最低4x-5x的同时实现，类似于现有的基于"
-"云的服务，但具有去中心化和对更广泛故障的弹性等额外优势。"
+"片，分布并存储在存储节点网络中。即使多达三分之二的slivers丢失，也可以使用部分"
+"切片快速重建原始blob。这在将复制因子保持在最低4x-5x的同时实现，类似于现有的基"
+"于云的服务，但具有去中心化和对更广泛故障的弹性等额外优势。"
 
 #: docs/blog/01_announcing_walrus.md:16
 msgid "The Replication Challenge"
@@ -657,8 +657,8 @@ msgid ""
 "functions will be designed with the feedback we gather in mind."
 msgstr ""
 "Walrus的未来更新将允许动态更改去中心化存储节点的集合，以及更改每个存储节点管"
-"理的slivers的映射。可用的操作和工具也将扩展到涵盖更多与存储相关的用例。许多这些"
-"功能将根据我们收集的反馈进行设计。"
+"理的slivers的映射。可用的操作和工具也将扩展到涵盖更多与存储相关的用例。许多这"
+"些功能将根据我们收集的反馈进行设计。"
 
 #: docs/blog/01_announcing_walrus.md:74
 msgid ""
@@ -1103,9 +1103,10 @@ msgstr ""
 "副本不能保证它从Walrus整体上被删除。"
 
 #: docs/blog/04_testnet_update.md:31
+#, fuzzy
 msgid ""
 "Find out how to [upload and delete deletable blobs](../usage/client-cli."
-"md#reclaiming-space-via-deletable-blobs) thought the CLI."
+"md#reclaiming-space-via-deletable-blobs) through the CLI."
 msgstr ""
 "通过CLI了解如何[上传和删除可删除的blob](../usage/client-cli.md#reclaiming-"
 "space-via-deletable-blobs)。"
@@ -1566,9 +1567,9 @@ msgid ""
 "with a storage node that actually stores all slivers of the shard and is "
 "ready to serve them."
 msgstr ""
-"每个blob都被擦除编码成多个**slivers**。每个存储的blob的slivers成为所有分片的一部"
-"分。在任何存储纪元中的一个分片都与一个存储节点相关联，该节点实际存储该分片的"
-"所有slivers并准备提供服务。"
+"每个blob都被擦除编码成多个**slivers**。每个存储的blob的slivers成为所有分片的"
+"一部分。在任何存储纪元中的一个分片都与一个存储节点相关联，该节点实际存储该分"
+"片的所有slivers并准备提供服务。"
 
 #: docs/design/architecture.md:24
 msgid ""
@@ -1611,8 +1612,8 @@ msgid ""
 "They are optional in that end users may reconstruct blobs directly or run a "
 "local aggregator to perform Walrus reads over web2 technologies locally."
 msgstr ""
-"**聚合器**是从slivers重建blob并通过传统的web2技术（如HTTP）将其提供给用户的客户"
-"端。它们是可选的，因为最终用户可以直接重建blob或运行本地聚合器以通过本地的"
+"**聚合器**是从slivers重建blob并通过传统的web2技术（如HTTP）将其提供给用户的客"
+"户端。它们是可选的，因为最终用户可以直接重建blob或运行本地聚合器以通过本地的"
 "web2技术执行Walrus读取。"
 
 #: docs/design/architecture.md:44
@@ -1644,8 +1645,8 @@ msgid ""
 "them into a certificate, as well as all other on-chain actions."
 msgstr ""
 "实际上，他们通过传统的web2协议（如HTTP）接收要发布的blob，并代表最终用户运行"
-"Walrus存储协议。这包括将blob编码成slivers，将slivers分发到存储节点，收集存储节点签"
-"名并将其聚合成证书，以及所有其他链上操作。"
+"Walrus存储协议。这包括将blob编码成slivers，将slivers分发到存储节点，收集存储"
+"节点签名并将其聚合成证书，以及所有其他链上操作。"
 
 #: docs/design/architecture.md:57
 msgid ""
@@ -1805,8 +1806,8 @@ msgid ""
 "resulting hashes into a Merkle tree. Then the root of the Merkle tree is the "
 "blob hash used to derive the blob ID that identifies the blob in the system."
 msgstr ""
-"Walrus对每个分片中的slivers表示进行哈希处理，并将生成的哈希添加到Merkle树中。然"
-"后，Merkle树的根是用于派生系统中标识blob的blob哈希。"
+"Walrus对每个分片中的slivers表示进行哈希处理，并将生成的哈希添加到Merkle树中。"
+"然后，Merkle树的根是用于派生系统中标识blob的blob哈希。"
 
 #: docs/design/encoding.md:38
 msgid ""
@@ -1847,9 +1848,9 @@ msgid ""
 "ID represent an incorrect encoding. This happens only if the user that "
 "encoded the blob was faulty or malicious and encoded it incorrectly."
 msgstr ""
-"一组等于重建阈值的slivers属于一个blob ID，这些slivers要么不一致，要么导致重建不同的"
-"ID，代表了不正确的编码。这只有在编码blob的用户有故障或恶意并且错误编码时才会"
-"发生。"
+"一组等于重建阈值的slivers属于一个blob ID，这些slivers要么不一致，要么导致重建"
+"不同的ID，代表了不正确的编码。这只有在编码blob的用户有故障或恶意并且错误编码"
+"时才会发生。"
 
 #: docs/design/encoding.md:54
 msgid ""
@@ -1858,8 +1859,8 @@ msgid ""
 "and upon request return either the inconsistency proof or an inconsistency "
 "certificate posted on chain."
 msgstr ""
-"Walrus可以从每个slivers中提取一个符号以形成不一致证明。存储节点可以删除属于不一"
-"致编码blob的slivers，并在请求时返回不一致证明或链上发布的不一致证书。"
+"Walrus可以从每个slivers中提取一个符号以形成不一致证明。存储节点可以删除属于不"
+"一致编码blob的slivers，并在请求时返回不一致证明或链上发布的不一致证书。"
 
 #: docs/design/operations.md:5
 msgid ""
@@ -2093,8 +2094,8 @@ msgid ""
 "The user sends the blob metadata to all storage nodes and each of the blob "
 "slivers to the storage node that currently manages the corresponding shard."
 msgstr ""
-"用户将 blob 元数据发送到所有存储节点，并将每个 blob slivers发送到当前管理相应分"
-"片的存储节点。"
+"用户将 blob 元数据发送到所有存储节点，并将每个 blob slivers发送到当前管理相应"
+"分片的存储节点。"
 
 #: docs/design/operations-off-chain.md:29
 msgid ""
@@ -2104,9 +2105,9 @@ msgid ""
 "statement that it holds the sliver for blob ID (and metadata) and returns it "
 "to the user."
 msgstr ""
-"管理分片的存储节点接收一个slivers并根据 blob ID 进行检查。它还检查是否存在具有 "
-"blob ID 的 blob 资源，该资源被授权存储 blob。如果正确，存储节点会签署一份声"
-"明，表明它持有 blob ID（和元数据）的slivers，并将其返回给用户。"
+"管理分片的存储节点接收一个slivers并根据 blob ID 进行检查。它还检查是否存在具"
+"有 blob ID 的 blob 资源，该资源被授权存储 blob。如果正确，存储节点会签署一份"
+"声明，表明它持有 blob ID（和元数据）的slivers，并将其返回给用户。"
 
 #: docs/design/operations-off-chain.md:34
 msgid ""
@@ -2140,9 +2141,9 @@ msgid ""
 "process to completion."
 msgstr ""
 "用户等待 2/3 的分片签名返回以创建可用性证书。代码的速率低于 1/3，即使只有 "
-"1/3 的分片返回slivers进行读取，也允许重建。因为最多 1/3 的存储节点可能会失败，这"
-"确保了如果读取者从所有存储节点请求slivers时的重建。整个过程可以由接收 blob 并推"
-"动过程完成的发布器进行调解。"
+"1/3 的分片返回slivers进行读取，也允许重建。因为最多 1/3 的存储节点可能会失"
+"败，这确保了如果读取者从所有存储节点请求slivers时的重建。整个过程可以由接收 "
+"blob 并推动过程完成的发布器进行调解。"
 
 #: docs/design/operations-off-chain.md:49
 msgid "Refresh availability"
@@ -2172,9 +2173,9 @@ msgid ""
 "inconsistency proof for the blob ID. It then uses the proof to create an "
 "inconsistency certificate and upload it on chain."
 msgstr ""
-"当一个正确的存储节点尝试重建一个超过 [ PoA ](./properties.md) 的 blob 的slivers"
-"时，如果 blob 的编码不正确，这可能会失败。在这种情况下，存储节点可以提取 "
-"blob ID 的不一致证明。然后它使用该证明创建一个不一致证书并将其上传到链上。"
+"当一个正确的存储节点尝试重建一个超过 [ PoA ](./properties.md) 的 blob 的"
+"slivers时，如果 blob 的编码不正确，这可能会失败。在这种情况下，存储节点可以提"
+"取 blob ID 的不一致证明。然后它使用该证明创建一个不一致证书并将其上传到链上。"
 
 #: docs/design/operations-off-chain.md:63
 msgid "The flow is as follows:"
@@ -2195,10 +2196,11 @@ msgstr ""
 "证明并签署。"
 
 #: docs/design/operations-off-chain.md:70
+#, fuzzy
 msgid ""
 "The storage node who found the inconsistency aggregates the signatures into "
 "an inconsistency certificate and sends it to the Walrus smart contract, "
-"which verifies it and emits a inconsistent resource event."
+"which verifies it and emits an inconsistent resource event."
 msgstr ""
 "发现不一致的存储节点将签名汇总成一个不一致证书并将其发送到 Walrus 智能合约，"
 "智能合约验证并发出不一致资源事件。"
@@ -2210,9 +2212,9 @@ msgid ""
 "the blob ID for the [availability period](./properties.md). No storage "
 "attestation challenges are issued for this blob ID."
 msgstr ""
-"在收到不一致资源事件后，正确的存储节点删除 blob ID 的slivers数据，并在元数据中记"
-"录在 [ 可用性期间 ](./properties.md) 返回 `None`。不会为此 blob ID 发出存储认"
-"证挑战。"
+"在收到不一致资源事件后，正确的存储节点删除 blob ID 的slivers数据，并在元数据"
+"中记录在 [ 可用性期间 ](./properties.md) 返回 `None`。不会为此 blob ID 发出存"
+"储认证挑战。"
 
 #: docs/design/operations-off-chain.md:79
 msgid ""
@@ -2295,8 +2297,8 @@ msgid ""
 "The reader authenticates the slivers returned with the blob ID, reconstructs "
 "the blob, and decides whether the contents are a valid blob or inconsistent."
 msgstr ""
-"读取者使用 blob ID 验证返回的slivers，重建 blob，并决定内容是有效的 blob 还是不"
-"一致的。"
+"读取者使用 blob ID 验证返回的slivers，重建 blob，并决定内容是有效的 blob 还是"
+"不一致的。"
 
 #: docs/design/operations-off-chain.md:106
 msgid ""
@@ -2317,7 +2319,8 @@ msgid ""
 "During an epoch, a correct storage node challenges all shards to provide "
 "symbols for blob slivers past PoA:"
 msgstr ""
-"在一个纪元期间，正确的存储节点挑战所有分片以提供超过 PoA 的 blob slivers的符号："
+"在一个纪元期间，正确的存储节点挑战所有分片以提供超过 PoA 的 blob slivers的符"
+"号："
 
 #: docs/design/operations-off-chain.md:115
 msgid ""
@@ -2533,8 +2536,8 @@ msgid ""
 "After the PoA, if a correct storage node cannot recover a sliver, it can "
 "produce an inconsistency proof for the blob ID."
 msgstr ""
-"在 PoA 之后，如果正确的存储节点无法恢复slivers，它可以为该 blob ID 生成不一致性"
-"证明。"
+"在 PoA 之后，如果正确的存储节点无法恢复slivers，它可以为该 blob ID 生成不一致"
+"性证明。"
 
 #: docs/design/properties.md:30
 msgid ""
@@ -2587,8 +2590,8 @@ msgid ""
 "reconstruct them."
 msgstr ""
 "**存储纪元更改时的分片传输和恢复：** Walrus 使用的编码方案旨在允许在分片故障"
-"的情况下进行高效恢复。尝试恢复slivers的存储节点只需获取与丢失数据相同数量级的数"
-"据即可重建它们。"
+"的情况下进行高效恢复。尝试恢复slivers的存储节点只需获取与丢失数据相同数量级的"
+"数据即可重建它们。"
 
 #: docs/design/future.md:11
 msgid ""
@@ -2598,8 +2601,8 @@ msgid ""
 "may be used to retrieve these slivers for missing blobs."
 msgstr ""
 "**可用于采样可用性的轻客户端的详细信息：** 个人客户端可以从 Sui 元数据中采样"
-"已认证的 blobs，并采样它们存储的某些slivers的可用性。链上赏金可用于检索这些丢失 "
-"blob 的slivers。"
+"已认证的 blobs，并采样它们存储的某些slivers的可用性。链上赏金可用于检索这些丢"
+"失 blob 的slivers。"
 
 #: docs/usage/setup.md:5
 msgid ""
@@ -3716,99 +3719,107 @@ msgstr "`http://walrus-testnet.stakingdefenseleague.com:9000`"
 msgid "`http://walrus.sui.thepassivetrust.com:9000`"
 msgstr "`http://walrus.sui.thepassivetrust.com:9000`"
 
-#: docs/usage/web-api.md:76
+#: docs/usage/web-api.md:75
+msgid "`http://walrus.globalstake.io:9000`"
+msgstr "`http://walrus.globalstake.io:9000`"
+
+#: docs/usage/web-api.md:77
 msgid "Public publishers"
 msgstr "公共发布器"
 
-#: docs/usage/web-api.md:78
+#: docs/usage/web-api.md:79
 msgid "`https://publisher.walrus-testnet.walrus.space`"
 msgstr "`https://publisher.walrus-testnet.walrus.space`"
 
-#: docs/usage/web-api.md:79
+#: docs/usage/web-api.md:80
 msgid "`https://wal-publisher-testnet.staketab.org`"
 msgstr "`https://wal-publisher-testnet.staketab.org`"
 
-#: docs/usage/web-api.md:80
+#: docs/usage/web-api.md:81
 msgid "`https://walrus-testnet-publisher.bartestnet.com`"
 msgstr "`https://walrus-testnet-publisher.bartestnet.com`"
 
-#: docs/usage/web-api.md:81
+#: docs/usage/web-api.md:82
 msgid "`https://walrus-testnet-publisher.nodes.guru`"
 msgstr "`https://walrus-testnet-publisher.nodes.guru`"
 
-#: docs/usage/web-api.md:82
+#: docs/usage/web-api.md:83
 msgid "`https://sui-walrus-testnet.bwarelabs.com/publisher`"
 msgstr "`https://sui-walrus-testnet.bwarelabs.com/publisher`"
 
-#: docs/usage/web-api.md:83
+#: docs/usage/web-api.md:84
 msgid "`https://walrus-testnet-publisher.stakin-nodes.com`"
 msgstr "`https://walrus-testnet-publisher.stakin-nodes.com`"
 
-#: docs/usage/web-api.md:84
+#: docs/usage/web-api.md:85
 msgid "`https://testnet-publisher-walrus.kiliglab.io`"
 msgstr "`https://testnet-publisher-walrus.kiliglab.io`"
 
-#: docs/usage/web-api.md:85
+#: docs/usage/web-api.md:86
 msgid "`https://walrus-testnet-publisher.nodeinfra.com`"
 msgstr "`https://walrus-testnet-publisher.nodeinfra.com`"
 
-#: docs/usage/web-api.md:86
+#: docs/usage/web-api.md:87
 msgid "`https://walrus-testnet.blockscope.net:11444`"
 msgstr "`https://walrus-testnet.blockscope.net:11444`"
 
-#: docs/usage/web-api.md:87
+#: docs/usage/web-api.md:88
 msgid "`https://walrus-publish-testnet.chainode.tech:9003`"
 msgstr "`https://walrus-publish-testnet.chainode.tech:9003`"
 
-#: docs/usage/web-api.md:88
+#: docs/usage/web-api.md:89
 msgid "`https://walrus-testnet-publisher.starduststaking.com:11445`"
 msgstr "`https://walrus-testnet-publisher.starduststaking.com:11445`"
 
-#: docs/usage/web-api.md:89
+#: docs/usage/web-api.md:90
 msgid "`http://walrus-publisher-testnet.overclock.run:9001`"
 msgstr "`http://walrus-publisher-testnet.overclock.run:9001`"
 
-#: docs/usage/web-api.md:90
+#: docs/usage/web-api.md:91
 msgid "`http://walrus-testnet-publisher.everstake.one:9001`"
 msgstr "`http://walrus-testnet-publisher.everstake.one:9001`"
 
-#: docs/usage/web-api.md:91
+#: docs/usage/web-api.md:92
 msgid "`http://walrus.testnet.pops.one:9001`"
 msgstr "`http://walrus.testnet.pops.one:9001`"
 
-#: docs/usage/web-api.md:92
+#: docs/usage/web-api.md:93
 msgid "`http://ivory-dakar-e5812.walrus.bdnodes.net:9001`"
 msgstr "`http://ivory-dakar-e5812.walrus.bdnodes.net:9001`"
 
-#: docs/usage/web-api.md:93
+#: docs/usage/web-api.md:94
 msgid "`http://publisher.testnet.sui.rpcpool.com:9001`"
 msgstr "`http://publisher.testnet.sui.rpcpool.com:9001`"
 
-#: docs/usage/web-api.md:94
+#: docs/usage/web-api.md:95
 msgid "`http://walrus.krates.ai:9001`"
 msgstr "`http://walrus.krates.ai:9001`"
 
-#: docs/usage/web-api.md:95
+#: docs/usage/web-api.md:96
 msgid "`http://walrus-publisher-testnet.latitude-sui.com:9001`"
 msgstr "`http://walrus-publisher-testnet.latitude-sui.com:9001`"
 
-#: docs/usage/web-api.md:96
+#: docs/usage/web-api.md:97
 msgid "`http://walrus-tn.juicystake.io:9090`"
 msgstr "`http://walrus-tn.juicystake.io:9090`"
 
-#: docs/usage/web-api.md:97
+#: docs/usage/web-api.md:98
 msgid "`http://walrus-testnet.stakingdefenseleague.com:9001`"
 msgstr "`http://walrus-testnet.stakingdefenseleague.com:9001`"
 
-#: docs/usage/web-api.md:98
+#: docs/usage/web-api.md:99
 msgid "`http://walrus.sui.thepassivetrust.com:9001`"
 msgstr "`http://walrus.sui.thepassivetrust.com:9001`"
 
 #: docs/usage/web-api.md:100
+msgid "`http://walrus.globalstake.io:9001`"
+msgstr "`http://walrus.globalstake.io:9001`"
+
+#: docs/usage/web-api.md:102
 msgid "HTTP API Usage"
 msgstr "HTTP API 使用"
 
-#: docs/usage/web-api.md:102
+#: docs/usage/web-api.md:104
 msgid ""
 "For the following examples, we assume you set the `AGGREGATOR` and "
 "`PUBLISHER` environment variables to your desired aggregator and publisher, "
@@ -3817,15 +3828,15 @@ msgstr ""
 "对于以下示例，我们假设您将 `AGGREGATOR` 和 `PUBLISHER` 环境变量设置为您所需的"
 "聚合器和发布器。例如："
 
-#: docs/usage/web-api.md:106
+#: docs/usage/web-api.md:108
 msgid "https://aggregator.walrus-testnet.walrus.space"
 msgstr "https://aggregator.walrus-testnet.walrus.space"
 
-#: docs/usage/web-api.md:107
+#: docs/usage/web-api.md:109
 msgid "https://publisher.walrus-testnet.walrus.space"
 msgstr "https://publisher.walrus-testnet.walrus.space"
 
-#: docs/usage/web-api.md:110
+#: docs/usage/web-api.md:112
 msgid ""
 "```admonish tip title=\"API specification\"\n"
 "Walrus aggregators and publishers expose their API specifications at the "
@@ -3839,11 +3850,11 @@ msgstr ""
 "例如，<https://aggregator.walrus-testnet.walrus.space/v1/api>\n"
 "```"
 
-#: docs/usage/web-api.md:115 docs/dev-guide/dev-operations.md:13
+#: docs/usage/web-api.md:117 docs/dev-guide/dev-operations.md:13
 msgid "Store"
 msgstr "存储"
 
-#: docs/usage/web-api.md:117
+#: docs/usage/web-api.md:119
 msgid ""
 "You can interact with the daemon through simple HTTP PUT requests. For "
 "example, with [cURL](https://curl.se), you can store blobs using a publisher "
@@ -3852,24 +3863,24 @@ msgstr ""
 "您可以通过简单的 HTTP PUT 请求与守护进程交互。例如，使用 [cURL](https://curl."
 "se)，您可以使用发布器或守护进程存储 blob，如下所示："
 
-#: docs/usage/web-api.md:121 docs/usage/web-api.md:130
-#: docs/usage/web-api.md:159
+#: docs/usage/web-api.md:123 docs/usage/web-api.md:132
+#: docs/usage/web-api.md:161
 msgid "\"$PUBLISHER/v1/store\""
 msgstr "\"$PUBLISHER/v1/store\""
 
-#: docs/usage/web-api.md:121
+#: docs/usage/web-api.md:123
 msgid "\"some string\" # store the string `some string` for 1 storage epoch\n"
 msgstr "\"some string\" # 将字符串 `some string` 存储 1 个存储周期\n"
 
-#: docs/usage/web-api.md:122
+#: docs/usage/web-api.md:124
 msgid "\"$PUBLISHER/v1/store?epochs=5\""
 msgstr "\"$PUBLISHER/v1/store?epochs=5\""
 
-#: docs/usage/web-api.md:122
+#: docs/usage/web-api.md:124
 msgid "\"some/file\" # store file `some/file` for 5 storage epochs\n"
 msgstr "\"some/file\" # 将文件 `some/file` 存储 5 个存储周期\n"
 
-#: docs/usage/web-api.md:125
+#: docs/usage/web-api.md:127
 msgid ""
 "The store HTTP API end points return information about the blob stored in "
 "JSON format. When a blob is stored for the first time, a `newlyCreated` "
@@ -3878,89 +3889,89 @@ msgstr ""
 "存储 HTTP API 端点以 JSON 格式返回有关存储的 blob 的信息。当首次存储 blob "
 "时，`newlyCreated` 字段包含有关新 blob 的信息："
 
-#: docs/usage/web-api.md:130 docs/usage/web-api.md:159
+#: docs/usage/web-api.md:132 docs/usage/web-api.md:161
 msgid "\"some other string\""
 msgstr "\"some other string\""
 
-#: docs/usage/web-api.md:132
+#: docs/usage/web-api.md:134
 msgid "\"newlyCreated\""
 msgstr "\"newlyCreated\""
 
-#: docs/usage/web-api.md:133
+#: docs/usage/web-api.md:135
 msgid "\"blobObject\""
 msgstr "\"blobObject\""
 
-#: docs/usage/web-api.md:134 docs/usage/web-api.md:141
+#: docs/usage/web-api.md:136 docs/usage/web-api.md:143
 msgid "\"id\""
 msgstr "\"id\""
 
-#: docs/usage/web-api.md:134
+#: docs/usage/web-api.md:136
 msgid "\"0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235\""
 msgstr "\"0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235\""
 
-#: docs/usage/web-api.md:135
+#: docs/usage/web-api.md:137
 msgid "\"storedEpoch\""
 msgstr "\"storedEpoch\""
 
-#: docs/usage/web-api.md:136 docs/usage/web-api.md:162
+#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
 msgid "\"blobId\""
 msgstr "\"blobId\""
 
-#: docs/usage/web-api.md:136 docs/usage/web-api.md:162
+#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
 msgid "\"Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM\""
 msgstr "\"Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM\""
 
-#: docs/usage/web-api.md:137
+#: docs/usage/web-api.md:139
 msgid "\"size\""
 msgstr "\"size\""
 
-#: docs/usage/web-api.md:138
+#: docs/usage/web-api.md:140
 msgid "\"erasureCodeType\""
 msgstr "\"erasureCodeType\""
 
-#: docs/usage/web-api.md:138
+#: docs/usage/web-api.md:140
 msgid "\"RedStuff\""
 msgstr "\"RedStuff\""
 
-#: docs/usage/web-api.md:139
+#: docs/usage/web-api.md:141
 msgid "\"certifiedEpoch\""
 msgstr "\"certifiedEpoch\""
 
-#: docs/usage/web-api.md:140
+#: docs/usage/web-api.md:142
 msgid "\"storage\""
 msgstr "\"storage\""
 
-#: docs/usage/web-api.md:141
+#: docs/usage/web-api.md:143
 msgid "\"0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e\""
 msgstr "\"0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e\""
 
-#: docs/usage/web-api.md:142
+#: docs/usage/web-api.md:144
 msgid "\"startEpoch\""
 msgstr "\"startEpoch\""
 
-#: docs/usage/web-api.md:143 docs/usage/web-api.md:167
+#: docs/usage/web-api.md:145 docs/usage/web-api.md:169
 msgid "\"endEpoch\""
 msgstr "\"endEpoch\""
 
-#: docs/usage/web-api.md:144
+#: docs/usage/web-api.md:146
 msgid "\"storageSize\""
 msgstr "\"storageSize\""
 
-#: docs/usage/web-api.md:147
+#: docs/usage/web-api.md:149
 msgid "\"encodedSize\""
 msgstr "\"encodedSize\""
 
-#: docs/usage/web-api.md:148
+#: docs/usage/web-api.md:150
 msgid "\"cost\""
 msgstr "\"cost\""
 
-#: docs/usage/web-api.md:153
+#: docs/usage/web-api.md:155
 msgid ""
 "The information returned is the content of the [Sui blob object](../dev-"
 "guide/sui-struct.md)."
 msgstr "返回的信息是 [Sui blob 对象](../dev-guide/sui-struct.md) 的内容。"
 
-#: docs/usage/web-api.md:155
+#: docs/usage/web-api.md:157
 msgid ""
 "When the aggregator finds a certified blob with the same blob ID and a "
 "sufficient validity period, it returns a `alreadyCertified` JSON structure:"
@@ -3968,31 +3979,31 @@ msgstr ""
 "当聚合器找到具有相同 blob ID 和足够有效期的已认证 blob 时，它会返回一个 "
 "`alreadyCertified` JSON 结构："
 
-#: docs/usage/web-api.md:161
+#: docs/usage/web-api.md:163
 msgid "\"alreadyCertified\""
 msgstr "\"alreadyCertified\""
 
-#: docs/usage/web-api.md:163
+#: docs/usage/web-api.md:165
 msgid "\"event\""
 msgstr "\"event\""
 
-#: docs/usage/web-api.md:164
+#: docs/usage/web-api.md:166
 msgid "\"txDigest\""
 msgstr "\"txDigest\""
 
-#: docs/usage/web-api.md:164
+#: docs/usage/web-api.md:166
 msgid "\"CLE41JTPR2CgZRC1gyKK6P3xpQRHCetQMsmtEgqGjwst\""
 msgstr "\"CLE41JTPR2CgZRC1gyKK6P3xpQRHCetQMsmtEgqGjwst\""
 
-#: docs/usage/web-api.md:165
+#: docs/usage/web-api.md:167
 msgid "\"eventSeq\""
 msgstr "\"eventSeq\""
 
-#: docs/usage/web-api.md:165
+#: docs/usage/web-api.md:167
 msgid "\"0\""
 msgstr "\"0\""
 
-#: docs/usage/web-api.md:172
+#: docs/usage/web-api.md:174
 msgid ""
 "The field `event` returns the [Sui event ID](../dev-guide/sui-struct.md) "
 "that can be used to find the transaction that created the Sui Blob object on "
@@ -4001,11 +4012,11 @@ msgstr ""
 "字段 `event` 返回 [Sui 事件 ID](../dev-guide/sui-struct.md)，可用于查找在 "
 "Sui explorer 上创建 Sui Blob 对象的交易或使用 Sui SDK。"
 
-#: docs/usage/web-api.md:175 docs/dev-guide/dev-operations.md:48
+#: docs/usage/web-api.md:177 docs/dev-guide/dev-operations.md:48
 msgid "Read"
 msgstr "读取"
 
-#: docs/usage/web-api.md:177
+#: docs/usage/web-api.md:179
 msgid ""
 "Blobs may be read from an aggregator or daemon using HTTP GET. For example, "
 "the following cURL command reads a blob and writes it to an output file:"
@@ -4013,17 +4024,17 @@ msgstr ""
 "可以使用 HTTP GET 从聚合器或守护进程读取 blob。例如，以下 cURL 命令读取一个 "
 "blob 并将其写入输出文件："
 
-#: docs/usage/web-api.md:181 docs/usage/web-api.md:187
+#: docs/usage/web-api.md:183 docs/usage/web-api.md:189
 msgid "\"$AGGREGATOR/v1/<some blob ID>\""
 msgstr "\"$AGGREGATOR/v1/<some blob ID>\""
 
-#: docs/usage/web-api.md:184
+#: docs/usage/web-api.md:186
 msgid ""
 "Alternatively you may print the contents of a blob in the terminal with the "
 "cURL command:"
 msgstr "或者，您可以使用 cURL 命令在终端中打印 blob 的内容："
 
-#: docs/usage/web-api.md:190
+#: docs/usage/web-api.md:192
 msgid ""
 "```admonish tip title=\"Content sniffing\"\n"
 "Modern browsers will attempt to sniff the content type for such resources, "
@@ -4151,7 +4162,8 @@ msgid "Aggregator services allow reading blobs via HTTP requests."
 msgstr "聚合器服务允许通过 HTTP 请求读取 blob。"
 
 #: docs/dev-guide/components.md:28
-msgid "Publisher services are used store blobs to Walrus."
+#, fuzzy
+msgid "Publisher services are used to store blobs to Walrus."
 msgstr "发布器服务用于将 blob 存储到 Walrus。"
 
 #: docs/dev-guide/components.md:29
@@ -4593,9 +4605,10 @@ msgid ""
 msgstr ""
 
 #: docs/dev-guide/sui-struct.md:118
+#, fuzzy
 msgid ""
-"The `BlobCertified` event with `deletable` set to false and a `end_epoch` in "
-"the future indicates that the blob will be available until this epoch. A "
+"The `BlobCertified` event with `deletable` set to false and an `end_epoch` "
+"in the future indicates that the blob will be available until this epoch. A "
 "light client proof this event was emitted for a blob ID constitutes a proof "
 "of availability for the data with this blob ID."
 msgstr ""
@@ -5198,11 +5211,11 @@ msgid "Latest binary"
 msgstr "最新二进制文件"
 
 #: docs/usage/troubleshooting.md:11
+#, fuzzy
 msgid ""
 "Before undertaking any other steps, make sure you have the [latest `walrus` "
 "binary](./setup.md#installation). If you have multiple versions in different "
-"locations, find the the binary that will actually be used with `which "
-"walrus`."
+"locations, find the binary that will actually be used with `which walrus`."
 msgstr ""
 "在进行任何其他步骤之前，请确保您拥有 [最新的 `walrus` 二进制文件](./setup."
 "md#installation)。如果您在不同位置有多个版本，请使用 `which walrus` 找到实际"
