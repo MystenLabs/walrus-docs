@@ -68,6 +68,10 @@ runs:
     - name: Clone walrus-sites
       run: git clone https://github.com/MystenLabs/walrus-sites
       shell: bash
+    - name: Rust cache
+      uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: "walrus-sites -> target"
     - name: Build site-builder
       run: |
         cd walrus-sites
