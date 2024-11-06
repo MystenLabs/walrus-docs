@@ -151,11 +151,26 @@ The current Testnet deployment uses the following objects:
 ```yaml
 system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+exchange_object:
+  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
+  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
+  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
 ```
 
+Note that configuring multiple exchange objects are only supported with the CLI version 1.2.0 or
+higher.
+
+<!-- markdownlint-disable code-fence-style -->
+~~~admonish tip
 The easiest way to obtain the latest configuration is by downloading it from
-<https://github.com/MystenLabs/walrus-docs/blob/main/docs/client_config.yaml>.
+<https://docs.blob.store/client_config.yaml>:
+
+```sh
+curl https://docs.blob.store/client_config.yaml -o ~/.config/walrus/client_config.yaml
+```
+~~~
+<!-- markdownlint-enable code-fence-style -->
 
 ### Custom path (optional) {#config-custom-path}
 
@@ -173,7 +188,14 @@ The configuration file currently supports the following parameters:
 # deployment but then do not change over time.
 system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+
+# The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
+# random one is chosen for the exchange.
+exchange_object:
+  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
+  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
+  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
