@@ -28,8 +28,6 @@ config:
     names:
       - Byzantine
       - dApp
-      - Devnet
-      - devnets
       - GitHub
       - internet
       - JavaScript

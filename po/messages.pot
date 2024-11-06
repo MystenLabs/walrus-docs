@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-11-01T08:56:55+01:00\n"
+"POT-Creation-Date: 2024-11-01T09:10:07+01:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -169,56 +169,52 @@ msgstr ""
 msgid "Bonus: Set a SuiNS name"
 msgstr ""
 
-#: docs/SUMMARY.md:56
-msgid "Migrating your site from Devnet"
-msgstr ""
-
-#: docs/SUMMARY.md:57 docs/walrus-sites/advanced.md:3
+#: docs/SUMMARY.md:56 docs/walrus-sites/advanced.md:3
 msgid "Advanced functionality"
 msgstr ""
 
-#: docs/SUMMARY.md:58 docs/walrus-sites/commands.md:3
+#: docs/SUMMARY.md:57 docs/walrus-sites/commands.md:3
 msgid "Site builder commands"
 msgstr ""
 
-#: docs/SUMMARY.md:59
+#: docs/SUMMARY.md:58
 msgid "Advanced site-builder configuration"
 msgstr ""
 
-#: docs/SUMMARY.md:60 docs/walrus-sites/routing.md:3
+#: docs/SUMMARY.md:59 docs/walrus-sites/routing.md:3
 msgid "Specifying headers and routing"
 msgstr ""
 
-#: docs/SUMMARY.md:61 docs/walrus-sites/linking.md:3
+#: docs/SUMMARY.md:60 docs/walrus-sites/linking.md:3
 msgid "Linking from and to Walrus Sites"
 msgstr ""
 
-#: docs/SUMMARY.md:62 docs/walrus-sites/redirects.md:3
+#: docs/SUMMARY.md:61 docs/walrus-sites/redirects.md:3
 msgid "Redirecting objects to Walrus Sites"
 msgstr ""
 
-#: docs/SUMMARY.md:63
+#: docs/SUMMARY.md:62
 msgid "Technical overview"
 msgstr ""
 
-#: docs/SUMMARY.md:64 docs/walrus-sites/portal.md:3
+#: docs/SUMMARY.md:63 docs/walrus-sites/portal.md:3
 msgid "The Walrus Sites portal"
 msgstr ""
 
-#: docs/SUMMARY.md:65 docs/walrus-sites/authentication.md:3
+#: docs/SUMMARY.md:64 docs/walrus-sites/authentication.md:3
 msgid "Site data authentication"
 msgstr ""
 
-#: docs/SUMMARY.md:66 docs/walrus-sites/restrictions.md:3
+#: docs/SUMMARY.md:65 docs/walrus-sites/restrictions.md:3
 msgid "Known restrictions"
 msgstr ""
 
-#: docs/SUMMARY.md:67
+#: docs/SUMMARY.md:66
 msgid "Terms of service"
 msgstr ""
 
-#: docs/SUMMARY.md:71
-msgid "Glossary Devnet terms of service Testnet terms of service Privacy policy"
+#: docs/SUMMARY.md:70
+msgid "Glossary Testnet terms of service Privacy policy"
 msgstr ""
 
 #: docs/index.md:5
@@ -282,31 +278,17 @@ msgid ""
 msgstr ""
 
 #: docs/index.md:38
-msgid ""
-"```admonish danger title=\"Discontinuation of Walrus Devnet\"\n"
-"The previous Walrus Devnet instance is now deprecated and **will be shut "
-"down after 2024-10-31**.\n"
-"All data stored on Walrus Devnet (including Walrus Sites) will no longer be "
-"accessible at that\n"
-"point. You need to re-upload all data to Walrus Testnet if you want it to "
-"remain accessible. Walrus\n"
-"Sites also need to be migrated as described on the dedicated [migration\n"
-"page](./walrus-sites/tutorial-migration.md).\n"
-"```"
-msgstr ""
-
-#: docs/index.md:46
 msgid "Features"
 msgstr ""
 
-#: docs/index.md:48
+#: docs/index.md:40
 msgid ""
 "**Storage and retrieval:** Walrus supports storage operations to write and "
 "read blobs. It also allows anyone to prove that a blob has been stored and "
 "is available for retrieval at a later time."
 msgstr ""
 
-#: docs/index.md:52
+#: docs/index.md:44
 msgid ""
 "**Cost efficiency:** By utilizing advanced erasure coding, Walrus maintains "
 "storage costs at approximately five times the size of the stored blobs, and "
@@ -316,7 +298,7 @@ msgid ""
 "blob on a subset of storage nodes."
 msgstr ""
 
-#: docs/index.md:58
+#: docs/index.md:50
 msgid ""
 "**Integration with the Sui blockchain:** Walrus leverages "
 "[Sui](https://github.com/MystenLabs/sui) for coordination, attesting "
@@ -327,7 +309,7 @@ msgid ""
 "optionally delete it."
 msgstr ""
 
-#: docs/index.md:64
+#: docs/index.md:56
 msgid ""
 "**Epochs, tokenomics, and delegated proof of stake** Walrus is operated by a "
 "committee of storage nodes that evolve between epochs. A native token, WAL "
@@ -340,7 +322,7 @@ msgid ""
 "Sui platform."
 msgstr ""
 
-#: docs/index.md:72
+#: docs/index.md:64
 msgid ""
 "**Flexible access:** Users can interact with Walrus through a command-line "
 "interface (CLI), software development kits (SDKs), and web2 HTTP "
@@ -349,11 +331,11 @@ msgid ""
 "be run using local tools to maximize decentralization."
 msgstr ""
 
-#: docs/index.md:77
+#: docs/index.md:69
 msgid "Architecture and operations"
 msgstr ""
 
-#: docs/index.md:79
+#: docs/index.md:71
 msgid ""
 "Walrus's architecture ensures that content remains accessible and "
 "retrievable even when many storage nodes are unavailable or malicious. Under "
@@ -364,48 +346,48 @@ msgid ""
 "smart contracts."
 msgstr ""
 
-#: docs/index.md:85
+#: docs/index.md:77
 msgid "Organization"
 msgstr ""
 
-#: docs/index.md:87
+#: docs/index.md:79
 msgid "This documentation is split into several parts:"
 msgstr ""
 
-#: docs/index.md:89
+#: docs/index.md:81
 msgid "_Dev blog_ contains announcements and other blog posts."
 msgstr ""
 
-#: docs/index.md:90
+#: docs/index.md:82
 msgid ""
 "_Design_ describes the objectives, security properties, and architecture of "
 "Walrus."
 msgstr ""
 
-#: docs/index.md:91
+#: docs/index.md:83
 msgid ""
 "_Usage_ provides concrete information for developers. If you want to get "
 "started quickly, you can jump directly to the [setup "
 "chapter](./usage/setup.md)."
 msgstr ""
 
-#: docs/index.md:93
+#: docs/index.md:85
 msgid ""
 "_Walrus Sites_ describes how you can use Walrus and Sui together to build "
 "truly decentralized websites."
 msgstr ""
 
-#: docs/index.md:96
+#: docs/index.md:88
 msgid ""
 "Finally, we provide a [glossary](./glossary.md) that explains the "
 "terminology used throughout the documentation."
 msgstr ""
 
-#: docs/index.md:99
+#: docs/index.md:91
 msgid "Sources"
 msgstr ""
 
-#: docs/index.md:101
+#: docs/index.md:93
 msgid ""
 "This documentation is built using "
 "[mdBook](https://rust-lang.github.io/mdBook/) from source files in "
@@ -1064,10 +1046,10 @@ msgstr ""
 
 #: docs/blog/04_testnet_update.md:104
 msgid ""
-"[Migrate now](../walrus-sites/tutorial-migration.md) to take advantage of "
-"these new features! The old Walrus Sites, based on Walrus Devnet, will still "
-"be available for a short time. However, Devnet will be wiped soon (as "
-"described below), so it is recommended to migrate as soon as possible."
+"Migrate now to take advantage of these new features! The old Walrus Sites, "
+"based on Walrus Devnet, will still be available for a short time. However, "
+"Devnet will be wiped soon (as described below), so it is recommended to "
+"migrate as soon as possible."
 msgstr ""
 
 #: docs/blog/04_testnet_update.md:108
@@ -1080,8 +1062,7 @@ msgid ""
 "down after 2024-10-31**. All data stored on Walrus Devnet (including Walrus "
 "Sites) will no longer be accessible at that point. You need to re-upload all "
 "data to Walrus Testnet if you want it to remain accessible. Walrus Sites "
-"also need to be migrated as described on the dedicated [migration "
-"page](../walrus-sites/tutorial-migration.md)."
+"also need to be migrated."
 msgstr ""
 
 #: docs/design/objectives_use_cases.md:5
@@ -4323,11 +4304,11 @@ msgstr ""
 
 #: docs/usage/troubleshooting.md:24
 msgid ""
-"The Walrus Devnet and Testnet are wiped periodically and require updating to "
-"the latest binary and configuration. If you get an error like \"could not "
-"retrieve enough confirmations to certify the blob\", you are probably using "
-"an outdated configuration pointing to an inactive Walrus system. In this "
-"case, update your configuration file with the latest "
+"The Walrus Testnet is wiped periodically and requires updating to the latest "
+"binary and configuration. If you get an error like \"could not retrieve "
+"enough confirmations to certify the blob\", you are probably using an "
+"outdated configuration pointing to an inactive Walrus system. In this case, "
+"update your configuration file with the latest "
 "[configuration](./setup.md#configuration) and make sure the CLI uses the "
 "intended configuration."
 msgstr ""
@@ -4355,38 +4336,10 @@ msgid ""
 msgstr ""
 
 #: docs/walrus-sites/intro.md:11
-msgid ""
-"```admonish tip title=\"Make sure you update!\"\n"
-"With the move to Walrus Testnet, Walrus Sites are also being updated! They "
-"now use Walrus Testnet as\n"
-"the backing store, and they have been improved with new awesome features. "
-"[Migrate your\n"
-"site](./tutorial-migration.md) today to take advantage of these new "
-"features!\n"
-"```"
-msgstr ""
-
-#: docs/walrus-sites/intro.md:17
-msgid ""
-"```admonish danger title=\"Walrus Sites Devnet being discontinued\"\n"
-"Since the Walrus Devnet will [be shut down\n"
-"soon](../index.md#admonition-discontinuation-of-walrus-devnet), all the "
-"Walrus Sites stored on it will\n"
-"be wiped. To minimize the downtime, the Devnet Walrus Sites will be "
-"available after the Testnet\n"
-"upgrade for two weeks (until **2024-10-31**), to ensure that everyone has "
-"enough time to update.\n"
-"\n"
-"Make sure to reupload your sites to the Walrus Testnet before the shutdown "
-"to avoid downtime!\n"
-"```"
-msgstr ""
-
-#: docs/walrus-sites/intro.md:26
 msgid "At a high level, here are some of the most exciting features:"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:28
+#: docs/walrus-sites/intro.md:13
 msgid ""
 "Publishing a site does not require managing servers or complex "
 "configurations; just provide the source files (produced by your favorite web "
@@ -4394,14 +4347,14 @@ msgid ""
 "tool](./overview.md#the-site-builder), and you are done!"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:31
+#: docs/walrus-sites/intro.md:16
 msgid ""
 "Sites can be linked to from ordinary Sui objects. This feature enables, for "
 "example, creating an NFT collection in which _every single NFT_ has a "
 "_personalized website dedicated to it_."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:33
+#: docs/walrus-sites/intro.md:18
 msgid ""
 "Walrus Sites are owned by addresses on Sui and can be exchanged, shared, and "
 "updated thanks to Sui's flexible programming model. This means, among other "
@@ -4409,13 +4362,13 @@ msgid ""
 "system to have human-readable names. No more messing around with DNS!"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:37
+#: docs/walrus-sites/intro.md:22
 msgid ""
 "Thanks to Walrus's decentralization and extremely high data availability, "
 "there is no risk of having your site wiped for no reason."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:39
+#: docs/walrus-sites/intro.md:24
 msgid ""
 "Since they live on Walrus, these sites cannot have a backend in the "
 "traditional sense, and can be therefore considered \"static\" sites. "
@@ -4423,11 +4376,11 @@ msgid ""
 "Sui's programmability to add backend functionality to Walrus Sites!"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:43
+#: docs/walrus-sites/intro.md:28
 msgid "Show me"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:45
+#: docs/walrus-sites/intro.md:30
 msgid ""
 "To give you a very high-level intuition of how Walrus Sites work, let's look "
 "at an example: A simple NFT collection on Sui that has a frontend dApp to "
@@ -4435,7 +4388,7 @@ msgid ""
 "_specific, personalized Walrus Site_."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:49
+#: docs/walrus-sites/intro.md:34
 msgid ""
 "You can check out the mint page at <https://flatland.walrus.site/>. This "
 "site is served to your browser through the Walrus Site _portal_ "
@@ -4447,7 +4400,7 @@ msgid ""
 "Site from Sui and Walrus."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:56
+#: docs/walrus-sites/intro.md:41
 msgid ""
 "If you have a Sui wallet with some Testnet SUI, you can try and \"mint a new "
 "Flatlander\" from the site. This creates an NFT from the collection and "
@@ -4457,7 +4410,7 @@ msgid ""
 "that are based on the contents of the NFT."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:62
+#: docs/walrus-sites/intro.md:47
 msgid ""
 "The URL to this per-NFT site looks something like this: "
 "`https://2hzpawjycxuiuh36047yocxapc69g8ercrypa7ccsk8ek4iqu6.walrus.site/`. "
@@ -4468,33 +4421,33 @@ msgid ""
 "[0x644bc958...](https://suiscan.xyz/testnet/object/0x644bc958052463785c026a13be051d579c8a4d2dc93b1874dce5839d4fb18c5e)."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:69
+#: docs/walrus-sites/intro.md:54
 msgid "In summary:"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:71
+#: docs/walrus-sites/intro.md:56
 msgid ""
 "Walrus Sites are served through a portal; in this case, "
 "`https://walrus.site`. There can be many portals, and anyone can host one."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:73
+#: docs/walrus-sites/intro.md:58
 msgid ""
 "The subdomain on the URL points to a specific object on Sui that allows the "
 "browser to fetch and render the site resources. This pointer can be"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:75
+#: docs/walrus-sites/intro.md:60
 msgid "a SuiNS name, such as `flatland` in `https://flatland.walrus.site`, or"
 msgstr ""
 
-#: docs/walrus-sites/intro.md:76
+#: docs/walrus-sites/intro.md:61
 msgid ""
 "the Base36 encoding of a the Sui object ID, such as `0x644bc958...` in the "
 "example above."
 msgstr ""
 
-#: docs/walrus-sites/intro.md:78
+#: docs/walrus-sites/intro.md:63
 msgid ""
 "Curious to know how this magic is possible? Read the [technical "
 "overview](./overview.md)! If you just want to get started trying Walrus "
@@ -4714,62 +4667,6 @@ msgstr ""
 msgid ""
 "After approving the transaction, we can now browse "
 "<https://walrusgame.walrus.site>!"
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:3
-msgid "Migrating your site from Devnet to Testnet"
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:5
-msgid ""
-"The migration of a Walrus Site from the Devnet to the Testnet is a very "
-"simple manual process. This is required because both the storage backing the "
-"sites (Walrus) and the contracts on Sui implementing the Walrus Sites "
-"functionality have been updated."
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:14
-msgid ""
-"```admonish danger title=\"New default configuration path\"\n"
-"The default configuration file for the `site-builder` has been moved to the "
-"`./sites-config.yaml`\n"
-"instead of the old `./site-builder/assets/builder-example.yaml`.\n"
-"```"
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:19
-msgid "The steps are the following:"
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:21
-msgid ""
-"Get the latest version of the `walrus` binary, as well as the latest Walrus "
-"configuration file, following the [Walrus installation "
-"instructions](../usage/setup.md)."
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:23
-msgid ""
-"Ensure you have the latest version of the `site-builder` binary by following "
-"the [installation instructions](./tutorial-install.md) again. Remember to "
-"`git pull` if you are building from the repo and have cloned it previously. "
-"Pulling the repo also guarantees you have the latest sites configuration "
-"file, pointing to the correct contracts."
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:27
-msgid ""
-"Run the `site-builder` with the `publish` command on your site directory. "
-"This will create a new Walrus Site object on Sui, using the new contracts, "
-"and store the site files anew on Walrus Testnet. Note that this operation "
-"will create a new object ID for your site!"
-msgstr ""
-
-#: docs/walrus-sites/tutorial-migration.md:30
-msgid ""
-"Optional: If you had set up a SuiNS name for your site, you will need to "
-"point the name to the new site's object ID. See the [tutorial on setting a "
-"SuiNS name](./tutorial-suins.md) for more details."
 msgstr ""
 
 #: docs/walrus-sites/advanced.md:5
@@ -6915,100 +6812,6 @@ msgid ""
 "billion (1000000000) FROST"
 msgstr ""
 
-#: docs/legal/devnet_tos.md:4
-msgid "DEVNET TERMS OF SERVICE - WALRUS"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:6
-msgid "Last updated: June 13, 2024"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:8
-msgid ""
-"By using Mysten Labs Devnet software, technologies, tools, and other "
-"services (collectively “Devnet”), you agree to the general Terms of Service "
-"and these additional Devnet Terms of Service (together, the “Terms”). If you "
-"do not agree, do not participate in Devnet. If you are using Devnet on "
-"behalf of an organization, you represent and warrant that you are an "
-"authorized representative of that organization and have the authority to "
-"bind that business or entity to the Terms."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:14 docs/legal/testnet_tos.md:21
-msgid "Eligibility Criteria"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:16
-msgid "You may use Devnet only if you:"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:18 docs/legal/testnet_tos.md:25
-msgid "Are 18 years or older and capable of forming a binding contract with us."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:19
-msgid ""
-"Are not otherwise barred from participating in Devnet under applicable law."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:21
-msgid ""
-"We may, at our discretion, introduce new or change existing eligibility "
-"criteria or conditions we deem appropriate. Devnet may operate in certain "
-"phases, and your participation in any one phase of Devnet does not guarantee "
-"that you will be selected for any other phases of Devnet."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:25 docs/legal/testnet_tos.md:32
-msgid "Duration"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:27
-msgid ""
-"Devnet will commence on the date we prescribe and continue until terminated "
-"at our discretion. We may change, discontinue, or wipe, temporarily or "
-"permanently, all or any part of Devnet, at any time and without notice at "
-"our discretion, including, without limitation, the modification of the "
-"presence, amounts, or any other conditions applicable to data you have "
-"stored within Devnet, without any liability to you or other Devnet users."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:33 docs/legal/testnet_tos.md:57
-msgid "No Warranty"
-msgstr ""
-
-#: docs/legal/devnet_tos.md:35
-msgid ""
-"Mysten Labs provides the Devnet platform solely as a developer preview. "
-"Devnet is provided \"as is\" and \"with all faults.\" We make no warranties, "
-"express or implied, regarding the reliability, accuracy, performance, or "
-"fitness for a particular purpose of the service provided. You accept all "
-"risks associated with the use of Devnet and agree that Mysten Labs, its "
-"affiliates, and its employees shall not be liable for any damages, whether "
-"direct, indirect, incidental, special, consequential, or punitive, arising "
-"out of the use or inability to use the service, including but not limited to "
-"lost profits, loss of business, or data loss."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:43 docs/legal/testnet_tos.md:67
-msgid ""
-"No employee or representative of Mysten Labs is authorized to make any "
-"warranties or representations beyond those stated in this agreement. Any "
-"statements made by employees or representatives of Mysten Labs regarding the "
-"service shall not be construed as warranties or representations, and "
-"customers agree to indemnify and hold harmless Mysten Labs from any such "
-"statements."
-msgstr ""
-
-#: docs/legal/devnet_tos.md:48
-msgid ""
-"Any deficiencies or errors in the Devnet platform shall not constitute a "
-"breach of this agreement, and customers agree to waive any right to seek a "
-"refund or compensation based on such deficiencies or errors. This \"as is, "
-"no warranty\" provision shall survive the termination or expiration of any "
-"other agreements between you and Mysten Labs."
-msgstr ""
-
 #: docs/legal/testnet_tos.md:4
 msgid "TESTNET TERMS OF SERVICE - WALRUS"
 msgstr ""
@@ -7039,8 +6842,16 @@ msgid ""
 "information. By using Testnet you agree to be bound by our Privacy Policy."
 msgstr ""
 
+#: docs/legal/testnet_tos.md:21
+msgid "Eligibility Criteria"
+msgstr ""
+
 #: docs/legal/testnet_tos.md:23
 msgid "You may use Testnet only if you:"
+msgstr ""
+
+#: docs/legal/testnet_tos.md:25
+msgid "Are 18 years or older and capable of forming a binding contract with us."
 msgstr ""
 
 #: docs/legal/testnet_tos.md:26
@@ -7055,6 +6866,10 @@ msgid ""
 "phases, and your participation in any one phase of Testnet does not "
 "guarantee that you will be able to participate in any other phases of "
 "Testnet."
+msgstr ""
+
+#: docs/legal/testnet_tos.md:32
+msgid "Duration"
 msgstr ""
 
 #: docs/legal/testnet_tos.md:34
@@ -7092,6 +6907,10 @@ msgid ""
 "Testnet tokens outside of the Testnet will be null and void."
 msgstr ""
 
+#: docs/legal/testnet_tos.md:57
+msgid "No Warranty"
+msgstr ""
+
 #: docs/legal/testnet_tos.md:59
 msgid ""
 "Mysten Labs provides the Testnet platform solely as a developer test "
@@ -7103,6 +6922,16 @@ msgid ""
 "damages, whether direct, indirect, incidental, special, consequential, or "
 "punitive, arising out of the use or inability to use the service, including "
 "but not limited to lost profits, loss of business, or data loss."
+msgstr ""
+
+#: docs/legal/testnet_tos.md:67
+msgid ""
+"No employee or representative of Mysten Labs is authorized to make any "
+"warranties or representations beyond those stated in this agreement. Any "
+"statements made by employees or representatives of Mysten Labs regarding the "
+"service shall not be construed as warranties or representations, and "
+"customers agree to indemnify and hold harmless Mysten Labs from any such "
+"statements."
 msgstr ""
 
 #: docs/legal/testnet_tos.md:72

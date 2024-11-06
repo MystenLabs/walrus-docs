@@ -19,7 +19,7 @@ specifically to be compatible with almost all physical and virtual x86-64 CPUs.
 
 ## Latest Walrus configuration
 
-The Walrus Devnet and Testnet are wiped periodically and require updating to the latest binary and
+The Walrus Testnet is wiped periodically and requires updating to the latest binary and
 configuration. If you get an error like "could not retrieve enough confirmations to certify the
 blob", you are probably using an outdated configuration pointing to an inactive Walrus system. In
 this case, update your configuration file with the latest [configuration](./setup.md#configuration)
