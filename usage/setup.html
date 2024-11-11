@@ -326,10 +326,30 @@ These need to be configured in a file <code>~/.config/walrus/client_config.yaml<
 <p>The current Testnet deployment uses the following objects:</p>
 <pre><code class="language-yaml">system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+exchange_object:
+  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
+  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
+  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
 </code></pre>
+<p>Note that configuring multiple exchange objects are only supported with the CLI version 1.2.0 or
+higher.</p>
+<!-- markdownlint-disable code-fence-style -->
+<div id="admonition-tip-1" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-1-title">
+<div class="admonition-title">
+<div id="admonition-tip-1-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip-1"></a>
+</div>
+<div>
 <p>The easiest way to obtain the latest configuration is by downloading it from
-<a href="https://github.com/MystenLabs/walrus-docs/blob/main/docs/client_config.yaml">https://github.com/MystenLabs/walrus-docs/blob/main/docs/client_config.yaml</a>.</p>
+<a href="https://docs.blob.store/client_config.yaml">https://docs.blob.store/client_config.yaml</a>:</p>
+<pre><code class="language-sh">curl https://docs.blob.store/client_config.yaml -o ~/.config/walrus/client_config.yaml
+</code></pre>
+</div>
+</div>
+<!-- markdownlint-enable code-fence-style -->
 <h3 id="config-custom-path"><a class="header" href="#config-custom-path">Custom path (optional)</a></h3>
 <p>By default, the Walrus client will look for the <code>client_config.yaml</code> (or <code>client_config.yml</code>)
 configuration file in the current directory, <code>$XDG_CONFIG_HOME/walrus/</code>, <code>~/.config/walrus/</code>, or
@@ -341,7 +361,14 @@ you need to use the <code>--config</code> option when running the <code>walrus</
 # deployment but then do not change over time.
 system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-exchange_object: 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+
+# The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
+# random one is chosen for the exchange.
+exchange_object:
+  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
+  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
+  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
+  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
