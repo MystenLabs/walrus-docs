@@ -1,0 +1,12 @@
+[package]
+name = "WAL_exchange"
+license = "Apache-2.0"
+authors = ["Mysten Labs <build@mystenlabs.com>"]
+edition = "2024.beta"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "testnet-v1.35.0" }
+WAL = { local = "../wal" }
+
+[addresses]
+wal_exchange = "0x0"
