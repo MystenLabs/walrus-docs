@@ -41,6 +41,10 @@ jobs:
           curl https://storage.googleapis.com/mysten-walrus-binaries/$name -o site/$name
           done
 
+      - name: key.store contents
+        shell: bash
+        run: cat /home/runner/.sui/sui_config/sui.keystore
+
       - name: Update Walrus Site
         run: >
           RUST_LOG=site_builder=debug,walrus=debug,info
