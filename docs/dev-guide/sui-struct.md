@@ -17,7 +17,7 @@ Walrus objects in your own Sui smart contracts.
 
 ```admonish danger title="A word of caution"
 Walrus Mainnet will use new Move packages with `struct` layouts and function signatures that may not
-be compatible with this package. Move code that builds against this package will need to rewritten.
+be compatible with this package. Move code that builds against this package will need to be rewritten.
 ```
 
 ## Blob and storage objects
@@ -114,7 +114,7 @@ public struct BlobCertified has copy, drop {
 ```
 
 The `BlobCertified` event with `deletable` set to false and an `end_epoch` in the future indicates
-that the blob will be available until this epoch. A light client proof this event was emitted
+that the blob will be available until this epoch. A light client proof that this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.
 
 When a deletable blob is deleted, a `BlobDeleted` event is emitted:
