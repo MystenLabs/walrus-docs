@@ -204,7 +204,7 @@ Walrus objects in your own Sui smart contracts.</p>
 </div>
 <div>
 <p>Walrus Mainnet will use new Move packages with <code>struct</code> layouts and function signatures that may not
-be compatible with this package. Move code that builds against this package will need to rewritten.</p>
+be compatible with this package. Move code that builds against this package will need to be rewritten.</p>
 </div>
 </div>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and storage objects</a></h2>
@@ -288,7 +288,7 @@ public struct BlobCertified has copy, drop {
 }
 </code></pre>
 <p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and an <code>end_epoch</code> in the future indicates
-that the blob will be available until this epoch. A light client proof this event was emitted
+that the blob will be available until this epoch. A light client proof that this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.</p>
 <p>When a deletable blob is deleted, a <code>BlobDeleted</code> event is emitted:</p>
 <pre><code class="language-move">/// Signals that a blob has been deleted.

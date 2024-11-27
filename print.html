@@ -1927,7 +1927,7 @@ Walrus objects in your own Sui smart contracts.</p>
 </div>
 <div>
 <p>Walrus Mainnet will use new Move packages with <code>struct</code> layouts and function signatures that may not
-be compatible with this package. Move code that builds against this package will need to rewritten.</p>
+be compatible with this package. Move code that builds against this package will need to be rewritten.</p>
 </div>
 </div>
 <h2 id="blob-and-storage-objects"><a class="header" href="#blob-and-storage-objects">Blob and storage objects</a></h2>
@@ -2011,7 +2011,7 @@ public struct BlobCertified has copy, drop {
 }
 </code></pre>
 <p>The <code>BlobCertified</code> event with <code>deletable</code> set to false and an <code>end_epoch</code> in the future indicates
-that the blob will be available until this epoch. A light client proof this event was emitted
+that the blob will be available until this epoch. A light client proof that this event was emitted
 for a blob ID constitutes a proof of availability for the data with this blob ID.</p>
 <p>When a deletable blob is deleted, a <code>BlobDeleted</code> event is emitted:</p>
 <pre><code class="language-move">/// Signals that a blob has been deleted.
@@ -2723,7 +2723,7 @@ represents a wildcard.</p>
 <a class="admonition-anchor-link" href="walrus-sites/routing.html#admonition-note-1"></a>
 </div>
 <div>
-<p>Currently, the wildcard <em>can only be only be specified at the end of the path</em>.
+<p>Currently, the wildcard <em>can only be specified at the end of the path</em>.
 Therefore, <code>/path/*</code> is a valid path, while <code>/path/*/to</code> and <code>*/path/to/*</code> are not.</p>
 </div>
 </div>
@@ -2952,7 +2952,7 @@ takes care of creating Walrus Sites object on Sui, with the correct structure, a
 resources to Walrus. Refer to the <a href="walrus-sites/./tutorial.html">tutorial</a> for setup and usage instructions.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="the-walrus-sites-portal"><a class="header" href="#the-walrus-sites-portal">The Walrus Sites portal</a></h1>
-<p>We use the term "portal" to indicate any technology that is used to access an browse Walrus Sites.
+<p>We use the term "portal" to indicate any technology that is used to access and browse Walrus Sites.
 As mentioned in the <a href="walrus-sites/./overview.html#the-site-rendering-path">overview</a>, we foresee three kinds of
 portals:</p>
 <ol>
