@@ -78,7 +78,7 @@ The **`routes` keys** are path patterns in the form `/path/to/some/*`, where the
 represents a wildcard.
 
 ```admonish
-Currently, the wildcard *can only be only be specified at the end of the path*.
+Currently, the wildcard *can only be specified at the end of the path*.
 Therefore, `/path/*` is a valid path, while `/path/*/to` and `*/path/to/*` are not.
 ```
 
