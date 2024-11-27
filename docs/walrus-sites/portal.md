@@ -1,6 +1,6 @@
 # The Walrus Sites portal
 
-We use the term "portal" to indicate any technology that is used to access a browse Walrus Sites.
+We use the term "portal" to indicate any technology that is used to access and browse Walrus Sites.
 As mentioned in the [overview](./overview.md#the-site-rendering-path), we foresee three kinds of
 portals:
 
