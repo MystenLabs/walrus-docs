@@ -15,13 +15,13 @@ repos:
   - id: editorconfig-checker
     alias: ec
 - repo: https://github.com/DavidAnson/markdownlint-cli2
-  rev: v0.14.0
+  rev: v0.15.0
   hooks:
   - id: markdownlint-cli2
     args: ["--fix"]
     pass_filenames: false
 - repo: https://github.com/crate-ci/typos
-  rev: v1.26.8
+  rev: v1.28.1
   hooks:
   - id: typos
     pass_filenames: false
