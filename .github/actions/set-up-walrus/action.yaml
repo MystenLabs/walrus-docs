@@ -65,17 +65,10 @@ runs:
         walrus info # Ensure the walrus binary works
       shell: bash
 
-    - name: Clone walrus-sites
-      run: git clone https://github.com/MystenLabs/walrus-sites
-      shell: bash
-    - name: Rust cache
-      uses: Swatinem/rust-cache@v2
-      with:
-        workspaces: "walrus-sites -> target"
-    - name: Build site-builder
+    - name: Install and configure site-builder
       run: |
-        cd walrus-sites
-        cargo build --release
-        cp target/release/site-builder ../bin
-        cd -
+        curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64 -o bin/site-builder
+        chmod +x bin/site-builder
+        curl -L https://github.com/MystenLabs/walrus-sites/raw/refs/heads/testnet/sites-config.yaml -o sites-config.yaml
+        site-builder --version
       shell: bash

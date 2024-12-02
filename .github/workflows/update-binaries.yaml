@@ -45,7 +45,6 @@ jobs:
         run: >
           RUST_LOG=site_builder=debug,walrus=debug,info
           site-builder
-          --config walrus-sites/sites-config.yaml
           update --list-directory site ${{ vars.WALRUS_SITE_BIN_OBJECT }}
           --epochs 200
           --force
