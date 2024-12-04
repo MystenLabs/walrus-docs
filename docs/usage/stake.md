@@ -42,7 +42,7 @@ To be able to stake you will need to have Testnet WAL in your wallet.
 You can exchange your Testnet SUI to WAL using the dApp as follows:
 
 - Click the `Get WAL` button.
-- Select the amount of SUI. This will be exchanged to WAL at a 1:1 rate.
+- Select the amount of SUI to exchange for WAL.
 - And click `Exchange`.
 - *Follow the instructions in your wallet to approve the transaction.*
 
