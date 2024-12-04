@@ -8,27 +8,51 @@ the need to run a local client.
 
 ## Starting the daemon locally {#local-daemon}
 
-You can run the daemon with the following command, to offer both an aggregator and publisher on
-the same address (`127.0.0.1`) and port (`31415`):
+You can run a local Walrus daemon through the `walrus` binary. There are three different commands:
+
+- `walrus aggregator` starts an "aggregator" that offers an HTTP interface to read blobs from
+  Walrus.
+- `walrus publisher` starts a "publisher" that offers an HTTP interface to store blobs in Walrus.
+- `walrus daemon` offers the combined functionality of an aggregator and publisher on the same
+  address and port.
+
+The aggregator does not perform any on-chain actions, and only requires specifying the address on
+which it listens:
 
 ```sh
-walrus daemon -b "127.0.0.1:31415"
+walrus aggregator --bind-address "127.0.0.1:31415"
 ```
 
-Or you may run the aggregator and publisher processes separately on different addresses/ports:
+The publisher and daemon perform on-chain actions and thus require a Sui Testnet wallet with
+sufficient SUI and WAL balances. To enable handling many parallel requests without object
+conflicts, they create internal sub-wallets since version 1.4.0, which are funded from the main
+wallet. These sub-wallets are persisted in a directory specified with the `--sub-wallets-dir`
+argument; any existing directory can be used. If it already contains sub-wallets, they will be
+reused.
+
+By default, 8 sub-wallets are created and funded. This can be changed with the `--n-clients`
+argument. For simple local testing, 1 or 2 sub-wallets are usually sufficient.
+
+For example, you can run a publisher with a single sub-wallet stored in the Walrus configuration
+directory with the following command:
 
 ```sh
-walrus aggregator -b "127.0.0.1:31415" # run an aggregator to read blobs
-walrus publisher -b "127.0.0.1:31416" # run a publisher to store blobs
+PUBLISHER_WALLETS_DIR=~/.config/walrus/publisher-wallets
+mkdir -p "$PUBLISHER_WALLETS_DIR"
+walrus publisher \
+  --bind-address "127.0.0.1:31416" \
+  --sub-wallets-dir "$PUBLISHER_WALLETS_DIR" \
+  --n-clients 1
 ```
 
-The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
-both.
+Replace `publisher` by `daemon` to run both an aggregator and publisher on the same address and
+port.
 
 ```admonish warning
 While the aggregator does not perform Sui on-chain actions, and therefore consumes no gas, the
-publisher does perform actions on-chain and will consume gas. It is therefore important to ensure
-only authorized parties may access it, or other measures to manage gas costs.
+publisher does perform actions on-chain and will consume both SUI and WAL tokens. It is therefore
+important to ensure only authorized parties may access it, or other measures to manage gas costs,
+especially in a future Mainnet deployment.
 ```
 
 ## Using a public aggregator or publisher {#public-services}
@@ -109,7 +133,7 @@ PUBLISHER=https://publisher.walrus-testnet.walrus.space
 
 ```admonish tip title="API specification"
 Walrus aggregators and publishers expose their API specifications at the path `/v1/api`. You can
-view this in the browser, e.g., at <https://aggregator.walrus-testnet.walrus.space/v1/api>
+view this in the browser, for example, at <https://aggregator.walrus-testnet.walrus.space/v1/api>.
 ```
 
 ### Store

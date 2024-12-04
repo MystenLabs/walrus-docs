@@ -15,17 +15,22 @@ their meaning.
 ## Walrus system information
 
 Information about the Walrus system is available through the `walrus info` command. For example,
-`walrus info` gives an overview of the number of storage nodes and shards in the system, the maximum
-blob size, and the current cost in (Testnet) WAL for storing blobs:
+`walrus info` gives an overview of current system parameters such as the current epoch, the number
+of storage nodes and shards in the system, the maximum blob size, and the current cost in (Testnet)
+WAL for storing blobs:
 
 ```console
 $ walrus info
 
 Walrus system information
-Current epoch: 2
+
+Epochs and storage duration
+Current epoch: 47
+Epoch duration: 1day
+Blobs can be stored for at most 200 epochs in the future.
 
 Storage nodes
-Number of nodes: 25
+Number of storage nodes: 30
 Number of shards: 1000
 
 Blob size
@@ -33,7 +38,9 @@ Maximum blob size: 13.3 GiB (14,273,391,930 B)
 Storage unit: 1.00 MiB
 
 Approximate storage prices per epoch
+(Conversion rate: 1 WAL = 1,000,000,000 FROST)
 Price per encoded storage unit: 100 FROST
+Additional price for each write: 2,000 FROST
 Price to store metadata: 6,200 FROST
 Marginal price per additional 1 MiB (w/o metadata): 500 FROST
 
@@ -49,8 +56,9 @@ SUI: `1 WAL = 1 000 000 000 FROST`.
 ```
 
 Additional information such as encoding parameters and sizes, BFT system information, and
-information on the storage nodes and their shard distribution can be viewed with the `--dev`
-argument: `walrus info --dev`.
+information on the storage nodes in the current and (if already selected) the next committee,
+including their node IDs and stake and shard distribution can be viewed with the `--dev` argument:
+`walrus info --dev`.
 
 ## Storing, querying status, and reading blobs
 
@@ -74,11 +82,17 @@ page](./setup.md#testnet-wal-faucet) for further details.
 Storing blobs on Walrus can be achieved through the following command:
 
 ```sh
-walrus store <some file>
+walrus store <some file> --epochs <EPOCHS>
 ```
 
-The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) indicating the number of
-epochs the blob should be stored for. This defaults to 1 epoch, namely the current one.
+The CLI argument `--epochs <EPOCHS>` (or `-e`) indicates the number of epochs the blob should be
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 200
+for the current Testnet deployment.
+
+```admonish warning
+The `--epochs` argument is currently optional; if it is not specified, a warning is printed and the
+default of 1 epoch is used. However, it will become a mandatory argument in the future.
+```
 
 ```admonish tip title="Automatic optimizations"
 When storing a blob, the client performs a number of automatic optimizations, including the
@@ -137,15 +151,20 @@ walrus delete --blob-id <BLOB_ID>
 Optionally the delete command can be invoked by specifying a `--file <PATH>` option, to derive the
 blob ID from a file, or `--object-id <SUI_ID>` to delete the blob in the Sui blob object specified.
 
-The `delete` command reclaims the storage object associated with the deleted blob, which is
-re-used to store new blobs. The delete operation provides
-flexibility around managing storage costs and re-using storage.
+Before deleting a blob, the `walrus delete` command will ask for confirmation unless the `--yes`
+(or `-y`) option is specified.
 
-The delete operation has limited utility for privacy: It only deletes slivers from the current
-epoch storage nodes, and subsequent epoch storage nodes, if no other user has uploaded a copy of
-the same blob. If another copy of the same blob exists in Walrus the delete operation will not
-make the blob unavailable for download, and `walrus read` invocations will download it. Copies of
-the public blob may be cached or downloaded by users, and these copies are not deleted.
+The `delete` command reclaims the storage object associated with the deleted blob, which is re-used
+to store new blobs. The delete operation provides flexibility around managing storage costs and
+re-using storage.
+
+The delete operation has limited utility for privacy: It only deletes slivers from the current epoch
+storage nodes, and subsequent epoch storage nodes, if no other user has uploaded a copy of the same
+blob. If another copy of the same blob exists in Walrus, the delete operation will not make the blob
+unavailable for download, and `walrus read` invocations will download it. After the deletion is
+finished, the CLI checks the updated status of the blob to see if it is still accessible in Walrus
+(unless the `--no-status-check` option is specified). However, even if it isn't, copies of the
+public blob may be cached or downloaded by users, and these copies are not deleted.
 
 ```admonish danger title="Delete reclaims space only"
 **All blobs stored in Walrus are public and discoverable by all.** The `delete` command will

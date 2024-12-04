@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Walrus\n"
-"POT-Creation-Date: 2024-11-01T09:10:07+01:00\n"
+"POT-Creation-Date: 2024-12-04T17:24:55+01:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -265,7 +265,7 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/index.md:32 docs/usage/client-cli.md:59
+#: docs/index.md:32 docs/usage/client-cli.md:67
 #: docs/dev-guide/dev-operations.md:17
 msgid ""
 "```admonish danger title=\"Public access\"\n"
@@ -2292,25 +2292,39 @@ msgstr ""
 msgid "system_object"
 msgstr ""
 
-#: docs/usage/setup.md:154 docs/usage/setup.md:176
+#: docs/usage/setup.md:154 docs/usage/setup.md:191
 msgid "staking_object"
 msgstr ""
 
-#: docs/usage/setup.md:155 docs/usage/setup.md:177
+#: docs/usage/setup.md:155
 msgid "exchange_object"
 msgstr ""
 
-#: docs/usage/setup.md:159
+#: docs/usage/setup.md:163
 msgid ""
-"The easiest way to obtain the latest configuration is by downloading it from "
-"<https://github.com/MystenLabs/walrus-docs/blob/main/docs/client_config.yaml>."
+"Note that configuring multiple exchange objects are only supported with the "
+"CLI version 1.2.0 or higher."
 msgstr ""
 
-#: docs/usage/setup.md:162
+#: docs/usage/setup.md:167
+msgid ""
+"````admonish tip\n"
+"The easiest way to obtain the latest configuration is by downloading it "
+"from\n"
+"<https://docs.blob.store/client_config.yaml>:\n"
+"\n"
+"```sh\n"
+"curl https://docs.blob.store/client_config.yaml -o "
+"~/.config/walrus/client_config.yaml\n"
+"```\n"
+"````"
+msgstr ""
+
+#: docs/usage/setup.md:177
 msgid "Custom path (optional)"
 msgstr ""
 
-#: docs/usage/setup.md:164
+#: docs/usage/setup.md:179
 msgid ""
 "By default, the Walrus client will look for the `client_config.yaml` (or "
 "`client_config.yml`) configuration file in the current directory, "
@@ -2319,15 +2333,15 @@ msgid ""
 "you need to use the `--config` option when running the `walrus` binary."
 msgstr ""
 
-#: docs/usage/setup.md:169
+#: docs/usage/setup.md:184
 msgid "Advanced configuration (optional)"
 msgstr ""
 
-#: docs/usage/setup.md:171
+#: docs/usage/setup.md:186
 msgid "The configuration file currently supports the following parameters:"
 msgstr ""
 
-#: docs/usage/setup.md:174
+#: docs/usage/setup.md:189
 msgid ""
 "# These are the only mandatory fields. These objects are specific for a "
 "particular Walrus\n"
@@ -2335,7 +2349,15 @@ msgid ""
 "system_object"
 msgstr ""
 
-#: docs/usage/setup.md:179
+#: docs/usage/setup.md:193
+msgid ""
+"# The exchange objects are used to swap SUI for WAL. If multiple ones are "
+"defined (as below), a\n"
+"# random one is chosen for the exchange.\n"
+"exchange_object"
+msgstr ""
+
+#: docs/usage/setup.md:201
 msgid ""
 "# You can define a custom path to your Sui wallet configuration here. If "
 "this is unset or `null`,\n"
@@ -2345,7 +2367,7 @@ msgid ""
 "wallet_config"
 msgstr ""
 
-#: docs/usage/setup.md:184
+#: docs/usage/setup.md:206
 msgid ""
 "# The following parameters can be used to tune the networking behavior of "
 "the client. There is no\n"
@@ -2355,101 +2377,101 @@ msgid ""
 "communication_config"
 msgstr ""
 
-#: docs/usage/setup.md:189
+#: docs/usage/setup.md:211
 msgid "max_concurrent_writes"
 msgstr ""
 
-#: docs/usage/setup.md:190
+#: docs/usage/setup.md:212
 msgid "max_concurrent_sliver_reads"
 msgstr ""
 
-#: docs/usage/setup.md:191
+#: docs/usage/setup.md:213
 msgid "max_concurrent_metadata_reads"
 msgstr ""
 
-#: docs/usage/setup.md:192
+#: docs/usage/setup.md:214
 msgid "max_concurrent_status_reads"
 msgstr ""
 
-#: docs/usage/setup.md:193
+#: docs/usage/setup.md:215
 msgid "max_data_in_flight"
 msgstr ""
 
-#: docs/usage/setup.md:194
+#: docs/usage/setup.md:216
 msgid "reqwest_config"
 msgstr ""
 
-#: docs/usage/setup.md:195
+#: docs/usage/setup.md:217
 msgid "total_timeout"
 msgstr ""
 
-#: docs/usage/setup.md:196 docs/usage/setup.md:200 docs/usage/setup.md:203
-#: docs/usage/setup.md:210 docs/usage/setup.md:213 docs/usage/setup.md:220
+#: docs/usage/setup.md:218 docs/usage/setup.md:222 docs/usage/setup.md:225
+#: docs/usage/setup.md:232 docs/usage/setup.md:235 docs/usage/setup.md:242
 msgid "secs"
 msgstr ""
 
-#: docs/usage/setup.md:197 docs/usage/setup.md:201 docs/usage/setup.md:204
-#: docs/usage/setup.md:211 docs/usage/setup.md:214 docs/usage/setup.md:221
+#: docs/usage/setup.md:219 docs/usage/setup.md:223 docs/usage/setup.md:226
+#: docs/usage/setup.md:233 docs/usage/setup.md:236 docs/usage/setup.md:243
 msgid "nanos"
 msgstr ""
 
-#: docs/usage/setup.md:198
+#: docs/usage/setup.md:220
 msgid "pool_idle_timeout"
 msgstr ""
 
-#: docs/usage/setup.md:199
+#: docs/usage/setup.md:221
 msgid "http2_keep_alive_timeout"
 msgstr ""
 
-#: docs/usage/setup.md:202
+#: docs/usage/setup.md:224
 msgid "http2_keep_alive_interval"
 msgstr ""
 
-#: docs/usage/setup.md:205
+#: docs/usage/setup.md:227
 msgid "http2_keep_alive_while_idle"
 msgstr ""
 
-#: docs/usage/setup.md:206
+#: docs/usage/setup.md:228
 msgid "request_rate_config"
 msgstr ""
 
-#: docs/usage/setup.md:207
+#: docs/usage/setup.md:229
 msgid "max_node_connections"
 msgstr ""
 
-#: docs/usage/setup.md:208
+#: docs/usage/setup.md:230
 msgid "max_retries"
 msgstr ""
 
-#: docs/usage/setup.md:209
+#: docs/usage/setup.md:231
 msgid "min_backoff"
 msgstr ""
 
-#: docs/usage/setup.md:212
+#: docs/usage/setup.md:234
 msgid "max_backoff"
 msgstr ""
 
-#: docs/usage/setup.md:215
+#: docs/usage/setup.md:237
 msgid "disable_proxy"
 msgstr ""
 
-#: docs/usage/setup.md:216
+#: docs/usage/setup.md:238
 msgid "disable_native_certs"
 msgstr ""
 
-#: docs/usage/setup.md:217
+#: docs/usage/setup.md:239
 msgid "sliver_write_extra_time"
 msgstr ""
 
-#: docs/usage/setup.md:218
+#: docs/usage/setup.md:240
 msgid "factor"
 msgstr ""
 
-#: docs/usage/setup.md:219
+#: docs/usage/setup.md:241
 msgid "base"
 msgstr ""
 
-#: docs/usage/setup.md:224
+#: docs/usage/setup.md:246
 msgid ""
 "```admonish warning title=\"Important\"\n"
 "If you specify a wallet path, make sure your wallet is set up for Sui "
@@ -2457,24 +2479,24 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/setup.md:228
+#: docs/usage/setup.md:250
 msgid "Testnet WAL faucet"
 msgstr ""
 
-#: docs/usage/setup.md:230
+#: docs/usage/setup.md:252
 msgid ""
 "The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet "
 "WAL tokens have no value and can be exchanged (at a 1:1 rate) for some "
 "Testnet SUI tokens, which also have no value, through the following command:"
 msgstr ""
 
-#: docs/usage/setup.md:238
+#: docs/usage/setup.md:260
 msgid ""
 "You can check that you have received Testnet WAL by checking the Sui "
 "balances:"
 msgstr ""
 
-#: docs/usage/setup.md:254
+#: docs/usage/setup.md:276
 msgid ""
 "By default, 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI "
 "may be exchanged using the `--amount` option (the value is in MIST/FROST), "
@@ -2536,12 +2558,13 @@ msgstr ""
 #: docs/usage/client-cli.md:19
 msgid ""
 "Information about the Walrus system is available through the `walrus info` "
-"command. For example, `walrus info` gives an overview of the number of "
-"storage nodes and shards in the system, the maximum blob size, and the "
-"current cost in (Testnet) WAL for storing blobs:"
+"command. For example, `walrus info` gives an overview of current system "
+"parameters such as the current epoch, the number of storage nodes and shards "
+"in the system, the maximum blob size, and the current cost in (Testnet) WAL "
+"for storing blobs:"
 msgstr ""
 
-#: docs/usage/client-cli.md:48
+#: docs/usage/client-cli.md:55
 msgid ""
 "```admonish tip title=\"FROST and WAL\"\n"
 "FROST is the smaller unit of WAL, similar to MIST for SUI. The conversion is "
@@ -2550,18 +2573,20 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/client-cli.md:53
+#: docs/usage/client-cli.md:60
 msgid ""
 "Additional information such as encoding parameters and sizes, BFT system "
-"information, and information on the storage nodes and their shard "
-"distribution can be viewed with the `--dev` argument: `walrus info --dev`."
+"information, and information on the storage nodes in the current and (if "
+"already selected) the next committee, including their node IDs and stake and "
+"shard distribution can be viewed with the `--dev` argument: `walrus info "
+"--dev`."
 msgstr ""
 
-#: docs/usage/client-cli.md:57
+#: docs/usage/client-cli.md:65
 msgid "Storing, querying status, and reading blobs"
 msgstr ""
 
-#: docs/usage/client-cli.md:71
+#: docs/usage/client-cli.md:79
 msgid ""
 "```admonish tip title=\"Obtaining Testnet WAL\"\n"
 "You can exchange Testnet SUI for Testnet WAL by running `walrus get-wal`. "
@@ -2570,18 +2595,19 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/client-cli.md:76
+#: docs/usage/client-cli.md:84
 msgid "Storing blobs on Walrus can be achieved through the following command:"
 msgstr ""
 
-#: docs/usage/client-cli.md:82
+#: docs/usage/client-cli.md:90
 msgid ""
-"The store command takes a CLI argument `--epochs <EPOCHS>` (or `-e`) "
-"indicating the number of epochs the blob should be stored for. This defaults "
-"to 1 epoch, namely the current one."
+"The CLI argument `--epochs <EPOCHS>` (or `-e`) indicates the number of "
+"epochs the blob should be stored for. There is an upper limit on the number "
+"of epochs a blob can be stored for, which is 200 for the current Testnet "
+"deployment."
 msgstr ""
 
-#: docs/usage/client-cli.md:85
+#: docs/usage/client-cli.md:99
 msgid ""
 "```admonish tip title=\"Automatic optimizations\"\n"
 "When storing a blob, the client performs a number of automatic "
@@ -2606,19 +2632,19 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/client-cli.md:100
+#: docs/usage/client-cli.md:114
 msgid ""
 "The status of a blob can be queried through one of the following commands:"
 msgstr ""
 
-#: docs/usage/client-cli.md:107
+#: docs/usage/client-cli.md:121
 msgid ""
 "This returns whether the blob is stored and its availability period. If you "
 "specify a file with the `--file` option,the CLI re-encodes the content of "
 "the file and derives the blob ID before checking the status."
 msgstr ""
 
-#: docs/usage/client-cli.md:111
+#: docs/usage/client-cli.md:125
 msgid ""
 "When the blob is available, the `blob-status` command also returns the "
 "`BlobCertified` Sui event ID, which consists of a transaction ID and a "
@@ -2626,11 +2652,11 @@ msgid ""
 "this event certifies the availability of the blob."
 msgstr ""
 
-#: docs/usage/client-cli.md:115
+#: docs/usage/client-cli.md:129
 msgid "Reading blobs from Walrus can be achieved through the following command:"
 msgstr ""
 
-#: docs/usage/client-cli.md:121
+#: docs/usage/client-cli.md:135
 msgid ""
 "By default the blob data is written to the standard output. The `--out "
 "<OUT>` CLI option (or `-o`) can be used to specify an output file name. The "
@@ -2638,11 +2664,11 @@ msgid ""
 "instead of the one set in the wallet configuration or the default one."
 msgstr ""
 
-#: docs/usage/client-cli.md:125
+#: docs/usage/client-cli.md:139
 msgid "Reclaiming space via deletable blobs"
 msgstr ""
 
-#: docs/usage/client-cli.md:127
+#: docs/usage/client-cli.md:141
 msgid ""
 "By default `walrus store` uploads a blob and Walrus will keep it available "
 "until after its expiry epoch. Not even the uploader may delete it "
@@ -2653,36 +2679,45 @@ msgid ""
 "relied upon for availability by others."
 msgstr ""
 
-#: docs/usage/client-cli.md:133
+#: docs/usage/client-cli.md:147
 msgid "A deletable blob may be deleted with the command:"
 msgstr ""
 
-#: docs/usage/client-cli.md:139
+#: docs/usage/client-cli.md:153
 msgid ""
 "Optionally the delete command can be invoked by specifying a `--file <PATH>` "
 "option, to derive the blob ID from a file, or `--object-id <SUI_ID>` to "
 "delete the blob in the Sui blob object specified."
 msgstr ""
 
-#: docs/usage/client-cli.md:142
+#: docs/usage/client-cli.md:156
+msgid ""
+"Before deleting a blob, the `walrus delete` command will ask for "
+"confirmation unless the `--yes` (or `-y`) option is specified."
+msgstr ""
+
+#: docs/usage/client-cli.md:159
 msgid ""
 "The `delete` command reclaims the storage object associated with the deleted "
 "blob, which is re-used to store new blobs. The delete operation provides "
 "flexibility around managing storage costs and re-using storage."
 msgstr ""
 
-#: docs/usage/client-cli.md:146
+#: docs/usage/client-cli.md:163
 msgid ""
 "The delete operation has limited utility for privacy: It only deletes "
 "slivers from the current epoch storage nodes, and subsequent epoch storage "
 "nodes, if no other user has uploaded a copy of the same blob. If another "
-"copy of the same blob exists in Walrus the delete operation will not make "
+"copy of the same blob exists in Walrus, the delete operation will not make "
 "the blob unavailable for download, and `walrus read` invocations will "
-"download it. Copies of the public blob may be cached or downloaded by users, "
-"and these copies are not deleted."
+"download it. After the deletion is finished, the CLI checks the updated "
+"status of the blob to see if it is still accessible in Walrus (unless the "
+"`--no-status-check` option is specified). However, even if it isn't, copies "
+"of the public blob may be cached or downloaded by users, and these copies "
+"are not deleted."
 msgstr ""
 
-#: docs/usage/client-cli.md:152
+#: docs/usage/client-cli.md:171
 msgid ""
 "```admonish danger title=\"Delete reclaims space only\"\n"
 "**All blobs stored in Walrus are public and discoverable by all.** The "
@@ -2695,11 +2730,11 @@ msgid ""
 "```"
 msgstr ""
 
-#: docs/usage/client-cli.md:159
+#: docs/usage/client-cli.md:178
 msgid "Blob ID utilities"
 msgstr ""
 
-#: docs/usage/client-cli.md:161
+#: docs/usage/client-cli.md:180
 msgid ""
 "The `walrus blob-id <FILE>` may be used to derive the blob ID of any file. "
 "The blob ID is a commitment to the file, and any blob with the same ID will "
@@ -2709,7 +2744,7 @@ msgid ""
 "safe encoding used by the command line tools and other APIs."
 msgstr ""
 
-#: docs/usage/client-cli.md:167
+#: docs/usage/client-cli.md:186
 msgid ""
 "The `walrus list-blobs` command lists all the non expired Sui blob object "
 "that the current account owns, including their blob ID, object ID, and "
@@ -2717,17 +2752,17 @@ msgid ""
 "also lists expired blob objects."
 msgstr ""
 
-#: docs/usage/client-cli.md:171
+#: docs/usage/client-cli.md:190
 msgid "Changing the default configuration"
 msgstr ""
 
-#: docs/usage/client-cli.md:173
+#: docs/usage/client-cli.md:192
 msgid ""
 "Use the `--config` option to specify a custom path to the [configuration "
 "location](../usage/setup.md#configuration)."
 msgstr ""
 
-#: docs/usage/client-cli.md:176
+#: docs/usage/client-cli.md:195
 msgid ""
 "The `--wallet <WALLET>` argument may be used to specify a non-standard Sui "
 "wallet configuration file. And a `--gas-budget <GAS_BUDGET>` argument may be "
@@ -2817,40 +2852,85 @@ msgstr ""
 
 #: docs/usage/web-api.md:13
 msgid ""
-"You can run the daemon with the following command, to offer both an "
-"aggregator and publisher on the same address (`127.0.0.1`) and port "
-"(`31415`):"
+"You can run a local Walrus daemon through the `walrus` binary. There are "
+"three different commands:"
+msgstr ""
+
+#: docs/usage/web-api.md:15
+msgid ""
+"`walrus aggregator` starts an \"aggregator\" that offers an HTTP interface "
+"to read blobs from Walrus."
 msgstr ""
 
 #: docs/usage/web-api.md:17
+msgid ""
+"`walrus publisher` starts a \"publisher\" that offers an HTTP interface to "
+"store blobs in Walrus."
+msgstr ""
+
+#: docs/usage/web-api.md:18
+msgid ""
+"`walrus daemon` offers the combined functionality of an aggregator and "
+"publisher on the same address and port."
+msgstr ""
+
+#: docs/usage/web-api.md:21
+msgid ""
+"The aggregator does not perform any on-chain actions, and only requires "
+"specifying the address on which it listens:"
+msgstr ""
+
+#: docs/usage/web-api.md:25
 msgid "\"127.0.0.1:31415\""
 msgstr ""
 
-#: docs/usage/web-api.md:20
+#: docs/usage/web-api.md:28
 msgid ""
-"Or you may run the aggregator and publisher processes separately on "
-"different addresses/ports:"
+"The publisher and daemon perform on-chain actions and thus require a Sui "
+"Testnet wallet with sufficient SUI and WAL balances. To enable handling many "
+"parallel requests without object conflicts, they create internal sub-wallets "
+"since version 1.4.0, which are funded from the main wallet. These "
+"sub-wallets are persisted in a directory specified with the "
+"`--sub-wallets-dir` argument; any existing directory can be used. If it "
+"already contains sub-wallets, they will be reused."
 msgstr ""
 
-#: docs/usage/web-api.md:23
-msgid "\"127.0.0.1:31415\" # run an aggregator to read blobs\n"
-msgstr ""
-
-#: docs/usage/web-api.md:24
-msgid "\"127.0.0.1:31416\" # run a publisher to store blobs\n"
-msgstr ""
-
-#: docs/usage/web-api.md:27
+#: docs/usage/web-api.md:35
 msgid ""
-"The aggregator provides all read APIs, the publisher all the store APIs, and "
-"the daemon provides both."
-msgstr ""
-
-#: docs/usage/web-api.md:36
-msgid "Using a public aggregator or publisher"
+"By default, 8 sub-wallets are created and funded. This can be changed with "
+"the `--n-clients` argument. For simple local testing, 1 or 2 sub-wallets are "
+"usually sufficient."
 msgstr ""
 
 #: docs/usage/web-api.md:38
+msgid ""
+"For example, you can run a publisher with a single sub-wallet stored in the "
+"Walrus configuration directory with the following command:"
+msgstr ""
+
+#: docs/usage/web-api.md:42
+msgid "~/.config/walrus/publisher-wallets"
+msgstr ""
+
+#: docs/usage/web-api.md:43 docs/usage/web-api.md:46
+msgid "\"$PUBLISHER_WALLETS_DIR\""
+msgstr ""
+
+#: docs/usage/web-api.md:45
+msgid "\"127.0.0.1:31416\""
+msgstr ""
+
+#: docs/usage/web-api.md:50
+msgid ""
+"Replace `publisher` by `daemon` to run both an aggregator and publisher on "
+"the same address and port."
+msgstr ""
+
+#: docs/usage/web-api.md:60
+msgid "Using a public aggregator or publisher"
+msgstr ""
+
+#: docs/usage/web-api.md:62
 msgid ""
 "For some use cases (e.g., a public website), or to just try out the HTTP "
 "API, a publicly accessible aggregator and/or publisher is required. Several "
@@ -2859,14 +2939,14 @@ msgid ""
 "below."
 msgstr ""
 
-#: docs/usage/web-api.md:42
+#: docs/usage/web-api.md:66
 msgid ""
 "Public publishers limit requests to 10 MiB by default. If you want to upload "
 "larger files, you need to [run your own publisher](#local-daemon) or use the "
 "[CLI](./client-cli.md)."
 msgstr ""
 
-#: docs/usage/web-api.md:45
+#: docs/usage/web-api.md:69
 msgid ""
 "Also, note that the publisher consumes (Testnet) SUI and WAL on the service "
 "side, and a Mainnet deployment would likely not be able to provide "
@@ -2874,400 +2954,400 @@ msgid ""
 "authentication and compensation for the funds used."
 msgstr ""
 
-#: docs/usage/web-api.md:49
+#: docs/usage/web-api.md:73
 msgid "Public aggregators"
 msgstr ""
 
-#: docs/usage/web-api.md:51
+#: docs/usage/web-api.md:75
 msgid ""
 "The following is a list of know public aggregators; they are checked "
 "periodically, but each of them may still be temporarily unavailable:"
 msgstr ""
 
-#: docs/usage/web-api.md:54
+#: docs/usage/web-api.md:78
 msgid "`https://aggregator.walrus-testnet.walrus.space`"
 msgstr ""
 
-#: docs/usage/web-api.md:55
+#: docs/usage/web-api.md:79
 msgid "`https://wal-aggregator-testnet.staketab.org`"
 msgstr ""
 
-#: docs/usage/web-api.md:56
+#: docs/usage/web-api.md:80
 msgid "`https://walrus-testnet-aggregator.bartestnet.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:57
+#: docs/usage/web-api.md:81
 msgid "`https://walrus-testnet.blockscope.net`"
 msgstr ""
 
-#: docs/usage/web-api.md:58
+#: docs/usage/web-api.md:82
 msgid "`https://walrus-testnet-aggregator.nodes.guru`"
 msgstr ""
 
-#: docs/usage/web-api.md:59
+#: docs/usage/web-api.md:83
 msgid "`https://walrus-cache-testnet.overclock.run`"
 msgstr ""
 
-#: docs/usage/web-api.md:60
+#: docs/usage/web-api.md:84
 msgid "`https://sui-walrus-testnet.bwarelabs.com/aggregator`"
 msgstr ""
 
-#: docs/usage/web-api.md:61
+#: docs/usage/web-api.md:85
 msgid "`https://walrus-testnet-aggregator.stakin-nodes.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:62
+#: docs/usage/web-api.md:86
 msgid "`https://testnet-aggregator-walrus.kiliglab.io`"
 msgstr ""
 
-#: docs/usage/web-api.md:63
+#: docs/usage/web-api.md:87
 msgid "`https://walrus-cache-testnet.latitude-sui.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:64
+#: docs/usage/web-api.md:88
 msgid "`https://walrus-testnet-aggregator.nodeinfra.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:65
+#: docs/usage/web-api.md:89
 msgid "`https://walrus-tn.juicystake.io:9443`"
 msgstr ""
 
-#: docs/usage/web-api.md:66
+#: docs/usage/web-api.md:90
 msgid "`https://walrus-agg-testnet.chainode.tech:9002`"
 msgstr ""
 
-#: docs/usage/web-api.md:67
+#: docs/usage/web-api.md:91
 msgid "`https://walrus-testnet-aggregator.starduststaking.com:11444`"
 msgstr ""
 
-#: docs/usage/web-api.md:68
+#: docs/usage/web-api.md:92
 msgid "`http://walrus-testnet-aggregator.everstake.one:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:69
+#: docs/usage/web-api.md:93
 msgid "`http://walrus.testnet.pops.one:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:70
+#: docs/usage/web-api.md:94
 msgid "`http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:71
+#: docs/usage/web-api.md:95
 msgid "`http://aggregator.testnet.sui.rpcpool.com:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:72
+#: docs/usage/web-api.md:96
 msgid "`http://walrus.krates.ai:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:73
+#: docs/usage/web-api.md:97
 msgid "`http://walrus-testnet.stakingdefenseleague.com:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:74
+#: docs/usage/web-api.md:98
 msgid "`http://walrus.sui.thepassivetrust.com:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:75
+#: docs/usage/web-api.md:99
 msgid "`http://walrus.globalstake.io:9000`"
 msgstr ""
 
-#: docs/usage/web-api.md:77
+#: docs/usage/web-api.md:101
 msgid "Public publishers"
 msgstr ""
 
-#: docs/usage/web-api.md:79
+#: docs/usage/web-api.md:103
 msgid "`https://publisher.walrus-testnet.walrus.space`"
 msgstr ""
 
-#: docs/usage/web-api.md:80
+#: docs/usage/web-api.md:104
 msgid "`https://wal-publisher-testnet.staketab.org`"
 msgstr ""
 
-#: docs/usage/web-api.md:81
+#: docs/usage/web-api.md:105
 msgid "`https://walrus-testnet-publisher.bartestnet.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:82
+#: docs/usage/web-api.md:106
 msgid "`https://walrus-testnet-publisher.nodes.guru`"
 msgstr ""
 
-#: docs/usage/web-api.md:83
+#: docs/usage/web-api.md:107
 msgid "`https://sui-walrus-testnet.bwarelabs.com/publisher`"
 msgstr ""
 
-#: docs/usage/web-api.md:84
+#: docs/usage/web-api.md:108
 msgid "`https://walrus-testnet-publisher.stakin-nodes.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:85
+#: docs/usage/web-api.md:109
 msgid "`https://testnet-publisher-walrus.kiliglab.io`"
 msgstr ""
 
-#: docs/usage/web-api.md:86
+#: docs/usage/web-api.md:110
 msgid "`https://walrus-testnet-publisher.nodeinfra.com`"
 msgstr ""
 
-#: docs/usage/web-api.md:87
+#: docs/usage/web-api.md:111
 msgid "`https://walrus-testnet.blockscope.net:11444`"
 msgstr ""
 
-#: docs/usage/web-api.md:88
+#: docs/usage/web-api.md:112
 msgid "`https://walrus-publish-testnet.chainode.tech:9003`"
 msgstr ""
 
-#: docs/usage/web-api.md:89
+#: docs/usage/web-api.md:113
 msgid "`https://walrus-testnet-publisher.starduststaking.com:11445`"
 msgstr ""
 
-#: docs/usage/web-api.md:90
+#: docs/usage/web-api.md:114
 msgid "`http://walrus-publisher-testnet.overclock.run:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:91
+#: docs/usage/web-api.md:115
 msgid "`http://walrus-testnet-publisher.everstake.one:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:92
+#: docs/usage/web-api.md:116
 msgid "`http://walrus.testnet.pops.one:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:93
+#: docs/usage/web-api.md:117
 msgid "`http://ivory-dakar-e5812.walrus.bdnodes.net:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:94
+#: docs/usage/web-api.md:118
 msgid "`http://publisher.testnet.sui.rpcpool.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:95
+#: docs/usage/web-api.md:119
 msgid "`http://walrus.krates.ai:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:96
+#: docs/usage/web-api.md:120
 msgid "`http://walrus-publisher-testnet.latitude-sui.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:97
+#: docs/usage/web-api.md:121
 msgid "`http://walrus-tn.juicystake.io:9090`"
 msgstr ""
 
-#: docs/usage/web-api.md:98
+#: docs/usage/web-api.md:122
 msgid "`http://walrus-testnet.stakingdefenseleague.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:99
+#: docs/usage/web-api.md:123
 msgid "`http://walrus.sui.thepassivetrust.com:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:100
+#: docs/usage/web-api.md:124
 msgid "`http://walrus.globalstake.io:9001`"
 msgstr ""
 
-#: docs/usage/web-api.md:102
+#: docs/usage/web-api.md:126
 msgid "HTTP API Usage"
 msgstr ""
 
-#: docs/usage/web-api.md:104
+#: docs/usage/web-api.md:128
 msgid ""
 "For the following examples, we assume you set the `AGGREGATOR` and "
 "`PUBLISHER` environment variables to your desired aggregator and publisher, "
 "respectively. For example:"
 msgstr ""
 
-#: docs/usage/web-api.md:108
+#: docs/usage/web-api.md:132
 msgid "https://aggregator.walrus-testnet.walrus.space"
 msgstr ""
 
-#: docs/usage/web-api.md:109
+#: docs/usage/web-api.md:133
 msgid "https://publisher.walrus-testnet.walrus.space"
 msgstr ""
 
-#: docs/usage/web-api.md:112
+#: docs/usage/web-api.md:136
 msgid ""
 "```admonish tip title=\"API specification\"\n"
 "Walrus aggregators and publishers expose their API specifications at the "
 "path `/v1/api`. You can\n"
-"view this in the browser, e.g., at "
-"<https://aggregator.walrus-testnet.walrus.space/v1/api>\n"
+"view this in the browser, for example, at "
+"<https://aggregator.walrus-testnet.walrus.space/v1/api>.\n"
 "```"
 msgstr ""
 
-#: docs/usage/web-api.md:117 docs/dev-guide/dev-operations.md:13
+#: docs/usage/web-api.md:141 docs/dev-guide/dev-operations.md:13
 msgid "Store"
 msgstr ""
 
-#: docs/usage/web-api.md:119
+#: docs/usage/web-api.md:143
 msgid ""
 "You can interact with the daemon through simple HTTP PUT requests. For "
 "example, with [cURL](https://curl.se), you can store blobs using a publisher "
 "or daemon as follows:"
 msgstr ""
 
-#: docs/usage/web-api.md:123 docs/usage/web-api.md:132
-#: docs/usage/web-api.md:161
+#: docs/usage/web-api.md:147 docs/usage/web-api.md:156
+#: docs/usage/web-api.md:185
 msgid "\"$PUBLISHER/v1/store\""
 msgstr ""
 
-#: docs/usage/web-api.md:123
+#: docs/usage/web-api.md:147
 msgid "\"some string\" # store the string `some string` for 1 storage epoch\n"
 msgstr ""
 
-#: docs/usage/web-api.md:124
+#: docs/usage/web-api.md:148
 msgid "\"$PUBLISHER/v1/store?epochs=5\""
 msgstr ""
 
-#: docs/usage/web-api.md:124
+#: docs/usage/web-api.md:148
 msgid "\"some/file\" # store file `some/file` for 5 storage epochs\n"
 msgstr ""
 
-#: docs/usage/web-api.md:127
+#: docs/usage/web-api.md:151
 msgid ""
 "The store HTTP API end points return information about the blob stored in "
 "JSON format. When a blob is stored for the first time, a `newlyCreated` "
 "field contains information about the new blob:"
 msgstr ""
 
-#: docs/usage/web-api.md:132 docs/usage/web-api.md:161
+#: docs/usage/web-api.md:156 docs/usage/web-api.md:185
 msgid "\"some other string\""
 msgstr ""
 
-#: docs/usage/web-api.md:134
+#: docs/usage/web-api.md:158
 msgid "\"newlyCreated\""
 msgstr ""
 
-#: docs/usage/web-api.md:135
+#: docs/usage/web-api.md:159
 msgid "\"blobObject\""
 msgstr ""
 
-#: docs/usage/web-api.md:136 docs/usage/web-api.md:143
+#: docs/usage/web-api.md:160 docs/usage/web-api.md:167
 msgid "\"id\""
 msgstr ""
 
-#: docs/usage/web-api.md:136
+#: docs/usage/web-api.md:160
 msgid "\"0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235\""
 msgstr ""
 
-#: docs/usage/web-api.md:137
+#: docs/usage/web-api.md:161
 msgid "\"storedEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
+#: docs/usage/web-api.md:162 docs/usage/web-api.md:188
 msgid "\"blobId\""
 msgstr ""
 
-#: docs/usage/web-api.md:138 docs/usage/web-api.md:164
+#: docs/usage/web-api.md:162 docs/usage/web-api.md:188
 msgid "\"Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM\""
 msgstr ""
 
-#: docs/usage/web-api.md:139
+#: docs/usage/web-api.md:163
 msgid "\"size\""
 msgstr ""
 
-#: docs/usage/web-api.md:140
+#: docs/usage/web-api.md:164
 msgid "\"erasureCodeType\""
 msgstr ""
 
-#: docs/usage/web-api.md:140
+#: docs/usage/web-api.md:164
 msgid "\"RedStuff\""
 msgstr ""
 
-#: docs/usage/web-api.md:141
+#: docs/usage/web-api.md:165
 msgid "\"certifiedEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:142
+#: docs/usage/web-api.md:166
 msgid "\"storage\""
 msgstr ""
 
-#: docs/usage/web-api.md:143
+#: docs/usage/web-api.md:167
 msgid "\"0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e\""
 msgstr ""
 
-#: docs/usage/web-api.md:144
+#: docs/usage/web-api.md:168
 msgid "\"startEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:145 docs/usage/web-api.md:169
+#: docs/usage/web-api.md:169 docs/usage/web-api.md:193
 msgid "\"endEpoch\""
 msgstr ""
 
-#: docs/usage/web-api.md:146
+#: docs/usage/web-api.md:170
 msgid "\"storageSize\""
 msgstr ""
 
-#: docs/usage/web-api.md:149
+#: docs/usage/web-api.md:173
 msgid "\"encodedSize\""
 msgstr ""
 
-#: docs/usage/web-api.md:150
+#: docs/usage/web-api.md:174
 msgid "\"cost\""
 msgstr ""
 
-#: docs/usage/web-api.md:155
+#: docs/usage/web-api.md:179
 msgid ""
 "The information returned is the content of the [Sui blob "
 "object](../dev-guide/sui-struct.md)."
 msgstr ""
 
-#: docs/usage/web-api.md:157
+#: docs/usage/web-api.md:181
 msgid ""
 "When the aggregator finds a certified blob with the same blob ID and a "
 "sufficient validity period, it returns a `alreadyCertified` JSON structure:"
 msgstr ""
 
-#: docs/usage/web-api.md:163
+#: docs/usage/web-api.md:187
 msgid "\"alreadyCertified\""
 msgstr ""
 
-#: docs/usage/web-api.md:165
+#: docs/usage/web-api.md:189
 msgid "\"event\""
 msgstr ""
 
-#: docs/usage/web-api.md:166
+#: docs/usage/web-api.md:190
 msgid "\"txDigest\""
 msgstr ""
 
-#: docs/usage/web-api.md:166
+#: docs/usage/web-api.md:190
 msgid "\"CLE41JTPR2CgZRC1gyKK6P3xpQRHCetQMsmtEgqGjwst\""
 msgstr ""
 
-#: docs/usage/web-api.md:167
+#: docs/usage/web-api.md:191
 msgid "\"eventSeq\""
 msgstr ""
 
-#: docs/usage/web-api.md:167
+#: docs/usage/web-api.md:191
 msgid "\"0\""
 msgstr ""
 
-#: docs/usage/web-api.md:174
+#: docs/usage/web-api.md:198
 msgid ""
 "The field `event` returns the [Sui event ID](../dev-guide/sui-struct.md) "
 "that can be used to find the transaction that created the Sui Blob object on "
 "the Sui explorer or using a Sui SDK."
 msgstr ""
 
-#: docs/usage/web-api.md:177 docs/dev-guide/dev-operations.md:48
+#: docs/usage/web-api.md:201 docs/dev-guide/dev-operations.md:48
 msgid "Read"
 msgstr ""
 
-#: docs/usage/web-api.md:179
+#: docs/usage/web-api.md:203
 msgid ""
 "Blobs may be read from an aggregator or daemon using HTTP GET. For example, "
 "the following cURL command reads a blob and writes it to an output file:"
 msgstr ""
 
-#: docs/usage/web-api.md:183 docs/usage/web-api.md:189
+#: docs/usage/web-api.md:207 docs/usage/web-api.md:213
 msgid "\"$AGGREGATOR/v1/<some blob ID>\""
 msgstr ""
 
-#: docs/usage/web-api.md:186
+#: docs/usage/web-api.md:210
 msgid ""
 "Alternatively you may print the contents of a blob in the terminal with the "
 "cURL command:"
 msgstr ""
 
-#: docs/usage/web-api.md:192
+#: docs/usage/web-api.md:216
 msgid ""
 "```admonish tip title=\"Content sniffing\"\n"
 "Modern browsers will attempt to sniff the content type for such resources, "
@@ -3614,7 +3694,7 @@ msgid ""
 "Walrus Mainnet will use new Move packages with `struct` layouts and function "
 "signatures that may not\n"
 "be compatible with this package. Move code that builds against this package "
-"will need to rewritten.\n"
+"will need to be rewritten.\n"
 "```"
 msgstr ""
 
@@ -3749,8 +3829,8 @@ msgstr ""
 msgid ""
 "The `BlobCertified` event with `deletable` set to false and an `end_epoch` "
 "in the future indicates that the blob will be available until this epoch. A "
-"light client proof this event was emitted for a blob ID constitutes a proof "
-"of availability for the data with this blob ID."
+"light client proof that this event was emitted for a blob ID constitutes a "
+"proof of availability for the data with this blob ID."
 msgstr ""
 
 #: docs/dev-guide/sui-struct.md:122
@@ -5571,7 +5651,7 @@ msgstr ""
 #: docs/walrus-sites/portal.md:5
 msgid ""
 "We use the term \"portal\" to indicate any technology that is used to access "
-"an browse Walrus Sites. As mentioned in the "
+"and browse Walrus Sites. As mentioned in the "
 "[overview](./overview.md#the-site-rendering-path), we foresee three kinds of "
 "portals:"
 msgstr ""
