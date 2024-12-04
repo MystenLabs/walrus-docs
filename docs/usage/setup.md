@@ -248,7 +248,7 @@ If you specify a wallet path, make sure your wallet is set up for Sui **Testnet*
 ## Testnet WAL faucet
 
 The Walrus Testnet uses Testnet WAL tokens to buy storage and stake. Testnet WAL tokens have no
-value and can be exchanged (at a 1:1 rate) for some Testnet SUI tokens, which also have no value,
+value and can be obtained in exchange for some Testnet SUI tokens, which also have no value,
 through the following command:
 
 ```sh
@@ -271,7 +271,7 @@ sui client balance
 ╰─────────────────────────────────────────╯
 ```
 
-By default, 0.5 SUI are exchanged for 0.5 WAL, but a different amount of SUI may be exchanged using
-the `--amount` option (the value is in MIST/FROST), and a specific SUI/WAL exchange object may be
+By default, 0.5 SUI are exchanged, but a different amount of SUI may be exchanged using the
+`--amount` option (the value is in MIST/FROST), and a specific SUI/WAL exchange object may be
 used through the `--exchange-id` option. The `walrus get-wal --help` command provides more
 information about those.
