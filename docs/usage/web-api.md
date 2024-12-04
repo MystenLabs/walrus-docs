@@ -55,6 +55,43 @@ important to ensure only authorized parties may access it, or other measures to 
 especially in a future Mainnet deployment.
 ```
 
+### Notes on publisher operation
+
+We list here a few important details on how the publisher deals with funds and objects on Sui.
+
+#### Number of sub-wallets
+
+As mentioned above, the publisher uses sub-wallets to allow storing blobs in parallel. By default,
+the publisher uses 8 sub-wallets, meaning it can store 8 blobs at the same time.
+
+#### Funds in sub-wallets
+
+Each of the sub-wallets requires funds to interact with the chain and purchase storage. For this
+reason, a background process checks periodically if the sub-wallets have enough funds. In steady
+state, each of the sub-wallets will have a balance of 0.5-1.0 SUI and WAL. The amount and triggers
+for coin refills can be configured through CLI arguments.
+
+#### Lifecycle of created `Blob` objects
+
+Each store operation in Walrus creates a `Blob` object on Sui. This blob object represents the
+(partial) ownership over the associated data, and allows certain data management operations (e.g.,
+in the case of deletable blobs).
+
+When the publisher stores a blob on behalf of a client, the `Blob` object is initially owned by the
+sub-wallet that stored the blob. Then, the following cases are possible, depending on the
+configuration:
+
+- If the client requests to store a blob and specifies the `send_object_to` query parameter (see
+  [the relevant section](#store) for examples), then the `Blob` object is transferred to the
+  specified address. This is a way for clients to get back the created object for their data.
+- If the `send_object_to` query parameter is not specified, two cases are possible:
+  - if the publisher was run with the `--keep` flag, then the sub-wallet transfers the
+      newly-created blob object to the main wallet, such that all these objects are kept there.
+  - if the `--keep` flag was omitted, then the sub-wallet *immediately burns* the `Blob` object.
+      Since no one has requested the object, and the availability of the data on Walrus is
+      independent of the existence of such object, it is safe to do so. This is to avoid cluttering
+      the sub-wallet with many blob objects.
+
 ## Using a public aggregator or publisher {#public-services}
 
 For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
@@ -144,6 +181,8 @@ You can interact with the daemon through simple HTTP PUT requests. For example, 
 ```sh
 curl -X PUT "$PUBLISHER/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
 curl -X PUT "$PUBLISHER/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
+curl -X PUT "$PUBLISHER/v1/store?send_object_to=$ADDRESS" --upload-file "some/file" # store file `some/file` and send the blob object to $ADDRESS
+curl -X PUT "$PUBLISHER/v1/store?deletable=true" --upload-file "some/file" # store file `some/file` as a deletable blob, instead of a permanent one
 ```
 
 The store HTTP API end points return information about the blob stored in JSON format. When a blob
