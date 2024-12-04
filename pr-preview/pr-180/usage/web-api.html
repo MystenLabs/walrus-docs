@@ -190,30 +190,37 @@ runs a simple web server offering HTTP interfaces to store and read blobs in an 
 <a href="#public-services">public aggregator and publisher services</a> to try the Walrus HTTP APIs without
 the need to run a local client.</p>
 <h2 id="local-daemon"><a class="header" href="#local-daemon">Starting the daemon locally</a></h2>
-<div id="admonition-publisher-sub-wallets" class="admonition admonish-tip" role="note" aria-labelledby="admonition-publisher-sub-wallets-title">
-<div class="admonition-title">
-<div id="admonition-publisher-sub-wallets-title">
-<p>Publisher sub-wallets</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-publisher-sub-wallets"></a>
-</div>
-<div>
-<p>The publisher (and therefore also  the daemon) use multiple sub-wallets under the hood to allow
-storing blobs in parallel. Therefore, when running the publisher or the daemon, a
-<code>--sub-wallets-dir</code> flag is needed to specify where these wallets kept (more info
-<a href="#notes-on-publisher-operation">here</a>).</p>
-</div>
-</div>
-<p>You can run the daemon with the following command, to offer both an aggregator and publisher on
-the same address (<code>127.0.0.1</code>) and port (<code>31415</code>):</p>
-<pre><code class="language-sh">walrus daemon -b "127.0.0.1:31415" --sub-wallets-dir &lt;YOUR_DIR&gt;
+<p>You can run a local Walrus daemon through the <code>walrus</code> binary. There are three different commands:</p>
+<ul>
+<li><code>walrus aggregator</code> starts an "aggregator" that offers an HTTP interface to read blobs from
+Walrus.</li>
+<li><code>walrus publisher</code> starts a "publisher" that offers an HTTP interface to store blobs in Walrus.</li>
+<li><code>walrus daemon</code> offers the combined functionality of an aggregator and publisher on the same
+address and port.</li>
+</ul>
+<p>The aggregator does not perform any on-chain actions, and only requires specifying the address on
+which it listens:</p>
+<pre><code class="language-sh">walrus aggregator --bind-address "127.0.0.1:31415"
 </code></pre>
-<p>Or you may run the aggregator and publisher processes separately on different addresses/ports:</p>
-<pre><code class="language-sh">walrus aggregator -b "127.0.0.1:31415" # run an aggregator to read blobs
-walrus publisher -b "127.0.0.1:31416" --sub-wallets-dir &lt;YOUR_DIR&gt; # run a publisher to store blobs
+<p>The publisher and daemon perform on-chain actions and thus require a Sui Testnet wallet with
+sufficient SUI and WAL balances. To enable handling many parallel requests without object
+conflicts, they create internal sub-wallets since version 1.4.0, which are funded from the main
+wallet. These sub-wallets are persisted in a directory specified with the <code>--sub-wallets-dir</code>
+argument; any existing directory can be used. If it already contains sub-wallets, they will be
+reused.</p>
+<p>By default, 8 sub-wallets are created and funded. This can be changed with the <code>--n-clients</code>
+argument. For simple local testing, 1 or 2 sub-wallets are usually sufficient.</p>
+<p>For example, you can run a publisher with a single sub-wallet stored in the Walrus configuration
+directory with the following command:</p>
+<pre><code class="language-sh">PUBLISHER_WALLETS_DIR=~/.config/walrus/publisher-wallets
+mkdir -p "$PUBLISHER_WALLETS_DIR"
+walrus publisher \
+  --bind-address "127.0.0.1:31416" \
+  --sub-wallets-dir "$PUBLISHER_WALLETS_DIR" \
+  --n-clients 1
 </code></pre>
-<p>The aggregator provides all read APIs, the publisher all the store APIs, and the daemon provides
-both.</p>
+<p>Replace <code>publisher</code> by <code>daemon</code> to run both an aggregator and publisher on the same address and
+port.</p>
 <div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
 <div class="admonition-title">
 <div id="admonition-warning-title">
@@ -223,8 +230,9 @@ both.</p>
 </div>
 <div>
 <p>While the aggregator does not perform Sui on-chain actions, and therefore consumes no gas, the
-publisher does perform actions on-chain and will consume gas. It is therefore important to ensure
-only authorized parties may access it, or other measures to manage gas costs.</p>
+publisher does perform actions on-chain and will consume both SUI and WAL tokens. It is therefore
+important to ensure only authorized parties may access it, or other measures to manage gas costs,
+especially in a future Mainnet deployment.</p>
 </div>
 </div>
 <h3 id="notes-on-publisher-operation"><a class="header" href="#notes-on-publisher-operation">Notes on publisher operation</a></h3>
@@ -335,7 +343,7 @@ PUBLISHER=https://publisher.walrus-testnet.walrus.space
 </div>
 <div>
 <p>Walrus aggregators and publishers expose their API specifications at the path <code>/v1/api</code>. You can
-view this in the browser, e.g., at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a></p>
+view this in the browser, for example, at <a href="https://aggregator.walrus-testnet.walrus.space/v1/api">https://aggregator.walrus-testnet.walrus.space/v1/api</a>.</p>
 </div>
 </div>
 <h3 id="store"><a class="header" href="#store">Store</a></h3>

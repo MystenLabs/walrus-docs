@@ -193,15 +193,20 @@ chapter</a> for prerequisites, installation, and configuration.</p>
 their meaning.</p>
 <h2 id="walrus-system-information"><a class="header" href="#walrus-system-information">Walrus system information</a></h2>
 <p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,
-<code>walrus info</code> gives an overview of the number of storage nodes and shards in the system, the maximum
-blob size, and the current cost in (Testnet) WAL for storing blobs:</p>
+<code>walrus info</code> gives an overview of current system parameters such as the current epoch, the number
+of storage nodes and shards in the system, the maximum blob size, and the current cost in (Testnet)
+WAL for storing blobs:</p>
 <pre><code class="language-console">$ walrus info
 
 Walrus system information
-Current epoch: 2
+
+Epochs and storage duration
+Current epoch: 47
+Epoch duration: 1day
+Blobs can be stored for at most 200 epochs in the future.
 
 Storage nodes
-Number of nodes: 25
+Number of storage nodes: 30
 Number of shards: 1000
 
 Blob size
@@ -209,7 +214,9 @@ Maximum blob size: 13.3 GiB (14,273,391,930 B)
 Storage unit: 1.00 MiB
 
 Approximate storage prices per epoch
+(Conversion rate: 1 WAL = 1,000,000,000 FROST)
 Price per encoded storage unit: 100 FROST
+Additional price for each write: 2,000 FROST
 Price to store metadata: 6,200 FROST
 Marginal price per additional 1 MiB (w/o metadata): 500 FROST
 
@@ -231,8 +238,9 @@ SUI: <code>1 WAL = 1 000 000 000 FROST</code>.</p>
 </div>
 </div>
 <p>Additional information such as encoding parameters and sizes, BFT system information, and
-information on the storage nodes and their shard distribution can be viewed with the <code>--dev</code>
-argument: <code>walrus info --dev</code>.</p>
+information on the storage nodes in the current and (if already selected) the next committee,
+including their node IDs and stake and shard distribution can be viewed with the <code>--dev</code> argument:
+<code>walrus info --dev</code>.</p>
 <h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status, and reading blobs</a></h2>
 <div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
 <div class="admonition-title">
@@ -273,10 +281,23 @@ page</a> for further details.</p>
 </div>
 </div>
 <p>Storing blobs on Walrus can be achieved through the following command:</p>
-<pre><code class="language-sh">walrus store &lt;some file&gt;
+<pre><code class="language-sh">walrus store &lt;some file&gt; --epochs &lt;EPOCHS&gt;
 </code></pre>
-<p>The store command takes a CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicating the number of
-epochs the blob should be stored for. This defaults to 1 epoch, namely the current one.</p>
+<p>The CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicates the number of epochs the blob should be
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 200
+for the current Testnet deployment.</p>
+<div id="admonition-warning-1" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-1-title">
+<div class="admonition-title">
+<div id="admonition-warning-1-title">
+<p>Warning</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-warning-1"></a>
+</div>
+<div>
+<p>The <code>--epochs</code> argument is currently optional; if it is not specified, a warning is printed and the
+default of 1 epoch is used. However, it will become a mandatory argument in the future.</p>
+</div>
+</div>
 <div id="admonition-automatic-optimizations" class="admonition admonish-tip" role="note" aria-labelledby="admonition-automatic-optimizations-title">
 <div class="admonition-title">
 <div id="admonition-automatic-optimizations-title">
@@ -327,14 +348,18 @@ in the Sui events that certify them, and should not be relied upon for availabil
 </code></pre>
 <p>Optionally the delete command can be invoked by specifying a <code>--file &lt;PATH&gt;</code> option, to derive the
 blob ID from a file, or <code>--object-id &lt;SUI_ID&gt;</code> to delete the blob in the Sui blob object specified.</p>
-<p>The <code>delete</code> command reclaims the storage object associated with the deleted blob, which is
-re-used to store new blobs. The delete operation provides
-flexibility around managing storage costs and re-using storage.</p>
-<p>The delete operation has limited utility for privacy: It only deletes slivers from the current
-epoch storage nodes, and subsequent epoch storage nodes, if no other user has uploaded a copy of
-the same blob. If another copy of the same blob exists in Walrus the delete operation will not
-make the blob unavailable for download, and <code>walrus read</code> invocations will download it. Copies of
-the public blob may be cached or downloaded by users, and these copies are not deleted.</p>
+<p>Before deleting a blob, the <code>walrus delete</code> command will ask for confirmation unless the <code>--yes</code>
+(or <code>-y</code>) option is specified.</p>
+<p>The <code>delete</code> command reclaims the storage object associated with the deleted blob, which is re-used
+to store new blobs. The delete operation provides flexibility around managing storage costs and
+re-using storage.</p>
+<p>The delete operation has limited utility for privacy: It only deletes slivers from the current epoch
+storage nodes, and subsequent epoch storage nodes, if no other user has uploaded a copy of the same
+blob. If another copy of the same blob exists in Walrus, the delete operation will not make the blob
+unavailable for download, and <code>walrus read</code> invocations will download it. After the deletion is
+finished, the CLI checks the updated status of the blob to see if it is still accessible in Walrus
+(unless the <code>--no-status-check</code> option is specified). However, even if it isn't, copies of the
+public blob may be cached or downloaded by users, and these copies are not deleted.</p>
 <div id="admonition-delete-reclaims-space-only" class="admonition admonish-danger" role="note" aria-labelledby="admonition-delete-reclaims-space-only-title">
 <div class="admonition-title">
 <div id="admonition-delete-reclaims-space-only-title">
