@@ -37,3 +37,8 @@ following variables in the config file:
   - `walrus_config`: The configuration for the `walrus` client binary, see the [relevant
     chapter](../usage/setup.md).
   - `gas_budget`: The maximum amount of gas to be spent for transactions (default: 500M MIST).
+
+```admonish note
+From time to time there are package upgrades happening.
+This will require you to update the `package` field in the config file.
+```
