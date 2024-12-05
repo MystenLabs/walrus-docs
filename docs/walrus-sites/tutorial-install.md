@@ -7,7 +7,6 @@ prepare your environment for development.
 The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
 ```
 
-
 ## Prerequisites
 
 Before you start, make sure you
@@ -28,6 +27,7 @@ cd walrus-sites
 ```
 
 Make sure you are building from the `testnet` branch.
+
 ``` sh
 git checkout testnet
 ```
