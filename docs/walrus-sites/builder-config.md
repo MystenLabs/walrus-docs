@@ -23,7 +23,7 @@ If you want to have more control over the behavior of the site builder, you can 
 following variables in the config file:
 
 - `package`: the object ID of the Walrus Sites package on Sui. This must always be specified in the
-  config, and is already appropriately configured in `assets/example-config.yaml`.
+  config, and is already appropriately configured in `./sites-config.yaml`.
 - `portal`: the name of the portal through which the site will be viewed; this only affects the
   output of the CLI, and nothing else (default: `walrus.site`).
   All Walrus Sites are accessible through any portal independent of this setting.
