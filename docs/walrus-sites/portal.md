@@ -11,7 +11,7 @@ portals:
 Currently, the server-side and service-workers portals are available at <https://blob.store> and
 <https://walrus.site>, respectively.
 
-```admonish danger title="Extending the expiration date of an existing site"
+```admonish danger title="Walrus Sites stable branch"
 The stable branch of Walrus Sites is `testnet`.
 ```
 
