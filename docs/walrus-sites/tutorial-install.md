@@ -28,7 +28,8 @@ cd walrus-sites
 ```
 
 Make sure you are building from the `testnet` branch.
-```sh
+``` sh
+git checkout testnet
 ```
 
 Then, build the release version of the site builder:
