@@ -6,7 +6,6 @@ prepare your environment for development.
 ```admonish danger title="Walrus Sites stable branch"
 The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
 ```
-
 ## Prerequisites
 
 Before you start, make sure you
@@ -25,7 +24,6 @@ First, clone and enter the Walrus Sites repo from <https://github.com/MystenLabs
 git clone https://github.com/MystenLabs/walrus-sites.git
 cd walrus-sites
 ```
-
 Make sure you are building from the `testnet` branch.
 
 ``` sh
