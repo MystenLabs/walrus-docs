@@ -3,7 +3,10 @@
 This section describes the steps necessary to setup the Walrus Sites' `site-builder` tool and
 prepare your environment for development.
 
-> ⚠️ IMPORTANT NOTE: The stable branch of Walrus Sites is `testnet`.
+```admonish danger title="Walrus Sites stable branch"
+The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
+```
+
 
 ## Prerequisites
 
