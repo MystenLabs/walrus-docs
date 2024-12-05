@@ -3023,11 +3023,25 @@ portals:</p>
 </ol>
 <p>Currently, the server-side and service-workers portals are available at <a href="https://blob.store">https://blob.store</a> and
 <a href="https://walrus.site">https://walrus.site</a>, respectively.</p>
+<div id="admonition-extending-the-expiration-date-of-an-existing-site" class="admonition admonish-danger" role="note" aria-labelledby="admonition-extending-the-expiration-date-of-an-existing-site-title">
+<div class="admonition-title">
+<div id="admonition-extending-the-expiration-date-of-an-existing-site-title">
+<p>Extending the expiration date of an existing site</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/portal.html#admonition-extending-the-expiration-date-of-an-existing-site"></a>
+</div>
+<div>
+<p>The stable branch of Walrus Sites is <code>testnet</code>.</p>
+</div>
+</div>
 <h2 id="running-the-portal-locally"><a class="header" href="#running-the-portal-locally">Running the portal locally</a></h2>
 <p>You can run a service-worker portal locally if you want to browse Walrus Sites without accessing
 external portals or for development purposes.</p>
 <p>This requires having the <a href="https://pnpm.io/"><code>pnpm</code></a> tool installed. To start, clone the
 <code>walrus-sites</code> repo and enter the <code>portal</code> directory. Here, run</p>
+<p>Make sure you are on the stable branch:</p>
+<pre><code class="language-sh">git checkout testnet
+</code></pre>
 <pre><code class="language-sh">cd portal
 pnpm install
 # Build the portal you want to use, or both
