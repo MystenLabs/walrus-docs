@@ -3,6 +3,8 @@
 This section describes the steps necessary to setup the Walrus Sites' `site-builder` tool and
 prepare your environment for development.
 
+> ⚠️ IMPORTANT NOTE: The stable branch of Walrus Sites is `testnet`.
+
 ## Prerequisites
 
 Before you start, make sure you
@@ -20,6 +22,10 @@ First, clone and enter the Walrus Sites repo from <https://github.com/MystenLabs
 ``` sh
 git clone https://github.com/MystenLabs/walrus-sites.git
 cd walrus-sites
+```
+
+Make sure you are building from the `testnet` branch.
+```sh
 ```
 
 Then, build the release version of the site builder:
