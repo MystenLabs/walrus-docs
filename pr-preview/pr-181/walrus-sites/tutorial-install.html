@@ -186,17 +186,6 @@
 <h1 id="installing-the-site-builder"><a class="header" href="#installing-the-site-builder">Installing the site builder</a></h1>
 <p>This section describes the steps necessary to setup the Walrus Sites' <code>site-builder</code> tool and
 prepare your environment for development.</p>
-<div id="admonition-walrus-sites-stable-branch" class="admonition admonish-danger" role="note" aria-labelledby="admonition-walrus-sites-stable-branch-title">
-<div class="admonition-title">
-<div id="admonition-walrus-sites-stable-branch-title">
-<p>Walrus Sites stable branch</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-walrus-sites-stable-branch"></a>
-</div>
-<div>
-<p>The stable branch of Walrus Sites is <code>testnet</code>. Make sure that you always pull the latest changes from there.</p>
-</div>
-</div>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>Before you start, make sure you</p>
 <ul>
@@ -269,6 +258,17 @@ which represents the Sui object ID of the Walrus Sites
 smart contract. You can find the latest version of the
 package in the <a href="https://github.com/MystenLabs/walrus-sites/tree/testnet">Walrus Sites repository</a>
 on the <code>testnet</code> branch.</p>
+<div id="admonition-walrus-sites-stable-branch" class="admonition admonish-danger" role="note" aria-labelledby="admonition-walrus-sites-stable-branch-title">
+<div class="admonition-title">
+<div id="admonition-walrus-sites-stable-branch-title">
+<p>Walrus Sites stable branch</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-walrus-sites-stable-branch"></a>
+</div>
+<div>
+<p>The stable branch of Walrus Sites is <code>testnet</code>. Make sure that you always pull the latest changes from there.</p>
+</div>
+</div>
 <p>You can define the location of the <code>sites-config.yaml</code> file using the <code>--config</code>
 flag when running the <code>site-builder</code> commands like so:</p>
 <pre><code class="language-sh">site-builder publish &lt;build-directory-of-a-site&gt; --config /path/to/sites-config.yaml
