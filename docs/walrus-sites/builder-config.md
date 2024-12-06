@@ -10,9 +10,12 @@ here the details for all the configuration options.
 
 ## Minimal configuration
 
-The config file is expected to be in `./sites-config.yaml`, and it is possible to point elsewhere
-with the `--config` flag. For your first run, it should be sufficient to call the `site-builder`
-with `--config sites-config.yaml`, which is already configured appropriately.
+The config file is expected to be in one of the
+[default locations](../usage/setup.html#config-custom-path), and it is possible to point
+elsewhere with the `--config` flag.
+For your first run, it should be sufficient to call the `site-builder`
+without specifying the config explicitly, which is already configured
+if you followed thoroughly the [installation steps](./tutorial-install.html#configuration).
 
 If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
 binary, see below.
