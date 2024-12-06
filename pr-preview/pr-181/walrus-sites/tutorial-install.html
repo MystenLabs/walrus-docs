@@ -201,23 +201,45 @@ prepare your environment for development.</p>
 <p>Before you start, make sure you</p>
 <ul>
 <li>have a recent version of <a href="https://www.rust-lang.org/tools/install">Rust</a> installed;</li>
-<li>have <code>git</code> installed; and</li>
 <li>followed all <a href="../usage/setup.html">Walrus setup instructions</a>.</li>
 </ul>
 <p>Then, follow these additional setup steps.</p>
 <h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
-<p>First, clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>:</p>
-<pre><code class="language-sh">git clone https://github.com/MystenLabs/walrus-sites.git
-cd walrus-sites
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>Similar to the <code>walrus</code> client cli tool, we currently provide the <code>site-builder</code>
+client binary for macOS (Intel and Apple CPUs), Ubuntu, and</p>
+<p>Windows:</p>
+<div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Windows</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe"><code>windows-x86_64.exe</code></a></td></tr>
+</tbody></table>
+</div><div id="admonition-windows" class="admonition admonish-note" role="note" aria-labelledby="admonition-windows-title">
+<div class="admonition-title">
+<div id="admonition-windows-title">
+<p>Windows</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-windows"></a>
+</div>
+<div>
+<p>We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
+a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
+adapt most of those.</p>
+</div>
+</div>
+<p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
+<code>$SYSTEM</code> variable):</p>
+<pre><code class="language-sh">SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
+curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-$SYSTEM -o site-builder
+chmod +x site-builder
 </code></pre>
-<p>Make sure you are building from the <code>testnet</code> branch.</p>
-<pre><code class="language-sh">git checkout testnet
-</code></pre>
-<p>Then, build the release version of the site builder:</p>
-<pre><code class="language-sh">cargo build --release
-</code></pre>
-<p>After the build process completes, you are ready to run the site builder:</p>
-<pre><code class="language-terminal">$ ./target/release/site-builder
+<p>To be able to run it simply as <code>site-builder</code>, move the binary to any directory included
+in your <code>$PATH</code> environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>,
+or <code>$HOME/.local/bin/</code>.</p>
+<p>Once this is done, you should be able to simply type <code>site-builder</code> in your terminal.</p>
+<pre><code class="language-terminal">$ site-builder
 Usage: site-builder [OPTIONS] &lt;COMMAND&gt;
 
 Commands:
@@ -230,6 +252,37 @@ Commands:
 
   ⋮
 </code></pre>
+<h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
+<p>The <code>site-builder</code> tool needs a configuration file to work.
+This file is called <code>sites-config.yaml</code> and looks like this:</p>
+<pre><code class="language-yaml"># module: site
+# portal: walrus.site
+package: 0xc5bebae319fc9d2a9dc858b7484cdbd6ef219decf4662dc81a11dc69bb7a5fa7 #
+# general:
+#   rpc_url: https://fullnode.testnet.sui.io:443
+#   wallet: /path/to/.sui/sui_config/client.yaml
+#   walrus_binary: /path/to/walrus
+#   walrus_config: /path/to/devnet_deployment/client_config.yaml
+#   gas_budget: 500000000
+</code></pre>
+<p>As you can see, the configuration file is quite simple.
+The only mandatory field is the <code>package</code> field,
+which represents the Sui object ID of the Walrus Sites
+smart contract. You can find the latest version of the
+package in the <a href="https://github.com/MystenLabs/walrus-sites/tree/testnet">Walrus Sites repository</a>
+on the <code>testnet</code> branch.</p>
+<div id="admonition-package-version" class="admonition admonish-warning" role="note" aria-labelledby="admonition-package-version-title">
+<div class="admonition-title">
+<div id="admonition-package-version-title">
+<p>Package Version</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-package-version"></a>
+</div>
+<div>
+<p>Make sure to always use the latest version of the Walrus Sites smart contract package.</p>
+</div>
+</div>
+<p>You are now ready to start working on your Walrus Sites! 🎉</p>
 
                     </main>
 
