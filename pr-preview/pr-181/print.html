@@ -2516,13 +2516,17 @@ your first Walrus Site!</p>
 <p>The <code>site-builder</code> works by uploading a directory of files produced by any web framework to Walrus
 and adding the relevant metadata to Sui. This directory should have a file called <code>index.html</code> in
 its root, which will be the entry point to the Walrus Site.</p>
-<p>For the rest of the tutorial, we will use as an example the simple site contained in
-<code>./examples/snake</code>.</p>
+<p>There is a very useful <a href="https://github.com/MystenLabs/example-walrus-sites">example-Walrus-sites</a>
+repository that contains multiple kinds of sites that can be published.</p>
+<p>For simplicity, we will start by publishing the most frugal of the sites, the <code>walrus-snake</code> game.</p>
+<p>First, clone the repository of examples:</p>
+<pre><code class="language-sh">git clone https://github.com/MystenLabs/example-walrus-sites.git &amp;&amp; cd walrus-snake/
+</code></pre>
 <h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
 <p>Since we have placed the <code>walrus</code> and <code>site-builder</code> binaries
 and configuration in their default locations,
-publishing the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
-<pre><code class="language-sh">site-builder publish ./examples/snake --epochs 100
+publishing the <code>./walrus-snake</code> site is as simple as calling the publishing command:</p>
+<pre><code class="language-sh">site-builder publish ./walrus-snake --epochs 100
 </code></pre>
 <div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
 <div class="admonition-title">
@@ -2545,8 +2549,10 @@ longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
 </div>
 <div>
 <p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
-<code>./walrus-sites</code> directory. In case you are calling the <code>site-builder</code> command from a different
-location, use the <code>--config</code> flag to specify the path to the configuration file.</p>
+current directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code>
+and <code>$HOME/walrus/sites-config.yaml</code> directory.
+In case you want to use explicitly a different <code>sites-config.yaml</code>,
+use the <code>--config</code> flag to specify the path to the configuration file.</p>
 </div>
 </div>
 <p>The end of the output should look like the following:</p>
@@ -2566,19 +2572,21 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
 have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.</p>
-<p>Note here that we are passing the default config <code>./sites-config.yaml</code> as the config for the site
-builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
+<p>Note here that we are implicitly using the default config <code>sites-config.yaml</code>
+as the config for the site builder that we set up previously on
+the <a href="walrus-sites/./tutorial-install.html">installation section</a>.
+The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
 package for the Walrus Sites logic.</p>
 <p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="walrus-sites/./builder-config.html">advanced
 configuration</a> section.</p>
 <h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
 <p>Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".</p>
-<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
+<p>First, make this edit on in the <code>./walrus-snake/index.html</code> file.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
-where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
+where to find the updated files (still <code>./walrus-snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
-<pre><code class="language-sh">site-builder update --epochs 100 ./examples/snake  0x407a3081...
+<pre><code class="language-sh">site-builder update --epochs 100 ./walrus-snake  0x407a3081...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Execution completed
