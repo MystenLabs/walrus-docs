@@ -2517,7 +2517,7 @@ your first Walrus Site!</p>
 and adding the relevant metadata to Sui. This directory should have a file called <code>index.html</code> in
 its root, which will be the entry point to the Walrus Site.</p>
 <p>There is a very useful <a href="https://github.com/MystenLabs/example-walrus-sites">example-Walrus-sites</a>
-repository that contains multiple kinds of sites that can be published.</p>
+repository that contains multiple kinds of sites that you can use for reference.</p>
 <p>For simplicity, we will start by publishing the most frugal of the sites, the <code>walrus-snake</code> game.</p>
 <p>First, clone the repository of examples:</p>
 <pre><code class="language-sh">git clone https://github.com/MystenLabs/example-walrus-sites.git &amp;&amp; cd walrus-snake/
@@ -2572,7 +2572,7 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
 have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.</p>
-<p>Note here that we are implicitly using the default config <code>sites-config.yaml</code>
+<p>Note here that we are implicitly using the default <code>sites-config.yaml</code>
 as the config for the site builder that we set up previously on
 the <a href="walrus-sites/./tutorial-install.html">installation section</a>.
 The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
@@ -2675,8 +2675,7 @@ Sites</em> to create per-object websites!</p>
 </div>
 <div>
 <p>In general, the <code>--help</code> flag is your friend, you can add it to get further details for the whole
-CLI (<code>./target/release/site-builder --help</code>) or individual commands (e.g.,
-<code>./target/release/site-builder update --help</code>).</p>
+CLI (<code>site-builder --help</code>) or individual commands (e.g. <code>site-builder update --help</code>).</p>
 </div>
 </div>
 <h2 id="publish"><a class="header" href="#publish"><code>publish</code></a></h2>
@@ -2737,9 +2736,12 @@ wallet to use, the gas budget, and other operational details. Most of these are 
 through sensible defaults, so you should not need to touch them. Yet, for completeness, we provide
 here the details for all the configuration options.</p>
 <h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
-<p>The config file is expected to be in <code>./sites-config.yaml</code>, and it is possible to point elsewhere
-with the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code>
-with <code>--config sites-config.yaml</code>, which is already configured appropriately.</p>
+<p>The config file is expected to be in one of the
+<a href="walrus-sites/../usage/setup.html#config-custom-path">default locations</a>, and it is possible to point
+elsewhere with the <code>--config</code> flag.
+For your first run, it should be sufficient to call the <code>site-builder</code>
+without specifying the config explicitly, which is already configured
+if you followed thoroughly the <a href="walrus-sites/./tutorial-install.html#configuration">installation steps</a>.</p>
 <p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
 binary, see below.</p>
 <h2 id="additional-options"><a class="header" href="#additional-options">Additional options</a></h2>
