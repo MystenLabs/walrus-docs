@@ -19,9 +19,7 @@ Then, follow these additional setup steps.
 ## Installation
 
 Similar to the `walrus` client cli tool, we currently provide the `site-builder`
-client binary for macOS (Intel and Apple CPUs), Ubuntu, and
-
-Windows:
+client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:
 
 | OS      | CPU                   | Architecture                                                                                                                 |
 | ------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -75,7 +73,7 @@ This file is called `sites-config.yaml` and looks like this:
 ```yaml
 # module: site
 # portal: walrus.site
-package: 0xc5bebae319fc9d2a9dc858b7484cdbd6ef219decf4662dc81a11dc69bb7a5fa7 #
+package: 0xc5bebae319fc9d2a9dc858b7484cdbd6ef219decf4662dc81a11dc69bb7a5fa7
 # general:
 #   rpc_url: https://fullnode.testnet.sui.io:443
 #   wallet: /path/to/.sui/sui_config/client.yaml
