@@ -14,11 +14,12 @@ For the rest of the tutorial, we will use as an example the simple site containe
 
 ## Publish the site
 
-Since we have placed the `walrus` binary and configuration in their default locations, publishing
-the `./examples/snake` site is as simple as calling the publishing command:
+Since we have placed the `walrus` and `site-builder` binaries
+and configuration in their default locations,
+publishing the `./examples/snake` site is as simple as calling the publishing command:
 
 ``` sh
-./target/release/site-builder publish ./examples/snake --epochs 100
+site-builder publish ./examples/snake --epochs 100
 ```
 
 ``` admonish tip
@@ -72,7 +73,7 @@ where to find the updated files (still `./example/snake`) and the object ID of t
 (`0x407a3081...`):
 
 ``` sh
-./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+site-builder update --epochs 100 ./examples/snake  0x407a3081...
 ```
 
 The output this time should be:

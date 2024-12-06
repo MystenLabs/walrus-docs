@@ -89,8 +89,23 @@ smart contract. You can find the latest version of the
 package in the [Walrus Sites repository](https://github.com/MystenLabs/walrus-sites/tree/testnet)
 on the `testnet` branch.
 
-```admonish warning title="Package Version"
-Make sure to always use the latest version of the Walrus Sites smart contract package.
+You can define the location of the `sites-config.yaml` file using the `--config`
+flag when running the `site-builder` commands like so:
+
+```sh
+site-builder publish <build-directory-of-a-site> --config /path/to/sites-config.yaml
+```
+
+But if are not a fan of repeating the same flags over and over,
+it's always easier to have the configuration file in
+one of the [default locations](../usage/setup.html#config-custom-path).
+
+Download the `sites-config.yaml` file from the repository and
+place it in one of the aforementioned default locations.
+For the example's shake, we will use the `~/.config/walrus` directory, like so:
+
+```sh
+curl https://raw.githubusercontent.com/MystenLabs/walrus-sites/refs/heads/testnet/sites-config.yaml -o ~/.config/walrus/sites-config.yaml
 ```
 
 You are now ready to start working on your Walrus Sites! 🎉
