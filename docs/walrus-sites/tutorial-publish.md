@@ -10,7 +10,7 @@ and adding the relevant metadata to Sui. This directory should have a file calle
 its root, which will be the entry point to the Walrus Site.
 
 There is a very useful [example-Walrus-sites](https://github.com/MystenLabs/example-walrus-sites)
-repository that contains multiple kinds of sites that can be published.
+repository that contains multiple kinds of sites that you can use for reference.
 
 For simplicity, we will start by publishing the most frugal of the sites, the `walrus-snake` game.
 
@@ -64,7 +64,7 @@ respective blob ID. Further, it prints the object ID of the Walrus Site object o
 have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
 can browse the site.
 
-Note here that we are implicitly using the default config `sites-config.yaml`
+Note here that we are implicitly using the default `sites-config.yaml`
 as the config for the site builder that we set up previously on
 the [installation section](./tutorial-install.html).
 The configuration file is necessary to ensure that the `site-builder` knows the correct Sui
