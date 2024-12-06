@@ -3,10 +3,6 @@
 This section describes the steps necessary to setup the Walrus Sites' `site-builder` tool and
 prepare your environment for development.
 
-```admonish danger title="Walrus Sites stable branch"
-The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
-```
-
 ## Prerequisites
 
 Before you start, make sure you
@@ -88,6 +84,10 @@ which represents the Sui object ID of the Walrus Sites
 smart contract. You can find the latest version of the
 package in the [Walrus Sites repository](https://github.com/MystenLabs/walrus-sites/tree/testnet)
 on the `testnet` branch.
+
+```admonish danger title="Walrus Sites stable branch"
+The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
+```
 
 You can define the location of the `sites-config.yaml` file using the `--config`
 flag when running the `site-builder` commands like so:
