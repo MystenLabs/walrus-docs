@@ -2432,8 +2432,7 @@ prepare your environment for development.</p>
 <p>Then, follow these additional setup steps.</p>
 <h2 id="installation-1"><a class="header" href="#installation-1">Installation</a></h2>
 <p>Similar to the <code>walrus</code> client cli tool, we currently provide the <code>site-builder</code>
-client binary for macOS (Intel and Apple CPUs), Ubuntu, and</p>
-<p>Windows:</p>
+client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:</p>
 <div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
 <tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
 <tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
@@ -2482,7 +2481,7 @@ Commands:
 This file is called <code>sites-config.yaml</code> and looks like this:</p>
 <pre><code class="language-yaml"># module: site
 # portal: walrus.site
-package: 0xc5bebae319fc9d2a9dc858b7484cdbd6ef219decf4662dc81a11dc69bb7a5fa7 #
+package: 0xc5bebae319fc9d2a9dc858b7484cdbd6ef219decf4662dc81a11dc69bb7a5fa7
 # general:
 #   rpc_url: https://fullnode.testnet.sui.io:443
 #   wallet: /path/to/.sui/sui_config/client.yaml
@@ -2496,17 +2495,18 @@ which represents the Sui object ID of the Walrus Sites
 smart contract. You can find the latest version of the
 package in the <a href="https://github.com/MystenLabs/walrus-sites/tree/testnet">Walrus Sites repository</a>
 on the <code>testnet</code> branch.</p>
-<div id="admonition-package-version" class="admonition admonish-warning" role="note" aria-labelledby="admonition-package-version-title">
-<div class="admonition-title">
-<div id="admonition-package-version-title">
-<p>Package Version</p>
-</div>
-<a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-package-version"></a>
-</div>
-<div>
-<p>Make sure to always use the latest version of the Walrus Sites smart contract package.</p>
-</div>
-</div>
+<p>You can define the location of the <code>sites-config.yaml</code> file using the <code>--config</code>
+flag when running the <code>site-builder</code> commands like so:</p>
+<pre><code class="language-sh">site-builder publish &lt;build-directory-of-a-site&gt; --config /path/to/sites-config.yaml
+</code></pre>
+<p>But if are not a fan of repeating the same flags over and over,
+it's always easier to have the configuration file in
+one of the <a href="walrus-sites/../usage/setup.html#config-custom-path">default locations</a>.</p>
+<p>Download the <code>sites-config.yaml</code> file from the repository and
+place it in one of the aforementioned default locations.
+For the example's shake, we will use the <code>~/.config/walrus</code> directory, like so:</p>
+<pre><code class="language-sh">curl https://raw.githubusercontent.com/MystenLabs/walrus-sites/refs/heads/testnet/sites-config.yaml -o ~/.config/walrus/sites-config.yaml
+</code></pre>
 <p>You are now ready to start working on your Walrus Sites! 🎉</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="publishing-a-walrus-site"><a class="header" href="#publishing-a-walrus-site">Publishing a Walrus Site</a></h1>
@@ -2519,9 +2519,10 @@ its root, which will be the entry point to the Walrus Site.</p>
 <p>For the rest of the tutorial, we will use as an example the simple site contained in
 <code>./examples/snake</code>.</p>
 <h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
-<p>Since we have placed the <code>walrus</code> binary and configuration in their default locations, publishing
-the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder publish ./examples/snake --epochs 100
+<p>Since we have placed the <code>walrus</code> and <code>site-builder</code> binaries
+and configuration in their default locations,
+publishing the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
+<pre><code class="language-sh">site-builder publish ./examples/snake --epochs 100
 </code></pre>
 <div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
 <div class="admonition-title">
@@ -2577,7 +2578,7 @@ configuration</a> section.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
 where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+<pre><code class="language-sh">site-builder update --epochs 100 ./examples/snake  0x407a3081...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Execution completed

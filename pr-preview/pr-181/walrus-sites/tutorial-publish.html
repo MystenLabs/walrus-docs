@@ -193,9 +193,10 @@ its root, which will be the entry point to the Walrus Site.</p>
 <p>For the rest of the tutorial, we will use as an example the simple site contained in
 <code>./examples/snake</code>.</p>
 <h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
-<p>Since we have placed the <code>walrus</code> binary and configuration in their default locations, publishing
-the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder publish ./examples/snake --epochs 100
+<p>Since we have placed the <code>walrus</code> and <code>site-builder</code> binaries
+and configuration in their default locations,
+publishing the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
+<pre><code class="language-sh">site-builder publish ./examples/snake --epochs 100
 </code></pre>
 <div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
 <div class="admonition-title">
@@ -251,7 +252,7 @@ configuration</a> section.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
 where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+<pre><code class="language-sh">site-builder update --epochs 100 ./examples/snake  0x407a3081...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Execution completed
