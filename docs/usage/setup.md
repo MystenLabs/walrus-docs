@@ -272,6 +272,6 @@ sui client balance
 ```
 
 By default, 0.5 SUI are exchanged, but a different amount of SUI may be exchanged using the
-`--amount` option (the value is in MIST/FROST), and a specific SUI/WAL exchange object may be
+`--amount` option (the value is in MIST), and a specific SUI/WAL exchange object may be
 used through the `--exchange-id` option. The `walrus get-wal --help` command provides more
 information about those.
