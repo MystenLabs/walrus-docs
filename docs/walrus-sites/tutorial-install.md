@@ -16,8 +16,6 @@ Before you start, make sure you
 
 Then, follow these additional setup steps.
 
-## Clone the repository and build the `site-builder` tool
-
 ## Installation
 
 Similar to the `walrus` client cli tool, we currently provide the `site-builder`
