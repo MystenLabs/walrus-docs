@@ -14,7 +14,7 @@ Then, follow these additional setup steps.
 
 ## Installation
 
-Similar to the `walrus` client cli tool, we currently provide the `site-builder`
+Similar to the `walrus` client CLI tool, we currently provide the `site-builder`
 client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:
 
 | OS      | CPU                   | Architecture                                                                                                                 |
