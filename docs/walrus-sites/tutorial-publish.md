@@ -5,31 +5,37 @@ your first Walrus Site!
 
 ## Select the source material for the site
 
-The `site-builder` works by uploading a directory of files produced by any web framework to Walrus
-and adding the relevant metadata to Sui. This directory should have a file called `index.html` in
-its root, which will be the entry point to the Walrus Site.
+The `site-builder` works by uploading a directory of files produced by any web
+framework to Walrus and adding the relevant metadata to Sui.
+This directory should have a file called `index.html` in its root,
+which will be the entry point to the Walrus Site.
 
-For the rest of the tutorial, we will use as an example the simple site contained in
-`./examples/snake`.
+There is a very useful [example-Walrus-sites](https://github.com/MystenLabs/example-walrus-sites)
+repository that contains multiple kinds of sites that you can use for reference.
+
+For simplicity, we will start by publishing the most frugal of the sites,
+the `walrus-snake` game.
+
+First, clone the repository of examples:
+
+``` sh
+git clone https://github.com/MystenLabs/example-walrus-sites.git && cd walrus-snake/
+```
 
 ## Publish the site
 
-Since we have placed the `walrus` binary and configuration in their default locations, publishing
-the `./examples/snake` site is as simple as calling the publishing command:
+Since we have placed the `walrus` and `site-builder` binaries
+and configuration in their default locations,
+publishing the `./walrus-snake` site is as simple as calling the publishing command:
 
 ``` sh
-./target/release/site-builder publish ./examples/snake --epochs 100
+site-builder publish ./walrus-snake --epochs 100
 ```
 
 ``` admonish tip
-Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
-longer, specify the number of epochs with the `--epochs` flag!
-```
-
-```admonish note
-The site builder will look for the default configuration file `sites-config.yaml` in the
-`./walrus-sites` directory. In case you are calling the `site-builder` command from a different
-location, use the `--config` flag to specify the path to the configuration file.
+Currently on Walrus testnet, the duration of an epoch is 1 day.
+If you want your site to stay up longer,
+specify the number of epochs with the `--epochs` flag!
 ```
 
 The end of the output should look like the following:
@@ -48,31 +54,35 @@ New site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea
 Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 ```
 
-This output tells you that, for each file in the folder, a new Walrus blob was created, and the
-respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
-can browse the site.
+This output tells you that, for each file in the folder,
+a new Walrus blob was created, and the respective blob ID.
+Further, it prints the object ID of the Walrus Site object on Sui
+(so you can have a look in the explorer and use it to set the SuiNS name) and,
+finally, the URL at which you can browse the site.
 
-Note here that we are passing the default config `./sites-config.yaml` as the config for the site
-builder. The configuration file is necessary to ensure that the `site-builder` knows the correct Sui
-package for the Walrus Sites logic.
+Note here that we are implicitly using the default `sites-config.yaml`
+as the config for the site builder that we set up previously on
+the [installation section](./tutorial-install.html).
+The configuration file is necessary to ensure that the
+`site-builder` knows the correct Sui package for the Walrus Sites logic.
 
 More details on the configuration of the `site-builder` can be found under the [advanced
 configuration](./builder-config.md) section.
 
 ## Update the site
 
-Let's say now you want to update the content of the site, for example by changing the title from
-"eat all the blobs!" to "Glob all the Blobs!".
+Let's say now you want to update the content of the site, for example
+by changing the title from "eat all the blobs!" to "Glob all the Blobs!".
 
-First, make this edit on in the `./examples/snake/index.html` file.
+First, make this edit on in the `./walrus-snake/index.html` file.
 
-Then, you can update the existing site by running the `update` command, providing the directory
-where to find the updated files (still `./example/snake`) and the object ID of the existing site
+Then, you can update the existing site by running the `update` command,
+providing the directory where to find the updated files
+(still `./walrus-snake`) and the object ID of the existing site
 (`0x407a3081...`):
 
 ``` sh
-./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+site-builder update --epochs 100 ./walrus-snake  0x407a3081...
 ```
 
 The output this time should be:
@@ -88,17 +98,20 @@ Site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b7
 Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 ```
 
-Compared to the `publish` action, we can see that now the only actions performed were to delete the
-old `index.html`, and update it with the newer one.
+Compared to the `publish` action, we can see that now the only actions
+performed were to delete the old `index.html`,
+and update it with the newer one.
 
 Browsing to the provided URL should reflect the change. You've updated the site!
 
 ```admonish note
-The wallet you are using must be the *owner* of the Walrus Site object to be able to update it.
+The wallet you are using must be the *owner* of the
+Walrus Site object to be able to update it.
 ```
 
 ```admonish danger title="Extending the expiration date of an existing site"
-To extend the expiration date of a previously-stored site, use the `update` command with the
-`--force` flag, and specify the number of additional epochs (from the current epoch) with the
-`--epochs` flag.
+To extend the expiration date of a previously-stored site,
+use the `update` command with the `--force` flag,
+and specify the number of additional epochs
+(from the current epoch) with the `--epochs` flag.
 ```
