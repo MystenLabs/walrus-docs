@@ -17,8 +17,8 @@ Then, follow these additional setup steps.
 Similar to the `walrus` client CLI tool, we currently provide the `site-builder`
 client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:
 
-| OS      | CPU                   | Architecture                                                                                                                 |
-| ------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| OS      | CPU                   | Architecture                                                                                                                       |
+|---------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64)                 |
 | Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic) |
 | MacOS   | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64)                     |
