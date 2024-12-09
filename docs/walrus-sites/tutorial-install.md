@@ -96,7 +96,7 @@ flag when running the `site-builder` commands like so:
 site-builder --config /path/to/sites-config.yaml publish <build-directory-of-a-site> ```
 ```
 
-But if are not a fan of repeating the same flags over and over,
+However, if are not a fan of repeating the same flags over and over,
 it's always easier to have the configuration file in
 one of the [default locations](../usage/setup.html#config-custom-path).
 
