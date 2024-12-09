@@ -17,13 +17,19 @@ Then, follow these additional setup steps.
 Similar to the `walrus` client CLI tool, we currently provide the `site-builder`
 client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:
 
-| OS      | CPU                   | Architecture                                                                                                                       |
-|---------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64)                 |
-| Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic) |
-| MacOS   | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64)                     |
-| MacOS   | Intel 64bit           | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64)                   |
-| Windows | Intel 64bit           | [`windows-x86_64.exe`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe)       |
+| OS      | CPU                   | Architecture                 |
+|---------|-----------------------|------------------------------|
+| Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`][1]         |
+| Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`][2] |
+| MacOS   | Apple Silicon         | [`macos-arm64`][3]           |
+| MacOS   | Intel 64bit           | [`macos-x86_64`][4]          |
+| Windows | Intel 64bit           | [`windows-x86_64.exe`][5]    |
+
+[1]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64
+[2]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic
+[3]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64
+[4]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64
+[5]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe
 
 ```admonish title="Windows"
 We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
