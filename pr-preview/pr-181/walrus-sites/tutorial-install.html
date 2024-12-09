@@ -225,7 +225,7 @@ chmod +x site-builder
 <p>To be able to run it simply as <code>site-builder</code>, move the binary to any directory included
 in your <code>$PATH</code> environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>,
 or <code>$HOME/.local/bin/</code>.</p>
-<div id="admonition-note" class="admonition admonish-info" role="note" aria-labelledby="admonition-note-title">
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
 <div class="admonition-title">
 <div id="admonition-note-title">
 <p>Note</p>
@@ -233,10 +233,11 @@ or <code>$HOME/.local/bin/</code>.</p>
 <a class="admonition-anchor-link" href="#admonition-note"></a>
 </div>
 <div>
-<p>After relocating <code>site-builder</code> to a standard directory or
-adding it to your <code>$PATH</code>, ensure you also place <code>sites-config.yaml</code>
-there or specify its location using the <code>--config</code> flag.</p>
-<p>You can learn more about the configuration file in the configuration section bellow.</p>
+<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
+current directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code>
+and <code>$HOME/walrus/sites-config.yaml</code> directory.
+In case you want to use explicitly a different <code>sites-config.yaml</code>,
+use the <code>--config</code> flag to specify the path to the configuration file.</p>
 </div>
 </div>
 <p>Once this is done, you should be able to simply type <code>site-builder</code> in your terminal.</p>

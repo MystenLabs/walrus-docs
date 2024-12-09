@@ -214,21 +214,6 @@ publishing the <code>./walrus-snake</code> site is as simple as calling the publ
 longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
 </div>
 </div>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
-<div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-note"></a>
-</div>
-<div>
-<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
-current directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code>
-and <code>$HOME/walrus/sites-config.yaml</code> directory.
-In case you want to use explicitly a different <code>sites-config.yaml</code>,
-use the <code>--config</code> flag to specify the path to the configuration file.</p>
-</div>
-</div>
 <p>The end of the output should look like the following:</p>
 <pre><code class="language-txt">Execution completed
 Resource operations performed:
@@ -275,12 +260,12 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 <p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
 old <code>index.html</code>, and update it with the newer one.</p>
 <p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
-<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
 <div class="admonition-title">
-<div id="admonition-note-1-title">
+<div id="admonition-note-title">
 <p>Note</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-note-1"></a>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
 </div>
 <div>
 <p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
