@@ -1,7 +1,7 @@
 # Installing the site builder
 
-This section describes the steps necessary to setup the Walrus Sites' `site-builder` tool and
-prepare your environment for development.
+This section describes the steps necessary to setup the Walrus Sites'
+`site-builder` tool and prepare your environment for development.
 
 ## Prerequisites
 
@@ -17,30 +17,24 @@ Then, follow these additional setup steps.
 Similar to the `walrus` client CLI tool, we currently provide the `site-builder`
 client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:
 
-| OS      | CPU                   | Architecture                 |
-|---------|-----------------------|------------------------------|
-| Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`][1]         |
-| Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`][2] |
-| MacOS   | Apple Silicon         | [`macos-arm64`][3]           |
-| MacOS   | Intel 64bit           | [`macos-x86_64`][4]          |
-| Windows | Intel 64bit           | [`windows-x86_64.exe`][5]    |
-
-[1]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64
-[2]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic
-[3]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64
-[4]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64
-[5]: https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe
+| OS      | CPU                   | Architecture |
+|---------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| Ubuntu  | Intel 64bit           | [`ubuntu-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64)                |
+| Ubuntu  | Intel 64bit (generic) | [`ubuntu-x86_64-generic`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic)|
+| MacOS   | Apple Silicon         | [`macos-arm64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64)                    |
+| MacOS   | Intel 64bit           | [`macos-x86_64`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64)                  |
+| Windows | Intel 64bit           | [`windows-x86_64.exe`](https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe)      |
 
 ```admonish title="Windows"
-We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
-a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
-adapt most of those.
+We now offer a pre-built binary also for Windows. However, most of the
+remaining instructions assume a UNIX-based system for the directory structure,
+commands, etc. If you use Windows, you may need to adapt most of those.
 ```
 
-You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-`$SYSTEM` variable):
+You can download the latest build from our Google Cloud Storage (GCS) bucket
+(correctly setting the `$SYSTEM` variable):
 
-```sh
+``` sh
 SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
 curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-$SYSTEM -o site-builder
 chmod +x site-builder
@@ -51,10 +45,10 @@ in your `$PATH` environment variable. Standard locations are `/usr/local/bin/`, 
 or `$HOME/.local/bin/`.
 
 ```admonish note
-The site builder will look for the default configuration file `sites-config.yaml` in the
-current directory, the `$XDG_HOME/walrus/sites-config.yaml`
-and `$HOME/walrus/sites-config.yaml` directory.
-In case you want to use explicitly a different `sites-config.yaml`,
+The site builder will look for the default configuration file
+`sites-config.yaml` in the current directory, the
+`$XDG_HOME/walrus/sites-config.yaml` and `$HOME/walrus/sites-config.yaml`
+directory. In case you want to use explicitly a different `sites-config.yaml`,
 use the `--config` flag to specify the path to the configuration file.
 ```
 
@@ -100,14 +94,15 @@ package in the [Walrus Sites repository](https://github.com/MystenLabs/walrus-si
 on the `testnet` branch.
 
 ```admonish danger title="Walrus Sites stable branch"
-The stable branch of Walrus Sites is `testnet`. Make sure that you always pull the latest changes from there.
+The stable branch of Walrus Sites is `testnet`.
+Make sure that you always pull the latest changes from there.
 ```
 
 You can define the location of the `sites-config.yaml` file using the `--config`
 flag when running the `site-builder` commands like so:
 
-```sh
-site-builder --config /path/to/sites-config.yaml publish <build-directory-of-a-site> ```
+``` sh
+site-builder --config /path/to/sites-config.yaml publish <build-directory-of-a-site>
 ```
 
 However, if are not a fan of repeating the same flags over and over,
