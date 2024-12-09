@@ -93,7 +93,7 @@ You can define the location of the `sites-config.yaml` file using the `--config`
 flag when running the `site-builder` commands like so:
 
 ```sh
-site-builder publish <build-directory-of-a-site> --config /path/to/sites-config.yaml
+site-builder --config /path/to/sites-config.yaml publish <build-directory-of-a-site> ```
 ```
 
 But if are not a fan of repeating the same flags over and over,
