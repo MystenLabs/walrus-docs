@@ -187,12 +187,14 @@
 <p>Now that everything is installed and configured, you should be able to start publishing
 your first Walrus Site!</p>
 <h2 id="select-the-source-material-for-the-site"><a class="header" href="#select-the-source-material-for-the-site">Select the source material for the site</a></h2>
-<p>The <code>site-builder</code> works by uploading a directory of files produced by any web framework to Walrus
-and adding the relevant metadata to Sui. This directory should have a file called <code>index.html</code> in
-its root, which will be the entry point to the Walrus Site.</p>
+<p>The <code>site-builder</code> works by uploading a directory of files produced by any web
+framework to Walrus and adding the relevant metadata to Sui.
+This directory should have a file called <code>index.html</code> in its root,
+which will be the entry point to the Walrus Site.</p>
 <p>There is a very useful <a href="https://github.com/MystenLabs/example-walrus-sites">example-Walrus-sites</a>
 repository that contains multiple kinds of sites that you can use for reference.</p>
-<p>For simplicity, we will start by publishing the most frugal of the sites, the <code>walrus-snake</code> game.</p>
+<p>For simplicity, we will start by publishing the most frugal of the sites,
+the <code>walrus-snake</code> game.</p>
 <p>First, clone the repository of examples:</p>
 <pre><code class="language-sh">git clone https://github.com/MystenLabs/example-walrus-sites.git &amp;&amp; cd walrus-snake/
 </code></pre>
@@ -210,8 +212,9 @@ publishing the <code>./walrus-snake</code> site is as simple as calling the publ
 <a class="admonition-anchor-link" href="#admonition-tip"></a>
 </div>
 <div>
-<p>Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
-longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
+<p>Currently on Walrus testnet, the duration of an epoch is 1 day.
+If you want your site to stay up longer,
+specify the number of epochs with the <code>--epochs</code> flag!</p>
 </div>
 </div>
 <p>The end of the output should look like the following:</p>
@@ -227,23 +230,25 @@ Created new site: test site
 New site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
 Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 </code></pre>
-<p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
-respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
-can browse the site.</p>
+<p>This output tells you that, for each file in the folder,
+a new Walrus blob was created, and the respective blob ID.
+Further, it prints the object ID of the Walrus Site object on Sui
+(so you can have a look in the explorer and use it to set the SuiNS name) and,
+finally, the URL at which you can browse the site.</p>
 <p>Note here that we are implicitly using the default <code>sites-config.yaml</code>
 as the config for the site builder that we set up previously on
 the <a href="./tutorial-install.html">installation section</a>.
-The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
-package for the Walrus Sites logic.</p>
+The configuration file is necessary to ensure that the
+<code>site-builder</code> knows the correct Sui package for the Walrus Sites logic.</p>
 <p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="./builder-config.html">advanced
 configuration</a> section.</p>
 <h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
-<p>Let's say now you want to update the content of the site, for example by changing the title from
-"eat all the blobs!" to "Glob all the Blobs!".</p>
+<p>Let's say now you want to update the content of the site, for example
+by changing the title from "eat all the blobs!" to "Glob all the Blobs!".</p>
 <p>First, make this edit on in the <code>./walrus-snake/index.html</code> file.</p>
-<p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
-where to find the updated files (still <code>./walrus-snake</code>) and the object ID of the existing site
+<p>Then, you can update the existing site by running the <code>update</code> command,
+providing the directory where to find the updated files
+(still <code>./walrus-snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
 <pre><code class="language-sh">site-builder update --epochs 100 ./walrus-snake  0x407a3081...
 </code></pre>
@@ -257,8 +262,9 @@ The site routes were left unchanged
 Site object ID: 0x407a308190eb82b266be9cc28b888d04c5b2e5a503c7d0ffd3f69681ea83b73a
 Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v57qyl4piy.walrus.site
 </code></pre>
-<p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
-old <code>index.html</code>, and update it with the newer one.</p>
+<p>Compared to the <code>publish</code> action, we can see that now the only actions
+performed were to delete the old <code>index.html</code>,
+and update it with the newer one.</p>
 <p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
 <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
 <div class="admonition-title">
@@ -268,7 +274,8 @@ old <code>index.html</code>, and update it with the newer one.</p>
 <a class="admonition-anchor-link" href="#admonition-note"></a>
 </div>
 <div>
-<p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
+<p>The wallet you are using must be the <em>owner</em> of the
+Walrus Site object to be able to update it.</p>
 </div>
 </div>
 <div id="admonition-extending-the-expiration-date-of-an-existing-site" class="admonition admonish-danger" role="note" aria-labelledby="admonition-extending-the-expiration-date-of-an-existing-site-title">
@@ -279,9 +286,10 @@ old <code>index.html</code>, and update it with the newer one.</p>
 <a class="admonition-anchor-link" href="#admonition-extending-the-expiration-date-of-an-existing-site"></a>
 </div>
 <div>
-<p>To extend the expiration date of a previously-stored site, use the <code>update</code> command with the
-<code>--force</code> flag, and specify the number of additional epochs (from the current epoch) with the
-<code>--epochs</code> flag.</p>
+<p>To extend the expiration date of a previously-stored site,
+use the <code>update</code> command with the <code>--force</code> flag,
+and specify the number of additional epochs
+(from the current epoch) with the <code>--epochs</code> flag.</p>
 </div>
 </div>
 
