@@ -35,14 +35,6 @@ Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your
 longer, specify the number of epochs with the `--epochs` flag!
 ```
 
-```admonish note
-The site builder will look for the default configuration file `sites-config.yaml` in the
-current directory, the `$XDG_HOME/walrus/sites-config.yaml`
-and `$HOME/walrus/sites-config.yaml` directory.
-In case you want to use explicitly a different `sites-config.yaml`,
-use the `--config` flag to specify the path to the configuration file.
-```
-
 The end of the output should look like the following:
 
 ``` txt
