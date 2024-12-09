@@ -44,6 +44,14 @@ To be able to run it simply as `site-builder`, move the binary to any directory 
 in your `$PATH` environment variable. Standard locations are `/usr/local/bin/`, `$HOME/bin/`,
 or `$HOME/.local/bin/`.
 
+```admonish info title="Note"
+After relocating `site-builder` to a standard directory or
+adding it to your `$PATH`, ensure you also place `sites-config.yaml`
+there or specify its location using the `--config` flag.
+
+You can learn more about the configuration file in the configuration section bellow.
+```
+
 Once this is done, you should be able to simply type `site-builder` in your terminal.
 
 ```terminal
