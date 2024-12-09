@@ -106,7 +106,7 @@ site-builder --config /path/to/sites-config.yaml publish <build-directory-of-a-s
 
 However, if are not a fan of repeating the same flags over and over,
 it's always easier to have the configuration file in
-one of the [default locations](../usage/setup.html#config-custom-path).
+one of the [default locations](./tutorial-install.html#admonition-note).
 
 Download the `sites-config.yaml` file from the repository, and
 place it in one of the aforementioned default locations.
