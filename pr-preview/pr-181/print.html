@@ -2410,8 +2410,8 @@ just want to get started trying Walrus Sites out, check the <a href="walrus-site
 instructions on how to add a SuiNS name to it for convenient browsing.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="installing-the-site-builder"><a class="header" href="#installing-the-site-builder">Installing the site builder</a></h1>
-<p>This section describes the steps necessary to setup the Walrus Sites' <code>site-builder</code> tool and
-prepare your environment for development.</p>
+<p>This section describes the steps necessary to setup the Walrus Sites'
+<code>site-builder</code> tool and prepare your environment for development.</p>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
 <p>Before you start, make sure you</p>
 <ul>
@@ -2437,13 +2437,13 @@ client binary for macOS (Intel and Apple CPUs), Ubuntu, and Windows:</p>
 <a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-windows"></a>
 </div>
 <div>
-<p>We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
-a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
-adapt most of those.</p>
+<p>We now offer a pre-built binary also for Windows. However, most of the
+remaining instructions assume a UNIX-based system for the directory structure,
+commands, etc. If you use Windows, you may need to adapt most of those.</p>
 </div>
 </div>
-<p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-<code>$SYSTEM</code> variable):</p>
+<p>You can download the latest build from our Google Cloud Storage (GCS) bucket
+(correctly setting the <code>$SYSTEM</code> variable):</p>
 <pre><code class="language-sh">SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
 curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-$SYSTEM -o site-builder
 chmod +x site-builder
@@ -2459,10 +2459,10 @@ or <code>$HOME/.local/bin/</code>.</p>
 <a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-note"></a>
 </div>
 <div>
-<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
-current directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code>
-and <code>$HOME/walrus/sites-config.yaml</code> directory.
-In case you want to use explicitly a different <code>sites-config.yaml</code>,
+<p>The site builder will look for the default configuration file
+<code>sites-config.yaml</code> in the current directory, the
+<code>$XDG_HOME/walrus/sites-config.yaml</code> and <code>$HOME/walrus/sites-config.yaml</code>
+directory. In case you want to use explicitly a different <code>sites-config.yaml</code>,
 use the <code>--config</code> flag to specify the path to the configuration file.</p>
 </div>
 </div>
@@ -2507,12 +2507,13 @@ on the <code>testnet</code> branch.</p>
 <a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-walrus-sites-stable-branch"></a>
 </div>
 <div>
-<p>The stable branch of Walrus Sites is <code>testnet</code>. Make sure that you always pull the latest changes from there.</p>
+<p>The stable branch of Walrus Sites is <code>testnet</code>.
+Make sure that you always pull the latest changes from there.</p>
 </div>
 </div>
 <p>You can define the location of the <code>sites-config.yaml</code> file using the <code>--config</code>
 flag when running the <code>site-builder</code> commands like so:</p>
-<pre><code class="language-sh">site-builder --config /path/to/sites-config.yaml publish &lt;build-directory-of-a-site&gt; ```
+<pre><code class="language-sh">site-builder --config /path/to/sites-config.yaml publish &lt;build-directory-of-a-site&gt;
 </code></pre>
 <p>However, if are not a fan of repeating the same flags over and over,
 it's always easier to have the configuration file in
