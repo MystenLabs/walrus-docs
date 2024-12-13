@@ -1,0 +1,989 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Privacy policy - Walrus</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript">
+          // Hacky check to only load Amplitude in production since we don't have environments:
+          const localAddresses = ['localhost', '127.0.0.1', '[::1]'];
+          if (localAddresses.indexOf(document.location.hostname) === -1) {
+            !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{var n=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}},s=function(e,t,r){return function(n){e._q.push({name:t,args:Array.prototype.slice.call(r,0),resolve:n})}},o=function(e,t,r){e._q.push({name:t,args:Array.prototype.slice.call(r,0)})},i=function(e,t,r){e[t]=function(){if(r)return{promise:new Promise(s(e,t,Array.prototype.slice.call(arguments)))};o(e,t,Array.prototype.slice.call(arguments))}},a=function(e){for(var t=0;t<g.length;t++)i(e,g[t],!1);for(var r=0;r<m.length;r++)i(e,m[r],!0)};r.invoked=!0;var c=t.createElement("script");c.type="text/javascript",c.integrity="sha384-pY2pkwHaLM/6UIseFHVU3hOKr6oAvhLcdYkoRZyaMDWLjpM6B7nTxtOdE823WAOQ",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(c,u);for(var p=function(){return this._q=[],this},l=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],d=0;d<l.length;d++)n(p,l[d]);r.Identify=p;for(var f=function(){return this._q=[],this},v=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],y=0;y<v.length;y++)n(f,v[y]);r.Revenue=f;var g=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],m=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];a(r),r.createInstance=function(e){return r._iq[e]={_q:[]},a(r._iq[e]),r._iq[e]},e.amplitude=r}}(window,document)}();
+            amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
+          }
+        </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev Blog</li><li class="chapter-item expanded "><a href="../blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog Preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li><li class="chapter-item expanded "><a href="../blog/02_devnet_update.html"><strong aria-hidden="true">1.2.</strong> Devnet Update</a></li><li class="chapter-item expanded "><a href="../blog/03_whitepaper.html"><strong aria-hidden="true">1.3.</strong> Announcing the Walrus Whitepaper</a></li><li class="chapter-item expanded "><a href="../blog/04_testnet_update.html"><strong aria-hidden="true">1.4.</strong> Announcing Testnet</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="../design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="../design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="../design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="../design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="../design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../design/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="../usage/setup.html"><strong aria-hidden="true">7.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../usage/interacting.html"><strong aria-hidden="true">8.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/client-cli.html"><strong aria-hidden="true">8.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="../usage/json-api.html"><strong aria-hidden="true">8.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="../usage/web-api.html"><strong aria-hidden="true">8.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="../dev-guide/dev-guide.html"><strong aria-hidden="true">9.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev-guide/components.html"><strong aria-hidden="true">9.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="../dev-guide/dev-operations.html"><strong aria-hidden="true">9.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="../dev-guide/sui-struct.html"><strong aria-hidden="true">9.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="../operator-guide/operator-guide.html"><strong aria-hidden="true">10.</strong> Operator guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator-guide/storage-node.html"><strong aria-hidden="true">10.1.</strong> Storage node</a></li><li class="chapter-item expanded "><a href="../operator-guide/aggregator.html"><strong aria-hidden="true">10.2.</strong> Aggregator</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/stake.html"><strong aria-hidden="true">11.</strong> Stake and Unstake</a></li><li class="chapter-item expanded "><a href="../usage/examples.html"><strong aria-hidden="true">12.</strong> Examples</a></li><li class="chapter-item expanded "><a href="../usage/troubleshooting.html"><strong aria-hidden="true">13.</strong> Troubleshooting</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="../walrus-sites/intro.html"><strong aria-hidden="true">14.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial.html"><strong aria-hidden="true">15.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-install.html"><strong aria-hidden="true">15.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-publish.html"><strong aria-hidden="true">15.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-suins.html"><strong aria-hidden="true">15.3.</strong> Bonus: Set a SuiNS name</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/advanced.html"><strong aria-hidden="true">16.</strong> Advanced functionality</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/commands.html"><strong aria-hidden="true">16.1.</strong> Site builder commands</a></li><li class="chapter-item expanded "><a href="../walrus-sites/builder-config.html"><strong aria-hidden="true">16.2.</strong> Advanced site-builder configuration</a></li><li class="chapter-item expanded "><a href="../walrus-sites/routing.html"><strong aria-hidden="true">16.3.</strong> Specifying headers and routing</a></li><li class="chapter-item expanded "><a href="../walrus-sites/linking.html"><strong aria-hidden="true">16.4.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/redirects.html"><strong aria-hidden="true">16.5.</strong> Redirecting objects to Walrus Sites</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/overview.html"><strong aria-hidden="true">17.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/portal.html"><strong aria-hidden="true">17.1.</strong> The Walrus Sites portal</a></li><li class="chapter-item expanded "><a href="../walrus-sites/authentication.html"><strong aria-hidden="true">17.2.</strong> Site data authentication</a></li><li class="chapter-item expanded "><a href="../walrus-sites/restrictions.html"><strong aria-hidden="true">17.3.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/tos.html"><strong aria-hidden="true">18.</strong> Terms of service</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="../legal/testnet_tos.html">Testnet terms of service</a></li><li class="chapter-item expanded affix "><a href="../legal/privacy.html" class="active">Privacy policy</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Walrus</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<!-- markdownlint-disable -->
+<h1 id="privacy-policy"><a class="header" href="#privacy-policy">PRIVACY POLICY</a></h1>
+<p><strong>Last Updated:</strong> June 18, 2024</p>
+<p>This Privacy Policy is designed to help you understand how Mysten Labs, Inc., its subsidiaries and
+affiliates (collectively called "<strong>Mysten Labs</strong>", "<strong>we</strong>," "<strong>us</strong>," and "<strong>our</strong>") collects,
+uses, and shares your personal information and to help you understand and exercise your privacy
+rights in accordance with applicable law. This Policy applies when you use our websites, contact our
+team members, engage with us on social media or otherwise interact with us.</p>
+<ol>
+<li><a href="#scope">SCOPE</a></li>
+<li><a href="#changes-to-our-privacy-policy">CHANGES TO OUR PRIVACY POLICY</a></li>
+<li><a href="#personal-information-we-collect">PERSONAL INFORMATION WE
+COLLECT</a></li>
+<li><a href="#how-we-use-your-information">HOW WE USE YOUR INFORMATION</a></li>
+<li><a href="#how-we-disclose-your-information">HOW WE DISCLOSE YOUR
+INFORMATION</a></li>
+<li><a href="#your-privacy-choices-and-rights">YOUR PRIVACY CHOICES AND
+RIGHTS</a></li>
+<li><a href="#security-of-your-information">SECURITY OF YOUR
+INFORMATION</a></li>
+<li><a href="#international-data-transfers">INTERNATIONAL DATA
+TRANSFERS</a></li>
+<li><a href="#retention-of-personal-information">RETENTION OF PERSONAL
+INFORMATION</a></li>
+<li><a href="#supplemental-notice-for-california-residents">SUPPLEMENTAL NOTICE FOR CALIFORNIA
+RESIDENTS</a></li>
+<li><a href="#supplemental-notice-for-nevada-residents">SUPPLEMENTAL NOTICE FOR NEVADA
+RESIDENTS</a></li>
+<li><a href="#childrens-information">CHILDREN'S INFORMATION</a></li>
+<li><a href="#third-party-websitesapplications">THIRD-PARTY'S
+WEBSITES/APPLICATIONS</a></li>
+<li><a href="#supervisory-authority">SUPERVISORY AUTHORITY</a></li>
+<li><a href="#contact-us">CONTACT US</a></li>
+</ol>
+<h2 id="scope"><a class="header" href="#scope">SCOPE</a></h2>
+<p>This Privacy Policy applies to personal information processed by Mysten
+Labs, including on our websites (the "<strong>Site</strong>"), and other online and
+offline offerings. The Site, our services and our other online and
+offline offerings are collectively called the "<strong>Services</strong>." For
+clarity, the Services do not include the Walrus Protocol or any other
+decentralized aspect of the Walrus or Sui Blockchain that is not
+controlled by Mysten Labs due to the decentralized nature of these
+blockchains.</p>
+<h2 id="changes-to-our-privacy-policy"><a class="header" href="#changes-to-our-privacy-policy">CHANGES TO OUR PRIVACY POLICY</a></h2>
+<p>We may revise this Privacy Policy from time to time in our sole
+discretion. If there are any material changes to this Privacy Policy, we
+will notify you as required by applicable law. You understand and agree
+that you will be deemed to have accepted the updated Privacy Policy if
+you continue to use our Services after the new Privacy Policy takes
+effect.</p>
+<h2 id="personal-information-we-collect"><a class="header" href="#personal-information-we-collect">PERSONAL INFORMATION WE COLLECT</a></h2>
+<p>The categories of personal information we collect depend on how you
+interact with us, our Services and the requirements of applicable law.
+We collect information that you provide to us, information we obtain
+automatically when you use our Services, and information from other
+sources such as third-party services and organizations, as described
+below.</p>
+<p>A.  <strong>Information You Provide to Us Directly</strong></p>
+<p>We may collect the following personal information that you provide to
+us.</p>
+<ul>
+<li><strong>Account Creation</strong>. We may collect information if you create an
+account with us, such as your name, username, email address, or
+password.</li>
+<li><strong>Wallet and Transaction Information.</strong> In order to engage in
+transactions on the Services, you may need to provide us or our
+third-party payment processors with access to or information about
+your digital wallet. We will never ask you for or collect your
+private keys.</li>
+<li><strong>Other Transactions</strong>. We may collect personal information and
+details associated with your activities on our Services, including
+to deliver you your rewards associated with your use of the
+Services.</li>
+<li><strong>Your Communications with Us</strong>. We may collect personal
+information, such as email address when you request information
+about our Services, register for our newsletter or marketing
+promotions, request customer or technical support, apply for a job
+or otherwise communicate with us.</li>
+<li><strong>Interactive Features</strong>. We and others who use our Services may
+collect personal information that you submit or make available
+through our interactive features (e.g., via the Mysten Labs
+community, commenting functionalities, forums, blogs, and social
+media pages). Any personal information you provide on the public
+sections of these features will be considered "public," unless
+otherwise required by applicable law, and is not subject to the
+privacy protections referenced herein.</li>
+<li><strong>Surveys</strong>. We may contact you to participate in surveys. If you
+decide to participate, you may be asked to provide certain
+information which may include personal information.</li>
+<li><strong>Sweepstakes, Giveaways or Contests</strong>. We may collect personal
+information you provide for any sweepstakes, giveaways or contests
+that we offer. In some jurisdictions, we are required to publicly
+share information of sweepstakes and contest winners.</li>
+<li><strong>Events.</strong> We may collect personal information from individuals
+when we attend or host conferences, trade shows, and other events.</li>
+<li><strong>Business Development and Strategic Partnerships.</strong> We may collect
+personal information from individuals and third parties to assess
+and pursue potential business opportunities.</li>
+<li><strong>Job Applications.</strong> We may post job openings and opportunities on
+our Services. If you reply to one of these postings by submitting
+your application, CV and/or cover letter to us, we will collect and
+use this information to assess your qualifications.</li>
+</ul>
+<p>B.  <strong>Information Collected Automatically</strong></p>
+<p>We may collect personal information automatically when you use our
+Services:</p>
+<ul>
+<li><strong>Automatic Data Collection</strong>. We may collect certain information
+automatically when you use our Services, such as your Internet
+protocol (IP) address, user settings, MAC address, cookie
+identifiers, mobile carrier, mobile advertising and other unique
+identifiers, browser or device information, location information
+(including approximate location derived from IP address), Internet
+service provider, and metadata about the content you provide. We may
+also automatically collect information regarding your use of our
+Services, such as pages that you visit before, during and after
+using our Services, information about the links you click, the types
+of content you interact with, the frequency and duration of your
+activities, and other information about how you use our Services.</li>
+<li><strong>Cookies, Pixel Tags/Web Beacons, and Other Technologies</strong>. We, as
+well as third parties that provide content, advertising, or other
+functionality on our Services, may use cookies, pixel tags, local
+storage, and other technologies ("<strong>Technologies</strong>") to
+automatically collect information through your use of our Services.</li>
+<li><strong>Cookies</strong>. Cookies are small text files placed in device browsers
+that store preferences and facilitate and enhance your experience.</li>
+<li><strong>Pixel Tags/Web Beacons</strong>. A pixel tag (also known as a web beacon)
+is a piece of code embedded in our Services that collects
+information about engagement on our Services. The use of a pixel tag
+allows us to record, for example, that a user has visited a
+particular web page or clicked on a particular advertisement. We may
+also include web beacons in e-mails to understand whether messages
+have been opened, acted on, or forwarded.</li>
+</ul>
+<blockquote>
+<p>Our uses of these Technologies fall into the following general
+categories:</p>
+</blockquote>
+<ul>
+<li><strong>Operationally Necessary</strong>. This includes Technologies that allow
+you access to our Services, applications, and tools that are
+required to identify irregular website behavior, prevent fraudulent
+activity, improve security, or allow you to make use of our
+functionality;</li>
+<li><strong>Performance-Related</strong>. We may use Technologies to assess the
+performance of our Services, including as part of our analytic
+practices to help us understand how individuals use our Services
+(<em>see Analytics below</em>);</li>
+<li><strong>Functionality-Related</strong>. We may use Technologies that allow us to
+offer you enhanced functionality when accessing or using our
+Services. This may include identifying you when you sign into our
+Services or keeping track of your specified preferences, interests,
+or past items viewed;</li>
+<li><strong>Advertising- or Targeting-Related</strong>. We may use first party or
+third-party Technologies to deliver content, including ads relevant
+to your interests, on our Services or on third-party websites.</li>
+</ul>
+<blockquote>
+<p><em>See "<a href="#your-privacy-choices-and-rights">Your Privacy Choices and
+Rights</a>" below to understand your
+choices regarding these Technologies.</em></p>
+</blockquote>
+<ul>
+<li><strong>Analytics</strong>. We may use our Technologies and other third-party
+tools to process analytics information on our Services. These
+technologies allow us to process usage data to better understand how
+our website and web-related Services are used, and to continually
+improve and personalize our Services. Some of our analytics partners
+include:</li>
+<li><strong>Google Analytics</strong>. For more information about how Google uses
+your data (including for its own purposes, e.g., for profiling or
+linking it to other data), please visit <a href="http://www.google.com/policies/privacy/partners/">Google Analytics' Privacy
+Policy</a>.
+To learn more about how to opt-out of Google Analytics' use of your
+information, please click
+<a href="http://tools.google.com/dlpage/gaoptout">here</a>.</li>
+<li><strong>LinkedIn Analytics</strong>. For more information, please visit
+<a href="https://www.linkedin.com/legal/privacy-policy">LinkedIn Analytics' Privacy
+Policy</a>.
+To learn more about how to opt-out of LinkedIn's use of your
+information, please click
+<a href="https://www.linkedin.com/help/linkedin/answer/62931?trk=microsites-frontend_legal_privacy-policy&amp;lang=en">here</a>.</li>
+<li><strong>Facebook Connect</strong>. For more information, please visit Facebook's
+<a href="https://www.facebook.com/policy.php?ref=pf">Data
+Policy</a>.
+You can object to the collection of your data by Facebook pixel, or
+to the use of your data for the purpose of displaying Facebook ads
+by contacting the following address while logged into your Facebook
+account: https://www.facebook.com/settings?tab=ads.</li>
+<li><strong>Mixpanel</strong>. For more information about Mixpanel, please visit
+<a href="https://mixpanel.com/legal/privacy-policy/">Mixpanel's Privacy
+Policy</a>.</li>
+<li><strong>Social Media Platforms</strong>. Our Services may contain social media
+buttons, such as Discord, Twitter, Instagram, TikTok, Youtube, and
+Telegram, which might include widgets such as the "share this"
+button or other interactive mini programs. These features may
+collect your IP address and which page you are visiting on our
+Services and may set a cookie to enable the feature to function
+properly. Your interactions with these platforms are governed by the
+privacy policy of the company providing it.</li>
+</ul>
+<p>C. <strong>Information Collected from Other Sources</strong></p>
+<ul>
+<li><strong>Third-Party Sources.</strong> We may obtain information about you from
+other sources, including through third-party services and
+organizations. For example, if you access our Services through a
+third-party application, such as an app store, a third-party login
+service, or a social networking site, we may collect information
+about you from that third-party application that you have made
+available via your privacy settings.</li>
+<li><strong>Referrals, Sharing and Other Features</strong>. Our Services may offer
+various tools and functionalities that allow you to provide
+information about your friends through our referral service; third
+parties may also use these services to upload information about you.
+Our referral services may also allow you to forward or share certain
+content with a friend or colleague, such as an email inviting your
+friend to use our Services. Please only share with us contact
+information of people with whom you have a relationship (e.g.,
+relative, friend, neighbor, or co-worker).</li>
+</ul>
+<h2 id="how-we-use-your-information"><a class="header" href="#how-we-use-your-information">HOW WE USE YOUR INFORMATION</a></h2>
+<p>We use your information for a variety of business purposes, including to
+provide our Services, for administrative purposes, and to market our
+products and Services, as described below.</p>
+<p>A.  <strong>Provide Our Services</strong></p>
+<p>We use your information to fulfill our contract with you and provide you
+with our Services and perform our contract with you, such as:</p>
+<ul>
+<li>Managing your information and accounts;</li>
+<li>Providing access to certain areas, functionalities, and features of
+our Services;</li>
+<li>Answering requests for customer or technical support;</li>
+<li>Communicating with you about your account, activities on our
+Services, and policy changes;</li>
+<li>Processing information about your wallet to facilitate transfers via
+the Services;</li>
+<li>Processing applications if you apply for a job, we post on our
+Services; and</li>
+<li>Allowing you to register for events.</li>
+</ul>
+<p>B.  <strong>Administrative Purposes</strong></p>
+<p>We use your information for our legitimate interest, such as:</p>
+<ul>
+<li>Pursuing our legitimate interests such as direct marketing, research
+and development (including marketing research), network and
+information security, and fraud prevention;</li>
+<li>Detecting security incidents, protecting against malicious,
+deceptive, fraudulent or illegal activity, and prosecuting those
+responsible for that activity;</li>
+<li>Measuring interest and engagement in our Services;</li>
+<li>Improving, upgrading or enhancing our Services;</li>
+<li>Developing new products and Services;</li>
+<li>Ensuring internal quality control and safety;</li>
+<li>Authenticating and verifying individual identities;</li>
+<li>Debugging to identify and repair errors with our Services;</li>
+<li>Auditing relating to interactions, transfers and other compliance
+activities;</li>
+<li>Sharing information with third parties as needed to provide the
+Services;</li>
+<li>Enforcing our agreements and policies; and</li>
+<li>Other uses as required to comply with our legal obligations.</li>
+</ul>
+<p>C.  <strong>Marketing and Advertising our Products and Services</strong></p>
+<p>We may use personal information to tailor and provide you with content
+and advertisements. We may provide you with these materials as permitted
+by applicable law. Some of the ways we may market to you include email
+campaigns, custom audiences advertising, and "interest-based" or
+"personalized advertising," including through cross-device tracking.</p>
+<p>If you have any questions about our marketing practices or if you would
+like to opt out of the use of your personal information for marketing
+purposes, you may contact us at any time as set forth in "<a href="#contact-us">Contact
+Us</a>" below.</p>
+<p>D.  <strong>With Your Consent</strong></p>
+<p>We may use personal information for other purposes that are clearly
+disclosed to you at the time you provide personal information or with
+your consent.</p>
+<p>E.  <strong>Other Purposes</strong></p>
+<p>We also use your information for other purposes as requested by you or
+as permitted by applicable law.</p>
+<ul>
+<li><strong>Automated Decision Making</strong>. We may engage in automated decision
+making, including profiling. Mysten Labs's processing of your
+personal information will not result in a decision based solely on
+automated processing that significantly affects you unless such a
+decision is necessary as part of a contract we have with you, we
+have your consent, or we are permitted by law to engage in such
+automated decision making. If you have questions about our automated
+decision making, you may contact us as set forth in "<a href="#contact-us">Contact
+Us</a>" below.</li>
+<li><strong>De-identified and Aggregated Information.</strong> We may use personal
+information and other information about you to create de-identified
+and/or aggregated information, such as de-identified demographic
+information, de-identified location information, information about
+the device from which you access our Services, or other analyses we
+create.</li>
+</ul>
+<h2 id="how-we-disclose-your-information"><a class="header" href="#how-we-disclose-your-information">HOW WE DISCLOSE YOUR INFORMATION</a></h2>
+<p>We disclose your information to third parties for a variety of business
+purposes, including to provide our Services, to protect us or others, or
+in the event of a major business transaction such as a merger, sale, or
+asset transfer, as described below.</p>
+<p>A.  <strong>Disclosures to Provide our Services</strong></p>
+<p>The categories of third parties with whom we may share your information
+are described below.</p>
+<ul>
+<li><strong>Notice Regarding Use of Blockchain.</strong> Transactions on the Services
+will be conducted via Blockchain. Information about your transfers
+will be provided to a Blockchain and may be accessible to third
+parties due to the public nature of the Blockchain. Because entries
+to a Blockchain are, by their nature, public, and because it may be
+possible for someone to identify you through your pseudonymous,
+public wallet address using external sources of information, any
+transaction you enter onto the Blockchain could possibly be used to
+identify you, or information about you.</li>
+<li><strong>Other Users of the Services and Parties You Transact With.</strong> Some
+of your personal information may be visible to other users of the
+Services (e.g., information featured on generally accessible parts
+of your profile; usernames of other Mysten Labs Services users). In
+addition, to complete transfers via the Services, we will need to
+share some of your personal information with the party that you are
+transacting with.</li>
+<li><strong>Third Party Websites and Applications.</strong> You may choose to share
+personal information or interact with third-party websites and/or
+third-party applications, including, but not limited to, third-party
+electronic wallet extensions. Once your personal information has
+been shared with a third-party website or a third-party application,
+it will also be subject to such third party's privacy policy. We
+encourage you to closely read each third-party website or
+third-party application privacy policy before sharing your personal
+information or otherwise interacting with them. Please note that we
+do not control, and we are not responsible for the third-party
+website's or the third-party application's processing of your
+personal information.</li>
+<li><strong>Service Providers</strong>. We may share your personal information with
+our third-party service providers who use that information to help
+us provide our Services. This includes service providers that
+provide us with IT support, hosting, customer service, and related
+services.</li>
+<li><strong>Business Partners</strong>. We may share your personal information with
+business partners to provide you with a product or service you have
+requested. We may also share your personal information to business
+partners with whom we jointly offer products or services.</li>
+<li><strong>Affiliates</strong>. We may share your personal information with members
+of our corporate family.</li>
+<li><strong>Other Users/Website Visitors</strong>. As described above in "<a href="#personal-information-we-collect">Personal
+Information We
+Collect</a>," our
+Services allow you to share your profile and/or User Content with
+other users or publicly, including to those who do not use our
+Services.</li>
+<li><strong>Advertising Partners</strong>. We may share your personal information
+with third-party advertising partners. These third-party advertising
+partners may set Technologies and other tracking tools on our
+Services to collect information regarding your activities and your
+device (e.g., your IP address, cookie identifiers, page(s) visited,
+location, time of day). These advertising partners may use this
+information (and similar information collected from other services)
+for purposes of delivering personalized advertisements to you when
+you visit digital properties within their networks. This practice is
+commonly referred to as "interest-based advertising" or
+"personalized advertising."</li>
+<li><strong>APIs/SDKs</strong>. We may use third-party application program interfaces
+("<strong>APIs</strong>") and software development kits ("<strong>SDKs</strong>") as part of
+the functionality of our Services. For more information about our
+use of APIs and SDKs, please contact us as set forth in "<a href="#contact-us">Contact
+Us</a>" below.</li>
+</ul>
+<p>B.  <strong>Disclosures to Protect Us or Others</strong></p>
+<p>We may access, preserve, and disclose any information we store
+associated with you to external parties if we, in good faith, believe
+doing so is required or appropriate to: comply with law enforcement or
+national security requests and legal process, such as a court order or
+subpoena; protect your, our, or others' rights, property, or safety;
+enforce our policies or contracts; collect amounts owed to us; or assist
+with an investigation or prosecution of suspected or actual illegal
+activity.</p>
+<p>C.  <strong>Disclosure in the Event of Merger, Sale, or Other Asset
+Transfers</strong></p>
+<p>If we are involved in a merger, acquisition, financing due diligence,
+reorganization, bankruptcy, receivership, purchase or sale of assets, or
+transition of service to another provider, your information may be sold
+or transferred as part of such a transaction, as permitted by law and/or
+contract.</p>
+<h2 id="your-privacy-choices-and-rights"><a class="header" href="#your-privacy-choices-and-rights">YOUR PRIVACY CHOICES AND RIGHTS</a></h2>
+<p><strong>Your Privacy Choices</strong>. The privacy choices you may have about your
+personal information are determined by applicable law and are described
+below.</p>
+<ul>
+<li><strong>Email Communications</strong>. If you receive an unwanted email from us,
+you can use the unsubscribe link found at the bottom of the email to
+opt out of receiving future emails. Note that you will continue to
+receive transfer-related emails regarding Services you have
+requested. We may also send you certain non-promotional
+communications regarding us and our Services, and you will not be
+able to opt out of those communications (e.g., communications
+regarding our Services or updates to our Terms of Service or this
+Privacy Policy).</li>
+<li><strong>Text Messages</strong>. You may opt out of receiving text messages from
+us by following the instructions in the text message you have
+received from us or by otherwise contacting us.</li>
+<li><strong>Mobile Devices</strong>. We may send you push notifications through our
+mobile application. You may opt out from receiving these push
+notifications by changing the settings on your mobile device. With
+your consent, we may also collect precise location-based information
+via our mobile application. You may opt out of this collection by
+changing the settings on your mobile device.</li>
+<li><strong>"Do Not Track</strong>.<strong>"</strong> Do Not Track ("<strong>DNT</strong>") is a privacy
+preference that users can set in certain web browsers. Please note
+that we do not respond to or honor DNT signals or similar mechanisms
+transmitted by web browsers.</li>
+<li><strong>Cookies and Interest-Based Advertising</strong>. You may stop or restrict
+the placement of Technologies on your device or remove them by
+adjusting your preferences as your browser or device permits.
+However, if you adjust your preferences, our Services may not work
+properly. Please note that cookie-based opt-outs are not effective
+on mobile applications. However, you may opt-out of personalized
+advertisements on some mobile applications by following the
+instructions for
+<a href="https://support.google.com/googleplay/android-developer/answer/6048248?hl=en">Android</a>,
+<a href="https://support.apple.com/en-us/HT202074">iOS</a> and
+<a href="https://www.networkadvertising.org/mobile-choice/">others</a>.</li>
+</ul>
+<blockquote>
+<p>The online advertising industry also provides websites from which you
+may opt out of receiving targeted ads from data partners and other
+advertising partners that participate in self-regulatory programs. You
+can access these and learn more about targeted advertising and
+consumer choice and privacy by visiting the <a href="http://www.networkadvertising.org/managing/opt_out.asp">Network Advertising
+Initiative</a>,
+<a href="http://www.aboutads.info/choices/">the Digital Advertising
+Alliance</a>, <a href="https://www.youronlinechoices.eu/">the
+European Digital Advertising
+Alliance</a>, and <a href="https://youradchoices.ca/choices/">the
+Digital Advertising Alliance of
+Canada</a>.</p>
+<p>Please note you must separately opt out in each browser and on each
+device.</p>
+</blockquote>
+<p><strong>Your Privacy Rights</strong>. In accordance with applicable law, you may have
+the right to:</p>
+<ul>
+<li>
+<p><strong>Access Personal Information about you, including: (i) confirming whether we are processing your
+personal information; (ii) obtaining access to or a copy of your personal information; or (iii)
+receiving an electronic copy of personal information that you have provided to us, or asking us to
+send that information to another company (aka the right of data portability);</strong></p>
+</li>
+<li>
+<p><strong>Request Correction</strong> of your personal information where it is
+inaccurate or incomplete. In some cases, we may provide self-service
+tools that enable you to update your personal information;</p>
+</li>
+</ul>
+<h2 id="request-deletion-of-your-personal-information"><a class="header" href="#request-deletion-of-your-personal-information">Request Deletion of your personal information;</a></h2>
+<ul>
+<li><strong>Request Restriction of or Object</strong> to our processing of your
+personal information, including where the processing of your
+personal information is based on our legitimate interest or for
+direct marketing purposes; and</li>
+</ul>
+<p><strong>Withdraw Your Consent to our processing of your personal information. Please note that your
+withdrawal will only take effect for future processing and will not affect the lawfulness of
+processing before the withdrawal.</strong></p>
+<p>If you would like to exercise any of these rights, please contact us as
+set forth in "<a href="#contact-us">Contact Us</a>" below. We will
+process such requests in accordance with applicable laws.</p>
+<h2 id="security-of-your-information"><a class="header" href="#security-of-your-information">SECURITY OF YOUR INFORMATION</a></h2>
+<p>We take steps designed to ensure that your information is treated
+securely and in accordance with this Privacy Policy. Unfortunately, no
+system is 100% secure, and we cannot ensure or warrant the security of
+any information you provide to us. To the fullest extent permitted by
+applicable law, we do not accept liability for unauthorized disclosure.</p>
+<p>By using our Services or providing personal information to us, you agree
+that we may communicate with you electronically regarding security,
+privacy, and administrative issues relating to your use of our Services.
+If we learn of a security system's breach, we may attempt to notify you
+electronically by posting a notice on our Services, by mail or by
+sending an email to you.</p>
+<h2 id="international-data-transfers"><a class="header" href="#international-data-transfers">INTERNATIONAL DATA TRANSFERS</a></h2>
+<p>All information processed by us may be transferred, processed, and
+stored anywhere in the world, including, but not limited to, the United
+States or other countries, which may have data protection laws that are
+different from the laws where you live. We endeavor to safeguard your
+information consistent with the requirements of applicable laws.</p>
+<p>If we transfer personal information which originates in the European
+Economic Area, Switzerland, and/or the United Kingdom to a country that
+has not been found to provide an adequate level of protection under
+applicable data protection laws, one of the safeguards we may use to
+support such transfer is the EU Standard Contractual Clauses.</p>
+<h2 id="retention-of-personal-information"><a class="header" href="#retention-of-personal-information">RETENTION OF PERSONAL INFORMATION</a></h2>
+<p>We store the personal information we collect as described in this
+Privacy Policy for as long as you use our Services or as necessary to
+fulfill the purpose(s) for which it was collected, provide our Services,
+resolve disputes, establish legal defenses, conduct audits, pursue
+legitimate business purposes, enforce our agreements, and comply with
+applicable laws.</p>
+<p>To determine the appropriate retention period for personal information,
+we may consider applicable legal requirements, the amount, nature, and
+sensitivity of the personal information, certain risk factors, the
+purposes for which we process your personal information, and whether we
+can achieve those purposes through other means.</p>
+<h2 id="supplemental-notice-for-california-residents"><a class="header" href="#supplemental-notice-for-california-residents">SUPPLEMENTAL NOTICE FOR CALIFORNIA RESIDENTS</a></h2>
+<p>This Supplemental Notice for California Residents only applies to our
+processing of personal information that is subject to the California
+Consumer Privacy Act of 2018 ("<strong>CCPA</strong>"). Mysten Labs does not believe
+it is subject to the CCPA. That said, Mysten Labs provides this
+supplemental notice for purposes of transparency. The CCPA provides
+California residents with the right to know what categories of personal
+information Mysten Labs has collected about them and whether Mysten Labs
+disclosed that personal information for a business purpose (e.g., to a
+service provider) in the preceding twelve months. California residents
+can find this information below:</p>
+<table style="text-align: left;">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>Category of Personal Information Collected by Mysten
+Labs</strong></th>
+<th><strong>Categories of Third Parties Personal Information is
+Disclosed to for a Business Purpose</strong></th>
+</tr>
+</thead>
+<tr >
+<th><p><strong>Identifiers</strong></p>
+<p>A real name, postal address, unique personal identifier, online
+identifier, Internet Protocol address, email address, account name, or
+other similar identifiers.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+<li><p>Third-party websites or applications</p></li>
+<li><p>Blockchain networks</p></li>
+<li><p>Other users or third parties you interact with</p></li>
+<li><p>Advertising partners</p></li>
+<li><p>Data analytics providers</p></li>
+<li><p>Other users/public (alias only)</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Personal information categories listed in Cal. Civ. Code
+§ 1798.80(e)</strong></p>
+<p>A name, signature, Social Security number, address, telephone number,
+passport number, driver’s license or state identification card number,
+insurance policy number, education, employment, employment history, bank
+account number, credit card number, debit card number, or any other
+financial information. Personal Information does not include publicly
+available information that is lawfully made available to the general
+public from federal, state, or local government records. Note: Some
+personal information included in this category may overlap with other
+categories.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+<li><p>Third-party websites or applications (e.g., wallet<br />
+providers; third-party identity verification services)</p></li>
+<li><p>Blockchain networks</p></li>
+<li><p>Data analytics providers</p></li>
+<li><p>Other users or third parties you interact with</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Protected classification characteristics under California
+or federal law</strong></p>
+<p>Age (40 years or older), race, color, ancestry, national origin,
+citizenship, religion or creed, marital status, medical condition,
+physical or mental disability, sex (including gender, gender identity,
+gender expression, pregnancy or childbirth and related medical
+conditions), sexual orientation, veteran or military status, genetic
+information (including familial genetic information).</p></th>
+<th><ul >
+<li><p>Service providers (recruitment context).</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Commercial information</strong></p>
+<p>Records of personal property, products or services purchased,
+obtained, or considered, or other purchasing or consuming histories or
+tendencies.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+<li><p>Blockchain networks</p></li>
+<li><p>Data analytics providers</p></li>
+<li><p>Other users or third parties you interact with</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Internet or other electronic network
+activity</strong></p>
+<p>Browsing history, search history, information on a consumer’s
+interaction with an internet website, application, or
+advertisement.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+<li><p>Blockchain networks</p></li>
+<li><p>Data analytics providers</p></li>
+<li><p>Other users or third parties you interact with</p></li>
+<li><p>Advertising partners</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Professional or employment-related
+information</strong></p>
+<p>Current or past job history or performance evaluations.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+</ul></th>
+</tr>
+<tr >
+<th><p><strong>Inferences drawn from other personal information to
+create a profile about a consumer</strong></p>
+<p>Profile reflecting a consumer’s preferences, characteristics,
+psychological trends, predispositions, behavior, attitudes,
+intelligence, abilities, and aptitudes.</p></th>
+<th><ul >
+<li><p>Service providers</p></li>
+<li><p>Data analytics providers</p></li>
+<li><p>Advertising partners</p></li>
+</ul></th>
+</tr>
+<tbody>
+</tbody>
+</table>
+<p>The categories of sources from which we collect personal information and
+our business and commercial purposes for using personal information are
+set forth in "<a href="#personal-information-we-collect">Personal Information we
+Collect</a>" and "<a href="#how-we-use-your-information">How We
+Use of Your Information</a>" above,
+respectively.</p>
+<p><strong>"Sales" of Personal Information under the CCPA.</strong> For purposes of the
+CCPA, Mysten Labs does not "sell" personal information, nor do we have
+actual knowledge of any "sale" of personal information of minors under
+16 years of age.</p>
+<p><strong>Additional Privacy Rights for California Residents</strong></p>
+<p><strong>Non-Discrimination.</strong> California residents have the right not to
+receive discriminatory treatment by us for the exercise of their rights
+conferred by the CCPA.</p>
+<p><strong>Authorized Agent.</strong> Only you, or someone legally authorized to act on
+your behalf, may make a verifiable consumer request related to your
+personal information. To designate an authorized agent, please contact
+us as set forth in "<a href="#contact-us">Contact Us</a>" below and
+provide written authorization signed by you and your designated agent.</p>
+<p><strong>Verification</strong>. To protect your privacy, we will take the following
+steps to verify your identity before fulfilling your request. When you
+make a request, we will ask you to provide sufficient information that
+allows us to reasonably verify you are the person about whom we
+collected personal information or an authorized representative, which
+may include confirming the email address associated with any personal
+information we have about you. If you are a California resident and
+would like to exercise any of your rights under the CCPA, please contact
+us as set forth in "<a href="#contact-us">Contact Us</a>" below. We
+will process such requests in accordance with applicable laws.</p>
+<p>**Refer-a-Friend and Similar In
+"<a href="#how-we-use-your-information">How We Use Your Personal
+Information</a> we may offer referral
+programs or other incentivized data collection programs. For example, we
+may offer incentives to you such as discounts or promotional items or
+credit in connection with these programs, wherein you provide your
+personal information in exchange for a reward, or provide personal
+information regarding your friends or colleagues (such as their email
+address) and receive rewards when they sign up to use our Services. (The
+referred party may also receive rewards for signing up via your
+referral.) These programs are entirely voluntary and allow us to grow
+our business and provide additional benefits to you. The value of your
+data to us depends on how you ultimately use our Services, whereas the
+value of the referred party's data to us depends on whether the referred
+party ultimately becomes a user and uses our Services. Said value will
+be reflected in the incentive offered in connection with each program.</p>
+<p><strong>Accessibility</strong>. This Privacy Policy uses industry-standard
+technologies and was developed in line with the World Wide Web
+Consortium's Web Content Accessibility Guidelines, version 2.1. If you
+wish to print this policy, please do so from your web browser or by
+saving the page as a PDF.</p>
+<p><strong>California Shine the Light</strong>. The California "Shine the Light" law
+permits users who are California residents to request and obtain from us
+once a year, free of charge, a list of the third parties to whom we have
+disclosed their personal information (if any) for their direct marketing
+purposes in the prior calendar year, as well as the type of personal
+information disclosed to those parties.</p>
+<p><strong>Right for minors to remove posted content.</strong> Where required by law,
+California residents under the age of 18 may request to have their
+posted content or information removed from the publicly viewable
+portions of the Services by contacting us directly as set forth in
+"<a href="#contact-us">Contact Us</a>" below.</p>
+<h2 id="supplemental-notice-for-nevada-residents"><a class="header" href="#supplemental-notice-for-nevada-residents">SUPPLEMENTAL NOTICE FOR NEVADA RESIDENTS</a></h2>
+<p>If you are a resident of Nevada, you have the right to opt-out of the
+sale of certain personal information to third parties who intend to
+license or sell that personal information. You can exercise this right
+by contacting us as set forth in "<a href="#contact-us">Contact
+Us</a>" below with the subject line "Nevada Do
+Not Sell Request" and providing us with your name and the email address
+associated with your account. Please note that we do not currently sell
+your personal information as sales are defined in Nevada Revised
+Statutes Chapter 603A.</p>
+<h2 id="childrens-information"><a class="header" href="#childrens-information">CHILDREN'S INFORMATION</a></h2>
+<p>The Services are not directed to children under 13 (or other age as
+required by local law), and we do not knowingly collect personal
+information from children. If you learn that your child has provided us
+with personal information without your consent, you may contact us as
+set forth in "<a href="#contact-us">Contact Us</a>" below. If we
+learn that we have collected a child's personal information in violation
+of applicable law, we will promptly take steps to delete such
+information.</p>
+<h2 id="third-party-websitesapplications"><a class="header" href="#third-party-websitesapplications">THIRD-PARTY WEBSITES/APPLICATIONS</a></h2>
+<p>The Services may contain links to other websites/applications (such as
+GitHub) and other websites/applications may reference or link to our
+Services. These third-party services are not controlled by us. We
+encourage our users to read the privacy policies of each website and
+application with which they interact. We do not endorse, screen or
+approve, and are not responsible for, the privacy practices or content
+of such other websites or applications. Providing personal information
+to third-party websites or applications is at your own risk.</p>
+<h2 id="supervisory-authority"><a class="header" href="#supervisory-authority">SUPERVISORY AUTHORITY</a></h2>
+<p>If you are located in the European Economic Area, Switzerland, the
+United Kingdom, or Brazil, you have the right to lodge a complaint with
+a supervisory authority if you believe our processing of your personal
+information violates applicable law.</p>
+<h2 id="contact-us"><a class="header" href="#contact-us">CONTACT US</a></h2>
+<p>If you have any questions about our privacy practices or this Privacy
+Policy, or to exercise your rights as detailed in this Privacy Policy,
+please contact us at:</p>
+<p>Mysten Labs, Inc. <br />
+Attn: Privacy Group <br />
+379 University Ave, #200 <br />
+Palo Alto, CA 94301 <br />
+<a href="mailto:privacy@mystenlabs.com">privacy@mystenlabs.com</a> <br />
++1 (408) 384-8237</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../legal/testnet_tos.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../legal/testnet_tos.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
