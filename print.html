@@ -16,6 +16,37 @@
             amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
           }
         </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2416,20 +2447,57 @@ prepare your environment for development.</p>
 <p>Before you start, make sure you</p>
 <ul>
 <li>have a recent version of <a href="https://www.rust-lang.org/tools/install">Rust</a> installed;</li>
-<li>have <code>git</code> installed; and</li>
 <li>followed all <a href="walrus-sites/../usage/setup.html">Walrus setup instructions</a>.</li>
 </ul>
 <p>Then, follow these additional setup steps.</p>
-<h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
-<p>First, clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>:</p>
-<pre><code class="language-sh">git clone https://github.com/MystenLabs/walrus-sites.git
-cd walrus-sites
+<h2 id="installation-1"><a class="header" href="#installation-1">Installation</a></h2>
+<p>Similar to the <code>walrus</code> client CLI tool, we currently provide the <code>site-builder</code> client binary for
+macOS (Intel and Apple CPUs), Ubuntu, and Windows:</p>
+<div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Windows</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe"><code>windows-x86_64.exe</code></a></td></tr>
+</tbody></table>
+</div><div id="admonition-windows" class="admonition admonish-note" role="note" aria-labelledby="admonition-windows-title">
+<div class="admonition-title">
+<div id="admonition-windows-title">
+<p>Windows</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-windows"></a>
+</div>
+<div>
+<p>We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
+a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
+adapt most of those.</p>
+</div>
+</div>
+<p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
+<code>$SYSTEM</code> variable):</p>
+<pre><code class="language-sh">SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
+curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-$SYSTEM -o site-builder
+chmod +x site-builder
 </code></pre>
-<p>Then, build the release version of the site builder:</p>
-<pre><code class="language-sh">cargo build --release
-</code></pre>
-<p>After the build process completes, you are ready to run the site builder:</p>
-<pre><code class="language-terminal">$ ./target/release/site-builder
+<p>To be able to run it simply as <code>site-builder</code>, move the binary to any directory included in your
+<code>$PATH</code> environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
+<code>$HOME/.local/bin/</code>.</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-note"></a>
+</div>
+<div>
+<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the current
+directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code> and <code>$HOME/walrus/sites-config.yaml</code> directory.
+In case you want to use explicitly a different <code>sites-config.yaml</code>, use the <code>--config</code> flag to
+specify the path to the configuration file.</p>
+</div>
+</div>
+<p>Once this is done, you should be able to simply type <code>site-builder</code> in your terminal.</p>
+<pre><code class="language-terminal">$ site-builder
 Usage: site-builder [OPTIONS] &lt;COMMAND&gt;
 
 Commands:
@@ -2442,20 +2510,64 @@ Commands:
 
   ⋮
 </code></pre>
+<h2 id="configuration-1"><a class="header" href="#configuration-1">Configuration</a></h2>
+<p>The <code>site-builder</code> tool needs a configuration file to work. This file is called <code>sites-config.yaml</code>
+and looks like this:</p>
+<pre><code class="language-yaml"># module: site
+# portal: walrus.site
+package: 0xdf9033cac39b7a9b9f76fb6896c9fc5283ba730d6976a2b1d85ad1e6036c3272
+# general:
+#   rpc_url: https://fullnode.testnet.sui.io:443
+#   wallet: /path/to/.sui/sui_config/client.yaml
+#   walrus_binary: /path/to/walrus
+#   walrus_config: /path/to/devnet_deployment/client_config.yaml
+#   gas_budget: 500000000
+</code></pre>
+<p>As you can see, the configuration file is quite simple. The only mandatory field is the <code>package</code>
+field, which represents the Sui object ID of the Walrus Sites smart contract. You can find the
+latest version of the package in the <a href="https://github.com/MystenLabs/walrus-sites/tree/testnet">Walrus Sites
+repository</a> on the <code>testnet</code> branch.</p>
+<div id="admonition-walrus-sites-stable-branch" class="admonition admonish-danger" role="note" aria-labelledby="admonition-walrus-sites-stable-branch-title">
+<div class="admonition-title">
+<div id="admonition-walrus-sites-stable-branch-title">
+<p>Walrus Sites stable branch</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-install.html#admonition-walrus-sites-stable-branch"></a>
+</div>
+<div>
+<p>The stable branch of Walrus Sites is <code>testnet</code>.
+Make sure that you always pull the latest changes from there.</p>
+</div>
+</div>
+<p>You can define the location of the <code>sites-config.yaml</code> file using the <code>--config</code> flag when running
+the <code>site-builder</code> commands like so:</p>
+<pre><code class="language-sh">site-builder --config /path/to/sites-config.yaml publish &lt;build-directory-of-a-site&gt;
+</code></pre>
+<p>However, if are not a fan of repeating the same flags over and over, it's always easier to have the
+configuration file in one of the <a href="walrus-sites/./tutorial-install.html#admonition-note">default locations</a>.</p>
+<p>Download the <code>sites-config.yaml</code> file from the repository, and place it in one of the aforementioned
+default locations. To illustrate, we will use the <code>~/.config/walrus</code> directory, like so:</p>
+<pre><code class="language-sh">curl https://raw.githubusercontent.com/MystenLabs/walrus-sites/refs/heads/testnet/sites-config.yaml -o ~/.config/walrus/sites-config.yaml
+</code></pre>
+<p>You are now ready to start working on your Walrus Sites! 🎉</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="publishing-a-walrus-site"><a class="header" href="#publishing-a-walrus-site">Publishing a Walrus Site</a></h1>
-<p>Now that everything is installed and configured, you should be able to start publishing
-your first Walrus Site!</p>
+<p>Now that everything is installed and configured, you should be able to start publishing your first
+Walrus Site!</p>
 <h2 id="select-the-source-material-for-the-site"><a class="header" href="#select-the-source-material-for-the-site">Select the source material for the site</a></h2>
 <p>The <code>site-builder</code> works by uploading a directory of files produced by any web framework to Walrus
 and adding the relevant metadata to Sui. This directory should have a file called <code>index.html</code> in
 its root, which will be the entry point to the Walrus Site.</p>
-<p>For the rest of the tutorial, we will use as an example the simple site contained in
-<code>./examples/snake</code>.</p>
+<p>There is a very useful <a href="https://github.com/MystenLabs/example-walrus-sites">example-Walrus-sites</a>
+repository that contains multiple kinds of sites that you can use for reference.</p>
+<p>For simplicity, we will start by publishing the most frugal of the sites, the <code>walrus-snake</code> game.</p>
+<p>First, clone the repository of examples:</p>
+<pre><code class="language-sh">git clone https://github.com/MystenLabs/example-walrus-sites.git &amp;&amp; cd walrus-snake/
+</code></pre>
 <h2 id="publish-the-site"><a class="header" href="#publish-the-site">Publish the site</a></h2>
-<p>Since we have placed the <code>walrus</code> binary and configuration in their default locations, publishing
-the <code>./examples/snake</code> site is as simple as calling the publishing command:</p>
-<pre><code class="language-sh">./target/release/site-builder publish ./examples/snake --epochs 100
+<p>Since we have placed the <code>walrus</code> and <code>site-builder</code> binaries and configuration in their default
+locations, publishing the <code>./walrus-snake</code> site is as simple as calling the publishing command:</p>
+<pre><code class="language-sh">site-builder publish ./walrus-snake --epochs 100
 </code></pre>
 <div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
 <div class="admonition-title">
@@ -2467,19 +2579,6 @@ the <code>./examples/snake</code> site is as simple as calling the publishing co
 <div>
 <p>Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
 longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
-</div>
-</div>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
-<div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
-</div>
-<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note"></a>
-</div>
-<div>
-<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the
-<code>./walrus-sites</code> directory. In case you are calling the <code>site-builder</code> command from a different
-location, use the <code>--config</code> flag to specify the path to the configuration file.</p>
 </div>
 </div>
 <p>The end of the output should look like the following:</p>
@@ -2497,21 +2596,22 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 </code></pre>
 <p>This output tells you that, for each file in the folder, a new Walrus blob was created, and the
 respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
-can browse the site.</p>
-<p>Note here that we are passing the default config <code>./sites-config.yaml</code> as the config for the site
-builder. The configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui
-package for the Walrus Sites logic.</p>
+have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you can
+browse the site.</p>
+<p>Note here that we are implicitly using the default <code>sites-config.yaml</code> as the config for the site
+builder that we set up previously on the <a href="walrus-sites/./tutorial-install.html">installation section</a>. The
+configuration file is necessary to ensure that the <code>site-builder</code> knows the correct Sui package for
+the Walrus Sites logic.</p>
 <p>More details on the configuration of the <code>site-builder</code> can be found under the <a href="walrus-sites/./builder-config.html">advanced
 configuration</a> section.</p>
 <h2 id="update-the-site"><a class="header" href="#update-the-site">Update the site</a></h2>
 <p>Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".</p>
-<p>First, make this edit on in the <code>./examples/snake/index.html</code> file.</p>
+<p>First, make this edit on in the <code>./walrus-snake/index.html</code> file.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
-where to find the updated files (still <code>./example/snake</code>) and the object ID of the existing site
+where to find the updated files (still <code>./walrus-snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
-<pre><code class="language-sh">./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+<pre><code class="language-sh">site-builder update --epochs 100 ./walrus-snake  0x407a3081...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Execution completed
@@ -2526,12 +2626,12 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 <p>Compared to the <code>publish</code> action, we can see that now the only actions performed were to delete the
 old <code>index.html</code>, and update it with the newer one.</p>
 <p>Browsing to the provided URL should reflect the change. You've updated the site!</p>
-<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
 <div class="admonition-title">
-<div id="admonition-note-1-title">
+<div id="admonition-note-title">
 <p>Note</p>
 </div>
-<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note-1"></a>
+<a class="admonition-anchor-link" href="walrus-sites/tutorial-publish.html#admonition-note"></a>
 </div>
 <div>
 <p>The wallet you are using must be the <em>owner</em> of the Walrus Site object to be able to update it.</p>
@@ -2600,8 +2700,7 @@ Sites</em> to create per-object websites!</p>
 </div>
 <div>
 <p>In general, the <code>--help</code> flag is your friend, you can add it to get further details for the whole
-CLI (<code>./target/release/site-builder --help</code>) or individual commands (e.g.,
-<code>./target/release/site-builder update --help</code>).</p>
+CLI (<code>site-builder --help</code>) or individual commands (e.g. <code>site-builder update --help</code>).</p>
 </div>
 </div>
 <h2 id="publish"><a class="header" href="#publish"><code>publish</code></a></h2>
@@ -2662,9 +2761,11 @@ wallet to use, the gas budget, and other operational details. Most of these are 
 through sensible defaults, so you should not need to touch them. Yet, for completeness, we provide
 here the details for all the configuration options.</p>
 <h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
-<p>The config file is expected to be in <code>./sites-config.yaml</code>, and it is possible to point elsewhere
-with the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code>
-with <code>--config sites-config.yaml</code>, which is already configured appropriately.</p>
+<p>The config file is expected to be in one of the <a href="walrus-sites/../usage/setup.html#config-custom-path">default
+locations</a>, and it is possible to point elsewhere with the
+<code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code> without
+specifying the config explicitly, which is already configured if you followed thoroughly the
+<a href="walrus-sites/./tutorial-install.html#configuration">installation steps</a>.</p>
 <p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
 binary, see below.</p>
 <h2 id="additional-options"><a class="header" href="#additional-options">Additional options</a></h2>
@@ -2672,10 +2773,10 @@ binary, see below.</p>
 following variables in the config file:</p>
 <ul>
 <li><code>package</code>: the object ID of the Walrus Sites package on Sui. This must always be specified in the
-config, and is already appropriately configured in <code>assets/example-config.yaml</code>.</li>
+config, and is already appropriately configured in <code>./sites-config.yaml</code>.</li>
 <li><code>portal</code>: the name of the portal through which the site will be viewed; this only affects the
-output of the CLI, and nothing else (default: <code>walrus.site</code>).
-All Walrus Sites are accessible through any portal independent of this setting.</li>
+output of the CLI, and nothing else (default: <code>walrus.site</code>). All Walrus Sites are accessible
+through any portal independent of this setting.</li>
 <li><code>general</code>: these are general options that can be configured both through the CLI and the config:
 <ul>
 <li><code>rpc_url</code>: The URL of the Sui RPC node to use. If not set, the <code>site-builder</code> will infer it from
@@ -2690,6 +2791,18 @@ chapter</a>.</li>
 </ul>
 </li>
 </ul>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/builder-config.html#admonition-note"></a>
+</div>
+<div>
+<p>From time to time there are package upgrades happening. This will require you to
+update the <code>package</code> field in the config file.</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="specifying-headers-and-routing"><a class="header" href="#specifying-headers-and-routing">Specifying headers and routing</a></h1>
 <div id="admonition-new-with-walrus-sites-testnet-version" class="admonition admonish-tip" role="note" aria-labelledby="admonition-new-with-walrus-sites-testnet-version-title">
@@ -3009,11 +3122,25 @@ portals:</p>
 </ol>
 <p>Currently, the server-side and service-workers portals are available at <a href="https://blob.store">https://blob.store</a> and
 <a href="https://walrus.site">https://walrus.site</a>, respectively.</p>
+<div id="admonition-walrus-sites-stable-branch" class="admonition admonish-danger" role="note" aria-labelledby="admonition-walrus-sites-stable-branch-title">
+<div class="admonition-title">
+<div id="admonition-walrus-sites-stable-branch-title">
+<p>Walrus Sites stable branch</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/portal.html#admonition-walrus-sites-stable-branch"></a>
+</div>
+<div>
+<p>The stable branch of Walrus Sites is <code>testnet</code>.</p>
+</div>
+</div>
 <h2 id="running-the-portal-locally"><a class="header" href="#running-the-portal-locally">Running the portal locally</a></h2>
 <p>You can run a service-worker portal locally if you want to browse Walrus Sites without accessing
 external portals or for development purposes.</p>
 <p>This requires having the <a href="https://pnpm.io/"><code>pnpm</code></a> tool installed. To start, clone the
 <code>walrus-sites</code> repo and enter the <code>portal</code> directory. Here, run</p>
+<p>Make sure you are on the stable branch:</p>
+<pre><code class="language-sh">git checkout testnet
+</code></pre>
 <pre><code class="language-sh">cd portal
 pnpm install
 # Build the portal you want to use, or both
