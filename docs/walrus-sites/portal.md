@@ -11,6 +11,10 @@ portals:
 Currently, the server-side and service-workers portals are available at <https://blob.store> and
 <https://walrus.site>, respectively.
 
+```admonish danger title="Walrus Sites stable branch"
+The stable branch of Walrus Sites is `testnet`.
+```
+
 ## Running the portal locally
 
 You can run a service-worker portal locally if you want to browse Walrus Sites without accessing
@@ -18,6 +22,12 @@ external portals or for development purposes.
 
 This requires having the [`pnpm`](https://pnpm.io/) tool installed. To start, clone the
 `walrus-sites` repo and enter the `portal` directory. Here, run
+
+Make sure you are on the stable branch:
+
+``` sh
+git checkout testnet
+```
 
 ``` sh
 cd portal

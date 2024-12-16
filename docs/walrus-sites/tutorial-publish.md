@@ -1,7 +1,7 @@
 # Publishing a Walrus Site
 
-Now that everything is installed and configured, you should be able to start publishing
-your first Walrus Site!
+Now that everything is installed and configured, you should be able to start publishing your first
+Walrus Site!
 
 ## Select the source material for the site
 
@@ -9,27 +9,29 @@ The `site-builder` works by uploading a directory of files produced by any web f
 and adding the relevant metadata to Sui. This directory should have a file called `index.html` in
 its root, which will be the entry point to the Walrus Site.
 
-For the rest of the tutorial, we will use as an example the simple site contained in
-`./examples/snake`.
+There is a very useful [example-Walrus-sites](https://github.com/MystenLabs/example-walrus-sites)
+repository that contains multiple kinds of sites that you can use for reference.
+
+For simplicity, we will start by publishing the most frugal of the sites, the `walrus-snake` game.
+
+First, clone the repository of examples:
+
+``` sh
+git clone https://github.com/MystenLabs/example-walrus-sites.git && cd walrus-snake/
+```
 
 ## Publish the site
 
-Since we have placed the `walrus` binary and configuration in their default locations, publishing
-the `./examples/snake` site is as simple as calling the publishing command:
+Since we have placed the `walrus` and `site-builder` binaries and configuration in their default
+locations, publishing the `./walrus-snake` site is as simple as calling the publishing command:
 
 ``` sh
-./target/release/site-builder publish ./examples/snake --epochs 100
+site-builder publish ./walrus-snake --epochs 100
 ```
 
 ``` admonish tip
 Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
 longer, specify the number of epochs with the `--epochs` flag!
-```
-
-```admonish note
-The site builder will look for the default configuration file `sites-config.yaml` in the
-`./walrus-sites` directory. In case you are calling the `site-builder` command from a different
-location, use the `--config` flag to specify the path to the configuration file.
 ```
 
 The end of the output should look like the following:
@@ -50,12 +52,13 @@ Browse the resulting site at: https://1lupgq2auevjruy7hs9z7tskqwjp5cc8c5ebhci4v5
 
 This output tells you that, for each file in the folder, a new Walrus blob was created, and the
 respective blob ID. Further, it prints the object ID of the Walrus Site object on Sui (so you can
-have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you
-can browse the site.
+have a look in the explorer and use it to set the SuiNS name) and, finally, the URL at which you can
+browse the site.
 
-Note here that we are passing the default config `./sites-config.yaml` as the config for the site
-builder. The configuration file is necessary to ensure that the `site-builder` knows the correct Sui
-package for the Walrus Sites logic.
+Note here that we are implicitly using the default `sites-config.yaml` as the config for the site
+builder that we set up previously on the [installation section](./tutorial-install.html). The
+configuration file is necessary to ensure that the `site-builder` knows the correct Sui package for
+the Walrus Sites logic.
 
 More details on the configuration of the `site-builder` can be found under the [advanced
 configuration](./builder-config.md) section.
@@ -65,14 +68,14 @@ configuration](./builder-config.md) section.
 Let's say now you want to update the content of the site, for example by changing the title from
 "eat all the blobs!" to "Glob all the Blobs!".
 
-First, make this edit on in the `./examples/snake/index.html` file.
+First, make this edit on in the `./walrus-snake/index.html` file.
 
 Then, you can update the existing site by running the `update` command, providing the directory
-where to find the updated files (still `./example/snake`) and the object ID of the existing site
+where to find the updated files (still `./walrus-snake`) and the object ID of the existing site
 (`0x407a3081...`):
 
 ``` sh
-./target/release/site-builder update --epochs 100 examples/snake  0x407a3081...
+site-builder update --epochs 100 ./walrus-snake  0x407a3081...
 ```
 
 The output this time should be:

@@ -4,8 +4,7 @@ We now describe in more detail the commands available through the site builder.
 
 ```admonish tip
 In general, the `--help` flag is your friend, you can add it to get further details for the whole
-CLI (`./target/release/site-builder --help`) or individual commands (e.g.,
-`./target/release/site-builder update --help`).
+CLI (`site-builder --help`) or individual commands (e.g. `site-builder update --help`).
 ```
 
 ## `publish`

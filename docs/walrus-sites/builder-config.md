@@ -10,9 +10,11 @@ here the details for all the configuration options.
 
 ## Minimal configuration
 
-The config file is expected to be in `./sites-config.yaml`, and it is possible to point elsewhere
-with the `--config` flag. For your first run, it should be sufficient to call the `site-builder`
-with `--config sites-config.yaml`, which is already configured appropriately.
+The config file is expected to be in one of the [default
+locations](../usage/setup.html#config-custom-path), and it is possible to point elsewhere with the
+`--config` flag. For your first run, it should be sufficient to call the `site-builder` without
+specifying the config explicitly, which is already configured if you followed thoroughly the
+[installation steps](./tutorial-install.html#configuration).
 
 If, for any reason, you didn't add `walrus` to `$PATH`, make sure to configure a pointer to the
 binary, see below.
@@ -23,10 +25,10 @@ If you want to have more control over the behavior of the site builder, you can 
 following variables in the config file:
 
 - `package`: the object ID of the Walrus Sites package on Sui. This must always be specified in the
-  config, and is already appropriately configured in `assets/example-config.yaml`.
+  config, and is already appropriately configured in `./sites-config.yaml`.
 - `portal`: the name of the portal through which the site will be viewed; this only affects the
-  output of the CLI, and nothing else (default: `walrus.site`).
-  All Walrus Sites are accessible through any portal independent of this setting.
+  output of the CLI, and nothing else (default: `walrus.site`). All Walrus Sites are accessible
+  through any portal independent of this setting.
 - `general`: these are general options that can be configured both through the CLI and the config:
   - `rpc_url`: The URL of the Sui RPC node to use. If not set, the `site-builder` will infer it from
     the wallet.
@@ -37,3 +39,8 @@ following variables in the config file:
   - `walrus_config`: The configuration for the `walrus` client binary, see the [relevant
     chapter](../usage/setup.md).
   - `gas_budget`: The maximum amount of gas to be spent for transactions (default: 500M MIST).
+
+```admonish note
+From time to time there are package upgrades happening. This will require you to
+update the `package` field in the config file.
+```
