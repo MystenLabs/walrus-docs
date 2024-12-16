@@ -40,5 +40,7 @@ following variables in the config file:
     chapter](../usage/setup.md).
   - `gas_budget`: The maximum amount of gas to be spent for transactions (default: 500M MIST).
 
-```admonish note From time to time there are package upgrades happening. This will require you to
-update the `package` field in the config file. ```
+```admonish note 
+From time to time there are package upgrades happening. This will require you to
+update the `package` field in the config file.
+```
