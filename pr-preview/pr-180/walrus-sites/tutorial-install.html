@@ -15,6 +15,37 @@
             amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
           }
         </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -190,20 +221,57 @@ prepare your environment for development.</p>
 <p>Before you start, make sure you</p>
 <ul>
 <li>have a recent version of <a href="https://www.rust-lang.org/tools/install">Rust</a> installed;</li>
-<li>have <code>git</code> installed; and</li>
 <li>followed all <a href="../usage/setup.html">Walrus setup instructions</a>.</li>
 </ul>
 <p>Then, follow these additional setup steps.</p>
-<h2 id="clone-the-repository-and-build-the-site-builder-tool"><a class="header" href="#clone-the-repository-and-build-the-site-builder-tool">Clone the repository and build the <code>site-builder</code> tool</a></h2>
-<p>First, clone and enter the Walrus Sites repo from <a href="https://github.com/MystenLabs/walrus-sites">https://github.com/MystenLabs/walrus-sites</a>:</p>
-<pre><code class="language-sh">git clone https://github.com/MystenLabs/walrus-sites.git
-cd walrus-sites
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>Similar to the <code>walrus</code> client CLI tool, we currently provide the <code>site-builder</code> client binary for
+macOS (Intel and Apple CPUs), Ubuntu, and Windows:</p>
+<div class="table-wrapper"><table><thead><tr><th>OS</th><th>CPU</th><th>Architecture</th></tr></thead><tbody>
+<tr><td>Ubuntu</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64"><code>ubuntu-x86_64</code></a></td></tr>
+<tr><td>Ubuntu</td><td>Intel 64bit (generic)</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-ubuntu-x86_64-generic"><code>ubuntu-x86_64-generic</code></a></td></tr>
+<tr><td>MacOS</td><td>Apple Silicon</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-arm64"><code>macos-arm64</code></a></td></tr>
+<tr><td>MacOS</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-macos-x86_64"><code>macos-x86_64</code></a></td></tr>
+<tr><td>Windows</td><td>Intel 64bit</td><td><a href="https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-windows-x86_64.exe"><code>windows-x86_64.exe</code></a></td></tr>
+</tbody></table>
+</div><div id="admonition-windows" class="admonition admonish-note" role="note" aria-labelledby="admonition-windows-title">
+<div class="admonition-title">
+<div id="admonition-windows-title">
+<p>Windows</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-windows"></a>
+</div>
+<div>
+<p>We now offer a pre-built binary also for Windows. However, most of the remaining instructions assume
+a UNIX-based system for the directory structure, commands, etc. If you use Windows, you may need to
+adapt most of those.</p>
+</div>
+</div>
+<p>You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
+<code>$SYSTEM</code> variable):</p>
+<pre><code class="language-sh">SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
+curl https://storage.googleapis.com/mysten-walrus-binaries/site-builder-testnet-latest-$SYSTEM -o site-builder
+chmod +x site-builder
 </code></pre>
-<p>Then, build the release version of the site builder:</p>
-<pre><code class="language-sh">cargo build --release
-</code></pre>
-<p>After the build process completes, you are ready to run the site builder:</p>
-<pre><code class="language-terminal">$ ./target/release/site-builder
+<p>To be able to run it simply as <code>site-builder</code>, move the binary to any directory included in your
+<code>$PATH</code> environment variable. Standard locations are <code>/usr/local/bin/</code>, <code>$HOME/bin/</code>, or
+<code>$HOME/.local/bin/</code>.</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>The site builder will look for the default configuration file <code>sites-config.yaml</code> in the current
+directory, the <code>$XDG_HOME/walrus/sites-config.yaml</code> and <code>$HOME/walrus/sites-config.yaml</code> directory.
+In case you want to use explicitly a different <code>sites-config.yaml</code>, use the <code>--config</code> flag to
+specify the path to the configuration file.</p>
+</div>
+</div>
+<p>Once this is done, you should be able to simply type <code>site-builder</code> in your terminal.</p>
+<pre><code class="language-terminal">$ site-builder
 Usage: site-builder [OPTIONS] &lt;COMMAND&gt;
 
 Commands:
@@ -216,6 +284,46 @@ Commands:
 
   ⋮
 </code></pre>
+<h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
+<p>The <code>site-builder</code> tool needs a configuration file to work. This file is called <code>sites-config.yaml</code>
+and looks like this:</p>
+<pre><code class="language-yaml"># module: site
+# portal: walrus.site
+package: 0xdf9033cac39b7a9b9f76fb6896c9fc5283ba730d6976a2b1d85ad1e6036c3272
+# general:
+#   rpc_url: https://fullnode.testnet.sui.io:443
+#   wallet: /path/to/.sui/sui_config/client.yaml
+#   walrus_binary: /path/to/walrus
+#   walrus_config: /path/to/devnet_deployment/client_config.yaml
+#   gas_budget: 500000000
+</code></pre>
+<p>As you can see, the configuration file is quite simple. The only mandatory field is the <code>package</code>
+field, which represents the Sui object ID of the Walrus Sites smart contract. You can find the
+latest version of the package in the <a href="https://github.com/MystenLabs/walrus-sites/tree/testnet">Walrus Sites
+repository</a> on the <code>testnet</code> branch.</p>
+<div id="admonition-walrus-sites-stable-branch" class="admonition admonish-danger" role="note" aria-labelledby="admonition-walrus-sites-stable-branch-title">
+<div class="admonition-title">
+<div id="admonition-walrus-sites-stable-branch-title">
+<p>Walrus Sites stable branch</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-walrus-sites-stable-branch"></a>
+</div>
+<div>
+<p>The stable branch of Walrus Sites is <code>testnet</code>.
+Make sure that you always pull the latest changes from there.</p>
+</div>
+</div>
+<p>You can define the location of the <code>sites-config.yaml</code> file using the <code>--config</code> flag when running
+the <code>site-builder</code> commands like so:</p>
+<pre><code class="language-sh">site-builder --config /path/to/sites-config.yaml publish &lt;build-directory-of-a-site&gt;
+</code></pre>
+<p>However, if are not a fan of repeating the same flags over and over, it's always easier to have the
+configuration file in one of the <a href="./tutorial-install.html#admonition-note">default locations</a>.</p>
+<p>Download the <code>sites-config.yaml</code> file from the repository, and place it in one of the aforementioned
+default locations. To illustrate, we will use the <code>~/.config/walrus</code> directory, like so:</p>
+<pre><code class="language-sh">curl https://raw.githubusercontent.com/MystenLabs/walrus-sites/refs/heads/testnet/sites-config.yaml -o ~/.config/walrus/sites-config.yaml
+</code></pre>
+<p>You are now ready to start working on your Walrus Sites! 🎉</p>
 
                     </main>
 

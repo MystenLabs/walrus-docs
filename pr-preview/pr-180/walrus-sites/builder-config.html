@@ -15,6 +15,37 @@
             amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
           }
         </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -191,9 +222,11 @@ wallet to use, the gas budget, and other operational details. Most of these are 
 through sensible defaults, so you should not need to touch them. Yet, for completeness, we provide
 here the details for all the configuration options.</p>
 <h2 id="minimal-configuration"><a class="header" href="#minimal-configuration">Minimal configuration</a></h2>
-<p>The config file is expected to be in <code>./sites-config.yaml</code>, and it is possible to point elsewhere
-with the <code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code>
-with <code>--config sites-config.yaml</code>, which is already configured appropriately.</p>
+<p>The config file is expected to be in one of the <a href="../usage/setup.html#config-custom-path">default
+locations</a>, and it is possible to point elsewhere with the
+<code>--config</code> flag. For your first run, it should be sufficient to call the <code>site-builder</code> without
+specifying the config explicitly, which is already configured if you followed thoroughly the
+<a href="./tutorial-install.html#configuration">installation steps</a>.</p>
 <p>If, for any reason, you didn't add <code>walrus</code> to <code>$PATH</code>, make sure to configure a pointer to the
 binary, see below.</p>
 <h2 id="additional-options"><a class="header" href="#additional-options">Additional options</a></h2>
@@ -201,10 +234,10 @@ binary, see below.</p>
 following variables in the config file:</p>
 <ul>
 <li><code>package</code>: the object ID of the Walrus Sites package on Sui. This must always be specified in the
-config, and is already appropriately configured in <code>assets/example-config.yaml</code>.</li>
+config, and is already appropriately configured in <code>./sites-config.yaml</code>.</li>
 <li><code>portal</code>: the name of the portal through which the site will be viewed; this only affects the
-output of the CLI, and nothing else (default: <code>walrus.site</code>).
-All Walrus Sites are accessible through any portal independent of this setting.</li>
+output of the CLI, and nothing else (default: <code>walrus.site</code>). All Walrus Sites are accessible
+through any portal independent of this setting.</li>
 <li><code>general</code>: these are general options that can be configured both through the CLI and the config:
 <ul>
 <li><code>rpc_url</code>: The URL of the Sui RPC node to use. If not set, the <code>site-builder</code> will infer it from
@@ -219,6 +252,18 @@ chapter</a>.</li>
 </ul>
 </li>
 </ul>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-note"></a>
+</div>
+<div>
+<p>From time to time there are package upgrades happening. This will require you to
+update the <code>package</code> field in the config file.</p>
+</div>
+</div>
 
                     </main>
 

@@ -15,6 +15,37 @@
             amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
           }
         </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -258,12 +289,12 @@ configuration:</p>
 specified address. This is a way for clients to get back the created object for their data.</li>
 <li>If the <code>send_object_to</code> query parameter is not specified, two cases are possible:
 <ul>
-<li>if the publisher was run with the <code>--keep</code> flag, then the sub-wallet transfers the
+<li>If the publisher was run with the <code>--keep</code> flag, then the sub-wallet transfers the
 newly-created blob object to the main wallet, such that all these objects are kept there.</li>
-<li>if the <code>--keep</code> flag was omitted, then the sub-wallet <em>immediately burns</em> the <code>Blob</code> object.
-Since no one has requested the object, and the availability of the data on Walrus is
-independent of the existence of such object, it is safe to do so. This is to avoid cluttering
-the sub-wallet with many blob objects.</li>
+<li>If the <code>--keep</code> flag was omitted, then the sub-wallet <em>immediately burns</em> the <code>Blob</code> object.
+Since no one has requested the object, and the availability of the data on Walrus is independent
+of the existence of such object, it is safe to do so. This is to avoid cluttering the sub-wallet
+with many blob objects.</li>
 </ul>
 </li>
 </ul>
