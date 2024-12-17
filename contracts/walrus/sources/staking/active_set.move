@@ -7,6 +7,9 @@
 /// WAL to make the calculation of the rewards and voting power distribution easier.
 module walrus::active_set;
 
+/// Active set cannot have maximum size of 0.
+const EZeroMaxSize: u64 = 0;
+
 public struct ActiveSetEntry has store, copy, drop {
     node_id: ID,
     staked_amount: u64,
@@ -33,7 +36,7 @@ public struct ActiveSet has store, copy, drop {
 /// latter is used to filter out storage nodes that do not have enough staked
 /// WAL to be included in the active set initially.
 public(package) fun new(max_size: u16, threshold_stake: u64): ActiveSet {
-    assert!(max_size > 0);
+    assert!(max_size > 0, EZeroMaxSize);
     ActiveSet {
         max_size,
         threshold_stake,

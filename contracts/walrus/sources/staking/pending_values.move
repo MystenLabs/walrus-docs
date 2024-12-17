@@ -5,6 +5,10 @@ module walrus::pending_values;
 
 use sui::vec_map::{Self, VecMap};
 
+/// Attempt to reduce the value of a pending value for an epoch that does not
+/// exist.
+const EIncorrectValue: u64 = 0;
+
 /// Represents a map of pending values. The key is the epoch when the value is
 /// pending, and the value is the amount of WALs or pool tokens.
 public struct PendingValues(VecMap<u32, u64>) has store, drop, copy;
@@ -19,6 +23,17 @@ public(package) fun insert_or_add(self: &mut PendingValues, epoch: u32, value: u
     } else {
         let curr = map[&epoch];
         *&mut map[&epoch] = curr + value;
+    };
+}
+
+/// Reduce the pending value for the given epoch by the given value.
+public(package) fun reduce(self: &mut PendingValues, epoch: u32, value: u64) {
+    let map = &mut self.0;
+    if (!map.contains(&epoch)) {
+        abort EIncorrectValue
+    } else {
+        let curr = map[&epoch];
+        *&mut map[&epoch] = curr - value;
     };
 }
 

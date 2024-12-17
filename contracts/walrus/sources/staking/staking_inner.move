@@ -36,7 +36,9 @@ const EInvalidSyncEpoch: u64 = 1;
 const EDuplicateSyncDone: u64 = 2;
 const ENoStake: u64 = 3;
 const ENotInCommittee: u64 = 4;
-const ENotImplemented: u64 = 5;
+const ECommitteeSelected: u64 = 5;
+const ENextCommitteeIsEmpty: u64 = 6;
+const ENotImplemented: u64 = 264;
 
 /// The epoch state.
 public enum EpochState has store, copy, drop {
@@ -189,7 +191,7 @@ public(package) fun voting_end(self: &mut StakingInnerV1, clock: &Clock) {
 /// Calculates the votes for the next epoch parameters. The function sorts the
 /// write and storage prices and picks the value that satisfies a quorum of the weight.
 public(package) fun calculate_votes(self: &StakingInnerV1): EpochParams {
-    assert!(self.next_committee.is_some());
+    assert!(self.next_committee.is_some(), ENextCommitteeIsEmpty);
 
     let size = self.next_committee.borrow().size();
     let inner = self.next_committee.borrow().inner();
@@ -381,7 +383,7 @@ public(package) fun withdraw_stake(
 
 /// Selects the committee for the next epoch.
 public(package) fun select_committee(self: &mut StakingInnerV1) {
-    assert!(self.next_committee.is_none());
+    assert!(self.next_committee.is_none(), ECommitteeSelected);
 
     let (active_ids, shards) = self.apportionment();
     let distribution = vec_map::from_keys_values(active_ids, shards);
@@ -412,7 +414,7 @@ fun dhondt(
     n_shards: u16,
     stake: vector<u64>,
 ): vector<u16> {
-    use std::fixed_point32::{create_from_rational as from_rational, get_raw_value as to_raw};
+    use std::uq32_32;
 
     let total_stake = stake.fold!(0, |acc, x| acc + x);
 
@@ -437,7 +439,7 @@ fun dhondt(
     // Set up quotients priority queue.
     let mut quotients = priority_queue::new(vector[]);
     n_nodes.do!(|index| {
-        let quotient = from_rational(stake[index], shards[index] + 1);
+        let quotient = uq32_32::from_quotient(stake[index], shards[index] + 1);
         quotients.insert(quotient.to_raw(), index);
     });
 
@@ -474,7 +476,7 @@ fun dhondt(
             index
         };
         *&mut shards[index] = shards[index] + 1;
-        let quotient = from_rational(stake[index], shards[index] + 1);
+        let quotient = uq32_32::from_quotient(stake[index], shards[index] + 1);
         quotients.insert(quotient.to_raw(), index);
         n_shards_distributed = n_shards_distributed + 1;
     };
