@@ -1684,6 +1684,38 @@ important to ensure only authorized parties may access it, or other measures to 
 especially in a future Mainnet deployment.</p>
 </div>
 </div>
+<h3 id="notes-on-publisher-operation"><a class="header" href="#notes-on-publisher-operation">Notes on publisher operation</a></h3>
+<p>We list here a few important details on how the publisher deals with funds and objects on Sui.</p>
+<h4 id="number-of-sub-wallets"><a class="header" href="#number-of-sub-wallets">Number of sub-wallets</a></h4>
+<p>As mentioned above, the publisher uses sub-wallets to allow storing blobs in parallel. By default,
+the publisher uses 8 sub-wallets, meaning it can store 8 blobs at the same time.</p>
+<h4 id="funds-in-sub-wallets"><a class="header" href="#funds-in-sub-wallets">Funds in sub-wallets</a></h4>
+<p>Each of the sub-wallets requires funds to interact with the chain and purchase storage. For this
+reason, a background process checks periodically if the sub-wallets have enough funds. In steady
+state, each of the sub-wallets will have a balance of 0.5-1.0 SUI and WAL. The amount and triggers
+for coin refills can be configured through CLI arguments.</p>
+<h4 id="lifecycle-of-created-blob-objects"><a class="header" href="#lifecycle-of-created-blob-objects">Lifecycle of created <code>Blob</code> objects</a></h4>
+<p>Each store operation in Walrus creates a <code>Blob</code> object on Sui. This blob object represents the
+(partial) ownership over the associated data, and allows certain data management operations (e.g.,
+in the case of deletable blobs).</p>
+<p>When the publisher stores a blob on behalf of a client, the <code>Blob</code> object is initially owned by the
+sub-wallet that stored the blob. Then, the following cases are possible, depending on the
+configuration:</p>
+<ul>
+<li>If the client requests to store a blob and specifies the <code>send_object_to</code> query parameter (see
+<a href="usage/web-api.html#store">the relevant section</a> for examples), then the <code>Blob</code> object is transferred to the
+specified address. This is a way for clients to get back the created object for their data.</li>
+<li>If the <code>send_object_to</code> query parameter is not specified, two cases are possible:
+<ul>
+<li>If the publisher was run with the <code>--keep</code> flag, then the sub-wallet transfers the
+newly-created blob object to the main wallet, such that all these objects are kept there.</li>
+<li>If the <code>--keep</code> flag was omitted, then the sub-wallet <em>immediately burns</em> the <code>Blob</code> object.
+Since no one has requested the object, and the availability of the data on Walrus is independent
+of the existence of such object, it is safe to do so. This is to avoid cluttering the sub-wallet
+with many blob objects.</li>
+</ul>
+</li>
+</ul>
 <h2 id="public-services"><a class="header" href="#public-services">Using a public aggregator or publisher</a></h2>
 <p>For some use cases (e.g., a public website), or to just try out the HTTP API, a publicly accessible
 aggregator and/or publisher is required. Several entities run such aggregators and publishers, see
@@ -1768,6 +1800,8 @@ view this in the browser, for example, at <a href="https://aggregator.walrus-tes
 <a href="https://curl.se">cURL</a>, you can store blobs using a publisher or daemon as follows:</p>
 <pre><code class="language-sh">curl -X PUT "$PUBLISHER/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
 curl -X PUT "$PUBLISHER/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
+curl -X PUT "$PUBLISHER/v1/store?send_object_to=$ADDRESS" --upload-file "some/file" # store file `some/file` and send the blob object to $ADDRESS
+curl -X PUT "$PUBLISHER/v1/store?deletable=true" --upload-file "some/file" # store file `some/file` as a deletable blob, instead of a permanent one
 </code></pre>
 <p>The store HTTP API end points return information about the blob stored in JSON format. When a blob
 is stored for the first time, a <code>newlyCreated</code> field contains information about the
