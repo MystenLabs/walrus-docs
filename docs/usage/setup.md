@@ -144,13 +144,16 @@ versions. An overview in XML format is available at
 
 The Walrus client needs to know about the Sui objects that store the Walrus system and staking
 information, see the [developer guide](../dev-guide/sui-struct.md#system-and-staking-information).
-These need to be configured in a file `~/.config/walrus/client_config.yaml`.
+These need to be configured in a file `~/.config/walrus/client_config.yaml`. Additionally, if the
+contracts were upgraded at any point, the object ID of the latest package version can be specified
+in the `walrus_package` field. Finally, exchange objects are needed to swap SUI for WAL.
 
 The current Testnet deployment uses the following objects:
 
 ```yaml
 system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
+walrus_package: 0x3d35ad1028562025f6f24336f0298d3775ba896bbbb63be7ad5b9fee8255dd89
 exchange_object:
   - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
   - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
@@ -188,6 +191,9 @@ The configuration file currently supports the following parameters:
 # deployment but then do not change over time.
 system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
 staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
+
+# The latest version of the Walrus package can be specified with the `walrus_package` parameter.
+walrus_package: 0x3d35ad1028562025f6f24336f0298d3775ba896bbbb63be7ad5b9fee8255dd89
 
 # The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
 # random one is chosen for the exchange.
