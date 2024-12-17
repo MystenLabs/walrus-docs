@@ -85,12 +85,12 @@ configuration:
   [the relevant section](#store) for examples), then the `Blob` object is transferred to the
   specified address. This is a way for clients to get back the created object for their data.
 - If the `send_object_to` query parameter is not specified, two cases are possible:
-  - if the publisher was run with the `--keep` flag, then the sub-wallet transfers the
-      newly-created blob object to the main wallet, such that all these objects are kept there.
-  - if the `--keep` flag was omitted, then the sub-wallet *immediately burns* the `Blob` object.
-      Since no one has requested the object, and the availability of the data on Walrus is
-      independent of the existence of such object, it is safe to do so. This is to avoid cluttering
-      the sub-wallet with many blob objects.
+  - If the publisher was run with the `--keep` flag, then the sub-wallet transfers the
+    newly-created blob object to the main wallet, such that all these objects are kept there.
+  - If the `--keep` flag was omitted, then the sub-wallet *immediately burns* the `Blob` object.
+    Since no one has requested the object, and the availability of the data on Walrus is independent
+    of the existence of such object, it is safe to do so. This is to avoid cluttering the sub-wallet
+    with many blob objects.
 
 ## Using a public aggregator or publisher {#public-services}
 
