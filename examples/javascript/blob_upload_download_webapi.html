@@ -66,7 +66,9 @@
       const basePublisherUrl = document.getElementById("publisher-url-input").value;
 
       // Submit a PUT request with the file's content as the body to the /v1/store endpoint.
-      return fetch(`${basePublisherUrl}/v1/store?epochs=${numEpochs}`, {
+      let sendTo = document.getElementById("send-to-input").value.trim();
+      let sendToParam = sendTo ? `&send_object_to=${sendTo}`: "";
+      return fetch(`${basePublisherUrl}/v1/store?epochs=${numEpochs}${sendToParam}`, {
         method: "PUT",
         body: inputFile,
       }).then((response) => {
@@ -238,6 +240,15 @@
                 required />
               <div class="form-text">
                 The number of Walrus epochs for which to store the blob.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="send-to-input" class="form-label">Send to</label>
+              <input id="send-to-input" placeholder="0x9d8a07f9f5cb4d10ad3a8c949f17b9ae6c51fc76c2b7ef62dc5babec551e79e6" class="form-control"
+                required />
+              <div class="form-text">
+                The address to which the newly created `Blob` object should be sent (optional).
               </div>
             </div>
 
