@@ -1,5 +1,12 @@
 # Linking from and to Walrus Sites
 
+``` admonish warning title="Walrus Sites links are currently unavailable"
+This feature is currently unavailable on server-side portals. So if you are browsing a Walrus Site
+on <https://walrus.site>, you will not be able to use Walrus Sites links.
+
+We are working on enabling this feature. Stay tuned!
+```
+
 Links in Walrus Sites work *almost* as you would expect in a regular website. We specify here a few
 of the details.
 
