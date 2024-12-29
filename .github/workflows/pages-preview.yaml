@@ -13,6 +13,9 @@ on:
       - "theme/**"
       - ".github/actions/build-mdbook/action.yaml"
       - ".github/workflows/pages-preview.yaml"
+      - ".github/workflows/deploy.yaml"
+      - "scripts/**"
+      - "assets/**"
 
 
 concurrency: preview-${{ github.ref }}
