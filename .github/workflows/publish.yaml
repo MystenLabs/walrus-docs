@@ -50,7 +50,7 @@ jobs:
   # (https://github.com/MystenLabs/walrus-docs/settings/secrets/actions).
   publish-walrus:
     name: Update Walrus Site
-    runs-on: ubuntu-ghcloud
+    runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' || inputs.update-walrus-site == true }}
     env:
       # Colors don't seem to work properly with the multiline commands.
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build-mdbook
         with:
-          with_linkcheck: "false"
+          with_linkcheck: false
       - uses: ./.github/actions/set-up-walrus
         with:
           SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
