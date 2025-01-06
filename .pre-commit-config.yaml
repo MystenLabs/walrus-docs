@@ -21,7 +21,7 @@ repos:
     args: ["--fix"]
     pass_filenames: false
 - repo: https://github.com/crate-ci/typos
-  rev: codespell-dict-v0.5.0
+  rev: 1.29.4
   hooks:
   - id: typos
     pass_filenames: false
