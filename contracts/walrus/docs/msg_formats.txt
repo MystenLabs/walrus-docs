@@ -29,7 +29,9 @@ Intent types (add here):
 
 const PROOF_OF_POSSESSION_MSG_TYPE: u8 = 0;
 const BLOB_CERT_MSG_TYPE: u8 = 1;
-const INVALID_BLOB_ID_MSG_TYPE : u8 = 2;
+const INVALID_BLOB_ID_MSG_TYPE: u8 = 2;
+const DENY_LIST_UPDATE_MSG_TYPE: u8 = 3;
+const DENY_LIST_BLOB_DELETED_MSG_TYPE: u8 = 4;
 
 PROOF_OF_POSSESSION message
 -----------------
@@ -37,16 +39,39 @@ PROOF_OF_POSSESSION message
 The body contains the sui address followed by the bls public key (encoded as 48 byte fixed
 size array) of the signer.
 
-
 BLOB_CERT message
 -----------------
 
-The body is the blob_id : u256 (32 bytes) of a blob. The storage node certified that all
-shards that were assigned to it for the message epoch have been received, checked and
-persisted to store.
+The body is the blob_id : u256 (32 bytes) of a blob followed by the bcs encoding of the blob
+persistence type defined below, i.e. 1 byte that is 0 for permanent blobs and 1 for deletable
+blobs, followed by the object id of the deletable blob if it is a deletable blob.
+
+```
+enum BlobPersistenceType {
+    Permanent,
+    Deletable { object_id: [u8; 32] },
+}
+```
+
+The storage node certified that all shards that were assigned to it for the message epoch have
+been received, checked and persisted to store.
 
 INVALID_BLOB_ID
 ---------------
 
 The body is the blob_id : u256 (32 bytes) of a blob. The storage node certified that
 it has verified an inconsistency proof and the blob id is invalid.
+
+DENY_LIST_UPDATE_MSG_TYPE
+---------------
+
+The body is the node_id : address (32 bytes) of the storage node,
+deny_list_sequence_number : u64 (8 bytes) sequence number, deny_list_size : u64 (8 bytes)
+the size of the deny list of the node, deny_list_root : u256 (32 bytes) the root hash of
+the deny list.
+
+DENY_LIST_BLOB_DELETED_MSG_TYPE
+---------------
+
+The body is the blob_id : u256 (32 bytes) of a blob. f+1 nodes have added the blob id to
+their deny lists, and the blob should be deleted.

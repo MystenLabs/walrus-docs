@@ -4,7 +4,7 @@
 module walrus::epoch_parameters;
 
 /// The epoch parameters for the system.
-public struct EpochParams has store, copy, drop {
+public struct EpochParams has copy, drop, store {
     /// The storage capacity of the system.
     total_capacity_size: u64,
     /// The price per unit size of storage.
@@ -46,6 +46,7 @@ public(package) fun write_price(self: &EpochParams): u64 {
 
 // === Test only ===
 
+#[test_only]
 public fun epoch_params_for_testing(): EpochParams {
     EpochParams {
         total_capacity_size: 1_000_000_000,

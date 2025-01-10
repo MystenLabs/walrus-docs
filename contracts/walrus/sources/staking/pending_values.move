@@ -5,17 +5,18 @@ module walrus::pending_values;
 
 use sui::vec_map::{Self, VecMap};
 
-/// Attempt to reduce the value of a pending value for an epoch that does not
-/// exist.
-const EIncorrectValue: u64 = 0;
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+const EMissingEpochValue: u64 = 0;
 
 /// Represents a map of pending values. The key is the epoch when the value is
 /// pending, and the value is the amount of WALs or pool tokens.
-public struct PendingValues(VecMap<u32, u64>) has store, drop, copy;
+public struct PendingValues(VecMap<u32, u64>) has copy, drop, store;
 
 /// Create a new empty `PendingValues` instance.
 public(package) fun empty(): PendingValues { PendingValues(vec_map::empty()) }
 
+/// Insert a new pending value for the given epoch, or add to the existing value.
 public(package) fun insert_or_add(self: &mut PendingValues, epoch: u32, value: u64) {
     let map = &mut self.0;
     if (!map.contains(&epoch)) {
@@ -26,11 +27,21 @@ public(package) fun insert_or_add(self: &mut PendingValues, epoch: u32, value: u
     };
 }
 
+/// Insert a new pending value for the given epoch, or replace the existing.
+public(package) fun insert_or_replace(self: &mut PendingValues, epoch: u32, value: u64) {
+    let map = &mut self.0;
+    if (!map.contains(&epoch)) {
+        map.insert(epoch, value);
+    } else {
+        *&mut map[&epoch] = value;
+    };
+}
+
 /// Reduce the pending value for the given epoch by the given value.
 public(package) fun reduce(self: &mut PendingValues, epoch: u32, value: u64) {
     let map = &mut self.0;
     if (!map.contains(&epoch)) {
-        abort EIncorrectValue
+        abort EMissingEpochValue
     } else {
         let curr = map[&epoch];
         *&mut map[&epoch] = curr - value;
@@ -55,6 +66,12 @@ public(package) fun flush(self: &mut PendingValues, to_epoch: u32): u64 {
     });
     value
 }
+
+/// Get a reference to the inner `VecMap<u32, u64>`.
+public(package) fun inner(self: &PendingValues): &VecMap<u32, u64> { &self.0 }
+
+/// Get a mutable reference to the inner `VecMap<u32, u64>`.
+public(package) fun inner_mut(self: &mut PendingValues): &mut VecMap<u32, u64> { &mut self.0 }
 
 /// Unwrap the `PendingValues` into a `VecMap<u32, u64>`.
 public(package) fun unwrap(self: PendingValues): VecMap<u32, u64> {

@@ -5,10 +5,12 @@
 module walrus::staking_pool;
 
 use std::string::String;
-use sui::{balance::{Self, Balance}, table::{Self, Table}};
+use sui::{bag::{Self, Bag}, balance::{Self, Balance}, table::{Self, Table}};
 use wal::wal::WAL;
 use walrus::{
+    auth::{Self, Authenticated, Authorized},
     messages,
+    node_metadata::NodeMetadata,
     pending_values::{Self, PendingValues},
     pool_exchange_rate::{Self, PoolExchangeRate},
     staked_wal::{Self, StakedWal},
@@ -16,6 +18,8 @@ use walrus::{
     walrus_context::WalrusContext
 };
 
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
 const EPoolAlreadyUpdated: u64 = 0;
 const ECalculationError: u64 = 1;
 const EIncorrectEpochAdvance: u64 = 2;
@@ -29,9 +33,7 @@ const EPoolAlreadyWithdrawing: u64 = 5;
 const EPoolIsNotActive: u64 = 6;
 /// Trying to stake zero amount.
 const EZeroStake: u64 = 7;
-/// Pool is not in `New` state.
-#[allow(unused)]
-const EPoolIsNotNew: u64 = 8;
+// code 8 is available
 /// Trying to withdraw stake from the incorrect pool.
 const EIncorrectPoolId: u64 = 9;
 /// Trying to withdraw active stake.
@@ -40,11 +42,15 @@ const ENotWithdrawing: u64 = 10;
 const EWithdrawEpochNotReached: u64 = 11;
 /// Attempt to withdraw before `activation_epoch`.
 const EActivationEpochNotReached: u64 = 12;
+/// Requesting withdrawal for the stake that can be withdrawn directly.
+const EWithdrawDirectly: u64 = 13;
+/// Incorrect commission rate.
+const EIncorrectCommissionRate: u64 = 14;
+/// Trying to collect commission or change receiver without authorization.
+const EAuthorizationFailure: u64 = 15;
 
 /// Represents the state of the staking pool.
-public enum PoolState has store, copy, drop {
-    // The pool is new and awaits the stake to be added.
-    New,
+public enum PoolState has copy, drop, store {
     // The pool is active and can accept stakes.
     Active,
     // The pool awaits the stake to be withdrawn. The value inside the
@@ -55,7 +61,7 @@ public enum PoolState has store, copy, drop {
 }
 
 /// The parameters for the staking pool. Stored for the next epoch.
-public struct VotingParams has store, copy, drop {
+public struct VotingParams has copy, drop, store {
     /// Voting: storage price for the next epoch.
     storage_price: u64,
     /// Voting: write price for the next epoch.
@@ -67,6 +73,27 @@ public struct VotingParams has store, copy, drop {
 /// Represents a single staking pool for a token. Even though it is never
 /// transferred or shared, the `key` ability is added for discoverability
 /// in the `ObjectTable`.
+///
+/// High level overview of the staking pool:
+/// The pool maintains a balance of WAL 'wal_balance' that is increased
+/// when stakes/rewards are added to the pool, and is decreased when
+/// stakes are withdrawn.
+/// To track the users' portion of the pool, we associate shares to the
+/// staked WAL. Initially, the share price is 1 WAL per share.
+/// When a new stake is added to the pool, the total number of shares
+/// increases by an amount that corresponds to the share price at that
+/// time. E.g., if the share price is 2 WAL per share, and 10 WAL are
+/// added to the pool, the total number of shares is increased by 5
+/// shares. The total number of shares is stored in 'num_shares'.
+///
+/// As stakes are added/withdrawn only in the granularity of epochs, we
+/// maintain a share price per epoch in 'exchange_rates'.
+/// StakedWal objects only need to store the epoch when they are created,
+/// and the amount of WAL they locked. Whenever a settlement is performed
+/// for a StakedWal, we calculate the number of shares that correspond to
+/// the amount of WAL that was locked using the exchange rate at the time
+/// of the lock, and then convert it to the amount of WAL that corresponds
+/// to the current share price.
 public struct StakingPool has key, store {
     id: UID,
     /// The current state of the pool.
@@ -83,14 +110,22 @@ public struct StakingPool has key, store {
     latest_epoch: u32,
     /// Currently staked WAL in the pool + rewards pool.
     wal_balance: u64,
-    /// Balance of the pool token in the pool in the current epoch.
-    pool_token_balance: u64,
-    /// The amount of the pool token that will be withdrawn in E+1 or E+2.
+    /// The total number of shares in the current epoch.
+    num_shares: u64,
+    /// The amount of the shares that will be withdrawn in E+1 or E+2.
     /// We use this amount to calculate the WAL withdrawal in the
     /// `process_pending_stake`.
-    pending_pool_token_withdraw: PendingValues,
-    /// The commission rate for the pool.
-    commission_rate: u64,
+    pending_shares_withdraw: PendingValues,
+    /// The amount of the stake requested for withdrawal for a node that may
+    /// part of the next committee. Stores principals of not yet active stakes.
+    /// In practice, those tokens are staked for exactly one epoch.
+    pre_active_withdrawals: PendingValues,
+    /// The pending commission rate for the pool. Commission rate is applied in
+    /// E+2, so we store the value for the matching epoch and apply it in the
+    /// `advance_epoch` function.
+    pending_commission_rate: PendingValues,
+    /// The commission rate for the pool, in basis points.
+    commission_rate: u16,
     /// Historical exchange rates for the pool. The key is the epoch when the
     /// exchange rate was set, and the value is the exchange rate (the ratio of
     /// the amount of WAL tokens for the pool token).
@@ -109,6 +144,14 @@ public struct StakingPool has key, store {
     pending_stake: PendingValues,
     /// The rewards that the pool has received from being in the committee.
     rewards_pool: Balance<WAL>,
+    /// The commission that the pool has received from the rewards.
+    commission: Balance<WAL>,
+    /// An Object or an address which can claim the commission.
+    commission_receiver: Authorized,
+    /// An Object or address that can authorize governance actions, such as upgrades.
+    governance_authorized: Authorized,
+    /// Reserved for future use and migrations.
+    extra_fields: Bag,
 }
 
 /// Create a new `StakingPool` object.
@@ -117,10 +160,11 @@ public struct StakingPool has key, store {
 public(package) fun new(
     name: String,
     network_address: String,
+    metadata: NodeMetadata,
     public_key: vector<u8>,
     network_public_key: vector<u8>,
     proof_of_possession: vector<u8>,
-    commission_rate: u64,
+    commission_rate: u16,
     storage_price: u64,
     write_price: u64,
     node_capacity: u64,
@@ -137,6 +181,7 @@ public(package) fun new(
             ctx.sender(),
             public_key,
         ).verify_proof_of_possession(proof_of_possession),
+        // Invalid proof of possession in the `new` function.
         EInvalidProofOfPossession,
     );
 
@@ -147,7 +192,7 @@ public(package) fun new(
     };
 
     let mut exchange_rates = table::new(ctx);
-    exchange_rates.add(activation_epoch, pool_exchange_rate::empty());
+    exchange_rates.add(activation_epoch, pool_exchange_rate::flat());
 
     StakingPool {
         id,
@@ -164,19 +209,28 @@ public(package) fun new(
             network_address,
             public_key,
             network_public_key,
+            metadata,
+            ctx,
         ),
         commission_rate,
         activation_epoch,
         latest_epoch: wctx.epoch(),
         pending_stake: pending_values::empty(),
-        pending_pool_token_withdraw: pending_values::empty(),
+        pending_shares_withdraw: pending_values::empty(),
+        pre_active_withdrawals: pending_values::empty(),
+        pending_commission_rate: pending_values::empty(),
         wal_balance: 0,
-        pool_token_balance: 0,
+        num_shares: 0,
         rewards_pool: balance::zero(),
+        commission: balance::zero(),
+        commission_receiver: auth::authorized_address(ctx.sender()),
+        governance_authorized: auth::authorized_address(ctx.sender()),
+        extra_fields: bag::new(ctx),
     }
 }
 
 /// Set the state of the pool to `Withdrawing`.
+/// TODO: improve, once committee selection is implemented.
 public(package) fun set_withdrawing(pool: &mut StakingPool, wctx: &WalrusContext) {
     assert!(!pool.is_withdrawing(), EPoolAlreadyWithdrawing);
     pool.state = PoolState::Withdrawing(wctx.epoch() + 1);
@@ -189,7 +243,7 @@ public(package) fun stake(
     wctx: &WalrusContext,
     ctx: &mut TxContext,
 ): StakedWal {
-    assert!(pool.is_active() || pool.is_new(), EPoolIsNotActive);
+    assert!(pool.is_active(), EPoolIsNotActive);
     assert!(to_stake.value() > 0, EZeroStake);
 
     let current_epoch = wctx.epoch();
@@ -214,36 +268,61 @@ public(package) fun stake(
 
 /// Request withdrawal of the given amount from the staked WAL.
 /// Marks the `StakedWal` as withdrawing and updates the activation epoch.
+///
+/// TODO: if pool is out and is withdrawing, we can perform the withdrawal
+/// immediately
 public(package) fun request_withdraw_stake(
     pool: &mut StakingPool,
     staked_wal: &mut StakedWal,
+    in_current_committee: bool,
+    in_next_committee: bool,
     wctx: &WalrusContext,
 ) {
     assert!(staked_wal.value() > 0);
     assert!(staked_wal.node_id() == pool.id.to_inner());
-    assert!(staked_wal.activation_epoch() <= wctx.epoch());
+    assert!(staked_wal.is_staked());
+
+    // only allow requesting if the stake cannot be withdrawn directly
+    assert!(!staked_wal.can_withdraw_early(in_next_committee, wctx), EWithdrawDirectly);
+
+    // early withdrawal request: only possible if activation epoch has not been
+    // reached, and the stake is already counted for the next committee selection
+    if (staked_wal.activation_epoch() == wctx.epoch() + 1) {
+        let withdraw_epoch = staked_wal.activation_epoch() + 1;
+        // register principal in the early withdrawals, the value will get converted to
+        // the token amount in the `process_pending_stake` function
+        pool.pre_active_withdrawals.insert_or_add(withdraw_epoch, staked_wal.value());
+        staked_wal.set_withdrawing(withdraw_epoch);
+        return
+    };
+
+    assert!(staked_wal.activation_epoch() <= wctx.epoch(), EActivationEpochNotReached);
 
     // If the node is in the committee, the stake will be withdrawn in E+2,
     // otherwise in E+1.
-    let withdraw_epoch = if (wctx.committee_selected()) {
+    let withdraw_epoch = if (in_next_committee) {
         wctx.epoch() + 2
-    } else {
+    } else if (in_current_committee) {
         wctx.epoch() + 1
+    } else {
+        abort EWithdrawDirectly
     };
 
     let principal_amount = staked_wal.value();
-    let token_amount = pool
+    let share_amount = pool
         .exchange_rate_at_epoch(staked_wal.activation_epoch())
-        .get_token_amount(principal_amount);
+        .convert_to_share_amount(principal_amount);
 
-    pool.pending_pool_token_withdraw.insert_or_add(withdraw_epoch, token_amount);
-    staked_wal.set_withdrawing(withdraw_epoch, token_amount);
+    pool.pending_shares_withdraw.insert_or_add(withdraw_epoch, share_amount);
+    staked_wal.set_withdrawing(withdraw_epoch);
 }
 
 /// Perform the withdrawal of the staked WAL, returning the amount to the caller.
 public(package) fun withdraw_stake(
     pool: &mut StakingPool,
     staked_wal: StakedWal,
+    in_current_committee: bool,
+    in_next_committee: bool,
     wctx: &WalrusContext,
 ): Balance<WAL> {
     assert!(staked_wal.value() > 0, EZeroStake);
@@ -251,30 +330,43 @@ public(package) fun withdraw_stake(
 
     let activation_epoch = staked_wal.activation_epoch();
 
-    // early withdrawal in the case when committee before activation epoch hasn't
-    // been selected. covers both E+1 and E+2 cases.
-    if (
-        activation_epoch > wctx.epoch() &&
-        (wctx.epoch().diff(activation_epoch) == 2 || !wctx.committee_selected())
-    ) {
+    // one step, early withdrawal in the case when committee before
+    // activation epoch hasn't been selected. covers both E+1 and E+2 cases.
+    if (staked_wal.can_withdraw_early(in_next_committee, wctx)) {
         pool.pending_stake.reduce(activation_epoch, staked_wal.value());
         return staked_wal.into_balance()
     };
 
-    assert!(staked_wal.is_withdrawing(), ENotWithdrawing);
-    assert!(staked_wal.withdraw_epoch() <= wctx.epoch(), EWithdrawEpochNotReached);
-    assert!(staked_wal.activation_epoch() <= wctx.epoch(), EActivationEpochNotReached);
+    let rewards_amount = if (
+        !in_current_committee && !in_next_committee && staked_wal.is_staked()
+    ) {
+        // one step withdrawal for an inactive node
+        if (activation_epoch > wctx.epoch()) {
+            // not even active stake yet, remove from pending stake
+            pool.pending_stake.reduce(activation_epoch, staked_wal.value());
+            0
+        } else {
+            // active stake, remove it with the current epoch as the withdraw epoch
+            let share_amount = pool
+                .exchange_rate_at_epoch(activation_epoch)
+                .convert_to_share_amount(staked_wal.value());
+            pool.pending_shares_withdraw.insert_or_add(wctx.epoch(), share_amount);
+            pool.calculate_rewards(staked_wal.value(), activation_epoch, wctx.epoch())
+        }
+        // note that if the stake is in state Withdrawing, it can either be
+        // from a pre-active withdrawal, but then
+        // (in_current_committee || in_next_committee) is true since it was
+        // an early withdrawal, or from a standard two step withdrawal,
+        // which is handled below.
+    } else {
+        // normal two-step withdrawals
+        assert!(staked_wal.is_withdrawing(), ENotWithdrawing);
+        assert!(staked_wal.withdraw_epoch() <= wctx.epoch(), EWithdrawEpochNotReached);
+        assert!(activation_epoch <= wctx.epoch(), EActivationEpochNotReached);
+        pool.calculate_rewards(staked_wal.value(), activation_epoch, staked_wal.withdraw_epoch())
+    };
 
-    // withdraw epoch and pool token amount are stored in the `StakedWal`
-    let token_amount = staked_wal.pool_token_amount();
-    let withdraw_epoch = staked_wal.withdraw_epoch();
-
-    // calculate the total amount to withdraw by converting token amount via the exchange rate
-    let total_amount = pool.exchange_rate_at_epoch(withdraw_epoch).get_wal_amount(token_amount);
     let principal = staked_wal.into_balance();
-    let rewards_amount = if (total_amount >= principal.value()) {
-        total_amount - principal.value()
-    } else 0;
 
     // withdraw rewards. due to rounding errors, there's a chance that the
     // rewards amount is higher than the rewards pool, in this case, we
@@ -288,7 +380,7 @@ public(package) fun withdraw_stake(
 /// Advance epoch for the `StakingPool`.
 public(package) fun advance_epoch(
     pool: &mut StakingPool,
-    rewards: Balance<WAL>,
+    mut rewards: Balance<WAL>,
     wctx: &WalrusContext,
 ) {
     // process the pending and withdrawal amounts
@@ -297,16 +389,28 @@ public(package) fun advance_epoch(
     assert!(current_epoch > pool.latest_epoch, EPoolAlreadyUpdated);
     assert!(rewards.value() == 0 || pool.wal_balance > 0, EIncorrectEpochAdvance);
 
-    // if rewards are calculated only for full epochs, rewards addition should
-    // happen prior to pool token calculation. Otherwise we can add then to the
-    // final rate instead of the
+    // update the commission_rate if there's a pending value for the current epoch.
+    // note that pending commission rates are set 2 epochs ahead, so users are
+    // aware of the rate change in advance.
+    pool.pending_commission_rate.inner().try_get(&current_epoch).do!(|commission_rate| {
+        pool.commission_rate = commission_rate as u16;
+        pool.pending_commission_rate.flush(current_epoch);
+    });
+
+    // split the commission from the rewards
+    let total_rewards = rewards.value();
+    let commission = rewards.split(total_rewards * (pool.commission_rate as u64) / 100_00);
+    pool.commission.join(commission);
+
+    // add rewards to the pool and update the `wal_balance`
     let rewards_amount = rewards.value();
     pool.rewards_pool.join(rewards);
     pool.wal_balance = pool.wal_balance + rewards_amount;
     pool.latest_epoch = current_epoch;
     pool.node_info.rotate_public_key();
 
-    process_pending_stake(pool, wctx)
+    // perform stake deduction / addition for the current epoch - wctx.epoch()
+    pool.process_pending_stake(wctx);
 }
 
 /// Process the pending stake and withdrawal requests for the pool. Called in the
@@ -316,10 +420,10 @@ public(package) fun advance_epoch(
 public(package) fun process_pending_stake(pool: &mut StakingPool, wctx: &WalrusContext) {
     let current_epoch = wctx.epoch();
 
-    // Get the exchange rate to use for all conversions and store it for future use.
+    // Set the exchange rate for the current epoch.
     let exchange_rate = pool_exchange_rate::new(
         pool.wal_balance,
-        pool.pool_token_balance,
+        pool.num_shares,
     );
     pool.exchange_rates.add(current_epoch, exchange_rate);
 
@@ -327,22 +431,50 @@ public(package) fun process_pending_stake(pool: &mut StakingPool, wctx: &WalrusC
     pool.wal_balance = pool.wal_balance + pool.pending_stake.flush(current_epoch);
 
     // Process withdrawals.
-    let token_withdraw = pool.pending_pool_token_withdraw.flush(wctx.epoch());
-    let pending_withdrawal = exchange_rate.get_wal_amount(token_withdraw);
+
+    // each value in pending withdrawals contains the principal which became
+    // active in the previous epoch. so unlike other pending values, we need to
+    // flush it one by one, recalculating the exchange rate and pool token amount
+    // for each early withdrawal epoch.
+    let mut pre_active_shares_withdraw = 0;
+    let mut pre_active_withdrawals = pool.pre_active_withdrawals.unwrap();
+    pre_active_withdrawals.keys().do!(|epoch| if (epoch <= current_epoch) {
+        let (_, epoch_value) = pre_active_withdrawals.remove(&epoch);
+        // recall that pre_active_withdrawals contains stakes that were
+        // active for exactly 1 epoch.
+        let activation_epoch = epoch - 1;
+        let shares_for_epoch = pool
+            .exchange_rate_at_epoch(activation_epoch)
+            .convert_to_share_amount(epoch_value);
+
+        pre_active_shares_withdraw = pre_active_shares_withdraw + shares_for_epoch;
+    });
+    // don't forget to flush the early withdrawals since we worked on a copy
+    let _ = pool.pre_active_withdrawals.flush(current_epoch);
+
+    let shares_withdraw = pool.pending_shares_withdraw.flush(wctx.epoch());
+    let pending_withdrawal = exchange_rate.convert_to_wal_amount(
+        shares_withdraw + pre_active_shares_withdraw,
+    );
 
     // Check that the amount is not higher than the pool balance
     assert!(pool.wal_balance >= pending_withdrawal, ECalculationError);
     pool.wal_balance = pool.wal_balance - pending_withdrawal;
 
-    // Recalculate the pool token balance.
-    pool.pool_token_balance = exchange_rate.get_token_amount(pool.wal_balance);
+    // Recalculate the total number of shares according to the exchange rate.
+    pool.num_shares = exchange_rate.convert_to_share_amount(pool.wal_balance);
 }
 
 // === Pool parameters ===
 
 /// Sets the next commission rate for the pool.
-public(package) fun set_next_commission(pool: &mut StakingPool, commission_rate: u64) {
-    pool.commission_rate = commission_rate;
+public(package) fun set_next_commission(
+    pool: &mut StakingPool,
+    commission_rate: u16,
+    wctx: &WalrusContext,
+) {
+    assert!(commission_rate <= 100_00, EIncorrectCommissionRate);
+    pool.pending_commission_rate.insert_or_replace(wctx.epoch() + 2, commission_rate as u64);
 }
 
 /// Sets the next storage price for the pool.
@@ -395,6 +527,11 @@ public(package) fun set_network_public_key(self: &mut StakingPool, network_publi
     self.node_info.set_network_public_key(network_public_key);
 }
 
+/// Sets the node metadata.
+public(package) fun set_node_metadata(self: &mut StakingPool, metadata: NodeMetadata) {
+    self.node_info.set_node_metadata(metadata);
+}
+
 /// Destroy the pool if it is empty.
 public(package) fun destroy_empty(pool: StakingPool) {
     assert!(pool.is_empty(), EPoolNotEmpty);
@@ -404,12 +541,18 @@ public(package) fun destroy_empty(pool: StakingPool) {
         pending_stake,
         exchange_rates,
         rewards_pool,
+        commission,
+        extra_fields,
+        node_info,
         ..,
     } = pool;
 
     id.delete();
     exchange_rates.drop();
+    node_info.destroy();
+    commission.destroy_zero();
     rewards_pool.destroy_zero();
+    extra_fields.destroy_empty();
 
     let (_epochs, pending_stakes) = pending_stake.unwrap().into_keys_values();
     pending_stakes.do!(|stake| assert!(stake == 0));
@@ -418,6 +561,8 @@ public(package) fun destroy_empty(pool: StakingPool) {
 /// Returns the exchange rate for the given current or future epoch. If there
 /// isn't a value for the specified epoch, it will look for the most recent
 /// value down to the pool activation epoch.
+/// Note that exchange rates are only set for epochs in which the node is in
+/// the committee, and otherwise the rate remains static.
 public(package) fun exchange_rate_at_epoch(pool: &StakingPool, mut epoch: u32): PoolExchangeRate {
     let activation_epoch = pool.activation_epoch;
     while (epoch >= activation_epoch) {
@@ -427,7 +572,7 @@ public(package) fun exchange_rate_at_epoch(pool: &StakingPool, mut epoch: u32): 
         epoch = epoch - 1;
     };
 
-    pool_exchange_rate::empty()
+    pool_exchange_rate::flat()
 }
 
 /// Returns the expected active stake for current or future epoch `E` for the pool.
@@ -438,20 +583,75 @@ public(package) fun exchange_rate_at_epoch(pool: &StakingPool, mut epoch: u32): 
 /// the given epoch, due to the complexity of the pending stake and withdrawal
 /// requests, and lack of immediate updates.
 public(package) fun wal_balance_at_epoch(pool: &StakingPool, epoch: u32): u64 {
-    let mut expected = pool.wal_balance;
-    let exchange_rate = pool_exchange_rate::new(pool.wal_balance, pool.pool_token_balance);
-    let token_withdraw = pool.pending_pool_token_withdraw.value_at(epoch);
-    let pending_withdrawal = exchange_rate.get_wal_amount(token_withdraw);
+    let exchange_rate = pool_exchange_rate::new(pool.wal_balance, pool.num_shares);
 
-    expected = expected + pool.pending_stake.value_at(epoch);
-    expected = expected - pending_withdrawal;
-    expected
+    let mut pre_active_shares_withdraw = 0;
+    let pre_active_withdrawals = pool.pre_active_withdrawals.unwrap();
+    pre_active_withdrawals.keys().do_ref!(|old_epoch| if (*old_epoch <= epoch) {
+        let wal_value = pre_active_withdrawals.get(old_epoch);
+        // recall that pre_active_withdrawals contains stakes that were
+        // active for exactly 1 epoch. since the node might have been
+        // inactive, this list may contain more than one value
+        // (although exchange_rate_at_epoch will return the same value).
+        let activation_epoch = *old_epoch - 1;
+        let shares_for_epoch = pool
+            .exchange_rate_at_epoch(activation_epoch)
+            .convert_to_share_amount(*wal_value);
+
+        pre_active_shares_withdraw = pre_active_shares_withdraw + shares_for_epoch;
+    });
+    let shares_withdraw = pool.pending_shares_withdraw.value_at(epoch);
+    let pending_withdrawal = exchange_rate.convert_to_wal_amount(
+        shares_withdraw + pre_active_shares_withdraw,
+    );
+
+    pool.wal_balance + pool.pending_stake.value_at(epoch) - pending_withdrawal
 }
 
 // === Accessors ===
 
+/// Returns the governance authorized object for the pool.
+public(package) fun governance_authorized(pool: &StakingPool): &Authorized {
+    &pool.governance_authorized
+}
+
+/// Sets the governance authorized object for the pool.
+public(package) fun set_governance_authorized(
+    pool: &mut StakingPool,
+    authenticated: Authenticated,
+    authorized: Authorized,
+) {
+    assert!(authenticated.matches(&pool.governance_authorized), EAuthorizationFailure);
+    pool.governance_authorized = authorized
+}
+
+/// Returns the commission receiver for the pool.
+public(package) fun commission_receiver(pool: &StakingPool): &Authorized {
+    &pool.commission_receiver
+}
+
+/// Sets the commission receiver for the pool.
+public(package) fun set_commission_receiver(
+    pool: &mut StakingPool,
+    auth: Authenticated,
+    receiver: Authorized,
+) {
+    assert!(auth.matches(&pool.commission_receiver), EAuthorizationFailure);
+    pool.commission_receiver = receiver
+}
+
 /// Returns the commission rate for the pool.
-public(package) fun commission_rate(pool: &StakingPool): u64 { pool.commission_rate }
+public(package) fun commission_rate(pool: &StakingPool): u16 { pool.commission_rate }
+
+/// Returns the commission amount for the pool.
+public(package) fun commission_amount(pool: &StakingPool): u64 { pool.commission.value() }
+
+/// Withdraws the commission from the pool. Amount is optional, if not provided,
+/// the full commission is withdrawn.
+public(package) fun collect_commission(pool: &mut StakingPool, auth: Authenticated): Balance<WAL> {
+    assert!(auth.matches(&pool.commission_receiver), EAuthorizationFailure);
+    pool.commission.withdraw_all()
+}
 
 /// Returns the rewards amount for the pool.
 public(package) fun rewards_amount(pool: &StakingPool): u64 { pool.rewards_pool.value() }
@@ -474,9 +674,6 @@ public(package) fun activation_epoch(pool: &StakingPool): u32 { pool.activation_
 /// Returns the node info for the pool.
 public(package) fun node_info(pool: &StakingPool): &StorageNodeInfo { &pool.node_info }
 
-/// Returns `true` if the pool is empty.
-public(package) fun is_new(pool: &StakingPool): bool { pool.state == PoolState::New }
-
 /// Returns `true` if the pool is active.
 public(package) fun is_active(pool: &StakingPool): bool { pool.state == PoolState::Active }
 
@@ -488,10 +685,37 @@ public(package) fun is_withdrawing(pool: &StakingPool): bool {
     }
 }
 
-///  Returns `true` if the pool is empty.
+/// Returns `true` if the pool is empty.
 public(package) fun is_empty(pool: &StakingPool): bool {
     let pending_stake = pool.pending_stake.unwrap();
     let non_empty = pending_stake.keys().count!(|epoch| pending_stake[epoch] != 0);
 
-    pool.wal_balance == 0 && non_empty == 0 && pool.pool_token_balance == 0
+    pool.rewards_pool.value() == 0 &&
+    pool.num_shares == 0 &&
+    pool.commission.value() == 0 &&
+    pool.wal_balance == 0 &&
+    non_empty == 0
 }
+
+/// Calculate the rewards for an amount with value `staked_principal`, staked in the pool between
+/// `activation_epoch` and `withdraw_epoch`.
+public(package) fun calculate_rewards(
+    pool: &StakingPool,
+    staked_principal: u64,
+    activation_epoch: u32,
+    withdraw_epoch: u32,
+): u64 {
+    let shares = pool
+        .exchange_rate_at_epoch(activation_epoch)
+        .convert_to_share_amount(staked_principal);
+    let wal_amount = pool.exchange_rate_at_epoch(withdraw_epoch).convert_to_wal_amount(shares);
+    if (wal_amount >= staked_principal) {
+        wal_amount - staked_principal
+    } else 0
+}
+
+#[test_only]
+public(package) fun num_shares(pool: &StakingPool): u64 { pool.num_shares }
+
+#[test_only]
+public(package) fun latest_epoch(pool: &StakingPool): u32 { pool.latest_epoch }

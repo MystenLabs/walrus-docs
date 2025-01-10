@@ -3,24 +3,29 @@
 
 module walrus::blob;
 
-use sui::{bcs, dynamic_field, hash};
 use std::string::String;
+use sui::{bcs, dynamic_field, hash};
 use walrus::{
     encoding,
     events::{emit_blob_registered, emit_blob_certified, emit_blob_deleted},
     messages::CertifiedBlobMessage,
     metadata::Metadata,
-    storage_resource::Storage,
+    storage_resource::Storage
 };
 
 // Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
 const ENotCertified: u64 = 0;
 const EBlobNotDeletable: u64 = 1;
 const EResourceBounds: u64 = 2;
 const EResourceSize: u64 = 3;
-const EWrongEpoch: u64 = 4;
+// const EWrongEpoch: u64 = 4;
 const EAlreadyCertified: u64 = 5;
 const EInvalidBlobId: u64 = 6;
+const EDuplicateMetadata: u64 = 7;
+const EMissingMetadata: u64 = 8;
+const EInvalidBlobPersistenceType: u64 = 9;
+const EInvalidBlobObject: u64 = 10;
 
 // The fixed dynamic filed name for metadata
 const METADATA_DF: vector<u8> = b"metadata";
@@ -43,6 +48,10 @@ public struct Blob has key, store {
 }
 
 // === Accessors ===
+
+public fun object_id(self: &Blob): ID {
+    object::id(self)
+}
 
 public fun registered_epoch(self: &Blob): u32 {
     self.registered_epoch
@@ -100,7 +109,7 @@ public struct BlobIdDerivation has drop {
 }
 
 /// Derives the blob_id for a blob given the root_hash, encoding_type and size.
-public(package) fun derive_blob_id(root_hash: u256, encoding_type: u8, size: u64): u256 {
+public fun derive_blob_id(root_hash: u256, encoding_type: u8, size: u64): u256 {
     let blob_id_struct = BlobIdDerivation {
         encoding_type,
         size,
@@ -124,6 +133,7 @@ public(package) fun new(
     size: u64,
     encoding_type: u8,
     deletable: bool,
+    // TODO: replace with Walrus context
     registered_epoch: u32,
     n_shards: u16,
     ctx: &mut TxContext,
@@ -143,7 +153,7 @@ public(package) fun new(
     assert!(encoded_size <= storage.storage_size(), EResourceSize);
 
     // Cryptographically verify that the Blob ID authenticates
-    // both the size and fe_type.
+    // both the size and encoding_type (sanity check).
     assert!(derive_blob_id(root_hash, encoding_type, size) == blob_id, EInvalidBlobId);
 
     // Emit register event
@@ -177,19 +187,30 @@ public(package) fun certify_with_certified_msg(
     message: CertifiedBlobMessage,
 ) {
     // Check that the blob is registered in the system
-    assert!(blob_id(blob) == message.certified_blob_id(), EInvalidBlobId);
+    assert!(blob.blob_id() == message.certified_blob_id(), EInvalidBlobId);
 
     // Check that the blob is not already certified
     assert!(!blob.certified_epoch.is_some(), EAlreadyCertified);
 
-    // Check that the message is from the current epoch
-    assert!(message.certified_epoch() == current_epoch, EWrongEpoch);
-
     // Check that the storage in the blob is still valid
-    assert!(message.certified_epoch() < blob.storage.end_epoch(), EResourceBounds);
+    assert!(current_epoch < blob.storage.end_epoch(), EResourceBounds);
+
+    // Check the blob persistence type
+    assert!(
+        blob.deletable == message.blob_persistence_type().is_deletable(),
+        EInvalidBlobPersistenceType,
+    );
+
+    // Check that the object id matches the message
+    if (blob.deletable) {
+        assert!(
+            message.blob_persistence_type().object_id() == object::id(blob),
+            EInvalidBlobObject,
+        );
+    };
 
     // Mark the blob as certified
-    blob.certified_epoch.fill(message.certified_epoch());
+    blob.certified_epoch.fill(current_epoch);
 
     blob.emit_certified(false);
 }
@@ -198,7 +219,9 @@ public(package) fun certify_with_certified_msg(
 ///
 /// Emits a `BlobDeleted` event for the given epoch.
 /// Aborts if the Blob is not deletable or already expired.
-public(package) fun delete(self: Blob, epoch: u32): Storage {
+/// Also removes any metadata associated with the blob.
+public(package) fun delete(mut self: Blob, epoch: u32): Storage {
+    dynamic_field::remove_if_exists<_, Metadata>(&mut self.id, METADATA_DF);
     let Blob {
         id,
         storage,
@@ -220,12 +243,11 @@ public(package) fun delete(self: Blob, epoch: u32): Storage {
 public use fun walrus::shared_blob::new as Blob.share;
 
 /// Allow the owner of a blob object to destroy it.
-public fun burn(blob: Blob) {
-    let Blob {
-        id,
-        storage,
-        ..,
-    } = blob;
+///
+/// This function also burns any [`Metadata`] associated with the blob, if present.
+public fun burn(mut self: Blob) {
+    dynamic_field::remove_if_exists<_, Metadata>(&mut self.id, METADATA_DF);
+    let Blob { id, storage, .. } = self;
 
     id.delete();
     storage.destroy();
@@ -274,6 +296,7 @@ public(package) fun emit_certified(self: &Blob, is_extension: bool) {
 ///
 /// Aborts if the metadata is already present.
 public fun add_metadata(self: &mut Blob, metadata: Metadata) {
+    assert!(!dynamic_field::exists_(&self.id, METADATA_DF), EDuplicateMetadata);
     dynamic_field::add(&mut self.id, METADATA_DF, metadata)
 }
 
@@ -281,6 +304,7 @@ public fun add_metadata(self: &mut Blob, metadata: Metadata) {
 ///
 /// Aborts if the metadata does not exist.
 public fun take_metadata(self: &mut Blob): Metadata {
+    assert!(dynamic_field::exists_(&self.id, METADATA_DF), EMissingMetadata);
     dynamic_field::remove(&mut self.id, METADATA_DF)
 }
 
@@ -288,6 +312,7 @@ public fun take_metadata(self: &mut Blob): Metadata {
 ///
 /// Aborts if the metadata does not exist.
 fun metadata(self: &mut Blob): &mut Metadata {
+    assert!(dynamic_field::exists_(&self.id, METADATA_DF), EMissingMetadata);
     dynamic_field::borrow_mut(&mut self.id, METADATA_DF)
 }
 
@@ -303,4 +328,13 @@ public fun insert_or_update_metadata_pair(self: &mut Blob, key: String, value: S
 /// Aborts if the metadata does not exist.
 public fun remove_metadata_pair(self: &mut Blob, key: &String): (String, String) {
     self.metadata().remove(key)
+}
+
+#[test_only]
+public fun certify_with_certified_msg_for_testing(
+    blob: &mut Blob,
+    current_epoch: u32,
+    message: CertifiedBlobMessage,
+) {
+    certify_with_certified_msg(blob, current_epoch, message)
 }

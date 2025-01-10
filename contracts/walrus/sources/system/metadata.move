@@ -4,19 +4,18 @@
 /// Contains the metadata for Blobs on Walrus.
 module walrus::metadata;
 
-use sui::vec_map::{Self, VecMap};
 use std::string::String;
-
+use sui::vec_map::{Self, VecMap};
 
 /// The metadata struct for Blob objects.
-public struct Metadata has store, drop {
-    metadata: VecMap<String, String>
+public struct Metadata has drop, store {
+    metadata: VecMap<String, String>,
 }
 
 /// Creates a new instance of Metadata.
 public fun new(): Metadata {
     Metadata {
-        metadata: vec_map::empty()
+        metadata: vec_map::empty(),
     }
 }
 
@@ -29,7 +28,6 @@ public fun insert_or_update(self: &mut Metadata, key: String, value: String) {
     };
     self.metadata.insert(key, value);
 }
-
 
 /// Removes the metadata associated with the given key.
 public fun remove(self: &mut Metadata, key: &String): (String, String) {
