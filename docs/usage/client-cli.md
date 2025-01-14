@@ -82,8 +82,10 @@ page](./setup.md#testnet-wal-faucet) for further details.
 Storing blobs on Walrus can be achieved through the following command:
 
 ```sh
-walrus store <some file> --epochs <EPOCHS>
+walrus store <file_path_1> <file_path_2> --epochs <EPOCHS>
 ```
+
+Multiple files can be stored in a single command.
 
 The CLI argument `--epochs <EPOCHS>` (or `-e`) indicates the number of epochs the blob should be
 stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 200
