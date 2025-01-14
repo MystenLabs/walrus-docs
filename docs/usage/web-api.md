@@ -132,6 +132,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.stakingdefenseleague.com:9000`
 - `http://walrus.sui.thepassivetrust.com:9000`
 - `http://walrus.globalstake.io:9000`
+- `https://walrus-aggregator.rubynodes.io`
 
 ### Public publishers
 
@@ -157,6 +158,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.stakingdefenseleague.com:9001`
 - `http://walrus.sui.thepassivetrust.com:9001`
 - `http://walrus.globalstake.io:9001`
+- `https://walrus-publisher.rubynodes.io`
 
 ## HTTP API Usage
 
