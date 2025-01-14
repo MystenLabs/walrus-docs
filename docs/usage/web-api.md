@@ -133,6 +133,7 @@ may still be temporarily unavailable:
 - `http://walrus.sui.thepassivetrust.com:9000`
 - `http://walrus.globalstake.io:9000`
 - `https://walrus-aggregator.rubynodes.io`
+- `https://walrus-testnet.chainbase.online/aggregator`
 
 ### Public publishers
 
@@ -159,6 +160,7 @@ may still be temporarily unavailable:
 - `http://walrus.sui.thepassivetrust.com:9001`
 - `http://walrus.globalstake.io:9001`
 - `https://walrus-publisher.rubynodes.io`
+- `https://walrus-testnet.chainbase.online/publisher`
 
 ## HTTP API Usage
 
