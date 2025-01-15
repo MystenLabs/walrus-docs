@@ -100,9 +100,10 @@ Base36 was chosen for two reasons, forced by the subdomain standards:
 As mentioned before, we provide two types of portals to browse Walrus Sites:
 
 - The server-side portal, which is a server that resolves a Walrus Site, returning it to the
-  browser. The server-side portal is hosted at <https://blob.store>.
-- The service-worker portal, which is a service worker that is installed in the browser and resolves
-  a Walrus Site. The service-worker portal is hosted at <https://walrus.site>.
+  browser. The server-side portal is hosted at <https://walrus.site>.
+- The service-worker portal, which is a service worker that is installed in the browser and
+  resolves a Walrus Site. The service-worker portal is no longer hosted at a specific domain, but
+  the code is still maintained so that it can be used by anyone.
 
 We now describe the resolution process of a Walrus Site in the browser using the service-worker
 portal as an example.
@@ -134,6 +135,14 @@ worker approach. The steps below all reference the following figure:
 
 These steps are executed for all resources the browser may query thereafter (for example, if
 `/index.html` points to `assets/cat.png`).
+
+```admonish tip title="Server side approach"
+The server-side portal works similarly, but the resolution is performed by the server. Meaning that
+the server will resolve the SuiNS name, fetch the dynamic fields, and return the resources to the
+browser, without anything else happening on the user's side. So the steps 2-6 are no longer
+relevant, and 7-10 are performed by the server. The resulting resources are transmitted to the
+browser in a standard HTTP response.
+```
 
 ## The site builder
 
