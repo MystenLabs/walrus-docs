@@ -12,7 +12,8 @@ walrus json \
         "config": "path/to/client_config.yaml",
         "command": {
             "store": {
-                "file": "README.md"
+                "files": ["README.md", "LICENSE"],
+                "epochs": 100
             }
         }
     }'

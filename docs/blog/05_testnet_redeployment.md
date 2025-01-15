@@ -27,11 +27,9 @@ also brings several user-facing improvements.
   [PTBs](https://docs.sui.io/concepts/transactions/prog-txn-blocks). Notably, this is compatible
   with glob patterns offered by many shells, so you can for example run a command like `walrus store
   *.png --epochs 100` to store all PNG files in the current directory.
-- The `walrus` CLI now supports creating, funding, and extending *shared blobs*. These are shared
-  Sui objects wrapping "standard" `Blob` objects that can be funded and extended by anyone. See the
-  [shared blobs
-  contracts](https://github.com/MystenLabs/walrus-docs/blob/main/contracts/walrus/sources/system/shared_blob.move)
-  for further details.
+- The `walrus` CLI now supports creating, funding, and extending *shared blobs* using the `walrus
+  share`, `walrus store --share`, and `walrus fund-shared-blob` commands. See the [shared blobs
+  section](../usage/client-cli.md#shared-blobs) for more details.
 
 ## New WAL token
 
@@ -56,7 +54,8 @@ section](../usage/setup.md#configuration).
 
 Several CLI options of the `walrus` CLI have been changed. Notably, all "short" variants of options
 (e.g., `-e` instead of `--epochs`) have been removed to prevent future confusion with new options.
-Additionally, the `--epochs` flag is now mandatory for the `walrus store` command.
+Additionally, the `--epochs` flag is now mandatory for the `walrus store` command (this also affects
+the [JSON API](../usage/json-api.md)).
 
 Please refer to the CLI help (`walrus --help`, or `walrus <command> --help`) for further details.
 

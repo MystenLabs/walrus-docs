@@ -9,10 +9,11 @@ of the Walrus client.
 ## Prerequisites: Sui wallet and Testnet SUI {#prerequisites}
 
 ```admonish tip title="Quick wallet setup"
-If you just want to set up a new SUI wallet for Walrus, you can skip this section and use the
+If you just want to set up a new Sui wallet for Walrus, you can skip this section and use the
 `walrus generate-sui-wallet` command after [installing Walrus](#installation). In that case, make
 sure to set the `wallet_config` parameter in the [Walrus
-configuration](#advanced-configuration-optional) to the newly generated wallet.
+configuration](#advanced-configuration-optional) to the newly generated wallet. Also, make sure to
+obtain some Testnet SUI tokens from the [Sui Testnet faucet](https://faucet.sui.io/?network=testnet).
 ```
 
 Interacting with Walrus requires a valid Sui Testnet wallet with some amount of SUI tokens. The
@@ -53,11 +54,8 @@ $ sui client envs
 ```
 
 Finally, make sure you have at least one gas coin with at least 1 SUI. You can obtain one from the
-Testnet faucet:
-
-```sh
-sui client faucet
-```
+[Sui Testnet faucet](https://faucet.sui.io/?network=testnet) (you can find your address through the
+`sui client active-address` command).
 
 After some seconds, you should see your new SUI coins:
 
@@ -131,7 +129,9 @@ Commands:
 
 ```admonish tip
 Our latest Testnet Walrus binaries are also available on Walrus itself, namely on
-<https://bin.blob.store>, for example, <https://bin.blob.store/walrus-testnet-latest-ubuntu-x86_64>.
+<https://bin.walrus.site>, for example, <https://bin.walrus.site/walrus-testnet-latest-ubuntu-x86_64>.
+Note that due to DoS protection, it may not be possible to download the binaries with `curl` or
+`wget`.
 ```
 
 ### Previous versions (optional)
@@ -150,27 +150,22 @@ in the `walrus_package` field. Finally, exchange objects are needed to swap SUI 
 
 The current Testnet deployment uses the following objects:
 
-```yaml
-system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
-staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-walrus_package: 0x3d35ad1028562025f6f24336f0298d3775ba896bbbb63be7ad5b9fee8255dd89
-exchange_object:
-  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
-  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
-  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
-  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
-```
+TODO: This currently points to the PTN. Update this with the new Testnet object IDs.
 
-Note that configuring multiple exchange objects are only supported with the CLI version 1.2.0 or
-higher.
+```yaml
+system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
+staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
+exchange_objects:
+- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
+```
 
 <!-- markdownlint-disable code-fence-style -->
 ~~~admonish tip
-The easiest way to obtain the latest configuration is by downloading it from
-<https://docs.blob.store/client_config.yaml>:
+The easiest way to obtain the latest configuration is by downloading it from GitHub:
 
 ```sh
-curl https://docs.blob.store/client_config.yaml -o ~/.config/walrus/client_config.yaml
+curl https://raw.githubusercontent.com/MystenLabs/walrus-docs/refs/heads/main/docs/client_config.yaml \
+    -o ~/.config/walrus/client_config.yaml
 ```
 ~~~
 <!-- markdownlint-enable code-fence-style -->
@@ -186,22 +181,18 @@ you need to use the `--config` option when running the `walrus` binary.
 
 The configuration file currently supports the following parameters:
 
+TODO: This currently points to the PTN. Update this with the new Testnet object IDs.
+
 ```yaml
 # These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
-system_object: 0x50b84b68eb9da4c6d904a929f43638481c09c03be6274b8569778fe085c1590d
-staking_object: 0x37c0e4d7b36a2f64d51bba262a1791f844cfd88f31379f1b7c04244061d43914
-
-# The latest version of the Walrus package can be specified with the `walrus_package` parameter.
-walrus_package: 0x3d35ad1028562025f6f24336f0298d3775ba896bbbb63be7ad5b9fee8255dd89
+system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
+staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
 
 # The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
 # random one is chosen for the exchange.
-exchange_object:
-  - 0x0e60a946a527902c90bbc71240435728cd6dc26b9e8debc69f09b71671c3029b
-  - 0x8a23a552895e341bca0106861786e014b5bb2f576bd7f76754226cc92266a0ee
-  - 0x7c469c2b189379bff42874742c292934c03cde9d0a2c20f293f1a32f8eece68c
-  - 0x59e7fa1b967c739ce676a7a3d8de444ac165f742421ba3b17656e2aee9fe541e
+exchange_objects:
+- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
@@ -214,37 +205,28 @@ wallet_config: null
 communication_config:
   max_concurrent_writes: null
   max_concurrent_sliver_reads: null
-  max_concurrent_metadata_reads: null
+  max_concurrent_metadata_reads: 3
   max_concurrent_status_reads: null
   max_data_in_flight: null
   reqwest_config:
-    total_timeout:
-      secs: 30
-      nanos: 0
-    pool_idle_timeout: null
-    http2_keep_alive_timeout:
-      secs: 5
-      nanos: 0
-    http2_keep_alive_interval:
-      secs: 30
-      nanos: 0
+    total_timeout_millis: 30000
+    pool_idle_timeout_millis: null
+    http2_keep_alive_timeout_millis: 5000
+    http2_keep_alive_interval_millis: 30000
     http2_keep_alive_while_idle: true
   request_rate_config:
     max_node_connections: 10
-    max_retries: 5
-    min_backoff:
-      secs: 2
-      nanos: 0
-    max_backoff:
-      secs: 60
-      nanos: 0
+    backoff_config:
+      min_backoff_millis: 1000
+      max_backoff_millis: 30000
+      max_retries: 5
   disable_proxy: false
-  disable_native_certs: false
+  disable_native_certs: true
   sliver_write_extra_time:
     factor: 0.5
-    base:
-      secs: 0
-      nanos: 500000000
+    base_millis: 500
+  registration_delay_millis: 200
+  max_total_blob_size: 1073741824
 ```
 
 ```admonish warning title="Important"

@@ -40,8 +40,8 @@ smaller chunks.
 
 Blobs are stored for a certain number of *epochs*, as specified at the time they were stored. Walrus
 storage nodes ensure that within these epochs a read succeeds. The current Testnet uses a short
-epoch duration of one day for testing purposes, but Mainnet epochs are likely to be longer such as
-many weeks each.
+epoch duration of two days for testing purposes, but Mainnet epochs are planned to be multiple
+weeks.
 
 ## Read
 

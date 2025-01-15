@@ -183,10 +183,10 @@ You can interact with the daemon through simple HTTP PUT requests. For example, 
 [cURL](https://curl.se), you can store blobs using a publisher or daemon as follows:
 
 ```sh
-curl -X PUT "$PUBLISHER/v1/store" -d "some string" # store the string `some string` for 1 storage epoch
-curl -X PUT "$PUBLISHER/v1/store?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
-curl -X PUT "$PUBLISHER/v1/store?send_object_to=$ADDRESS" --upload-file "some/file" # store file `some/file` and send the blob object to $ADDRESS
-curl -X PUT "$PUBLISHER/v1/store?deletable=true" --upload-file "some/file" # store file `some/file` as a deletable blob, instead of a permanent one
+curl -X PUT "$PUBLISHER/v1/blobs" -d "some string" # store the string `some string` for 1 storage epoch
+curl -X PUT "$PUBLISHER/v1/blobs?epochs=5" --upload-file "some/file" # store file `some/file` for 5 storage epochs
+curl -X PUT "$PUBLISHER/v1/blobs?send_object_to=$ADDRESS" --upload-file "some/file" # store file `some/file` and send the blob object to $ADDRESS
+curl -X PUT "$PUBLISHER/v1/blobs?deletable=true" --upload-file "some/file" # store file `some/file` as a deletable blob, instead of a permanent one
 ```
 
 The store HTTP API end points return information about the blob stored in JSON format. When a blob
@@ -194,24 +194,30 @@ is stored for the first time, a `newlyCreated` field contains information about 
 new blob:
 
 ```sh
-$ curl -X PUT "$PUBLISHER/v1/store" -d "some other string"
+$ curl -X PUT "$PUBLISHER/v1/blobs" -d "some other string"
 {
   "newlyCreated": {
     "blobObject": {
       "id": "0xd765d11848cbac5b1f6eec2fbeb343d4558cbe8a484a00587f9ef5385d64d235",
-      "storedEpoch": 0,
+      "registeredEpoch": 0,
       "blobId": "Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM",
       "size": 17,
-      "erasureCodeType": "RedStuff",
+      "encodingType": "RedStuff",
       "certifiedEpoch": 0,
       "storage": {
         "id": "0x28cc75b33e31b3e672646eacf1a7c7a2e5d638644651beddf7ed4c7e21e9cb8e",
         "startEpoch": 0,
         "endEpoch": 1,
         "storageSize": 4747680
+      },
+      "deletable": false
+    },
+    "resourceOperation": {
+      "registerFromScratch": {
+        "encodedLength": 4747680,
+        "epochsAhead": 1
       }
     },
-    "encodedSize": 4747680,
     "cost": 231850
   }
 }
@@ -223,7 +229,7 @@ When the aggregator finds a certified blob with the same blob ID and a sufficien
 it returns a `alreadyCertified` JSON structure:
 
 ```sh
-$ curl -X PUT "$PUBLISHER/v1/store" -d "some other string"
+$ curl -X PUT "$PUBLISHER/v1/blobs" -d "some other string"
 {
   "alreadyCertified": {
     "blobId": "Cmh2LQEGJwBYfmIC8duzK8FUE2UipCCrshAYjiUheZM",
@@ -245,13 +251,13 @@ Blobs may be read from an aggregator or daemon using HTTP GET. For example, the 
 command reads a blob and writes it to an output file:
 
 ```sh
-curl "$AGGREGATOR/v1/<some blob ID>" -o <some file name>
+curl "$AGGREGATOR/v1/blobs/<some blob ID>" -o <some file name>
 ```
 
 Alternatively you may print the contents of a blob in the terminal with the cURL command:
 
 ```sh
-curl "$AGGREGATOR/v1/<some blob ID>"
+curl "$AGGREGATOR/v1/blobs/<some blob ID>"
 ```
 
 ```admonish tip title="Content sniffing"

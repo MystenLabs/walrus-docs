@@ -30,8 +30,8 @@ site-builder publish ./walrus-snake --epochs 100
 ```
 
 ``` admonish tip
-Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
-longer, specify the number of epochs with the `--epochs` flag!
+Currently on Walrus Testnet, the duration of an epoch is two days. If you want your site to stay up
+longer, specify the number of epochs with the `--epochs` flag (maximum 365 epochs).
 ```
 
 The end of the output should look like the following:
@@ -75,7 +75,7 @@ where to find the updated files (still `./walrus-snake`) and the object ID of th
 (`0x407a3081...`):
 
 ``` sh
-site-builder update --epochs 100 ./walrus-snake  0x407a3081...
+site-builder update --epochs 100 ./walrus-snake 0x407a3081...
 ```
 
 The output this time should be:

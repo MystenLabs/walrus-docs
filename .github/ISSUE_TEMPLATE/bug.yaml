@@ -32,7 +32,7 @@ body:
       value: |
         Example:
         1. Create an empty file: `touch empty`
-        2. Try to store the empty file: `walrus store empty`
+        2. Try to store the empty file: `walrus store empty --epochs 314`
     validations:
       required: true
   - type: textarea

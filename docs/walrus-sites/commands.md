@@ -13,13 +13,12 @@ The `publish` command, as described in the [previous section](./tutorial-publish
 new site on Sui. The command takes a directory as input and creates a new Walrus Site from the
 resources contained within.
 
-The `--epochs` flag allows you to specify for how long the site data will be stored on Walrus. By
-default, this is set to `1` epoch.
+The `--epochs` flag allows you to specify for how long the site data will be stored on Walrus.
 
 ```admonish danger title="Epoch duration on Walrus Testnet"
-On Walrus Testnet, one epoch will last **1 day**. Therefore, consider storing your site for a large
-number of epochs if you want to make it available for the following months! The maximum duration is
-set to 200 epochs.
+On Walrus Testnet, the epoch duration is **two days**. Therefore, consider storing your site for a
+large number of epochs if you want to make it available for the following months! The maximum
+duration is set to 365 epochs.
 ```
 
 If you are just uploading raw files without an `index.html`, you may want to use the
