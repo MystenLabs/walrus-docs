@@ -24,11 +24,10 @@ Different portals can set this limit as they desire. The limit for the portal ho
 
 ## Service-worker portal limitations
 
-The following limitations apply to portals based on service workers:
+The following limitations only apply to portals based on service workers.
 
-```admonish warning
-This limitation **only applies to portal based on service workers**. If you need to support
-this feature, you should use a server-side portal.
+``` admonish tip
+If you need to support any of the features listed below, you should use a server-side portal.
 ```
 
 ### Service-worker portals, can't serve sites based on service workers
@@ -40,9 +39,9 @@ operations:
 1. fetching the page content from Walrus; and
 1. serving the content to the browser.
 
-Therefore, a site deployed on Walrus Sites cannot use service workers itself. Installing a service
-worker from within a Walrus Site will result in a dysfunctional site and a poor experience for the
-user.
+Therefore, a site accessed by a service-worker portal cannot use service workers itself. i.e.
+you can't "stack" service workers! Installing a service worker from within a Walrus Site will
+result in a dysfunctional site and a poor experience for the user.
 
 ### iOS Sui mobile wallets do not work with the service-worker portal
 
@@ -52,9 +51,10 @@ this feature, you should use a server-side portal.
 ```
 
 Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
-WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
-iOS. Therefore, Sui wallets cannot currently be used on a service-worker portal on iOS. Note,
-however, that *browsing* a Walrus Site is still possible on iOS through any browser.
+WebKit engine. As a consequence, Walrus Sites that are accessed through a service worker portal
+cannot be used within Sui-compatible wallet apps on iOS. Therefore, Sui wallets cannot currently
+be used on a service-worker portal on iOS. Note, however, that *browsing* a Walrus Site is still
+possible on iOS through any browser.
 
 Given that you decided to use a service-worker portal as your main point of access to your sites,
 to provide a seamless experience for iOS users (and other users on browsers that do not support
@@ -69,7 +69,8 @@ This limitation **only applies to portal based on service workers**. If you need
 this feature, you should use a server-side portal.
 ```
 
-With the current design, service-worker portals cannot be used for progressive web apps (PWAs).
+With the current design, service-worker portals cannot be used to access progressive web apps
+(PWAs).
 
 Two characteristics of the service-worker portal prevent support for PWAs:
 
