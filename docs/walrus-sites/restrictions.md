@@ -46,8 +46,8 @@ result in a dysfunctional site and a poor experience for the user.
 ### iOS Sui mobile wallets do not work with the service-worker portal
 
 ```admonish warning
-This limitation **only applies to portal based on service workers**. If you need to support
-this feature, you should use a server-side portal.
+This limitation **only applies to portal based on service workers**. If you need to access sites
+that support this feature, you should use a server-side portal.
 ```
 
 Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
@@ -65,8 +65,8 @@ to the `<site_name>.walrus.site` server-side portal. This way, the user can stil
 ### Service worker portals do not support progressive web apps (PWAs)
 
 ```admonish warning
-This limitation **only applies to portal based on service workers**. If you need to support
-this feature, you should use a server-side portal.
+This limitation **only applies to portal based on service workers**. If you need to access sites
+that support this feature, you should use a server-side portal.
 ```
 
 With the current design, service-worker portals cannot be used to access progressive web apps
