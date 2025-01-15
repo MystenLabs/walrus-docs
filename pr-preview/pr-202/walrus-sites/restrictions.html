@@ -243,51 +243,68 @@ portal (see <a href="./portal.html">Portal configuration</a>). This measure ensu
 does not result in an infinite loading loop.</p>
 <p>Different portals can set this limit as they desire. The limit for the portal hosted at
 <a href="https://walrus.site">https://walrus.site</a> has a maximum redirect depth of 3.</p>
-<h2 id="service-workers-are-not-available"><a class="header" href="#service-workers-are-not-available">Service workers are not available</a></h2>
-<p>Walrus Sites leverage service workers in the clients' browsers to perform essential operations:</p>
+<h2 id="service-worker-portal-limitations"><a class="header" href="#service-worker-portal-limitations">Service-worker portal limitations</a></h2>
+<p>The following limitations only apply to portals based on service workers.</p>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-tip"></a>
+</div>
+<div>
+<p>If you need to support any of the features listed below, you should use a server-side portal.</p>
+</div>
+</div>
+<h3 id="service-worker-portals-cant-serve-sites-based-on-service-workers"><a class="header" href="#service-worker-portals-cant-serve-sites-based-on-service-workers">Service-worker portals, can't serve sites based on service workers</a></h3>
+<p>Service-worker portals leverage service workers in the clients' browsers to perform essential
+operations:</p>
 <ol>
 <li>reading the site metadata from Sui;</li>
 <li>fetching the page content from Walrus; and</li>
 <li>serving the content to the browser.</li>
 </ol>
-<p>Therefore, a site deployed on Walrus Sites cannot use service workers itself. Installing a service
-worker from within a Walrus Site will result in a dysfunctional site and a poor experience for the
-user.</p>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<p>Therefore, a site accessed by a service-worker portal cannot use service workers itself. i.e.
+you can't "stack" service workers! Installing a service worker from within a Walrus Site will
+result in a dysfunctional site and a poor experience for the user.</p>
+<h3 id="ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal">iOS Sui mobile wallets do not work with the service-worker portal</a></h3>
+<div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
 <div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
+<div id="admonition-warning-title">
+<p>Warning</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-note"></a>
+<a class="admonition-anchor-link" href="#admonition-warning"></a>
 </div>
 <div>
-<p>This limitation only applies to portal based on service workers. A web portal will not
-have this limitation.</p>
+<p>This limitation <strong>only applies to portal based on service workers</strong>. If you need to access sites
+that support this feature, you should use a server-side portal.</p>
 </div>
 </div>
-<h2 id="ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal"><a class="header" href="#ios-sui-mobile-wallets-do-not-work-with-the-service-worker-portal">iOS Sui mobile wallets do not work with the service-worker portal</a></h2>
 <p>Service workers cannot be loaded inside an in-app browser on iOS, because of a limitation of the
-WebKit engine. As a consequence, Walrus Sites cannot be used within Sui-compatible wallet apps on
-iOS. Therefore, Sui wallets cannot currently be used on a service-worker portal on iOS. Note,
-however, that <em>browsing</em> a Walrus Site is still possible on iOS through any browser.</p>
-<p>To provide a seamless experience for iOS users (and other users on browsers that do not support
-service workers), we implemented a redirect to a server-side portal (<a href="https://blob.store">https://blob.store</a>). Whenever
-a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them to the
-<code>&lt;site_name&gt;.blob.store</code> server-side portal. This way, the user can still use the wallet.</p>
-<div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+WebKit engine. As a consequence, Walrus Sites that are accessed through a service worker portal
+cannot be used within Sui-compatible wallet apps on iOS. Therefore, Sui wallets cannot currently
+be used on a service-worker portal on iOS. Note, however, that <em>browsing</em> a Walrus Site is still
+possible on iOS through any browser.</p>
+<p>Given that you decided to use a service-worker portal as your main point of access to your sites,
+to provide a seamless experience for iOS users (and other users on browsers that do not support
+service workers), it is recommended to redirect to a server-side portal (<a href="https://walrus.site">https://walrus.site</a>).
+Whenever a user on an iOS wallet browses a Walrus Site, the redirect will automatically take them
+to the <code>&lt;site_name&gt;.walrus.site</code> server-side portal. This way, the user can still use the wallet.</p>
+<h3 id="service-worker-portals-do-not-support-progressive-web-apps-pwas"><a class="header" href="#service-worker-portals-do-not-support-progressive-web-apps-pwas">Service worker portals do not support progressive web apps (PWAs)</a></h3>
+<div id="admonition-warning-1" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-1-title">
 <div class="admonition-title">
-<div id="admonition-note-1-title">
-<p>Note</p>
+<div id="admonition-warning-1-title">
+<p>Warning</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-note-1"></a>
+<a class="admonition-anchor-link" href="#admonition-warning-1"></a>
 </div>
 <div>
-<p>This limitation only applies to portals based on service workers. A web portal will not
-have this limitation.</p>
+<p>This limitation <strong>only applies to portal based on service workers</strong>. If you need to access sites
+that support this feature, you should use a server-side portal.</p>
 </div>
 </div>
-<h2 id="no-support-for-progressive-web-apps-pwas"><a class="header" href="#no-support-for-progressive-web-apps-pwas">No support for progressive web apps (PWAs)</a></h2>
-<p>With the current design, Walrus Sites cannot be used for progressive web apps (PWAs).</p>
+<p>With the current design, service-worker portals cannot be used to access progressive web apps
+(PWAs).</p>
 <p>Two characteristics of the service-worker portal prevent support for PWAs:</p>
 <ul>
 <li>Since the service worker needs to be registered for the page to work, the PWA's manifest file
