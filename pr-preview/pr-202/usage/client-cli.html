@@ -236,18 +236,18 @@ chapter</a> for prerequisites, installation, and configuration.</p>
 <p>Each sub-command of <code>walrus</code> can also be called with <code>--help</code> to print its specific arguments and
 their meaning.</p>
 <h2 id="walrus-system-information"><a class="header" href="#walrus-system-information">Walrus system information</a></h2>
-<p>Information about the Walrus system is available through the <code>walrus info</code> command. For example,
-<code>walrus info</code> gives an overview of current system parameters such as the current epoch, the number
-of storage nodes and shards in the system, the maximum blob size, and the current cost in (Testnet)
-WAL for storing blobs:</p>
+<p>Information about the Walrus system is available through the <code>walrus info</code> command. It provides an
+overview of current system parameters such as the current epoch, the number of storage nodes and
+shards in the system, the maximum blob size, and the current cost in (Testnet) WAL for storing
+blobs:</p>
 <pre><code class="language-console">$ walrus info
 
 Walrus system information
 
 Epochs and storage duration
-Current epoch: 47
-Epoch duration: 1day
-Blobs can be stored for at most 200 epochs in the future.
+Current epoch: 1
+Epoch duration: 2day
+Blobs can be stored for at most 365 epochs in the future.
 
 Storage nodes
 Number of storage nodes: 30
@@ -285,7 +285,7 @@ SUI: <code>1 WAL = 1 000 000 000 FROST</code>.</p>
 information on the storage nodes in the current and (if already selected) the next committee,
 including their node IDs and stake and shard distribution can be viewed with the <code>--dev</code> argument:
 <code>walrus info --dev</code>.</p>
-<h2 id="storing-querying-status-and-reading-blobs"><a class="header" href="#storing-querying-status-and-reading-blobs">Storing, querying status, and reading blobs</a></h2>
+<h2 id="storing-blobs"><a class="header" href="#storing-blobs">Storing blobs</a></h2>
 <div id="admonition-public-access" class="admonition admonish-danger" role="note" aria-labelledby="admonition-public-access-title">
 <div class="admonition-title">
 <div id="admonition-public-access-title">
@@ -309,7 +309,8 @@ confidentiality.</p>
 <div>
 <p>It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
-to a different wallet.</p>
+to a different wallet. However, it is possible to store multiple blobs with a single <code>walrus store</code>
+command.</p>
 </div>
 </div>
 <div id="admonition-obtaining-testnet-wal" class="admonition admonish-tip" role="note" aria-labelledby="admonition-obtaining-testnet-wal-title">
@@ -324,24 +325,19 @@ to a different wallet.</p>
 page</a> for further details.</p>
 </div>
 </div>
-<p>Storing blobs on Walrus can be achieved through the following command:</p>
-<pre><code class="language-sh">walrus store &lt;some file&gt; --epochs &lt;EPOCHS&gt;
+<p>Storing one or multiple blobs on Walrus can be achieved through the following command:</p>
+<pre><code class="language-sh">walrus store &lt;FILES&gt; --epochs &lt;EPOCHS&gt;
 </code></pre>
-<p>The CLI argument <code>--epochs &lt;EPOCHS&gt;</code> (or <code>-e</code>) indicates the number of epochs the blob should be
-stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 200
+<p>The mandatory CLI argument <code>--epochs &lt;EPOCHS&gt;</code> indicates the number of epochs the blob should be
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 365
 for the current Testnet deployment.</p>
-<div id="admonition-warning-1" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-1-title">
-<div class="admonition-title">
-<div id="admonition-warning-1-title">
-<p>Warning</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-warning-1"></a>
-</div>
-<div>
-<p>The <code>--epochs</code> argument is currently optional; if it is not specified, a warning is printed and the
-default of 1 epoch is used. However, it will become a mandatory argument in the future.</p>
-</div>
-</div>
+<p>You can store a single file or multiple files, separated by spaces. Notably, this is compatible
+with glob patterns; for example, <code>walrus store *.png --epochs &lt;EPOCHS&gt;</code> will store all PNG files
+in the current directory.</p>
+<p>By default, the command will store the blob as a <em>permanent</em> blob. See the <a href="#reclaiming-space-via-deletable-blobs">section on deletable
+blobs</a> for more details on deletable blobs. Also, by default
+an owned <code>Blob</code> object is created. It is possible to wrap this into a shared object, which can be
+funded and extended by anyone, see the <a href="#shared-blobs">shared blobs section</a>.</p>
 <div id="admonition-automatic-optimizations" class="admonition admonish-tip" role="note" aria-labelledby="admonition-automatic-optimizations-title">
 <div class="admonition-title">
 <div id="admonition-automatic-optimizations-title">
@@ -354,7 +350,7 @@ default of 1 epoch is used. However, it will become a mandatory argument in the 
 following:</p>
 <ul>
 <li>If the blob is already stored as a <em>permanent blob</em> on Walrus for a sufficient number of epochs
-the command does not store it again. This behavior can be overwritten with the <code>--force</code> (or <code>-f</code>)
+the command does not store it again. This behavior can be overwritten with the <code>--force</code>
 CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
 wallet address.</li>
 <li>If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
@@ -365,6 +361,7 @@ availability certificate</li>
 </ul>
 </div>
 </div>
+<h2 id="querying-blob-status"><a class="header" href="#querying-blob-status">Querying blob status</a></h2>
 <p>The status of a blob can be queried through one of the following commands:</p>
 <pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
 walrus blob-status --file &lt;FILE&gt;
@@ -375,11 +372,12 @@ the status.</p>
 <p>When the blob is available, the <code>blob-status</code> command also returns the <code>BlobCertified</code> Sui event ID,
 which consists of a transaction ID and a sequence number in the events emitted by the transaction.
 The existence of this event certifies the availability of the blob.</p>
+<h2 id="reading-blobs"><a class="header" href="#reading-blobs">Reading blobs</a></h2>
 <p>Reading blobs from Walrus can be achieved through the following command:</p>
 <pre><code class="language-sh">walrus read &lt;some blob ID&gt;
 </code></pre>
-<p>By default the blob data is written to the standard output. The <code>--out &lt;OUT&gt;</code> CLI option (or <code>-o</code>)
-can be used to specify an output file name. The <code>--rpc-url &lt;URL&gt;</code> (or <code>-r</code>) may be used to specify
+<p>By default the blob data is written to the standard output. The <code>--out &lt;OUT&gt;</code> CLI option
+can be used to specify an output file name. The <code>--rpc-url &lt;URL&gt;</code> may be used to specify
 a Sui RPC node to use instead of the one set in the wallet configuration or the default one.</p>
 <h2 id="reclaiming-space-via-deletable-blobs"><a class="header" href="#reclaiming-space-via-deletable-blobs">Reclaiming space via deletable blobs</a></h2>
 <p>By default <code>walrus store</code> uploads a blob and Walrus will keep it available until after its expiry
@@ -393,7 +391,7 @@ in the Sui events that certify them, and should not be relied upon for availabil
 <p>Optionally the delete command can be invoked by specifying a <code>--file &lt;PATH&gt;</code> option, to derive the
 blob ID from a file, or <code>--object-id &lt;SUI_ID&gt;</code> to delete the blob in the Sui blob object specified.</p>
 <p>Before deleting a blob, the <code>walrus delete</code> command will ask for confirmation unless the <code>--yes</code>
-(or <code>-y</code>) option is specified.</p>
+option is specified.</p>
 <p>The <code>delete</code> command reclaims the storage object associated with the deleted blob, which is re-used
 to store new blobs. The delete operation provides flexibility around managing storage costs and
 re-using storage.</p>
@@ -418,6 +416,18 @@ It does not delete blobs from caches, slivers from past storage nodes, or copies
 that could have been made by users before the blob was deleted.</p>
 </div>
 </div>
+<h2 id="shared-blobs"><a class="header" href="#shared-blobs">Shared blobs</a></h2>
+<p><em>Shared blobs</em> are shared Sui objects wrapping "standard" <code>Blob</code> objects that can be funded and
+whose lifetime can be extended by anyone. See the <a href="https://github.com/MystenLabs/walrus-docs/blob/main/contracts/walrus/sources/system/shared_blob.move">shared blobs
+contracts</a>
+for further details.</p>
+<p>You can create a shared blob from an existing <code>Blob</code> object you own with the <code>walrus share</code> command:</p>
+<pre><code class="language-sh">walrus share --blob-obj-id &lt;BLOB_OBJ_ID&gt;
+</code></pre>
+<p>The resulting shared blob can be directly funded by adding an <code>--amount</code>, or you can fund an
+existing shared blob with the <code>walrus fund-shared-blob</code> command.</p>
+<p>Additionally, you can immediately share a newly created blob by adding the <code>--share</code> option to the
+<code>walrus store</code> command.</p>
 <h2 id="blob-id-utilities"><a class="header" href="#blob-id-utilities">Blob ID utilities</a></h2>
 <p>The <code>walrus blob-id &lt;FILE&gt;</code> may be used to derive the blob ID of any file. The blob ID is a
 commitment to the file, and any blob with the same ID will decode to the same content. The blob

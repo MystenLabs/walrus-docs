@@ -253,8 +253,8 @@ locations, publishing the <code>./walrus-snake</code> site is as simple as calli
 <a class="admonition-anchor-link" href="#admonition-tip"></a>
 </div>
 <div>
-<p>Currently on Walrus testnet, the duration of an epoch is 1 day. If you want your site to stay up
-longer, specify the number of epochs with the <code>--epochs</code> flag!</p>
+<p>Currently on Walrus Testnet, the duration of an epoch is two days. If you want your site to stay up
+longer, specify the number of epochs with the <code>--epochs</code> flag (maximum 365 epochs).</p>
 </div>
 </div>
 <p>The end of the output should look like the following:</p>
@@ -287,7 +287,7 @@ configuration</a> section.</p>
 <p>Then, you can update the existing site by running the <code>update</code> command, providing the directory
 where to find the updated files (still <code>./walrus-snake</code>) and the object ID of the existing site
 (<code>0x407a3081...</code>):</p>
-<pre><code class="language-sh">site-builder update --epochs 100 ./walrus-snake  0x407a3081...
+<pre><code class="language-sh">site-builder update --epochs 100 ./walrus-snake 0x407a3081...
 </code></pre>
 <p>The output this time should be:</p>
 <pre><code class="language-txt">Execution completed

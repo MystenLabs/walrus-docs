@@ -245,8 +245,7 @@ CLI (<code>site-builder --help</code>) or individual commands (e.g. <code>site-b
 <p>The <code>publish</code> command, as described in the <a href="./tutorial-publish.html">previous section</a>, publishes a
 new site on Sui. The command takes a directory as input and creates a new Walrus Site from the
 resources contained within.</p>
-<p>The <code>--epochs</code> flag allows you to specify for how long the site data will be stored on Walrus. By
-default, this is set to <code>1</code> epoch.</p>
+<p>The <code>--epochs</code> flag allows you to specify for how long the site data will be stored on Walrus.</p>
 <div id="admonition-epoch-duration-on-walrus-testnet" class="admonition admonish-danger" role="note" aria-labelledby="admonition-epoch-duration-on-walrus-testnet-title">
 <div class="admonition-title">
 <div id="admonition-epoch-duration-on-walrus-testnet-title">
@@ -255,9 +254,9 @@ default, this is set to <code>1</code> epoch.</p>
 <a class="admonition-anchor-link" href="#admonition-epoch-duration-on-walrus-testnet"></a>
 </div>
 <div>
-<p>On Walrus Testnet, one epoch will last <strong>1 day</strong>. Therefore, consider storing your site for a large
-number of epochs if you want to make it available for the following months! The maximum duration is
-set to 200 epochs.</p>
+<p>On Walrus Testnet, the epoch duration is <strong>two days</strong>. Therefore, consider storing your site for a
+large number of epochs if you want to make it available for the following months! The maximum
+duration is set to 365 epochs.</p>
 </div>
 </div>
 <p>If you are just uploading raw files without an <code>index.html</code>, you may want to use the
