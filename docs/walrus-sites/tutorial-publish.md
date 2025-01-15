@@ -9,12 +9,13 @@ The `site-builder` works by uploading a directory of files produced by any web f
 and adding the relevant metadata to Sui. This directory should have a file called `index.html` in
 its root, which will be the entry point to the Walrus Site.
 
-There is a very useful [example-Walrus-sites](https://github.com/MystenLabs/example-walrus-sites)
+There is a very useful [example-walrus-sites](https://github.com/MystenLabs/example-walrus-sites)
 repository that contains multiple kinds of sites that you can use for reference.
 
 For simplicity, we will start by publishing the most frugal of the sites, the `walrus-snake` game.
 
-First, clone the repository of examples:
+
+First, clone the repository of the examples:
 
 ``` sh
 git clone https://github.com/MystenLabs/example-walrus-sites.git && cd walrus-snake/
