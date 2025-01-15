@@ -3172,9 +3172,10 @@ Base36 encoding of the Sui object ID of the site. For the Flatland dApp, this UR
 <p>As mentioned before, we provide two types of portals to browse Walrus Sites:</p>
 <ul>
 <li>The server-side portal, which is a server that resolves a Walrus Site, returning it to the
-browser. The server-side portal is hosted at <a href="https://blob.store">https://blob.store</a>.</li>
-<li>The service-worker portal, which is a service worker that is installed in the browser and resolves
-a Walrus Site. The service-worker portal is hosted at <a href="https://walrus.site">https://walrus.site</a>.</li>
+browser. The server-side portal is hosted at <a href="https://walrus.site">https://walrus.site</a>.</li>
+<li>The service-worker portal, which is a service worker that is installed in the browser and
+resolves a Walrus Site. The service-worker portal is no longer hosted at a specific domain, but
+the code is still maintained so that it can be used by anyone.</li>
 </ul>
 <p>We now describe the resolution process of a Walrus Site in the browser using the service-worker
 portal as an example.</p>
@@ -3203,6 +3204,21 @@ browser.</li>
 </ul>
 <p>These steps are executed for all resources the browser may query thereafter (for example, if
 <code>/index.html</code> points to <code>assets/cat.png</code>).</p>
+<div id="admonition-server-side-approach" class="admonition admonish-tip" role="note" aria-labelledby="admonition-server-side-approach-title">
+<div class="admonition-title">
+<div id="admonition-server-side-approach-title">
+<p>Server side approach</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/overview.html#admonition-server-side-approach"></a>
+</div>
+<div>
+<p>The server-side portal works similarly, but the resolution is performed by the server. Meaning that
+the server will resolve the SuiNS name, fetch the dynamic fields, and return the resources to the
+browser, without anything else happening on the user's side. So the steps 2-6 are no longer
+relevant, and 7-10 are performed by the server. The resulting resources are transmitted to the
+browser in a standard HTTP response.</p>
+</div>
+</div>
 <h2 id="the-site-builder"><a class="header" href="#the-site-builder">The site builder</a></h2>
 <p>To facilitate the creation of Walrus Sites, we provide the "site builder" tool. The site builder
 takes care of creating Walrus Sites object on Sui, with the correct structure, and stores the site
