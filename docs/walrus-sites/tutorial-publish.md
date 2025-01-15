@@ -14,7 +14,7 @@ repository that contains multiple kinds of sites that you can use for reference.
 
 For simplicity, we will start by publishing the most frugal of the sites, the `walrus-snake` game.
 
-First, clone the repository of examples:
+First, clone the repository of the examples:
 
 ``` sh
 git clone https://github.com/MystenLabs/example-walrus-sites.git && cd walrus-snake/

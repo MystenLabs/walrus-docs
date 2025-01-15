@@ -32,7 +32,7 @@ has been fetched) did not tamper with the contents of the blob.
 
 Here, the portal provider is only trusted to provide the correct service worker code to the user.
 The user's browser will then perform the fetching and authentication. The guarantees are therefore
-the same as with the remote server-site portal, with the addition that the user can inspect the code
+the same as with the remote server-side portal, with the addition that the user can inspect the code
 returned by the portal provider and verify its integrity (e.g., by comparing it the hash of the
 service worker code to one that is known to be correct).
 
