@@ -33,8 +33,8 @@ You can check out the mint page at <https://flatland.walrus.site/>. This site is
 browser through the Walrus Site *portal* <https://walrus.site>. While the portal's operation is
 explained in a [later section](./portal.md), consider for now that there can be many portals (hosted
 by whoever wants to have their own, and even on `localhost`). Further, the only function of the
-portal is to provide the browser with some code (specifically, a service worker) that allows it to
-fetch the Walrus Site from Sui and Walrus.
+portal is to retrieve the metadata (from Sui) and the resource files (from Walrus) that constitute
+the site.
 
 If you have a Sui wallet with some Testnet SUI, you can try and "mint a new Flatlander" from the
 site. This creates an NFT from the collection and shows you two links: one to the explorer, and one
