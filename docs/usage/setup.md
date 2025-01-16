@@ -150,13 +150,14 @@ in the `walrus_package` field. Finally, exchange objects are needed to swap SUI 
 
 The current Testnet deployment uses the following objects:
 
-TODO: This currently points to the PTN. Update this with the new Testnet object IDs.
-
 ```yaml
-system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
-staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
+system_object: 0x98ebc47370603fe81d9e15491b2f1443d619d1dab720d586e429ed233e1255c1
+staking_object: 0x20266a17b4f1a216727f3eef5772f8d486a9e3b5e319af80a5b75809c035561d
 exchange_objects:
-- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
+  - 0x59ab926eb0d94d0d6d6139f11094ea7861914ad2ecffc7411529c60019133997
+  - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
+  - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
+  - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
 ```
 
 <!-- markdownlint-disable code-fence-style -->
@@ -181,18 +182,19 @@ you need to use the `--config` option when running the `walrus` binary.
 
 The configuration file currently supports the following parameters:
 
-TODO: This currently points to the PTN. Update this with the new Testnet object IDs.
-
 ```yaml
 # These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
-system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
-staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
+system_object: 0x98ebc47370603fe81d9e15491b2f1443d619d1dab720d586e429ed233e1255c1
+staking_object: 0x20266a17b4f1a216727f3eef5772f8d486a9e3b5e319af80a5b75809c035561d
 
 # The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
 # random one is chosen for the exchange.
 exchange_objects:
-- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
+  - 0x59ab926eb0d94d0d6d6139f11094ea7861914ad2ecffc7411529c60019133997
+  - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
+  - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
+  - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
