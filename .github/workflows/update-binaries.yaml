@@ -46,5 +46,5 @@ jobs:
           RUST_LOG=site_builder=debug,walrus=debug,info
           site-builder
           update --list-directory site ${{ vars.WALRUS_SITE_BIN_OBJECT }}
-          --epochs 200
+          --epochs max
           --force
