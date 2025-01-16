@@ -34,7 +34,7 @@ try:
     assert result.returncode == 0
 
     # Parse the response and display key information
-    json_result_dict = json.loads(result.stdout.strip())
+    json_result_dict = json_result_dict = json.loads(result.stdout.strip())[0]["blobStoreResult"]
     if "newlyCreated" in json_result_dict:
         blob_id = json_result_dict["newlyCreated"]["blobObject"]["blobId"]
         sui_object_id = json_result_dict["newlyCreated"]["blobObject"]["id"]

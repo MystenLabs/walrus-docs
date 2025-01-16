@@ -22,8 +22,6 @@
 
 - `hello_walrus_jsonapi.py` shows how to store and read blobs using the JSON API of the Walrus
   client.
-- `hello_walrus_sui_system.py` prints information on the Walrus deployment based on the system
-  object.
 - `hello_walrus_webapi.py` shows how to store and read blobs using the HTTP API of the Walrus
   client.
 - `track_walrus_events.py` is a simple script to track all Walrus-related events on Sui.
