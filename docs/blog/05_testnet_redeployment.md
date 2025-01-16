@@ -4,8 +4,8 @@ Published on: 2025-01-16
 
 We have reached a stage in development where it is beneficial to redeploy the Walrus Testnet to
 incorporate various improvements that include some backwards-incompatible changes. This redeployment
-has happened on 2025-01-16.
-
+has happened on 2025-01-16. Make sure to get the latest binary and configuration as described in the
+[setup section](../usage/setup.md).
 Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
 to the new Testnet instance, including Walrus Sites. In addition, there is a new version of the WAL
 token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you need to obtain
@@ -15,7 +15,10 @@ for existing Walrus Sites.
 ## Epochs
 
 The epoch duration has been increased from one day to two days to emphasize that this duration is
-different from Sui epochs. At Mainnet, epochs will likely be multiple weeks long.
+different from Sui epochs (at Mainnet, epochs will likely be multiple weeks long). In addition, the
+maximum number of epochs a blob can be stored for has been reduced from 200 to 183 (corresponding
+to one year). The `walrus store` command now also supports the `--epochs max` flag, which will store
+the blob for the maximum number of epochs.
 
 ## New features
 

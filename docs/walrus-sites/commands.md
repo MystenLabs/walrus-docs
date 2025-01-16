@@ -18,7 +18,7 @@ The `--epochs` flag allows you to specify for how long the site data will be sto
 ```admonish danger title="Epoch duration on Walrus Testnet"
 On Walrus Testnet, the epoch duration is **two days**. Therefore, consider storing your site for a
 large number of epochs if you want to make it available for the following months! The maximum
-duration is set to 365 epochs.
+duration is set to 183 epochs (corresponding to one year).
 ```
 
 If you are just uploading raw files without an `index.html`, you may want to use the

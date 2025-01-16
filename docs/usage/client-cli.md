@@ -27,7 +27,7 @@ Walrus system information
 Epochs and storage duration
 Current epoch: 1
 Epoch duration: 2day
-Blobs can be stored for at most 365 epochs in the future.
+Blobs can be stored for at most 183 epochs in the future.
 
 Storage nodes
 Number of storage nodes: 30
@@ -87,8 +87,9 @@ walrus store <FILES> --epochs <EPOCHS>
 ```
 
 The mandatory CLI argument `--epochs <EPOCHS>` indicates the number of epochs the blob should be
-stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 365
-for the current Testnet deployment.
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 183
+for the current Testnet deployment (corresponding to one year). In addition to a positive integer,
+you can also use `--epochs max` to store the blob for the maximum number of epochs.
 
 You can store a single file or multiple files, separated by spaces. Notably, this is compatible
 with glob patterns; for example, `walrus store *.png --epochs <EPOCHS>` will store all PNG files
