@@ -18,6 +18,7 @@ public struct BlobRegistered has copy, drop {
     end_epoch: u32,
     deletable: bool,
     // The object id of the related `Blob` object
+    // Used for keeping track of deletable blobs on the storage nodes.
     object_id: ID,
 }
 
@@ -78,6 +79,47 @@ public struct ShardRecoveryStart has copy, drop {
     shards: vector<u16>,
 }
 
+/// Signals that the contract has been upgraded and migrated.
+public struct ContractUpgraded has copy, drop {
+    epoch: u32,
+    package_id: ID,
+    version: u64,
+}
+
+/// Signals that a Denylist update has started.
+public struct RegisterDenyListUpdate has copy, drop {
+    epoch: u32,
+    root: u256,
+    sequence_number: u64,
+    node_id: ID,
+}
+
+/// Signals that a Denylist update has been certified.
+public struct DenyListUpdate has copy, drop {
+    epoch: u32,
+    root: u256,
+    sequence_number: u64,
+    node_id: ID,
+}
+
+/// Signals that a blob was denylisted by f+1 nodes.
+public struct DenyListBlobDeleted has copy, drop {
+    epoch: u32,
+    blob_id: u256,
+}
+
+/// Signals that a new contract upgrade has been proposed.
+public struct ContractUpgradeProposed has copy, drop {
+    epoch: u32,
+    package_digest: vector<u8>,
+}
+
+/// Signals that a contract upgrade proposal has received a quorum of votes.
+public struct ContractUpgradeQuorumReached has copy, drop {
+    epoch: u32,
+    package_digest: vector<u8>,
+}
+
 // === Functions to emit the events from other modules ===
 
 public(package) fun emit_blob_registered(
@@ -120,7 +162,7 @@ public(package) fun emit_blob_deleted(
     blob_id: u256,
     end_epoch: u32,
     object_id: ID,
-    was_certified: bool
+    was_certified: bool,
 ) {
     event::emit(BlobDeleted { epoch, blob_id, end_epoch, object_id, was_certified });
 }
@@ -143,4 +185,38 @@ public(package) fun emit_epoch_parameters_selected(next_epoch: u32) {
 
 public(package) fun emit_shard_recovery_start(epoch: u32, shards: vector<u16>) {
     event::emit(ShardRecoveryStart { epoch, shards })
+}
+
+public(package) fun emit_contract_upgraded(epoch: u32, package_id: ID, version: u64) {
+    event::emit(ContractUpgraded { epoch, package_id, version })
+}
+
+public(package) fun emit_register_deny_list_update(
+    epoch: u32,
+    root: u256,
+    sequence_number: u64,
+    node_id: ID,
+) {
+    event::emit(RegisterDenyListUpdate { epoch, root, sequence_number, node_id })
+}
+
+public(package) fun emit_deny_list_update(
+    epoch: u32,
+    root: u256,
+    sequence_number: u64,
+    node_id: ID,
+) {
+    event::emit(DenyListUpdate { epoch, root, sequence_number, node_id })
+}
+
+public(package) fun emit_deny_listed_blob_deleted(epoch: u32, blob_id: u256) {
+    event::emit(DenyListBlobDeleted { epoch, blob_id })
+}
+
+public(package) fun emit_contract_upgrade_proposed(epoch: u32, package_digest: vector<u8>) {
+    event::emit(ContractUpgradeProposed { epoch, package_digest })
+}
+
+public(package) fun emit_contract_upgrade_quorum_reached(epoch: u32, package_digest: vector<u8>) {
+    event::emit(ContractUpgradeQuorumReached { epoch, package_digest })
 }

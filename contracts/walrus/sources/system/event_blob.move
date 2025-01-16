@@ -4,18 +4,18 @@
 /// Module to certify event blobs.
 module walrus::event_blob;
 
-use sui::vec_map::VecMap;
+use sui::vec_map::{Self, VecMap};
 
 // === Definitions related to event blob certification ===
 
 /// Event blob index which was attested by a storage node.
-public struct EventBlobAttestation has store, copy, drop {
+public struct EventBlobAttestation has copy, drop, store {
     checkpoint_sequence_num: u64,
     epoch: u32,
 }
 
 /// State of a certified event blob.
-public struct EventBlob has copy, store, drop {
+public struct EventBlob has copy, drop, store {
     /// Blob id of the certified event blob.
     blob_id: u256,
     /// Ending sui checkpoint of the certified event blob.
@@ -23,9 +23,7 @@ public struct EventBlob has copy, store, drop {
 }
 
 /// State of event blob stream.
-#[allow(unused_field)]
-public struct EventBlobCertificationState has key, store {
-    id: UID,
+public struct EventBlobCertificationState has store {
     /// Latest certified event blob.
     latest_certified_blob: Option<EventBlob>,
     /// Current event blob being attested.
@@ -75,10 +73,8 @@ public(package) fun ending_checkpoint_sequence_number(self: &EventBlob): u64 {
 // === Accessors for EventBlobCertificationState ===
 
 /// Creates a blob state with no signers and no last checkpoint sequence number
-public(package) fun create_with_empty_state(ctx: &mut TxContext): EventBlobCertificationState {
-    let id = object::new(ctx);
+public(package) fun create_with_empty_state(): EventBlobCertificationState {
     EventBlobCertificationState {
-        id,
         latest_certified_blob: option::none(),
         aggregate_weight_per_blob: sui::vec_map::empty(),
     }
@@ -97,6 +93,11 @@ public(package) fun get_latest_certified_checkpoint_sequence_number(
     self.latest_certified_blob.map!(|state| state.ending_checkpoint_sequence_number())
 }
 
+/// Returns the number of blobs being tracked
+public(package) fun get_num_tracked_blobs(self: &EventBlobCertificationState): u64 {
+    self.aggregate_weight_per_blob.size()
+}
+
 /// Returns true if a blob is already certified or false otherwise
 public(package) fun is_blob_already_certified(
     self: &EventBlobCertificationState,
@@ -109,7 +110,7 @@ public(package) fun is_blob_already_certified(
                 latest_certified_sequence_num,
             | latest_certified_sequence_num >= ending_checkpoint_sequence_num,
         )
-        .get_with_default(false)
+        .destroy_or!(false)
 }
 
 /// Updates the latest certified event blob
@@ -121,10 +122,7 @@ public(package) fun update_latest_certified_event_blob(
     self.get_latest_certified_checkpoint_sequence_number().do!(|latest_certified_sequence_num| {
         assert!(checkpoint_sequence_number > latest_certified_sequence_num);
     });
-    self.latest_certified_blob =
-        option::some(
-            new_event_blob(checkpoint_sequence_number, blob_id),
-        );
+    self.latest_certified_blob = option::some(new_event_blob(checkpoint_sequence_number, blob_id));
 }
 
 /// Update the aggregate weight of an event blob
@@ -133,7 +131,7 @@ public(package) fun update_aggregate_weight(
     blob_id: u256,
     weight: u16,
 ): u16 {
-    let agg_weight = self.aggregate_weight_per_blob.get_mut(&blob_id);
+    let agg_weight = &mut self.aggregate_weight_per_blob[&blob_id];
     *agg_weight = *agg_weight + weight;
     *agg_weight
 }
@@ -146,14 +144,7 @@ public(package) fun start_tracking_blob(self: &mut EventBlobCertificationState, 
     };
 }
 
-/// Stop tracking nodes for the given blob id
-public(package) fun stop_tracking_blob(self: &mut EventBlobCertificationState, blob_id: u256) {
-    if (self.aggregate_weight_per_blob.contains(&blob_id)) {
-        self.aggregate_weight_per_blob.remove(&blob_id);
-    };
-}
-
 /// Reset blob certification state upon epoch change
 public(package) fun reset(self: &mut EventBlobCertificationState) {
-    self.aggregate_weight_per_blob = sui::vec_map::empty();
+    self.aggregate_weight_per_blob = vec_map::empty();
 }

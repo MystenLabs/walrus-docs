@@ -5,7 +5,7 @@
 /// Module: system
 module walrus::system;
 
-use sui::{balance::Balance, coin::Coin, dynamic_object_field};
+use sui::{balance::Balance, coin::Coin, dynamic_field, vec_map::VecMap};
 use wal::wal::WAL;
 use walrus::{
     blob::Blob,
@@ -16,6 +16,10 @@ use walrus::{
     system_state_inner::{Self, SystemStateInnerV1}
 };
 
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+const EInvalidMigration: u64 = 0;
+
 /// Flag to indicate the version of the system.
 const VERSION: u64 = 0;
 
@@ -23,14 +27,21 @@ const VERSION: u64 = 0;
 public struct System has key {
     id: UID,
     version: u64,
+    package_id: ID,
+    new_package_id: Option<ID>,
 }
 
 /// Creates and shares an empty system object.
 /// Must only be called by the initialization function.
-public(package) fun create_empty(max_epochs_ahead: u32, ctx: &mut TxContext) {
-    let mut system = System { id: object::new(ctx), version: VERSION };
+public(package) fun create_empty(max_epochs_ahead: u32, package_id: ID, ctx: &mut TxContext) {
+    let mut system = System {
+        id: object::new(ctx),
+        version: VERSION,
+        package_id,
+        new_package_id: option::none(),
+    };
     let system_state_inner = system_state_inner::create_empty(max_epochs_ahead, ctx);
-    dynamic_object_field::add(&mut system.id, VERSION, system_state_inner);
+    dynamic_field::add(&mut system.id, VERSION, system_state_inner);
     transfer::share_object(system);
 }
 
@@ -38,10 +49,10 @@ public(package) fun create_empty(max_epochs_ahead: u32, ctx: &mut TxContext) {
 public fun invalidate_blob_id(
     system: &System,
     signature: vector<u8>,
-    members: vector<u16>,
+    members_bitmap: vector<u8>,
     message: vector<u8>,
 ): u256 {
-    system.inner().invalidate_blob_id(signature, members, message)
+    system.inner().invalidate_blob_id(signature, members_bitmap, message)
 }
 
 /// Certifies a blob containing Walrus events.
@@ -115,10 +126,10 @@ public fun certify_blob(
     self: &System,
     blob: &mut Blob,
     signature: vector<u8>,
-    signers: vector<u16>,
+    signers_bitmap: vector<u8>,
     message: vector<u8>,
 ) {
-    self.inner().certify_blob(blob, signature, signers, message);
+    self.inner().certify_blob(blob, signature, signers_bitmap, message);
 }
 
 /// Deletes a deletable blob and returns the contained storage resource.
@@ -141,6 +152,46 @@ public fun extend_blob(
     payment: &mut Coin<WAL>,
 ) {
     self.inner_mut().extend_blob(blob, epochs_ahead, payment);
+}
+
+/// Adds rewards to the system for the specified number of epochs ahead.
+/// The rewards are split equally across the future accounting ring buffer up to the
+/// specified epoch.
+public fun add_subsidy(system: &mut System, subsidy: Coin<WAL>, epochs_ahead: u32) {
+    system.inner_mut().add_subsidy(subsidy, epochs_ahead)
+}
+
+// === Deny List Features ===
+
+/// Register a deny list update.
+public fun register_deny_list_update(
+    self: &mut System,
+    cap: &StorageNodeCap,
+    deny_list_root: u256,
+    deny_list_sequence: u64,
+) {
+    self.inner_mut().register_deny_list_update(cap, deny_list_root, deny_list_sequence)
+}
+
+/// Perform the update of the deny list.
+public fun update_deny_list(
+    self: &mut System,
+    cap: &mut StorageNodeCap,
+    signature: vector<u8>,
+    members_bitmap: vector<u8>,
+    message: vector<u8>,
+) {
+    self.inner_mut().update_deny_list(cap, signature, members_bitmap, message)
+}
+
+/// Delete a blob that is deny listed by f+1 members.
+public fun delete_deny_listed_blob(
+    self: &System,
+    signature: vector<u8>,
+    members_bitmap: vector<u8>,
+    message: vector<u8>,
+) {
+    self.inner().delete_deny_listed_blob(signature, members_bitmap, message)
 }
 
 // === Public Accessors ===
@@ -184,9 +235,45 @@ public(package) fun committee_mut(self: &mut System): &mut BlsCommittee {
 public(package) fun advance_epoch(
     self: &mut System,
     new_committee: BlsCommittee,
-    new_epoch_params: EpochParams,
-): Balance<WAL> {
+    new_epoch_params: &EpochParams,
+): VecMap<ID, Balance<WAL>> {
     self.inner_mut().advance_epoch(new_committee, new_epoch_params)
+}
+
+// === Accessors ===
+
+public(package) fun package_id(system: &System): ID {
+    system.package_id
+}
+
+public(package) fun version(system: &System): u64 {
+    system.version
+}
+
+// === Upgrade ===
+
+public(package) fun set_new_package_id(system: &mut System, new_package_id: ID) {
+    system.new_package_id = option::some(new_package_id);
+}
+
+/// Migrate the system object to the new package id.
+///
+/// This function sets the new package id and version and can be modified in future versions
+/// to migrate changes in the `system_state_inner` object if needed.
+public(package) fun migrate(system: &mut System) {
+    assert!(system.version < VERSION, EInvalidMigration);
+
+    // Move the old system state inner to the new version.
+    let system_state_inner: SystemStateInnerV1 = dynamic_field::remove(
+        &mut system.id,
+        system.version,
+    );
+    dynamic_field::add(&mut system.id, VERSION, system_state_inner);
+    system.version = VERSION;
+
+    // Set the new package id.
+    assert!(system.new_package_id.is_some(), EInvalidMigration);
+    system.package_id = system.new_package_id.extract();
 }
 
 // === Internals ===
@@ -194,30 +281,55 @@ public(package) fun advance_epoch(
 /// Get a mutable reference to `SystemStateInner` from the `System`.
 fun inner_mut(system: &mut System): &mut SystemStateInnerV1 {
     assert!(system.version == VERSION);
-    dynamic_object_field::borrow_mut(&mut system.id, VERSION)
+    dynamic_field::borrow_mut(&mut system.id, VERSION)
 }
 
 /// Get an immutable reference to `SystemStateInner` from the `System`.
 public(package) fun inner(system: &System): &SystemStateInnerV1 {
     assert!(system.version == VERSION);
-    dynamic_object_field::borrow(&system.id, VERSION)
+    dynamic_field::borrow(&system.id, VERSION)
 }
 
 // === Testing ===
 
 #[test_only]
-public(package) fun new_for_testing(): System {
+public fun new_for_testing(): System {
     let ctx = &mut tx_context::dummy();
-    let mut system = System { id: object::new(ctx), version: VERSION };
+    let mut system = System {
+        id: object::new(ctx),
+        version: VERSION,
+        package_id: new_id(ctx),
+        new_package_id: option::none(),
+    };
     let system_state_inner = system_state_inner::new_for_testing();
-    dynamic_object_field::add(&mut system.id, VERSION, system_state_inner);
+    dynamic_field::add(&mut system.id, VERSION, system_state_inner);
     system
 }
 
 #[test_only]
 public(package) fun new_for_testing_with_multiple_members(ctx: &mut TxContext): System {
-    let mut system = System { id: object::new(ctx), version: VERSION };
+    let mut system = System {
+        id: object::new(ctx),
+        version: VERSION,
+        package_id: new_id(ctx),
+        new_package_id: option::none(),
+    };
     let system_state_inner = system_state_inner::new_for_testing_with_multiple_members(ctx);
-    dynamic_object_field::add(&mut system.id, VERSION, system_state_inner);
+    dynamic_field::add(&mut system.id, VERSION, system_state_inner);
     system
+}
+
+#[test_only]
+fun new_id(ctx: &mut TxContext): ID {
+    ctx.fresh_object_address().to_id()
+}
+
+#[test_only]
+public(package) fun new_package_id(system: &System): Option<ID> {
+    system.new_package_id
+}
+
+#[test_only]
+public(package) fun destroy_for_testing(self: System) {
+    sui::test_utils::destroy(self);
 }

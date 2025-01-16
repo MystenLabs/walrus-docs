@@ -25,12 +25,12 @@ public(package) fun encoded_blob_length(unencoded_length: u64, n_shards: u16): u
 
 /// The number of primary source symbols per sliver given `n_shards`.
 fun source_symbols_primary(n_shards: u16): u16 {
-    n_shards - max_byzantine(n_shards) - decoding_safety_limit(n_shards)
+    n_shards - 2 * max_byzantine(n_shards) - decoding_safety_limit(n_shards)
 }
 
 /// The number of secondary source symbols per sliver given `n_shards`.
 fun source_symbols_secondary(n_shards: u16): u16 {
-    n_shards - 2 * max_byzantine(n_shards) - decoding_safety_limit(n_shards)
+    n_shards - max_byzantine(n_shards) - decoding_safety_limit(n_shards)
 }
 
 /// The total number of source symbols given `n_shards`.
@@ -101,4 +101,21 @@ fun test_symbol_too_large() {
     let unencoded_length = (0xffff + 1) * n_source_symbols(n_shards);
     // Test should fail here
     let _ = symbol_size(unencoded_length, n_shards);
+}
+
+#[test_only]
+fun assert_primary_secondary_source_symbols(n_shards: u16, primary: u16, secondary: u16) {
+    assert!(source_symbols_primary(n_shards) == primary, 0);
+    assert!(source_symbols_secondary(n_shards) == secondary, 0);
+}
+
+#[test]
+fun test_source_symbols_number() {
+    // These values are taken from the RedStuff docs.
+    assert_primary_secondary_source_symbols(7, 3, 5);
+    assert_primary_secondary_source_symbols(10, 4, 7);
+    assert_primary_secondary_source_symbols(31, 9, 19);
+    assert_primary_secondary_source_symbols(100, 29, 62);
+    assert_primary_secondary_source_symbols(300, 97, 196);
+    assert_primary_secondary_source_symbols(1000, 329, 662);
 }

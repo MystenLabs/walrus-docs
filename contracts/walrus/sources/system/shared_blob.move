@@ -24,6 +24,15 @@ public fun new(blob: Blob, ctx: &mut TxContext) {
     })
 }
 
+/// Shares the provided `blob` as a `SharedBlob` with funds.
+public fun new_funded(blob: Blob, funds: Coin<WAL>, ctx: &mut TxContext) {
+    transfer::share_object(SharedBlob {
+        id: object::new(ctx),
+        blob,
+        funds: funds.into_balance(),
+    })
+}
+
 /// Adds the provided `Coin` to the stored funds.
 public fun fund(self: &mut SharedBlob, added_funds: Coin<WAL>) {
     self.funds.join(added_funds.into_balance());

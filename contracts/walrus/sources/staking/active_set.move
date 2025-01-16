@@ -2,24 +2,35 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /// Contains an active set of storage nodes. The active set is a smart collection
-/// that only stores up to a 1000 nodes. The nodes are sorted by the amount of
-/// staked WAL. Additionally, the active set tracks the total amount of staked
+/// that only stores up to a 1000 nodes. The active set tracks the total amount of staked
 /// WAL to make the calculation of the rewards and voting power distribution easier.
+///
+/// TODOs:
+/// - consider using a different data structure for the active set (#714)
+/// - consider removing `min_stake` field, use threshold from number of
+///   shards and total_staked (#715)
 module walrus::active_set;
 
-/// Active set cannot have maximum size of 0.
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
 const EZeroMaxSize: u64 = 0;
+const EDuplicateInsertion: u64 = 1;
 
-public struct ActiveSetEntry has store, copy, drop {
+public struct ActiveSetEntry has copy, drop, store {
     node_id: ID,
     staked_amount: u64,
 }
 
 /// The active set of storage nodes, a smart collection that only stores up
-/// to a 1000 nodes. The nodes are sorted by the amount of staked WAL.
+/// to a 1000 nodes.
 /// Additionally, the active set tracks the total amount of staked WAL to make
 /// the calculation of the rewards and voting power distribution easier.
-public struct ActiveSet has store, copy, drop {
+///
+/// TODO: implement a reserve to track N + K nodes, where N is the active set
+/// size and K is the number of nodes that are in the process of being added to
+/// the active set. This will allow us to handle removals from the active set
+/// without refetching the nodes from the storage.
+public struct ActiveSet has copy, drop, store {
     /// The maximum number of storage nodes in the active set.
     /// Potentially remove this field.
     max_size: u16,
@@ -62,7 +73,7 @@ public(package) fun update(set: &mut ActiveSet, node_id: ID, staked_amount: u64)
         return false
     };
     index.do!(|idx| {
-        set.total_stake = set.total_stake - set.nodes[idx].staked_amount + staked_amount;
+        set.total_stake = set.total_stake + staked_amount - set.nodes[idx].staked_amount;
         set.nodes[idx].staked_amount = staked_amount;
     });
     true
@@ -74,7 +85,7 @@ public(package) fun update(set: &mut ActiveSet, node_id: ID, staked_amount: u64)
 /// staked WAL is removed to make space for the new node.
 /// Returns true if the node was inserted, false otherwise.
 public(package) fun insert(set: &mut ActiveSet, node_id: ID, staked_amount: u64): bool {
-    assert!(set.nodes.find_index!(|entry| entry.node_id == node_id ).is_none());
+    assert!(set.nodes.find_index!(|entry| entry.node_id == node_id).is_none(), EDuplicateInsertion);
 
     // Check if the staked amount is enough to be included in the active set.
     if (staked_amount < set.threshold_stake) return false;
@@ -82,27 +93,28 @@ public(package) fun insert(set: &mut ActiveSet, node_id: ID, staked_amount: u64)
     // If the nodes are less than the max size, insert the node.
     if (set.nodes.length() as u16 < set.max_size) {
         set.total_stake = set.total_stake + staked_amount;
-        set.nodes.push_back(ActiveSetEntry {node_id, staked_amount});
+        set.nodes.push_back(ActiveSetEntry { node_id, staked_amount });
+        return true
+    };
+
+    // Find the node with the smallest amount of stake and less than the new node.
+    let mut min_stake = staked_amount;
+    let mut min_idx = option::none();
+    set.nodes.length().do!(|i| {
+        if (set.nodes[i].staked_amount < min_stake) {
+            min_idx = option::some(i);
+            min_stake = set.nodes[i].staked_amount;
+        }
+    });
+
+    // If there is such a node, replace it in the list.
+    if (min_idx.is_some()) {
+        let min_idx = min_idx.extract();
+        set.total_stake = set.total_stake - min_stake + staked_amount;
+        *&mut set.nodes[min_idx] = ActiveSetEntry { node_id, staked_amount };
         true
     } else {
-        // Find the node with the smallest amount of stake and less than the new node.
-        let mut min_stake = staked_amount;
-        let mut min_idx = option::none();
-        set.nodes.length().do!(|i| {
-            if (set.nodes[i].staked_amount < min_stake) {
-                min_idx = option::some(i);
-                min_stake = set.nodes[i].staked_amount;
-            }
-        });
-        // If there is such a node, replace it in the list.
-        if (min_idx.is_some()) {
-            let min_idx = min_idx.extract();
-            set.total_stake = set.total_stake - min_stake + staked_amount;
-            *&mut set.nodes[min_idx] = ActiveSetEntry { node_id, staked_amount };
-            true
-        } else {
-            false
-        }
+        false
     }
 }
 
@@ -165,8 +177,11 @@ public(package) fun cur_min_stake(set: &ActiveSet): u64 {
 
 #[test_only]
 public fun stake_for_node(set: &ActiveSet, node_id: ID): u64 {
-    set.nodes.find_index!(|entry| entry.node_id == node_id)
-        .map!(|index| set.nodes[index].staked_amount ).destroy_with_default(0)
+    set
+        .nodes
+        .find_index!(|entry| entry.node_id == node_id)
+        .map!(|index| set.nodes[index].staked_amount)
+        .destroy_or!(0)
 }
 
 // === Test ===
@@ -174,18 +189,18 @@ public fun stake_for_node(set: &ActiveSet, node_id: ID): u64 {
 #[test]
 fun test_evict_correct_node_simple() {
     let mut set = new(5, 0);
-    set.insert_or_update(object::id_from_address(@1), 10);
-    set.insert_or_update(object::id_from_address(@2), 9);
-    set.insert_or_update(object::id_from_address(@3), 8);
-    set.insert_or_update(object::id_from_address(@4), 7);
-    set.insert_or_update(object::id_from_address(@5), 6);
+    set.insert_or_update(object::id_from_address(@0x1), 10);
+    set.insert_or_update(object::id_from_address(@0x2), 9);
+    set.insert_or_update(object::id_from_address(@0x3), 8);
+    set.insert_or_update(object::id_from_address(@0x4), 7);
+    set.insert_or_update(object::id_from_address(@0x5), 6);
 
     let mut total_stake = 10 + 9 + 8 + 7 + 6;
 
     assert!(set.total_stake == total_stake);
 
     // insert another node which should eject node 5
-    set.insert_or_update(object::id_from_address(@6), 11);
+    set.insert_or_update(object::id_from_address(@0x6), 11);
 
     // check if total stake was updated correctly
     total_stake = total_stake - 6 + 11;
@@ -194,25 +209,25 @@ fun test_evict_correct_node_simple() {
     let active_ids = set.active_ids();
 
     // node 5 should not be part of the set
-    assert!(!active_ids.contains(&object::id_from_address(@5)));
+    assert!(!active_ids.contains(&object::id_from_address(@0x5)));
 
     // all other nodes should be
-    assert!(active_ids.contains(&object::id_from_address(@1)));
-    assert!(active_ids.contains(&object::id_from_address(@2)));
-    assert!(active_ids.contains(&object::id_from_address(@3)));
-    assert!(active_ids.contains(&object::id_from_address(@4)));
-    assert!(active_ids.contains(&object::id_from_address(@6)));
+    assert!(active_ids.contains(&object::id_from_address(@0x1)));
+    assert!(active_ids.contains(&object::id_from_address(@0x2)));
+    assert!(active_ids.contains(&object::id_from_address(@0x3)));
+    assert!(active_ids.contains(&object::id_from_address(@0x4)));
+    assert!(active_ids.contains(&object::id_from_address(@0x6)));
 }
 
 #[test]
 fun test_evict_correct_node_with_updates() {
     let nodes = vector[
-        object::id_from_address(@1),
-        object::id_from_address(@2),
-        object::id_from_address(@3),
-        object::id_from_address(@4),
-        object::id_from_address(@5),
-        object::id_from_address(@6),
+        object::id_from_address(@0x1),
+        object::id_from_address(@0x2),
+        object::id_from_address(@0x3),
+        object::id_from_address(@0x4),
+        object::id_from_address(@0x5),
+        object::id_from_address(@0x6),
     ];
 
     let mut set = new(5, 0);

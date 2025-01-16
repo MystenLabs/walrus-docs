@@ -6,17 +6,20 @@
 module walrus::test_utils;
 
 use std::string::String;
-use sui::balance::{Self, Balance};
-use sui::bls12381::{Self, bls12381_min_pk_verify};
-use sui::coin::{Self, Coin};
-use sui::vec_map;
+use sui::{
+    balance::{Self, Balance},
+    bls12381::{Self, bls12381_min_pk_verify, g1_to_uncompressed_g1},
+    coin::{Self, Coin},
+    vec_map
+};
 use wal::wal::WAL;
 use walrus::{
     bls_aggregate,
+    messages,
+    node_metadata::{Self, NodeMetadata},
     staking_inner::StakingInnerV1,
     staking_pool::{Self, StakingPool},
-    walrus_context::{Self, WalrusContext},
-    messages,
+    walrus_context::{Self, WalrusContext}
 };
 
 /// Debug macro for pretty printing values.
@@ -76,6 +79,7 @@ public fun context_runner(): ContextRunner {
 }
 
 public fun epoch(self: &ContextRunner): u32 { self.epoch }
+
 public fun is_committee_selected(self: &ContextRunner): bool { self.committee_selected }
 
 /// Returns the current context and the transaction context.
@@ -108,9 +112,10 @@ public macro fun next_epoch_tx($self: &mut ContextRunner, $f: |&WalrusContext, &
 public struct PoolBuilder has copy, drop {
     name: Option<String>,
     network_address: Option<String>,
+    metadata: Option<NodeMetadata>,
     bls_sk: Option<vector<u8>>,
     network_public_key: Option<vector<u8>>,
-    commission_rate: Option<u64>,
+    commission_rate: Option<u16>,
     storage_price: Option<u64>,
     write_price: Option<u64>,
     node_capacity: Option<u64>,
@@ -137,6 +142,7 @@ public fun pool(): PoolBuilder {
     PoolBuilder {
         name: option::none(),
         network_address: option::none(),
+        metadata: option::none(),
         bls_sk: option::none(),
         network_public_key: option::none(),
         commission_rate: option::none(),
@@ -147,19 +153,13 @@ public fun pool(): PoolBuilder {
 }
 
 /// Sets the commission rate for the pool.
-public fun commission_rate(
-    mut self: PoolBuilder,
-    commission_rate: u64,
-): PoolBuilder {
+public fun commission_rate(mut self: PoolBuilder, commission_rate: u16): PoolBuilder {
     self.commission_rate.fill(commission_rate);
     self
 }
 
 /// Sets the storage price for the pool.
-public fun storage_price(
-    mut self: PoolBuilder,
-    storage_price: u64,
-): PoolBuilder {
+public fun storage_price(mut self: PoolBuilder, storage_price: u64): PoolBuilder {
     self.storage_price.fill(storage_price);
     self
 }
@@ -171,10 +171,7 @@ public fun write_price(mut self: PoolBuilder, write_price: u64): PoolBuilder {
 }
 
 /// Sets the node capacity for the pool.
-public fun node_capacity(
-    mut self: PoolBuilder,
-    node_capacity: u64,
-): PoolBuilder {
+public fun node_capacity(mut self: PoolBuilder, node_capacity: u64): PoolBuilder {
     self.node_capacity.fill(node_capacity);
     self
 }
@@ -186,11 +183,14 @@ public fun name(mut self: PoolBuilder, name: String): PoolBuilder {
 }
 
 /// Sets the network address for the pool.
-public fun network_address(
-    mut self: PoolBuilder,
-    network_address: String,
-): PoolBuilder {
+public fun network_address(mut self: PoolBuilder, network_address: String): PoolBuilder {
     self.network_address.fill(network_address);
+    self
+}
+
+/// Sets the metadata for the pool.
+public fun metadata(mut self: PoolBuilder, metadata: NodeMetadata): PoolBuilder {
+    self.metadata.fill(metadata);
     self
 }
 
@@ -201,23 +201,17 @@ public fun bls_sk(mut self: PoolBuilder, secret_key: vector<u8>): PoolBuilder {
 }
 
 /// Sets the network public key for the pool.
-public fun network_public_key(
-    mut self: PoolBuilder,
-    network_public_key: vector<u8>,
-): PoolBuilder {
+public fun network_public_key(mut self: PoolBuilder, network_public_key: vector<u8>): PoolBuilder {
     self.network_public_key.fill(network_public_key);
     self
 }
 
 /// Builds a staking pool with the parameters set in the builder.
-public fun build(
-    self: PoolBuilder,
-    wctx: &WalrusContext,
-    ctx: &mut TxContext,
-): StakingPool {
+public fun build(self: PoolBuilder, wctx: &WalrusContext, ctx: &mut TxContext): StakingPool {
     let PoolBuilder {
         name,
         network_address,
+        metadata,
         bls_sk,
         network_public_key,
         commission_rate,
@@ -228,17 +222,21 @@ public fun build(
 
     let bls_sk = bls_sk.destroy_with_default(bls_sk_for_testing());
     let bls_pub_key = bls_min_pk_from_sk(&bls_sk);
-    let pop = bls_min_pk_sign(&messages::new_proof_of_possession_msg(wctx.epoch(), ctx.sender(), bls_pub_key).to_bcs(), &bls_sk);
+    let pop = bls_min_pk_sign(
+        &messages::new_proof_of_possession_msg(wctx.epoch(), ctx.sender(), bls_pub_key).to_bcs(),
+        &bls_sk,
+    );
 
     staking_pool::new(
         name.destroy_with_default(b"pool".to_string()),
         network_address.destroy_with_default(b"127.0.0.1".to_string()),
+        metadata.destroy_with_default(node_metadata::default()),
         bls_pub_key,
         network_public_key.destroy_with_default(
             x"820e2b273530a00de66c9727c40f48be985da684286983f398ef7695b8a44677ab",
         ),
         pop,
-        commission_rate.destroy_with_default(1000),
+        commission_rate.destroy_with_default(0),
         storage_price.destroy_with_default(1000),
         write_price.destroy_with_default(1000),
         node_capacity.destroy_with_default(1000),
@@ -250,14 +248,11 @@ public fun build(
 /// Similar to `build` but registers the pool with the staking inner, using the
 /// same set of
 /// parameters.
-public fun register(
-    self: PoolBuilder,
-    inner: &mut StakingInnerV1,
-    ctx: &mut TxContext,
-): ID {
+public fun register(self: PoolBuilder, inner: &mut StakingInnerV1, ctx: &mut TxContext): ID {
     let PoolBuilder {
         name,
         network_address,
+        metadata,
         bls_sk,
         network_public_key,
         commission_rate,
@@ -268,11 +263,15 @@ public fun register(
 
     let bls_sk = bls_sk.destroy_with_default(bls_sk_for_testing());
     let bls_pub_key = bls_min_pk_from_sk(&bls_sk);
-    let pop = bls_min_pk_sign(&messages::new_proof_of_possession_msg(inner.epoch(), ctx.sender(), bls_pub_key).to_bcs(), &bls_sk);
+    let pop = bls_min_pk_sign(
+        &messages::new_proof_of_possession_msg(inner.epoch(), ctx.sender(), bls_pub_key).to_bcs(),
+        &bls_sk,
+    );
 
     inner.create_pool(
         name.destroy_with_default(b"pool".to_string()),
         network_address.destroy_with_default(b"127.0.0.1".to_string()),
+        metadata.destroy_with_default(node_metadata::default()),
         bls_pub_key,
         network_public_key.destroy_with_default(
             x"820e2b273530a00de66c9727c40f48be985da684286983f398ef7695b8a44677ab",
@@ -321,39 +320,34 @@ public fun bls_sk_for_testing(): vector<u8> {
 
 /// Returns 10 bls secret keys.
 public fun bls_secret_keys_for_testing(): vector<vector<u8>> {
-    vector[
-        x"DEADBEEF",
-        x"BEEF",
-        x"CAFE",
-        x"C0DE",
-        x"C0FFEE",
-        x"DEAD",
-        x"DECADE",
-        x"DEC0DE",
-        x"FACE",
-        x"F00D",
-    ].map!(|key| pad_bls_sk(&key))
+    let mut res = vector[];
+    10u64.do!(|i| {
+        let sk = bls12381::scalar_from_u64(1 + (i as u64));
+        res.push_back(*sk.bytes());
+    });
+    res
 }
 
 /// Aggregates the given signatures into one signature.
 public fun bls_aggregate_sigs(signatures: &vector<vector<u8>>): vector<u8> {
     let mut aggregate = bls12381::g2_identity();
     signatures.do_ref!(
-        |sig| aggregate =
-            bls12381::g2_add(&aggregate, &bls12381::g2_from_bytes(sig)),
+        |sig| aggregate = bls12381::g2_add(&aggregate, &bls12381::g2_from_bytes(sig)),
     );
     *aggregate.bytes()
 }
 
 /// Test committee with one committee member and 100 shards, using
 /// `test_utils::bls_sk_for_testing()` as secret key.
-public fun new_bls_committee_for_testing(
-    epoch: u32,
-): bls_aggregate::BlsCommittee {
+public fun new_bls_committee_for_testing(epoch: u32): bls_aggregate::BlsCommittee {
     let node_id = tx_context::dummy().fresh_object_address().to_id();
     let sk = bls_sk_for_testing();
     let pub_key = bls12381::g1_from_bytes(&bls_min_pk_from_sk(&sk));
-    let member = bls_aggregate::new_bls_committee_member(pub_key, 100, node_id);
+    let member = bls_aggregate::new_bls_committee_member(
+        g1_to_uncompressed_g1(&pub_key),
+        100,
+        node_id,
+    );
     bls_aggregate::new_bls_committee(epoch, vector[member])
 }
 
@@ -367,9 +361,28 @@ public fun new_bls_committee_with_multiple_members_for_testing(
     let members = keys.map!(|sk| {
         let pub_key = bls12381::g1_from_bytes(&bls_min_pk_from_sk(&sk));
         let node_id = tx_context.fresh_object_address().to_id();
-        bls_aggregate::new_bls_committee_member(pub_key, 100, node_id)
+        bls_aggregate::new_bls_committee_member(g1_to_uncompressed_g1(&pub_key), 100, node_id)
     });
     bls_aggregate::new_bls_committee(epoch, members)
+}
+
+/// Converts a vector of signers to a bitmap.
+/// The set of signers MUST be signed.
+public fun signers_to_bitmap(signers: &vector<u16>): vector<u8> {
+    let mut bitmap: vector<u8> = vector[];
+    let mut next_byte = 0;
+    signers.do_ref!(|signer| {
+        let signer = *signer as u64;
+        let byte = signer / 8;
+        if (byte > bitmap.length()) {
+            bitmap.push_back(next_byte);
+            next_byte = 0;
+        };
+        let bit = (signer % 8) as u8;
+        next_byte = next_byte | (1 << bit);
+    });
+    bitmap.push_back(next_byte);
+    bitmap
 }
 
 // === Unit Tests ===

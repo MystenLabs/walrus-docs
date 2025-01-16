@@ -8,7 +8,8 @@ use walrus::redstuff;
 // Supported Encoding Types
 const RED_STUFF_ENCODING: u8 = 0;
 
-// Errors
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
 const EInvalidEncoding: u64 = 0;
 
 /// Computes the encoded length of a blob given its unencoded length, encoding type
