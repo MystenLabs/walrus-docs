@@ -3210,48 +3210,30 @@ browser. The server-side portal is hosted at <a href="https://walrus.site">https
 resolves a Walrus Site. The service-worker portal is no longer hosted at a specific domain, but
 the code is still maintained so that it can be used by anyone.</li>
 </ul>
-<p>We now describe the resolution process of a Walrus Site in the browser using the service-worker
-portal as an example.</p>
+<p>We now show in greater detail how a Walrus Site is rendered in a client's browser using a generic
+portal. Depending on the different type of portal, some details may differ, but the general picture
+remains unchanged.</p>
 <h3 id="the-end-to-end-resolution-of-a-walrus-site"><a class="header" href="#the-end-to-end-resolution-of-a-walrus-site">The end-to-end resolution of a Walrus Site</a></h3>
-<p>We now show in greater detail how a Walrus Site is rendered in a client's browser with the service
-worker approach. The steps below all reference the following figure:</p>
-<p><img src="walrus-sites/../assets/walrus-site-diagram.svg" alt="Walrus Site resolution" /></p>
+<p>The steps below all reference the following figure:</p>
+<p><img src="walrus-sites/../assets/walrus-sites-portal-diagram.svg" alt="Walrus Site resolution" /></p>
 <ul>
 <li><strong>Site publishing</strong> (step 0): The site developer publishes the Walrus Site using the
 <a href="walrus-sites/overview.html#the-site-builder"><code>site-builder</code></a>, or making use of a publisher. Assume the developer uses the
 SuiNS name <code>dapp.sui</code> to point to the object ID of the created Walrus Site.</li>
 <li><strong>Browsing starts</strong> (step 1): A client browses <code>dapp.walrus.site/index.html</code> in their browser.</li>
-<li><strong>Service worker installation</strong> (steps 2-6): The browser connects to the portal hosted at
-<code>walrus.site</code>, which responds with a page that installs the service worker for <code>dapp.walrus.site</code>.
-The page is refreshed to activate the service worker.</li>
-<li><strong>Site resolution</strong> (steps 7-10): The service worker, which is now installed, interprets its
-<em>origin</em> <code>dapp.walrus.site</code>, and makes a SuiNS resolution for <code>dapp.sui</code>, obtaining the related
-object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
-<a href="walrus-sites/./portal.html">redirects</a>). From the dynamic fields, it selects the one for <code>/index.html</code>, and
-extracts its Walrus blob ID and headers (see the <a href="walrus-sites/./routing.html">advanced section on headers</a>).</li>
-<li><strong>Blob fetch</strong> (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
-for the blob.</li>
-<li><strong>Returning the response</strong> (steps 15-16): Now that the service worker has the bytes for
-<code>/index.html</code>, and its headers, it can craft a response that is then rendered by the
+<li><strong>Site resolution</strong> (steps 2-6): The portal interprets its <em>origin</em> <code>dapp.walrus.site</code>, and makes
+a SuiNS resolution for <code>dapp.sui</code>, obtaining the related object ID. Using the object ID, it then
+fetches the dynamic fields of the object (also checking <a href="walrus-sites/./portal.html">redirects</a>). From the
+dynamic fields, it selects the one for <code>/index.html</code>, and extracts its Walrus blob ID and headers
+(see the <a href="walrus-sites/./routing.html">advanced section on headers</a>).</li>
+<li><strong>Blob fetch</strong> (steps 7-11): Given the blob ID, the portal queries a Walrus aggregator for the
+blob data.</li>
+<li><strong>Returning the response</strong> (steps 12-13): Now that the portal has the bytes for <code>/index.html</code>, and
+its headers, it can craft a response that is then rendered by the
 browser.</li>
 </ul>
 <p>These steps are executed for all resources the browser may query thereafter (for example, if
 <code>/index.html</code> points to <code>assets/cat.png</code>).</p>
-<div id="admonition-server-side-approach" class="admonition admonish-tip" role="note" aria-labelledby="admonition-server-side-approach-title">
-<div class="admonition-title">
-<div id="admonition-server-side-approach-title">
-<p>Server side approach</p>
-</div>
-<a class="admonition-anchor-link" href="walrus-sites/overview.html#admonition-server-side-approach"></a>
-</div>
-<div>
-<p>The server-side portal works similarly, but the resolution is performed by the server. Meaning that
-the server will resolve the SuiNS name, fetch the dynamic fields, and return the resources to the
-browser, without anything else happening on the user's side. So the steps 2-6 are no longer
-relevant, and 7-10 are performed by the server. The resulting resources are transmitted to the
-browser in a standard HTTP response.</p>
-</div>
-</div>
 <h2 id="the-site-builder"><a class="header" href="#the-site-builder">The site builder</a></h2>
 <p>To facilitate the creation of Walrus Sites, we provide the "site builder" tool. The site builder
 takes care of creating Walrus Sites object on Sui, with the correct structure, and stores the site
