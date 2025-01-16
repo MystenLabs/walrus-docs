@@ -631,21 +631,22 @@ Sites also need to be migrated.</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="announcing-testnet-v2"><a class="header" href="#announcing-testnet-v2">Announcing Testnet v2</a></h1>
 <p>Published on: 2025-01-16</p>
-<p>We have reached a stage in development where it is beneficial to redeploy the Walrus Testnet to
-incorporate various improvements that include some backwards-incompatible changes. This redeployment
-has happened on 2025-01-16. Make sure to get the latest binary and configuration as described in the
-<a href="blog/../usage/setup.html">setup section</a>.
-Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
-to the new Testnet instance, including Walrus Sites. In addition, there is a new version of the WAL
-token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you need to obtain
-new WAL tokens. In the following sections, we describe the notable changes and the actions required
-for existing Walrus Sites.</p>
-<h2 id="epochs-1"><a class="header" href="#epochs-1">Epochs</a></h2>
+<p>We are today redeploying the Walrus Testnet to incorporate various improvements, including some
+backwards-incompatible changes. Make sure to get the latest binary and configuration as described
+in the <a href="blog/../usage/setup.html">setup section</a>.</p>
+<p>Note that all blob data on the previous Testnet instance has been wiped. All blobs need to be
+re-uploaded to the new Testnet instance, including Walrus Sites. In addition, there is a new version
+of the WAL token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you
+need to obtain new WAL tokens.</p>
+<p>In the following sections, we describe the notable changes and the actions required for existing
+Walrus Sites.</p>
+<h2 id="epoch-duration"><a class="header" href="#epoch-duration">Epoch duration</a></h2>
 <p>The epoch duration has been increased from one day to two days to emphasize that this duration is
 different from Sui epochs (at Mainnet, epochs will likely be multiple weeks long). In addition, the
 maximum number of epochs a blob can be stored for has been reduced from 200 to 183 (corresponding
-to one year). The <code>walrus store</code> command now also supports the <code>--epochs max</code> flag, which will store
-the blob for the maximum number of epochs.</p>
+to one year).</p>
+<p>The <code>walrus store</code> command now also supports the <code>--epochs max</code> flag, which will store
+the blob for the maximum number of epochs. Note that the <code>--epochs</code> flag is now mandatory.</p>
 <h2 id="new-features"><a class="header" href="#new-features">New features</a></h2>
 <p>Besides many improvements to the contracts and the storage-node service, the latest Walrus release
 also brings several user-facing improvements.</p>
@@ -654,11 +655,12 @@ also brings several user-facing improvements.</p>
 cost-effective compared to storing each file separately as transactions can be batched through
 <a href="https://docs.sui.io/concepts/transactions/prog-txn-blocks">PTBs</a>. Notably, this is compatible
 with glob patterns offered by many shells, so you can for example run a command like <code>walrus store *.png --epochs 100</code> to store all PNG files in the current directory.</li>
-<li>The <code>walrus</code> CLI now supports creating, funding, and extending <em>shared blobs</em> using the <code>walrus share</code>, <code>walrus store --share</code>, and <code>walrus fund-shared-blob</code> commands. See the <a href="blog/../usage/client-cli.html#shared-blobs">shared blobs
+<li>The <code>walrus</code> CLI now supports creating, funding, and extending <em>shared blobs</em> using the <code>walrus share</code>, <code>walrus store --share</code>, and <code>walrus fund-shared-blob</code> commands. Shared blobs are an
+example of collectively managed and funded blobs. See the <a href="blog/../usage/client-cli.html#shared-blobs">shared blobs
 section</a> for more details.</li>
 </ul>
 <h2 id="new-wal-token"><a class="header" href="#new-wal-token">New WAL token</a></h2>
-<p>Along with the redeployment of Walrus, we have also deployed a new version of the WAL contract. This
+<p>Along with the redeployment of Walrus, we have also deployed a fresh WAL contract. This
 means that you cannot use any WAL token from the previous Testnet instance with the new Testnet
 instance. You need to request new WAL tokens through the <a href="blog/../usage/setup.html#testnet-wal-faucet">Testnet WAL
 faucet</a>.</p>
@@ -677,7 +679,7 @@ Additionally, the <code>--epochs</code> flag is now mandatory for the <code>walr
 the <a href="blog/../usage/json-api.html">JSON API</a>).</p>
 <p>Please refer to the CLI help (<code>walrus --help</code>, or <code>walrus &lt;command&gt; --help</code>) for further details.</p>
 <h3 id="http-apis"><a class="header" href="#http-apis">HTTP APIs</a></h3>
-<p>The paths, request, and response formats of the HTTP APIs have changed for the storage nodes but
+<p>The paths, request, and response formats of the HTTP APIs have changed for the storage nodes, and
 also the aggregator and publisher. Please refer to the section on the <a href="blog/../usage/web-api.html">HTTP
 API</a> for further details.</p>
 <h2 id="effects-on-and-actions-required-for-existing-walrus-sites"><a class="header" href="#effects-on-and-actions-required-for-existing-walrus-sites">Effects on and actions required for existing Walrus Sites</a></h2>
@@ -1542,7 +1544,7 @@ confidentiality.</p>
 <div>
 <p>It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
-to a different wallet. However, it is possible to store multiple blobs with a single <code>walrus store</code>
+to a different wallet. Note, it is possible to store multiple blobs with a single <code>walrus store</code>
 command.</p>
 </div>
 </div>
@@ -1572,14 +1574,6 @@ in the current directory.</p>
 blobs</a> for more details on deletable blobs. Also, by default
 an owned <code>Blob</code> object is created. It is possible to wrap this into a shared object, which can be
 funded and extended by anyone, see the <a href="usage/client-cli.html#shared-blobs">shared blobs section</a>.</p>
-<div id="admonition-automatic-optimizations" class="admonition admonish-tip" role="note" aria-labelledby="admonition-automatic-optimizations-title">
-<div class="admonition-title">
-<div id="admonition-automatic-optimizations-title">
-<p>Automatic optimizations</p>
-</div>
-<a class="admonition-anchor-link" href="usage/client-cli.html#admonition-automatic-optimizations"></a>
-</div>
-<div>
 <p>When storing a blob, the client performs a number of automatic optimizations, including the
 following:</p>
 <ul>
@@ -1587,14 +1581,12 @@ following:</p>
 the command does not store it again. This behavior can be overwritten with the <code>--force</code>
 CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
 wallet address.</li>
-<li>If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
-new one.</li>
+<li>If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead
+of buying a new one.</li>
 <li>If the blob is already certified on Walrus but as a <em>deletable</em> blob or not for a sufficient
-number of epochs, the command skips sending data to the storage nodes and just collects the
-availability certificate</li>
+number of epochs, the command skips sending encoded blob data to the storage nodes and just
+collects the availability certificate</li>
 </ul>
-</div>
-</div>
 <h2 id="querying-blob-status"><a class="header" href="#querying-blob-status">Querying blob status</a></h2>
 <p>The status of a blob can be queried through one of the following commands:</p>
 <pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
@@ -1614,7 +1606,7 @@ The existence of this event certifies the availability of the blob.</p>
 can be used to specify an output file name. The <code>--rpc-url &lt;URL&gt;</code> may be used to specify
 a Sui RPC node to use instead of the one set in the wallet configuration or the default one.</p>
 <h2 id="reclaiming-space-via-deletable-blobs"><a class="header" href="#reclaiming-space-via-deletable-blobs">Reclaiming space via deletable blobs</a></h2>
-<p>By default <code>walrus store</code> uploads a blob and Walrus will keep it available until after its expiry
+<p>By default <code>walrus store</code> uploads a permanent blob available until after its expiry
 epoch. Not even the uploader may delete it beforehand. However, optionally, the store command
 may be invoked with the <code>--deletable</code> flag, to indicate the blob may be deleted before its expiry
 by the owner of the Sui blob object representing the blob. Deletable blobs are indicated as such
@@ -1659,9 +1651,10 @@ for further details.</p>
 <pre><code class="language-sh">walrus share --blob-obj-id &lt;BLOB_OBJ_ID&gt;
 </code></pre>
 <p>The resulting shared blob can be directly funded by adding an <code>--amount</code>, or you can fund an
-existing shared blob with the <code>walrus fund-shared-blob</code> command.Additionally, you can immediately
+existing shared blob with the <code>walrus fund-shared-blob</code> command. Additionally, you can immediately
 share a newly created blob by adding the <code>--share</code> option to the <code>walrus store</code> command.</p>
-<p>You can use the <code>walrus extend</code> command to extend the lifetime of a shared blob object.</p>
+<p>You can use the <code>walrus extend</code> command to extend the lifetime of a shared blob object. Shared blobs
+can only contain permanent blobs and cannot be deleted before their expiry.</p>
 <h2 id="blob-id-utilities"><a class="header" href="#blob-id-utilities">Blob ID utilities</a></h2>
 <p>The <code>walrus blob-id &lt;FILE&gt;</code> may be used to derive the blob ID of any file. The blob ID is a
 commitment to the file, and any blob with the same ID will decode to the same content. The blob

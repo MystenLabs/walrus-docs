@@ -309,7 +309,7 @@ confidentiality.</p>
 <div>
 <p>It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
-to a different wallet. However, it is possible to store multiple blobs with a single <code>walrus store</code>
+to a different wallet. Note, it is possible to store multiple blobs with a single <code>walrus store</code>
 command.</p>
 </div>
 </div>
@@ -339,14 +339,6 @@ in the current directory.</p>
 blobs</a> for more details on deletable blobs. Also, by default
 an owned <code>Blob</code> object is created. It is possible to wrap this into a shared object, which can be
 funded and extended by anyone, see the <a href="#shared-blobs">shared blobs section</a>.</p>
-<div id="admonition-automatic-optimizations" class="admonition admonish-tip" role="note" aria-labelledby="admonition-automatic-optimizations-title">
-<div class="admonition-title">
-<div id="admonition-automatic-optimizations-title">
-<p>Automatic optimizations</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-automatic-optimizations"></a>
-</div>
-<div>
 <p>When storing a blob, the client performs a number of automatic optimizations, including the
 following:</p>
 <ul>
@@ -354,14 +346,12 @@ following:</p>
 the command does not store it again. This behavior can be overwritten with the <code>--force</code>
 CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
 wallet address.</li>
-<li>If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
-new one.</li>
+<li>If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead
+of buying a new one.</li>
 <li>If the blob is already certified on Walrus but as a <em>deletable</em> blob or not for a sufficient
-number of epochs, the command skips sending data to the storage nodes and just collects the
-availability certificate</li>
+number of epochs, the command skips sending encoded blob data to the storage nodes and just
+collects the availability certificate</li>
 </ul>
-</div>
-</div>
 <h2 id="querying-blob-status"><a class="header" href="#querying-blob-status">Querying blob status</a></h2>
 <p>The status of a blob can be queried through one of the following commands:</p>
 <pre><code class="language-sh">walrus blob-status --blob-id &lt;BLOB_ID&gt;
@@ -381,7 +371,7 @@ The existence of this event certifies the availability of the blob.</p>
 can be used to specify an output file name. The <code>--rpc-url &lt;URL&gt;</code> may be used to specify
 a Sui RPC node to use instead of the one set in the wallet configuration or the default one.</p>
 <h2 id="reclaiming-space-via-deletable-blobs"><a class="header" href="#reclaiming-space-via-deletable-blobs">Reclaiming space via deletable blobs</a></h2>
-<p>By default <code>walrus store</code> uploads a blob and Walrus will keep it available until after its expiry
+<p>By default <code>walrus store</code> uploads a permanent blob available until after its expiry
 epoch. Not even the uploader may delete it beforehand. However, optionally, the store command
 may be invoked with the <code>--deletable</code> flag, to indicate the blob may be deleted before its expiry
 by the owner of the Sui blob object representing the blob. Deletable blobs are indicated as such
@@ -426,9 +416,10 @@ for further details.</p>
 <pre><code class="language-sh">walrus share --blob-obj-id &lt;BLOB_OBJ_ID&gt;
 </code></pre>
 <p>The resulting shared blob can be directly funded by adding an <code>--amount</code>, or you can fund an
-existing shared blob with the <code>walrus fund-shared-blob</code> command.Additionally, you can immediately
+existing shared blob with the <code>walrus fund-shared-blob</code> command. Additionally, you can immediately
 share a newly created blob by adding the <code>--share</code> option to the <code>walrus store</code> command.</p>
-<p>You can use the <code>walrus extend</code> command to extend the lifetime of a shared blob object.</p>
+<p>You can use the <code>walrus extend</code> command to extend the lifetime of a shared blob object. Shared blobs
+can only contain permanent blobs and cannot be deleted before their expiry.</p>
 <h2 id="blob-id-utilities"><a class="header" href="#blob-id-utilities">Blob ID utilities</a></h2>
 <p>The <code>walrus blob-id &lt;FILE&gt;</code> may be used to derive the blob ID of any file. The blob ID is a
 commitment to the file, and any blob with the same ID will decode to the same content. The blob

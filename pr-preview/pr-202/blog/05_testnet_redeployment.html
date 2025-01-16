@@ -229,21 +229,22 @@
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="announcing-testnet-v2"><a class="header" href="#announcing-testnet-v2">Announcing Testnet v2</a></h1>
 <p>Published on: 2025-01-16</p>
-<p>We have reached a stage in development where it is beneficial to redeploy the Walrus Testnet to
-incorporate various improvements that include some backwards-incompatible changes. This redeployment
-has happened on 2025-01-16. Make sure to get the latest binary and configuration as described in the
-<a href="../usage/setup.html">setup section</a>.
-Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
-to the new Testnet instance, including Walrus Sites. In addition, there is a new version of the WAL
-token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you need to obtain
-new WAL tokens. In the following sections, we describe the notable changes and the actions required
-for existing Walrus Sites.</p>
-<h2 id="epochs"><a class="header" href="#epochs">Epochs</a></h2>
+<p>We are today redeploying the Walrus Testnet to incorporate various improvements, including some
+backwards-incompatible changes. Make sure to get the latest binary and configuration as described
+in the <a href="../usage/setup.html">setup section</a>.</p>
+<p>Note that all blob data on the previous Testnet instance has been wiped. All blobs need to be
+re-uploaded to the new Testnet instance, including Walrus Sites. In addition, there is a new version
+of the WAL token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you
+need to obtain new WAL tokens.</p>
+<p>In the following sections, we describe the notable changes and the actions required for existing
+Walrus Sites.</p>
+<h2 id="epoch-duration"><a class="header" href="#epoch-duration">Epoch duration</a></h2>
 <p>The epoch duration has been increased from one day to two days to emphasize that this duration is
 different from Sui epochs (at Mainnet, epochs will likely be multiple weeks long). In addition, the
 maximum number of epochs a blob can be stored for has been reduced from 200 to 183 (corresponding
-to one year). The <code>walrus store</code> command now also supports the <code>--epochs max</code> flag, which will store
-the blob for the maximum number of epochs.</p>
+to one year).</p>
+<p>The <code>walrus store</code> command now also supports the <code>--epochs max</code> flag, which will store
+the blob for the maximum number of epochs. Note that the <code>--epochs</code> flag is now mandatory.</p>
 <h2 id="new-features"><a class="header" href="#new-features">New features</a></h2>
 <p>Besides many improvements to the contracts and the storage-node service, the latest Walrus release
 also brings several user-facing improvements.</p>
@@ -252,11 +253,12 @@ also brings several user-facing improvements.</p>
 cost-effective compared to storing each file separately as transactions can be batched through
 <a href="https://docs.sui.io/concepts/transactions/prog-txn-blocks">PTBs</a>. Notably, this is compatible
 with glob patterns offered by many shells, so you can for example run a command like <code>walrus store *.png --epochs 100</code> to store all PNG files in the current directory.</li>
-<li>The <code>walrus</code> CLI now supports creating, funding, and extending <em>shared blobs</em> using the <code>walrus share</code>, <code>walrus store --share</code>, and <code>walrus fund-shared-blob</code> commands. See the <a href="../usage/client-cli.html#shared-blobs">shared blobs
+<li>The <code>walrus</code> CLI now supports creating, funding, and extending <em>shared blobs</em> using the <code>walrus share</code>, <code>walrus store --share</code>, and <code>walrus fund-shared-blob</code> commands. Shared blobs are an
+example of collectively managed and funded blobs. See the <a href="../usage/client-cli.html#shared-blobs">shared blobs
 section</a> for more details.</li>
 </ul>
 <h2 id="new-wal-token"><a class="header" href="#new-wal-token">New WAL token</a></h2>
-<p>Along with the redeployment of Walrus, we have also deployed a new version of the WAL contract. This
+<p>Along with the redeployment of Walrus, we have also deployed a fresh WAL contract. This
 means that you cannot use any WAL token from the previous Testnet instance with the new Testnet
 instance. You need to request new WAL tokens through the <a href="../usage/setup.html#testnet-wal-faucet">Testnet WAL
 faucet</a>.</p>
@@ -275,7 +277,7 @@ Additionally, the <code>--epochs</code> flag is now mandatory for the <code>walr
 the <a href="../usage/json-api.html">JSON API</a>).</p>
 <p>Please refer to the CLI help (<code>walrus --help</code>, or <code>walrus &lt;command&gt; --help</code>) for further details.</p>
 <h3 id="http-apis"><a class="header" href="#http-apis">HTTP APIs</a></h3>
-<p>The paths, request, and response formats of the HTTP APIs have changed for the storage nodes but
+<p>The paths, request, and response formats of the HTTP APIs have changed for the storage nodes, and
 also the aggregator and publisher. Please refer to the section on the <a href="../usage/web-api.html">HTTP
 API</a> for further details.</p>
 <h2 id="effects-on-and-actions-required-for-existing-walrus-sites"><a class="header" href="#effects-on-and-actions-required-for-existing-walrus-sites">Effects on and actions required for existing Walrus Sites</a></h2>
