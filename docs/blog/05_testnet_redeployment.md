@@ -2,23 +2,27 @@
 
 Published on: 2025-01-16
 
-We have reached a stage in development where it is beneficial to redeploy the Walrus Testnet to
-incorporate various improvements that include some backwards-incompatible changes. This redeployment
-has happened on 2025-01-16. Make sure to get the latest binary and configuration as described in the
-[setup section](../usage/setup.md).
-Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
-to the new Testnet instance, including Walrus Sites. In addition, there is a new version of the WAL
-token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you need to obtain
-new WAL tokens. In the following sections, we describe the notable changes and the actions required
-for existing Walrus Sites.
+We are today redeploying the Walrus Testnet to incorporate various improvements, including some
+backwards-incompatible changes. Make sure to get the latest binary and configuration as described
+in the [setup section](../usage/setup.md).
 
-## Epochs
+Note that all blob data on the previous Testnet instance has been wiped. All blobs need to be
+re-uploaded to the new Testnet instance, including Walrus Sites. In addition, there is a new version
+of the WAL token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you
+need to obtain new WAL tokens.
+
+In the following sections, we describe the notable changes and the actions required for existing
+Walrus Sites.
+
+## Epoch duration
 
 The epoch duration has been increased from one day to two days to emphasize that this duration is
 different from Sui epochs (at Mainnet, epochs will likely be multiple weeks long). In addition, the
 maximum number of epochs a blob can be stored for has been reduced from 200 to 183 (corresponding
-to one year). The `walrus store` command now also supports the `--epochs max` flag, which will store
-the blob for the maximum number of epochs.
+to one year).
+
+The `walrus store` command now also supports the `--epochs max` flag, which will store
+the blob for the maximum number of epochs. Note that the `--epochs` flag is now mandatory.
 
 ## New features
 
@@ -31,12 +35,13 @@ also brings several user-facing improvements.
   with glob patterns offered by many shells, so you can for example run a command like `walrus store
   *.png --epochs 100` to store all PNG files in the current directory.
 - The `walrus` CLI now supports creating, funding, and extending *shared blobs* using the `walrus
-  share`, `walrus store --share`, and `walrus fund-shared-blob` commands. See the [shared blobs
+  share`, `walrus store --share`, and `walrus fund-shared-blob` commands. Shared blobs are an
+  example of collectively managed and funded blobs. See the [shared blobs
   section](../usage/client-cli.md#shared-blobs) for more details.
 
 ## New WAL token
 
-Along with the redeployment of Walrus, we have also deployed a new version of the WAL contract. This
+Along with the redeployment of Walrus, we have also deployed a fresh WAL contract. This
 means that you cannot use any WAL token from the previous Testnet instance with the new Testnet
 instance. You need to request new WAL tokens through the [Testnet WAL
 faucet](../usage/setup.md#testnet-wal-faucet).
@@ -64,7 +69,7 @@ Please refer to the CLI help (`walrus --help`, or `walrus <command> --help`) for
 
 ### HTTP APIs
 
-The paths, request, and response formats of the HTTP APIs have changed for the storage nodes but
+The paths, request, and response formats of the HTTP APIs have changed for the storage nodes, and
 also the aggregator and publisher. Please refer to the section on the [HTTP
 API](../usage/web-api.md) for further details.
 

@@ -71,7 +71,7 @@ confidentiality.
 ```admonish warning
 It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
-to a different wallet. However, it is possible to store multiple blobs with a single `walrus store`
+to a different wallet. Note, it is possible to store multiple blobs with a single `walrus store`
 command.
 ```
 
@@ -100,7 +100,6 @@ blobs](#reclaiming-space-via-deletable-blobs) for more details on deletable blob
 an owned `Blob` object is created. It is possible to wrap this into a shared object, which can be
 funded and extended by anyone, see the [shared blobs section](#shared-blobs).
 
-```admonish tip title="Automatic optimizations"
 When storing a blob, the client performs a number of automatic optimizations, including the
 following:
 
@@ -108,12 +107,10 @@ following:
   the command does not store it again. This behavior can be overwritten with the `--force`
   CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
   wallet address.
-- If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
-  new one.
+- If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead of buying a new one.
 - If the blob is already certified on Walrus but as a *deletable* blob or not for a sufficient
-  number of epochs, the command skips sending data to the storage nodes and just collects the
-  availability certificate
-```
+  number of epochs, the command skips sending encoded blob data to the storage nodes and just
+  collects the availability certificate
 
 ## Querying blob status
 
@@ -146,7 +143,7 @@ a Sui RPC node to use instead of the one set in the wallet configuration or the 
 
 ## Reclaiming space via deletable blobs
 
-By default `walrus store` uploads a blob and Walrus will keep it available until after its expiry
+By default `walrus store` uploads a permanent blob available until after its expiry
 epoch. Not even the uploader may delete it beforehand. However, optionally, the store command
 may be invoked with the `--deletable` flag, to indicate the blob may be deleted before its expiry
 by the owner of the Sui blob object representing the blob. Deletable blobs are indicated as such
@@ -197,10 +194,11 @@ walrus share --blob-obj-id <BLOB_OBJ_ID>
 ```
 
 The resulting shared blob can be directly funded by adding an `--amount`, or you can fund an
-existing shared blob with the `walrus fund-shared-blob` command.Additionally, you can immediately
+existing shared blob with the `walrus fund-shared-blob` command. Additionally, you can immediately
 share a newly created blob by adding the `--share` option to the `walrus store` command.
 
-You can use the `walrus extend` command to extend the lifetime of a shared blob object.
+You can use the `walrus extend` command to extend the lifetime of a shared blob object. Shared blobs
+can only contain permanent blobs and cannot be deleted before their expiry.
 
 ## Blob ID utilities
 
