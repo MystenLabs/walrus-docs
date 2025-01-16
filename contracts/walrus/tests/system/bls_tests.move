@@ -29,6 +29,38 @@ public fun test_check_aggregate() {
     );
 }
 
+#[test]
+public fun test_check_aggregate_short_bitmap() {
+    let (committee, agg_sig, signers, message) = create_committee_and_cert_short_bitmap(
+        option::none(),
+    );
+
+    // Make sure that the signers bitmap is actually shorter than the maximum bitmap length.
+    assert!(signers.length() < committee.n_members().divide_and_round_up(8));
+
+    // Verify the aggregate signature
+    committee.verify_certificate(
+        &agg_sig,
+        &signers,
+        &message,
+    );
+}
+
+#[test, expected_failure(abort_code = bls_aggregate::EInvalidBitmap)]
+public fun test_check_aggregate_invalid_bitmap() {
+    let (committee, agg_sig, mut signers, message) = create_committee_and_cert(option::none());
+
+    // Add a byte to the signers bitmap to make it invalid.
+    signers.push_back(0);
+
+    // Verify the aggregate signature
+    committee.verify_certificate(
+        &agg_sig,
+        &signers,
+        &message,
+    );
+}
+
 #[test, expected_failure(abort_code = bls_aggregate::ESigVerification)]
 public fun test_add_members_error() {
     let (committee, agg_sig, signers, message) = create_committee_and_cert(option::none());
@@ -97,6 +129,27 @@ public fun test_cert_incorrect_epoch() {
 fun create_committee_and_cert(
     weights: Option<vector<u16>>,
 ): (BlsCommittee, vector<u8>, vector<u8>, vector<u8>) {
+    // Create the aggregate sig for keys 0, 1, 2, 3, 4, 7, 8
+    let signers = vector[0, 1, 2, 3, 4, 7, 8];
+    create_committee_and_cert_with_signer_indices(weights, signers)
+}
+
+/// Returns a committee, a valid aggregate signature, the signers as a short bitmap,
+/// and the message that was signed.
+///
+/// The signers are keys 0, 1, 2, 3, 4, 5, 6 and the committee has 10 keys in total.
+fun create_committee_and_cert_short_bitmap(
+    weights: Option<vector<u16>>,
+): (BlsCommittee, vector<u8>, vector<u8>, vector<u8>) {
+    // Create the aggregate sig for keys 0, 1, 2, 3, 4, 5, 6
+    let signers = vector[0, 1, 2, 3, 4, 5, 6];
+    create_committee_and_cert_with_signer_indices(weights, signers)
+}
+
+fun create_committee_and_cert_with_signer_indices(
+    weights: Option<vector<u16>>,
+    signers: vector<u16>,
+): (BlsCommittee, vector<u8>, vector<u8>, vector<u8>) {
     let sks = bls_secret_keys_for_testing();
     let pks = sks.map_ref!(|sk| bls12381::g1_from_bytes(&bls_min_pk_from_sk(sk)));
     let weights = weights.get_with_default(vector[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
@@ -104,8 +157,6 @@ fun create_committee_and_cert(
 
     let message = messages::certified_permanent_message_bytes(epoch, 0xABC);
 
-    // Create the aggregate sig for keys 0, 1, 2, 3, 4, 7, 8
-    let signers = vector[0, 1, 2, 3, 4, 7, 8];
     let mut sigs = vector[];
     signers.do!(|i| sigs.push_back(bls_min_pk_sign(&message, &sks[i as u64])));
 
