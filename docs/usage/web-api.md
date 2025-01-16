@@ -134,6 +134,7 @@ may still be temporarily unavailable:
 - `http://walrus.globalstake.io:9000`
 - `https://walrus-aggregator.rubynodes.io`
 - `https://walrus-testnet.chainbase.online/aggregator`
+- `https://walrus-testnet-aggregator.brightlystake.com`
 
 ### Public publishers
 
@@ -161,6 +162,7 @@ may still be temporarily unavailable:
 - `http://walrus.globalstake.io:9001`
 - `https://walrus-publisher.rubynodes.io`
 - `https://walrus-testnet.chainbase.online/publisher`
+- `https://walrus-testnet-publisher.brightlystake.com`
 
 ## HTTP API Usage
 
