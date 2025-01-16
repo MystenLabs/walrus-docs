@@ -197,10 +197,10 @@ walrus share --blob-obj-id <BLOB_OBJ_ID>
 ```
 
 The resulting shared blob can be directly funded by adding an `--amount`, or you can fund an
-existing shared blob with the `walrus fund-shared-blob` command.
+existing shared blob with the `walrus fund-shared-blob` command.Additionally, you can immediately
+share a newly created blob by adding the `--share` option to the `walrus store` command.
 
-Additionally, you can immediately share a newly created blob by adding the `--share` option to the
-`walrus store` command.
+You can use the `walrus extend` command to extend the lifetime of a shared blob object.
 
 ## Blob ID utilities
 
