@@ -105,44 +105,33 @@ As mentioned before, we provide two types of portals to browse Walrus Sites:
   resolves a Walrus Site. The service-worker portal is no longer hosted at a specific domain, but
   the code is still maintained so that it can be used by anyone.
 
-We now describe the resolution process of a Walrus Site in the browser using the service-worker
-portal as an example.
+We now show in greater detail how a Walrus Site is rendered in a client's browser using a generic
+portal. Depending on the different type of portal, some details may differ, but the general picture
+remains unchanged.
 
 ### The end-to-end resolution of a Walrus Site
 
-We now show in greater detail how a Walrus Site is rendered in a client's browser with the service
-worker approach. The steps below all reference the following figure:
+The steps below all reference the following figure:
 
-![Walrus Site resolution](../assets/walrus-site-diagram.svg)
+![Walrus Site resolution](../assets/walrus-sites-portal-diagram.svg)
 
 - **Site publishing** (step 0): The site developer publishes the Walrus Site using the
   [`site-builder`](#the-site-builder), or making use of a publisher. Assume the developer uses the
   SuiNS name `dapp.sui` to point to the object ID of the created Walrus Site.
 - **Browsing starts** (step 1): A client browses `dapp.walrus.site/index.html` in their browser.
-- **Service worker installation** (steps 2-6): The browser connects to the portal hosted at
-  `walrus.site`, which responds with a page that installs the service worker for `dapp.walrus.site`.
-  The page is refreshed to activate the service worker.
-- **Site resolution** (steps 7-10): The service worker, which is now installed, interprets its
-  *origin* `dapp.walrus.site`, and makes a SuiNS resolution for `dapp.sui`, obtaining the related
-  object ID. Using the object ID, it then fetches the dynamic fields of the object (also checking
-  [redirects](./portal.md)). From the dynamic fields, it selects the one for `/index.html`, and
-  extracts its Walrus blob ID and headers (see the [advanced section on headers](./routing.md)).
-- **Blob fetch** (steps 11-14): Given the blob ID, the service worker queries a Walrus aggregator
-  for the blob.
-- **Returning the response** (steps 15-16): Now that the service worker has the bytes for
-  `/index.html`, and its headers, it can craft a response that is then rendered by the
+- **Site resolution** (steps 2-6): The portal interprets its *origin* `dapp.walrus.site`, and makes
+  a SuiNS resolution for `dapp.sui`, obtaining the related object ID. Using the object ID, it then
+  fetches the dynamic fields of the object (also checking [redirects](./portal.md)). From the
+  dynamic fields, it selects the one for `/index.html`, and extracts its Walrus blob ID and headers
+  (see the [advanced section on headers](./routing.md)).
+- **Blob fetch** (steps 7-11): Given the blob ID, the portal queries a Walrus aggregator for the
+  blob data.
+- **Returning the response** (steps 12-13): Now that the portal has the bytes for `/index.html`, and
+  its headers, it can craft a response that is then rendered by the
   browser.
 
 These steps are executed for all resources the browser may query thereafter (for example, if
 `/index.html` points to `assets/cat.png`).
-
-```admonish tip title="Server side approach"
-The server-side portal works similarly, but the resolution is performed by the server. Meaning that
-the server will resolve the SuiNS name, fetch the dynamic fields, and return the resources to the
-browser, without anything else happening on the user's side. So the steps 2-6 are no longer
-relevant, and 7-10 are performed by the server. The resulting resources are transmitted to the
-browser in a standard HTTP response.
-```
 
 ## The site builder
 
