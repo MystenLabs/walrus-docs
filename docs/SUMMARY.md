@@ -13,6 +13,7 @@
   - [Devnet Update](./blog/02_devnet_update.md)
   - [Announcing the Walrus Whitepaper](./blog/03_whitepaper.md)
   - [Announcing Testnet](./blog/04_testnet_update.md)
+  - [Announcing Testnet v2](./blog/05_testnet_redeployment.md)
 
 ---
 

@@ -14,10 +14,10 @@ their meaning.
 
 ## Walrus system information
 
-Information about the Walrus system is available through the `walrus info` command. For example,
-`walrus info` gives an overview of current system parameters such as the current epoch, the number
-of storage nodes and shards in the system, the maximum blob size, and the current cost in (Testnet)
-WAL for storing blobs:
+Information about the Walrus system is available through the `walrus info` command. It provides an
+overview of current system parameters such as the current epoch, the number of storage nodes and
+shards in the system, the maximum blob size, and the current cost in (Testnet) WAL for storing
+blobs:
 
 ```console
 $ walrus info
@@ -25,9 +25,9 @@ $ walrus info
 Walrus system information
 
 Epochs and storage duration
-Current epoch: 47
-Epoch duration: 1day
-Blobs can be stored for at most 200 epochs in the future.
+Current epoch: 1
+Epoch duration: 2day
+Blobs can be stored for at most 183 epochs in the future.
 
 Storage nodes
 Number of storage nodes: 30
@@ -60,7 +60,7 @@ information on the storage nodes in the current and (if already selected) the ne
 including their node IDs and stake and shard distribution can be viewed with the `--dev` argument:
 `walrus info --dev`.
 
-## Storing, querying status, and reading blobs
+## Storing blobs
 
 ```admonish danger title="Public access"
 **All blobs stored in Walrus are public and discoverable by all.** Therefore you must not use Walrus
@@ -71,7 +71,8 @@ confidentiality.
 ```admonish warning
 It must be ensured that only a single process uses the Sui wallet for write actions (storing or
 deleting). When using multiple instances of the client simultaneously, each of them must be pointed
-to a different wallet.
+to a different wallet. Note, it is possible to store multiple blobs with a single `walrus store`
+command.
 ```
 
 ```admonish tip title="Obtaining Testnet WAL"
@@ -79,35 +80,40 @@ You can exchange Testnet SUI for Testnet WAL by running `walrus get-wal`. See th
 page](./setup.md#testnet-wal-faucet) for further details.
 ```
 
-Storing blobs on Walrus can be achieved through the following command:
+Storing one or multiple blobs on Walrus can be achieved through the following command:
 
 ```sh
-walrus store <some file> --epochs <EPOCHS>
+walrus store <FILES> --epochs <EPOCHS>
 ```
 
-The CLI argument `--epochs <EPOCHS>` (or `-e`) indicates the number of epochs the blob should be
-stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 200
-for the current Testnet deployment.
+The mandatory CLI argument `--epochs <EPOCHS>` indicates the number of epochs the blob should be
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 183
+for the current Testnet deployment (corresponding to one year). In addition to a positive integer,
+you can also use `--epochs max` to store the blob for the maximum number of epochs.
 
-```admonish warning
-The `--epochs` argument is currently optional; if it is not specified, a warning is printed and the
-default of 1 epoch is used. However, it will become a mandatory argument in the future.
-```
+You can store a single file or multiple files, separated by spaces. Notably, this is compatible
+with glob patterns; for example, `walrus store *.png --epochs <EPOCHS>` will store all PNG files
+in the current directory.
 
-```admonish tip title="Automatic optimizations"
+By default, the command will store the blob as a *permanent* blob. See the [section on deletable
+blobs](#reclaiming-space-via-deletable-blobs) for more details on deletable blobs. Also, by default
+an owned `Blob` object is created. It is possible to wrap this into a shared object, which can be
+funded and extended by anyone, see the [shared blobs section](#shared-blobs).
+
 When storing a blob, the client performs a number of automatic optimizations, including the
 following:
 
 - If the blob is already stored as a *permanent blob* on Walrus for a sufficient number of epochs
-  the command does not store it again. This behavior can be overwritten with the `--force` (or `-f`)
+  the command does not store it again. This behavior can be overwritten with the `--force`
   CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
   wallet address.
-- If the user's wallet has a compatible storage resource, this one is (re-)used instead of buying a
-  new one.
+- If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead
+  of buying a new one.
 - If the blob is already certified on Walrus but as a *deletable* blob or not for a sufficient
-  number of epochs, the command skips sending data to the storage nodes and just collects the
-  availability certificate
-```
+  number of epochs, the command skips sending encoded blob data to the storage nodes and just
+  collects the availability certificate
+
+## Querying blob status
 
 The status of a blob can be queried through one of the following commands:
 
@@ -124,19 +130,21 @@ When the blob is available, the `blob-status` command also returns the `BlobCert
 which consists of a transaction ID and a sequence number in the events emitted by the transaction.
 The existence of this event certifies the availability of the blob.
 
+## Reading blobs
+
 Reading blobs from Walrus can be achieved through the following command:
 
 ```sh
 walrus read <some blob ID>
 ```
 
-By default the blob data is written to the standard output. The `--out <OUT>` CLI option (or `-o`)
-can be used to specify an output file name. The `--rpc-url <URL>` (or `-r`) may be used to specify
+By default the blob data is written to the standard output. The `--out <OUT>` CLI option
+can be used to specify an output file name. The `--rpc-url <URL>` may be used to specify
 a Sui RPC node to use instead of the one set in the wallet configuration or the default one.
 
 ## Reclaiming space via deletable blobs
 
-By default `walrus store` uploads a blob and Walrus will keep it available until after its expiry
+By default `walrus store` uploads a permanent blob available until after its expiry
 epoch. Not even the uploader may delete it beforehand. However, optionally, the store command
 may be invoked with the `--deletable` flag, to indicate the blob may be deleted before its expiry
 by the owner of the Sui blob object representing the blob. Deletable blobs are indicated as such
@@ -152,7 +160,7 @@ Optionally the delete command can be invoked by specifying a `--file <PATH>` opt
 blob ID from a file, or `--object-id <SUI_ID>` to delete the blob in the Sui blob object specified.
 
 Before deleting a blob, the `walrus delete` command will ask for confirmation unless the `--yes`
-(or `-y`) option is specified.
+option is specified.
 
 The `delete` command reclaims the storage object associated with the deleted blob, which is re-used
 to store new blobs. The delete operation provides flexibility around managing storage costs and
@@ -172,6 +180,26 @@ not delete slivers if other copies of the blob are stored on Walrus possibly by 
 It does not delete blobs from caches, slivers from past storage nodes, or copies
 that could have been made by users before the blob was deleted.
 ```
+
+## Shared blobs
+
+*Shared blobs* are shared Sui objects wrapping "standard" `Blob` objects that can be funded and
+whose lifetime can be extended by anyone. See the [shared blobs
+contracts](https://github.com/MystenLabs/walrus-docs/blob/main/contracts/walrus/sources/system/shared_blob.move)
+for further details.
+
+You can create a shared blob from an existing `Blob` object you own with the `walrus share` command:
+
+```sh
+walrus share --blob-obj-id <BLOB_OBJ_ID>
+```
+
+The resulting shared blob can be directly funded by adding an `--amount`, or you can fund an
+existing shared blob with the `walrus fund-shared-blob` command. Additionally, you can immediately
+share a newly created blob by adding the `--share` option to the `walrus store` command.
+
+You can use the `walrus extend` command to extend the lifetime of a shared blob object. Shared blobs
+can only contain permanent blobs and cannot be deleted before their expiry.
 
 ## Blob ID utilities
 

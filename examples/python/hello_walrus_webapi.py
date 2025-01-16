@@ -21,7 +21,7 @@ EPOCHS = "5"
 # Helper functions to upload a blob
 def upload_blob(ADDRESS, EPOCHS, data):
     # Upload the data to the Walrus service  using a PUT request
-    store_url = f"http://{ADDRESS}/v1/store?epochs={EPOCHS}"
+    store_url = f"http://{ADDRESS}/v1/blobs?epochs={EPOCHS}"
     response = requests.put(store_url, data=data)
 
     # Assert the response status code
@@ -33,7 +33,7 @@ def upload_blob(ADDRESS, EPOCHS, data):
 # Helper functions to download a blob
 def download_blob(ADDRESS, blob_id):
     # Now read the same resource using the blob-id
-    read_url = f"http://{ADDRESS}/v1/{blob_id}"
+    read_url = f"http://{ADDRESS}/v1/blobs/{blob_id}"
     response = requests.get(read_url)
 
     # Assert the response status code
