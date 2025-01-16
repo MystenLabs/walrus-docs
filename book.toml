@@ -18,7 +18,8 @@ optional = true
 follow-web-links = true
 warning-policy = "error"
 exclude = [
-  'walrus\.site', # No service worker in the link checker.
+  'walrus\.site',
+  'blob\.store',
   'google\.com',
   'x\.com',
   'suiscan\.xyz',
