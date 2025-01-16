@@ -633,15 +633,19 @@ Sites also need to be migrated.</p>
 <p>Published on: 2025-01-16</p>
 <p>We have reached a stage in development where it is beneficial to redeploy the Walrus Testnet to
 incorporate various improvements that include some backwards-incompatible changes. This redeployment
-has happened on 2025-01-16.</p>
-<p>Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
+has happened on 2025-01-16. Make sure to get the latest binary and configuration as described in the
+<a href="blog/../usage/setup.html">setup section</a>.
+Note that all data on the previous Testnet instance has been wiped. All blobs need to be re-uploaded
 to the new Testnet instance, including Walrus Sites. In addition, there is a new version of the WAL
 token, so your previous WAL tokens will not work anymore. To use the Testnet v2, you need to obtain
 new WAL tokens. In the following sections, we describe the notable changes and the actions required
 for existing Walrus Sites.</p>
 <h2 id="epochs-1"><a class="header" href="#epochs-1">Epochs</a></h2>
 <p>The epoch duration has been increased from one day to two days to emphasize that this duration is
-different from Sui epochs. At Mainnet, epochs will likely be multiple weeks long.</p>
+different from Sui epochs (at Mainnet, epochs will likely be multiple weeks long). In addition, the
+maximum number of epochs a blob can be stored for has been reduced from 200 to 183 (corresponding
+to one year). The <code>walrus store</code> command now also supports the <code>--epochs max</code> flag, which will store
+the blob for the maximum number of epochs.</p>
 <h2 id="new-features"><a class="header" href="#new-features">New features</a></h2>
 <p>Besides many improvements to the contracts and the storage-node service, the latest Walrus release
 also brings several user-facing improvements.</p>
@@ -1333,11 +1337,13 @@ These need to be configured in a file <code>~/.config/walrus/client_config.yaml<
 contracts were upgraded at any point, the object ID of the latest package version can be specified
 in the <code>walrus_package</code> field. Finally, exchange objects are needed to swap SUI for WAL.</p>
 <p>The current Testnet deployment uses the following objects:</p>
-<p>TODO: This currently points to the PTN. Update this with the new Testnet object IDs.</p>
-<pre><code class="language-yaml">system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
-staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
+<pre><code class="language-yaml">system_object: 0x98ebc47370603fe81d9e15491b2f1443d619d1dab720d586e429ed233e1255c1
+staking_object: 0x20266a17b4f1a216727f3eef5772f8d486a9e3b5e319af80a5b75809c035561d
 exchange_objects:
-- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
+  - 0x59ab926eb0d94d0d6d6139f11094ea7861914ad2ecffc7411529c60019133997
+  - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
+  - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
+  - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
 </code></pre>
 <!-- markdownlint-disable code-fence-style -->
 <div id="admonition-tip-1" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-1-title">
@@ -1362,16 +1368,18 @@ configuration file in the current directory, <code>$XDG_CONFIG_HOME/walrus/</cod
 you need to use the <code>--config</code> option when running the <code>walrus</code> binary.</p>
 <h3 id="advanced-configuration-optional"><a class="header" href="#advanced-configuration-optional">Advanced configuration (optional)</a></h3>
 <p>The configuration file currently supports the following parameters:</p>
-<p>TODO: This currently points to the PTN. Update this with the new Testnet object IDs.</p>
 <pre><code class="language-yaml"># These are the only mandatory fields. These objects are specific for a particular Walrus
 # deployment but then do not change over time.
-system_object: 0x51e04a651fe98fca989fe17ca55bdee8c67bb0a6c650e0957631a79e134212c5
-staking_object: 0x95693feea0517417d19739e754114c61f8abe47ff6d88a34f89374576a4677be
+system_object: 0x98ebc47370603fe81d9e15491b2f1443d619d1dab720d586e429ed233e1255c1
+staking_object: 0x20266a17b4f1a216727f3eef5772f8d486a9e3b5e319af80a5b75809c035561d
 
 # The exchange objects are used to swap SUI for WAL. If multiple ones are defined (as below), a
 # random one is chosen for the exchange.
 exchange_objects:
-- 0x31895a13d6ff6541cb4004355f30580b5d095159f2cc86c3365f3d489949251f
+  - 0x59ab926eb0d94d0d6d6139f11094ea7861914ad2ecffc7411529c60019133997
+  - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
+  - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
+  - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
@@ -1472,7 +1480,7 @@ Walrus system information
 Epochs and storage duration
 Current epoch: 1
 Epoch duration: 2day
-Blobs can be stored for at most 365 epochs in the future.
+Blobs can be stored for at most 183 epochs in the future.
 
 Storage nodes
 Number of storage nodes: 30
@@ -1554,8 +1562,9 @@ page</a> for further details.</p>
 <pre><code class="language-sh">walrus store &lt;FILES&gt; --epochs &lt;EPOCHS&gt;
 </code></pre>
 <p>The mandatory CLI argument <code>--epochs &lt;EPOCHS&gt;</code> indicates the number of epochs the blob should be
-stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 365
-for the current Testnet deployment.</p>
+stored for. There is an upper limit on the number of epochs a blob can be stored for, which is 183
+for the current Testnet deployment (corresponding to one year). In addition to a positive integer,
+you can also use <code>--epochs max</code> to store the blob for the maximum number of epochs.</p>
 <p>You can store a single file or multiple files, separated by spaces. Notably, this is compatible
 with glob patterns; for example, <code>walrus store *.png --epochs &lt;EPOCHS&gt;</code> will store all PNG files
 in the current directory.</p>
@@ -2694,7 +2703,7 @@ locations, publishing the <code>./walrus-snake</code> site is as simple as calli
 </div>
 <div>
 <p>Currently on Walrus Testnet, the duration of an epoch is two days. If you want your site to stay up
-longer, specify the number of epochs with the <code>--epochs</code> flag (maximum 365 epochs).</p>
+longer, specify the number of epochs with the <code>--epochs</code> flag (maximum 183 epochs).</p>
 </div>
 </div>
 <p>The end of the output should look like the following:</p>
@@ -2834,7 +2843,7 @@ resources contained within.</p>
 <div>
 <p>On Walrus Testnet, the epoch duration is <strong>two days</strong>. Therefore, consider storing your site for a
 large number of epochs if you want to make it available for the following months! The maximum
-duration is set to 365 epochs.</p>
+duration is set to 183 epochs (corresponding to one year).</p>
 </div>
 </div>
 <p>If you are just uploading raw files without an <code>index.html</code>, you may want to use the
