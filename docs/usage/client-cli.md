@@ -107,7 +107,8 @@ following:
   the command does not store it again. This behavior can be overwritten with the `--force`
   CLI option, which stores the blob again and creates a fresh blob object on Sui belonging to the
   wallet address.
-- If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead of buying a new one.
+- If the user's wallet has a storage resource of suitable size and duration, it is (re-)used instead
+  of buying a new one.
 - If the blob is already certified on Walrus but as a *deletable* blob or not for a sufficient
   number of epochs, the command skips sending encoded blob data to the storage nodes and just
   collects the availability certificate
