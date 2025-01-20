@@ -135,6 +135,7 @@ may still be temporarily unavailable:
 - `https://walrus-aggregator.rubynodes.io`
 - `https://walrus-testnet.chainbase.online/aggregator`
 - `https://walrus-testnet-aggregator.brightlystake.com`
+- `https://walrus-testnet-aggregator.stakecraft.com`
 
 ### Public publishers
 
@@ -163,6 +164,7 @@ may still be temporarily unavailable:
 - `https://walrus-publisher.rubynodes.io`
 - `https://walrus-testnet.chainbase.online/publisher`
 - `https://walrus-testnet-publisher.brightlystake.com`
+- `https://walrus-testnet-publisher.stakecraft.com`
 
 ## HTTP API Usage
 
