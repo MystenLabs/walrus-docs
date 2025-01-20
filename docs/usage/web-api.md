@@ -126,6 +126,8 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.nami.cloud`
 - `https://testnet.walrus-publisher.sm.xyz`
 - `https://walrus-testnet-aggregator.stakecraft.com`
+- `https://agg.test.walrus.eosusa.io`
+- `https://walrus-agg.testnet.obelisk.sh`
 - `https://sui-walrus-testnet.bwarelabs.com/aggregator`
 - `https://walrus-testnet.chainbase.online/aggregator`
 - `https://walrus-tn.juicystake.io:9443`
@@ -144,7 +146,6 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9000`
 - `http://92.42.106.241:9000`
 - `http://162.19.18.19:9000`
-- `https://agg.test.walrus.eosusa.io`
 
 ### Public publishers
 
@@ -160,6 +161,8 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.nami.cloud`
 - `https://testnet.walrus-publisher.sm.xyz`
 - `https://walrus-testnet-publisher.stakecraft.com`
+- `https://pub.test.walrus.eosusa.io`
+- `https://walrus-pub.testnet.obelisk.sh`
 - `https://sui-walrus-testnet.bwarelabs.com/publisher`
 - `https://walrus-testnet.chainbase.online/publisher`
 - `https://walrus-testnet.blockscope.net:11444`
@@ -182,7 +185,6 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9001`
 - `http://92.42.106.241:9001`
 - `http://162.19.18.19:9001`
-- `https://pub.test.walrus.eosusa.io`
 
 ## HTTP API Usage
 
