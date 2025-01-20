@@ -116,11 +116,18 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.blockscope.net`
 - `https://walrus-testnet-aggregator.nodes.guru`
 - `https://walrus-cache-testnet.overclock.run`
-- `https://sui-walrus-testnet.bwarelabs.com/aggregator`
 - `https://walrus-testnet-aggregator.stakin-nodes.com`
 - `https://testnet-aggregator-walrus.kiliglab.io`
 - `https://walrus-cache-testnet.latitude-sui.com`
 - `https://walrus-testnet-aggregator.nodeinfra.com`
+- `https://walrus-testnet.stakingdefenseleague.com`
+- `https://walrus-aggregator.rubynodes.io`
+- `https://walrus-testnet-aggregator.brightlystake.com`
+- `https://walrus-testnet-aggregator.nami.cloud`
+- `https://testnet.walrus-publisher.sm.xyz`
+- `https://walrus-testnet-aggregator.stakecraft.com`
+- `https://sui-walrus-testnet.bwarelabs.com/aggregator`
+- `https://walrus-testnet.chainbase.online/aggregator`
 - `https://walrus-tn.juicystake.io:9443`
 - `https://walrus-agg-testnet.chainode.tech:9002`
 - `https://walrus-testnet-aggregator.starduststaking.com:11444`
@@ -129,13 +136,14 @@ may still be temporarily unavailable:
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
 - `http://aggregator.testnet.sui.rpcpool.com:9000`
 - `http://walrus.krates.ai:9000`
-- `http://walrus-testnet.stakingdefenseleague.com:9000`
 - `http://walrus.sui.thepassivetrust.com:9000`
 - `http://walrus.globalstake.io:9000`
-- `https://walrus-aggregator.rubynodes.io`
-- `https://walrus-testnet.chainbase.online/aggregator`
-- `https://walrus-testnet-aggregator.brightlystake.com`
-- `https://walrus-testnet-aggregator.stakecraft.com`
+- `http://walrus-testnet-aggregator.natsai.xyz:9000`
+- `http://walrus-testnet.staking4all.org:9000`
+- `http://93.115.27.108:9000`
+- `http://65.21.139.112:9000`
+- `http://92.42.106.241:9000`
+- `http://162.19.18.19:9000`
 
 ### Public publishers
 
@@ -143,10 +151,16 @@ may still be temporarily unavailable:
 - `https://wal-publisher-testnet.staketab.org`
 - `https://walrus-testnet-publisher.bartestnet.com`
 - `https://walrus-testnet-publisher.nodes.guru`
-- `https://sui-walrus-testnet.bwarelabs.com/publisher`
 - `https://walrus-testnet-publisher.stakin-nodes.com`
 - `https://testnet-publisher-walrus.kiliglab.io`
 - `https://walrus-testnet-publisher.nodeinfra.com`
+- `https://walrus-publisher.rubynodes.io`
+- `https://walrus-testnet-publisher.brightlystake.com`
+- `https://walrus-testnet-publisher.nami.cloud`
+- `https://testnet.walrus-publisher.sm.xyz`
+- `https://walrus-testnet-publisher.stakecraft.com`
+- `https://sui-walrus-testnet.bwarelabs.com/publisher`
+- `https://walrus-testnet.chainbase.online/publisher`
 - `https://walrus-testnet.blockscope.net:11444`
 - `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://walrus-testnet-publisher.starduststaking.com:11445`
@@ -161,10 +175,12 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.stakingdefenseleague.com:9001`
 - `http://walrus.sui.thepassivetrust.com:9001`
 - `http://walrus.globalstake.io:9001`
-- `https://walrus-publisher.rubynodes.io`
-- `https://walrus-testnet.chainbase.online/publisher`
-- `https://walrus-testnet-publisher.brightlystake.com`
-- `https://walrus-testnet-publisher.stakecraft.com`
+- `http://walrus-testnet-publisher.natsai.xyz:9001`
+- `http://walrus-testnet.staking4all.org:9001`
+- `http://93.115.27.108:9001`
+- `http://65.21.139.112:9001`
+- `http://92.42.106.241:9001`
+- `http://162.19.18.19:9001`
 
 ## HTTP API Usage
 
