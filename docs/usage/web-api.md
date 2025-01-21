@@ -146,6 +146,7 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9000`
 - `http://92.42.106.241:9000`
 - `http://162.19.18.19:9000`
+- `https://walrus.testnet.aggregator.stakepool.dev.br`
 
 ### Public publishers
 
@@ -185,6 +186,7 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9001`
 - `http://92.42.106.241:9001`
 - `http://162.19.18.19:9001`
+- `https://walrus.testnet.publisher.stakepool.dev.br`
 
 ## HTTP API Usage
 
