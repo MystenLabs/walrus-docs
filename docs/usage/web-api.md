@@ -147,7 +147,7 @@ may still be temporarily unavailable:
 - `http://92.42.106.241:9000`
 - `http://162.19.18.19:9000`
 - `https://walrus.testnet.aggregator.stakepool.dev.br`
-- `https://aggregator.walrus banansen.dev`
+- `https://aggregator.walrus.banansen.dev`
 
 ### Public publishers
 
@@ -188,7 +188,7 @@ may still be temporarily unavailable:
 - `http://92.42.106.241:9001`
 - `http://162.19.18.19:9001`
 - `https://walrus.testnet.publisher.stakepool.dev.br`
-- `https://publisher.walrus banansen.dev` 
+- `https://publisher.walrus.banansen.dev` 
 
 ## HTTP API Usage
 
