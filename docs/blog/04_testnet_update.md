@@ -11,7 +11,7 @@ epochs, and blob deletion.
 ## Blob deletion
 
 The most important user-facing new feature is optional blob deletion. The uploader of a blob can
-optionally indicate a blob is "deletable". This information is stored in the Sui blob metadata
+optionally indicate that a blob is "deletable". This information is stored in the Sui blob metadata
 object, and is also included in the event denoting when the blob is certified. Subsequently, the
 owner of the Sui blob metadata object can "delete" it. As a result storage for the remaining
 period is reclaimed and can be used by subsequent blob storage operations.
