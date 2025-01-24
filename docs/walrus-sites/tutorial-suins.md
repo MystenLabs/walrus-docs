@@ -22,7 +22,15 @@ Let's do this step by step.
 
 Now, you can set the SuiNS name to point to the address of your Walrus Site. To do so, go to the
 ["names you own"](https://testnet.suins.io/account/my-names) section of the SuiNS website, click on
-the "three dots" menu icon above the name you want to map, and click "Link To Wallet Address". Paste
+the "three dots" menu icon above the name you want to map, and click "Link To Walrus Site". Paste
 in the bar the object ID of the Walrus Site, check that it is correct, and click "Apply".
 
 After approving the transaction, we can now browse <https://walrusgame.walrus.site>!
+
+``` admonish warning title="Backwards compatibility"
+If you previously linked a SuiNs domain to a Walrus Site, you might recall clicking the "Link To
+Wallet Address" button instead of the "Link To Walrus Site" button. These old links remain valid,
+but we recommend using the procedure above for all new sites and updates to older sites. The portal
+will first check if the domain is linked using the "Link to Walrus Site", and, if that is not set,
+it will fall back to checking the "Link to Wallet Address".
+```
