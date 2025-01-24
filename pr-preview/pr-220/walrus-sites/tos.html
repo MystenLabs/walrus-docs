@@ -1,0 +1,556 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Terms of service - Walrus</title>
+
+
+        <!-- Custom HTML head -->
+        <script type="text/javascript">
+          // Hacky check to only load Amplitude in production since we don't have environments:
+          const localAddresses = ['localhost', '127.0.0.1', '[::1]'];
+          if (localAddresses.indexOf(document.location.hostname) === -1) {
+            !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{var n=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}},s=function(e,t,r){return function(n){e._q.push({name:t,args:Array.prototype.slice.call(r,0),resolve:n})}},o=function(e,t,r){e._q.push({name:t,args:Array.prototype.slice.call(r,0)})},i=function(e,t,r){e[t]=function(){if(r)return{promise:new Promise(s(e,t,Array.prototype.slice.call(arguments)))};o(e,t,Array.prototype.slice.call(arguments))}},a=function(e){for(var t=0;t<g.length;t++)i(e,g[t],!1);for(var r=0;r<m.length;r++)i(e,m[r],!0)};r.invoked=!0;var c=t.createElement("script");c.type="text/javascript",c.integrity="sha384-pY2pkwHaLM/6UIseFHVU3hOKr6oAvhLcdYkoRZyaMDWLjpM6B7nTxtOdE823WAOQ",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(c,u);for(var p=function(){return this._q=[],this},l=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],d=0;d<l.length;d++)n(p,l[d]);r.Identify=p;for(var f=function(){return this._q=[],this},v=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],y=0;y<v.length;y++)n(f,v[y]);r.Revenue=f;var g=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],m=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];a(r),r.createInstance=function(e){return r._iq[e]={_q:[]},a(r._iq[e]),r._iq[e]},e.amplitude=r}}(window,document)}();
+            amplitude.init('f60df2d0d709d50faa2ffda153a84bc0', { identityStorage:'none', defaultTracking: true });
+          }
+        </script>
+        
+        <script>
+            function initAskCookbook() {
+              // It's a public API key, so it's safe to expose it here
+              const PUBLIC_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU4Y2YyODM4NTcxODU5MjU0MGIyMDciLCJpYXQiOjE3MzM4NzM0NDgsImV4cCI6MjA0OTQ0OTQ0OH0.Z3cv3HuMkYq3aYZYzCKkkYuM5LI3KG-kuA0R-GaSMV4";
+        
+              let cookbookContainer = document.getElementById("__cookbook");
+              if (!cookbookContainer) {
+                cookbookContainer = document.createElement("div");
+                cookbookContainer.id = "__cookbook";
+                cookbookContainer.dataset.apiKey = PUBLIC_API_KEY;
+                document.body.appendChild(cookbookContainer);
+              }
+        
+              let cookbookScript = document.getElementById("__cookbook-script");
+              if (!cookbookScript) {
+                cookbookScript = document.createElement("script");
+                cookbookScript.id = "__cookbook-script";
+                cookbookScript.src = "https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js";
+                cookbookScript.async = true;
+                document.head.appendChild(cookbookScript);
+              }
+        
+        
+              const keyPressPropagationBlocker = function (e) {
+                e.stopPropagation();
+              };
+              document.addEventListener("cookbook:modal:state:change", function (e) {
+                const isOpen = e.detail.isOpen;
+                if (isOpen) {
+                  document.body.addEventListener("keydown", keyPressPropagationBlocker, { capture: true });
+                } else {
+                  document.body.removeEventListener("keydown", keyPressPropagationBlocker, { capture: true });
+                }
+              });
+            }
+        
+            // Check if the document is already loaded and if so, initialize the script, otherwise wait for the load event
+            if (document.readyState === "complete") {
+              initAskCookbook();
+            } else {
+              window.addEventListener("load", initAskCookbook);
+            }
+          </script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Walrus</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Dev Blog</li><li class="chapter-item expanded "><a href="../blog/00_intro.html"><strong aria-hidden="true">1.</strong> Blog Preface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../blog/01_announcing_walrus.html"><strong aria-hidden="true">1.1.</strong> Announcing Walrus</a></li><li class="chapter-item expanded "><a href="../blog/02_devnet_update.html"><strong aria-hidden="true">1.2.</strong> Devnet Update</a></li><li class="chapter-item expanded "><a href="../blog/03_whitepaper.html"><strong aria-hidden="true">1.3.</strong> Announcing the Walrus Whitepaper</a></li><li class="chapter-item expanded "><a href="../blog/04_testnet_update.html"><strong aria-hidden="true">1.4.</strong> Announcing Testnet</a></li><li class="chapter-item expanded "><a href="../blog/05_testnet_redeployment.html"><strong aria-hidden="true">1.5.</strong> Announcing Testnet v2</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Design</li><li class="chapter-item expanded "><a href="../design/objectives_use_cases.html"><strong aria-hidden="true">2.</strong> Objectives and use cases</a></li><li class="chapter-item expanded "><a href="../design/overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/architecture.html"><strong aria-hidden="true">3.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../design/encoding.html"><strong aria-hidden="true">3.2.</strong> Encoding</a></li></ol></li><li class="chapter-item expanded "><a href="../design/operations.html"><strong aria-hidden="true">4.</strong> Operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design/operations-sui.html"><strong aria-hidden="true">4.1.</strong> Sui operations</a></li><li class="chapter-item expanded "><a href="../design/operations-off-chain.html"><strong aria-hidden="true">4.2.</strong> Off-chain operations</a></li></ol></li><li class="chapter-item expanded "><a href="../design/properties.html"><strong aria-hidden="true">5.</strong> Properties</a></li><li class="chapter-item expanded "><a href="../design/future.html"><strong aria-hidden="true">6.</strong> Future discussion</a></li><li class="chapter-item expanded affix "><li class="part-title">Usage</li><li class="chapter-item expanded "><a href="../usage/setup.html"><strong aria-hidden="true">7.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../usage/interacting.html"><strong aria-hidden="true">8.</strong> Interacting with Walrus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../usage/client-cli.html"><strong aria-hidden="true">8.1.</strong> Using the client CLI</a></li><li class="chapter-item expanded "><a href="../usage/json-api.html"><strong aria-hidden="true">8.2.</strong> Using the client JSON API</a></li><li class="chapter-item expanded "><a href="../usage/web-api.html"><strong aria-hidden="true">8.3.</strong> Using the client HTTP API</a></li></ol></li><li class="chapter-item expanded "><a href="../dev-guide/dev-guide.html"><strong aria-hidden="true">9.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev-guide/components.html"><strong aria-hidden="true">9.1.</strong> Components</a></li><li class="chapter-item expanded "><a href="../dev-guide/dev-operations.html"><strong aria-hidden="true">9.2.</strong> Operations</a></li><li class="chapter-item expanded "><a href="../dev-guide/sui-struct.html"><strong aria-hidden="true">9.3.</strong> Sui structures</a></li></ol></li><li class="chapter-item expanded "><a href="../operator-guide/operator-guide.html"><strong aria-hidden="true">10.</strong> Operator guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator-guide/storage-node.html"><strong aria-hidden="true">10.1.</strong> Storage node</a></li><li class="chapter-item expanded "><a href="../operator-guide/aggregator.html"><strong aria-hidden="true">10.2.</strong> Aggregator</a></li></ol></li><li class="chapter-item expanded "><a href="../usage/stake.html"><strong aria-hidden="true">11.</strong> Stake and Unstake</a></li><li class="chapter-item expanded "><a href="../usage/examples.html"><strong aria-hidden="true">12.</strong> Examples</a></li><li class="chapter-item expanded "><a href="../usage/troubleshooting.html"><strong aria-hidden="true">13.</strong> Troubleshooting</a></li><li class="chapter-item expanded affix "><li class="part-title">Walrus Sites</li><li class="chapter-item expanded "><a href="../walrus-sites/intro.html"><strong aria-hidden="true">14.</strong> Introduction to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial.html"><strong aria-hidden="true">15.</strong> Your first Walrus Site</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-install.html"><strong aria-hidden="true">15.1.</strong> Installing the site builder</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-publish.html"><strong aria-hidden="true">15.2.</strong> Publishing a Walrus Site</a></li><li class="chapter-item expanded "><a href="../walrus-sites/tutorial-suins.html"><strong aria-hidden="true">15.3.</strong> Bonus: Set a SuiNS name</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/advanced.html"><strong aria-hidden="true">16.</strong> Advanced functionality</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/commands.html"><strong aria-hidden="true">16.1.</strong> Site builder commands</a></li><li class="chapter-item expanded "><a href="../walrus-sites/builder-config.html"><strong aria-hidden="true">16.2.</strong> Advanced site-builder configuration</a></li><li class="chapter-item expanded "><a href="../walrus-sites/routing.html"><strong aria-hidden="true">16.3.</strong> Specifying headers and routing</a></li><li class="chapter-item expanded "><a href="../walrus-sites/linking.html"><strong aria-hidden="true">16.4.</strong> Linking from and to Walrus Sites</a></li><li class="chapter-item expanded "><a href="../walrus-sites/redirects.html"><strong aria-hidden="true">16.5.</strong> Redirecting objects to Walrus Sites</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/overview.html"><strong aria-hidden="true">17.</strong> Technical overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../walrus-sites/portal.html"><strong aria-hidden="true">17.1.</strong> The Walrus Sites portal</a></li><li class="chapter-item expanded "><a href="../walrus-sites/authentication.html"><strong aria-hidden="true">17.2.</strong> Site data authentication</a></li><li class="chapter-item expanded "><a href="../walrus-sites/restrictions.html"><strong aria-hidden="true">17.3.</strong> Known restrictions</a></li></ol></li><li class="chapter-item expanded "><a href="../walrus-sites/tos.html" class="active"><strong aria-hidden="true">18.</strong> Terms of service</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../glossary.html">Glossary</a></li><li class="chapter-item expanded affix "><a href="../legal/testnet_tos.html">Testnet terms of service</a></li><li class="chapter-item expanded affix "><a href="../legal/privacy.html">Privacy policy</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Walrus</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<!-- markdownlint-disable -->
+<h1 id="walrus-sites---terms-of-service"><a class="header" href="#walrus-sites---terms-of-service">Walrus Sites - TERMS of SERVICE</a></h1>
+<p>Last Updated: June 18, 2024</p>
+<p>These Terms of Service (“<strong>Terms</strong>”) govern your use of certain software services, including Walrus
+Sites provided by Mysten Labs, Inc. (“<strong>Mysten Labs</strong>”) (collectively the "<strong>Services</strong>"). By
+accessing the Services, you agree to and accept these terms and conditions. If you don’t agree to be
+bound by these Terms, do not use the Services.</p>
+<p>IMPORTANT NOTICE REGARDING ARBITRATION FOR U.S. CUSTOMERS: WHEN YOU AGREE TO THESE TERMS YOU ARE
+AGREEING (WITH LIMITED EXCEPTION) TO RESOLVE ANY DISPUTE BETWEEN YOU AND MYSTEN LABS THROUGH
+BINDING, INDIVIDUAL ARBITRATION RATHER THAN IN COURT. PLEASE REVIEW CAREFULLY SECTION XIV “DISPUTE
+RESOLUTION” BELOW FOR DETAILS REGARDING ARBITRATION.</p>
+<h2 id="i-privacy-policy"><a class="header" href="#i-privacy-policy">I. Privacy Policy</a></h2>
+<p>Please review our <a href="../legal/privacy.html">Privacy Policy</a>, which also governs your use of the
+Services, for information on how we collect, use and share your information. By using the Services
+you agree to be bound by our Privacy Policy.</p>
+<h2 id="ii-eligibility"><a class="header" href="#ii-eligibility">II. Eligibility</a></h2>
+<p>You may use the Services only if you are 18 years or older and capable of forming a binding contract
+with Mysten Labs, and not otherwise barred from using the Services under applicable law, including
+applicable U.S. and non-U.S. export control and trade sanctions laws.</p>
+<h2 id="iii-walrus-sites"><a class="header" href="#iii-walrus-sites">III. Walrus Sites</a></h2>
+<p>The Services allow you access website resources (“<strong>Stored Objects</strong>”) that are stored in the Walrus
+Store and linked by the Sui blockchain. In providing the Services, Mysten Labs provides you with a
+means to access the Stored Objects, but Mysten Labs does not process the Stored Objects
+directly. Mysten Labs has no responsibility to screen or moderate Stored Objects accessible via the
+Services. Stored Objects are developed by people over whom Mysten Labs exercises no control. The
+Services may provide you with access to Stored Objects that some people find objectionable,
+inappropriate, or offensive. We assume no responsibility for the content of Stored Objects accessed
+through the Services.</p>
+<h2 id="iv-service-conditions-and-disclaimers"><a class="header" href="#iv-service-conditions-and-disclaimers">IV. Service Conditions and Disclaimers</a></h2>
+<ol>
+<li>
+<p><u>Fees</u>. We may charge fees for some or part of the Services we make available to you. We
+reserve the right to change those fees at any time, in our sole and absolute discretion.</p>
+</li>
+<li>
+<p><u>Acknowledgment of Certain Risks; Disclaimers</u>. Mysten Labs disclaims any and all
+responsibility or liability for the accuracy, content, completeness, legality, reliability, or
+operability or availability of information or material accessed via the Services. Mysten Labs
+disclaims any responsibility for the deletion, failure to store, misdelivery, or untimely
+delivery of any information or material. Mysten Labs disclaims any responsibility for any harm
+resulting from accessing any information or material on any blockchain through the Services. YOU
+UNDERSTAND AND AGREE THAT YOU DOWNLOAD OR OTHERWISE OBTAIN MATERIAL OR DATA THROUGH THE USE OF
+THE SERVICES AT YOUR OWN DISCRETION AND RISK AND THAT YOU WILL BE SOLELY RESPONSIBLE FOR ANY
+DAMAGES TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT RESULTS IN THE DOWNLOAD OF SUCH MATERIAL OR
+DATA.</p>
+<p>The Services could be impacted by one or more regulatory inquiries or regulatory actions, which
+could impede or limit the ability of Mysten Labs to continue to make its proprietary software,
+and thus, could impede or limit your ability to continue to use the Services.</p>
+<p>You understand that the Walrus Store and Sui blockchain (and all other networks with which the
+Services may be compatible) remain under development, which creates technological and security
+risks when using the Services in addition to uncertainty relating to Digital Assets and
+transactions therein. You acknowledge that the cost of transacting on the Sui blockchain is
+variable and may increase at any time, thereby impacting any activities taking place on the Sui
+blockchain, which may result in price fluctuations or increased prices for using the Services.</p>
+<p>The Services are provided to you "as-is" and "with all faults." We make no warranties or
+representations regarding the functionality, quality, or fitness for a particular purpose of the
+Services. By using the Services, you acknowledge and agree to the following:</p>
+<ol>
+<li>Mysten Labs disclaims all warranties, whether express, implied, or statutory, including but
+not limited to any warranties of merchantability, non-infringement, and fitness for a
+particular purpose.</li>
+<li>Mysten Labs does not guarantee that the Services will be free from errors, bugs, or
+interruptions in service, including failed transactions for which you have paid associated gas
+fees. Any use of the Services is at your own risk.</li>
+<li>Mysten Labs shall not be liable for any direct, indirect, incidental, special, or
+consequential damages, whether arising from the use of the Services or any inability to use
+the Services, even if Mysten Labs has been advised of the possibility of such damages.</li>
+<li>It is your responsibility to evaluate the accuracy, completeness, and usefulness of any
+information, content, or data provided by the Services.</li>
+<li>Mysten Labs is under no obligation to provide support, maintenance, updates, or fixes for the
+Services.</li>
+<li>Mysten Labs is not obligated to correct or address any errors, defects, or issues identified
+in the Services.</li>
+<li>Mysten Labs may change, update, or discontinue the Services at any time without notice.</li>
+<li>Your use of the Services indicates your acceptance of the risk associated with its use.</li>
+</ol>
+</li>
+</ol>
+<h2 id="v-ownership"><a class="header" href="#v-ownership">V. Ownership</a></h2>
+<p>We grant you a limited, non-exclusive, revocable, non-transferable, non-sublicensable license to use
+the Services, only as authorized in these Terms. We reserve all rights not expressly granted to you
+in these Terms. The Services are protected by copyright, trademark, patent, and other laws of the
+United States and other countries. We own all rights, title, interest in and to the Services and all
+copies of the Services. These Terms do not grant you any rights to our trademarks or service marks.</p>
+<p>You may submit feedback, comments, or ideas about the Services (“<strong>Ideas</strong>”). Submitting Ideas is
+entirely voluntary, and we will be free to use such Ideas as we see fit and without any obligation
+to you.</p>
+<h2 id="vi-general-prohibitions-and-mysten-labss-enforcement-rights"><a class="header" href="#vi-general-prohibitions-and-mysten-labss-enforcement-rights">VI. General Prohibitions and Mysten Labs’s Enforcement Rights.</a></h2>
+<p>You agree not to do any of the following:</p>
+<ol>
+<li>Use, display, mirror or frame the Services or any individual element within the Services, Mysten
+Labs’s name, any Mysten Labs trademark, logo or other proprietary information, or the layout and
+design of any page or form contained on a page, without Mysten Labs’s express written consent;</li>
+<li>Access, tamper with, or use non-public areas of the Services, Mysten Labs’s computer systems, or
+the technical delivery systems of Mysten Labs’s providers;</li>
+<li>Attempt to probe, scan or test the vulnerability of any Mysten Labs system or network or breach
+any security or authentication measures;</li>
+<li>Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological
+measure implemented by Mysten Labs or any of Mysten Labs’s providers or any other third party
+(including another user) to protect the Services;</li>
+<li>Attempt to access or search the Services or download content from the Services using any engine,
+software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining
+tools or the like) other than the software and/or search agents provided by Mysten Labs or other
+generally available third-party web browsers;</li>
+<li>Send any unsolicited or unauthorized advertising, promotional materials, email, junk mail, spam,
+chain letters or other form of solicitation;</li>
+<li>Use any meta tags or other hidden text or metadata utilizing a Mysten Labs trademark, logo URL or
+product name without Mysten Labs’s express written consent;</li>
+<li>Use the Services, or any portion thereof, for any commercial purpose or for the benefit of any
+third party or in any manner not permitted by these Terms;</li>
+<li>Forge any TCP/IP packet header or any part of the header information in any email or newsgroup
+posting, or in any way use the Services to send altered, deceptive or false source-identifying
+information;</li>
+<li>Attempt to decipher, decompile, disassemble or reverse engineer any of the software used to
+provide the Services;</li>
+<li>Interfere with, or attempt to interfere with, the access of any user, host or network,
+including, without limitation, sending a virus, overloading, flooding, spamming, or mail-bombing
+the Services;</li>
+<li>Collect or store any personally identifiable information from the Services from other users of
+the Services without their express permission;</li>
+<li>Impersonate or misrepresent your affiliation with any person or entity;</li>
+<li>Violate any applicable law or regulation; or</li>
+<li>Encourage or enable any other individual to do any of the foregoing. Mysten Labs is not obligated
+to monitor access to or use of the Services or to review or edit any content. However, we have
+the right to do so for the purpose of operating the Services, to ensure compliance with these
+Terms and to comply with applicable law or other legal requirements. We reserve the right, but
+are not obligated, to remove or disable access to any content, at any time and without notice,
+including, but not limited to, if we, at our sole discretion, consider it objectionable or in
+violation of these Terms.</li>
+</ol>
+<p>We have the right to investigate violations of these Terms or conduct that affects the Services. We may also consult and cooperate with law enforcement authorities to prosecute users who violate the law.</p>
+<h2 id="vii-dmcacopyright-policy"><a class="header" href="#vii-dmcacopyright-policy">VII. DMCA/Copyright Policy</a></h2>
+<p>Mysten Labs respects copyright law and expects its users to do the same. It is Mysten Labs’ policy
+to terminate in appropriate circumstances users who repeatedly infringe or are believed to be
+repeatedly infringing the rights of copyright holders.</p>
+<h2 id="viii-sanctions"><a class="header" href="#viii-sanctions">VIII. Sanctions</a></h2>
+<p>Without limiting the foregoing, you may not download or use the Services if (i) you are in, under
+the control of, or a national or resident of Cuba, Iran, North Korea, Syria or any other country
+subject to United States embargo, or if you are on the U.S. Treasury Department's Specially
+Designated Nationals List or the U.S. Commerce Department's Denied Persons List, Unverified List, or
+Entity List; or (ii) you intend to supply any Services to Cuba, Iran, North Korea, Sudan or Syria or
+any other country subject to United States embargo (or a national or resident of one of these
+countries), or to a person on the Specially Designated Nationals List, Denied Persons List,
+Unverified List, or Entity List.</p>
+<h2 id="ix-termination"><a class="header" href="#ix-termination">IX. Termination</a></h2>
+<p>We may suspend or terminate your access to and use of the Services, including suspending access to
+or terminating your account, at our sole discretion, at any time and without notice to you. You may
+cancel your account, if you have one, at any time by removing the Wallet web browser extension and
+ceasing any and all use of the Services. Upon any termination, discontinuation or cancellation of
+the Services or your account, the following Sections will survive: VIII and IX- XV</p>
+<h2 id="x-warranty-disclaimers"><a class="header" href="#x-warranty-disclaimers">X. Warranty Disclaimers</a></h2>
+<p>THE SERVICES ARE PROVIDED “AS IS,” WITHOUT WARRANTY OF ANY KIND. WITHOUT LIMITING THE FOREGOING, WE
+EXPLICITLY DISCLAIM ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+QUIET ENJOYMENT AND NON-INFRINGEMENT, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING OR USAGE
+OF TRADE. We make no warranty that the Services will meet your requirements, will function as
+intended, will be free from bugs or errors, or be available on an uninterrupted, secure, or
+error-free basis. We make no warranty regarding the quality, accuracy, timeliness, truthfulness,
+completeness or reliability of any information or content on the Services. We may modify or
+terminate the Services at any time, with or without notice to you.</p>
+<h2 id="xi-indemnity"><a class="header" href="#xi-indemnity">XI. Indemnity</a></h2>
+<p>You will indemnify and hold Mysten Labs and its officers, directors, employees and agents, harmless
+from and against any claims, disputes, demands, liabilities, damages, losses, and costs and
+expenses, including, without limitation, reasonable legal and accounting fees arising out of or in
+any way connected with (a) your access to or use of the Services, (b) your User Content, or (c) your
+violation of these Terms.</p>
+<h2 id="xii-limitation-of-liability"><a class="header" href="#xii-limitation-of-liability">XII. Limitation of Liability</a></h2>
+<ol>
+<li>TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER MYSTEN LABS NOR ITS SERVICE PROVIDERS INVOLVED IN
+CREATING, PRODUCING, OR DELIVERING THE SERVICES WILL BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+EXEMPLARY OR CONSEQUENTIAL DAMAGES, OR DAMAGES FOR LOST PROFITS, LOST REVENUES, LOST SAVINGS,
+LOST BUSINESS OPPORTUNITY, LOSS OF DATA OR GOODWILL, SERVICE INTERRUPTION, COMPUTER DAMAGE OR
+SYSTEM FAILURE OR THE COST OF SUBSTITUTE SERVICES OF ANY KIND ARISING OUT OF OR IN CONNECTION
+WITH THESE TERMS OR FROM THE USE OF OR INABILITY TO USE THE SERVICES, WHETHER BASED ON WARRANTY,
+CONTRACT, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY OR ANY OTHER LEGAL THEORY, AND WHETHER
+OR NOT MYSTEN LABS OR ITS SERVICE PROVIDERS HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE,
+EVEN IF A LIMITED REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.</li>
+<li>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL MYSTEN LABS’ TOTAL LIABILITY ARISING OUT
+OF OR IN CONNECTION WITH THESE TERMS OR FROM THE USE OF OR INABILITY TO USE THE SERVICES EXCEED
+THE AMOUNTS YOU HAVE PAID OR ARE PAYABLE BY YOU TO MYSTEN LABS FOR USE OF THE SERVICES OR ONE
+HUNDRED DOLLARS ($100), IF YOU HAVE NOT HAD ANY PAYMENT OBLIGATIONS TO MYSTEN LABS, AS
+APPLICABLE.</li>
+<li>THE EXCLUSIONS AND LIMITATIONS OF DAMAGES SET FORTH ABOVE ARE FUNDAMENTAL ELEMENTS OF THE BASIS
+OF THE BARGAIN BETWEEN MYSTEN LABS AND YOU.</li>
+</ol>
+<h2 id="xiii-governing-law-and-forum-choice"><a class="header" href="#xiii-governing-law-and-forum-choice">XIII. Governing Law and Forum Choice.</a></h2>
+<p>These Terms and any action related thereto will be governed by the Federal Arbitration Act, federal
+arbitration law, and the laws of the State of California, without regard to its conflict of laws
+provisions. Except as otherwise expressly set forth in Section XVII “Dispute Resolution,” the
+exclusive jurisdiction for all Disputes (defined below) that you and Mysten Labs are not required to
+arbitrate will be the state and federal courts located in the County of Santa Clara, and you and
+Mysten Labs each waive any objection to jurisdiction and venue in such courts.</p>
+<h2 id="xiv-dispute-resolution"><a class="header" href="#xiv-dispute-resolution">XIV. Dispute Resolution</a></h2>
+<ol>
+<li><u>Mandatory Arbitration of Disputes</u>. We each agree that any dispute, claim or controversy
+arising out of or relating to these Terms or the breach, termination, enforcement, interpretation
+or validity thereof or the use of the Services (collectively, “Disputes”) will be resolved solely
+by binding, individual arbitration and not in a class, representative or consolidated action or
+proceeding. You and Mysten Labs agree that the U.S. Federal Arbitration Act governs the
+interpretation and enforcement of these Terms, and that you and Mysten Labs are each waiving the
+right to a trial by jury or to participate in a class action. This arbitration provision shall
+survive termination of these Terms.</li>
+<li><u>Exceptions</u>. As limited exceptions to Section XVII(A) above: (i) we both may seek to
+resolve a Dispute in small claims court if it qualifies; and (ii) we each retain the right to seek
+injunctive or other equitable relief from a court to prevent (or enjoin) the infringement or
+misappropriation of our intellectual property rights.</li>
+<li><u>Conducting Arbitration and Arbitration Rules</u>. The arbitration will be conducted by the
+American Arbitration Association (“AAA”) under its Consumer Arbitration Rules (the “AAA Rules”)
+then in effect, except as modified by these Terms. The AAA Rules are available at www.adr.org or
+by calling 1-800-778-7879. A party who wishes to start arbitration must submit a written Demand
+for Arbitration to AAA and give notice to the other party as specified in the AAA Rules. The AAA
+provides a form Demand for Arbitration at <a href="http://www.adr.org"><u>www.adr.org</u></a>. Any
+arbitration hearings will take place in the county (or parish) where you live, unless we both
+agree to a different location. The parties agree that the arbitrator shall have exclusive
+authority to decide all issues relating to the interpretation, applicability, enforceability and
+scope of this arbitration agreement.</li>
+<li><u>Arbitration Costs</u>. Payment of all filing, administration and arbitrator fees will be
+governed by the AAA Rules, and we won’t seek to recover the administration and arbitrator fees we
+are responsible for paying, unless the arbitrator finds your Dispute frivolous. If we prevail in
+arbitration we’ll pay all of our attorneys’ fees and costs and won’t seek to recover them from
+you. If you prevail in arbitration you will be entitled to an award of attorneys’ fees and
+expenses to the extent provided under applicable law.</li>
+<li><u>Injunctive and Declaratory Relief</u>. Except as provided in Section XIV(B) above, the
+arbitrator shall determine all issues of liability on the merits of any claim asserted by either
+party and may award declaratory or injunctive relief only in favor of the individual party seeking
+relief and only to the extent necessary to provide relief warranted by that party’s individual
+claim. To the extent that you or we prevail on a claim and seek public injunctive relief (that is,
+injunctive relief that has the primary purpose and effect of prohibiting unlawful acts that
+threaten future injury to the public), the entitlement to and extent of such relief must be
+litigated in a civil court of competent jurisdiction and not in arbitration. The parties agree
+that litigation of any issues of public injunctive relief shall be stayed pending the outcome of
+the merits of any individual claims in arbitration.</li>
+<li><u>Class Action Waiver</u>. YOU AND MYSTEN LABS AGREE THAT EACH MAY BRING CLAIMS AGAINST THE
+OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY
+PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. Further, if the parties’ Dispute is resolved through
+arbitration, the arbitrator may not consolidate another person’s claims with your claims, and may
+not otherwise preside over any form of a representative or class proceeding. If this specific
+provision is found to be unenforceable, then the entirety of this Dispute Resolution section shall
+be null and void.</li>
+<li><u>Severability</u>. With the exception of any of the provisions in Section XVII(F) of these
+Terms (“<strong>Class Action Waiver</strong>”), if an arbitrator or court of competent jurisdiction decides
+that any part of these Terms is invalid or unenforceable, the other parts of these Terms will
+still apply.</li>
+</ol>
+<h2 id="xv-general-terms"><a class="header" href="#xv-general-terms">XV. General Terms</a></h2>
+<ol>
+<li><u>Reservation of Rights</u>. Mysten Labs and its licensors exclusively own all right, title and
+interest in and to the Services, including all associated intellectual property rights. You
+acknowledge that the Services are protected by copyright, trademark, and other laws of the United
+States and foreign countries. You agree not to remove, alter or obscure any copyright, trademark,
+service mark or other proprietary rights notices incorporated in or accompanying the Services.</li>
+<li><u>Entire Agreement</u>. These Terms constitute the entire and exclusive understanding and
+agreement between Mysten Labs and you regarding the Services, and these Terms supersede and
+replace all prior oral or written understandings or agreements between Mysten Labs and you
+regarding the Services. If any provision of these Terms is held invalid or unenforceable by an
+arbitrator or a court of competent jurisdiction, that provision will be enforced to the maximum
+extent permissible and the other provisions of these Terms will remain in full force and
+effect. Except where provided by applicable law in your jurisdiction, you may not assign or
+transfer these Terms, by operation of law or otherwise, without Mysten Labs’ prior written
+consent. Any attempt by you to assign or transfer these Terms absent our consent or your statutory
+right, without such consent, will be null. Mysten Labs may freely assign or transfer these Terms
+without restriction. Subject to the foregoing, these Terms will bind and inure to the benefit of
+the parties, their successors and permitted assigns.</li>
+<li><u>Notices</u>. Any notices or other communications provided by Mysten Labs under these Terms
+will be given: (i) via email; or (ii) by posting to the Services. For notices made by email, the
+date of receipt will be deemed the date on which such notice is transmitted.</li>
+<li><u>Waiver of Rights</u>. Mysten Labs’ failure to enforce any right or provision of these Terms
+will not be considered a waiver of such right or provision. The waiver of any such right or
+provision will be effective only if in writing and signed by a duly authorized representative of
+Mysten Labs. Except as expressly set forth in these Terms, the exercise by either party of any of
+its remedies under these Terms will be without prejudice to its other remedies under these Terms
+or otherwise.</li>
+</ol>
+<h2 id="xvi-contact-information"><a class="header" href="#xvi-contact-information">XVI. Contact Information</a></h2>
+<p>If you have any questions about these Terms or the Services, please contact Mysten Labs at
+<a href="mailto:legal@mystenlabs.com"><u>legal@mystenlabs.com</u></a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../walrus-sites/restrictions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../glossary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../walrus-sites/restrictions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../glossary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
