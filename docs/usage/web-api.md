@@ -149,6 +149,7 @@ may still be temporarily unavailable:
 - `https://walrus.testnet.aggregator.stakepool.dev.br`
 - `https://aggregator.walrus.banansen.dev`
 - `https://aggregator.walrus.silentvalidator.com`
+- `https://testnet-aggregator.walrus.graphyte.dev`
 
 ### Public publishers
 
@@ -191,6 +192,7 @@ may still be temporarily unavailable:
 - `https://walrus.testnet.publisher.stakepool.dev.br`
 - `https://publisher.walrus.banansen.dev`
 - `https://publisher.walrus.silentvalidator.com`
+- `https://testnet-publisher.walrus.graphyte.dev`
 
 ## HTTP API Usage
 
