@@ -34,6 +34,10 @@ contains a number of examples:
 A [JavaScript example](https://github.com/MystenLabs/walrus-docs/tree/main/examples/javascript) is
 provided showing how to upload and download a blob through a web form using the HTTP API.
 
+## Golang
+
+An Walrus SDK with detailed examples is available in the [Walrus Go SDK(Maintained by Nami Cloud team)](https://github.com/namihq/walrus-go)
+
 ## Move
 
 For more complex applications, you may want to interact with Walrus on-chain objects. For that
