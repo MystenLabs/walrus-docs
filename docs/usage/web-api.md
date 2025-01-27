@@ -151,6 +151,8 @@ may still be temporarily unavailable:
 - `https://aggregator.walrus.silentvalidator.com`
 - `https://testnet-aggregator.walrus.graphyte.dev`
 - `https://walrus-testnet-aggregator.imperator.co`
+- `https://walrus-testnet-aggregator.unemployedstake.co.uk`
+
 
 ### Public publishers
 
@@ -195,6 +197,7 @@ may still be temporarily unavailable:
 - `https://publisher.walrus.silentvalidator.com`
 - `https://testnet-publisher.walrus.graphyte.dev`
 - `https://walrus-testnet-publisher.imperator.co`
+- `https://walrus-testnet-publisher.unemployedstake.co.uk`
 
 ## HTTP API Usage
 
