@@ -17,7 +17,7 @@ For simplicity, we will start by publishing the most frugal of the sites, the `w
 First, clone the repository of the examples:
 
 ``` sh
-git clone https://github.com/MystenLabs/example-walrus-sites.git && cd walrus-snake/
+git clone https://github.com/MystenLabs/example-walrus-sites.git && cd example-walrus-sites
 ```
 
 ## Publish the site
