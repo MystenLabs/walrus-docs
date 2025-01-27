@@ -11,7 +11,12 @@ Sites](../walrus-sites/intro.md), with code available in the
 And for an example of how to build a static website and store it as a Walrus Site with GitHub
 actions, just look at the [CI
 workflow](https://github.com/MystenLabs/walrus-docs/blob/main/.github/workflows/publish.yaml) we use
-to publish this very site.
+to publish this very site. There is also a [Walrus-Sites GitHub
+Action](https://github.com/zktx-io/walrus-sites-ga) created by the community you can use to very
+easily publish your own Walrus Sites using GitHub Actions (note that this is *not* created or
+officially supported by the Walrus team at Mysten Labs).
+
+See also our list of existing and upcoming [SDKs and other tools](./sdks.md).
 
 ## Python
 
