@@ -31,11 +31,9 @@ The stable branch of Walrus Sites is `testnet`.
 There are two main configurations for the portal: The `constants.ts` file and the environment
 variables.
 
-Regarding the `constants.ts` file, you can find it in the `portal/common/lib` directory. This file
-contains the most important configuration parameters for the portal, and most of the time, you will
-not have to change them.
-
-The most important configuration parameters for the portal are in `portal/common/lib/constants.ts`:
+You can find the `constants.ts` file in the `portal/common/lib` directory. It holds key
+configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
+here are the explanations for each parameter:
 
 - `NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
   use Sui `testnet`.
@@ -47,9 +45,8 @@ The most important configuration parameters for the portal are in `portal/common
 - `SITE_NAMES`: Hard coded `name: objectID` mappings, to override the SuiNS names. For development
   only.
 
-Next, the environment variables are used to configure the portal and are set in the `.env.local`.
-To just run a simple instance of the portal, you can just use the environment variables specified
-in the `.env.example` file.
+Next, the environment variables are set in the `.env.local`. To just run a simple instance of the
+portal, you can just use the environment variables specified in the `.env.example` file.
 
 ```sh
 cp ./portal/server/.env.example ./portal/server/.env.local
