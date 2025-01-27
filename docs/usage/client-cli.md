@@ -25,12 +25,12 @@ $ walrus info
 Walrus system information
 
 Epochs and storage duration
-Current epoch: 1
-Epoch duration: 2day
+Current epoch: 6
+Epoch duration: 2days
 Blobs can be stored for at most 183 epochs in the future.
 
 Storage nodes
-Number of storage nodes: 30
+Number of storage nodes: 58
 Number of shards: 1000
 
 Blob size
@@ -57,8 +57,13 @@ SUI: `1 WAL = 1 000 000 000 FROST`.
 
 Additional information such as encoding parameters and sizes, BFT system information, and
 information on the storage nodes in the current and (if already selected) the next committee,
-including their node IDs and stake and shard distribution can be viewed with the `--dev` argument:
-`walrus info --dev`.
+including their node IDs and stake and shard distribution can be viewed with various subcommands,
+see `walrus info --help` for details. Note that the previous `--dev` option has been replaced by the
+`all` subcommand.
+
+The health of storage nodes can be checked with the `walrus health` command. This command takes
+different options to select the nodes to check (see `walrus health --help` for details). For
+example, `walrus health --committee` checks the status of all current committee members.
 
 ## Storing blobs
 
