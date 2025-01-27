@@ -36,6 +36,7 @@
   - [Using the client CLI](./usage/client-cli.md)
   - [Using the client JSON API](./usage/json-api.md)
   - [Using the client HTTP API](./usage/web-api.md)
+  - [SDKs and other tools](./usage/sdks.md)
 - [Developer guide](./dev-guide/dev-guide.md)
   - [Components](./dev-guide/components.md)
   - [Operations](./dev-guide/dev-operations.md)
