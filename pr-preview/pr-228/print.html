@@ -3344,8 +3344,8 @@ future.</p>
 <p>There are two main configurations for the portal: The <code>constants.ts</code> file and the environment
 variables.</p>
 <p>You can find the <code>constants.ts</code> file in the <code>portal/common/lib</code> directory. It holds key
-configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
-here are the explanations for each parameter:</p>
+parameters that you typically won't need to modify, but if you do, here are the explanations
+for each one:</p>
 <ul>
 <li><code>NETWORK</code>: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
 use Sui <code>testnet</code>.</li>
@@ -3359,10 +3359,10 @@ only.</li>
 </ul>
 <p>Next, the environment variables are set in the <code>.env.local</code>. To just run a simple instance of the
 portal, you can just use the environment variables specified in the <code>.env.example</code> file.</p>
+<p>For the server-side portal, use:</p>
 <pre><code class="language-sh">cp ./portal/server/.env.example ./portal/server/.env.local
 </code></pre>
-<p>Likewise, if you want to run the service-worker portal, you can copy the <code>.env.example</code> file to
-<code>.env.local</code> in the <code>portal/worker</code> directory.</p>
+<p>Likewise, if you want to run the service-worker portal, use:</p>
 <pre><code class="language-sh">cp ./portal/worker/.env.example ./portal/worker/.env.local
 </code></pre>
 <h2 id="running-the-portal-locally"><a class="header" href="#running-the-portal-locally">Running the portal locally</a></h2>
