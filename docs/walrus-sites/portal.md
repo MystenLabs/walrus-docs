@@ -28,7 +28,7 @@ The stable branch of Walrus Sites is `testnet`.
 
 ## Configuring the portal
 
-There are two main configurations for the portal: The `constants.ts` file and the environment
+There are two main locations where the portal needs to be configured: The `constants.ts` file and the environment
 variables.
 
 You can find the `constants.ts` file in the `portal/common/lib` directory. It holds key
