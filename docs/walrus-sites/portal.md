@@ -43,7 +43,7 @@ here are the explanations for each parameter:
 - `MAX_REDIRECT_DEPTH`: The number of [redirects](./redirects.md) the portal will follow
   before stopping.
 - `SITE_NAMES`: Hard coded `name: objectID` mappings, to override the SuiNS names. For development
-  only.
+  only. Use this at your own risk, may render some sites with legitimate SuiNS names unusable.
 
 Next, the environment variables are set in the `.env.local`. To just run a simple instance of the
 portal, you can just use the environment variables specified in the `.env.example` file.
