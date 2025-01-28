@@ -153,7 +153,6 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
 
-
 ### Public publishers
 
 - `https://publisher.walrus-testnet.walrus.space`
