@@ -26,6 +26,39 @@ future.
 The stable branch of Walrus Sites is `testnet`.
 ```
 
+## Configuring the portal
+
+There are two main locations where the portal needs to be configured: The `constants.ts` file and
+the environment variables.
+
+You can find the `constants.ts` file in the `portal/common/lib` directory. It holds key
+configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
+here are the explanations for each parameter:
+
+- `NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
+  use Sui `testnet`.
+- `AGGREGATOR`: The URL of the [aggregator](../usage/web-api.md) from which the portal will
+  fetch the Walrus blobs.
+- `SITE_PACKAGE`: The Sui object ID of the Walrus Sites package.
+- `MAX_REDIRECT_DEPTH`: The number of [redirects](./redirects.md) the portal will follow
+  before stopping.
+- `SITE_NAMES`: Hard coded `name: objectID` mappings, to override the SuiNS names. For development
+  only. Use this at your own risk, may render some sites with legitimate SuiNS names unusable.
+
+Next, the environment variables are set in the `.env.local`. To just run a simple instance of the
+portal, you can just use the environment variables specified in the `.env.example` file.
+
+```sh
+cp ./portal/server/.env.example ./portal/server/.env.local
+```
+
+Likewise, if you want to run the service-worker portal, you can copy the `.env.example` file to
+`.env.local` in the `portal/worker` directory.
+
+```sh
+cp ./portal/worker/.env.example ./portal/worker/.env.local
+```
+
 ## Running the portal locally
 
 You can run a portal locally if you want to browse Walrus Sites without accessing
@@ -59,21 +92,8 @@ pnpm serve:dev:server
 pnpm serve:dev:worker
 ```
 
-to serve one of the portals. Typically, you will find it served at `localhost:8080` (but check the
-output of the serve command).
+to serve one of the portals. Typically, you will find it served at `localhost:3000` (for the server
+side portal) or `localhost:8080` for the service worker (but check the output of the serve
+command).
 
 For the production versions, use the `prod` commands: `serve:prod:server` and `serve:prod:worker`.
-
-## Configuring the portal
-
-The most important configuration parameters for the portal are in `portal/common/lib/constants.ts`:
-
-- `NETWORK`: The Sui network to be used for fetching the Walrus Sites objects. Currently, we
-  use Sui `testnet`.
-- `AGGREGATOR`: The URL of the [aggregator](../usage/web-api.md) from which the portal will
-  fetch the Walrus blobs.
-- `SITE_PACKAGE`: The Sui object ID of the Walrus Sites package.
-- `MAX_REDIRECT_DEPTH`: The number of [redirects](./redirects.md) the portal will follow
-  before stopping.
-- `SITE_NAMES`: Hard coded `name: objectID` mappings, to override the SuiNS names. For development
-  only.
