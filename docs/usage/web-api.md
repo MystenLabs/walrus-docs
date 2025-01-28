@@ -120,7 +120,7 @@ may still be temporarily unavailable:
 - `https://testnet-aggregator-walrus.kiliglab.io`
 - `https://walrus-cache-testnet.latitude-sui.com`
 - `https://walrus-testnet-aggregator.nodeinfra.com`
-- `https://walrus-testnet.stakingdefenseleague.com`
+- `https://walrus-testnet-aggregator.stakingdefenseleague.com`
 - `https://walrus-aggregator.rubynodes.io`
 - `https://walrus-testnet-aggregator.brightlystake.com`
 - `https://walrus-testnet-aggregator.nami.cloud`
@@ -181,7 +181,7 @@ may still be temporarily unavailable:
 - `http://walrus.krates.ai:9001`
 - `http://walrus-publisher-testnet.latitude-sui.com:9001`
 - `http://walrus-tn.juicystake.io:9090`
-- `http://walrus-testnet.stakingdefenseleague.com:9001`
+- `https://walrus-testnet-publisher.stakingdefenseleague.com`
 - `http://walrus.sui.thepassivetrust.com:9001`
 - `http://walrus.globalstake.io:9001`
 - `http://walrus-testnet-publisher.natsai.xyz:9001`
