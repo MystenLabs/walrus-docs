@@ -3343,8 +3343,8 @@ future.</p>
 </div>
 </div>
 <h2 id="configuring-the-portal"><a class="header" href="#configuring-the-portal">Configuring the portal</a></h2>
-<p>There are two main locations where the portal needs to be configured: The <code>constants.ts</code> file and the environment
-variables.</p>
+<p>There are two main locations where the portal needs to be configured: The <code>constants.ts</code> file and
+the environment variables.</p>
 <p>You can find the <code>constants.ts</code> file in the <code>portal/common/lib</code> directory. It holds key
 configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
 here are the explanations for each parameter:</p>
@@ -3357,7 +3357,7 @@ fetch the Walrus blobs.</li>
 <li><code>MAX_REDIRECT_DEPTH</code>: The number of <a href="walrus-sites/./redirects.html">redirects</a> the portal will follow
 before stopping.</li>
 <li><code>SITE_NAMES</code>: Hard coded <code>name: objectID</code> mappings, to override the SuiNS names. For development
-only.</li>
+only. Use this at your own risk, may render some sites with legitimate SuiNS names unusable.</li>
 </ul>
 <p>Next, the environment variables are set in the <code>.env.local</code>. To just run a simple instance of the
 portal, you can just use the environment variables specified in the <code>.env.example</code> file.</p>
