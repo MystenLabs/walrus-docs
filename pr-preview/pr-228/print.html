@@ -1812,7 +1812,7 @@ may still be temporarily unavailable:</p>
 <li><code>https://testnet-aggregator-walrus.kiliglab.io</code></li>
 <li><code>https://walrus-cache-testnet.latitude-sui.com</code></li>
 <li><code>https://walrus-testnet-aggregator.nodeinfra.com</code></li>
-<li><code>https://walrus-testnet.stakingdefenseleague.com</code></li>
+<li><code>https://walrus-testnet-aggregator.stakingdefenseleague.com</code></li>
 <li><code>https://walrus-aggregator.rubynodes.io</code></li>
 <li><code>https://walrus-testnet-aggregator.brightlystake.com</code></li>
 <li><code>https://walrus-testnet-aggregator.nami.cloud</code></li>
@@ -1843,6 +1843,7 @@ may still be temporarily unavailable:</p>
 <li><code>https://aggregator.walrus.silentvalidator.com</code></li>
 <li><code>https://testnet-aggregator.walrus.graphyte.dev</code></li>
 <li><code>https://walrus-testnet-aggregator.imperator.co</code></li>
+<li><code>https://walrus-testnet-aggregator.unemployedstake.co.uk</code></li>
 </ul>
 <h3 id="public-publishers"><a class="header" href="#public-publishers">Public publishers</a></h3>
 <ul>
@@ -1873,7 +1874,7 @@ may still be temporarily unavailable:</p>
 <li><code>http://walrus.krates.ai:9001</code></li>
 <li><code>http://walrus-publisher-testnet.latitude-sui.com:9001</code></li>
 <li><code>http://walrus-tn.juicystake.io:9090</code></li>
-<li><code>http://walrus-testnet.stakingdefenseleague.com:9001</code></li>
+<li><code>https://walrus-testnet-publisher.stakingdefenseleague.com</code></li>
 <li><code>http://walrus.sui.thepassivetrust.com:9001</code></li>
 <li><code>http://walrus.globalstake.io:9001</code></li>
 <li><code>http://walrus-testnet-publisher.natsai.xyz:9001</code></li>
@@ -1887,6 +1888,7 @@ may still be temporarily unavailable:</p>
 <li><code>https://publisher.walrus.silentvalidator.com</code></li>
 <li><code>https://testnet-publisher.walrus.graphyte.dev</code></li>
 <li><code>https://walrus-testnet-publisher.imperator.co</code></li>
+<li><code>https://walrus-testnet-publisher.unemployedstake.co.uk</code></li>
 </ul>
 <h2 id="http-api-usage"><a class="header" href="#http-api-usage">HTTP API Usage</a></h2>
 <p>For the following examples, we assume you set the <code>AGGREGATOR</code> and <code>PUBLISHER</code> environment variables
@@ -3341,7 +3343,7 @@ future.</p>
 </div>
 </div>
 <h2 id="configuring-the-portal"><a class="header" href="#configuring-the-portal">Configuring the portal</a></h2>
-<p>There are two main configurations for the portal: The <code>constants.ts</code> file and the environment
+<p>There are two main locations where the portal needs to be configured: The <code>constants.ts</code> file and the environment
 variables.</p>
 <p>You can find the <code>constants.ts</code> file in the <code>portal/common/lib</code> directory. It holds key
 configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
