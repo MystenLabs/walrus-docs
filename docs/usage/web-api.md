@@ -138,7 +138,7 @@ may still be temporarily unavailable:
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
 - `http://aggregator.testnet.sui.rpcpool.com:9000`
 - `http://walrus.krates.ai:9000`
-- `https://walrus.sui.thepassivetrust.com`
+- `https://walrus-test-aggregator.sui.thepassivetrust.com`
 - `http://walrus.globalstake.io:9000`
 - `http://walrus-testnet-aggregator.natsai.xyz:9000`
 - `http://walrus-testnet.staking4all.org:9000`
@@ -183,7 +183,7 @@ may still be temporarily unavailable:
 - `http://walrus-publisher-testnet.latitude-sui.com:9001`
 - `http://walrus-tn.juicystake.io:9090`
 - `https://walrus-testnet-publisher.stakingdefenseleague.com`
-- `http://walrus.sui.thepassivetrust.com:9001`
+- `https://walrus-testnet.thepassivetrust.com`
 - `http://walrus.globalstake.io:9001`
 - `http://walrus-testnet-publisher.natsai.xyz:9001`
 - `http://walrus-testnet.staking4all.org:9001`
