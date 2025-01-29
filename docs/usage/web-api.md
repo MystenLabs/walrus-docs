@@ -138,7 +138,7 @@ may still be temporarily unavailable:
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
 - `http://aggregator.testnet.sui.rpcpool.com:9000`
 - `http://walrus.krates.ai:9000`
-- `https://walrus-test-aggregator.sui.thepassivetrust.com`
+- `https://walrus-test-aggregator.thepassivetrust.com`
 - `http://walrus.globalstake.io:9000`
 - `http://walrus-testnet-aggregator.natsai.xyz:9000`
 - `http://walrus-testnet.staking4all.org:9000`
