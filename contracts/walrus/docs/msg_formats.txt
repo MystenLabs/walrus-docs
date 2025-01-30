@@ -22,7 +22,7 @@ All messages MUST start with a header of 3 + 4 bytes:
 - body: remaining vec<u8>, no length prefix
 
 The intent types are enumerated below, the version is as of now 0,
-and the app id for storage is 3. Th epoch is the storage epoch the
+and the app id for storage is 3. The epoch is the storage epoch the
 signing storage node is in when signing the message.
 
 Intent types (add here):
