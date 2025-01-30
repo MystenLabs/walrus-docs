@@ -138,7 +138,7 @@ may still be temporarily unavailable:
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
 - `http://aggregator.testnet.sui.rpcpool.com:9000`
 - `http://walrus.krates.ai:9000`
-- `https://walrus.sui.thepassivetrust.com`
+- `https://walrus-test-aggregator.thepassivetrust.com`
 - `http://walrus.globalstake.io:9000`
 - `http://walrus-testnet-aggregator.natsai.xyz:9000`
 - `http://walrus-testnet.staking4all.org:9000`
@@ -152,6 +152,7 @@ may still be temporarily unavailable:
 - `https://testnet-aggregator.walrus.graphyte.dev`
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
+- `https://aggregator.walrus-01.tududes.com`
 - `http://walrus-aggregator.n1stake.com:9000`
 
 ### Public publishers
@@ -184,7 +185,7 @@ may still be temporarily unavailable:
 - `http://walrus-publisher-testnet.latitude-sui.com:9001`
 - `http://walrus-tn.juicystake.io:9090`
 - `https://walrus-testnet-publisher.stakingdefenseleague.com`
-- `http://walrus.sui.thepassivetrust.com:9001`
+- `https://walrus-testnet.thepassivetrust.com`
 - `http://walrus.globalstake.io:9001`
 - `http://walrus-testnet-publisher.natsai.xyz:9001`
 - `http://walrus-testnet.staking4all.org:9001`
@@ -198,6 +199,7 @@ may still be temporarily unavailable:
 - `https://testnet-publisher.walrus.graphyte.dev`
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
+- `https://publisher.walrus-01.tududes.com`
 - `http://walrus-publisher.n1stake.com:9001`
 
 ## HTTP API Usage
