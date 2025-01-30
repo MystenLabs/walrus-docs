@@ -60,7 +60,7 @@ fun bubble_down<T>(elements: &mut vector<Entry<T>>) {
         let left = i * 2 + 1;
         let right = left + 1;
         let mut max = i;
-        // Find the node with the highest priority betweenthe node and its children.
+        // Find the node with the highest priority between the node and its children.
         if (left < len && elements[left].higher_priority_than(&elements[max])) {
             max = left;
         };
