@@ -198,7 +198,7 @@ may still be temporarily unavailable:
 - `https://testnet-publisher.walrus.graphyte.dev`
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
-- `http://walrus-publisher.n1stake.com:9001/`
+- `http://walrus-publisher.n1stake.com:9001`
 
 ## HTTP API Usage
 
