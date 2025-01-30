@@ -152,6 +152,7 @@ may still be temporarily unavailable:
 - `https://testnet-aggregator.walrus.graphyte.dev`
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
+- `http://walrus-aggregator.n1stake.com:9000`
 
 ### Public publishers
 
@@ -197,6 +198,7 @@ may still be temporarily unavailable:
 - `https://testnet-publisher.walrus.graphyte.dev`
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
+- `https://walrus-publisher.n1stake.com:9001/`
 
 ## HTTP API Usage
 
