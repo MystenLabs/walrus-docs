@@ -153,6 +153,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
 - `https://aggregator.walrus-01.tududes.com`
+- `http://walrus-aggregator.n1stake.com:9000`
 
 ### Public publishers
 
@@ -199,6 +200,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
 - `https://publisher.walrus-01.tududes.com`
+- `http://walrus-publisher.n1stake.com:9001`
 
 ## HTTP API Usage
 
