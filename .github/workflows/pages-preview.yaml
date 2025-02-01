@@ -38,6 +38,6 @@ jobs:
           with_linkcheck: "false"
         if: github.event.action != 'closed'
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1.4.8
+        uses: rossjrw/pr-preview-action@v1.6.0
         with:
           source-dir: build/html
