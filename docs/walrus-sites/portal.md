@@ -75,10 +75,10 @@ git checkout testnet
 
 ``` sh
 cd portal
-pnpm install
+bun install
 # Build the portal you want to use, or both
-pnpm build:server
-pnpm build:worker
+bun build:server
+bun build:worker
 
 ```
 
@@ -86,14 +86,12 @@ to install the dependencies, and then either one of the following commands:
 
 ``` sh
 # Serve the server-side portal
-pnpm serve:dev:server
+bun run server
 
 # Serve the service-worker portal
-pnpm serve:dev:worker
+bun run worker
 ```
 
 to serve one of the portals. Typically, you will find it served at `localhost:3000` (for the server
 side portal) or `localhost:8080` for the service worker (but check the output of the serve
 command).
-
-For the production versions, use the `prod` commands: `serve:prod:server` and `serve:prod:worker`.
