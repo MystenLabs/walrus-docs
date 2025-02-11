@@ -156,6 +156,7 @@ may still be temporarily unavailable:
 - `http://walrus-aggregator.n1stake.com:9000`
 - `https://suiftly-testnet-agg.mhax.io`
 - `https://walrus-testnet-aggregator.trusted-point.com`
+- `http://walrus-testnet.rpc101.org:9000`
 
 ### Public publishers
 
@@ -205,6 +206,7 @@ may still be temporarily unavailable:
 - `http://walrus-publisher.n1stake.com:9001`
 - `https://suiftly-testnet-pub.mhax.io`
 - `https://walrus-testnet-publisher.trusted-point.com`
+- `http://walrus-testnet.rpc101.org:9001`
 
 ## HTTP API Usage
 
