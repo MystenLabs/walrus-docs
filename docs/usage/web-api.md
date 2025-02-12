@@ -158,6 +158,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.trusted-point.com`
 - `http://walrus-testnet.rpc101.org:9000`
 - `https://walrus-testnet-aggregator.veera.com`
+- `https://aggregator.testnet.walrus.atalma.io`
 
 ### Public publishers
 
@@ -209,6 +210,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.trusted-point.com`
 - `http://walrus-testnet.rpc101.org:9001`
 - `https://walrus-testnet-publisher.veera.com`
+- `https://publisher.testnet.walrus.atalma.io`
 
 ## HTTP API Usage
 
