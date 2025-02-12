@@ -157,6 +157,7 @@ may still be temporarily unavailable:
 - `https://suiftly-testnet-agg.mhax.io`
 - `https://walrus-testnet-aggregator.trusted-point.com`
 - `http://walrus-testnet.rpc101.org:9000`
+- `https://walrus-testnet-aggregator.veera.com`
 
 ### Public publishers
 
@@ -207,6 +208,7 @@ may still be temporarily unavailable:
 - `https://suiftly-testnet-pub.mhax.io`
 - `https://walrus-testnet-publisher.trusted-point.com`
 - `http://walrus-testnet.rpc101.org:9001`
+- `https://walrus-testnet-publisher.veera.com`
 
 ## HTTP API Usage
 
