@@ -159,6 +159,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.rpc101.org:9000`
 - `https://walrus-testnet-aggregator.veera.com`
 - `https://aggregator.testnet.walrus.atalma.io`
+- `https://153-gb3-val-walrus-aggregator.stakesquid.com`
 
 ### Public publishers
 
@@ -211,6 +212,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.rpc101.org:9001`
 - `https://walrus-testnet-publisher.veera.com`
 - `https://publisher.testnet.walrus.atalma.io`
+- `https://153-gb3-val-walrus-publisher.stakesquid.com`
 
 ## HTTP API Usage
 
