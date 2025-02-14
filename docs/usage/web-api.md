@@ -160,6 +160,7 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9000`
 - `http://162.19.18.19:9000`
 - `http://walrus-aggregator.stakeme.pro:9000`
+- `http://walrus-storage.testnet.nelrann.org:9000`
 
 ### Public publishers
 
@@ -213,6 +214,7 @@ may still be temporarily unavailable:
 - `http://65.21.139.112:9001`
 - `http://162.19.18.19:9001`
 - `http://walrus-publisher.stakeme.pro:9001`
+- `http://walrus-storage.testnet.nelrann.org:9001`
 
 ## HTTP API Usage
 
