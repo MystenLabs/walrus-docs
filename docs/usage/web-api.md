@@ -163,6 +163,8 @@ may still be temporarily unavailable:
 - `http://walrus-aggregator.stakeme.pro:9000`
 - `http://walrus-storage.testnet.nelrann.org:9000`
 - `http://walrus-testnet.senseinode.com:9000`
+- `http://walrus-testnet.equinoxdao.xyz:9000`
+- `https://walrus-testnet-aggregator.stakely.io`
 
 ### Public publishers
 
@@ -219,6 +221,8 @@ may still be temporarily unavailable:
 - `http://walrus-publisher.stakeme.pro:9001`
 - `http://walrus-storage.testnet.nelrann.org:9001`
 - `http://walrus-testnet.senseinode.com:9001`
+- `http://walrus-testnet.equinoxdao.xyz:9001`
+- `https://walrus-testnet-publisher.stakely.io`
 
 ## HTTP API Usage
 
