@@ -148,6 +148,7 @@ may still be temporarily unavailable:
 - `https://walrus-tn.juicystake.io:9443`
 - `https://walrus-agg-testnet.chainode.tech:9002`
 - `https://walrus-testnet-aggregator.starduststaking.com:11444`
+- `https://walrus-aggregator-testnet.cetus.zone`
 - `http://walrus-testnet-aggregator.everstake.one:9000`
 - `http://walrus.testnet.pops.one:9000`
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
@@ -208,6 +209,7 @@ may still be temporarily unavailable:
 - `http://walrus.globalstake.io:9001`
 - `http://walrus-testnet.staking4all.org:9001`
 - `http://walrus-testnet.rpc101.org:9001`
+- `http://walrus-publisher-testnet.cetus.zone:9001`
 - `http://93.115.27.108:9001`
 - `http://65.21.139.112:9001`
 - `http://162.19.18.19:9001`
