@@ -164,7 +164,7 @@ may still be temporarily unavailable:
 - `http://walrus-storage.testnet.nelrann.org:9000`
 - `http://walrus-testnet.equinoxdao.xyz:9000`
 - `https://walrus-testnet-aggregator.stakely.io`
-- `- `walrus-testnet-aggregator.criterionvc.com``
+- `walrus-testnet-aggregator.criterionvc.com`
 
 ### Public publishers
 
