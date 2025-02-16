@@ -21,6 +21,38 @@ cargo install mdbook-katex@0.9.0 --locked
 cargo install mdbook-i18n-helpers --locked
 mdbook serve
 ```
+If you do not have Rust installed, install it using this guide:
+## Installing Rust
+
+Rust can be installed on macOS, Linux, or another Unix-like operating system using `rustup`. Follow the steps below for your respective OS.
+
+### macOS, Linux, and Unix-like OS
+
+1. Open your terminal.
+2. Run the following command:
+
+   ```sh
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+### Windows
+
+Follow the steps below to install Rust on Windows using `rustup`.
+
+### Steps to Install
+
+1. Visit the official [Rust website](https://www.rust-lang.org/)  
+2. Download the `rustup-init.exe` installer.  
+3. Run the installer.  
+4. When prompted, press `1` to proceed with the default installation.  
+5. Restart your Command Prompt (`cmd`) or PowerShell.  
+
+### Verifying Installation
+
+After installation, confirm that Rust is installed by running the following command:
+
+```sh
+rustc --version
+```
 
 ### Using translated versions
 
