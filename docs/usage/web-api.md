@@ -164,6 +164,7 @@ may still be temporarily unavailable:
 - `http://walrus-storage.testnet.nelrann.org:9000`
 - `http://walrus-testnet.equinoxdao.xyz:9000`
 - `https://walrus-testnet-aggregator.stakely.io`
+- `https://walrus-testnet-aggregator.luckyresearch.org`
 
 ### Public publishers
 
@@ -221,6 +222,7 @@ may still be temporarily unavailable:
 - `http://walrus-storage.testnet.nelrann.org:9001`
 - `http://walrus-testnet.equinoxdao.xyz:9001`
 - `https://walrus-testnet-publisher.stakely.io`
+- `https://walrus-testnet-publisher.luckyresearch.org`
 
 ## HTTP API Usage
 
