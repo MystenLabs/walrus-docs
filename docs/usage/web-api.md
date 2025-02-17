@@ -167,6 +167,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.stakely.io`
 - `https://walrus-testnet-aggregator.criterionvc.com`
 - `https://walrus-testnet-aggregator.luckyresearch.org`
+- `http://37.27.230.228:9000`
 
 ### Public publishers
 
@@ -227,6 +228,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.stakely.io`
 - `https://walrus-testnet-publisher.criterionvc.com`
 - `https://walrus-testnet-publisher.luckyresearch.org`
+- `http://37.27.230.228:9001`
 
 ## HTTP API Usage
 
