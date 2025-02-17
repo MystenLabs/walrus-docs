@@ -165,6 +165,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.senseinode.com:9000`
 - `http://walrus-testnet.equinoxdao.xyz:9000`
 - `https://walrus-testnet-aggregator.stakely.io`
+- `https://walrus-testnet-aggregator.criterionvc.com`
 
 ### Public publishers
 
@@ -223,6 +224,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.senseinode.com:9001`
 - `http://walrus-testnet.equinoxdao.xyz:9001`
 - `https://walrus-testnet-publisher.stakely.io`
+- `https://walrus-testnet-publisher.criterionvc.com`
 
 ## HTTP API Usage
 
