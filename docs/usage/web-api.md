@@ -162,8 +162,10 @@ may still be temporarily unavailable:
 - `http://162.19.18.19:9000`
 - `http://walrus-aggregator.stakeme.pro:9000`
 - `http://walrus-storage.testnet.nelrann.org:9000`
+- `http://walrus-testnet.senseinode.com:9000`
 - `http://walrus-testnet.equinoxdao.xyz:9000`
 - `https://walrus-testnet-aggregator.stakely.io`
+- `https://walrus-testnet-aggregator.criterionvc.com`
 - `https://walrus-testnet-aggregator.luckyresearch.org`
 
 ### Public publishers
@@ -220,8 +222,10 @@ may still be temporarily unavailable:
 - `http://162.19.18.19:9001`
 - `http://walrus-publisher.stakeme.pro:9001`
 - `http://walrus-storage.testnet.nelrann.org:9001`
+- `http://walrus-testnet.senseinode.com:9001`
 - `http://walrus-testnet.equinoxdao.xyz:9001`
 - `https://walrus-testnet-publisher.stakely.io`
+- `https://walrus-testnet-publisher.criterionvc.com`
 - `https://walrus-testnet-publisher.luckyresearch.org`
 
 ## HTTP API Usage
