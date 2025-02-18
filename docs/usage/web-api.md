@@ -208,7 +208,7 @@ may still be temporarily unavailable:
 - `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://walrus-testnet-publisher.starduststaking.com:11445`
 - `http://walrus-publisher-testnet.overclock.run:9001`
-- `https://walrus-testnet-publisher.everstake.one
+- `https://walrus-testnet-publisher.everstake.one`
 - `http://walrus.testnet.pops.one:9001`
 - `http://ivory-dakar-e5812.walrus.bdnodes.net:9001`
 - `http://publisher.testnet.sui.rpcpool.com:9001`
