@@ -168,6 +168,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.criterionvc.com`
 - `http://37.27.230.228:9000`
 - `https://walrus-testnet-aggregator.luckyresearch.org/`
+- `http://walrus.suicore.com:9000`
 
 ### Public publishers
 
@@ -229,6 +230,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.criterionvc.com`
 - `http://37.27.230.228:9001`
 - `https://walrus-testnet-published.luckyresearch.org`
+- `http://walrus.suicore.com:9001`
 
 ## HTTP API Usage
 
