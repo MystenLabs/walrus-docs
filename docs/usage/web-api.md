@@ -149,7 +149,7 @@ may still be temporarily unavailable:
 - `https://walrus-agg-testnet.chainode.tech:9002`
 - `https://walrus-testnet-aggregator.starduststaking.com:11444`
 - `https://walrus-aggregator-testnet.cetus.zone`
-- `http://walrus-testnet-aggregator.everstake.one:9000`
+- `https://walrus-testnet-aggregator.everstake.one`
 - `http://walrus.testnet.pops.one:9000`
 - `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
 - `http://aggregator.testnet.sui.rpcpool.com:9000`
@@ -208,7 +208,7 @@ may still be temporarily unavailable:
 - `https://walrus-publish-testnet.chainode.tech:9003`
 - `https://walrus-testnet-publisher.starduststaking.com:11445`
 - `http://walrus-publisher-testnet.overclock.run:9001`
-- `http://walrus-testnet-publisher.everstake.one:9001`
+- `https://walrus-testnet-publisher.everstake.one`
 - `http://walrus.testnet.pops.one:9001`
 - `http://ivory-dakar-e5812.walrus.bdnodes.net:9001`
 - `http://publisher.testnet.sui.rpcpool.com:9001`
