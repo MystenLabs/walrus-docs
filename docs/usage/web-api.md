@@ -137,7 +137,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
 - `https://aggregator.walrus-01.tududes.com`
-- `https://walrus-aggregator.n1stake.com`
+- `https://walrus-aggregator-testnet.n1stake.com`
 - `https://suiftly-testnet-agg.mhax.io`
 - `https://walrus-testnet-aggregator.trusted-point.com`
 - `https://walrus-testnet-aggregator.veera.com`
@@ -198,7 +198,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
 - `https://publisher.walrus-01.tududes.com`
-- `https://walrus-publisher.n1stake.com`
+- `https://walrus-publisher-testnet.n1stake.com/`
 - `https://suiftly-testnet-pub.mhax.io`
 - `https://walrus-testnet-publisher.trusted-point.com`
 - `https://walrus-testnet-publisher.veera.com`
