@@ -1,11 +1,15 @@
 # Example of uploading and downloading a file to / from the Walrus service
-# Using the walrus client web API facilities.
+# using the walrus client web API facilities.
 #
 # Prerequisites:
 #
-# - Run the Walrus client in daemon mode:
-#   $ ../CONFIG/bin/walrus --config ../CONFIG/config_dir/client_config.yaml daemon -b 127.0.0.1:8899
-#
+# Run the Walrus client in daemon mode:
+'''
+../CONFIG/bin/walrus --config ../CONFIG/config_dir/client_config.yaml daemon \
+    --bind-address 127.0.0.1:8899 \
+    --sub-wallets-dir ../CONFIG/wallets \
+    --n-clients 1
+'''
 
 # Std lib imports
 import os
