@@ -168,7 +168,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.criterionvc.com`
 - `http://37.27.230.228:9000`
 - `https://walrus-testnet-aggregator.luckyresearch.org/`
-- `http://walrus.suicore.com:9000`
+- `http://walrus-testnet.suicore.com:9000`
 - `https://walrus-testnet.validators.services.kyve.network/aggregate`
 - `https://walrus-aggregator-testnet.suisec.tech`
 
@@ -232,7 +232,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.criterionvc.com`
 - `http://37.27.230.228:9001`
 - `https://walrus-testnet-published.luckyresearch.org`
-- `http://walrus.suicore.com:9001`
+- `http://walrus-testnet.suicore.com:9001`
 - `https://walrus-testnet.validators.services.kyve.network/publish`
 - `http://walrus-publisher-testnet.suisec.tech:9001`
 
