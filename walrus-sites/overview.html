@@ -240,7 +240,7 @@ which contains the metadata for the site and point to the Walrus blob IDs.</p>
     name: String,
 }
 </code></pre>
-<p>The resources associated with this site are then added to this object as <a href="https://docs.sui.io/concepts/dynamic-fields/">dynamic
+<p>The resources associated with this site are then added to this object as <a href="https://docs.sui.io/concepts/versioning#dynamic-fields">dynamic
 fields</a> of type <code>Resource</code>:</p>
 <pre><code class="language-move">struct Resource has store, drop {
     path: String,
