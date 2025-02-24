@@ -20,7 +20,7 @@ struct Site has key, store {
 ```
 
 The resources associated with this site are then added to this object as [dynamic
-fields](https://docs.sui.io/concepts/dynamic-fields/) of type `Resource`:
+fields](https://docs.sui.io/concepts/versioning#dynamic-fields) of type `Resource`:
 
 ``` move
 struct Resource has store, drop {
