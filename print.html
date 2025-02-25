@@ -1335,9 +1335,9 @@ versions. An overview in XML format is available at
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
 <p>The Walrus client needs to know about the Sui objects that store the Walrus system and staking
 information, see the <a href="usage/../dev-guide/sui-struct.html#system-and-staking-information">developer guide</a>.
-These need to be configured in a file <code>~/.config/walrus/client_config.yaml</code>. Additionally, if the
-contracts were upgraded at any point, the object ID of the latest package version can be specified
-in the <code>walrus_package</code> field. Finally, exchange objects are needed to swap SUI for WAL.</p>
+These need to be configured in a file <code>~/.config/walrus/client_config.yaml</code>. Additionally, a
+<code>subsidies</code> object can be specified, which will subsidize storage bought with the client.
+Finally, exchange objects are needed to swap SUI for WAL.</p>
 <p>The current Testnet deployment uses the following objects:</p>
 <pre><code class="language-yaml">system_object: 0x98ebc47370603fe81d9e15491b2f1443d619d1dab720d586e429ed233e1255c1
 staking_object: 0x20266a17b4f1a216727f3eef5772f8d486a9e3b5e319af80a5b75809c035561d
@@ -1346,6 +1346,7 @@ exchange_objects:
   - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
   - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
   - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
+subsidies_object: 0x4b23c353c35a4dde72fe862399ebe59423933d3c2c0a3f2733b9f74cb3b4933d
 </code></pre>
 <!-- markdownlint-disable code-fence-style -->
 <div id="admonition-tip-1" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-1-title">
@@ -1382,6 +1383,11 @@ exchange_objects:
   - 0x89127f53890840ab6c52fca96b4a5cf853d7de52318d236807ad733f976eef7b
   - 0x9f9b4f113862e8b1a3591d7955fadd7c52ecc07cf24be9e3492ce56eb8087805
   - 0xb60118f86ecb38ec79e74586f1bb184939640911ee1d63a84138d080632ee28a
+
+# The subsidies object allows the client to use the subsidies contract to purchase storage
+# which will reduce the cost of obtaining a storage resource and extending blobs and also
+# adds subsidies to the rewards of the staking pools.
+subsidies_object: 0x4b23c353c35a4dde72fe862399ebe59423933d3c2c0a3f2733b9f74cb3b4933d
 
 # You can define a custom path to your Sui wallet configuration here. If this is unset or `null`,
 # the wallet is configured from `./sui_config.yaml` (relative to your current working directory), or
