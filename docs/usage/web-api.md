@@ -112,7 +112,7 @@ may still be temporarily unavailable:
 
 - `https://aggregator.walrus-testnet.walrus.space`
 - `https://wal-aggregator-testnet.staketab.org`
-- `https://walrus-testnet-aggregator.bartestnet.com`
+- `https://walrus-testnet-aggregator.redundex.com`
 - `https://walrus-testnet.blockscope.net`
 - `https://walrus-testnet-aggregator.nodes.guru`
 - `https://walrus-cache-testnet.overclock.run`
@@ -176,7 +176,7 @@ may still be temporarily unavailable:
 
 - `https://publisher.walrus-testnet.walrus.space`
 - `https://wal-publisher-testnet.staketab.org`
-- `https://walrus-testnet-publisher.bartestnet.com`
+- `https://walrus-testnet-publisher.redundex.com`
 - `https://walrus-testnet-publisher.nodes.guru`
 - `https://walrus-testnet-publisher.stakin-nodes.com`
 - `https://testnet-publisher-walrus.kiliglab.io`
