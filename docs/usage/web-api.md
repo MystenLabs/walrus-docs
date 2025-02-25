@@ -147,7 +147,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.chainbase.online/aggregator`
 - `https://walrus-tn.juicystake.io:9443`
 - `https://walrus-agg-testnet.chainode.tech:9002`
-- `https://walrus-testnet-aggregator.starduststaking.com:11444`
+- `https://walrus-testnet-aggregator.starduststaking.com`
 - `https://walrus-aggregator-testnet.cetus.zone`
 - `https://walrus-testnet-aggregator.everstake.one`
 - `http://walrus.testnet.pops.one:9000`
@@ -208,7 +208,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.chainbase.online/publisher`
 - `https://walrus-testnet.blockscope.net:11444`
 - `https://walrus-publish-testnet.chainode.tech:9003`
-- `https://walrus-testnet-publisher.starduststaking.com:11445`
+- `https://walrus-testnet-publisher.starduststaking.com`
 - `http://walrus-publisher-testnet.overclock.run:9001`
 - `https://walrus-testnet-publisher.everstake.one`
 - `http://walrus.testnet.pops.one:9001`
