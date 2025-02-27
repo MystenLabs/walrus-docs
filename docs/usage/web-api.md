@@ -132,7 +132,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-aggregator.natsai.xyz`
 - `https://walrus.testnet.aggregator.stakepool.dev.br`
 - `https://aggregator.walrus.banansen.dev`
-- `https://aggregator.walrus.silentvalidator.com`
+- `https://testnet.aggregator.walrus.silentvalidator.com`
 - `https://testnet-aggregator.walrus.graphyte.dev`
 - `https://walrus-testnet-aggregator.imperator.co`
 - `https://walrus-testnet-aggregator.unemployedstake.co.uk`
@@ -193,7 +193,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet-publisher.natsai.xyz`
 - `https://walrus.testnet.publisher.stakepool.dev.br`
 - `https://publisher.walrus.banansen.dev`
-- `https://publisher.walrus.silentvalidator.com`
+- `https://testnet.publisher.walrus.silentvalidator.com`
 - `https://testnet-publisher.walrus.graphyte.dev`
 - `https://walrus-testnet-publisher.imperator.co`
 - `https://walrus-testnet-publisher.unemployedstake.co.uk`
