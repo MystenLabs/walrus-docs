@@ -53,12 +53,24 @@ public fun wctx(epoch: u32, committee_selected: bool): WalrusContext {
     walrus_context::new(epoch, committee_selected, vec_map::empty())
 }
 
-public fun mint(amount: u64, ctx: &mut TxContext): Coin<WAL> {
+/// Mints `amount` denominated in `FROST`.
+public fun mint_frost(amount: u64, ctx: &mut TxContext): Coin<WAL> {
     coin::mint_for_testing(amount, ctx)
 }
 
-public fun mint_balance(amount: u64): Balance<WAL> {
+/// Mints `amount` denominated in `FROST` as balance.
+public fun mint_frost_balance(amount: u64): Balance<WAL> {
     balance::create_for_testing(amount)
+}
+
+/// Mints `amount` denominated in `WAL`.
+public fun mint_wal(amount: u64, ctx: &mut TxContext): Coin<WAL> {
+    mint_frost(amount * frost_per_wal(), ctx)
+}
+
+/// Mints `amount` denominated in `WAL` as balance.
+public fun mint_wal_balance(amount: u64): Balance<WAL> {
+    mint_frost_balance(amount * frost_per_wal())
 }
 
 // === Context Runner ===
@@ -383,6 +395,11 @@ public fun signers_to_bitmap(signers: &vector<u16>): vector<u8> {
     });
     bitmap.push_back(next_byte);
     bitmap
+}
+
+/// Number of FROST per WAL.
+public fun frost_per_wal(): u64 {
+    1_000_000_000
 }
 
 // === Unit Tests ===

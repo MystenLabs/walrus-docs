@@ -221,7 +221,7 @@ public fun setup_committee_for_epoch_one(): (TestRunner, vector<TestStorageNode>
 
     nodes.do_ref!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let coin = walrus_test_utils::mint(1000, ctx);
+            let coin = walrus_test_utils::mint_wal(1000, ctx);
             let staked_wal = staking.stake_with_pool(coin, node.node_id(), ctx);
             transfer::public_transfer(staked_wal, ctx.sender());
         });

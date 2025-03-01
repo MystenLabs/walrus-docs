@@ -9,22 +9,32 @@ use walrus::{
     encoding,
     events::{emit_blob_registered, emit_blob_certified, emit_blob_deleted},
     messages::CertifiedBlobMessage,
-    metadata::Metadata,
+    metadata::{Self, Metadata},
     storage_resource::Storage
 };
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The blob is not certified.
 const ENotCertified: u64 = 0;
+/// The blob is not deletable.
 const EBlobNotDeletable: u64 = 1;
+/// The bounds of the storage resource are exceeded.
 const EResourceBounds: u64 = 2;
+/// The storage resource size is insufficient.
 const EResourceSize: u64 = 3;
-// const EWrongEpoch: u64 = 4;
+// Error code 4 is available
+/// The blob was already certified.
 const EAlreadyCertified: u64 = 5;
+/// The blob ID is incorrect.
 const EInvalidBlobId: u64 = 6;
+/// The metadata field already exists.
 const EDuplicateMetadata: u64 = 7;
+/// The blob does not have any metadata.
 const EMissingMetadata: u64 = 8;
+/// The blob persistence type of the blob does not match the certificate.
 const EInvalidBlobPersistenceType: u64 = 9;
+/// The blob object ID of a deletable blob does not match the ID in the certificate.
 const EInvalidBlobObject: u64 = 10;
 
 // The fixed dynamic filed name for metadata
@@ -133,7 +143,6 @@ public(package) fun new(
     size: u64,
     encoding_type: u8,
     deletable: bool,
-    // TODO: replace with Walrus context
     registered_epoch: u32,
     n_shards: u16,
     ctx: &mut TxContext,
@@ -150,7 +159,7 @@ public(package) fun new(
         encoding_type,
         n_shards,
     );
-    assert!(encoded_size <= storage.storage_size(), EResourceSize);
+    assert!(encoded_size <= storage.size(), EResourceSize);
 
     // Cryptographically verify that the Blob ID authenticates
     // both the size and encoding_type (sanity check).
@@ -300,6 +309,19 @@ public fun add_metadata(self: &mut Blob, metadata: Metadata) {
     dynamic_field::add(&mut self.id, METADATA_DF, metadata)
 }
 
+/// Adds the metadata dynamic field to the Blob, replacing the existing metadata if present.
+///
+/// Returns the replaced metadata if present.
+public fun add_or_replace_metadata(self: &mut Blob, metadata: Metadata): option::Option<Metadata> {
+    let old_metadata = if (dynamic_field::exists_(&self.id, METADATA_DF)) {
+        option::some(self.take_metadata())
+    } else {
+        option::none()
+    };
+    self.add_metadata(metadata);
+    old_metadata
+}
+
 /// Removes the metadata dynamic field from the Blob, returning the contained `Metadata`.
 ///
 /// Aborts if the metadata does not exist.
@@ -316,11 +338,22 @@ fun metadata(self: &mut Blob): &mut Metadata {
     dynamic_field::borrow_mut(&mut self.id, METADATA_DF)
 }
 
+/// Returns the metadata associated with the Blob, if it exists.
+///
+/// Creates new metadata if it does not exist.
+fun metadata_or_create(self: &mut Blob): &mut Metadata {
+    if (!dynamic_field::exists_(&self.id, METADATA_DF)) {
+        self.add_metadata(metadata::new());
+    };
+    dynamic_field::borrow_mut(&mut self.id, METADATA_DF)
+}
+
 /// Inserts a key-value pair into the metadata.
 ///
-/// If the key is already present, the value is updated. Aborts if the metadata does not exist.
+/// If the key is already present, the value is updated. Creates new metadata on the Blob object if
+/// it does not exist already.
 public fun insert_or_update_metadata_pair(self: &mut Blob, key: String, value: String) {
-    self.metadata().insert_or_update(key, value)
+    self.metadata_or_create().insert_or_update(key, value)
 }
 
 /// Removes the metadata associated with the given key.
@@ -328,6 +361,15 @@ public fun insert_or_update_metadata_pair(self: &mut Blob, key: String, value: S
 /// Aborts if the metadata does not exist.
 public fun remove_metadata_pair(self: &mut Blob, key: &String): (String, String) {
     self.metadata().remove(key)
+}
+
+/// Removes and returns the metadata associated with the given key, if it exists.
+public fun remove_metadata_pair_if_exists(self: &mut Blob, key: &String): option::Option<String> {
+    if (!dynamic_field::exists_(&self.id, METADATA_DF)) {
+        option::none()
+    } else {
+        self.metadata().remove_if_exists(key)
+    }
 }
 
 #[test_only]

@@ -2,11 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /// A utility module which implements an `ExchangeRate` struct and its methods.
-/// It stores a fixed point exchange rate between the Wal token and pool token.
+/// It stores a fixed point exchange rate between the WAL token and pool shares.
 module walrus::pool_exchange_rate;
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The exchange rate between the shares and the WAL token is invalid.
 const EInvalidRate: u64 = 0;
 
 /// Represents the exchange rate for the staking pool.
@@ -30,19 +31,18 @@ public(package) fun flat(): PoolExchangeRate {
 public(package) fun new(wal_amount: u64, share_amount: u64): PoolExchangeRate {
     // pool_token_amount <= wal_amount as long as slashing is not implemented.
     assert!(share_amount <= wal_amount, EInvalidRate);
-    match (wal_amount) {
-        0 => PoolExchangeRate::Flat,
-        _ => {
-            PoolExchangeRate::Variable {
-                wal_amount: (wal_amount as u128),
-                share_amount: (share_amount as u128),
-            }
-        },
+    if (wal_amount == 0 || share_amount == 0) {
+        PoolExchangeRate::Flat
+    } else {
+        PoolExchangeRate::Variable {
+            wal_amount: (wal_amount as u128),
+            share_amount: (share_amount as u128),
+        }
     }
 }
 
 /// Assumptions:
-/// - amount is at most the amount of pool tokens in the pool
+/// - amount is at most the amount of shares in the pool
 public(package) fun convert_to_wal_amount(exchange_rate: &PoolExchangeRate, amount: u64): u64 {
     match (exchange_rate) {
         PoolExchangeRate::Flat => amount,

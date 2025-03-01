@@ -14,7 +14,7 @@ fun test_compute_single_node() {
     let clock = clock::create_for_testing(ctx);
     let mut staking = staking_inner::new(0, EPOCH_DURATION, 10, &clock, ctx);
     let pool_one = test::pool().register(&mut staking, ctx);
-    let wal_alice = staking.stake_with_pool(test::mint(1_000_000, ctx), pool_one, ctx);
+    let wal_alice = staking.stake_with_pool(test::mint_wal(1_000_000, ctx), pool_one, ctx);
 
     let committee = staking.compute_next_committee();
 
@@ -36,9 +36,9 @@ fun test_compute_even_distribution() {
     let pool_two = test::pool().register(&mut staking, ctx);
     let pool_three = test::pool().register(&mut staking, ctx);
 
-    let wal_alice = staking.stake_with_pool(test::mint(1_000, ctx), pool_one, ctx);
-    let wal_bob = staking.stake_with_pool(test::mint(1_000, ctx), pool_two, ctx);
-    let wal_karl = staking.stake_with_pool(test::mint(1_000, ctx), pool_three, ctx);
+    let wal_alice = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_one, ctx);
+    let wal_bob = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_two, ctx);
+    let wal_karl = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_three, ctx);
 
     let committee = staking.compute_next_committee();
 
@@ -64,9 +64,9 @@ fun test_compute_uneven_distribution() {
     let pool_two = test::pool().register(&mut staking, ctx);
     let pool_three = test::pool().register(&mut staking, ctx);
 
-    let wal_alice = staking.stake_with_pool(test::mint(4_000, ctx), pool_one, ctx);
-    let wal_bob = staking.stake_with_pool(test::mint(2_000, ctx), pool_two, ctx);
-    let wal_karl = staking.stake_with_pool(test::mint(1_000, ctx), pool_three, ctx);
+    let wal_alice = staking.stake_with_pool(test::mint_wal(4_000, ctx), pool_one, ctx);
+    let wal_bob = staking.stake_with_pool(test::mint_wal(2_000, ctx), pool_two, ctx);
+    let wal_karl = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_three, ctx);
 
     let committee = staking.compute_next_committee();
 
@@ -92,9 +92,9 @@ fun test_compute_equal_stake_nodes() {
     let pool_two = test::pool().register(&mut staking, ctx);
     let pool_three = test::pool().register(&mut staking, ctx);
 
-    let wal_alice = staking.stake_with_pool(test::mint(1_000, ctx), pool_one, ctx);
-    let wal_bob = staking.stake_with_pool(test::mint(1_000, ctx), pool_two, ctx);
-    let wal_karl = staking.stake_with_pool(test::mint(1_000, ctx), pool_three, ctx);
+    let wal_alice = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_one, ctx);
+    let wal_bob = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_two, ctx);
+    let wal_karl = staking.stake_with_pool(test::mint_wal(1_000, ctx), pool_three, ctx);
 
     let committee = staking.compute_next_committee();
 
@@ -123,7 +123,7 @@ fun test_compute_large_committee() {
         let pool = test::pool().register(&mut staking, ctx);
         let stake = 1_000 + i;
         staked_wals.push_back(staking.stake_with_pool(
-            test::mint(stake as u64, ctx),
+            test::mint_wal(stake as u64, ctx),
             pool,
             ctx,
         ));

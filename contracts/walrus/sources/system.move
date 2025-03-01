@@ -18,10 +18,13 @@ use walrus::{
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// Error during the migration of the system object to the new package version.
 const EInvalidMigration: u64 = 0;
+/// The package version is not compatible with the system object.
+const EWrongVersion: u64 = 1;
 
 /// Flag to indicate the version of the system.
-const VERSION: u64 = 0;
+const VERSION: u64 = 2;
 
 /// The one and only system object.
 public struct System has key {
@@ -144,14 +147,15 @@ public fun extend_blob_with_resource(self: &System, blob: &mut Blob, extension: 
     self.inner().extend_blob_with_resource(blob, extension);
 }
 
-/// Extend the period of validity of a blob by extending its contained storage resource.
+/// Extend the period of validity of a blob by extending its contained storage resource
+/// by `extended_epochs` epochs.
 public fun extend_blob(
     self: &mut System,
     blob: &mut Blob,
-    epochs_ahead: u32,
+    extended_epochs: u32,
     payment: &mut Coin<WAL>,
 ) {
-    self.inner_mut().extend_blob(blob, epochs_ahead, payment);
+    self.inner_mut().extend_blob(blob, extended_epochs, payment);
 }
 
 /// Adds rewards to the system for the specified number of epochs ahead.
@@ -216,18 +220,6 @@ public fun n_shards(self: &System): u16 {
     self.inner().n_shards()
 }
 
-// === Restricted to Package ===
-
-/// Accessor for the current committee.
-public(package) fun committee(self: &System): &BlsCommittee {
-    self.inner().committee()
-}
-
-#[test_only]
-public(package) fun committee_mut(self: &mut System): &mut BlsCommittee {
-    self.inner_mut().committee_mut()
-}
-
 /// Update epoch to next epoch, and update the committee, price and capacity.
 ///
 /// Called by the epoch change function that connects `Staking` and `System`. Returns
@@ -280,21 +272,31 @@ public(package) fun migrate(system: &mut System) {
 
 /// Get a mutable reference to `SystemStateInner` from the `System`.
 fun inner_mut(system: &mut System): &mut SystemStateInnerV1 {
-    assert!(system.version == VERSION);
+    assert!(system.version == VERSION, EWrongVersion);
     dynamic_field::borrow_mut(&mut system.id, VERSION)
 }
 
 /// Get an immutable reference to `SystemStateInner` from the `System`.
 public(package) fun inner(system: &System): &SystemStateInnerV1 {
-    assert!(system.version == VERSION);
+    assert!(system.version == VERSION, EWrongVersion);
     dynamic_field::borrow(&system.id, VERSION)
 }
 
 // === Testing ===
 
 #[test_only]
-public fun new_for_testing(): System {
-    let ctx = &mut tx_context::dummy();
+/// Accessor for the current committee.
+public(package) fun committee(self: &System): &BlsCommittee {
+    self.inner().committee()
+}
+
+#[test_only]
+public(package) fun committee_mut(self: &mut System): &mut BlsCommittee {
+    self.inner_mut().committee_mut()
+}
+
+#[test_only]
+public fun new_for_testing(ctx: &mut TxContext): System {
     let mut system = System {
         id: object::new(ctx),
         version: VERSION,

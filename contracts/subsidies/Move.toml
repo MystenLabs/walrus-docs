@@ -1,5 +1,5 @@
 [package]
-name = "Walrus"
+name = "Subsidies"
 license = "Apache-2.0"
 authors = ["Mysten Labs <build@mystenlabs.com>"]
 edition = "2024.beta"
@@ -7,6 +7,7 @@ edition = "2024.beta"
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "testnet-v1.43.0" }
 WAL = { local = "../wal" }
+Walrus = { local = "../walrus" }
 
 [addresses]
-walrus = "0x0"
+subsidies = "0x0"

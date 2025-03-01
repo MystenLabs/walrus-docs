@@ -5,9 +5,13 @@ module walrus::storage_resource;
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The split epoch is out of bounds of the storage resource.
 const EInvalidEpoch: u64 = 0;
+/// The epochs of the resources to fuse are incompatible.
 const EIncompatibleEpochs: u64 = 1;
+/// The storage sizes of the resources to fuse are incompatible.
 const EIncompatibleAmount: u64 = 2;
+/// The range of start/end epoch is invalid.
 const EInvalidEpochRange: u64 = 3;
 
 /// Reservation for storage for a given period, which is inclusive start, exclusive end.
@@ -31,6 +35,8 @@ public fun end_epoch(self: &Storage): u32 {
 public fun storage_size(self: &Storage): u64 {
     self.storage_size
 }
+
+public use fun storage_size as Storage.size;
 
 /// Constructor for [Storage] objects.
 /// Necessary to allow `walrus::system` to create storage objects.
@@ -141,9 +147,6 @@ public fun create_for_test(
 
 /// Destructor for [Storage] objects
 public fun destroy(storage: Storage) {
-    let Storage {
-        id,
-        ..,
-    } = storage;
+    let Storage { id, .. } = storage;
     id.delete();
 }

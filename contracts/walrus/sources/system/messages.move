@@ -19,15 +19,20 @@ const DENY_LIST_BLOB_DELETED_MSG_TYPE: u8 = 4;
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The App ID in the message is incorrect.
 const EIncorrectAppId: u64 = 0;
+/// The epoch in the message is incorrect.
 const EIncorrectEpoch: u64 = 1;
+/// The message type is invalid for the attempted operation.
 const EInvalidMsgType: u64 = 2;
+/// The message intent version is incorrect.
 const EIncorrectIntentVersion: u64 = 3;
+/// The BlobPersistenceType in the message does not have a valid value.
 const EInvalidBlobPersistenceType: u64 = 4;
+/// The BlobPersistenceType is not deletable.
 const ENotDeletable: u64 = 5;
-
-#[error]
-const EInvalidKeyLength: vector<u8> = b"The length of the provided bls key is incorrect.";
+/// The length of the provided bls key is incorrect.
+const EInvalidKeyLength: u64 = 6;
 
 /// Message signed by a BLS key in the proof of possession.
 public struct ProofOfPossessionMessage has drop {

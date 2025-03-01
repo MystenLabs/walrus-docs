@@ -8,7 +8,9 @@ module walrus::apportionment_queue;
 
 use std::uq64_64::UQ64_64;
 
-/// Error code for popping from an empty heap.
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// Trying to pop a value from an empty heap.
 const EPopFromEmptyHeap: u64 = 0;
 
 /// Struct representing a priority queue.

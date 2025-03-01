@@ -33,7 +33,7 @@ public fun authorized_address(addr: address): Authorized {
     Authorized::Address(addr)
 }
 
-/// Returns the `Authorized` as an address.
+/// Returns the `Authorized` as an object.
 public fun authorized_object(id: ID): Authorized {
     Authorized::ObjectID(id)
 }

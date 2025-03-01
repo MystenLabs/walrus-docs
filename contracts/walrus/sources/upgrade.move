@@ -18,13 +18,23 @@ use sui::{
 };
 use walrus::{auth::Authenticated, events, staking::Staking, system::System};
 
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The upgrade manager ID in the emergency upgrade cap is incorrect.
 const EInvalidUpgradeManager: u64 = 0;
+/// Caller is not authorized to vote for upgrades for the specified node.
 const ENotAuthorized: u64 = 1;
+/// The node already voted for the proposal.
 const EDuplicateVote: u64 = 2;
+/// The length of the package digest is incorrect.
 const EInvalidPackageDigest: u64 = 3;
+/// No upgrade proposal exists for the specified digest.
 const ENoProposalForDigest: u64 = 4;
+/// The upgrade proposal was not authorized in the current epoch.
 const EWrongEpoch: u64 = 5;
+/// The upgrade proposal has not received enough votes yet.
 const ENotEnoughVotes: u64 = 6;
+/// The upgrade proposal is not for the correct package version.
 const EWrongVersion: u64 = 7;
 
 /// Newtype for package digests, ensures that the digest is always 32 bytes long.

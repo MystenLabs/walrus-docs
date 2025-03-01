@@ -14,6 +14,50 @@ fun empty_committee() {
 }
 
 #[test]
+// Scenario: pass unsorted shard assignments during initialization and transition,
+// expect the nodes to preserve their assigned shards during reassigment.
+fun sort_and_preserve_shards_correctly() {
+    // nodes are sorted in reverse order (3 to 0), and that's intentional, shards num is 8
+    let size = 4;
+    let mut nodes = vector::tabulate!(size, |i| address::from_u256((3 - i) as u256).to_id());
+    let initial = vec_map::from_keys_values(
+        nodes,
+        vector::tabulate!(size, |_| 2),
+    );
+
+    let cmt = committee::initialize(initial);
+
+    assert_eq!(cmt.size(), size);
+    assert_eq!(cmt[&@0.to_id()], vector[0, 1]);
+    assert_eq!(cmt[&@1.to_id()], vector[2, 3]);
+    assert_eq!(cmt[&@2.to_id()], vector[4, 5]);
+    assert_eq!(cmt[&@3.to_id()], vector[6, 7]);
+
+    // Transition the committee, again, supply nodes in reverse order
+    // remove two last nodes, total number of nodes is now 2, assign 4 shards to each
+    nodes.pop_back();
+    nodes.pop_back();
+
+    let size = 2;
+    let new_assignments = vec_map::from_keys_values(nodes, vector::tabulate!(size, |_| 4));
+    let cmt2 = cmt.transition(new_assignments);
+
+    assert_eq!(cmt2.size(), 2);
+
+    // testing first node
+    assert!(cmt2[&@3.to_id()].contains(&6)); // initial
+    assert!(cmt2[&@3.to_id()].contains(&7));
+    assert!(cmt2[&@3.to_id()].contains(&1)); // free shards assigned
+    assert!(cmt2[&@3.to_id()].contains(&0));
+
+    // testing second node
+    assert!(cmt2[&@2.to_id()].contains(&4)); // initial
+    assert!(cmt2[&@2.to_id()].contains(&5));
+    assert!(cmt2[&@2.to_id()].contains(&2)); // freed shards assigned
+    assert!(cmt2[&@2.to_id()].contains(&3));
+}
+
+#[test]
 fun default_scenario() {
     let n1 = @1.to_id();
     let n2 = @2.to_id();

@@ -20,10 +20,13 @@ use walrus::{
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// Error during the migration of the staking object to the new package version.
 const EInvalidMigration: u64 = 0;
+/// The package version is not compatible with the staking object.
+const EWrongVersion: u64 = 1;
 
 /// Flag to indicate the version of the Walrus system.
-const VERSION: u64 = 0;
+const VERSION: u64 = 2;
 
 /// The one and only staking object.
 public struct Staking has key {
@@ -103,18 +106,6 @@ public fun register_candidate(
     let receiver = auth::authorized_object(object::id(&cap));
     staking_mut.set_commission_receiver(node_id, auth::authenticate_sender(ctx), receiver);
     cap
-}
-
-#[allow(unused_function)]
-/// Blocks staking for the nodes staking pool
-/// Marks node as "withdrawing",
-/// - excludes it from the next committee selection
-/// - still has to remain active while it is part of the committee and until all shards have
-///     been transferred to its successor
-/// - The staking pool is deleted once the last funds have been withdrawn from it by its stakers
-fun withdraw_node(staking: &mut Staking, cap: &mut StorageNodeCap) {
-    staking.inner_mut().set_withdrawing(cap.node_id());
-    staking.inner_mut().withdraw_node(cap);
 }
 
 // === Commission ===
@@ -270,7 +261,7 @@ public fun shard_transfer_failed(
     other_node_id: ID,
     shard_ids: vector<u16>,
 ) {
-    staking.inner_mut().shard_transfer_failed(cap, other_node_id, shard_ids);
+    abort 127
 }
 
 /// Signals to the contract that the node has received all its shards for the new epoch.
@@ -306,7 +297,6 @@ public fun request_withdraw_stake(
     staking.inner_mut().request_withdraw_stake(staked_wal, ctx);
 }
 
-#[allow(lint(self_transfer))]
 /// Withdraws the staked amount from the staking pool.
 public fun withdraw_stake(
     staking: &mut Staking,
@@ -314,6 +304,15 @@ public fun withdraw_stake(
     ctx: &mut TxContext,
 ): Coin<WAL> {
     staking.inner_mut().withdraw_stake(staked_wal, ctx)
+}
+
+/// Allows a node to join the active set if it has sufficient stake.
+/// This can be useful if another node in the active had its stake
+/// reduced to be lower than that of the current node.
+/// In that case, the current node will be added to the active set either
+/// the next time stake is added or by calling this function.
+public fun try_join_active_set(staking: &mut Staking, cap: &StorageNodeCap) {
+    staking.inner_mut().try_join_active_set(cap)
 }
 
 // === Accessors ===
@@ -380,13 +379,13 @@ public(package) fun migrate(staking: &mut Staking) {
 
 /// Get a mutable reference to `StakingInner` from the `Staking`.
 fun inner_mut(staking: &mut Staking): &mut StakingInnerV1 {
-    assert!(staking.version == VERSION);
+    assert!(staking.version == VERSION, EWrongVersion);
     df::borrow_mut(&mut staking.id, VERSION)
 }
 
 /// Get an immutable reference to `StakingInner` from the `Staking`.
 fun inner(staking: &Staking): &StakingInnerV1 {
-    assert!(staking.version == VERSION);
+    assert!(staking.version == VERSION, EWrongVersion);
     df::borrow(&staking.id, VERSION)
 }
 

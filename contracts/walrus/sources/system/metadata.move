@@ -33,3 +33,15 @@ public fun insert_or_update(self: &mut Metadata, key: String, value: String) {
 public fun remove(self: &mut Metadata, key: &String): (String, String) {
     self.metadata.remove(key)
 }
+
+/// Removes the metadata associated with the given key, if it exists.
+///
+/// Optionally returns the previous value associated with the key.
+public fun remove_if_exists(self: &mut Metadata, key: &String): option::Option<String> {
+    if (self.metadata.contains(key)) {
+        let (_, value) = self.metadata.remove(key);
+        option::some(value)
+    } else {
+        option::none()
+    }
+}

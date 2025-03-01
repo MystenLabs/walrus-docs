@@ -14,6 +14,7 @@ use walrus::{
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The network public key length is invalid.
 const EInvalidNetworkPublicKey: u64 = 0;
 
 /// Represents a storage node in the system.
