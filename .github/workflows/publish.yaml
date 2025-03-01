@@ -41,7 +41,7 @@ jobs:
         with:
           with_linkcheck: "false"
       - name: Update GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.7.2
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           folder: build/html
           clean-exclude: pr-preview/
