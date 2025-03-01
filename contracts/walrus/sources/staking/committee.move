@@ -11,6 +11,7 @@ use walrus::sort;
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The shard assignment is invalid.
 const EInvalidShardAssignment: u64 = 0;
 
 /// Represents the current committee in the system. Each node in the committee
@@ -79,8 +80,7 @@ public(package) fun transition(cmt: &Committee, mut new_assignments: VecMap<ID, 
         // if the node is not in the new committee, remove all shards, make
         // them available for reassignment
         if (assigned_len.is_none() || assigned_len.borrow() == &0) {
-            let shards = cmt.0.get(&node_id);
-            to_move.append(*shards);
+            to_move.append(*prev_shards);
             return
         };
 

@@ -9,7 +9,9 @@ use walrus::{events, staking::{Self, Staking}, system::{Self, System}, upgrade};
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// Error during the migration to the new system/staking object versions.
 const EInvalidMigration: u64 = 0;
+/// The provided upgrade cap does not belong to this package.
 const EInvalidUpgradeCap: u64 = 1;
 
 /// Must only be created by `init`.

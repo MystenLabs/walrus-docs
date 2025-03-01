@@ -3,7 +3,7 @@
 
 module walrus::pool_commission_tests;
 
-use walrus::{auth, test_utils::{mint_balance, pool, context_runner, assert_eq}};
+use walrus::{auth, test_utils::{mint_wal_balance, frost_per_wal, pool, context_runner, assert_eq}};
 
 #[test]
 // Scenario:
@@ -18,23 +18,26 @@ fun collect_commission_with_rewards() {
 
     // Alice stakes before committee selection, stake applied E+1
     // And she performs the withdrawal right away
-    let mut sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let mut sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
 
     let (wctx, _) = test.next_epoch();
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
     pool.request_withdraw_stake(&mut sw1, true, false, &wctx);
 
     let (wctx, ctx) = test.next_epoch();
-    pool.advance_epoch(mint_balance(10_000), &wctx);
+    pool.advance_epoch(mint_wal_balance(10_000), &wctx);
 
     // Alice's stake: 1000 + 9000 (90%) rewards
-    assert_eq!(pool.withdraw_stake(sw1, true, false, &wctx).destroy_for_testing(), 10_000);
-    assert_eq!(pool.commission_amount(), 1000);
+    assert_eq!(
+        pool.withdraw_stake(sw1, true, false, &wctx).destroy_for_testing(),
+        10_000 * frost_per_wal(),
+    );
+    assert_eq!(pool.commission_amount(), 1000 * frost_per_wal());
 
     // Commission is 10% -> 1000
     let auth = auth::authenticate_sender(ctx);
     let commission = pool.collect_commission(auth);
-    assert_eq!(commission.destroy_for_testing(), 1000);
+    assert_eq!(commission.destroy_for_testing(), 1000 * frost_per_wal());
 
     pool.destroy_empty();
 }
@@ -126,23 +129,23 @@ fun commission_setting_at_different_epochs() {
     assert_eq!(pool.commission_rate(), 0);
 
     let (wctx, _) = test.next_epoch(); // E+1
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
 
     assert_eq!(pool.commission_rate(), 0);
     pool.set_next_commission(20_00, &wctx); // set E+3
     pool.set_next_commission(30_00, &wctx); // override E+3
 
     let (wctx, _) = test.next_epoch(); // E+2
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
     assert_eq!(pool.commission_rate(), 10_00);
     pool.set_next_commission(40_00, &wctx); // set E+4
 
     let (wctx, _) = test.next_epoch(); // E+3
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
     assert_eq!(pool.commission_rate(), 30_00);
 
     let (wctx, _) = test.next_epoch(); // E+4
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
     assert_eq!(pool.commission_rate(), 40_00);
 
     pool.destroy_empty();

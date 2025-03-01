@@ -33,7 +33,8 @@ public fun test_invalid_blob_ok() {
 
 #[test]
 public fun test_invalidate_happy() {
-    let mut system = system::new_for_testing();
+    let ctx = &mut tx_context::dummy();
+    let mut system = system::new_for_testing(ctx);
 
     1u32.range_do_eq!(5, |epoch| {
         let committee = test_utils::new_bls_committee_for_testing(epoch);
@@ -63,7 +64,8 @@ public fun test_invalidate_happy() {
 
 #[test, expected_failure(abort_code = messages::EIncorrectEpoch)]
 public fun test_system_invalid_id_wrong_epoch() {
-    let mut system = system::new_for_testing();
+    let ctx = &mut tx_context::dummy();
+    let mut system = system::new_for_testing(ctx);
 
     1u32.range_do_eq!(5, |epoch| {
         let committee = test_utils::new_bls_committee_for_testing(epoch);

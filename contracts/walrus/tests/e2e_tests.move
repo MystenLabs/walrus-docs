@@ -53,7 +53,7 @@ fun test_init_and_first_epoch_change() {
 
     nodes.do_ref!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let coin = test_utils::mint(1000, ctx);
+            let coin = test_utils::mint_wal(1000, ctx);
             let staked_wal = staking.stake_with_pool(coin, node.node_id(), ctx);
             transfer::public_transfer(staked_wal, ctx.sender());
         });
@@ -158,7 +158,7 @@ fun test_stake_after_committee_selection() {
 
     nodes.do_ref!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let coin = test_utils::mint(1000, ctx);
+            let coin = test_utils::mint_wal(1000, ctx);
             let staked_wal = staking.stake_with_pool(coin, node.node_id(), ctx);
             transfer::public_transfer(staked_wal, ctx.sender());
         });
@@ -174,7 +174,7 @@ fun test_stake_after_committee_selection() {
     // === add stake to excluded node ===
 
     runner.tx!(excluded_node.sui_address(), |staking, _, ctx| {
-        let coin = test_utils::mint(1000, ctx);
+        let coin = test_utils::mint_wal(1000, ctx);
         let staked_wal = staking.stake_with_pool(coin, excluded_node.node_id(), ctx);
         transfer::public_transfer(staked_wal, ctx.sender());
     });
@@ -261,7 +261,7 @@ fun node_voting_parameters() {
 
             // stake in the same tx
             let staked_wal = staking.stake_with_pool(
-                test_utils::mint(1000, ctx),
+                test_utils::mint_wal(1000, ctx),
                 node.node_id(),
                 ctx,
             );
@@ -311,7 +311,7 @@ fun test_first_epoch_too_soon_fail() {
     let epoch = runner.epoch();
     nodes.do_mut!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let stake = test_utils::mint(1000, ctx);
+            let stake = test_utils::mint_wal(1000, ctx);
             let cap = staking.register_candidate(
                 node.name(),
                 node.network_address(),
@@ -378,7 +378,7 @@ fun test_epoch_change_with_rewards_and_commission() {
 
     nodes.do_ref!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let coin = test_utils::mint(1_000_000_000, ctx);
+            let coin = test_utils::mint_wal(1, ctx);
             let staked_wal = staking.stake_with_pool(coin, node.node_id(), ctx);
             transfer::public_transfer(staked_wal, ctx.sender());
         });
@@ -409,7 +409,7 @@ fun test_epoch_change_with_rewards_and_commission() {
     // === buy some storage to add rewards ===
 
     runner.tx!(admin, |_, system, ctx| {
-        let mut coin = test_utils::mint(1_000_000_000_000, ctx);
+        let mut coin = test_utils::mint_wal(1_000, ctx);
         let storage = system.reserve_space(1_000_000_000, 10, &mut coin, ctx);
         transfer::public_transfer(storage, ctx.sender());
         transfer::public_transfer(coin, ctx.sender());
@@ -673,7 +673,7 @@ fun withdraw_rewards_before_joining_committee() {
 
     nodes.do_ref!(|node| {
         runner.tx!(node.sui_address(), |staking, _, ctx| {
-            let coin = test_utils::mint(1000, ctx);
+            let coin = test_utils::mint_wal(1000, ctx);
             let staked_wal = staking.stake_with_pool(coin, node.node_id(), ctx);
             transfer::public_transfer(staked_wal, ctx.sender());
         });
@@ -698,7 +698,7 @@ fun withdraw_rewards_before_joining_committee() {
     // === add small amount of stake to excluded node ===
 
     runner.tx!(excluded_node.sui_address(), |staking, _, ctx| {
-        let coin = test_utils::mint(1, ctx);
+        let coin = test_utils::mint_wal(1, ctx);
         let staked_wal = staking.stake_with_pool(coin, excluded_node.node_id(), ctx);
         transfer::public_transfer(staked_wal, ctx.sender());
     });
@@ -730,7 +730,7 @@ fun withdraw_rewards_before_joining_committee() {
     // === add stake to excluded node again ===
 
     runner.tx!(excluded_node.sui_address(), |staking, _, ctx| {
-        let coin = test_utils::mint(1000, ctx);
+        let coin = test_utils::mint_wal(1000, ctx);
         let staked_wal = staking.stake_with_pool(coin, excluded_node.node_id(), ctx);
         transfer::public_transfer(staked_wal, ctx.sender());
     });

@@ -6,6 +6,11 @@ module walrus::event_blob;
 
 use sui::vec_map::{Self, VecMap};
 
+// Error codes
+// Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The provided sequence number is invalid.
+const EInvalidSequenceNumber: u64 = 0;
+
 // === Definitions related to event blob certification ===
 
 /// Event blob index which was attested by a storage node.
@@ -120,7 +125,7 @@ public(package) fun update_latest_certified_event_blob(
     blob_id: u256,
 ) {
     self.get_latest_certified_checkpoint_sequence_number().do!(|latest_certified_sequence_num| {
-        assert!(checkpoint_sequence_number > latest_certified_sequence_num);
+        assert!(checkpoint_sequence_number > latest_certified_sequence_num, EInvalidSequenceNumber);
     });
     self.latest_certified_blob = option::some(new_event_blob(checkpoint_sequence_number, blob_id));
 }

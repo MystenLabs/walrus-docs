@@ -5,7 +5,7 @@
 module walrus::pool_direct_withdraw_tests;
 
 use sui::test_utils::destroy;
-use walrus::test_utils::{mint_balance, pool, context_runner, assert_eq, dbg};
+use walrus::test_utils::{mint_wal_balance, frost_per_wal, pool, context_runner, assert_eq, dbg};
 
 const E0: u32 = 0;
 const E1: u32 = 1;
@@ -20,12 +20,12 @@ fun withdraw_same_epoch() {
 
     // Alice stakes before committee selection, stake applied E+1
     // And she performs the withdrawal right away
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     let balance = pool.withdraw_stake(sw1, true, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 1000);
+    assert_eq!(balance.destroy_for_testing(), 1000 * frost_per_wal());
     assert_eq!(pool.wal_balance_at_epoch(E1), 0);
 
     destroy(pool);
@@ -43,15 +43,15 @@ fun withdraw_after_committee_selection() {
 
     // Alice stakes after committee selection, stake applied E+1
     // And she performs the withdrawal right away
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     let (_, _) = test.next_epoch(); // E1
     let (wctx, _) = test.next_epoch(); // E2
 
     let balance = pool.withdraw_stake(sw1, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 1000);
+    assert_eq!(balance.destroy_for_testing(), 1000 * frost_per_wal());
     assert_eq!(pool.wal_balance_at_epoch(E3), 0); // ERROR: balance not zero
 
     destroy(pool);
@@ -69,37 +69,37 @@ fun withdraw_after_the_pool_became_inactive() {
     let mut pool = pool().build(&wctx, ctx);
 
     // Alice stakes before committee selection, stake applied E+1
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     // Bob stakes before committee selection, stake applied E+1
-    let mut sw2 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let mut sw2 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw2.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 2000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 2000 * frost_per_wal());
 
     let (wctx, _) = test.next_epoch(); // E1
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
 
     let (wctx, _) = test.next_epoch(); // E2
-    pool.advance_epoch(mint_balance(2000), &wctx);
+    pool.advance_epoch(mint_wal_balance(2000), &wctx);
 
     // Bob requests withdrawal (E2)
     pool.request_withdraw_stake(&mut sw2, true, false, &wctx);
-    assert_eq!(pool.wal_balance_at_epoch(E2), 4000); // same epoch
-    assert_eq!(pool.wal_balance_at_epoch(E3), 2000); // next, after request
+    assert_eq!(pool.wal_balance_at_epoch(E2), 4000 * frost_per_wal()); // same epoch
+    assert_eq!(pool.wal_balance_at_epoch(E3), 2000 * frost_per_wal()); // next, after request
 
     let (wctx, _) = test.next_epoch(); // E3 (Bob's withdrawal)
-    pool.advance_epoch(mint_balance(2000), &wctx);
+    pool.advance_epoch(mint_wal_balance(2000), &wctx);
 
     // Bob withdraws his stake (E3)
     let balance = pool.withdraw_stake(sw2, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 3000);
+    assert_eq!(balance.destroy_for_testing(), 3000 * frost_per_wal());
 
     // Pool is inactive, Alice performs immediate withdrawal
     // Alice performs immediate withdrawal
     let balance = pool.withdraw_stake(sw1, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 3000);
+    assert_eq!(balance.destroy_for_testing(), 3000 * frost_per_wal());
     assert_eq!(pool.wal_balance_at_epoch(E3), 0);
 
     destroy(pool);
@@ -115,28 +115,28 @@ fun withdraw_after_the_pool_became_inactive_alternative() {
 
     // Alice stakes before committee selection, stake applied E+1
     // Bob stakes before committee selection, stake applied E+1
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
-    let mut sw2 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
+    let mut sw2 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
 
     let (wctx, _) = test.next_epoch(); // E1
-    pool.advance_epoch(mint_balance(0), &wctx);
+    pool.advance_epoch(mint_wal_balance(0), &wctx);
 
     let (wctx, _) = test.next_epoch(); // E2
-    pool.advance_epoch(mint_balance(2000), &wctx);
+    pool.advance_epoch(mint_wal_balance(2000), &wctx);
 
     // Bob requests withdrawal (E2)
     pool.request_withdraw_stake(&mut sw2, true, false, &wctx);
 
     let (wctx, _) = test.next_epoch(); // E3 (Bob's withdrawal)
-    pool.advance_epoch(mint_balance(2000), &wctx);
+    pool.advance_epoch(mint_wal_balance(2000), &wctx);
 
     // Bob directly withdraws his stake (E3)
     let balance = pool.withdraw_stake(sw2, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 3000);
+    assert_eq!(balance.destroy_for_testing(), 3000 * frost_per_wal());
 
     // Alice directly withdraws her stake (E3)
     let balance = pool.withdraw_stake(sw1, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 3000);
+    assert_eq!(balance.destroy_for_testing(), 3000 * frost_per_wal());
     assert_eq!(pool.wal_balance_at_epoch(E3), 0);
 
     destroy(pool);
@@ -152,9 +152,9 @@ fun try_to_request_withdrawal_for_inactive_pool() {
 
     // Alice stakes after committee selection, stake applied E+1
     // And she performs the withdrawal right away
-    let mut sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let mut sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     let (_, _) = test.next_epoch(); // E1
     let (wctx, _) = test.next_epoch(); // E2
@@ -172,11 +172,11 @@ fun direct_withdraw_for_inactive_pool_pre_active_stake() {
     let (wctx, ctx) = test.current();
     let mut pool = pool().build(&wctx, ctx);
 
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
     let balance = pool.withdraw_stake(sw1, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 1000);
+    assert_eq!(balance.destroy_for_testing(), 1000 * frost_per_wal());
 
     let (_, _) = test.next_epoch(); // E1
     assert_eq!(pool.wal_balance_at_epoch(E1), 0);
@@ -192,15 +192,15 @@ fun direct_withdraw_for_inactive_pool_active_stake() {
     let (wctx, ctx) = test.current();
     let mut pool = pool().build(&wctx, ctx);
 
-    let sw1 = pool.stake(mint_balance(1000), &wctx, ctx);
+    let sw1 = pool.stake(mint_wal_balance(1000), &wctx, ctx);
     assert_eq!(sw1.activation_epoch(), E1);
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     let (_, _) = test.next_epoch(); // E1
-    assert_eq!(pool.wal_balance_at_epoch(E1), 1000);
+    assert_eq!(pool.wal_balance_at_epoch(E1), 1000 * frost_per_wal());
 
     let balance = pool.withdraw_stake(sw1, false, false, &wctx);
-    assert_eq!(balance.destroy_for_testing(), 1000);
+    assert_eq!(balance.destroy_for_testing(), 1000 * frost_per_wal());
 
     destroy(pool);
 }

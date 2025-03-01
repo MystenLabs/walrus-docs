@@ -12,9 +12,13 @@ use walrus::messages::{Self, CertifiedMessage};
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The signers bitmap is invalid.
 const EInvalidBitmap: u64 = 0;
+/// The signature is invalid.
 const ESigVerification: u64 = 1;
+/// The certificate does not have enough stake support.
 const ENotEnoughStake: u64 = 2;
+/// The committee has members with a zero weight.
 const EIncorrectCommittee: u64 = 3;
 
 public struct BlsCommitteeMember has copy, drop, store {
@@ -55,11 +59,6 @@ public(package) fun new_bls_committee(
         assert!(weight > 0, EIncorrectCommittee);
         n_shards = n_shards + weight;
     });
-
-    // TODO: if we keep this check, there has to be a test for it
-    // TODO: discuss relaxing this restriction to allow for empty committee in
-    //       the staking, and don't require Option<BlsCommittee> there.
-    // assert!(n_shards != 0, EIncorrectCommittee);
 
     // Compute the total aggregated key, e.g. the sum of all public keys in the committee.
     let total_aggregated_key = bls12381::uncompressed_g1_to_g1(

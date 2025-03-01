@@ -13,14 +13,24 @@ use sui::balance::Balance;
 use wal::wal::WAL;
 use walrus::walrus_context::WalrusContext;
 
+// Keep in sync with corresponding value in
+// `crates/walrus-sui/src/client.rs`
+/// StakedWal objects must have a principal with at least this amount.
+const MIN_STAKING_THRESHOLD: u64 = 1_000_000_000; // 1 WAL
+
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// The `StakedWal` is not in `Withdrawing` state.
 const ENotWithdrawing: u64 = 0;
+/// The metadata of two `StakedWal` objects does not match.
 const EMetadataMismatch: u64 = 1;
+/// The amount for the split is invalid.
 const EInvalidAmount: u64 = 2;
 const ENonZeroPrincipal: u64 = 3;
 /// Trying to mark stake as withdrawing when it is already marked as withdrawing.
 const EAlreadyWithdrawing: u64 = 6;
+/// Stake is below the minimum staking threshold.
+const EStakeBelowThreshold: u64 = 7;
 
 /// The state of the staked WAL. It can be either `Staked` or `Withdrawing`.
 /// The `Withdrawing` state contains the epoch when the staked WAL can be
@@ -55,6 +65,7 @@ public(package) fun mint(
     activation_epoch: u32,
     ctx: &mut TxContext,
 ): StakedWal {
+    assert!(principal.value() >= MIN_STAKING_THRESHOLD, EStakeBelowThreshold);
     StakedWal {
         id: object::new(ctx),
         state: StakedWalState::Staked,
@@ -171,7 +182,10 @@ public fun join(sw: &mut StakedWal, other: StakedWal) {
 /// Aborts if the `amount` is zero.
 public fun split(sw: &mut StakedWal, amount: u64, ctx: &mut TxContext): StakedWal {
     assert!(sw.principal.value() > amount, EInvalidAmount);
-    assert!(amount > 0, EInvalidAmount);
+
+    // Both parts after the split must have a principal of at least MIN_STAKING_THRESHOLD.
+    assert!(amount >= MIN_STAKING_THRESHOLD, EStakeBelowThreshold);
+    assert!(sw.principal.value() - amount >= MIN_STAKING_THRESHOLD, EStakeBelowThreshold);
 
     StakedWal {
         id: object::new(ctx),
@@ -181,16 +195,15 @@ public fun split(sw: &mut StakedWal, amount: u64, ctx: &mut TxContext): StakedWa
         activation_epoch: sw.activation_epoch,
     }
 }
-
 /// Destroys the staked WAL if the `principal` is zero. Ignores the `node_id`
 /// and `activation_epoch` of the staked WAL given that it is zero.
+#[deprecated]
 public fun destroy_zero(sw: StakedWal) {
     assert!(sw.principal.value() == 0, ENonZeroPrincipal);
     let StakedWal { id, principal, .. } = sw;
     principal.destroy_zero();
     id.delete();
 }
-
 #[test_only]
 public fun destroy_for_testing(sw: StakedWal) {
     let StakedWal { id, principal, .. } = sw;

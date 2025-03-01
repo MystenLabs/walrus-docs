@@ -7,10 +7,13 @@ use sui::vec_map::{Self, VecMap};
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
+/// No value for the provided epoch exists.
 const EMissingEpochValue: u64 = 0;
+/// The value that the pending values should be reduced by for an epoch is too large.
+const EReduceValueTooLarge: u64 = 1;
 
 /// Represents a map of pending values. The key is the epoch when the value is
-/// pending, and the value is the amount of WALs or pool tokens.
+/// pending, and the value is the amount of WALs or pool shares.
 public struct PendingValues(VecMap<u32, u64>) has copy, drop, store;
 
 /// Create a new empty `PendingValues` instance.
@@ -44,6 +47,7 @@ public(package) fun reduce(self: &mut PendingValues, epoch: u32, value: u64) {
         abort EMissingEpochValue
     } else {
         let curr = map[&epoch];
+        assert!(curr >= value, EReduceValueTooLarge);
         *&mut map[&epoch] = curr - value;
     };
 }

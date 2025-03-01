@@ -38,15 +38,15 @@ public fun fund(self: &mut SharedBlob, added_funds: Coin<WAL>) {
     self.funds.join(added_funds.into_balance());
 }
 
-/// Extends the lifetime of the wrapped `Blob` by `epochs_ahead` epochs if the stored funds are
+/// Extends the lifetime of the wrapped `Blob` by `extended_epochs` epochs if the stored funds are
 /// sufficient and the new lifetime does not exceed the maximum lifetime.
 public fun extend(
     self: &mut SharedBlob,
     system: &mut System,
-    epochs_ahead: u32,
+    extended_epochs: u32,
     ctx: &mut TxContext,
 ) {
     let mut coin = self.funds.withdraw_all().into_coin(ctx);
-    system.extend_blob(&mut self.blob, epochs_ahead, &mut coin);
+    system.extend_blob(&mut self.blob, extended_epochs, &mut coin);
     self.funds.join(coin.into_balance());
 }
