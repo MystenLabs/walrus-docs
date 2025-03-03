@@ -165,7 +165,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.senseinode.com:9000`
 - `http://walrus-testnet.equinoxdao.xyz:9000`
 - `https://walrus-testnet-aggregator.stakely.io`
-- `https://walrus-testnet-aggregator.criterionvc.com`
+- `https://walrus-testnet-aggregator.talentum.id`
 - `http://37.27.230.228:9000`
 - `https://walrus-testnet-aggregator.luckyresearch.org/`
 - `http://walrus-testnet.suicore.com:9000`
@@ -229,7 +229,7 @@ may still be temporarily unavailable:
 - `http://walrus-testnet.senseinode.com:9001`
 - `http://walrus-testnet.equinoxdao.xyz:9001`
 - `https://walrus-testnet-publisher.stakely.io`
-- `https://walrus-testnet-publisher.criterionvc.com`
+- `https://walrus-testnet-publisher.talentum.id`
 - `http://37.27.230.228:9001`
 - `https://walrus-testnet-published.luckyresearch.org`
 - `http://walrus-testnet.suicore.com:9001`
