@@ -24,7 +24,7 @@ const EInvalidMigration: u64 = 0;
 const EWrongVersion: u64 = 1;
 
 /// Flag to indicate the version of the system.
-const VERSION: u64 = 2;
+const VERSION: u64 = 1;
 
 /// The one and only system object.
 public struct System has key {

@@ -116,6 +116,21 @@ fun unable_to_join_activation_epoch() {
 }
 
 #[test, expected_failure(abort_code = staked_wal::EMetadataMismatch)]
+// Scenario: Join a staked WAL with a different activation epoch
+fun unable_to_join_activation_epoch_withdrawing() {
+    let ctx = &mut tx_context::dummy();
+    let node_id = ctx.fresh_object_address().to_id();
+    let mut sw1 = staked_wal::mint(node_id, mint_wal_balance(100), 1, ctx);
+    sw1.set_withdrawing(4);
+    let mut sw2 = staked_wal::mint(node_id, mint_wal_balance(100), 2, ctx);
+    sw2.set_withdrawing(4);
+
+    sw1.join(sw2);
+
+    abort
+}
+
+#[test, expected_failure(abort_code = staked_wal::EMetadataMismatch)]
 // Scenario: Join a staked WAL with a different pool ID
 fun unable_to_join_different_pool() {
     let ctx = &mut tx_context::dummy();

@@ -26,7 +26,6 @@ const ENotWithdrawing: u64 = 0;
 const EMetadataMismatch: u64 = 1;
 /// The amount for the split is invalid.
 const EInvalidAmount: u64 = 2;
-const ENonZeroPrincipal: u64 = 3;
 /// Trying to mark stake as withdrawing when it is already marked as withdrawing.
 const EAlreadyWithdrawing: u64 = 6;
 /// Stake is below the minimum staking threshold.
@@ -150,12 +149,12 @@ public fun withdraw_epoch(sw: &StakedWal): u32 {
 /// Aborts if the `node_id` or `activation_epoch` of the staked WALs do not match.
 public fun join(sw: &mut StakedWal, other: StakedWal) {
     assert!(sw.node_id == other.node_id, EMetadataMismatch);
+    assert!(sw.activation_epoch == other.activation_epoch, EMetadataMismatch);
 
     // Simple scenario - staked wal is in `Staked` state. We guarantee that the
     // metadata is identical: same activation epoch and both are in the same state.
     if (sw.is_staked()) {
         assert!(other.is_staked(), EMetadataMismatch);
-        assert!(sw.activation_epoch == other.activation_epoch, EMetadataMismatch);
 
         let StakedWal { id, principal, .. } = other;
         sw.principal.join(principal);
@@ -195,15 +194,7 @@ public fun split(sw: &mut StakedWal, amount: u64, ctx: &mut TxContext): StakedWa
         activation_epoch: sw.activation_epoch,
     }
 }
-/// Destroys the staked WAL if the `principal` is zero. Ignores the `node_id`
-/// and `activation_epoch` of the staked WAL given that it is zero.
-#[deprecated]
-public fun destroy_zero(sw: StakedWal) {
-    assert!(sw.principal.value() == 0, ENonZeroPrincipal);
-    let StakedWal { id, principal, .. } = sw;
-    principal.destroy_zero();
-    id.delete();
-}
+
 #[test_only]
 public fun destroy_for_testing(sw: StakedWal) {
     let StakedWal { id, principal, .. } = sw;

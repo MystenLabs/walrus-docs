@@ -17,7 +17,7 @@ public struct FutureAccounting has store {
     epoch: u32,
     /// This field stores `used_capacity` for the epoch.
     /// Currently, impossible to rename due to package upgrade limitations.
-    storage_to_reclaim: u64,
+    used_capacity: u64,
     rewards_to_distribute: Balance<WAL>,
 }
 
@@ -27,7 +27,7 @@ public(package) fun new_future_accounting(
     used_capacity: u64,
     rewards_to_distribute: Balance<WAL>,
 ): FutureAccounting {
-    FutureAccounting { epoch, storage_to_reclaim: used_capacity, rewards_to_distribute }
+    FutureAccounting { epoch, used_capacity, rewards_to_distribute }
 }
 
 /// Accessor for epoch, read-only
@@ -37,13 +37,13 @@ public(package) fun epoch(accounting: &FutureAccounting): u32 {
 
 /// Accessor for used_capacity, read-only.
 public(package) fun used_capacity(accounting: &FutureAccounting): u64 {
-    accounting.storage_to_reclaim
+    accounting.used_capacity
 }
 
 /// Increase `used_capacity` by `amount`.
 public(package) fun increase_used_capacity(accounting: &mut FutureAccounting, amount: u64): u64 {
-    accounting.storage_to_reclaim = accounting.storage_to_reclaim + amount;
-    accounting.storage_to_reclaim
+    accounting.used_capacity = accounting.used_capacity + amount;
+    accounting.used_capacity
 }
 
 /// Accessor for rewards_to_distribute, mutable.
@@ -79,7 +79,7 @@ public(package) fun ring_new(length: u32): FutureAccountingRingBuffer {
         length as u64,
         |epoch| FutureAccounting {
             epoch: epoch as u32,
-            storage_to_reclaim: 0,
+            used_capacity: 0,
             rewards_to_distribute: balance::zero(),
         },
     );
@@ -121,7 +121,7 @@ public(package) fun ring_pop_expand(self: &mut FutureAccountingRingBuffer): Futu
         .ring_buffer
         .push_back(FutureAccounting {
             epoch: current_epoch + self.length,
-            storage_to_reclaim: 0,
+            used_capacity: 0,
             rewards_to_distribute: balance::zero(),
         });
 

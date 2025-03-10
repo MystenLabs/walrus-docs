@@ -780,7 +780,7 @@ fun test_advance_pool_epoch() {
     destroy(sw2);
 }
 
-#[test]
+#[test, expected_failure(abort_code = walrus::staked_wal::EMetadataMismatch)]
 // Scenario:
 // - E0: Alice stakes
 // - E1: Bob stakes
@@ -818,13 +818,5 @@ fun staked_wal_join_different_activation_epochs() {
     assert_eq!(sw1.withdraw_epoch(), sw2.withdraw_epoch());
     sw1.join(sw2);
 
-    // Make sure `join` works correctly
-    assert_eq!(sw1.value(), 2000 * frost_per_wal());
-    assert!(sw1.is_withdrawing());
-    assert_eq!(
-        pool.withdraw_stake(sw1, true, false, &wctx).destroy_for_testing(),
-        2000 * frost_per_wal(),
-    );
-
-    destroy(pool);
+    abort 0
 }

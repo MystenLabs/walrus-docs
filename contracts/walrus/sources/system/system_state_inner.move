@@ -455,9 +455,20 @@ public(package) fun certify_event_blob(
         return
     };
 
-    self.event_blob_certification_state.start_tracking_blob(blob_id);
+    self
+        .event_blob_certification_state
+        .start_tracking_blob(
+            blob_id,
+            ending_checkpoint_sequence_num,
+        );
     let weight = self.committee().get_member_weight(&cap.node_id());
-    let agg_weight = self.event_blob_certification_state.update_aggregate_weight(blob_id, weight);
+    let agg_weight = self
+        .event_blob_certification_state
+        .update_aggregate_weight(
+            blob_id,
+            ending_checkpoint_sequence_num,
+            weight,
+        );
     let certified = self.committee().is_quorum(agg_weight);
     if (!certified) {
         return
