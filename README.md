@@ -19,7 +19,7 @@ cargo install mdbook
 cargo install mdbook-admonish@1.18.0 --locked
 cargo install mdbook-katex@0.9.0 --locked
 cargo install mdbook-i18n-helpers --locked
-cargo install mdbook-tera
+cargo install mdbook-variables
 mdbook serve
 ```
 
