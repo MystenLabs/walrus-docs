@@ -39,3 +39,6 @@ inline-delimiter = { left = "\\(", right = "\\)" }
 
 [preprocessor.gettext]
 after = ["links"]
+
+[preprocessor.variables]
+json = "docs/assets/operators.json"
