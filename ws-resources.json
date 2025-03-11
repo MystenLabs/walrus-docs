@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "/index.html": {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": "max-age=3500"
+        },
+        "/*.svg": {
+            "Cache-Control": "public, max-age=86400",
+            "ETag": "\"abc123\""
+        }
+    },
+    "routes": {
+        "/operators": "/docs/assets/operators.json"
+    }
+}

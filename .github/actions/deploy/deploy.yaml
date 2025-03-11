@@ -1,0 +1,36 @@
+name: "Ship walrus docs (NOTE: walrus blobs will expire after max number of epochs)"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ship:
+    runs-on: ubuntu-latest
+    env:
+      NO_COLOR: 1
+    steps:
+      - name: Checkout to the walrus docs repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # pin@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # pin@v4
+        with:
+          version: 9.9.0
+      - name: Setup node
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # pin@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - name: Setup Walrus
+        uses: "MystenLabs/walrus-docs/.github/actions/set-up-walrus@0b4c86f621ace9e1b8dc4be8ada251a18fee3086" # pin@main
+        with:
+          SUI_ADDRESS: "${{ vars.SUI_ADDRESS }}"
+          SUI_KEYSTORE: "${{ secrets.SUI_KEYSTORE }}"
+          WALRUS_CONFIG: "${{ vars.WALRUS_CONFIG }}"
+      - name: "Ship walrus docs"
+        run: >
+          RUST_LOG=site_builder=debug,walrus=debug,info site-builder --config sites-config.yaml update dist/ ${{ vars.WALRUS_SITE_OBJECT }} --epochs=max --force
