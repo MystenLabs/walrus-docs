@@ -1,7 +1,7 @@
 {
     "recommendations": [
         "davidanson.vscode-markdownlint",
-        "editorconfig.editorconfig",
+        "editorconfig.editorconfig",2
         "yzhang.markdown-all-in-one"
     ]
 }
