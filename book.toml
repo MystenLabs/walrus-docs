@@ -27,6 +27,7 @@ exclude = [
 
 [preprocessor]
 
+
 [preprocessor.admonish]
 command = "mdbook-admonish"
 on_failure = "bail"
@@ -39,3 +40,7 @@ inline-delimiter = { left = "\\(", right = "\\)" }
 
 [preprocessor.gettext]
 after = ["links"]
+
+[preprocessor.templates]
+command = "mdbook-templates"
+

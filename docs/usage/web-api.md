@@ -37,8 +37,8 @@ For example, you can run a publisher with a single sub-wallet stored in the Walr
 directory with the following command:
 
 ```sh
-PUBLISHER_WALLETS_DIR=~/.config/walrus/publisher-wallets
-mkdir -p "$PUBLISHER_WALLETS_DIR"
+PUBLISHER*WALLETS*DIR=~/.config/walrus/publisher-wallets
+mkdir -p "$PUBLISHER*WALLETS*DIR"
 walrus publisher \
   --bind-address "127.0.0.1:31416" \
   --sub-wallets-dir "$PUBLISHER_WALLETS_DIR" \
@@ -110,131 +110,13 @@ requiring some authentication and compensation for the funds used.
 The following is a list of know public aggregators; they are checked periodically, but each of them
 may still be temporarily unavailable:
 
-- `https://aggregator.walrus-testnet.walrus.space`
-- `https://wal-aggregator-testnet.staketab.org`
-- `https://walrus-testnet-aggregator.redundex.com`
-- `https://walrus-testnet.blockscope.net`
-- `https://walrus-testnet-aggregator.nodes.guru`
-- `https://walrus-cache-testnet.overclock.run`
-- `https://walrus-testnet-aggregator.stakin-nodes.com`
-- `https://testnet-aggregator-walrus.kiliglab.io`
-- `https://walrus-cache-testnet.latitude-sui.com`
-- `https://walrus-testnet-aggregator.nodeinfra.com`
-- `https://walrus-testnet-aggregator.stakingdefenseleague.com`
-- `https://walrus-aggregator.rubynodes.io`
-- `https://walrus-testnet-aggregator.brightlystake.com`
-- `https://walrus-testnet-aggregator.nami.cloud`
-- `https://aggregator.testnet.walrus.mirai.cloud`
-- `https://walrus-testnet-aggregator.stakecraft.com`
-- `https://agg.test.walrus.eosusa.io`
-- `https://walrus-agg.testnet.obelisk.sh`
-- `https://walrus-test-aggregator.thepassivetrust.com`
-- `https://walrus-testnet-aggregator.natsai.xyz`
-- `https://walrus.testnet.aggregator.stakepool.dev.br`
-- `https://aggregator.walrus.banansen.dev`
-- `https://testnet.aggregator.walrus.silentvalidator.com`
-- `https://testnet-aggregator.walrus.graphyte.dev`
-- `https://walrus-testnet-aggregator.imperator.co`
-- `https://walrus-testnet-aggregator.unemployedstake.co.uk`
-- `https://aggregator.walrus-01.tududes.com`
-- `https://walrus-aggregator-testnet.n1stake.com`
-- `https://suiftly-testnet-agg.mhax.io`
-- `https://walrus-testnet-aggregator.trusted-point.com`
-- `https://walrus-testnet-aggregator.veera.com`
-- `https://aggregator.testnet.walrus.atalma.io`
-- `https://153-gb3-val-walrus-aggregator.stakesquid.com`
-- `https://sui-walrus-testnet.bwarelabs.com/aggregator`
-- `https://walrus-testnet.chainbase.online/aggregator`
-- `https://walrus-tn.juicystake.io:9443`
-- `https://walrus-agg-testnet.chainode.tech:9002`
-- `https://walrus-testnet-aggregator.starduststaking.com`
-- `https://walrus-aggregator-testnet.cetus.zone`
-- `https://walrus-testnet-aggregator.everstake.one`
-- `http://walrus.testnet.pops.one:9000`
-- `http://scarlet-brussels-376c2.walrus.bdnodes.net:9000`
-- `http://aggregator.testnet.sui.rpcpool.com:9000`
-- `http://walrus.krates.ai:9000`
-- `http://walrus.globalstake.io:9000`
-- `http://walrus-testnet.staking4all.org:9000`
-- `http://walrus-testnet.rpc101.org:9000`
-- `http://93.115.27.108:9000`
-- `http://65.21.139.112:9000`
-- `http://162.19.18.19:9000`
-- `http://walrus-aggregator.stakeme.pro:9000`
-- `http://walrus-storage.testnet.nelrann.org:9000`
-- `http://walrus-testnet.senseinode.com:9000`
-- `http://walrus-testnet.equinoxdao.xyz:9000`
-- `https://walrus-testnet-aggregator.stakely.io`
-- `https://walrus-testnet-aggregator.talentum.id`
-- `http://37.27.230.228:9000`
-- `https://walrus-testnet-aggregator.luckyresearch.org/`
-- `http://walrus-testnet.suicore.com:9000`
-- `https://walrus-testnet.validators.services.kyve.network/aggregate`
-- `https://walrus-aggregator-testnet.suisec.tech`
+{{ #aggregators }}
+{{ /aggregators }}
 
 ### Public publishers
 
-- `https://publisher.walrus-testnet.walrus.space`
-- `https://wal-publisher-testnet.staketab.org`
-- `https://walrus-testnet-publisher.redundex.com`
-- `https://walrus-testnet-publisher.nodes.guru`
-- `https://walrus-testnet-publisher.stakin-nodes.com`
-- `https://testnet-publisher-walrus.kiliglab.io`
-- `https://walrus-testnet-publisher.nodeinfra.com`
-- `https://walrus-publisher.rubynodes.io`
-- `https://walrus-testnet-publisher.brightlystake.com`
-- `https://walrus-testnet-publisher.nami.cloud`
-- `https://publisher.testnet.walrus.mirai.cloud`
-- `https://walrus-testnet-publisher.stakecraft.com`
-- `https://pub.test.walrus.eosusa.io`
-- `https://walrus-pub.testnet.obelisk.sh`
-- `https://walrus-testnet-publisher.stakingdefenseleague.com`
-- `https://walrus-testnet.thepassivetrust.com`
-- `https://walrus-testnet-publisher.natsai.xyz`
-- `https://walrus.testnet.publisher.stakepool.dev.br`
-- `https://publisher.walrus.banansen.dev`
-- `https://testnet.publisher.walrus.silentvalidator.com`
-- `https://testnet-publisher.walrus.graphyte.dev`
-- `https://walrus-testnet-publisher.imperator.co`
-- `https://walrus-testnet-publisher.unemployedstake.co.uk`
-- `https://publisher.walrus-01.tududes.com`
-- `https://walrus-publisher-testnet.n1stake.com`
-- `https://suiftly-testnet-pub.mhax.io`
-- `https://walrus-testnet-publisher.trusted-point.com`
-- `https://walrus-testnet-publisher.veera.com`
-- `https://publisher.testnet.walrus.atalma.io`
-- `https://153-gb3-val-walrus-publisher.stakesquid.com`
-- `https://sui-walrus-testnet.bwarelabs.com/publisher`
-- `https://walrus-testnet.chainbase.online/publisher`
-- `https://walrus-testnet.blockscope.net:11444`
-- `https://walrus-publish-testnet.chainode.tech:9003`
-- `https://walrus-testnet-publisher.starduststaking.com`
-- `http://walrus-publisher-testnet.overclock.run:9001`
-- `https://walrus-testnet-publisher.everstake.one`
-- `http://walrus.testnet.pops.one:9001`
-- `http://ivory-dakar-e5812.walrus.bdnodes.net:9001`
-- `http://publisher.testnet.sui.rpcpool.com:9001`
-- `http://walrus.krates.ai:9001`
-- `http://walrus-publisher-testnet.latitude-sui.com:9001`
-- `http://walrus-tn.juicystake.io:9090`
-- `http://walrus.globalstake.io:9001`
-- `http://walrus-testnet.staking4all.org:9001`
-- `http://walrus-testnet.rpc101.org:9001`
-- `http://walrus-publisher-testnet.cetus.zone:9001`
-- `http://93.115.27.108:9001`
-- `http://65.21.139.112:9001`
-- `http://162.19.18.19:9001`
-- `http://walrus-publisher.stakeme.pro:9001`
-- `http://walrus-storage.testnet.nelrann.org:9001`
-- `http://walrus-testnet.senseinode.com:9001`
-- `http://walrus-testnet.equinoxdao.xyz:9001`
-- `https://walrus-testnet-publisher.stakely.io`
-- `https://walrus-testnet-publisher.talentum.id`
-- `http://37.27.230.228:9001`
-- `https://walrus-testnet-published.luckyresearch.org`
-- `http://walrus-testnet.suicore.com:9001`
-- `https://walrus-testnet.validators.services.kyve.network/publish`
-- `http://walrus-publisher-testnet.suisec.tech:9001`
+{{ #publishers }}
+{{ /publishers }}
 
 ## HTTP API Usage
 
