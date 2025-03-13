@@ -37,6 +37,10 @@ runs:
         url="https://github.com/lzanini/mdbook-katex/releases/download/0.9.0-binaries/mdbook-katex-v0.9.0-x86_64-unknown-linux-gnu.tar.gz"
         curl -sSL "$url" | tar -xz --directory=bin
       shell: bash
+    - name: Install mdbook-templates from crates.io
+      uses: baptiste0928/cargo-install@v3
+      with:
+        crate: mdbook-templates
     - name: Build the book and check for broken links
       run: mdbook build
       env:
