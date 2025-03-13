@@ -91,28 +91,18 @@ a UNIX-based system for the directory structure, commands, etc. If you use Windo
 adapt most of those.
 ```
 
-You can download the latest build from our Google Cloud Storage (GCS) bucket (correctly setting the
-`$SYSTEM` variable):
+### Install via script {#nix-install}
+
+To download and install `walrus` to your `"$HOME"/.local/bin` directory, run the following in your
+terminal then follow on-screen instructions. See [Windows instructions](#windows-install)
+if you are on Windows.
 
 ```sh
-SYSTEM= # set this to your system: ubuntu-x86_64, ubuntu-x86_64-generic, macos-x86_64, macos-arm64, windows-x86_64.exe
-curl https://storage.googleapis.com/mysten-walrus-binaries/walrus-testnet-latest-$SYSTEM -o walrus
-chmod +x walrus
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/MystenLabs/walrus/refs/heads/main/scripts/walrus-install.sh | sh
 ```
 
-On Ubuntu, you should generally use the `ubuntu-x86_64` version. However, this is incompatible with
-old hardware and certain virtualized environments (throwing an "Illegal instruction (core dumped)"
-error); in these cases you can use the `ubuntu-x86_64-generic` version.
-
-To be able to run it simply as `walrus`, move the binary to any directory included in your `$PATH`
-environment variable. Standard locations are `/usr/local/bin/`, `$HOME/bin/`, or
-`$HOME/.local/bin/`.
-
-```admonish warn
-Previously, this guide recommended placing the binary in `$HOME/.local/bin/`. If you install the
-latest binary somewhere else, make sure to clean up old versions. You can find the binary in use by
-calling `which walrus` and its version through `walrus -V`.
-```
+To be able to run it simply as `walrus`, make sure the installation location is in your `$PATH`. The
+default installation location for this script is `"$HOME"/.local/bin`.
 
 Once this is done, you should be able to simply type `walrus` in your terminal. For example you can
 get usage instructions (see [the next chapter](./interacting.md) for further details):
@@ -130,8 +120,19 @@ Commands:
 ```admonish tip
 Our latest Testnet Walrus binaries are also available on Walrus itself, namely on
 <https://bin.walrus.site>, for example, <https://bin.walrus.site/walrus-testnet-latest-ubuntu-x86_64>.
+REVIEW: these instructions are maybe less helpful/distracting?
 Note that due to DoS protection, it may not be possible to download the binaries with `curl` or
 `wget`.
+```
+
+### Install on Windows {#windows-install}
+
+To download and install `walrus` to your Microsoft Windows computer, run the following in your
+terminal then follow on-screen instructions.
+.
+
+```sh
+TODO: get Windows installation instructions (or script).
 ```
 
 ### Previous versions (optional)
