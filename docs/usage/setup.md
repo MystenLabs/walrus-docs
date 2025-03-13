@@ -129,7 +129,6 @@ Note that due to DoS protection, it may not be possible to download the binaries
 
 To download and install `walrus` to your Microsoft Windows computer, run the following in your
 terminal then follow on-screen instructions.
-.
 
 ```sh
 TODO: get Windows installation instructions (or script).
