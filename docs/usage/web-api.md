@@ -37,8 +37,8 @@ For example, you can run a publisher with a single sub-wallet stored in the Walr
 directory with the following command:
 
 ```sh
-PUBLISHER*WALLETS*DIR=~/.config/walrus/publisher-wallets
-mkdir -p "$PUBLISHER*WALLETS*DIR"
+PUBLISHER_WALLETS_DIR=~/.config/walrus/publisher-wallets
+mkdir -p "$PUBLISHER_WALLETS_DIR"
 walrus publisher \
   --bind-address "127.0.0.1:31416" \
   --sub-wallets-dir "$PUBLISHER_WALLETS_DIR" \
