@@ -1744,8 +1744,8 @@ reused.</p>
 argument. For simple local testing, 1 or 2 sub-wallets are usually sufficient.</p>
 <p>For example, you can run a publisher with a single sub-wallet stored in the Walrus configuration
 directory with the following command:</p>
-<pre><code class="language-sh">PUBLISHER*WALLETS*DIR=~/.config/walrus/publisher-wallets
-mkdir -p "$PUBLISHER*WALLETS*DIR"
+<pre><code class="language-sh">PUBLISHER_WALLETS_DIR=~/.config/walrus/publisher-wallets
+mkdir -p "$PUBLISHER_WALLETS_DIR"
 walrus publisher \
   --bind-address "127.0.0.1:31416" \
   --sub-wallets-dir "$PUBLISHER_WALLETS_DIR" \
