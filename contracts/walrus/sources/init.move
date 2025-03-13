@@ -4,8 +4,8 @@
 module walrus::init;
 
 use std::type_name;
-use sui::{clock::Clock, package::UpgradeCap};
-use walrus::{events, staking::{Self, Staking}, system::{Self, System}, upgrade};
+use sui::{clock::Clock, package::{Self, Publisher, UpgradeCap}};
+use walrus::{display, events, staking::{Self, Staking}, system::{Self, System}, upgrade};
 
 // Error codes
 // Error types in `walrus-sui/types/move_errors.rs` are auto-generated from the Move error codes.
@@ -14,17 +14,22 @@ const EInvalidMigration: u64 = 0;
 /// The provided upgrade cap does not belong to this package.
 const EInvalidUpgradeCap: u64 = 1;
 
+/// The OTW to create `Publisher` and `Display` objects.
+public struct INIT has drop {}
+
 /// Must only be created by `init`.
 public struct InitCap has key, store {
     id: UID,
+    publisher: Publisher,
 }
 
 /// Init function, creates an init cap and transfers it to the sender.
 /// This allows the sender to call the function to actually initialize the system
 /// with the corresponding parameters. Once that function is called, the cap is destroyed.
-fun init(ctx: &mut TxContext) {
+fun init(otw: INIT, ctx: &mut TxContext) {
     let id = object::new(ctx);
-    let init_cap = InitCap { id };
+    let publisher = package::claim(otw, ctx);
+    let init_cap = InitCap { id, publisher };
     transfer::transfer(init_cap, ctx.sender());
 }
 
@@ -41,6 +46,8 @@ public fun initialize_walrus(
     clock: &Clock,
     ctx: &mut TxContext,
 ): upgrade::EmergencyUpgradeCap {
+    let InitCap { id, publisher } = init_cap;
+    id.delete();
     let package_id = upgrade_cap.package();
     assert!(
         type_name::get<InitCap>().get_address() == package_id.to_address().to_ascii_string(),
@@ -48,8 +55,8 @@ public fun initialize_walrus(
     );
     system::create_empty(max_epochs_ahead, package_id, ctx);
     staking::create(epoch_zero_duration, epoch_duration, n_shards, package_id, clock, ctx);
+    display::create(publisher, ctx);
     let emergency_upgrade_cap = upgrade::new(upgrade_cap, ctx);
-    init_cap.destroy();
     emergency_upgrade_cap
 }
 
@@ -72,16 +79,11 @@ public fun migrate(staking: &mut Staking, system: &mut System) {
     );
 }
 
-fun destroy(cap: InitCap) {
-    let InitCap { id } = cap;
-    id.delete();
-}
-
 // === Test only ===
 
 #[test_only]
 public fun init_for_testing(ctx: &mut TxContext) {
-    init(ctx);
+    init(INIT {}, ctx);
 }
 
 #[test_only]
@@ -99,10 +101,12 @@ public fun initialize_for_testing(
     clock: &Clock,
     ctx: &mut TxContext,
 ): upgrade::EmergencyUpgradeCap {
+    let InitCap { id, publisher } = init_cap;
+    id.delete();
     let package_id = upgrade_cap.package();
     system::create_empty(max_epochs_ahead, package_id, ctx);
     staking::create(epoch_zero_duration, epoch_duration, n_shards, package_id, clock, ctx);
+    display::create(publisher, ctx);
     let emergency_upgrade_cap = upgrade::new(upgrade_cap, ctx);
-    init_cap.destroy();
     emergency_upgrade_cap
 }
