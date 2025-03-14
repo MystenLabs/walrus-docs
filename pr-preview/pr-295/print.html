@@ -3421,6 +3421,48 @@ in the <code>.env.example</code> file:</p>
 <code>.env.local</code> in the <code>portal/worker</code> directory.</p>
 <pre><code class="language-sh">cp ./portal/worker/.env.example ./portal/worker/.env.local
 </code></pre>
+<p>For a more detailed configuration, you can modify the <code>.env.local</code> files to suit your needs.
+As a reference, here are the definitions of the environment variables:</p>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="walrus-sites/portal.html#admonition-note"></a>
+</div>
+<div>
+<p>The server portal code contains additional functionality that can be enabled or disabled
+using environment variables. For example, you can enable or disable the blocklist feature
+by setting the <code>ENABLE_BLOCKLIST</code> variable to <code>true</code> or <code>false</code>. This can be helpful to
+manage the behavior of the portal. If you host it somewhere, you might want to avoid
+serving any <em>kind</em> of content that could be considered offensive or inappropriate.</p>
+</div>
+</div>
+<p>+AGGREGATOR_URL: The url to a Walrus aggregator that will fetch the site resources from Walrus.
++AMPLITUDE_API_KEY: Provide it if you enable <a href="https://amplitude.com/">Amplitude</a> for your server
+analytics.
++EDGE_CONFIG: If you host your portal on Vercel, you can use the <a href="https://vercel.com/docs/edge-config">Edge Config</a> to
+blocklist certain SuiNS subdomains or b36 object ids.
++EDGE_CONFIG_ALLOWLIST: Similar to blocklist, but allows certain subdomains to use the premium rpc
+url list.
++ENABLE_ALLOWLIST: Enable the allowlist feature.
++ENABLE_BLOCKLIST: Enable the blocklist feature.
++ENABLE_SENTRY: Enable Sentry error tracking.
++ENABLE_VERCEL_web_ANALYTICS: Enable Vercel web analytics.
++LANDING_PAGE_OID_B36: The b36 object id of the landing page Walrus Site. i.e. the page you get
+when you visit <code>localhost:3000</code>.
++PORTAL_DOMAIN_NAME_LENGTH: If you connect your portal with a domain name, specify the length of
+the domain name. e.g. <code>example.com</code> has a length of 11.
++PREMIUM_RPC_URL_LIST: A list of rpc urls that are used when a site belongs to the allowlist.
++RPC_URL_LIST: A list of rpc urls that are used when a site does not belong to the allowlist.
++SENTRY_AUTH_TOKEN: If you enable Sentry error tracking, provide your Sentry auth token.
++SENTRY_DSN: If you enable Sentry error tracking, provide your Sentry DSN.
++SENTRY_TRACES_SAMPLE_RATE: If you enable Sentry error tracking, provide the sample rate for traces.
++SITE_PACKAGE: The Walrus Site package id. Depending on the network you are using, you will need to
+provide a different package id.
++SuiNS_CLIENT_NETWORK: The network of the SuiNS client.
++B36_DOMAIN_RESOLUTION_SUPPORT: Define if b36 domain resolution is supported. Otherwise the site
+will not be served.</p>
 <h4 id="constants"><a class="header" href="#constants">Constants</a></h4>
 <p>You can find the <code>constants.ts</code> file in the <code>portal/common/lib</code> directory. It holds key
 configuration parameters for the portal. Typically, you won't need to modify these, but if you do,
