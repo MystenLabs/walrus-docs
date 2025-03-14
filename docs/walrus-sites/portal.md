@@ -44,8 +44,8 @@ Make sure you are on the stable branch:
 git checkout testnet
 ```
 
-Next, we will see how to configure the portal and then what options are available
-to run it locally.
+Next, we will see how to configure the portal so it can support the functionality that
+we need.
 
 ### Configuration
 
@@ -96,7 +96,7 @@ want to modify the code or contribute to the project.
 First, make sure you have Docker installed on your system.
 
 ```sh
-docker --version`
+docker --version
 ```
 
 If it is not installed, follow the instructions on the [Docker website][get-docker].
