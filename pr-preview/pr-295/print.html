@@ -3438,32 +3438,30 @@ manage the behavior of the portal. If you host it somewhere, you might want to a
 serving <em>any</em> kind of content that could be considered offensive or inappropriate.</p>
 </div>
 </div>
-<p>-<code>AGGREGATOR_URL</code>: The url to a Walrus aggregator that will fetch the site resources from Walrus.
--<code>AMPLITUDE_API_KEY</code>: Provide it if you enable <a href="https://amplitude.com/">Amplitude</a> for your server
-analytics.
--<code>EDGE_CONFIG</code>: If you host your portal on Vercel, you can use the <a href="https://vercel.com/docs/edge-config">Edge Config</a> to
-blocklist certain SuiNS subdomains or b36 object ids.
--<code>EDGE_CONFIG_ALLOWLIST</code>: Similar to blocklist, but allows certain subdomains to use the premium rpc
-url list.
--<code>ENABLE_ALLOWLIST</code>: Enable the allowlist feature.
--<code>ENABLE_BLOCKLIST</code>: Enable the blocklist feature.
--<code>ENABLE_SENTRY</code>: Enable Sentry error tracking.
--<code>ENABLE_VERCEL_web_ANALYTICS</code>: Enable Vercel web analytics.
--<code>LANDING_PAGE_OID_B36</code>: The b36 object id of the landing page Walrus Site. i.e. the page you get
-when you visit <code>localhost:3000</code>.
--<code>PORTAL_DOMAIN_NAME_LENGTH</code>: If you connect your portal with a domain name, specify the length of
-the domain name. e.g. <code>example.com</code> has a length of 11.
--<code>PREMIUM_RPC_URL_LIST</code>: A list of rpc urls that are used when a site belongs to the allowlist.
--<code>RPC_URL_LIST</code>: A list of rpc urls that are used when a site does not belong to the allowlist.
--<code>SENTRY_AUTH_TOKEN</code>: If you enable Sentry error tracking, provide your Sentry auth token.
--<code>SENTRY_DSN</code>: If you enable Sentry error tracking, provide your Sentry DSN.
--<code>SENTRY_TRACES_SAMPLE_RATE</code>: If you enable Sentry error tracking, provide the sample rate for
-traces.
--<code>SITE_PACKAGE</code>: The Walrus Site package id. Depending on the network you are using, you will
-need to
-provide a different package id.
--<code>SuiNS_CLIENT_NETWORK</code>: The network of the SuiNS client.
--<code>B36_DOMAIN_RESOLUTION_SUPPORT</code>: Define if b36 domain resolution is supported. Otherwise the
+<p>-<code>AGGREGATOR_URL</code>: The url to a Walrus aggregator that will fetch the site resources from Walrus.</p>
+<p>-<code>AMPLITUDE_API_KEY</code>: Provide it if you enable <a href="https://amplitude.com/">Amplitude</a> for your server
+analytics.</p>
+<p>-<code>EDGE_CONFIG</code>: If you host your portal on Vercel, you can use the <a href="https://vercel.com/docs/edge-config">Edge Config</a> to
+blocklist certain SuiNS subdomains or b36 object ids.</p>
+<p>-<code>EDGE_CONFIG_ALLOWLIST</code>: Similar to blocklist, but allows certain subdomains to use the premium rpc
+url list.</p>
+<p>-<code>ENABLE_ALLOWLIST</code>: Enable the allowlist feature.</p>
+<p>-<code>ENABLE_BLOCKLIST</code>: Enable the blocklist feature.</p>
+<p>-<code>ENABLE_SENTRY</code>: Enable Sentry error tracking.</p>
+<p>-<code>ENABLE_VERCEL_WEB_ANALYTICS</code>: Enable Vercel web analytics.</p>
+<p>-<code>LANDING_PAGE_OID_B36</code>: The b36 object id of the landing page Walrus Site. i.e. the page you get
+when you visit <code>localhost:3000</code>.</p>
+<p>-<code>PORTAL_DOMAIN_NAME_LENGTH</code>: If you connect your portal with a domain name, specify the length of
+the domain name. e.g. <code>example.com</code> has a length of 11.</p>
+<p>-<code>PREMIUM_RPC_URL_LIST</code>: A list of rpc urls that are used when a site belongs to the allowlist.</p>
+<p>-<code>RPC_URL_LIST</code>: A list of rpc urls that are used when a site does not belong to the allowlist.</p>
+<p>-<code>SENTRY_AUTH_TOKEN</code>: If you enable Sentry error tracking, provide your Sentry auth token.</p>
+<p>-<code>SENTRY_DSN</code>: If you enable Sentry error tracking, provide your Sentry DSN.</p>
+<p>-<code>SENTRY_TRACES_SAMPLE_RATE</code>: If you enable Sentry error tracking, provide the sample rate for
+traces.</p>
+<p>-<code>SITE_PACKAGE</code>: The Walrus Site package id. Depending on the network you are using, you will</p>
+<p>-<code>SuiNS_CLIENT_NETWORK</code>: The network of the SuiNS client.</p>
+<p>-<code>B36_DOMAIN_RESOLUTION_SUPPORT</code>: Define if b36 domain resolution is supported. Otherwise the
 site will not be served.</p>
 <h4 id="constants"><a class="header" href="#constants">Constants</a></h4>
 <p>You can find the <code>constants.ts</code> file in the <code>portal/common/lib</code> directory. It holds key
