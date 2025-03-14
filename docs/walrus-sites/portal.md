@@ -83,30 +83,45 @@ serving *any* kind of content that could be considered offensive or inappropriat
 ```
 
 -`AGGREGATOR_URL`: The url to a Walrus aggregator that will fetch the site resources from Walrus.
+
 -`AMPLITUDE_API_KEY`: Provide it if you enable [Amplitude](https://amplitude.com/) for your server
 analytics.
+
 -`EDGE_CONFIG`: If you host your portal on Vercel, you can use the [Edge Config][edge-config] to
 blocklist certain SuiNS subdomains or b36 object ids.
+
 -`EDGE_CONFIG_ALLOWLIST`: Similar to blocklist, but allows certain subdomains to use the premium rpc
 url list.
+
 -`ENABLE_ALLOWLIST`: Enable the allowlist feature.
+
 -`ENABLE_BLOCKLIST`: Enable the blocklist feature.
+
 -`ENABLE_SENTRY`: Enable Sentry error tracking.
--`ENABLE_VERCEL_web_ANALYTICS`: Enable Vercel web analytics.
+
+-`ENABLE_VERCEL_WEB_ANALYTICS`: Enable Vercel web analytics.
+
 -`LANDING_PAGE_OID_B36`: The b36 object id of the landing page Walrus Site. i.e. the page you get
 when you visit `localhost:3000`.
+
 -`PORTAL_DOMAIN_NAME_LENGTH`: If you connect your portal with a domain name, specify the length of
 the domain name. e.g. `example.com` has a length of 11.
+
 -`PREMIUM_RPC_URL_LIST`: A list of rpc urls that are used when a site belongs to the allowlist.
+
 -`RPC_URL_LIST`: A list of rpc urls that are used when a site does not belong to the allowlist.
+
 -`SENTRY_AUTH_TOKEN`: If you enable Sentry error tracking, provide your Sentry auth token.
+
 -`SENTRY_DSN`: If you enable Sentry error tracking, provide your Sentry DSN.
+
 -`SENTRY_TRACES_SAMPLE_RATE`: If you enable Sentry error tracking, provide the sample rate for
 traces.
+
 -`SITE_PACKAGE`: The Walrus Site package id. Depending on the network you are using, you will
-need to
-provide a different package id.
+
 -`SuiNS_CLIENT_NETWORK`: The network of the SuiNS client.
+
 -`B36_DOMAIN_RESOLUTION_SUPPORT`: Define if b36 domain resolution is supported. Otherwise the
 site will not be served.
 
