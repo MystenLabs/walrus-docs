@@ -16,7 +16,7 @@ server-portal at <https://blob.store>. This is no longer the case.
 
 The service-worker portal is no longer hosted, but you can still run it locally. Its code is
 available in the `walrus-sites` repository. For more information, see
-[running the portal locally](#running-the-portal-locally).
+[running a local portal](#running-a-local-portal).
 
 The old domain, `blob.store` is currently an alias for `walrus.site` but will be removed in the
 future.
