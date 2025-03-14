@@ -119,6 +119,7 @@ the domain name. e.g. `example.com` has a length of 11.
 traces.
 
 -`SITE_PACKAGE`: The Walrus Site package id. Depending on the network you are using, you will
+have to specify the correct package id.
 
 -`SuiNS_CLIENT_NETWORK`: The network of the SuiNS client.
 
