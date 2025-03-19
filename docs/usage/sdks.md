@@ -9,7 +9,7 @@ with the [HTTP API](./web-api.md#http-api-usage) exposed by Walrus aggregators a
 
 - [Walrus Go SDK](https://github.com/namihq/walrus-go) (maintained by the *Nami Cloud* team)
 - [Walrus PHP SDK](https://github.com/suicore/walrus-sdk-php) (maintained by the *Suicore* team)
-- [Tusky Typescript SDK](https://github.com/tusky-io/ts-sdk) (maintained by the *Tusky* team)
 
 Finally, there is [Tusky](https://docs.tusky.io/about/about-tusky), a complete data storage platform
 built on Walrus, including encryption, HTTP APIs, sharing capabilities, and more.
+Tusky maintains its own [TypeScript SDK](https://github.com/tusky-io/ts-sdk).
