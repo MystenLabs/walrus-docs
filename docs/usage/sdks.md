@@ -12,3 +12,4 @@ with the [HTTP API](./web-api.md#http-api-usage) exposed by Walrus aggregators a
 
 Finally, there is [Tusky](https://docs.tusky.io/about/about-tusky), a complete data storage platform
 built on Walrus, including encryption, HTTP APIs, sharing capabilities, and more.
+Tusky maintains its own [TypeScript SDK](https://github.com/tusky-io/ts-sdk).
