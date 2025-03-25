@@ -172,6 +172,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.validators.services.kyve.network/aggregate`
 - `https://walrus-aggregator-testnet.suisec.tech`
 - `https://walrus-testnet-aggregator.dzdaic.com`
+- `https://walrus-testnet-aggregator-1.zkv.xyz`
 
 ### Public publishers
 
@@ -237,6 +238,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.validators.services.kyve.network/publish`
 - `http://walrus-publisher-testnet.suisec.tech:9001`
 - `https://walrus-testnet-publisher.dzdaic.com`
+- `https://walrus-testnet-publisher-1.zkv.xyz`
 
 ## HTTP API Usage
 
