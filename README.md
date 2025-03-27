@@ -1,5 +1,9 @@
 # The Walrus decentralized blob storage system
 
+> [!NOTE]
+> The Walrus codebase is now public at <https://github.com/MystenLabs/walrus>, and the documentation
+> has been moved there. Please report any issues and make contributions in that repository.
+
 Welcome to the GitHub repository for Walrus, a decentralized storage and availability protocol
 designed specifically for large binary files, or "blobs". Walrus focuses on providing a robust
 solution for storing unstructured content on decentralized storage nodes while ensuring high
