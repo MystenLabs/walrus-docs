@@ -172,6 +172,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.validators.services.kyve.network/aggregate`
 - `https://walrus-aggregator-testnet.suisec.tech`
 - `https://walrus-testnet-aggregator.dzdaic.com`
+- `http://waltest.chainflow.io:9000`
 
 ### Public publishers
 
@@ -237,6 +238,7 @@ may still be temporarily unavailable:
 - `https://walrus-testnet.validators.services.kyve.network/publish`
 - `http://walrus-publisher-testnet.suisec.tech:9001`
 - `https://walrus-testnet-publisher.dzdaic.com`
+- `http://waltest.chainflow.io:9001`
 
 ## HTTP API Usage
 
