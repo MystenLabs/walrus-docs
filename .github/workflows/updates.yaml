@@ -23,7 +23,7 @@ jobs:
       - run: pre-commit autoupdate
       - run: pre-commit run --all-files
 
-      - uses: peter-evans/create-pull-request@v7.0.7
+      - uses: peter-evans/create-pull-request@v7.0.8
         if: ${{ success() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -31,7 +31,7 @@ jobs:
           title: "chore: update pre-commit hooks"
           commit-message: "chore: update pre-commit hooks"
           body: Update pre-commit hooks to latest version.
-      - uses: peter-evans/create-pull-request@v7.0.7
+      - uses: peter-evans/create-pull-request@v7.0.8
         if: ${{ failure() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
